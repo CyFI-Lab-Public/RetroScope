@@ -1,0 +1,3951 @@
+2012-12-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	version 2.7
+	* NEWS: Record release date.
+
+2012-12-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc.c: scope reduction
+	* data/yacc.c (yysyntax_error): here.
+
+2012-12-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: C90 compliance
+	* tests/synclines.at: here.
+
+2012-12-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	fix C90 compliance
+	* data/glr.c, src/graphviz.h, src/ielr.c, src/scan-gram.l,
+	* src/system.h, tests/actions.at, tests/glr-regression.at: Do not
+	use // comments.
+	Do not introduce variables after statements.
+	Provide "main" with a return value.
+
+2012-12-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.c: scope reduction
+	* data/glr.c (yyreportSyntaxError): Reduce the scope of yysize1 (now
+	yysz).
+
+2012-12-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-12-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	news: prepare for forthcoming release
+	* NEWS: Fill paragraph.
+	Reorder.
+	Update examples.
+	Remove line for 2.6.90.
+
+2012-12-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: explain how mid-rule actions are translated
+	* doc/bison.texi (Actions in Mid-Rule): Mention and use named references.
+	Split into three subsections, among which...
+	(Mid-Rule Action Translation): this new section.
+
+2012-12-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	error: use better locations for unused midrule values
+	On
+
+	  %%
+	  exp: {;} {$$;} { $$ = $1; }
+
+	instead of reporting (with -fcaret -Wmidrule-value)
+
+	  midrule.y:2.6-8: warning: unset value: $$ [-Wmidrule-values]
+	   exp: {;} {$$;} { $$ = $1; }
+	        ^^^
+	  midrule.y:2.6-27: warning: unused value: $2 [-Wmidrule-values]
+	   exp: {;} {$$;} { $$ = $1; }
+	        ^^^^^^^^^^^^^^^^^^^^^^
+
+	report
+
+	  midrule.y:2.6-8: warning: unset value: $$
+	   exp: {;} {$$;} { $$ = $1; }
+	        ^^^
+	  midrule.y:2.10-14: warning: unused value: $2
+	   exp: {;} {$$;} { $$ = $1; }
+	            ^^^^^
+
+	* src/reader.c (grammar_rule_check): When warning about the value of a
+	midrule action, use the location of the midrule action instead of the
+	location of the rule.
+	the location of the part of the rule.
+	* tests/actions.at (Default %printer and %destructor for mid-rule values):
+	Adjust expectations
+	* tests/input.at (Unused values with default %destructor): Ditto.
+	(AT_CHECK_UNUSED_VALUES): Ditto.
+	And use -fcaret.
+
+2012-12-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: various minor improvements and fixes
+	* doc/figs/example.dot, doc/figs/example.y: New.
+	* doc/bison.texi: Prefer "token" to TOKEN.
+	Use @group where appropriate.
+	Adjust with style changes in the output (State 0, not state 0).
+	Fix some @ref that were missing the third argument.
+	Fix some incorrect line numbers.
+	Use "nonterminal", not "non-terminal".
+	Fix overfull and underfull TeX hboxes.
+	Put the comments in the index.
+	Remove duplicate index entries.
+	Fuse glossary entries where appropriate.
+	(Understanding): Improve the continuity between sections.
+	Use example.dot to show the whole graph.
+	* doc/Makefile.am: Adjust.
+
+2012-12-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: ignore more useless compiler warnings
+	* tests/synclines.at (AT_SYNCLINES_COMPILE): Ignore complains about
+	using c++ to compile C.
+
+2012-12-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: be robust to C being compiled with a C++11 compiler
+	* tests/glr-regression.at: Use YY_NULL instead of NULL.
+	Comment changes.
+
+2012-12-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: beware of Clang++ not supporting POSIXLY_CORRECT
+	* m4/c-working.m4 (BISON_LANG_COMPILER_POSIXLY_CORRECT): New.
+	(BISON_C_COMPILER_POSIXLY_CORRECT): Use it.
+	For consistency with C++, also define BISON_C_WORKS.
+	* m4/cxx.m4 (BISON_CXX_COMPILER_POSIXLY_CORRECT): New.
+	* configure.ac: Use it.
+	* tests/atlocal.in: Get its result.
+	Propagate properly CXX values when used to compile C.
+	When POSIXLY_CORRECT, adjust BISON_C_WORKS and BISON_CXX_WORKS.
+	* tests/local.at (AT_COMPILE): Use BISON_C_WORKS.
+
+2012-12-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2012-12-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	version 2.6.90
+	* NEWS: Record release date.
+
+2012-12-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: fix syntax-check error.
+	* cfg.mk: Exclude names-refs, it includes a "double" if (end of first
+	line, first of second line below).
+
+	test.y:43.12-44.59:  symbol not found in production: if
+	 if-stmt-a: IF expr[cond] THEN stmt.list[then] ELSE stmt.list[else] FI
+	            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+2012-12-07  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	cpp: simplify the Flex version checking macro
+	* src/flex-scanner,h (FLEX_VERSION): Consider YY_FLEX_SUBMINOR_VERSION
+	defined.
+
+2012-12-07  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	news: improve the carets example and fix a typo
+	* NEWS: Here.
+
+2012-12-07  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	cpp: improve the Flex version checking macro
+	* src/flex-scanner.h (FLEX_VERSION): Here.
+
+2012-12-07  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	carets: improve the code
+	* src/location.c: Remove duplicate documentations.
+	(caret_info): Stylistic change.
+	(location_caret): Many reworks.
+
+2012-12-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: update news
+	* NEWS: There is no 2.6.6, remove its stub.
+
+2012-12-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: keep -Wmissing-declarations and -Wmissing-prototypes for modern GCCs
+	Fixes a -Werror failure of xalloc.h used in src.
+	From Eric Blake.
+	http://lists.gnu.org/archive/html/bug-gnulib/2012-12/msg00006.html
+
+	* configure.ac: Check whether GCC pragma diagnostic push/pop works.
+	Enable these warnings for bison if it does.
+	Enable these warnings for the test suite anyway.
+
+2012-12-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: drop -Wcast-qual
+	Suggested by Jim Meyering.
+	http://lists.gnu.org/archive/html/bug-gnulib/2012-12/msg00017.html
+	* configure.ac (warn_common): Remove -Wcast-qual.
+
+2012-12-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-12-06  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	misc: pacify the Tiny C Compiler
+	* src/graphviz.c (conclude_red): Remove a useless return.
+
+2012-12-05  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	cpp: make the check of Flex version portable
+	This was problematic with tcc 0.9.25
+
+	* src/flex-scanner.h (FLEX_VERSION_GT): Rewrite and rename as...
+	(FLEX_VERSION): This.
+
+2012-12-05  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	misc: require getline
+	* bootstrap.conf: Here, used by src/location.c.
+	* src/getargs.c (long_options): Rename --flags to --feature.
+
+2012-12-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	c++: support wide strings for file names
+	Reported by Mark Boyall.
+	http://lists.gnu.org/archive/html/help-bison/2011-08/msg00002.html
+
+	* data/location.cc (operator<<): Be templated on the type of
+	output stream.
+	* tests/headers.at (Several parsers): Adjust.
+
+2012-12-05  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	doc: document carets
+	* NEWS: Announce it.
+	* doc/bison.texi (Bison Options):  Here.
+
+2012-12-05  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	tests: enhance existing tests with carets
+	* tests/actions.at: Unset value.
+	* tests/conflicts.at: Rule useless due to conflicts.
+	* tests/input.at: Missing terminator, unexpected end of file, command line
+	redefinition of variable.
+	* tests/named-refs.at: Many errors.
+	* tests/reduce.at: Useless nonterminals and rules.
+	* tests/regression.at: Large token.
+
+2012-12-05  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	errors: show carets
+	* src/locations.c (caret_info): New, persistant information useful
+	for...
+	(location_caret): New, print a caret.
+	(cleanup_caret): Release caret_info cleanly, call it...
+	* src/main.c (main): Here.
+	* src/complain.c (error_message): Call location_caret here.
+
+2012-12-05  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	getargs: add support for --feature/-f
+	Introduce -fdiagnostics-show-caret
+
+	* src/getargs.c (feature_flag): New global.
+	* src/getargs.h (feature): New enum.
+
+2012-12-04  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	getargs: don't label --language/-l as experimental
+	* NEWS: Announce it.
+	* doc/bison.texi, src/getargs.c (usage): Here.
+
+2012-12-03  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	getargs: fix the locations of command-line input
+	* src/getargs.c (command_line_location): Here.
+	* tests/input.at: Adjust.
+
+2012-12-03  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	errors: indent missing action code semicolon warning
+	Also, remove a duplicate #define.
+
+	* src/scan-code.l (SC_RULE_ACTION): Here.
+	* tests/actions.at: Adjust.
+
+2012-12-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	parser: accept #line NUM
+	* src/scan-gram.l (scanner): Accept '#line NUM'.
+	(handle_syncline): Adjust to the possible missing file name.
+
+2012-12-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	m4: use a safer pattern to enable/disable output
+	Work on some other areas of Bison revealed that some macros expanded
+	to be expanded only once were actually expanded several times.  This
+	was due to the fact that changecom was not properly restored each
+	time, and macro names appearing in comments were then expanded.
+
+	Introduce begin/end macros which are easier to match that
+	changecom()/changecom(#).
+
+	* data/bison.m4 (b4_output_begin, b4_output_end): New.
+	* data/glr.c, data/glr.cc, data/lalr1.cc, data/lalr1.java,
+	* data/location.cc, data/stack.hh, data/yacc.c:
+	Use them.
+
+2012-12-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: beware of gnulib's need for config.h
+	* tests/skeletons.at, tests/torture.at: Be sure to include config.h
+	where appropriate.
+
+2012-11-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+	* lib/yyerror.c: Include config.h since the following stdio.h might be
+	from gnulib.
+
+2012-11-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc.c, glr.c: check and fix the display of locations
+	In some case, negative column number could be displayed.
+	Make YY_LOCATION_PRINT similar to bison's own implementation of
+	locations.  Since the macro is getting fat, make it a static
+	function.
+	Reported by Jonathan Fabrizio.
+
+	* data/c.m4 (yy_location_print_define): Improve the implementation,
+	and generate the yy_location_print_ function.
+	Adjust YY_LOCATION_PRINT.
+	* tests/actions.at (Location Print): New tests.
+
+2012-11-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	formatting changes
+	* data/c.m4: Fix comments, put macros in a more natural order.
+	Space changes (from M-x whitespace-cleanup).
+	* src/location.c: Fix spaces.
+	* tests/actions.at: Space changes.
+
+2012-11-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.c: remove stray macro
+	* data/glr.c (YYOPTIONAL_LOC): Remove, unused since commit
+	769a8ef9bcb5e14d0be9d0869f5dca20ab093930.
+
+2012-11-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: minor fixes
+	* doc/bison.texi: Use stderr for error messages.
+	Meta-variables are usually spelled in lower case.
+	Use @code for function names.
+
+2012-11-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: improve the index
+	* doc/bison.texi: Fix uses of "deffn" so that the arguments of the
+	directives do not show in the index.
+	Remove a duplicate entry for api.pure.
+
+2012-11-29  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	doc: introduce api.pure full, rearrange some examples
+	* NEWS: Add entry.
+	* doc/bison.texi (%define Summary): Show the old Yacc behaviour.
+	(Parser Function): Move parse-param examples here.
+	(Pure Calling): Remove parse-param examples.
+	(Error Reporting): Don't show the old behavior, stick to 'full'.
+
+2012-11-29  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	yacc.c: support "%define api.pure full"
+	This makes the interface for yyerror() pure without the need for a spurious
+	parse_param.
+
+	* data/yacc.c (b4_pure_if, b4_pure_flag): New definition, accept three states.
+	(b4_yacc_pure_if): Rename as...
+	(b4_yyerror_arg_loc_if): This, and use b4_pure_flag.
+	* tests/actions.at (%define api.pure): Modernize.
+	* test/calc.at (Simple LALR Calculator): Modernize.
+	* tests/local.at (AT_YYERROR_ARG_LOC_IF): Adjust.
+
+2012-11-26  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	local.at: improvements
+	* tests/local.at (AT_YYERROR_FORMALS): Make llocp const.
+	(AT_PURE_AND_LOC_IF, AT_GLR_OR_PARAM_IF): Remove, expand...
+	(AT_YYERROR_ARG_LOC_IF): Here, and use m4_join for readability.
+
+2012-11-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	Merge remote-tracking branch 'origin/branch-2.6' into maint
+	* origin/branch-2.6:
+	  yacc.c: always initialize yylloc
+	  doc: one of the fixes for an ambiguous grammar was ambiguous too
+	  doc: fix the dangling else with precedence directives
+	  doc: prefer "token" to TOKEN
+	  doc: formatting changes
+
+2012-11-23  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	yacc.c: always initialize yylloc
+	The initial location might be used if the parser starts by an empty
+	reduction, so really ensure proper initialization of the initial
+	location.  The previous approach fails for PostgreSQL, which uses
+	Reported by Peter Eisentraut.
+	http://lists.gnu.org/archive/html/bug-bison/2012-11/msg00023.html
+	With help from Théophile Ranquet.
+
+	* data/yacc.c (b4_declare_scanner_communication_variables): Be sure
+	to initialize yylloc, even when its structure is unknown.
+	(yyparse): Simplify the call to b4_dollar_pushdef.
+	* tests/actions.at (Initial location): Check of similar pattern
+	as in the case of PostgreSQL.
+
+2012-11-23  Akim Demaille  <akim@lrde.epita.fr>
+
+	scanner: issue a single error for groups of invalid characters
+	* src/scan-gram.l: Scan groups of invalid characters together.
+	* tests/input.at, tests/named-refs.at: Adjust.
+
+2012-11-23  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: formatting changes
+	* tests/named-refs.at: Here.
+
+2012-11-23  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: one of the fixes for an ambiguous grammar was ambiguous too
+	Reported by Аскар Сафин.
+	http://lists.gnu.org/archive/html/bug-bison/2012-11/msg00024.html
+
+	* doc/bison.texi (Reduce/Reduce): Fix the resulting ambiguity using
+	precedence/associativity directives.
+
+2012-11-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: fix the dangling else with precedence directives
+	* doc/bison.texi (Non Operators): New node.
+	(Shift/Reduce): Point to it.
+	Don't promote "%expect n" too much.
+
+2012-11-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: prefer "token" to TOKEN
+	This is more readable in short examples.
+
+	* doc/bison.texi (Shift/Reduce): here.
+	Make "win" and "lose" action more alike.
+
+2012-11-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: formatting changes
+	* doc/bison.texi: Use @group.
+
+2012-11-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	scanner: use explicit "ignore" statements
+	* src/scan-gram.l: here.
+
+2012-11-12  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	tests: close files in glr-regression
+	* tests/glr-regression.at: Here.
+
+2012-11-12  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	xml: match DOT output and xml2dot.xsl processing
+	Make the DOT produced by XSLT processing equivalent to the one made with the
+	--graph option.
+
+	* data/xslt/xml2dot.xsl: Stylistic changes, and add support for reductions.
+	* doc/bison.texi (Xml): Update.
+	* src/graphviz.c (conclude_red): Minor stylistic changes to DOT internals.
+	(output_red): Swap enabled and disabled reductions output, for coherence
+	with XSLT output.
+	* src/print_graph.c (print_core): Minor stylistic change to States' output.
+	(print_actions): Swap order of output for reductions and transitions.
+	* tests/local.at (AT_BISON_CHECK_XML): Ignore differences in order.
+	* tests/output.at: Adjust to changes in DOT internals.
+
+2012-11-12  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	xml: factor xslt space template
+	* data/xslt/bison.xsl (space): New, import from...
+	* data/xslt/xml2text.xsl: Here.
+
+2012-11-12  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	graph: fix a memory leak
+	* src/graphviz.c (output_red): Here.
+
+2012-11-12  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	xml: documentation
+	The XML output combined with the XSL Transformations provided in data/ are
+	incredibly useful, they should be documented.
+
+	* doc/bison.texi (Xml): New node.
+
+2012-11-12  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	output: capitalize State
+	* src/print.c (print_state): Here.
+	* tests/conflicts.at, tests/existing.at, tests/local.at, tests/reduce.at,
+	tests/regression.at, tests/sets.at: Adjust.
+
+2012-11-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: address syntax-check errors.
+	* cfg.mk: Ignore the "error" call in tests/c++.at, it is not to be
+	translated.
+	* doc/bison.texi: Fix incorrect @pxref use.
+	* po/POTFILES.in: Add missing file.
+	* src/print_graph.c: Remove useless include.
+
+2012-11-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: use valgrind where appropriate
+	Reported by Théophile Ranquet.
+
+	* cfg.mk (sc_at_parser_check): New.
+	* tests/c++.at: Fix use of AT_CHECK vs. AT_PARSER_CHECK.
+
+2012-11-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	Merge remote-tracking branch 'origin/branch-2.6' into maint
+	* origin/branch-2.6:
+	  tests: use valgrind where appropriate
+	  tests: don't expect $EGREP to support -w
+
+2012-11-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: use valgrind where appropriate
+	Reported by Théophile Ranquet.
+
+	* tests/glr-regression.at: Rewrite some test cases so that AT_PARSER_CHECK,
+	which runs valgrind, is exposed with the parser, not with "echo".
+	* tests/local.at, tests/regression.at, tests/headers.at:
+	Use AT_PARSER_CHECK for generated parsers.
+
+2012-11-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: don't expect $EGREP to support -w
+	Does not work on Solaris 10.  Reported by Dennis Clarke.
+	http://lists.gnu.org/archive/html/bug-bison/2012-11/msg00009.html
+	* tests/headers.at (Several parsers): Use Perl instead.
+	While at it, run it only once, on all the generated headers.
+	Adjust to YY_NULL be defined in position.hh.
+
+2012-11-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: more possible error compiler messages for "#error"
+	* tests/synclines.at (AT_SYNCLINES_COMPILE): Adjust for Clang.
+	Verified with GCC 4.0, 4.2 to 4.8, and Clang 2.9, 3.2: none skip.
+
+2012-11-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-11-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	Merge branch 'branch-2.6' into maint
+	* origin/branch-2.6:
+	  maint: post-release administrivia
+	  version 2.6.5
+	  regen
+	  tests: syntax-check
+	  tests: beware of compilers that do not support POSIXLY_CORRECT
+	  gnulib: update
+
+2012-11-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2012-11-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	version 2.6.5
+	* NEWS: Record release date.
+
+2012-11-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-11-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: syntax-check
+	* tests/actions.at: Fix typo.
+
+2012-11-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: beware of compilers that do not support POSIXLY_CORRECT
+	Running "maintainer-release-check" on OS X with Clang 2.9 fails,
+	because "clang-mp-2.9 -o test -g test.c" launches "/usr/bin/dsymutil
+	test -o test.dSYM" which fails with "error: unable to open executable
+	'-o'".
+
+	* m4/c-working.m4 (BISON_CHECK_WITH_POSIXLY_CORRECT)
+	(BISON_C_COMPILER_POSIXLY_CORRECT): New.
+	* configure.ac: Use the latter.
+	* tests/atlocal.in (POSIXLY_CORRECT_IS_EXPORTED): New.
+	* tests/local.at (AT_BISON_CHECK_WARNINGS_): Use it instead of computing its
+	value each time.
+	(AT_QUELL_VALGRIND): Skip tests that cannot work because of compilers
+	that do not support POSIXLY_CORRECT.
+
+2012-11-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-11-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	Merge branch 'branch-2.6' into maint
+	* origin/branch-2.6: (24 commits)
+	  tests: calc: modernize the use of locations
+	  tests: remove useless location initializations
+	  lalr1.cc: always initialize yylval.
+	  tests: check that C and C++ objects can be linked together.
+	  yacc.c: also disable -Wuninitialized.
+	  glr.cc, yacc.c: initialize yylloc properly
+	  yacc.c, glr.c: a better YY_LOCATION_PRINT
+	  yacc.c: simplify initialization
+	  doc: formatting changes
+	  c++: fix position operator signatures
+	  tests: remove useless location initialization.
+	  tests: fix locations in C
+	  tests: handle %parse-param in the generated yyerror
+	  tests: simplifications
+	  grammars: fix display of nul character in error message
+	  tests: sort
+	  tests: cosmetic changes
+	  comment changes
+	  autoconf: update
+	  gnulib: update
+	  ...
+
+2012-11-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: calc: modernize the use of locations
+	* tests/calc.at: Don't initialize the location, let the parser
+	do it.
+	Use a $printer.
+	Change some testing input to be easier to distinguish (instead of always
+	"0 0" for instance).
+
+2012-11-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: remove useless location initializations
+	* tests/actions.at, tests/calc.at: here.
+
+2012-11-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: always initialize yylval.
+	* data/lalr1.cc: here.
+
+2012-11-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: check that C and C++ objects can be linked together.
+	* tests/local.at (AT_SKIP_IF_CANNOT_LINK_C_AND_CXX): New.
+	* tests/headers.at (Several parsers): Use it.
+
+2012-11-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc.c: also disable -Wuninitialized.
+	* data/yacc.c (YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN): For some versions
+	of GCC, -Wmaybe-uninitialized alone does not suffice.
+
+2012-11-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.cc, yacc.c: initialize yylloc properly
+	There are several issues to address here.  One is that yylloc should
+	be initialized when possible.  Another is that the push parser needs
+	to update yypushed_loc when the user modified it.  And if the parser
+	starts by a reduction of an empty, it uses the first location on the
+	stack, which, therefore, must also be initialized to this initial
+	location.
+
+	This is getting complex, especially since because initializing a
+	global (impure interface) is different from initializing a local
+	variable.  To simplify, the local yylloc is not initialized during its
+	definition.
+
+	* data/c.m4 (b4_yyloc_default_define): Replace by...
+	(b4_yyloc_default): this.
+	Adjust dependencies.
+	* data/glr.cc: Initialize yylloc.
+	* data/yacc.c (b4_declare_scanner_communication_variables):
+	Initialize yylloc during its definition.
+	Don't define yyloc_default.
+	(yypush_parse): The location formal is not const, as we might
+	initialize it.
+	(yyparse): Define yyloc_default.
+	Use it before running the user initial action.
+	Possibly update the first location on the stack, and the pushed
+	location after the user initial action.
+	* tests/actions.at (Initial locations): Check that the initial
+	location is correct.
+
+2012-11-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc.c, glr.c: a better YY_LOCATION_PRINT
+	* data/c.m4 (b4_yy_location_print_define): New.
+	Now issues "short" locations, e.g., "1.1" instead of "1.1-1.1".
+	Was initially a function, but then we face "static but unused"
+	warnings.
+	Simpler as a macro.
+	* tests/local.at, data/glr.c, data/yacc.c: Use it instead of duplicating.
+	* tests/actions.at: Adjust expectations.
+
+2012-11-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc.c: simplify initialization
+	* data/yacc.c: Fuse the initializations of yyssp, yyss and the like.
+	Remove an obsolete comment: we do initialize these initial stack
+	members (in some cases).
+
+2012-11-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: formatting changes
+	* doc/bison.texi: In a pointer type.
+
+2012-11-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	c++: fix position operator signatures
+	* data/location.cc (operator+=, operator-=): Remove const from return
+	type.
+
+2012-11-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: remove useless location initialization.
+	* tests/glr-regression.at: here.
+	glr.c does initialize yylloc.
+
+2012-11-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: fix locations in C
+	* tests/local.at (AT_YYERROR_DEFINE): Don't display the end of the location
+	if it is not after its beginning.
+	* tests/actions.at, tests/cxx-type.at: Adjust the expected output.
+
+2012-11-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: handle %parse-param in the generated yyerror
+	* tests/local.at (AT_PARSE_PARAMS): New.
+	(AT_YYERROR_FORMALS, AT_YYERROR_DEFINE): Use it to add the parse-param
+	to yyerror.
+	* tests/calc.at, tests/regression.at: Use AT_YYERROR_DEFINE and
+	AT_YYERROR_DECLARE, now that they handle properly the parse-params.
+	Be sure to let AT_BISON_OPTION_PUSHDEFS now what parse-params are used.
+
+2012-11-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: simplifications
+	* tests/actions.at (Exotic Dollars): Formatting changes.
+	Use AT_FULL_COMPILE.
+	(AT_CHECK_PRINTER_AND_DESTRUCTOR): Remove useless initialization of @$.
+
+2012-11-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	grammars: fix display of nul character in error message
+	Reported by Marc Mendiola.
+	http://lists.gnu.org/archive/html/help-bison/2012-10/msg00017.html
+
+	* gnulib: Update to get quote_mem.
+	* src/scan-gram.l: Use it.
+	* tests/input.at (Invalid inputs): Additional checks.
+	* tests/named-refs.at: Likewise.
+
+2012-11-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: sort
+	* tests/regression.at (Invalid inputs, Invalid inputs with {}): Move to...
+	* tests/input.at: here, for consistency.
+
+2012-11-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: cosmetic changes
+	* tests/actions.at (AT_CHECK_PRINTER_AND_DESTRUCTOR): Improve the
+	displayed title.
+
+2012-11-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	comment changes
+	* data/lalr1.cc: here.
+
+2012-11-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	autoconf: update
+	There are comment changes only in the files we use.
+
+2012-11-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-10-28  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-10-28  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc.c: initialize yylval and yylloc.
+	When generating a pure push parser, the initialization of yylval and
+	yylloc may not be visible to the compiler.  With warnings enabled, GCC
+	4.3.6, 4.4.7, 4.5.4, and 4.6.3 report uninitialized uses of
+	yylval/yylloc.  Using local pragmas to disable these warnings is not
+	supported before 4.6, and 4.6 does not support it properly.  So
+	initialize yylval and yylloc at their definition.  Reported by Peter
+	Simons.  See
+	http://lists.gnu.org/archive/html/bison-patches/2012-10/msg00133.html
+
+	* data/c.m4 (b4_yyloc_default_define): New.
+	* data/yacc.c: Use it when locations are requested.
+	(YYLVAL_INITIALIZE): Replace by...
+	(YY_INITIAL_VALUE): this.
+	(yyparse): Initialize yylloc and yylval.
+	Therefore, remove the initialization of yylloc's field.
+	* data/glr.c: Likewise.
+
+2012-10-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	Merge branch 'branch-2.6' into maint
+	* origin/branch-2.6:
+	  regen
+	  yacc.c: do not define location support when not using locations
+	  maint: be compilable with GCC 4.0
+	  tests: address a warning from GCC 4.4
+	  tests: don't use options that Clang does not support
+	  tests: restore the tests on -Werror
+	  regen
+	  parse-gram: update the Bison interface
+	  fix comment
+
+2012-10-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: minor style change
+	* doc/figs/example-reduce.txt: here.
+
+2012-10-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: use gendocs's new -I option
+	* gnulib: Update gendocs.
+	* cfg.mk (gendocs_options_): New.
+
+2012-10-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-10-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc.c: don't use _Pragma GCC diagnostic with 4.6
+	Reported by Peter Simons.
+	http://lists.gnu.org/archive/html/bug-bison/2012-10/msg00033.html
+
+	* data/yacc.c (b4_declare_scanner_communication_variables): 4.7
+	seems fine though.
+
+2012-10-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-10-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc.c: do not define location support when not using locations
+	* data/yacc.c (YYLLOC_DEFAULT, YYRHSLOC): Don't define when not
+	using locations.
+
+2012-10-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: be compilable with GCC 4.0
+	The "shadows a global declaration" warning in GCC 4.0 was a bit
+	annoying.  It does not like that a type name be used in a prototype of
+	a function (not the implementation, just the declaration):
+
+	  In file included from src/LR0.c:38:
+	  src/reader.h:56: warning: declaration of 'named_ref' shadows a
+	                            global declaration
+	  src/named-ref.h:35: warning: shadowed declaration is here
+
+	It does not like either when a global variable name is used in a
+	prototype.  Flex 2.5.37 generates this prototype:
+
+	  void gram_set_debug (int debug_flag  );
+
+	* src/getargs.h, src/getargs.c (debug_flag): Rename as...
+	(debug): this.
+	Adjust dependencies.
+	* src/reader.h: Don't use "named_ref" as a formal argument name.
+
+2012-10-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: address a warning from GCC 4.4
+	236. torture.at:465: testing Exploding the Stack Size with Alloca ...
+	../../../tests/torture.at:474: bison -o input.c input.y
+	../../../tests/torture.at:474: $CC $CFLAGS $CPPFLAGS $LDFLAGS -o input input.c $LIBS
+	stderr:
+	cc1: warnings being treated as errors
+	input.y: In function 'main':
+	input.y:60: error: 'status' may be used uninitialized in this function
+
+	* tests/torture.at (AT_DATA_STACK_TORTURE): Initial status to avoid
+	the previous error.
+
+2012-10-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: don't use options that Clang does not support
+	* configure.ac (WARN_CFLAGS, WARN_CXXFLAGS): Do not include options
+	that Clang does not support.
+
+2012-10-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: restore the tests on -Werror
+	When run as /bin/sh, Bash sets the shell variable POSIXLY_CORRECT to
+	y.  The test suite checks for the envvar POSIXLY_CORRECT to turn of
+	some tests not supported in POSIX mode.  Restore these tests.
+
+	Reported by the Hydra build farm, from Rob Vermaas.
+
+	* tests/local.at (AT_BISON_CHECK_WARNINGS_): Check the envvar
+	POSIXLY_CORRECT, not the shell variable.
+
+2012-10-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-10-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	parse-gram: update the Bison interface
+	* src/parse-gram.y (%pure-parser, %name-prefix): Replace with...
+	(%define api.pure, %define api.prefix)
+	* src/location.h, src/scan-gram.h: Adjust to api.prefix.
+
+2012-10-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	fix comment
+	* data/c.m4 (b4_YYDEBUG_define): here.
+
+2012-10-23  Akim Demaille  <akim@lrde.epita.fr>
+
+	Merge branch 'branch-2.6' into maint
+	* origin/branch-2.6:
+	  maint: post-release administrivia
+	  version 2.6.4
+	  regen
+	  2.6.4: botched 2.6.3
+
+2012-10-23  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2012-10-23  Akim Demaille  <akim@lrde.epita.fr>
+
+	version 2.6.4
+	* NEWS: Record release date.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	2.6.4: botched 2.6.3
+	* NEWS: here.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	Merge branch '2.6.3' into maint
+	* 2.6.3: (22 commits)
+	  maint: post-release administrivia
+	  version 2.6.3
+	  gnulib: update
+	  tests: check %no-lines
+	  NEWS: warnings with clang
+	  warnings: avoid warnings from clang
+	  tests: no longer disable -O compiler options
+	  yacc.c: initialize yylval in pure-parser mode
+	  skeletons: style changes
+	  tests: minor improvements
+	  tests: use $PERL instead of perl
+	  build: look for Perl in configure.
+	  tests: fix sed portability issues
+	  tests: diff -u is not portable
+	  maint: word changes
+	  lalr1.cc: fix test suite portability
+	  maint: fix an erroneous include
+	  tests: check that headers are self contained
+	  doc: add missing documentation for --report
+	  headers: move CPP guards into YY_*_INCLUDED to avoid collisions
+	  ...
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	version 2.6.3
+	* NEWS: Record release date.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: check %no-lines
+	* tests/synclines.at: here.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	NEWS: warnings with clang
+	* NEWS: here.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	warnings: avoid warnings from clang
+	Fix the following warning
+
+	  parse-gram.c:2078:14: error: equality comparison with extraneous parentheses
+	                        [-Werror,-Wparentheses-equality]
+	    if (((yyn) == (-91)))
+	         ~~~~~~^~~~~~~~
+	  parse-gram.c:2078:14: note: remove extraneous parentheses around the
+	                        comparison to silence this warning
+	    if (((yyn) == (-91)))
+	        ~      ^       ~
+	  parse-gram.c:2078:14: note: use '=' to turn this equality comparison into
+	                        an assignment
+	    if (((yyn) == (-91)))
+	               ^~
+	               =
+	  1 error generated.
+
+	and the following one:
+
+	  input.cc:740:1: error: function declared 'noreturn' should not return
+	                         [-Werror,-Winvalid-noreturn]
+	  static void yyMemoryExhausted (yyGLRStack* yystackp)
+	    __attribute__ ((__noreturn__));
+	  static void
+	  yyMemoryExhausted (yyGLRStack* yystackp)
+	  {
+	    YYLONGJMP (yystackp->yyexception_buffer, 2);
+	  }
+	  ^
+	  1 warning and 1 error generated.
+
+	This is Apple clang version 3.1 (tags/Apple/clang-318.0.61).
+
+	* data/c.m4 (b4_table_value_equals): Use (!!(A == B)) instead of (A == B)
+	to avoid this warning.
+	Any reasonable compiler should generate the same code.
+	* src/uniqstr.h (UNIQSTR_EQ): Likewise.
+	* data/glr.c (LONGJMP): abort after longjmp to pacify clang.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: no longer disable -O compiler options
+	Tests are running without -O since
+	f377f69fec28013c79db4efe12bbb9d48987fb2c because some warnings (about
+	yylval not being initialized) show only when GCC is given -O2.  The
+	previous patch fixes the warnings. Run the test suite with compiler
+	options unmodified.
+
+	* tests/atlocal.in (O0CFLAGS, O0CXXFLAGS): Remove, use CFLAGS and
+	CXXFLAGS.
+
+2012-10-22  Paul Eggert  <eggert@cs.ucla.edu>
+
+	yacc.c: initialize yylval in pure-parser mode
+	See http://lists.gnu.org/archive/html/bison-patches/2012-08/msg00024.html
+	(spreading over September and October).
+
+	* data/yacc.c (YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN)
+	(YY_IGNORE_MAYBE_UNINITIALIZED_END, YYLVAL_INITIALIZE):
+	New macros.  Use them to suppress an unwanted GCC diagnostic.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	skeletons: style changes
+	* data/yacc.c, data/glr.c: Prefer Title case for (CPP) macro arguments.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: minor improvements
+	* tests/c++.at: Space changes.
+	Use AT_YYERROR_DEFINE.
+	* tests/local.at (AT_YYERROR_DEFINE): Issue errors on unknown languages.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: use $PERL instead of perl
+	* tests/atlocal.in (PERL): New.
+	Sort.
+	* tests/calc.at, tests/input.at, tests/local.at, tests/regression.at,
+	* tests/skeletons.at, tests/synclines.at, tests/torture.at: here.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: look for Perl in configure.
+	Bison uses "/usr/bin/perl" or "perl" in several places, and it does
+	not appear to be a problem.  But, at least to make it simpler to
+	change PERL on the make command line, check for perl in configure.
+
+	* configure.ac (PERL): New.
+	* doc/Doxyfile.in, doc/Makefile.am, tests/bison.in: Use it.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: fix sed portability issues
+	Reported by Didier Godefroy,
+	<http://lists.gnu.org/archive/html/bug-bison/2012-10/msg00005.html>.
+
+	* tests/calc.at (AT_CHECK_SPACES): Use Perl.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: diff -u is not portable
+	Reported by Didier Godefroy
+	<http://lists.gnu.org/archive/html/bug-bison/2012-10/msg00006.html>.
+
+	* tests/existing.at (AT_LALR1_DIFF_CHECK): Skip if diff -u does not
+	work.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: word changes
+	* README-hacking (Typical errors): Improve wording.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: fix test suite portability
+	Reported by Rob Vermaas' Hydra build farm on x86_64-darwin 10.2.0 with
+	G++ 4.6.3.
+
+	* tests/headers.at (Several parsers): Include AT_DATA_SOURCE_PROLOGUE
+	in the files to compile.
+	* data/location.cc: Do not include twice string and iostream (once
+	by position.hh, and then by location.hh).
+	* README-hacking (Typical errors): Some hints for other maintainers.
+
+2012-10-22  Theophile Ranquet  <theophile.ranquet@gmail.com>
+
+	maint: fix an erroneous include
+	This fixes test 130 (Several parsers).
+
+	* data/location.cc: Include <iostream> rather than <iosfwd> since
+	we really need << on strings for instance.
+	* NEWS: Document this.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: check that headers are self contained
+	Reported by Alexandre Duret-Lutz.
+
+	* tests/headers.at (Several parsers): here.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: add missing documentation for --report
+	* doc/bison.texi (Bison Options): Document --report's "solved", "all",
+	and "none".
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	headers: move CPP guards into YY_*_INCLUDED to avoid collisions
+	See <http://lists.gnu.org/archive/html/bug-bison/2012-09/msg00016.html>.
+
+	* data/c.m4 (b4_cpp_guard): Prepend YY_ and append _INCLUDED.
+	* tests/headers.at: Adjust.
+	* NEWS, doc/bison.texi: Document.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	minor changes.
+	* NEWS: Word changes.
+	* doc/bison.texi: Spell check.
+	Fix minor issues.
+	* tests/headers.at: Comment and formatting changes.
+
+2012-10-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-10-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-10-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	xml: slight improvement of the DOT output
+	This was completely forgotten...  Nothing about XML is actually
+	documented...
+
+	* data/xslt/xml2dot.xsl: Use boxes, and Courier font.
+
+2012-10-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: check for dot before using it
+	* configure.ac: here.
+	* doc/Makefile.am: Use $(DOT).
+	Ship the generated files, to spare the user the need for Graphviz.
+
+2012-10-18  Theophile Ranquet  <theophile.ranquet@gmail.com>
+
+	graphs: documentation
+	Note that 'make web-manual' fails.
+
+	* NEWS: Document these changes.
+	* doc/Makefile.am: Adjust to generate example files.
+	* doc/bison.texi: Add a Graphviz section after "Understanding::", the section
+	describing the .output file, because these are similar.
+	* doc/figs/example-reduce.dot, doc/figs/example-reduce.txt,
+	doc/figs/example-shift.dot, doc/figs/example-shift.txt: New, minimal
+	examples to illustrate the documentation.
+
+2012-10-18  Theophile Ranquet  <theophile.ranquet@gmail.com>
+
+	graphs: add tests, introducing -k graph
+	* tests/output.at (AT_TEST): New.
+	Use it to add 6 --graph tests.
+
+2012-10-18  Theophile Ranquet  <theophile.ranquet@gmail.com>
+
+	graphs: change the output format of the rules
+	Use something similar to the report file.
+
+	* src/print_graph.c (print_lhs): New, obstack equivalent of rule_lhs_print.
+	(print_core): Use here.
+
+2012-10-18  Theophile Ranquet  <theophile.ranquet@gmail.com>
+
+	graphs: style changes
+	* src/graphviz.c (start_graph): Use courier font.
+	(conclude_red): Use commas to separate attributes. Show the acceptation
+	as a special reduction, with a blue color and an "Acc" label. Show the
+	lookahead tokens between square brackets.
+	(output_red): No longer label default reductions.
+	* src/print_graph.c (print_core): Refactor spacing, and print an
+	additional space between a rule's rhs and its lookahead tokens. Also,
+	capitalize "State".
+	(print_actions): Style, move a declaration.
+
+2012-10-18  Theophile Ranquet  <theophile.ranquet@gmail.com>
+
+	graphs: address an issue with R/R conflicts
+	All disabled reductions should now be shown as such.
+
+	* src/graphviz.c (output_red): Here.
+	(conclude_red): New.
+
+2012-10-16  Akim Demaille  <akim@lrde.epita.fr>
+
+	java: fixes
+	* data/java.m4: Remove stray M4 characters.
+
+2012-10-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	java: use api.location.type and api.position.type
+	* data/java.m4: here.
+	* NEWS, doc/bison.texi, tests/java.at: Adjust.
+
+2012-10-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: check %no-lines
+	* tests/synclines.at: here.
+
+2012-10-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: minor simplification
+	* tests/headers.at (Several parsers): Use *.y even for C++.
+
+2012-10-11  Akim Demaille  <akim@lrde.epita.fr>
+
+	graphs: stylistic changes.
+	* src/graphviz.c (output_red): Comment and formatting changes.
+
+2012-10-11  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	graphs: minor style changes
+	* src/graphviz.c (output_red): Fix C90 issues.
+	Reduce variable scopes.
+
+2012-10-11  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	graphs: show reductions
+	* src/graphviz.c (output_red): New, show reductions on the graph.
+	(no_reduce_bitset_init): New, initialize a bitset.
+	(print_token): New, print a lookahead token.
+	(escape): New, print "foo" as \"foo\" because Dot doesn't like quotes within
+	a label.
+
+	* src/graphviz.h : Adjust.
+	* src/print_graph.c (print_actions): Call output_red here.
+
+2012-10-11  Theophile Ranquet  <theophile.ranquet@gmail.com>
+
+	graphs: style: prefix state number with "state"
+	* src/print_graph.c (print_core): Here.
+
+2012-10-11  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	graphs: style: use left justification for states
+	The label text of nodes is centered "by default" (by the use of '\n' as
+	a line feed). This gives bad readability to the grammar rules shown in
+	state nodes, a left justification is much nicer. This is done by using '\l'
+	as the line feed.
+
+	In order to allow \l in the DOT file, changes to the quoting system seem
+	necessary.
+
+	* src/print_graph.c (print_core): Escape tokens here, instead of...
+	* src/graphviz.c (output_node): Here...
+	(escape): Using this, new.
+
+2012-10-11  Theophile Ranquet  <theophile.ranquet@gmail.com>
+
+	graphs: style: prefix rules and change shapes
+	* src/graphviz.c (start_graph): Use box rather than ellipsis.
+	* src/print_graph.c (print_core): Prefix rules with their number.
+
+2012-10-11  Theophile Ranquet  <theophile.ranquet@gmail.com>
+
+	obstack: import obstack_finish0 from master
+	* src/system.h (obstack_finish0): New.
+
+2012-10-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	c++: api.location.type
+	This feature was introduced in 95a2de5695670ae0df98cb3c42141cad549f0204
+	(which is part of 2.5), but not documented.  Give it a proper name, and
+	make it public.
+
+	* data/c++.m4, data/lalr1.cc, data/glr.cc, data/java.m4: Use
+	api.location.type instead of location_type.
+	* src/muscle-tab.c (muscle_percent_variable_update): Map the latter to
+	the former.
+	* tests/local.at: Adjust.
+	* tests/calc.at: Use api.location.type.
+	Leave tests/java.at with location_type, at least for the time being,
+	to cover both names.
+	* doc/bison.texi: Document api.location.type.
+	(User Defined Location Type): New.
+	* NEWS: Update.
+
+2012-10-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	muscles: a function for backward compatibility
+	Based on commit 171ad99d6421935a278656be6dc7161591835d00 from master.
+
+	* src/muscle-tab.c (muscle_percent_variable_update): New.
+	(muscle_percent_define_insert): Use it.
+	Define the variables with their initial value.
+
+2012-10-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: more macros
+	* src/output.c (ARRAY_CARDINALITY): Move to...
+	* src/system.h: here.
+	(STREQ, STRNEQ): new.
+
+2012-10-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	NEWS: warnings with clang
+	* NEWS: here.
+
+2012-10-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	warnings: avoid warnings from clang
+	Fix the following warning
+
+	  parse-gram.c:2078:14: error: equality comparison with extraneous parentheses
+	                        [-Werror,-Wparentheses-equality]
+	    if (((yyn) == (-91)))
+	         ~~~~~~^~~~~~~~
+	  parse-gram.c:2078:14: note: remove extraneous parentheses around the
+	                        comparison to silence this warning
+	    if (((yyn) == (-91)))
+	        ~      ^       ~
+	  parse-gram.c:2078:14: note: use '=' to turn this equality comparison into
+	                        an assignment
+	    if (((yyn) == (-91)))
+	               ^~
+	               =
+	  1 error generated.
+
+	and the following one:
+
+	  input.cc:740:1: error: function declared 'noreturn' should not return
+	                         [-Werror,-Winvalid-noreturn]
+	  static void yyMemoryExhausted (yyGLRStack* yystackp)
+	    __attribute__ ((__noreturn__));
+	  static void
+	  yyMemoryExhausted (yyGLRStack* yystackp)
+	  {
+	    YYLONGJMP (yystackp->yyexception_buffer, 2);
+	  }
+	  ^
+	  1 warning and 1 error generated.
+
+	This is Apple clang version 3.1 (tags/Apple/clang-318.0.61).
+
+	* data/c.m4 (b4_table_value_equals): Use (!!(A == B)) instead of (A == B)
+	to avoid this warning.
+	Any reasonable compiler should generate the same code.
+	* src/uniqstr.h (UNIQSTR_EQ): Likewise.
+	* data/glr.c (LONGJMP): abort after longjmp to pacify clang.
+
+2012-10-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: no longer disable -O compiler options
+	Tests are running without -O since
+	f377f69fec28013c79db4efe12bbb9d48987fb2c because some warnings (about
+	yylval not being initialized) show only when GCC is given -O2.  The
+	previous patch fixes the warnings. Run the test suite with compiler
+	options unmodified.
+
+	* tests/atlocal.in (O0CFLAGS, O0CXXFLAGS): Remove, use CFLAGS and
+	CXXFLAGS.
+
+2012-10-08  Paul Eggert  <eggert@cs.ucla.edu>
+
+	yacc.c: initialize yylval in pure-parser mode
+	See http://lists.gnu.org/archive/html/bison-patches/2012-08/msg00024.html
+	(spreading over September and October).
+
+	* data/yacc.c (YY_IGNORE_MAYBE_UNINITIALIZED_BEGIN)
+	(YY_IGNORE_MAYBE_UNINITIALIZED_END, YYLVAL_INITIALIZE):
+	New macros.  Use them to suppress an unwanted GCC diagnostic.
+
+2012-10-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	skeletons: style changes
+	* data/yacc.c, data/glr.c: Prefer Title case for (CPP) macro arguments.
+
+2012-10-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: document exception safety
+	* NEWS: here.
+	* doc/bison.texi (Destructor Decl, C++ Parser Interface): and there.
+
+2012-10-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: check exception safety of error handling
+	* tests/c++.at (Exception safety): Don't use swap here, it
+	is useless.
+	Cover more test cases: yyerror, YYERROR, YYABORT, and
+	error recovery.
+	(Object): Instead of just keeping a counter of instances, keep
+	a list of them.
+
+2012-10-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: check (and fix) %printer exception safety
+	* tests/c++.at (Exception safety): Let the parser support the --debug
+	option.
+	On 'p', throw an exception from the %printer.
+	* data/lalr1.cc (yyparse): Do not display the values we discard, as it
+	uses %printer, which might have thrown the exception.
+
+2012-10-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: check (and fix) %initial-action exception safety
+	* data/lalr1.cc: Check size > 1, rather than size != 1, when cleaning
+	the stack, as at the beginning, size is 0.
+	* tests/c++.at (Exception safety): Check exception safety in
+	%initial-action.
+
+2012-10-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: fix exception safety
+	lalr1.cc does not reclaim its memory when ended by an exception.
+
+	Reported by Oleksii Taran:
+	http://lists.gnu.org/archive/html/help-bison/2012-09/msg00000.html
+
+	* data/lalr1.cc (yyparse): Protect the whole yyparse by a try-catch
+	block that cleans the stack and the lookahead.
+
+2012-10-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: check exception safety.
+	* tests/c++.at (Exception safety): New.
+
+2012-10-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: indentation fixes.
+	* data/lalr1.cc (yyparse): here.
+	Untabify a block of code.
+
+2012-10-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: don't leave macros define to nothing
+	* data/lalr1.cc (YY_SYMBOL_PRINT, YY_REDUCE_PRINT, YY_STACK_PRINT):
+	Define to something so that, for instance, "if (foo) YY_SYMBOL_PRINT"
+	is valid even when !YYDEBUG.
+
+2012-10-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: minor improvements
+	* tests/c++.at: Space changes.
+	Use AT_YYERROR_DEFINE.
+	* tests/local.at (AT_YYERROR_DEFINE): Issue errors on unknown languages.
+
+2012-10-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: use $PERL instead of perl
+	* tests/atlocal.in (PERL): New.
+	Sort.
+	* tests/calc.at, tests/input.at, tests/local.at, tests/regression.at,
+	* tests/skeletons.at, tests/synclines.at, tests/torture.at: here.
+
+2012-10-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: look for Perl in configure.
+	Bison uses "/usr/bin/perl" or "perl" in several places, and it does
+	not appear to be a problem.  But, at least to make it simpler to
+	change PERL on the make command line, check for perl in configure.
+
+	* configure.ac (PERL): New.
+	* doc/Doxyfile.in, doc/Makefile.am, tests/bison.in: Use it.
+
+2012-10-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: fix sed portability issues
+	Reported by Didier Godefroy,
+	<http://lists.gnu.org/archive/html/bug-bison/2012-10/msg00005.html>.
+
+	* tests/calc.at (AT_CHECK_SPACES): Use Perl.
+
+2012-10-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: diff -u is not portable
+	Reported by Didier Godefroy
+	<http://lists.gnu.org/archive/html/bug-bison/2012-10/msg00006.html>.
+
+	* tests/existing.at (AT_LALR1_DIFF_CHECK): Skip if diff -u does not
+	work.
+
+2012-10-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: word changes
+	* README-hacking (Typical errors): Improve wording.
+
+2012-10-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: fix test suite portability
+	Reported by Rob Vermaas' Hydra build farm on x86_64-darwin 10.2.0 with
+	G++ 4.6.3.
+
+	* tests/headers.at (Several parsers): Include AT_DATA_SOURCE_PROLOGUE
+	in the files to compile.
+	* data/location.cc: Do not include twice string and iostream (once
+	by position.hh, and then by location.hh).
+	* README-hacking (Typical errors): Some hints for other maintainers.
+
+2012-10-03  Theophile Ranquet  <theophile.ranquet@gmail.com>
+
+	maint: fix an erroneous include
+	This fixes test 130 (Several parsers).
+
+	* data/location.cc: Include <iostream> rather than <iosfwd> since
+	we really need << on strings for instance.
+	* NEWS: Document this.
+
+2012-10-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: check that headers are self contained
+	Reported by Alexandre Duret-Lutz.
+
+	* tests/headers.at (Several parsers): here.
+
+2012-10-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: add missing documentation for --report
+	* doc/bison.texi (Bison Options): Document --report's "solved", "all",
+	and "none".
+
+2012-10-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	headers: move CPP guards into YY_*_INCLUDED to avoid collisions
+	See <http://lists.gnu.org/archive/html/bug-bison/2012-09/msg00016.html>.
+
+	* data/c.m4 (b4_cpp_guard): Prepend YY_ and append _INCLUDED.
+	* tests/headers.at: Adjust.
+	* NEWS, doc/bison.texi: Document.
+
+2012-10-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	minor changes.
+	* NEWS: Word changes.
+	* doc/bison.texi: Spell check.
+	Fix minor issues.
+	* tests/headers.at: Comment and formatting changes.
+
+2012-09-28  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-09-28  Theophile Ranquet  <theophile.ranquet@gmail.com>
+
+	errors: indent "user token number redeclaration" context
+	This is the continuation of the work on the readability of errors
+	context.
+
+	* src/symtab.c (user_token_number_redeclaration): Use
+	complain_at_indent to output with increased indentation level.
+	* tests/input:at: Apply this change.
+
+2012-09-26  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	warnings: introduce -Wdeprecated in the usage info
+	The deprecated warning, introduced some time ago, was not displayed in
+	the usage message. This patch addresses the issue.
+
+	* src/getargs.c (usage): Insert here.
+
+2012-09-26  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	errors: prefix the output with "error: "
+	This improves readability. This is also what gcc does.
+
+	* NEWS: Document this change.
+	* src/complain.c (complain_at): Prefix all errors with "error: ".
+	(complain_at_indent, warn_at_indent): Do not prefix the context
+	information of errors, which are basically just indented errors.
+	* tests/conflicts.at, tests/glr-regression.at, tests/input.at,
+	tests/named-refs.at, tests/output.at, tests/push.at,
+	tests/regression.at, tests/skeletons.at: Apply this change.
+
+2012-09-26  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	errors: indent "invalid value for %define" context
+	This is the continuation of the work on the readability of errors
+	    context.
+
+	For example, what used to be:
+	  input.y:1.9-29: invalid value for %define variable 'foo' : 'bar'
+	  input.y:1.9-29: accepted value: 'most'
+
+	is now:
+	  input.y:1.9-29: invalid value for %define variable 'foo' : 'bar'
+	  input.y:1.9-29:     accepted value: 'most'
+
+	* src/muscle-tab.c (muscle_percent_define_check_values): Use
+	complain_at_indent to output with increased indentation level.
+	* tests/input:at: Apply this change.
+
+2012-09-26  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	errors: indent "%define var" redefinition context
+	This is the continuation of the work on the readability of errors
+	context.
+
+	For example, what used to be:
+	  input.y:2.9-11: %define variable 'var' redefined
+	  input.y:1.9-11: previous definition
+
+	is now:
+	  input.y:2.9-11: %define variable 'var' redefined
+	  input.y:1.9-11:     previous definition
+
+	* src/muscle-tab.c (muscle_percent_define_insert): Use
+	complain_at_indent to output with increased indentation level.
+	* tests/input.at: Apply this change.
+
+2012-09-26  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	errors: indent "symbol redeclaration" context
+	This is the continuation of the work on the readability of errors
+	context.
+
+	For example, what used to be:
+	  input.y:5.10-24: %printer redeclaration for <field2>
+	  input.y:3.11-25: previous declaration
+
+	is now:
+	  input.y:5.10-24: %printer redeclaration for <field2>
+	  input.y:3.11-25:     previous declaration
+
+	* NEWS: Document this change.
+	* src/symtab.c (symbol_redeclaration, semantic_type_redeclaration,
+	user_token_number_redeclaration, default_tagged_destructor_set,
+	default_tagless_destructor_set, default_tagged_printer_set,
+	default_tagless_printer_set): Use complain_at_indent to
+	output with increased indentation level.
+	* tests/input.at: Apply this change.
+
+2012-09-26  Theophile Ranquet  <ranquet@lrde.epita.fr>
+
+	errors: indent "result type clash" error context
+	This used to be the format of the error report:
+
+	  input.y:6.5-10: result type clash on merge function 'merge': [...]
+	  input.y:2.4-9: previous declaration
+
+	In order to distinguish the actual error from the context provided, we
+	rather this new output:
+
+	  input.y:6.5-10: result type clash on merge function 'merge': [...]
+	  input.y:2.4-9:     previous declaration
+
+	Another patch will introduce an "error: " prefix to all non-indented
+	lines, giving yet better readability to the reports.
+
+	* src/complain.h (SUB_INDENT): Move to here.
+	* src/reader.c (record_merge_function_type): Use complain_at_indent to
+	output with increased indentation level.
+	* src/scan-code.l (SUB_INDENT): Remove from here.
+	* tests/glr-regression.at: Apply this change.
+
+2012-09-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-09-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc: fix handling of CPP guards when no header is generated
+	When no header was to be generated, Bison would issue:
+
+	  /* In a future release of Bison, this section will be replaced
+	     by #include "".  */
+	  #ifndef YY_
+	  # define YY_
+
+	It now properly generates nothing.
+
+	* data/c.m4 (b4_cpp_guard_open, b4_cpp_guard_close): Issue nothing when
+	the file name is empty.
+	* data/yacc.c: Do not generate the above comment when there is no header
+	to generate.
+	* NEWS: Update.
+
+2012-09-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-09-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: remove useless file
+	* externals/bootstrap.cfg: Remove.
+	This file was used by a specific build system.
+	It was added to the master repository by accident.
+
+2012-09-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	update files to ignore
+	* doc/.gitignore: Don't ignore split info files as we don't split our
+	info file.
+	See <http://lists.gnu.org/archive/html/bug-bison/2012-08/msg00006.html>.
+
+2012-09-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	remove useless include
+	* src/system.h: Don't include sys/types.h.
+	Reported by Eric Blake,
+	<http://lists.gnu.org/archive/html/bug-bison/2012-09/msg00002.html>.
+	(FUNCTION_PRINT): Remove, unused.
+
+2012-09-03  Jim Meyering  <meyering@redhat.com>
+
+	use locale-indep. c_is* functions for parsing, not isspace, isprint etc
+	* src/parse-gram.y: Include "c-ctype.h".
+	(add_param): Parse with c_isspace, not isspace.
+	* src/parse-gram.c: Likewise.
+	* src/scan-gram.l: Include c-ctype.h, not ctype.h.
+	(SC_ESCAPED_STRING,SC_ESCAPED_CHARACTER): Use c_isspace and c_isprint,
+	not ctype.h's locale-dependent functions.
+
+2012-09-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-09-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	--help: include a place to report translation issues
+	http://lists.gnu.org/archive/html/bug-bison/2012-08/msg00007.html
+	shows that it is useful to help users report translation issues.
+	While at it, include other informative bits that the coreutils shows.
+
+	* src/getargs.c (usage): Report more URLs where the user can
+	refer to.
+	Mostly copied/pasted from coreutils' emit_ancillary_info function.
+
+2012-08-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: style changes
+	* tests/torture.at (AT_DATA_STACK_TORTURE): M4 style changes to
+	improve readability.
+	Fix an assertion which, because of a <= instead of ==, did not check
+	new_status as visibly meant.
+	(get_args): New.
+
+2012-08-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: fix push-pull test
+	* tests/torture.at: %push-pull-parser is no longer supported.
+
+2012-08-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc.c: style changes
+	* data/yacc.c: (yytoken): Define with initial value.
+
+2012-08-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2012-08-03  Akim Demaille  <akim@lrde.epita.fr>
+
+	version 2.6.2
+	* NEWS: Record release date.
+
+2012-08-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	NEWS: update.
+	* NEWS: Catch up with the other changes from 2.6.1.
+
+2012-08-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc: remove trailing end of line at end of file
+	There are still spurious spaces at the end of some lines.  But this is
+	addressed in the master branch, and I am reluctant to try to backport
+	this.
+
+	* data/yacc.c, data/glr.c, data/lalr1.cc, data/glr.cc: here.
+	* tests/calc.at (AT_CHECK_SPACES): New.
+	Use it.
+	Be sure not to introduce trailing empty lines in the *.y files.
+	* NEWS: Doc it.
+	* cfg.mk (syntax-check): Remove the exception.
+
+2012-08-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	thanks: fix a contributor name
+	* THANKS: On his request.
+
+2012-08-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-08-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: synch line -> syncline, for consistency
+	* tests/synclines.at: Do it, as "syncline" is used consistently
+	everywhere else in Bison.
+
+2012-08-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: synclines: style changes
+	* tests/synclines.at (AT_TEST_SYNCLINE): Rename as...
+	(AT_TEST): this.
+	Use pushdef/popdef.
+	Formatting changes.
+	Use '+' instead of '*' where appropriate.
+
+2012-08-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: synclines: fix perl invocation
+	Reported by Summum Bonum.
+
+	* tests/synclines.at: Fix Perl invocation: its -f is not like sed's.
+
+2012-08-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-08-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	c++: trailing end-of-lines in %parse-param
+	* src/parse-gram.y (add_param): No only skip ' ' and '\t', skip all
+	leading and trailing spaces.
+	* tests/regression.at (Lex and parse params): Check it.
+	* NEWS: Document it.
+
+2012-08-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: simplify
+	* tests/regression.at: Remove useless compilations: AT_FULL_COMPILE
+	includes the compilation by bison.
+
+2012-07-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	use obstack_printf
+	This is not just nicer, it is also much safer, since we were
+	using sprintf...
+
+	* bootstrap.conf: Require it.
+	* src/system.h (obstack_fgrow1, obstack_fgrow2, obstack_fgrow3)
+	(obstack_fgrow4): Remove.
+	Adjust dependencies.
+
+2012-07-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	scanner: restore a missing start condition
+	$ flex src/scan-skel.l
+	src/scan-skel.l:145: multiple <<EOF>> rules for start condition SC_AT_DIRECTIVE_ARGS
+	src/scan-skel.l:145: multiple <<EOF>> rules for start condition SC_AT_DIRECTIVE_SKIP_WS
+	This is warning, and it seems there are no means to make it an error.
+
+	* src/scan-skel.l: Restore the start-condition INITIAL for an <<EOF>>
+	clause.
+
+2012-07-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-07-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2012-07-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	version 2.6.1
+	* NEWS: Record release date.
+
+2012-07-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-07-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: fix some syntax-check issues
+	* cfg.mk: Nuke the following warnings which are confused by our
+	text reports (that state that the error token is number 256).
+	  prohibit_magic_number_exit
+	  ../../doc/bison.texi:8170:error (256)
+	  ../../tests/conflicts.at:570:error (256)
+	  ../../tests/conflicts.at:673:error (256)
+	  ../../tests/conflicts.at:811:error (256)
+	  ../../tests/conflicts.at:1154:error (256)
+	  ../../tests/regression.at:281:error (256)
+	  ../../tests/regression.at:582:error (256)
+	  maint.mk: use EXIT_* values rather than magic number
+
+2012-07-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: do not depend on __cplusplus to decide for C++ or C output
+	Since we do support compiling C code with a C++ compiler.
+
+	* tests/actions.at (Qualified $$ in actions): Use AT_SKEL_CC_IF.
+
+2012-07-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-07-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	synclines: remove spurious empty line
+	* data/bison.m4 (b4_syncline): Do not start with an empty line.
+
+2012-07-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	also support $<foo>$ in the %initial-action
+	scan-code.l is already passing argument to b4_dollar_dollar for the
+	initial acton, but its definition (of b4_dollar_dollar) does not use
+	this argument.
+
+	Generalize this definition, and use it for the %initial-action too.
+
+	* data/c.m4 (b4_dollar_dollar_, b4_dollar_pushdef, b4_dollar_popdef):
+	Instead of expecting a pointer, require a value, and use ".".
+	Since they are now generic enough, move to...
+	* data/c-like.m4: this new file.
+	* data/c.m4, data/java.m4: Load it.
+	* data/glr.c, data/lalr1.cc, data/lalr1.java, data/yacc.c: Use
+	b4_dollar_pushdef for the %initial-action.
+	* tests/actions.at: Check that.
+	* data/Makefile.am: Adjust.
+	* NEWS, doc/bison.texi: Document.
+
+2012-07-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	skeletons: b4_dollar_pushdef and popdef to simpify complex definitions
+	M4 is really making it uselessly hard to define macros that define
+	macros.
+	* data/c.m4 (b4_dollar_pushdef, b4_dollar_popdef): New.
+	Use it.
+
+2012-07-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-07-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	printer/destructor: translate only once
+	Currently "%printer {...} a b c d e f" translates the {...} six times.
+	Not only is this bad for time and space, it also issues six times the
+	same warnings.
+
+	* src/symlist.h, src/symlist.c (symbol_list_destructor_set)
+	(symbol_list_printer_set): Take the action as code_props instead of
+	const char *.
+	* src/parse-gram.y: Translate these actions here.
+	* src/scan-code.h: Comment change.
+	* tests/input.at: Check that warnings are issued only once.
+
+2012-07-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	factor the handling of m4 escaping
+	The conversion from @ to @@ and so forth is coded is too many
+	different places.  Factor, a bit.
+
+	* src/scan-code.l: Instead of duplicating the logic of obstack_escape,
+	use it.
+	It sure is less efficient, but the cost is negligible.
+	This allows to factor rules that are alike.
+	And to factor some start-condition clauses.
+	* tests/input.at (Stray $ or @): New.
+	* NEWS: Document it.
+
+2012-07-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	news: schedule the removal of the ";" hack
+	scan-code.l is significantly more complex because of this.
+
+	* NEWS: Doc it.
+
+2012-07-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	style changes in the scanners
+	* src/scan-code.l, src/scan-skel.l: Use a more traditional indentation
+	style for start-conditions.
+	Prefer "continue" to a comment, for empty actions.
+	Strip useless {}.
+	Remove useless start-condition clauses.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	support $<tag>$ in printers and destructors
+	* src/scan-code.l (SC_SYMBOL_ACTION): Accept $<tag>$, not just $$.
+	* data/c.m4 (b4_dollar_dollar_): New.
+	(b4_symbol_actions): Let b4_dollar_dollar use b4_dollar_dollar_.
+	* NEWS, doc/bison.texi: Document it.
+	* tests/actions.at: Check this for C and C++.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	scan-code: factor the handling of the type in $<TYPE>$
+	* src/scan-code.l (fetch_type_name): New.
+	(handle_action_dollar): Use it.
+	(gt_ptr): Remove, useless.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	muscles: fix another occurrence of unescaped type name
+	* src/output.c (quoted_output): Split into...
+	(quoted_output, string_output): these.
+	Use the former when outputting a type_name.
+	* tests/input.at: Check this case.
+	* src/symtab.h: Comment changes.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.cc: fix the handling of yydebug
+	* data/glr.cc (yydebug_): Remove, unused.
+	(set_debug_level, debug_level): Work on yydebug instead.
+	* doc/bison.texi, NEWS: Document this.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	formatting changes
+	* src/symtab.h: here.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: fix an assertion
+	* tests/local.at (AT_YYLEX_DEFINE): Be sure to check the array
+	against its length, not its size in bytes.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: adjust to GCC 4.8, which displays caret errors
+	With GCC 4.8, the tests on synclines are skipped.  Transform
+
+	  input.y:1:2: error: #error "1"
+	   #error "1"
+	    ^
+
+	into
+
+	  input.y:1: #error "1"
+
+	* tests/synclines.at (AT_SYNCLINES_COMPILE): Do it, using Perl instead of
+	sed.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	be sure to properly escape type names
+	* src/scan-code.l: Use obstack_quote when passing type_name to m4.
+	* tests/input.at (Code injection): New.
+	* NEWS: Document it.
+	Thanks to Paul Eggert for the wording.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	obstack_quote: escape and quote for M4
+	* src/system.h (obstack_quote): New.
+	* src/muscle-tab.c: Use it instead of obstack_escape where applicable.
+	* src/scan-code.l: Since obstack_quote supports NULL, leave type_name
+	as NULL instead of defaulting to "".
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	muscles: shuffle responsabilities
+	* src/muscle-tab.c (muscle_boundary_grow): Be in charge of quotation,
+	instead of leaving this to the caller.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	muscles: make private functions static
+	* src/muscle-tab.h, src/muscle-tab.c (muscle_boundary_grow)
+	(muscle_location_grow): Now static.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	muscles: rename private functions/macros
+	* src/muscle-tab.c (MUSCLE_COMMON_DECODE, muscle_string_decode)
+	(muscle_location_decode): Not related to muscles, rename as...
+	(COMMON_DECODE, string_decode, location_decode): these.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	obstack_escape: escape M4 characters
+	* src/muscle-tab.h (MUSCLE_OBSTACK_SGROW): This is not related to
+	muscles, so move to, and rename as...
+	* src/system.h (obstack_escape): this.
+	Adjust dependencies.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	remove dead macro
+	* src/system.h (DEFAULT_TMPDIR): Remove, unused.
+
+2012-07-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: style changes
+	* src/scan-code.l: Remove useless braces.
+	Formatting changes.
+	Prefer NULL to 0.
+	* src/muscle-tab.c, src/system.h: Formatting changes.
+
+2012-07-24  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: avoid problems with case insensitive file systems
+	makeinfo --html generates index.html, and the node "Index" will result
+	in Index.html.  On case insensitive file systems, such as on Mac OS X
+	by default, this results in a single, invalid, file (Texinfo 4.13).
+	See http://lists.gnu.org/archive/html/bug-texinfo/2012-07/msg00032.html
+
+	* doc/bison.texi (Index): Rename as...
+	(Index of Terms): this.
+
+2012-07-24  Stefano Lattarini  <stefano.lattarini@gmail.com>  (tiny change)
+
+	configure: fix botched quoting
+	* configure.ac: In the AC_SUBST call on 'VALGRIND_PREBISON'.  Without
+	this change, when running ./configure, I see:
+
+	    ...
+	    checking for valgrind... valgrind
+	    ./configure: line 35221: -q: command not found
+	    checking for Java compiler... gcj -C -fsource=1.3 -ftarget=1.4
+	    ...
+
+2012-07-20  Akim Demaille  <akim@lrde.epita.fr>
+
+	news: fix typo.
+	* NEWS: here.
+	Reported by Ben Pfaff.
+
+2012-07-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: update gnu-web-doc-update.
+	* gnulib: here.
+
+2012-07-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2012-07-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	version 2.6
+	* NEWS: Record release date.
+
+2012-07-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: prepare for release 2.6
+	* NEWS: here.
+
+2012-07-18  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2012-07-18  Akim Demaille  <akim@lrde.epita.fr>
+
+	version 2.5.91
+	* NEWS: Record release date.
+
+2012-07-18  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: prepare NEWS.
+
+2012-07-18  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: fix spaces.
+	* build-aux/Makefile.am: here.
+
+2012-07-18  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: adjust to case where the C compiler is actually a C++ compiler
+	* tests/atlocal.in (CC_IS_CXX): New.
+	* tests/headers.at (Several parsers): Use it.
+
+2012-07-18  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: fix dependencies
+	* tests/Makefile.am: we need atconfig and atlocal to be up to date
+	when calling testsuite.
+
+2012-07-18  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: fix Texinfo command
+	* doc/bison.texi: In parens, use @pxref.
+
+2012-07-18  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: Valgrind on OS X.
+	* configure.ac (VALGRIND_PREBISON): New.
+	* tests/Makefile.am (maintainer-check-valgrind): Use it.
+	* etc/darwin11.4.0.supp: New.
+	* configure.ac, etc/Makefile.am: Use it.
+	* configure.ac: Disable Valgrind on Mac OS X.
+	* README-hacking: Explain why.
+
+2012-07-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: be sure that backups are safe.
+	* tests/local.at (at_save_special_files): here.
+
+2012-07-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: dead comment.
+	* etc/README: here.
+
+2012-07-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: refactor for legibility.
+	* tests/local.at (AT_BISON_CHECK_WARNINGS, AT_BISON_CHECK_WARNINGS_):
+	New.
+
+2012-07-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: refactor the bison invocations.
+	* tests/local.at (m4_null_if, AT_BISON_CHECK_): New.
+
+2012-07-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: fix syntax-check ignore patterns.
+	* cfg.mk: here.
+
+2012-07-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+
+2012-07-16  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update.
+	* gnulib: Update so that gitlog-to-changelog support --srcdir.
+	* Makefile.am: Use it.
+
+2012-07-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update
+	* bootstrap, build-aux/.gitignore, gnulib, m4/.gitignore: update.
+
+2012-07-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: update release instructions
+	* README-hacking: here.
+
+2012-07-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2012-07-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	version 2.5.90
+	* NEWS: Record release date.
+
+2012-07-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: fix gen-ChangeLog call.
+	* Makefile.am: Be sure to catch errors, and fix option name
+
+2012-07-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update.
+	* gnulib/build-aux/do-release-commit-and-tag: Fix.
+
+2012-07-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: fix SKIP_IF for Java.
+	* tests/local.at (AT_JAVA_COMPILE): here.
+
+2012-07-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	api.prefix: incompatible with %name-prefix.
+	* data/bison.m4: Make it incompatible.
+	* tests/input.at: Check that it is.
+
+2012-07-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	api.prefix: strengthen the tests and fix push-parsers.
+	* tests/calc.at: Check api.prefix in addition to %name-prefix.
+	* tests/headers.at: Check push parsers and pure interface.
+	* tests/local.at: Use YYLTYPE renamed.
+	* data/yacc.c (b4_declare_yyparse_push_): Handle api.prefix.
+	* doc/bison.texi: Style changes.
+
+2012-07-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	skeletons: style changes.
+	* data/bison.m4: Define default values after having defined
+	the support macros.
+	Kill a dead comment.
+
+2012-07-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	NEWS: minor changes.
+	* NEWS: style changes.
+
+2012-07-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	api.prefix: improve the documentation for YYDEBUG.
+	* doc/bison.texi: Explain how api.prefix is applied to YYDEBUG.
+
+2012-07-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update.
+	* bootstrap, gnulib: Update.
+	* cfg.mk (syntax-check): Don't check "error" usage in bison.texi.
+
+2012-07-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: headers.at: strengthen.
+	* tests/headers.at (Several headers): Be stricter when checking
+	the exported macros.
+
+2012-07-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.cc: do not override C++ definitions by C macros.
+	* data/glr.c: here.
+	* data/glr.cc: Fix overquotation.
+	* tests/headers.at: Comment changes.
+
+2012-07-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	YYLLOC_DEFAULT: factor, and don't export it in headers.
+	* data/c++.m4, data/c.m4 (b4_yylloc_default_define): New.
+	* data/glr.c, data/glr.cc, data/lalr1.cc, data/yacc.c: Use it.
+	* data/glr.cc: Do not define YYLLOC_DEFAULT in the header file,
+	but in the implementation one.
+
+2012-07-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	api.prefix: do not use #define to handle YYSTYPE_IS_TRIVIAL etc.
+	The following mixture is insane:
+
+	  #define YYSTYPE_IS_TRIVIAL PREFIX_STYPE_IS_TRIVIAL
+	  #if (defined YYSTYPE_IS_TRIVIAL && YYSTYPE_IS_TRIVIAL)
+
+	since, of course YYSTYPE_IS_TRIVIAL is defined.  Instead we could
+	define YYSTYPE_IS_TRIVIAL as PREFIX_STYPE_IS_TRIVIAL only when the
+	later is defined, but let's avoid stacking CPP on top of M4: rather, use
+
+	  #if (defined PREFIX_STYPE_IS_TRIVIAL && PREFIX_STYPE_IS_TRIVIAL)
+
+	* data/glr.c, data/yacc.c: Use YYSTYPE_IS_TRIVIAL, YYSTYPE_IS_DECLARED,
+	YYLTYPE_IS_TRIVIAL and YYLTYPE_IS_DECLARED under their api.prefix-renamed
+	name.
+
+2012-07-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: portability fixes.
+	Reported by Hydra.
+
+	* tests/headers.at (Several headers): Be sure to include config.h
+	in the files to compile.
+
+2012-07-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	c++: fewer #includes in the headers.
+	* data/lalr1.cc: Define YY_NULL in the *.cc file, it is not needed
+	in the header.
+	* data/location.cc: iosfwd suffices.
+
+2012-07-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.cc: formatting changes.
+	* data/glr.cc: here.
+
+2012-07-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: more logs.
+	* tests/headers.at (Several parsers): Here.
+
+2012-07-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	api.prefix: also rename YYDEBUG.
+	The testsuite in master has shown weird errors for the "Mulitple
+	Parsers" tests: the caller of p5.parse() received some apparently
+	random value, while tracing p5.parse() showed that the function was
+	consistently returning 0.
+
+	It happens when mixing several parser headers, some generated without
+	%debug, others with.  In particular the C++ parser was generated with
+	%debug, i.e., with:
+
+	  #ifndef YYDEBUG
+	  # define YYDEBUG 1
+	  #endif
+
+	and compiled separatedly.  Yet, its header was included after the one
+	of another parser, this time without %debug, i.e., with
+
+	  #ifndef YYDEBUG
+	  # define YYDEBUG 0
+	  #endif
+
+	in its header.  As a result, the parser was compiled with YYDEBUG set,
+	but its header was used without.  Since the layout of the objects are
+	then completely different, boom.
+
+	Therefore, do not change the value of YYDEBUG.  Rather, use it as a
+	default value for <API.PREFIX>DEBUG.
+
+	* data/c.m4 (b4_YYDEBUG_define): New.
+	(b4_declare_yydebug): Rename as...
+	(b4_yydebug_declare): this, for consistency.
+	* data/glr.c, data/glr.cc, data/lalr1.cc, data/yacc.c: Use it.
+	* NEWS: Document it.
+
+2012-07-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	NEWS: spell check.
+	* NEWS: here.
+
+2012-06-29  Akim Demaille  <akim@lrde.epita.fr>
+
+	api.prefix.
+	* data/c.m4 (b4_api_prefix, b4_api_PREFIX): New.
+	(b4_prefix, b4_union_name, b4_token_enums, b4_declare_yylstype): Use them.
+	* data/glr.c, data/yacc.c, data/glr.cc, data/lalr1.cc: Use them to change
+	the prefix of exported preprocessor symbols.
+	* src/getargs.c (usage): Ditto.
+	* tests/headers.at (Several parsers): New.
+	* tests/local.at (AT_API_PREFIX): New.
+	AT_YYSTYPE, AT_YYLTYPE): Adjust.
+	* doc/bison.texi (Multiple Parsers): Move documentation of %name-prefix to...
+	(Table of Symbols): here.
+	(Multiple Parsers): Document api.prefix.
+	(%define Summary): Point to it.
+	Use @code for variable names.
+	(Bison Options): -p/--name-prefix are obsoleted.
+	* NEWS: Announce api.prefix.
+
+2012-06-28  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: use the generalized default yylex.
+	* tests/actions.at, tests/glr-regression.at, tests/regression.at: here.
+
+2012-06-28  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: AT_YYERROR_DEFINE: prepare for list of ints.
+	* tests/local.at (AT_YYERROR_DEFINE): Don't add quotes, check their
+	presence to detect char/int types.
+	* tests/actions.at, tests/conflicts.at, tests/glr-regression.at,
+	* tests/push.at, tests/regression.at: Adjust.
+
+2012-06-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	skeletons: no longer define YYLSP_NEEDED.
+	* data/c.m4, data/glr.cc: here.
+	* NEWS, TODO: Adjust.
+
+2012-06-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	c++: do not export YYTOKEN_TABLE and YYERROR_VERBOSE.
+	* src/output.c (prepare_symbols): Do not define b4_token_table.
+	(prepare): Define b4_token_table_flag.
+	* data/bison.m4 (b4_token_table_if): New.
+	Arm it when error-verbose.
+	* data/glr.c, data/yacc.c (YYTOKEN_TABLE): Remove.
+	Use m4.
+	* data/lalr1.cc: Likewise.
+	(YYERROR_VERBOSE): Remove.
+	* NEWS, doc/bison.texi: Document this.
+
+2012-06-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: use *.texi.
+	This is more consistent with the other packages, and Automake-NG
+	supports only *.texi.
+
+	* doc/bison.texinfo: Rename as...
+	* doc/bison.texi: this.
+	* doc/Makefile.am, examples/calc++/Makefile.am: Adjust.
+
+2012-06-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: do not output m4 set up.
+	* tests/local.at (AT_BISON_OPTION_PUSHDEFS, AT_BISON_OPTION_POPDEFS):
+	Use a diversion to avoid outputting comments etc.
+	Removes 17k lines from testsuite (10% of the number of lines).
+
+2012-06-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: use the generic yyerror function.
+	* tests/actions.at (_AT_CHECK_PRINTER_AND_DESTRUCTOR): Factor.
+	Use AT_YYERROR_DEFINE.
+	Therefore, instead of using stdout, use and check stderr.
+	* tests/glr-regression.at (Uninitialized location when reporting ambiguity):
+	Use AT_YYERROR_DEFINE.
+
+2012-06-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: use assert instead of plain abort.
+	* tests/actions.at, tests/calc.at, tests/conflicts.at,
+	* tests/cxx-type.at, tests/glr-regression.at, tests/input.at,
+	* tests/named-refs.at, tests/regression.at, tests/torture.at,
+	* tests/local.at:
+	Prefer assert to abort.
+
+2012-06-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: improve the generic yylex implementation.
+	* tests/local.at (AT_YYSTYPE, AT_YYLTYPE): New.
+	(AT_YYLEX_FORMALS): Use them.
+	(AT_YYLEX_DEFINE): Be independent of the location implementation.
+
+2012-06-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: generalize the compilation macros.
+	* tests/local.at (AT_COMPILE, AT_COMPILE_CXX): If OUTPUT ends with ".o",
+	then append the "natural" extension for the input file (.c or .cc).
+	If there is no source, pass -c.
+	* tests/headers.at, tests/input.at, tests/regression.at: Adjust.
+
+2012-06-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: fix confusion between api.prefix and name-prefix.
+	* tests/local.at (AT_NAME_PREFIX): Take api.prefix into account.
+	(AT_API_PREFIX): Rename as...
+	(AT_API_prefix): this.
+	Do not take %name-prefix into account.
+	Fix misuses.
+
+2012-06-26  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: gitignores.
+
+2012-06-25  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc: work around the ylwrap limitation.
+	* data/yacc.c (b4_shared_declarations): Include the header guards.
+	Do not include the header in the *.c file, duplicate it.
+	* NEWS (Future Changes): Extend, and announce the forthcoming change
+	about the use of the parser header.
+
+2012-06-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: more uniformity.
+	* tests/local.at (AT_LEX_FORMALS, AT_LEX_ARGS, AT_LEX_PRE_FORMALS)
+	(AT_LEX_PRE_ARGS): Rename as...
+	(AT_YYLEX_FORMALS, AT_YYLEX_ARGS, AT_YYLEX_PRE_FORMALS)
+	(AT_YYLEX_PRE_ARGS): these, for consistency.
+	(AT_API_PREFIX): Take %name-prefix into account.
+	(AT_YYLEX_PROTOTYPE): New.
+	Use it.
+	* tests/actions.at, tests/calc.at, tests/cxx-type.at: Adjust to
+	use them.
+
+2012-06-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: handle locations in a more generic way.
+	* tests/local.at (AT_YYERROR_PROTOTYPE): New.
+	Use it.
+	* tests/cxx-type.at: Extensive revamp to use a more traditional
+	quotation scheme, and to use the generic yyerror implementation.
+	Prefer Autotest macros to CPP macros.
+	* tests/java.at: .
+
+2012-06-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: handle locations in the generic yyerror functions.
+	* tests/local.at (AT_YYERROR_DECLARE_EXTERN, AT_YYERROR_DECLARE)
+	(AT_YYERROR_DEFINE): Handle locations for C and C++.
+	* tests/calc.at: Use it for C++ (as C has extra arguments which
+	are not yet handled by AT_BISON_OPTION_PUSHDEFS).
+	* tests/actions.at: Adjust.
+
+2012-06-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: fix AT_CHECK_CALC.
+	* tests/calc.at (AT_CHECK_CALC): Contrary to its documentation,
+	the test was skipped if given a second argument.
+	Unused feature, remove it.
+
+2012-06-22  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: improve infrastructure
+	* tests/local.at (AT_LANG): Use c++ instead of cxx for C++.
+	Adjust dependencies.
+	(AT_YYERROR_DECLARE_EXTERN, AT_YYERROR_DECLARE): Issue nothing
+	for C++/Java.
+	(AT_YYERROR_DEFINE): Use m4_case.
+	(AT_JAVA_COMPILE): Use AT_SKIP_IF.
+
+2012-06-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: factor.
+	* tests/glr-regression.at, tests/output.at, tests/push.at,
+	* tests/regression.at, tests/torture.at, tests/actions.at:
+	Use AT_YYLEX_* and AT_YYERROR_*.
+
+2012-06-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	skeletons: minor style changes
+	* data/glr.c, data/yacc.c: here.
+
+2012-06-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: AT_LANG.
+	* tests/local.at (AT_BISON_OPTION_PUSHDEFS, AT_BISON_OPTION_POPDEFS):
+	Define/undefine AT_LANGE
+	(AT_LANG_COMPILE): New.
+	(AT_FULL_COMPILE): Use AT_LANG.
+
+2012-06-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	c skeletons: factor the declaration of yylloc and yylval.
+	There is one difference: now, even without --defines, we generate
+	extern declarations for these variables.  The factoring is worth it.
+	* data/c.m4 (b4_declare_yylstype): Declare them.
+	* data/glr.c, data/yacc.c: Adjust.
+
+2012-06-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	news: condemn YYPARSE_PARAM and YYLEX_PARAM.
+	* NEWS: here.
+	(Bison 1.875): Add %parse-param and %lex-param.
+	* doc/bison.texinfo: Spello.
+
+2012-06-20  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: regen.
+	* Makefile.am (regen): New target.
+
+2012-06-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: formatting changes.
+	* NEWS: Fix indentation of code snippets.
+	Untabify.
+
+2012-06-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: support api.prefix.
+	* tests/local.at (AT_BISON_OPTION_PUSHDEFS, AT_BISON_OPTION_POPDEFS):
+	Define AT_API_PREFIX.
+	(AT_YYERROR_DEFINE, AT_YYERROR_DECLARE_EXTERN, AT_YYLEX_DECLARE_EXTERN)
+	(AT_YYLEX_DEFINE): Use it.
+	* tests/input.at, tests/regression.at, tests/torture.at: Add
+	AT_BISON_OPTION_PUSHDEFS/POPDEFS.
+
+2012-06-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: pacify font-lock-mode.
+	* tests/local.at: here.
+
+2012-06-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: remove test covered elsewhere.
+	* tests/headers.at (%union and --defines): Remove, pretty useless and
+	insignificant.
+
+2012-06-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: factor the declaration/definition of yyerror and yylex.
+	* tests/local.at (AT_YYERROR_DECLARE, AT_YYERROR_DECLARE_EXTERN)
+	(AT_YYERROR_DEFINE, AT_YYLEX_DECLARE, AT_YYLEX_DECLARE_EXTERN)
+	(AT_YYLEX_DEFINE): New.
+	Must be used inside AT_BISON_OPTION_PUSHDEFS/POPDEFS pair.
+	* tests/actions.at, tests/conflicts.at, tests/glr-regression.at,
+	* tests/headers.at, tests/input.at, tests/named-refs.at,
+	* tests/regression.at, tests/skeletons.at, tests/synclines.at,
+	* tests/torture.at: Use them.
+
+2012-06-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	regen.
+
+2012-06-17  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: portability issues.
+	* tests/calc.at (AT_CALC_MAIN): Missing include reported by Hydra.
+
+2012-06-15  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: call the parser from another compilation unit.
+	In order to improve the testing of %defines, which exports the
+	interface of the generated parser, change the calc.at tests so that
+	when %defines is passed, main will be in another compilation unit.  It
+	loads the generated header.
+
+	* tests/calc.at (AT_CALC_MAIN): New.
+	Includes the definition of the global variables.
+	Therefore, now declare them from the %requires section of the parser.
+	Adjust to yydebug and yyparse being renamed by %name-prefix.
+
+2012-06-15  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.c, yacc.c: declare yydebug in the header.
+	* data/c.m4 (b4_declare_yydebug): New.
+	* data/glr.c, data/yacc.c (b4_shared_declarations): Use it.
+	Remove the corresponding code from the parser body.
+	* NEWS: Doc this.
+
+2012-06-15  Akim Demaille  <akim@lrde.epita.fr>
+
+	skeletons: use header guards.
+	* data/glr.c, data/glr.cc, data/yacc.c: here.
+	* NEWS: Document it.
+
+2012-06-15  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: improve AT_FULL_COMPILE.
+	* tests/local.at: Accept a third argument.
+	Simplify quotation pattern.
+	Calls for better refactoring, but will suffice for a while.
+
+2012-06-15  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: reorder.
+	* tests/calc.at (power): Move its definition, as a preparation for
+	forthcoming changes.
+	And space changes.
+
+2012-06-15  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: strengthen the test on generated headers inclusion
+	* tests/headers.at (AT_TEST_CPP_GUARD_H): Accept Bison directives.
+	(Invalid CPP headers): Check glr.
+
+2012-06-15  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc.c: instead of duplicating y.tab.h inside y.tac.c, include it.
+	This is already what glr.c and lalr1.cc do.
+
+	* data/yacc.c: here.
+
+2012-06-13  Akim Demaille  <akim@lrde.epita.fr>
+
+	yacc.c: factor.
+	yacc.c used to include two almost identical sections: one for the *.h
+	file, and another for the *.c file.  The main difference is that in
+	the *.c file we used the yy* names (as %name-prefix is handled by
+	"#define yy* <prefix>*" before), while the *.hh used <prefix>* names.
+	Keep only the later.  If this is troublesome, b4_shared_declarations
+	can easily take the desired prefix as argument.
+
+	* data/yacc.c (b4_shared_declarations): New.
+	Use it to factor duplicated declarations.
+
+2012-06-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	skeletons: factor yacc.c and glr.c.
+	yacc.c and glr.c share common declarations.  Their YYLTYPE are exactly
+	equal, and their YYSTYPE are sufficiently alike to be fused (its
+	declaration was protected by YYSTYPE_IS_DECLARED in yacc.c, but not in
+	glr.c).  Besides, yacc.c duplicated the definitions of YYLTYPE and
+	YYSTYPE (*.h/*.c).
+
+	* data/c.m4 (b4_declare_yylstype): New.
+	* data/yacc.c, data/glr.c: Use it.
+
+2012-06-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.c: minor refactoring.
+	* data/glr.c (b4_shared_declarations): Move from the generated file
+	section, to the M4 prologue.
+
+2012-06-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: remove all the -On flags.
+	* tests/atlocal.in: Here.
+	Reported by Gilles Espinasse.
+
+2012-06-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: fix spello.
+	* README-hacking: Here.
+	* THANKS: Reported by Gilles Espinasse.
+
+2012-06-12  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: improve release procedure instructions.
+	* gnulib: Update, in particular (README-release).
+	* bootstrap.conf: don't require gendocs, provided by gnu-web-doc-update,
+	provided by readme-release.
+	* README-hacking: Update accordingly.
+
+2012-06-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update readme-release.
+	* gnulib (readme-release): Now includes the modules it promotes.
+	* bootstrap.conf: Simplify accordingly.
+
+2012-06-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: cfg.mk: manual title.
+	* cfg.mk (manuel_title): New.
+
+2012-06-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: cfg.mk: simplify
+	* cfg.mk: Remove bits provided by maint.mk.
+
+2012-06-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2012-06-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	version 2.5.1
+	* NEWS: Record release date.
+
+2012-06-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	NEWS: prepare for 2.5.1.
+	* NEWS: Be compliant with do-release-commit-and-tag.
+
+2012-06-05  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: update release procedure
+	* bootstrap.conf: Request do-release-commit-and-tag and readme-release.
+	* README-hacking: Adjust.
+
+2012-06-05  Jim Meyering  <meyering@redhat.com>
+
+	maint: fix comment typos
+	Using http://github.com/lyda/misspell-check, massage its
+	output into sed commands to perform the suggested changes.
+	Initially, I filtered out the THRU->Through changes, because
+	that failed to retain capitalization in the grammar token.
+	Instead, do this manually, beforehand:
+
+	sed -i s/THRU/THROUGH/ tests/existing.at
+	git ls-files|misspellings -f -|perl -nl \
+	  -e '/^(.*?)\[(\d+)\]: (\w+) -> "(.*?)"$/ or next;' \
+	  -e '($file,$n,$l,$r)=($1,$2,$3,$4); $q="'\''"; $r=~s/$q/$q\\$q$q/g;'\
+	  -e 'print "sed -i $q${n}s!$l!$r!$q $file"'|bash
+
+2012-05-23  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: post-release administrivia
+	* NEWS: Add header line for next release.
+	* .prev-version: Record previous version.
+	* cfg.mk (old_NEWS_hash): Auto-update.
+
+2012-05-23  Akim Demaille  <akim@lrde.epita.fr>
+
+	Bison 2.5.1_rc2.
+	* NEWS: Update.
+
+2012-05-23  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: fixes.
+	* doc/bison.texinfo: Fix errors spotted by syntax-check.
+
+2012-05-23  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: fix ChangeLog generation.
+	* gnulib: Update to get newest gitlog-to-changelog.
+	* bootstrap: Update.
+	* Makefile.am (gen-ChangeLog): Fix for Bison's git log style.
+
+2012-05-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	c++: compute the header guards.
+	This is a frequent request.  Recently pointed out by Wei Song,
+	<http://lists.gnu.org/archive/html/help-bison/2012-05/msg00002.html>.
+
+	* data/c.m4 (b4_tocpp, b4_cpp_guard, b4_cpp_guard_open)
+	(b4_cpp_guard_close): New.
+	* data/lalr1.cc, data/location.cc, data/stack.hh: Use them.
+	* TODO (Header Guards): Move to...
+	* NEWS: here.
+	Formatting changes.
+
+2012-05-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	skeletons: remove support for unused directive.
+	* src/scan-skel.l (@dir_prefix@): Remove support, has never been
+	used, not even in the commit that introduced it,
+	2b81e969ea04c1a6502928ba7e847ec8ff7dcb2f.
+
+2012-05-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: improve Doxygen documentation.
+	* data/location.cc: Qualify file names with directory name.
+
+2012-05-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	lalr1.cc: extract stack.hh.
+	See commit 51bacae6b58fd5c6cce861f00440dc917384625e.
+	* data/stack.hh: New, extracted from...
+	* data/lalr1.cc: here.
+	* data/Makefile.am: Adjust.
+
+2012-05-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	news: convert to double quotes.
+	* NEWS: Convert from `quoted' to "quoted".
+	Reported by Stefano Lattarini.
+	http://lists.gnu.org/archive/html/bison-patches/2012-05/msg00039.html
+
+2012-05-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	space changes.
+	* src/flex-scanner.h: Indent nested cpp directives.
+
+2012-05-21  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: do not prototype flex-generated functions.
+	Some versions of Flex, possibly modified by the distribution package
+	maintainers, have incompatible signatures.  Since newer versions of
+	Flex prototype their functions, avoid the conflicts in that case.
+	Reported by Stefano Lattarini.
+	<http://lists.gnu.org/archive/html/bug-bison/2012-05/msg00012.html>.
+
+	* src/flex-scanner.h (FLEX_VERSION_GT): New.
+	Use it to issue prototypes for flex-generated functions only for
+	versions up to 2.5.31, in accordance with the comment.
+	See commit dc9701e848f27ae64b6ddcf809580998667d60f2.
+	Use it to define yylex_destroy when needed.
+
+2012-05-16  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: fix ChangeLog generation.
+	* Makefile.am (gen-ChangeLog): Fix for VPATH builds.
+
+2012-05-14  Akim Demaille  <akim@lrde.epita.fr>
+
+	Bison 2.5.1_rc1.
+	* NEWS: Update.
+	* src/parse-gram.c, src/parse-gram.h: Regen.
+
+2012-05-11  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: save/restore Autotest special files when checking XML support.
+	Currently the test 248, "parse-gram.y: LALR = IELR", fails
+	BISON_TEST_XML is set.
+
+	* tests/local.at (AT_BISON_CHECK_XML): Belt: Save/restore files.
+	* tests/regression.at (parse-gram.y: LALR = IELR): Suspenders: Don't
+	rely on expout.
+	Each one of these changes suffices.
+
+2012-05-11  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: AT_SAVE_SPECIAL_FILES / AT_RESTORE_SPECIAL_FILES.
+	Some of our macros play with expout and other Autotest special files,
+	which may break their callers (e.g., currently TESTSUITEFLAGS='248
+	BISON_TEST_XML=1' fails).
+
+	There is already some support for this.  Expand it to be ready to use
+	it elsewhere.
+
+	* tests/local.at (AT_RESTORE_SPECIAL_FILES, AT_SAVE_SPECIAL_FILES)
+	(at_save_special_files, at_restore_special_files): New.
+	(AT_BISON_CHECK_NO_XML): Use them.
+
+2012-05-11  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: honor TESTSUITEFLAGS in all the check targets.
+	* tests/Makefile.am (installcheck-local): Simplify.
+	(maintainer-check-posix, maintainer-check-valgrind): Honor
+	$(TESTSUITEFLAGS).
+
+2012-05-11  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: do not enable c++ warnings on 0 when nullptr is not supported.
+	* configure.ac (WARN_CXXFLAGS): Enable -Wzero-as-null-pointer-constant
+	only when nullptr is supported..
+
+2012-05-11  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: update gnulib.
+	* bootstrap, gnulib: Update.
+
+2012-05-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: config.in.h.
+	Historically we used config.hin (where everybody else used
+	config.h.in) to please DOS.  Now that we use gnulib, there are already
+	tons of files with several dots, especially *.in.h.
+
+	* configure.ac: Rename config.hin as config.in.h.
+
+2012-05-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: move silent rules.
+	* tests/Makefile.am: In the generation of the test suite.
+
+2012-05-09  Akim Demaille  <demaille@gostai.com>
+
+	glr.c: reduce variable scopes.
+	* data/glr.c: Where appropriate, fuse variable declarations followed
+	by assignments by variable declarations with a value.
+	Where appropriate, introduce new scopes to limit variable spans.
+
+2012-05-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: maintainer-release-check.
+	* tests/Makefile.am (maintainer-release-check): New.
+	* Makefile.am (MAINTAINER_CHECKS): New.
+	Support maintainer-release-check.
+	* README-hacking: Document it, and syntax-check too.
+
+2012-05-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: shush a syntax-check.
+	* cfg.mk: lib/timevar is not planned to be gnulib'ed, as it comes
+	from GCC.
+
+2012-05-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: prefer "commit message" to "log entry".
+	* README-hacking: here.
+	Suggested by Stefano Lattarini.
+
+2012-05-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	command line: fix minor leaks.
+	* src/getargs.c (getargs): Free pointers before allocating them new
+	content.
+
+2012-05-08  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: we no longer maintain the ChangeLog.
+	* .gitattributes: No need to merge it.
+	* README-hacking: Update release instructions.
+
+2012-05-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: fix the generation of the synclines for bison's parser.
+	* tests/bison.in: Import from master the changes that make
+	this script generate synclines that are independant of the
+	builddir/srcdir user's set up.
+
+2012-05-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: regen.
+	* src/parse-gram.c, src/parse-gram.h: Regen.
+
+2012-05-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: import the xmemdup0 gnulib module.
+	* bootstrap.conf: Require this module.
+	* src/parse-gram.y: Include xmemdup0.h.
+
+2012-05-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: remove left-over gnulib modules.
+	* bootstrap.conf (gnulib_modules): Remove pipe-posix.
+	* lib/.gitignore, m4/.gitignore: Remove files that we no longer use.
+
+2012-05-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: ignore files imported by autopoint.
+	* m4/.gitignore: here.
+
+2012-05-06  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: AC_PROG_LEX: use more readable variable names.
+	* m4/flex.m4 (AC_PROG_LEX): Prefer LEX_IS_FLEX to FLEX.
+	Prefer true/false to yes/no for such variables.
+	* configure.ac: Adjust.
+
+2012-05-06  Jim Meyering  <meyering@redhat.com>
+
+	maint: regen src/parse-gram.[ch]
+
+2012-05-06  Jim Meyering  <meyering@redhat.com>
+	    Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: simplify parse-gram.y
+	* src/parse-gram.y (add_param): Use xmemdup0 in place of
+	xmalloc+memcpy, and strspn in place of an open-coded loop.
+
+2012-05-06  Jim Meyering  <meyering@redhat.com>
+
+	maint: s/strncpy/memcpy/, when equivalent
+	* src/output.c (output_skeleton): Use memcpy, not strncpy,
+	since the source is known to fit in the destination buffer.
+	* src/parse-gram.y (%skeleton): Likewise.
+
+2012-05-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.c: untabify.
+	* data/glr.c: here.
+
+2012-05-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.cc: untabify.
+	* data/glr.cc: here.
+
+2012-05-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.cc: formatting changes.
+	* data/glr.cc: Fit in 80 columns.
+
+2012-05-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.cc: remove unused signature.
+	* data/glr.cc (yydestruct_): Not used, remove.
+	It is yydestruct which is used.
+
+2012-05-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr.cc: properly declare locations are const where appropriate.
+	* data/glr.cc (yyerror): The location is const.
+
+2012-05-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: fix @xref.
+	* doc/bison.texinfo: here.
+
+2012-05-02  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: ignore code coverage/profiling failure messages
+	The Hydra buildfarm provides code coverage analysis.  For some reason,
+	in some test cases, code coverage data seem to be incompatible, and
+	generate error messages at parser run-time.  Ignore these messages so
+	that (i) these tests do pass, (ii) coverage results be provided by
+	Hydra.
+
+	* tests/local.at (AT_PARSER_CHECK): Ignore messages for failed merges
+	of code coverage/profiling results.
+
+2012-04-16  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: fix some invalid @ref.
+	* doc/bison.texinfo: Fix incorrect @ref uses.
+
+2012-04-16  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: fix previous commit.
+	* bootstrap: Update from gnulib.
+
+2012-04-16  Akim Demaille  <akim@lrde.epita.fr>
+
+	install-pdf: fix.
+	* gnulib: Fix install-pdf in po/ and runtime-po/.
+	Reported by Hans Aberg.
+	Fixed by Joel E. Denny.
+	http://lists.gnu.org/archive/html/bug-bison/2011-05/msg00008.html
+
+2012-04-16  Akim Demaille  <akim@lrde.epita.fr>
+
+	NEWS: Update.
+	* NEWS: Spell check.
+	(%printer): is now documented.
+
+2012-04-16  Akim Demaille  <akim@lrde.epita.fr>
+
+	%printer: support both yyo and yyoutput.
+	lalr1.cc used to support yyo, but not yyoutput.  Support both,
+	but document only yyoutput (at least until there is some consensus
+	on this).
+
+	* data/c.m4 (yy_symbol_value_print): Also support yyo.
+	* data/glr.cc  (yy_symbol_value_print_): Support both yyo and yyoutput.
+	* data/lalr1.cc: Also support yyoutput.
+	* doc/bison.texinfo: Explicitly use yyoutput in the examples.
+	* examples/mfcalc/mfcalc.test: Test the -p option.
+
+2012-04-16  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: mfcalc: demonstrate %printer.
+	* doc/bison.texinfo (Printer Decl): New.
+	Number mfcalc.y snippets so that they are output in
+	the proper order.
+	(The mfcalc Main): Use yydebug.
+	(Debugging): Simplify the text.
+	(Enabling Traces, Mfcalc Traces, The YYPRINT Macro): New.
+	(Table of Symbols): Document YYPRINT and YYFPRINTF.
+
+2012-04-16  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: style changes.
+	* tests/input.at: Use "print" in %printer instead of "destroy".
+	It is unused, so we don't care, yet it is less surprising.
+	* tests/actions.at: Comment changes.
+
+2012-04-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: require Flex.
+	* configure.ac: Require Flex.
+
+2012-04-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: flex.m4: check for Flex.
+	* m4/flex.m4 (_AC_PROG_LEX_YYTEXT_DECL): Check that $LEX
+	supports some of the Flex options, and exclusive start conditions.
+	Define FLEX to 'yes'/'', as AC_PROG_CC does for GCC.
+
+2012-04-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: flex.m4: quote properly.
+	* m4/flex.m4: Use quotes more systematically.
+
+2012-04-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: flex.m4.
+	* m4/flex.m4: New.
+	An exact copy of what is in Autoconf currently.
+
+2012-04-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: autoconf: update.
+	* submodules/autoconf: Update.
+	There are no changes in data/m4sugar/foreach.m4, and the
+	changes in data/m4sugar/m4sugar.m4 are minor.
+
+2012-04-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr: eliminate last bits of unwanted locations.
+	* data/glr.c (YYLTYPE): Do not define when locations are
+	not demanded.
+	Adjust all dependencies.
+
+2012-04-10  Akim Demaille  <akim@lrde.epita.fr>
+
+	NEWS: 2.6 will drop K&R.
+	* NEWS: here.
+	(glr.c): Fix a spello.
+
+2012-04-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	TODO: remove dead items.
+	* TODO (Documentation, %printer, Java): Remove, already done (or just
+	waiting for approval).
+	(Fortran, BTYacc): Remove, there does not seem to be demand.
+
+2012-04-09  Akim Demaille  <akim@lrde.epita.fr>
+
+	TODO: import from master.
+	* TODO: Copy the current version.
+
+2012-04-07  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update.
+	* bootstrap.conf (bootstrap_sync): True again.
+	It was disabled while waiting for changes to be integrated
+	in gnulib's bootstrap, which was done long ago.
+	* bootstrap, gnulib: Update.
+
+2012-04-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: update NEWS.
+	* NEWS: Fix entry about __attribute__.
+	Reorder by "decreasing" order of importance.
+
+2012-04-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: fix index.
+	http://lists.gnu.org/archive/html/bison-patches/2012-04/msg00006.html
+
+	* doc/bison.texinfo: Avoid using @def* variant with more
+	than the defined entity as main entity, as it results in
+	an incorrect index.  For instance, don't document
+	{return YYERROR;}, which results in a single index entry
+	"return YYERROR;", but rather as typed function whose
+	return type is "type", and whose argument list is ";".
+
+2012-04-04  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: fix documentation of YYERROR.
+	* doc/bison.texinfo (Table of Symbols): Fix the documentation
+	of YYERROR by copying that from "Action Features".
+
+2012-04-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	c++: more YY_NULL
+	Caught by maintainer-check-g++.
+	* data/glr.c, data/lalr1.cc, data/yacc.c, tests/cxx-type.at,
+	* tests/glr-regression.at, tests/push.at:
+	When simple to do, avoid expliciting the null ptr.
+	Otherwise use YY_NULL.
+
+2012-04-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	bump to 2012 in skeletons.
+	* data/glr.c, data/glr.cc, data/lalr1.cc, data/lalr1.java,
+	* data/location.cc, data/yacc.c: Bump copyright year ranges.
+
+2012-04-01  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: remove ancient Autoconf tests.
+	lib/subpipe.c was removed in 47fa574761319b0a422691223c9b8a9a72f36aa2.
+
+	* m4/subpipe.m4: Remove.
+	* configure.ac (BISON_PREREQ_SUBPIPE): Remove.
+
+2012-03-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: c++: complete the location documentation.
+	* data/location.cc (position::initialize, location::initialize):
+	Also accept line and column, with default values.
+	* doc/bison.texinfo (C++ position, C++ location): New nodes.
+	Describe more thoroughly these classes.
+	Fix several Texinfo misuses.
+
+2012-03-31  Akim Demaille  <demaille@gostai.com>
+
+	c++: locations: provide convenience constructors.
+	* data/location.cc (position::position): Accept file, line and
+	column as arguments with default values.
+	Always qualify initial line and column literals as unsigned.
+	(location::location): Provide convenience constructors.
+
+2012-03-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	c++: locations: remove useless "inline".
+	* data/location.cc: "inline" is implicit when defining
+	methods in the class definition.
+
+2012-03-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	glr: do not use locations when they are not requested
+	When the test suite runs with -O2 and warnings enabled, G++
+	complains of locations being used, but not initialized.
+	The simplest is to not use locations.
+
+	* data/glr.c (b4_locuser_formals, b4_locuser_args): New.
+	Use them when locations should not be used.
+	Use b4_locations_if where appropriate.
+	(yyuserAction): Modify the order to the arguments to make
+	it more alike the other routines, and to make use of
+	b4_locuser_args simpler.
+
+2012-03-31  Akim Demaille  <akim@lrde.epita.fr>
+
+	c++: use nullptr for C++11.
+	C++11 introduces "nullptr" which plays the role of C's NULL, in
+	replacement of "0".  Fix the C++ skeletons to avoid warnings about
+	uses of "0" in place of "nullptr", and improve C skeletons to also use
+	this "nullptr" when compiled with a C++11 compiler.
+
+	* configure.ac: More C++ warnings.
+	* NEWS (2.5.1): Document this.
+	* data/c++.m4, data/c.m4 (b4_null_define): New.
+	(b4_null): Use YY_NULL instead of 0.
+	* data/glr.c, data/lalr1.cc, data/location.cc, data/yacc.c:
+	Call b4_null_define/b4_null where appropriate.
+	Use YY_NULL instead of NULL.
+	* data/location.cc (initialize): Accept a default argument,
+	YY_NULL.
+	* tests/actions.at, tests/calc.at: Adjust.
+
+	* data/glr.c, lib/libiberty.h, src/system.h (__attribute__):
+	Do not disable it when __STRICT_ANSI__ is defined, as, for
+	instance, it disables the __attribute__((unused)) which
+	protects us from some compiler warnings.
+	This was already done elsewhere in Bison, in 2001, see
+	4a0d89369599a2cea01f4fbdf791f426a02cb5a3.
+	* tests/regression.at: Adjust output.
+
+2012-03-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	build: simplify and improve the compiler warnings for tests.
+	* configure.ac (warn_common, warn_c, warn_cxx): New.
+	Use them to compute independently the options supported
+	by the C and C++ compilers.
+	Don't AC_SUBST the variables passed to gl_WARN_ADD: it
+	does it for us.
+	(WARN_CFLAGS_TEST, WARN_CXXFLAGS_TEST): Don't aggregate
+	$WARN_CFLAGS and $WARN_CXXFLAGS in them now, leave it
+	to atlocal.in.
+	(O0CFLAGS, O0CXXFLAGS): Move their definition to...
+	* tests/atlocal.in: here.
+	Be more systematic between C and C++.
+	Reorder to factor between variables.
+	Propagate all of the variables when --compile-c-with-cxx.
+
+2012-03-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	gnulib: update.
+
+2012-03-30  Akim Demaille  <akim@lrde.epita.fr>
+
+	maint: formatting changes.
+	* src/system.h: Indent CPP directives using cppi.
+
+2012-03-27  Akim Demaille  <akim@lrde.epita.fr>
+
+	NEWS: update.
+	* NEWS: Java fixes, more about the doc changes, liby issues.
+
+2012-03-27  Tim Landscheidt  <tim@tim-landscheidt.de>
+
+	Java: Fix syntax error handling without error token.
+	* data/lalr1.java (YYParser::parse): Here.
+	* tests/java.at: Add test case.
+
+2012-03-24  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: beware of -pedantic on large #line numbers.
+	* tests/local.at (AT_TEST_TABLES_AND_PARSE): Don't pass -pedantic
+	when compiling large canonical-LR parsers.
+	Reported by Tys Lefering.
+	http://lists.gnu.org/archive/html/bug-bison/2012-03/msg00025.html
+
+2012-03-24  Akim Demaille  <akim@lrde.epita.fr>
+
+	tests: when using the C++ compiler, use its flags too.
+	* tests/local.at: Go for colors.
+	(--compile-c-with-cxx): New option.
+	We used to pass "CC=$CXX" as command line argument,
+	but it was not possible to adjust CFLAGS accordingly
+	in atlocal, since it is loaded before assignments on
+	the command line are honored (so that the command line
+	takes precedence).
+	* tests/atlocal.in: Implement it.
+	* tests/local.mk: Use it.
+
+2012-03-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: update the --verbose report format.
+	* doc/bison.texinfo (Understanding): Adjust to match the
+	current format.
+
+2012-03-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: spell check.
+	* doc/bison.texinfo: here.
+
+2012-03-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: stmt, not stmnt.
+	* doc/bison.texinfo: s/stmnt/stmt/g.  This is a
+	much more common abbreviation for "statement".
+
+2012-03-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: save width.
+	* doc/bison.texinfo (Language and Grammar): Use the same
+	layout for an example in all the versions, i.e., keep
+	as general case what used to be used only for Info.
+
+2012-03-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: reformat grammar snippets.
+	* doc/bison.texinfo: Convert the grammar examples to
+	use a narrower style.  This helps fitting into the
+	@smallbook constraints.
+	http://lists.gnu.org/archive/html/bison-patches/2012-03/msg00011.html
+
+2012-03-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: use only @example, not @smallexample.
+	* doc/bison.texinfo: Convert all @smallexamples into @examples.
+	Adjust layout where needed.
+
+2012-03-19  Akim Demaille  <akim@lrde.epita.fr>
+
+	doc: style changes.
+	* doc/bison.texinfo: Avoid line width issues with TeX.
+	Upgrade ancient messages.
+	Move some comments to better looking places.
+	Add more @group.
+	(Mfcalc Symbol Table): Reduce variable scopes.
+	Prefer size_t for sizes.
+	Prefer declarations with an initial value.
+	Fix a @group environment.
+
+2012-03-19  Paul Eggert  <eggert@cs.ucla.edu>
+
+	doc: minor fixes to "Understanding" section
+	* doc/bison.texinfo (Understanding): Minor wording fixes and
+	improvements.  Fixes problems reported in
+	<https://savannah.gnu.org/patch/?4306>.
+
+2012-03-13  Akim Demaille  <demaille@gostai.com>
+
+	tests: minor fixes/simplifications
+	* tests/local.at (AT_BISON_CHECK_NO_XML): Simplify sed programs,
+	quotation, and default value assignments.
+	Ensure a proper value to the numeric variables.
+	Reported by Lie Yan.
+	http://lists.gnu.org/archive/html/bug-bison/2012-03/msg00000.html
+
+2012-03-09  Akim Demaille  <demaille@gostai.com>
+
+	tests: be robust to quote style.
+	See <http://lists.gnu.org/archive/html/bug-bison/2012-01/msg00120.html>.
+
+	* src/main.c (main): Define the quoting style we use.
+	* tests/atlocal.in: Use ASCII style quotes during the tests.
+
+2012-03-09  Akim Demaille  <demaille@gostai.com>
+
+	maint: update gnulib.
+	* gnulib: update.
+	* src/scan-gram.l: Don't use the (former version of) STREQ.
+
+2012-03-06  Akim Demaille  <demaille@gostai.com>
+
+	tests: be robust to POSIXLY_CORRECT being defined.
+	* tests/local.at (AT_BISON_CHECK_NO_XML): Check if
+	POSIXLY_CORRECT is defined, not if it is defined to 1.
+	Reported by Lie Yan.
+	http://lists.gnu.org/archive/html/bug-bison/2012-03/msg00000.html
+
+2012-02-23  Akim Demaille  <demaille@gostai.com>
+
+	doc: fix environment issues.
+	* doc/bison.texinfo: Do not use @verbatim, in particular when
+	we use @group inside.
+	Use @quotation instead of @display for frequently asked questions,
+	it looks much nicer.
+
+2012-02-23  Akim Demaille  <demaille@gostai.com>
+
+	regen.
+	* src/parse-gram.h, src/parse-gram.c: regen.
+
+2012-02-23  Akim Demaille  <demaille@gostai.com>
+
+	tests: fix regressions.
+	Exit status 63 is documented for version-mismatch.
+	* bootstrap.conf (gnulib_modules): Remove sysexits.
+	* src/system.h (EX_MISMATCH): Define.
+	* src/parse-gram.y (version_check): Use it instead of EX_CONFIG.
+
+	Missing includes.
+	* tests/calc.at, tests/named-refs.at: Include assert.h.
+
+2012-02-21  Akim Demaille  <demaille@gostai.com>
+
+	glr: fix ambiguity reports.
+	* tests/glr-regression.at (Ambiguity reports): New.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	doc: stylistic improvements.
+	* doc/bison.texinfo: Prefer "continue" to empty loop bodies.
+	Add some @group/@end group to avoid poor page breaks.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	maint: address sc_prohibit_doubled_word.
+	* data/yacc.c, doc/bison.texinfo: Reword to avoid having to
+	disable that check.
+	* cfg.mk: No longer skip this test.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	maint: address sc_prohibit_always-defined_macros.
+	* cfg.mk: No longer skip it, except where EXIT_SUCCESS is used
+	as a witness for stdlib.h.
+	Skip this test when appropriate.
+	* data/yacc.c: Drop a note about why EXIT_SUCCESS is defined here.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	maint: address sc_bindtextdomain, sc_program_name and sc_prohibit_HAVE_MBRTOWC.
+	* bootstrap.conf (gnulib_modules): Require progname.
+	* src/complain.c, src/getargs.c, src/getargs.h, src/main.c: Use it.
+	* cfg.mk (exclude): New.
+	Use it.
+	Skip lib/main.c for bindtextdomain and set_program_name.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	maint: remove stray file.
+	* config.hin: Remove.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	maint: address some syntax-issues remaining after cherry-picking from master.
+	* cfg.mk: Skip bison generated files, 2.5 is generating trailing
+	blanks.  This is already fixed in master.
+	* tests/conflicts.at, tests/java.at: Fix white space issues.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	regen.
+	* src/parse-gram.c, src/parse-gram.h: Regen.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	bitset: fix an incorrect error message.
+	* lib/bitset_stats.c: here.
+	Reported by Stefano Lattarini.
+
+2012-02-19  Jim Meyering  <meyering@redhat.com>
+
+	maint: reenable sc_m4_quote_check
+	* cfg.mk (local-checks-to-skip): Reenable sc_m4_quote_check.
+	* m4/dmalloc.m4: Add quotes.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	maint: remove trailing empty lines.
+	* cfg.mk: No longer skip sc_prohibit_empty_lines_at_EOF, except
+	for parse-gram.h (generated).
+	* examples/mfcalc/.gitignore, lib/.gitignore, m4/.gitignore,
+	* po/.gitignore, runtime-po/.gitignore: Remove trailing/leading
+	empty lines.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	maint: avoid "magic number exit".
+	* cfg.mk (local-checks-to-skip): No longer skip it.
+	* bootstrap.conf (gnulib_modules): Add sysexits.
+	* doc/bison.texinfo, etc/bench.pl.in, src/parse-gram.y,
+	* src/system.h, tests/calc.at, tests/named-refs.at: Use assert
+	where appropriate instead of "if (...) exit".
+	Use symbolic exit status elsewhere.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	maint: fix some syntax-check issues.
+	* cfg.mk (local-checks-to-skip): Remove
+	sc_prohibit_quotearg_without_use, sc_prohibit_strcmp,
+	sc_unmarked_diagnostics, sc_useless_cpp_parens.
+	(sc_unmarked_diagnostics): Skip DJGPP.
+	* data/yacc.c, src/LR0.c, src/closure.c,
+	* src/flex-scanner.h, src/gram.c, src/lalr.c,
+	* src/print-xml.c, src/print.c, src/print_graph.c,
+	* src/reader.c, src/reduce.c, src/tables.c:
+	Don't use parens with cpp's defined.
+	Remove useless includes.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	maint: address a couple of syntax-check errors.
+	* cfg.mk (local-checks-to-skip): Remove sc_error_message_period
+	and sc_error_message_uppercase.
+	Address the uncovered issues.
+	* po/POTFILES.in: Add missing files.
+	* src/symtab.c: Remove useless includes.
+	* lib/bitset_stats.c, src/files.c, tests/glr-regression.at: Use
+	conformant error messages.
+
+2012-02-19  Akim Demaille  <demaille@gostai.com>
+
+	maint: gnulib: upgrade.
+
+2012-02-15  Akim Demaille  <demaille@gostai.com>
+
+	maint: rely on Automake for parsers.
+	* Makefile.am (AM_YFLAGS): Automake looks for "-d" alone.
+	Move other options in here.
+	(BISON): New.
+	(YACC): Use it.
+	(bison_SOURCES): Now that automake can see `-d' in AM_YFLAGS,
+	we can rely on it to compile and ship the parser header
+	files.
+
+	Based on commit 737406a32c201471699bfa0843d1f432f3ec29ab and
+	commit 3d6ca339083c278d907c9f030f4ba6bc5ecb07f2.
+
+2012-02-14  Akim Demaille  <demaille@gostai.com>
+
+	maint: more authors.
+	* AUTHORS: here.
+	Suggested by Tys Lefering.
+
+2012-02-14  Akim Demaille  <demaille@gostai.com>
+
+	maint: add license headers.
+	* examples/calc++/test, examples/variant.yy, AUTHORS, THANKS,
+	* tests/atlocal.in, tests/bison.in: Add license headers.
+	Reported by Tys Lefering.
+
+2012-02-14  Akim Demaille  <demaille@gostai.com>
+
+	maint: remove obsolete file.
+	* etc/make-ChangeLogs: Remove (used for rcs to cvs migration!).
+	Reported by Tys Lefering.
+
+2012-02-08  Akim Demaille  <demaille@gostai.com>
+
+	use a more consistent quoting style.
+	See <http://lists.gnu.org/archive/html/bug-bison/2012-01/msg00120.html>.
+	Use quotearg as often as possible instead of leaving the choice of
+	the quotes to the translators.  Use shorter messages.  Factor similar
+	messages to a single format, to make localization easier.
+
+	* src/files.c, src/getargs.c, src/muscle-tab.c, src/reader.c
+	* src/scan-code.l, src/scan-gram.l, src/symtab.c:
+	Use quote() or quotearg_colon() on printf arguments instead of
+	quotes in the format string.
+	* data/bison.m4: Keep sync with the changes in muscle-tab.c.
+
+	* tests/skeletons.at, tests/input.at, tests/regression.at: Adjust
+	expected messages.
+
+2012-01-31  Akim Demaille  <demaille@gostai.com>
+
+	maint: remove stray debug code.
+	* src/Makefile.am (echo): Remove.
+
+2012-01-31  Akim Demaille  <demaille@gostai.com>
+
+	maint: space changes.
+	* src/Makefile.am: Use 2 leading spaces for variable definition
+	spreading over several lines.
+
+2012-01-31  Akim Demaille  <demaille@gostai.com>
+
+	maint: more silent-rules.
+	* doc/local.mk, src/local.mk, examples/calc++/Makefile.am: Use
+	$(AM_V_GEN) and $(AM_V_at) where appropriate.
+
+2012-01-31  Jim Meyering  <meyering@redhat.com>
+
+	do not ignore errors like ENOSPC,EIO when writing to stdout
+	Standard output was never explicitly closed, so we could not
+	detect failure.  Thus, bison would ignore the errors of writing
+	to a full file system and getting an I/O error on write, but only
+	for standard output, e.g., for --print-localedir, --print-datadir,
+	--help and some verbose output.
+	Now, "bison --print-datadir > /dev/full" reports the write failure:
+	bison: write error: No space left on device
+	Before, it would exit 0 with no diagnostic, implying success.
+	This is not an issue for "--output=-" or the other FILE-accepting
+	command-line options, because unlike most other GNU programs,
+	an output file argument of "-" is treated as the literal "./-",
+	rather than standard output.
+	* bootstrap.conf (gnulib_modules): Add closeout.
+	* src/main.c: Include "closeout.h".
+	Use atexit to ensure we close stdout.
+	* .gitignore: Ignore new files pulled in via gnulib-tool.
+
+2012-01-26  Akim Demaille  <demaille@gostai.com>
+
+	tests: fix expected output.
+	* tests/actions.at (YYBACKUP): here.
+
+2012-01-26  Akim Demaille  <demaille@gostai.com>
+
+	yacc: fix YYBACKUP.
+	Reported by David Kastrup:
+	https://lists.gnu.org/archive/html/bug-bison/2011-10/msg00002.html.
+
+	* data/yacc.c (YYBACKUP): Accept rhs size.
+	Restore the proper state value.
+	* TODO (YYBACKUP): Make it...
+	* tests/actions.at: a new test case.
+	* NEWS, THANKS: Update.
+
+2012-01-26  Akim Demaille  <demaille@gostai.com>
+
+	maint: update TODO.
+	* TODO (Labeling the symbols): Remove, it's done ("Name references").
+
+2012-01-26  Akim Demaille  <demaille@gostai.com>
+
+	maint: update THANKS.
+	* THANKS: Update Tys's address, on his request.
+
+2012-01-26  Akim Demaille  <demaille@gostai.com>
+
+	maint: fix --gcc-warnings support.
+	* configure.ac: Use enable_gcc_warnings instead of enableval,
+	which is valid only with AC_ARG_ENABLE.
+
+2012-01-26  Akim Demaille  <demaille@gostai.com>
+
+	maint: silent-rules.
+	* configure.ac: Ask for silent-rules support.
+	Enable it by default.
+
+2012-01-26  Akim Demaille  <demaille@gostai.com>
+
+	maint: remove trailing blanks.
+	* src/scan-code.l: Here.
+
+2012-01-25  Paul Eggert  <eggert@cs.ucla.edu>
+
+	tests: port to Solaris 10 'diff -u'
+	* tests/regression.at (parse-gram.y: LALR = IELR): Port to Solaris 10,
+	where "diff -u X X" outputs "No differences encountered"
+	instead of outputting nothing.  Reported by Tomohiro Suzuki in
+	<http://lists.gnu.org/archive/html/bug-bison/2012-01/msg00101.html>.
+
+2012-01-25  Jim Meyering  <meyering@redhat.com>
+
+	build: avoid possibly-replaced fprintf in liby-source, yyerror.c
+	* lib/yyerror.c (yyerror): Use fputs and fputc rather than fprintf
+	with a mere "%s\n" format.  Always return 0 now, on the assumption
+	that the return value was never used anyway.
+	Don't include <config.h> after all.  This avoids a problem
+	reported by Thiru Ramakrishnan in
+	http://lists.gnu.org/archive/html/help-bison/2011-11/msg00000.html
+	* cfg.mk: Exempt lib/yyerror.c from the sc_require_config_h_first test.
+	* THANKS: Update.
+
+2012-01-24  Jim Meyering  <meyering@redhat.com>
+
+	maint: generate ChangeLog from git log
+	* Makefile.am (gen-ChangeLog): New rule.
+	(dist-hook): Depend on it.
+	(EXTRA_DIST): Distribute the two ChangeLog-* files.
+	* bootstrap.conf (gnulib_modules): Add gitlog-to-changelog.
+	(bootstrap_post_import_hook): Ensure that ChangeLog exists.
+	* build-aux/git-log-fix: New file.
+	* ChangeLog-2012: Renamed ...
+	* ChangeLog: ... from this.
+	* ChangeLog-1998: Renamed ...
+	* OChangeLog: ...from this
+	* .gitignore: Add ChangeLog.
+
+2012-01-24  Jim Meyering  <meyering@redhat.com>
+
+	change more quotes in source, and adjust tests to match
+	Run this command to change each `%s' to '%s' in source directories:
+	  git grep -l '`%s'\' src djgpp data \
+	    |xargs perl -pi -e '$q="'\''";s/`%s$q/$q%s$q/g'
+	* data/bison.m4: Affected per the above.
+	* djgpp/subpipe.c: Likewise.
+	* src/files.c: Likewise.
+	* src/getargs.c: Likewise.
+	* src/muscle-tab.c: Likewise.
+	* src/reader.c: Likewise.
+	* tests/glr-regression.at: Adjust to match.
+	* tests/input.at: Likewise.
+	* tests/push.at: Likewise.
+	* tests/skeletons.at: Likewise.
+
+2012-01-23  Jim Meyering  <meyering@redhat.com>
+
+	quote consistently and make tests pass with new quoting from gnulib
+	Updating to gnulib pulled in new quote and quotarg modules,
+	by which quoting is now done like 'this' rather than `this'.
+	That change induces many "make check" test failures.  This change
+	adapts code and tests so that "make check" passes once again.
+	* src/scan-code.l: Quote like 'this', not like `this'.
+	* src/scan-gram.l: Likewise.
+	* src/symtab.c: Likewise.
+	* tests/actions.at: Adjust tests to match.
+	* tests/input.at: Likewise.
+	* tests/named-refs.at: Likewise.
+	* tests/output.at: Likewise.
+	* tests/regression.at: Likewise.
+	* lib/.gitignore: Regenerate.
+	* m4/.gitignore: Likewise.
+
+2012-01-23  Jim Meyering  <meyering@redhat.com>
+
+	build: update gnulib and autoconf submodules to latest (cherry picked from commit 728415f885e5cb8e518c8576fa6e1f541e384130)
+
+2012-01-23  Jim Meyering  <meyering@redhat.com>
+
+	build: manually update bootstrap from gnulib, and adapt
+	Updating to the latest bootstrap from gnulib involves more of a
+	change than usual, and updating to the latest gnulib would involve
+	its own set of challenges with the upcoming quoting changes, so
+	we update bootstrap manually and separately.
+	* bootstrap: Update from gnulib.
+	* lib/Makefile.am: Initialize more variables to empty, so that gnulib.mk
+	can append to them with "+=".
+	* bootstrap.conf (gnulib_mk_hook): Remove.  No longer honored.
+	(gnulib_tool_option_extras): Generate gnulib.mk.
+
+2012-01-23  Jim Meyering  <meyering@redhat.com>
+
+	maint: include <config.h> first
+	* cfg.mk (exclude_file_name_regexp--sc_require_config_h_first):
+	Exempt data/glr.c and data/yacc.c from the include-config.h-first
+	requirement.
+
+2012-01-23  Jim Meyering  <meyering@redhat.com>
+
+	build: include <config.h> from lib/yyerror.c
+	* lib/yyerror.c: Include <config.h>.
+
+2012-01-23  Jim Meyering  <meyering@redhat.com>
+
+	maint: list djgpp/subpipe.c in po/POTFILES.in
+	* po/POTFILES.in: Add djgpp/subpipe.c.
+
+2012-01-23  Jim Meyering  <meyering@redhat.com>
+
+	maint: placate the space-TAB syntax-check
+	* cfg.mk (exclude_file_name_regexp--sc_space_tab): Exempt
+	tests/input.at and tests/c++.at, since they appear to use
+	SP-TAB sequences deliberately.
+	* OChangeLog: Remove space-before-TAB.
+
+2012-01-23  Jim Meyering  <meyering@redhat.com>
+
+	doc: correct typo: s/can not/cannot/
+	* doc/bison.texinfo (Bug Reports): s/can not/cannot/
+	And remove trailing blanks.
+
+2012-01-22  Jim Meyering  <meyering@redhat.com>
+
+	maint: get gpl-3.0 from gnulib
+	* bootstrap.conf (gnulib_modules): Add gpl-3.0.
+	* doc/gpl-3.0.texi: Remove from version control, now that
+	we get it via gnulib.
+	* doc/.gitignore: Ignore it.

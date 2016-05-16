@@ -1,0 +1,15 @@
+const char *preset_menu =
+    "rootnoverify (hd0,0)\n"
+    "default=1\n"
+    "timeout 3\n"
+    "fallback 1 0\n"
+    "\n"
+    "title Android Install to /dev/sda from /dev/sdb\n"
+    "       cmdline (hd1,0)/cmdline\n"
+    "       kernel --use-cmd-line (hd1,0)/kernel\n"
+    "       initrd (hd1,0)/ramdisk\n"
+    "\n"
+    "title Android Startup from /dev/sda\n"
+    "       cmdline (hd0,2)/cmdline\n"
+    "       kernel --use-cmd-line (hd0,2)/kernel\n"
+    "       initrd (hd0,2)/ramdisk\n";

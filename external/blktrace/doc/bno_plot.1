@@ -1,0 +1,64 @@
+.TH BNO_PLOT 1 "February 22, 2007" "blktrace git\-20080213182518" ""
+
+
+.SH NAME
+bno_plot \- generate interactive 3D plot of IO blocks and sizes
+
+
+.SH SYNOPSIS
+.B bno_plot
+[ \-h | \-\-help ]
+.br
+         [ \-v | \-\-verbose ]
+.br
+         [ \-K | \-\-keys-below ]
+.br
+         [ <file...> ]
+.br
+
+
+.SH DESCRIPTION
+
+bno_plot is a visualization tool for the block layer IO tracing tool called
+blktrace(8).  As noted in its documentation, blktrace 
+is a block layer IO tracing mechanism which provides detailed
+information about request queue operations up to user space.
+
+bno_plot utilizes gnuplot to generate a 3D plot of the block number output from
+btt.  If no \fI<files>\fR are specified, it will utilize all files generated after
+btt was run with \fI-B blknos\fR (meaning: all files of the form \fIblknos*[rw].dat\fR).
+
+The \fI-K\fR option forces bno_plot to put the keys below the graph.  If it is
+not specified, all keys for input files are put in the upper right corner of the
+graph. If the number of devices exceed 10, then bno_plot will automatically
+push the keys under the graph.
+
+To use this utility, the gnuplot package needs to be installed.
+
+To exit the plotter, enter 'quit' or ^D at the 'gnuplot> ' prompt.
+
+.SH AUTHORS
+\fIbno_plot\fR was written by Alan D. Brunelle.  This man page was created
+from the \fIblktrace\fR documentation by Bas Zoetekouw.
+
+
+.SH "REPORTING BUGS"
+Report bugs to <linux\-btrace@vger.kernel.org>
+
+.SH COPYRIGHT
+Copyright \(co 2008 Hewlett-Packard Development Company, L.P.
+.br
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+.br
+This manual page was created for Debian by Bas Zoetekouw.  It was derived from
+the documentation provided by the authors and it may be used, distributed and
+modified under the terms of the GNU General Public License, version 2.
+.br
+On Debian systems, the text of the GNU General Public License can be found in
+/usr/share/common\-licenses/GPL\-2.
+
+.SH "SEE ALSO"
+btt (1), gnuplot (1), blktrace (8), blkparse (1), verify_blkparse (1), blkrawverify (1)
+

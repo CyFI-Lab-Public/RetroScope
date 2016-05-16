@@ -1,0 +1,7 @@
+The Apache Harmony test suite.
+
+Checked out thus:
+
+svn co http://svn.apache.org/repos/asf/harmony/enhanced/java/branches/java6/classlib/modules .
+
+Checked out revision 1097236.

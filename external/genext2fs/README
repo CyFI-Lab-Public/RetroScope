@@ -1,0 +1,10 @@
+genext2fs generates an ext2 filesystem as a normal (non-root) user.
+It does not require you to mount the image file to copy files on it,
+nor does it require that you become the superuser to make device nodes.
+
+http://genext2fs.sourceforge.net/
+
+Please use the genext2fs-devel@lists.sourceforge.net mailing list to
+contact the developers and/or report bugs.
+
+See the included INSTALL file for instructions on installing genext2fs.

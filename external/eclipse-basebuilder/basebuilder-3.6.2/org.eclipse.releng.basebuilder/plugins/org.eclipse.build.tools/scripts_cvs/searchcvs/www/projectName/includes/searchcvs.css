@@ -1,0 +1,101 @@
+abbr
+{
+	border-bottom: 1px dotted gray;
+	/* removes konqueror's custom abbr style */
+	font: inherit;
+	letter-spacing: inherit;
+}
+
+#midcolumn .homeitem3col h3 span
+{
+	float: right;
+}
+
+#midcolumn .homeitem3col ul li div
+{
+	float: right;
+	padding-left: 2em;
+}
+
+#midcolumn .homeitem3col ul li
+{
+	clear: both;
+}
+
+#midcolumn .homeitem3col ul li ul li
+{
+	border-style: none;
+	padding: 0;
+}
+
+#midcolumn .homeitem3col .pager
+{
+	text-align: center;
+	padding: 1em 0 1em 0;
+}
+
+#midcolumn .homeitem3col .pager span
+{
+	margin: 0.5em;
+	padding: 0.3em;
+}
+
+#midcolumn .homeitem3col .pager span.selected
+{
+	border-bottom: 1px dotted black;
+	border-top: 1px dotted black;
+	font-weight: bold;
+}
+
+#midcolumn .homeitem3col #searchdiv
+{
+	text-align: center;
+	padding-top: 1em;
+}
+
+#midcolumn .homeitem3col ul li ul li span.empty
+{
+	color: gray;
+}
+
+#midcolumn .homeitem3col ul li ul li span.hl0,
+#midcolumn .homeitem3col ul li ul li span.hl7
+{
+	background-color: #FFFF66;
+}
+
+#midcolumn .homeitem3col ul li ul li span.hl1,
+#midcolumn .homeitem3col ul li ul li span.hl8
+{
+	background-color: #FF66FF;
+}
+
+#midcolumn .homeitem3col ul li ul li span.hl2,
+#midcolumn .homeitem3col ul li ul li span.hl9
+{
+	background-color: #66FFFF;
+}
+
+#midcolumn .homeitem3col ul li ul li span.hl3,
+#midcolumn .homeitem3col ul li ul li span.hl10
+{
+	background-color: #AAAAFF;
+}
+
+#midcolumn .homeitem3col ul li ul li span.hl4,
+#midcolumn .homeitem3col ul li ul li span.hl11
+{
+	background-color: #AAFFAA;
+}
+
+#midcolumn .homeitem3col ul li ul li span.hl5,
+#midcolumn .homeitem3col ul li ul li span.hl12
+{
+	background-color: #FFAAAA;
+}
+
+#midcolumn .homeitem3col ul li ul li span.hl6,
+#midcolumn .homeitem3col ul li ul li span.hl13
+{
+	background-color: #CCCCCC;
+}

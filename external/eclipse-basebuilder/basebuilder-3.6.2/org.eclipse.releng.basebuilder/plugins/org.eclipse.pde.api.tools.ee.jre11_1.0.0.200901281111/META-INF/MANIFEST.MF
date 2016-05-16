@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-Vendor: %providerName
+Fragment-Host: org.eclipse.pde.api.tools;bundle-version="1.0.100"
+Eclipse-BundleShape: dir
+Bundle-Version: 1.0.0.200901281111
+Bundle-Localization: fragmentjre11
+Bundle-Name: %fragmentName
+Bundle-ManifestVersion: 2
+Bundle-SymbolicName: org.eclipse.pde.api.tools.ee.jre11
+Bundle-RequiredExecutionEnvironment: J2SE-1.4
+

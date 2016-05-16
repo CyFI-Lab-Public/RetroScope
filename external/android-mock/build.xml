@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Android Mock" default="all-tests" basedir=".">
+  <description>
+Android Mock is a wrapper for EasyMock (2.4) which allows for real Class mocking on
+an Android (Dalvik) VM.
+
+All methods on Android Mock are syntactically equivalent to EasyMock method
+calls, and will delegate calls to EasyMock, while performing the required
+transformations to avoid Dalvik VM troubles.
+
+Calls directly to EasyMock will work correctly only if the Class being mocked
+is in fact an Interface. Calls to Android Mock will work correctly for both
+Interfaces and concrete Classes.
+
+Android Mock requires that the code being mocked be instrumented prior to
+loading to the Dalvik VM by having called the MockGenerator.jar file. Try
+running java -jar MockGenerator.jar --help for more information.
+  </description>
+
+  <!-- Global Build Properties -->
+  <property file="build.properties"/>
+
+  <!-- Imports -->
+  <import file="src/build-runtime.xml"/>
+  <import file="src/build-mockgen.xml"/>
+  <import file="src/build-framework-gen.xml"/>
+
+  <!-- Android Mock Source Jar Properties -->
+  <property name="source-bin" value="bin/source"/>
+  <property name="source-lib-jar" value="AndroidMock-src.jar"/>
+
+  <!-- Android Mock Test Properties -->
+  <property name="junit-jar" value="junit.jar"/>
+  <property name="test-bin" value="bin/tests"/>
+  <property name="test-results-folder" value="${test-bin}/results"/>
+  <property name="test-source-base" value="tests"/>
+
+  <!-- Classpaths -->
+  <path id="tests.path">
+    <pathelement location="${lib-folder}/${easymock-jar}"/>
+    <pathelement location="${lib-folder}/${javassist-jar}"/>
+    <pathelement location="${runtime.bin}/${runtime.deploy-jar}"/>
+    <pathelement location="${mockgen.bin}/${mockgen.deploy-jar}"/>
+    <pathelement location="${lib-folder}/${junit-jar}"/>
+  </path>
+
+  <!-- Private Build Targets -->
+  <target name="-dirs">
+    <mkdir dir="${source-bin}"/>
+    <mkdir dir="${test-bin}"/>
+    <mkdir dir="${staging}"/>
+    <mkdir dir="${test-results-folder}"/>
+  </target>
+
+  <target name="-clean-staging">
+    <delete dir="${staging}"/>
+  </target>
+
+  <!-- Public Build Targets -->
+  <target name="clean" depends="-clean-staging,mockgen.clean,runtime.clean">
+    <delete dir="${source-bin}"/>
+    <delete dir="${framework-mock-staging}"/>
+    <delete dir="${test-results-folder}" failonerror="false"/>
+    <delete dir="${test-bin}" failonerror="false"/>
+  </target>
+
+  <target name="build-dist"
+      depends="mockgen.build-deploy, runtime.build-deploy, build-source-lib"/>
+
+  <target name="build-source-lib" depends="-dirs"
+      description="Builds a jar file containing the Android Mock source files (no dependencies)">
+    <jar destfile="${source-bin}/${source-lib-jar}" basedir="${source-base}" includes="**/*.java"/>
+  </target>
+
+  <!-- Public Test Targets -->
+  <target name="all-tests" depends="-test-base"
+      description="Builds the full distribution package and runs all tests storing results in ${test-results-folder}">
+    <junit printsummary="no" showoutput="no" reloading="false" failureproperty="testsFailed">
+      <formatter type="xml"/>
+      <classpath location="${test-bin}"/>
+      <classpath refid="tests.path"/>
+      <batchtest todir="${test-results-folder}">
+        <fileset dir="${test-bin}">
+          <include name="**/*Test.class"/>
+          <include name="**/*Tests.class"/>
+        </fileset>
+      </batchtest>
+    </junit>
+    <echo>Test Results are available in ${test-results-folder}</echo>
+    <junitreport todir="${test-results-folder}">
+      <fileset dir="${test-results-folder}">
+        <include name="TEST-*.xml"/>
+      </fileset>
+      <report format="frames" todir="${test-results-folder}/html"/>
+    </junitreport>
+    <fail if="testsFailed" message="Tests failed"/>
+  </target>
+
+  <!-- Private Test Targets -->
+  <target name="-test-base" depends="build-dist">
+    <javac destdir="${test-bin}" target="1.5" srcdir="${test-source-base}"
+        debug="true" >
+      <compilerarg value="-proc:none"/>
+      <classpath refid="tests.path"/>
+    </javac>
+  </target>
+
+</project>

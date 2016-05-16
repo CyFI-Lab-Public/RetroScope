@@ -1,0 +1,5 @@
+The contents of the the org.eclipse.releng.basebuilder were retrieved as follows:
+
+$ cvs -d :pserver:anonymous@dev.eclipse.org/cvsroot/eclipse/ login
+$ cvs -d :pserver:anonymous@dev.eclipse.org/cvsroot/eclipse/ checkout -r R3_6_2 org.eclipse.releng.basebuilder
+$ find . -name "CVS" -exec rm -rf {} \;

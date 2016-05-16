@@ -1,0 +1,18 @@
+Changes in this version relative to http://doclava.googlecode.com/
+------------------------------------------------------------------
+
+* Added a new command line option -showAnnotation <@interface classname>,
+  which takes in a fully qualified annotation classname.  The specified
+  annotation will override any @hide annotations within the javadoc.  To
+  specify multiple annotations to override @hide, use multiple
+  -showAnnotation options.
+
+* Modified the Java stub generator code to write out annotations for
+  methods and fields as well, not just classes. This meant adding a
+  writeAnnotations call to writeMethod and to writeField
+
+* Modified the writeAnnotations method to take a "isDeprecated"
+  parameter, which when set adds a @Deprecated annotation if one
+  doesn't already exist. This ensures that APIs only marked with a
+  @deprecated documentation comment will also be marked as
+  @Deprecated. Also strips out @Override annotations.

@@ -1,0 +1,8 @@
+
+Change made for Android
+
+1) Change coverage.out.file location in core/res/emma_default.properties to /data/coverage.ec
+2) Remove reference to sun.misc.* in core/java14/com/vladium/util/IJREVersion.java
+3) Remove reference to sun.misc.* and SunJREExitHookManager class from core/java13/com/vladium/util/exit/ExitHookManager.java
+4) Add java.security.cert.Certificate cast to core/java12/com/vladium/emma/rt/InstrClassLoader.java to fix compiler error
+5) Move out/core/res/com/vladium/emma/rt/RTExitHook.closure (from Emma ant build) into pregenerated/ so it does not have to be generated in Android's make-based build, but also doesn't break Emma's build.

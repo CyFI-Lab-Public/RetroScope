@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="plugins/org.eclipse.build.tools/src"/>
+	<classpathentry kind="src" path="plugins/org.eclipse.build.tools/src_rss"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/ibm142"/>
+	<classpathentry kind="lib" path="/eclipseInternalBuildTools/plugins/org.eclipse.internal.build.tools/j2ee.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-antlr.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-apache-bcel.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-apache-bsf.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-apache-log4j.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-apache-oro.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-apache-regexp.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-apache-resolver.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-commons-logging.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-commons-net.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-jai.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-javamail.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-jdepend.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-jmf.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-jsch.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-junit.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-launcher.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-netrexx.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-nodeps.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-starteam.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-stylebook.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-swing.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-trax.jar"/>
+	<classpathentry kind="lib" path="plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-weblogic.jar"/>
+	<classpathentry kind="lib" path="plugins/org.eclipse.core.runtime_3.6.0.v20100505.jar"/>
+	<classpathentry kind="lib" path="plugins/org.eclipse.osgi_3.6.2.R36x_v20101103.jar"/>
+	<classpathentry kind="lib" path="plugins/org.eclipse.swt_3.6.1.v3657a.jar"/>
+	<classpathentry kind="lib" path="plugins/org.eclipse.swt.win32.win32.x86_3.6.1.v3657a.jar"/>
+	<classpathentry kind="output" path="plugins/bin"/>
+</classpath>

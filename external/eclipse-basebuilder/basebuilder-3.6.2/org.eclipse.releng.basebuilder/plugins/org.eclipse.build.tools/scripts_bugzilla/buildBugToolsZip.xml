@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<project name="Build bugTools.zip" default="buildBugToolsZip" basedir="../">
+	<target name="buildBugToolsZip">
+		<property name="zipfile" value="org.eclipse.build.tools_bugTools.zip"/>
+		<ant antfile="scripts_bugzilla/buildBugToolsJar.xml" target="buildBugToolsJar" inheritall="true"/>
+		<echo message="Bundling ${zipfile} ..."/>
+		<delete file="${zipfile}"/>
+		<zip
+			destfile="${zipfile}"
+			includes=".classpath, .project, 
+					bugTools.jar, 
+					src_bugzilla/**/*, 
+					scripts_bugzilla/*,
+					properties/UpdateBugStateTask.properties"
+			basedir="."
+			update="true"/>
+	</target>
+</project>

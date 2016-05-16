@@ -1,0 +1,8 @@
+<api>
+<package name="test" >
+<class name="A" extends="java.lang.Object" abstract="false" static="false" final="false" deprecated="not deprecated" visibility="public" />
+<class name="B" extends="test.A" abstract="false" static="false" final="false" deprecated="not deprecated" visibility="public" />
+<class name="C1" extends="java.lang.Object" abstract="false" static="false" final="false" deprecated="not deprecated" visibility="public" />
+<class name="C2" extends="test.A" abstract="false" static="false" final="false" deprecated="not deprecated" visibility="public" />
+</package>
+</api>

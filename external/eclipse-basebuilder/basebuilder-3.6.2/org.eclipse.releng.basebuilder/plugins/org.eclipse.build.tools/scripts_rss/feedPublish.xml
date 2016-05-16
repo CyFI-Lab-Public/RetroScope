@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<project name="Create/Update + Publish Feed" default="publishFeed" basedir="..">
+	<taskdef name="PublishFeed" classname="org.eclipse.releng.services.rss.RSSFeedPublisherTask"    classpath="./feedTools.jar"/>
+	<taskdef name="AddEntry"    classname="org.eclipse.releng.generators.rss.RSSFeedAddEntryTask"   classpath="./feedTools.jar"/>
+	<!-- to run from a shell, modify feedPublish.sh to suit your needs -->
+	
+	<target name="publishFeed">	
+		<!-- TODO: include properties file here if not running from a shell script -->
+		<property file="properties/feedPublish.emf.properties"/>
+		<antcall target="addEntry"/>
+		<antcall target="publishFeedToCVS"/>
+		<antcall target="publishFeedWithSCP"/>
+	</target>
+
+	<target name="addEntry">
+		<!-- 1. Add an entry (and create the feed if it doesn't already exist) -->
+		<AddEntry 
+			debug="${debug}" 
+			file="${file}" 
+
+			project="${project}"
+			version="${version}"
+			branch="${branch}"
+			buildID="${buildID}"
+			buildtype="${buildType}"
+			feedURL="${feedURL}"
+			buildURL="${buildURL}"
+
+			buildAlias="${buildAlias}"
+			
+			buildDetailURL="${buildDetailURL}"
+			buildConfigURL="${buildConfigURL}"
+			buildLogURL="${buildLogURL}"
+			buildMapURL="${buildMapURL}"
+			
+			dependencyURLs="${dependencyURLs}"
+			releases="${Releases}"
+			
+			releaseNotesURL="${releaseNotesURL}"
+			updateManagerURL="${updateManagerURL}"
+			downloadsURL="${downloadsURL}"
+			jarSigningStatus="${jarSigningStatus}"
+			coordinatedStatus="${coordinatedStatus}"
+			coordinatedDetails="${coordinatedDetails}"
+			
+			JUnitTestURL="${JUnitTestURL}"
+			performanceTestURL="${performanceTestURL}"
+			APITestURL="${APITestURL}"
+			JUnitTestResults="${JUnitTestResults}"
+			performanceTestResults="${performanceTestResults}"
+			APITestResults="${APITestResults}"
+		/>
+	</target>
+
+	<!-- 2. Publish feed: commit file into CVS - overwrite existing and add if necessary -->
+	<target name="publishFeedToCVS">
+		<PublishFeed 
+			debug="${debug}" 
+			file="${file}" 
+			
+			cvsExec="${cvsExec}"
+			cvsRoot="${cvsRoot}"
+			cvsPath="${cvsPath}"
+			cvsTemp="${cvsTemp}"
+		/>
+		<delete dir="${cvsTemp}"/>
+	</target>
+
+	<!-- 3. Publish feed: SCP file to remote server, overwriting existing if exists -->
+	<target name="publishFeedWithSCP">
+		<PublishFeed 
+			debug="${debug}" 
+			file="${file}" 
+			
+			scpExec="${scpExec}"
+			scpTarget="${scpTarget}"
+			sshExec="${sshExec}"
+		/>
+	</target>	
+
+</project>

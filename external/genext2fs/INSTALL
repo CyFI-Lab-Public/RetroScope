@@ -1,0 +1,13 @@
+If you're using CVS, you will have to first run:
+
+./autogen.sh
+
+To install, just do it the normal GNU way:
+
+./configure
+make
+make install
+
+To run the regression tests:
+
+make check

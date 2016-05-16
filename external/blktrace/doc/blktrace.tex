@@ -1,0 +1,814 @@
+\documentclass{article}
+
+%
+% Copyright (C) 2005, 2006 Alan D. Brunelle <Alan.Brunelle@hp.com>
+%
+%  This program is free software; you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation; either version 2 of the License, or
+%  (at your option) any later version.
+%
+%  This program is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  You should have received a copy of the GNU General Public License
+%  along with this program; if not, write to the Free Software
+%  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+%
+
+\title{blktrace User Guide}
+\author{blktrace: Jens Axboe (jens.axboe@oracle.com)\\
+        User Guide: Alan D. Brunelle (Alan.Brunelle@hp.com)}
+\date{27 May 2008}
+
+\begin{document}
+\maketitle
+%---------------------
+\section{\label{sec:intro}Introduction}
+
+blktrace is a block layer IO tracing mechanism which provides detailed
+information about request queue operations up to user space. There are
+three major components that are provided:
+
+\begin{description}
+  \item[Kernel patch] A patch to the Linux kernel which includes the
+  kernel event logging interfaces, and patches to areas within the block
+  layer to emit event traces. If you run a 2.6.17-rc1 or newer kernel,
+  you don't need to patch blktrace support as it is already included.
+
+  \item[blktrace] A utility which transfers event traces from the kernel
+  into either long-term on-disk storage, or provides direct formatted
+  output (via blkparse).
+
+  \item[blkparse] A utility which formats events stored in files, or when
+  run in \emph{live} mode directly outputs data collected by blktrace.
+\end{description}
+
+\subsection{blktrace Download Area}
+
+The blktrace and blkparse utilities and associated kernel patch are provided
+as part of the following git repository:
+
+git://git.kernel.org/pub/scm/linux/kernel/git/axboe/blktrace.git bt
+
+%--------------------------
+\newpage\section{\label{sec:quick-start}Quick Start Guide}
+
+The following sections outline some quick steps towards utilizing
+blktrace. Some of the specific instructions below may need to be tailored
+to your environment.
+
+\subsection{\label{sec:get-blktrace}Retrieving blktrace}
+
+As noted above, the kernel patch along with the blktrace and blkparse utilities are stored in a git repository. One simple way to get going would be:
+
+\begin{verbatim}
+% git clone git://git.kernel.org/pub/scm/linux/kernel/git/axboe/blktrace.git bt
+% cd bt
+% git checkout
+\end{verbatim}
+
+\subsection{\label{sec:patching}Patching and configuring the Linux kernel}
+
+A patch for a \emph{specific Linux kernel} is provided in bt/kernel (where
+\emph{bt} is the name of the directory from the above git sequence). The
+detailed actual patching instructions for a Linux kernel is outside the
+scope of this document, but the following may be used as a sample template.
+Note that you may skip this step, if you kernel is at least 2.6.17-rc1.
+
+As an example, bt/kernel contains blk-trace-2.6.14-rc1-git-G2, download
+linux-2.6.13.tar.bz2 and patch-2.6.14-rc1.bz2
+
+\begin{verbatim}
+% tar xjf linux-2.6.13.tar.bz2 
+% mv linux-2.6.13 linux-2.6.14-rc1
+% cd linux-2.6.14-rc1
+% bunzip2 -c ../patch-2.6.14-rc1.bz2 | patch -p1
+\end{verbatim}
+
+At this point you may (optionally) remove linux-2.6.13.tar.bz2 and
+patch-2.6.14-rc1.bz2.
+
+At this point you should configure the Linux kernel for your specific
+system -- again, outside the scope of this document -- and then enable
+\emph{Support for tracing block io actions.} To do this, run
+
+\begin{verbatim}
+% make menuconfig                    or make xconfig, or edit .config, or ...
+\end{verbatim}
+
+and navigate through \emph{Device Drivers} and \emph{Block devices}
+and then down to \emph{Support for tracing block io actions} and hit Y.
+
+Install the new kernel (and modules\ldots) and reboot. 
+
+\subsection{\label{sec:mount}Mounting the debugfs file system}
+
+blktrace utilizes files under the debug file system, and thus must have
+the mount point set up -- mounted on the directory /sys/kernel/debug.
+To do this one may do either of the following:
+
+\begin{enumerate}
+  \item Manually mount after each boot:
+\begin{verbatim}
+% mount -t debugfs debugfs /sys/kernel/debug
+\end{verbatim}
+
+  \item Add an entry into /etc/fstab, and have it done automatically at
+  each boot\footnote{Note: after adding the entry to /etc/fstab, you
+  could then mount the directory this time only by doing: \% mount debug}:
+\begin{verbatim}
+debug /sys/kernel/debug debugfs default 0 0
+\end{verbatim}
+\end{enumerate}
+
+\subsection{\label{sec:build}Build the tools}
+
+To build and install the tools, execute the following sequence (as root):
+
+\begin{verbatim}
+% cd bt
+% make && make install
+\end{verbatim}
+
+\subsection{\label{sec:live-blktrace}blktrace -- live}
+
+Now to simply watch what is going on for a specific disk (to stop the
+trace, hit control-C):
+
+\begin{verbatim}
+% blktrace -d /dev/sda -o - | blkparse -i -
+  8,0    3        1     0.000000000   697  G   W 223490 + 8 [kjournald]
+  8,0    3        2     0.000001829   697  P   R [kjournald]
+  8,0    3        3     0.000002197   697  Q   W 223490 + 8 [kjournald]
+  8,0    3        4     0.000005533   697  M   W 223498 + 8 [kjournald]
+  8,0    3        5     0.000008607   697  M   W 223506 + 8 [kjournald]
+  8,0    3        6     0.000011569   697  M   W 223514 + 8 [kjournald]
+  8,0    3        7     0.000014407   697  M   W 223522 + 8 [kjournald]
+  8,0    3        8     0.000017367   697  M   W 223530 + 8 [kjournald]
+  8,0    3        9     0.000020161   697  M   W 223538 + 8 [kjournald]
+  8,0    3       10     0.000024062   697  D   W 223490 + 56 [kjournald]
+  8,0    1       11     0.009507758     0  C   W 223490 + 56 [0]
+  8,0    1       12     0.009538995   697  G   W 223546 + 8 [kjournald]
+  8,0    1       13     0.009540033   697  P   R [kjournald]
+  8,0    1       14     0.009540313   697  Q   W 223546 + 8 [kjournald]
+  8,0    1       15     0.009542980   697  D   W 223546 + 8 [kjournald]
+  8,0    1       16     0.013542170     0  C   W 223546 + 8 [0]
+...
+^C
+...
+CPU1 (8,0):
+ Reads Queued:           0,        0KiB  Writes Queued:           7,      128KiB
+ Read Dispatches:        0,        0KiB  Write Dispatches:        7,      128KiB
+ Reads Completed:        0,        0KiB  Writes Completed:       11,      168KiB
+ Read Merges:            0               Write Merges:           25
+ IO unplugs:             0               Timer unplugs:           0
+...
+CPU3 (8,0):
+ Reads Queued:           0,        0KiB  Writes Queued:           1,       28KiB
+ Read Dispatches:        0,        0KiB  Write Dispatches:        1,       28KiB
+ Reads Completed:        0,        0KiB  Writes Completed:        0,        0KiB
+ Read Merges:            0               Write Merges:            6
+ IO unplugs:             0               Timer unplugs:           0
+
+Total (8,0):
+ Reads Queued:           0,        0KiB  Writes Queued:          11,      168KiB
+ Read Dispatches:        0,        0KiB  Write Dispatches:       11,      168KiB
+ Reads Completed:        0,        0KiB  Writes Completed:       11,      168KiB
+ Read Merges:            0               Write Merges:           31
+ IO unplugs:             0               Timer unplugs:           3
+
+Events (8,0): 89 entries, 0 skips
+\end{verbatim}
+
+A \emph{btrace} script is included in the distribution to ease live
+tracing of devices. The above could also be accomplished by issuing:
+
+\begin{verbatim}
+% btrace /dev/sda
+\end{verbatim}
+
+By default, \emph{btrace} runs the trace in quiet mode so it will not
+include statistics when you break the run. Add the \emph{-S} option to
+get that dumped as well.
+
+\subsection{\label{sec:pc-blktrace}blktrace -- SCSI commands}
+
+The previous section showed typical file system io actions, but blktrace
+can also show SCSI commands going in and out of the queue as submitted
+by applications using the SCSI Generic (\emph{sg}) interface.
+
+\begin{verbatim}
+% btrace /dev/cdrom
+[...]
+  3,0    0       25     0.004884107 13528  G   R 0 + 0 [inquiry]
+  3,0    0       26     0.004890361 13528  I   R 56 (12 00 00 00 38 ..) [inquiry]
+  3,0    0       27     0.004891223 13528  P   R [inquiry]
+  3,0    0       28     0.004893250 13528  D   R 56 (12 00 00 00 38 ..) [inquiry]
+  3,0    0       29     0.005344910     0  C   R (12 00 00 00 38 ..) [0]
+\end{verbatim}
+
+Here we see a program issuing an INQUIRY command to the CDROM device.
+The program requested a read of 56 bytes of data, the CDB is included
+in parenthesis after the data length. The completion event shows shows
+that the command completed successfully. Tracing SCSI commands can be
+very useful for debugging problems with programs talking directly to the
+device. An example of that would be \emph{cdrecord} burning.
+
+\subsection{\label{sec:blktrace-post}blktrace -- post-processing}
+
+Another way to run blktrace is to have blktrace save data away for later
+formatting by blkparse. This would be useful if you want to get 
+measurements while running specific loads.
+
+To do this, one would specify the device (or devices) to be watched. Then 
+go run you test cases. Stop the trace, and at your leisure utilize
+blkparse to see the results.
+
+In this example, devices /dev/sdaa, /dev/sdc and /dev/sdo are used in an 
+LVM volume called adb3/vol.
+
+\begin{verbatim}
+% blktrace /dev/sdaa /dev/sdc /dev/sdo &
+[1] 9713
+%
+% mkfs -t ext3 /dev/adb3/vol
+mke2fs 1.35 (28-Feb-2004)
+Filesystem label=
+OS type: Linux
+Block size=4096 (log=2)
+Fragment size=4096 (log=2)
+16793600 inodes, 33555456 blocks
+1677772 blocks (5.00%) reserved for the super user
+First data block=0
+Maximum filesystem blocks=4294967296
+1025 block groups
+32768 blocks per group, 32768 fragments per group
+16384 inodes per group
+Superblock backups stored on blocks: 
+        32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632, 2654208, 
+	4096000, 7962624, 11239424, 20480000, 23887872
+
+Writing inode tables: done                            
+Creating journal (8192 blocks): done
+Writing superblocks and filesystem accounting information: done
+
+This filesystem will be automatically checked every 27 mounts or
+180 days, whichever comes first.  Use tune2fs -c or -i to override.
+%
+% kill -15 9713
+\end{verbatim}
+
+Then you could process the events later:
+
+\begin{verbatim}
+%
+% blkparse sdaa sdc sdo > events
+% less events
+  8,32   1        1     0.000000000  9728  G   R 384 + 32 [mkfs.ext3]
+  8,32   1        2     0.000001959  9728  P   R [mkfs.ext3]
+  8,32   1        3     0.000002446  9728  Q   R 384 + 32 [mkfs.ext3]
+  8,32   1        4     0.000005110  9728  D   R 384 + 32 [mkfs.ext3]
+  8,32   3        5     0.000200570     0  C   R 384 + 32 [0]
+  8,224  3        1     0.021658989  9728  G   R 384 + 32 [mkfs.ext3]
+...
+ 65,160  3   163392    41.117070504     0  C   W 87469088 + 1376 [0]
+  8,32   3   163374    41.122683668     0  C   W 88168160 + 1376 [0]
+ 65,160  3   163393    41.129952433     0  C   W 87905984 + 1376 [0]
+ 65,160  3   163394    41.130049431     0  D   W 89129344 + 1376 [swapper]
+ 65,160  3   163395    41.130067135     0  D   W 89216704 + 1376 [swapper]
+ 65,160  3   163396    41.130083785     0  D   W 89304096 + 1376 [swapper]
+ 65,160  3   163397    41.130099455     0  D   W 89391488 + 1376 [swapper]
+ 65,160  3   163398    41.130114732     0  D   W 89478848 + 1376 [swapper]
+ 65,160  3   163399    41.130128885     0  D   W 89481536 + 64 [swapper]
+  8,32   3   163375    41.134758196     0  C   W 86333152 + 1376 [0]
+ 65,160  3   163400    41.142229726     0  C   W 89129344 + 1376 [0]
+ 65,160  3   163401    41.144952314     0  C   W 89481536 + 64 [0]
+  8,32   3   163376    41.147441930     0  C   W 88342912 + 1376 [0]
+ 65,160  3   163402    41.155869604     0  C   W 89478848 + 1376 [0]
+  8,32   3   163377    41.159466082     0  C   W 86245760 + 1376 [0]
+ 65,160  3   163403    41.166944976     0  C   W 89216704 + 1376 [0]
+ 65,160  3   163404    41.178968252     0  C   W 89304096 + 1376 [0]
+ 65,160  3   163405    41.191860173     0  C   W 89391488 + 1376 [0]
+...
+Events (sdo): 0 entries, 0 skips
+
+CPU0 (65,160):
+ Reads Queued:           0,        0KiB  Writes Queued:           9,    5,520KiB
+ Read Dispatches:        0,        0KiB  Write Dispatches:        0,        0KiB
+ Reads Completed:        0,        0KiB  Writes Completed:        0,        0KiB
+ Read Merges:            0               Write Merges:          336
+ IO unplugs:             0               Timer unplugs:           0
+CPU1 (65,160):
+ Reads Queued:       2,411,   38,576KiB  Writes Queued:         769,  425,408KiB
+ Read Dispatches:    2,407,   38,512KiB  Write Dispatches:      118,   61,680KiB
+ Reads Completed:        0,        0KiB  Writes Completed:        0,        0KiB
+ Read Merges:            0               Write Merges:       25,819
+ IO unplugs:             0               Timer unplugs:           4
+CPU2 (65,160):
+ Reads Queued:           2,       32KiB  Writes Queued:          18,   10,528KiB
+ Read Dispatches:        2,       32KiB  Write Dispatches:        3,    1,344KiB
+ Reads Completed:        0,        0KiB  Writes Completed:        0,        0KiB
+ Read Merges:            0               Write Merges:          640
+ IO unplugs:             0               Timer unplugs:           0
+CPU3 (65,160):
+ Reads Queued:      20,572,  329,152KiB  Writes Queued:         594,  279,712KiB
+ Read Dispatches:   20,576,  329,216KiB  Write Dispatches:    1,474,  740,720KiB
+ Reads Completed:   22,985,  367,760KiB  Writes Completed:    1,390,  721,168KiB
+ Read Merges:            0               Write Merges:       16,888
+ IO unplugs:             0               Timer unplugs:           0
+
+Total (65,160):
+ Reads Queued:      22,985,  367,760KiB  Writes Queued:       1,390,  721,168KiB
+ Read Dispatches:   22,985,  367,760KiB  Write Dispatches:    1,595,  803,744KiB
+ Reads Completed:   22,985,  367,760KiB  Writes Completed:    1,390,  721,168KiB
+ Read Merges:            0               Write Merges:       43,683
+ IO unplugs:             0               Timer unplugs:           4
+...
+\end{verbatim}
+
+%----------------------------
+\newpage\section{\label{sec:blktrace-ug}blktrace User Guide}
+
+The \emph{blktrace} utility extracts event traces from the kernel (via
+the relaying through the debug file system). Some background details
+concerning the run-time behaviour of blktrace will help to understand some
+of the more arcane command line options:
+
+\begin{itemize}
+  \item blktrace receives data from the kernel in buffers passed up
+  through the debug file system (relay). Each device being traced has
+  a file created in the mounted directory for the debugfs, which defaults
+  to \emph{/sys/kernel/debug} -- this can be overridden with the \emph{-r}
+  command line argument.
+  
+  \item blktrace defaults to collecting \emph{all} events that can be
+  traced. To limit the events being captured, you can specify one or
+  more filter masks via the \emph{-a} option.
+
+  Alternatively, one may specify the entire mask utilizing a hexadecimal
+  value that is version-specific. (Requires understanding of the internal
+  representation of the filter mask.)
+
+  \item As noted above, the events are passed up via a series of buffers
+  stored into debugfs files. The size and number of buffers can be
+  specified via the \emph{-b} and \emph{-n} arguments respectively.
+
+  \item blktrace stores the extracted data into files stored in the
+  \emph{local} directory. The format of the file names is (by default)
+  \emph{device}.blktrace.\emph{cpu}, where \emph{device} is the base
+  device name (e.g, if we are tracing /dev/sda, the base device name would
+  be \emph{sda}); and \emph{cpu} identifies a CPU for the event stream.
+
+  The \emph{device} portion of the event file name can be changed via
+  the \emph{-o} option.
+
+  \item blktrace may also be run concurrently with blkparse to produce
+  \emph{live} output -- to do this specify \emph{-o -} for blktrace.
+
+  \item The default behaviour for blktrace is to run forever until explicitly killed by the user (via a control-C, or \emph{kill} utility invocation). There are two ways to modify this: 
+
+  \begin{enumerate}
+    \item You may utilize the blktrace utility itself to \emph{kill}
+    a running trace -- via the \emph{-k} option.
+
+    \item You can specify a run-time duration for blktrace via the
+    \emph{-w} option -- then blktrace will run for the specified number
+    of seconds, and then halt.
+  \end{enumerate}
+\end{itemize}
+
+\subsection{\label{sec:blktrace-args}Command line arguments}
+\begin{tabular}{|l|l|l|}\hline
+Short              & Long                       & Description \\ \hline\hline
+-A \emph{hex-mask} & --set-mask=\emph{hex-mask} & Set filter mask to \emph{hex-mask} \\ \hline
+-a \emph{mask}     & --act-mask=\emph{mask}     & Add \emph{mask} to current filter (see below for masks) \\ \hline
+-b \emph{size}     & --buffer-size=\emph{size}  & Specifies buffer size for event extraction (scaled by $2^{10}$) \\ \hline
+-d \emph{dev}      & --dev=\emph{dev}           & Adds \emph{dev} as a device to trace \\ \hline
+-k                 & --kill                     & Kill on-going trace \\ \hline
+-n \emph{num-sub}  & --num-sub=\emph{num-sub}   & Specifies number of buffers to use \\ \hline
+-o \emph{file}     & --output=\emph{file}       & Prepend \emph{file} to output file name(s) \\ \hline
+-r \emph{rel-path} & --relay=\emph{rel-path}    & Specifies debugfs mount point \\ \hline
+-V                 & --version                  & Outputs version \\ \hline
+-w \emph{seconds}  & --stopwatch=\emph{seconds} & Sets run time to the number of seconds specified \\ \hline
+-I \emph{devs file}& --input-devs=\emph{devs file}& Adds devices found in \emph{devs file} to list of devices to trace. \\
+                   &                              & (One device per line.) \\ \hline
+\end{tabular}
+
+\subsubsection{\label{sec:filter-mask}Filter Masks}
+The following masks may be passed with the \emph{-a} command line
+option, multiple filters may be combined via multiple \emph{-a} command
+line options.\smallskip
+
+\begin{tabular}{|l|l|}\hline
+barrier & \emph{barrier} attribute \\ \hline
+complete & \emph{completed} by driver \\ \hline
+fs & \emph{FS} requests \\ \hline
+issue & \emph{issued} to driver \\ \hline
+pc & \emph{packet command} events \\ \hline
+queue & \emph{queue} operations \\ \hline
+read & \emph{read} traces \\ \hline
+requeue & \emph{requeue} operations \\ \hline
+sync & \emph{synchronous} attribute \\ \hline
+write & \emph{write} traces \\ \hline
+notify & \emph{notify} trace messages \\ \hline
+\end{tabular}
+
+\subsubsection{\label{sec:request-types}Request types}
+blktrace disguingishes between two types of block layer requests,
+file system and scsi commands. The former are dubbed \emph{fs}
+requests, the latter \emph{pc} requests. File system requests are
+normal read/write operations, ie any type of read or write from a
+specific disk location at a given size. These requests typically
+originate from a user process, but they may also be initiated by
+the vm flushing dirty data to disk or the file system syncing
+a super or journal block to disk. \emph{pc} requests are SCSI
+commands. blktrace sends the command data block as a payload
+so that blkparse can decode it.
+
+%----------------------------
+\newpage\section{\label{sec:blkparse-ug}blkparse User Guide}
+
+The \emph{blkparse} utility will attempt to combine streams of events
+for various devices on various CPUs, and produce a formatted output of
+the event information. As with blktrace, some details concerning blkparse
+will help in understanding the command line options presented below.
+
+\begin{itemize}
+  \item By default, blkparse expects to run in a post-processing mode
+  -- one where the trace events have been saved by a previous run
+  of blktrace, and blkparse is combining event streams and dumping
+  formatted data. 
+
+  blkparse \emph{may} be run in a \emph{live} manner concurrently with
+  blktrace by specifying \emph{-i -} to blkparse, and combining it with
+  the live option for blktrace. An example would be:
+
+  \begin{verbatim}
+  % blktrace -d /dev/sda -o - | blkparse -i -
+  \end{verbatim}
+
+  \item You can set how many blkparse batches event reads via the
+  \emph{-b} option, the default is to handle events in batches of 512.
+
+  \item If you have saved event traces in blktrace with different output
+  names (via the \emph{-o} option to blktrace), you must specify the
+  same \emph{input} name via the \emph{-i} option.
+
+  \item The format of the output data can be controlled via the \emph{-f}
+  or \emph{-F} options -- see section~\ref{sec:blkparse-format} for details.
+
+  By default, blkparse sends formatted data to standard output. This may
+  be changed via the \emph{-o} option, or text output can be disabled
+  via the\emph{-O} option. A merged binary stream can be produced using
+  the \emph{-d} option.
+
+\end{itemize}
+
+\newpage\subsection{\label{sec:blkparse-args}Command line arguments}
+\begin{tabular}{|l|l|l|}\hline
+Short              & Long                       & Description \\ \hline\hline
+-b \emph{batch}    & --batch={batch}            & Standard input read batching \\ \hline
+
+-i \emph{file}     & --input=\emph{file}        & Specifies base name for input files -- default is \emph{device}.blktrace.\emph{cpu}. \\
+                   &                            & As noted above, specifying \emph{-i -} runs in \emph{live} mode with blktrace \\
+		   &                            & (reading data from standard in). \\ \hline
+
+-F \emph{typ,fmt}  & --format=\emph{typ,fmt}    & Sets output format \\
+-f \emph{fmt}      & --format-spec=\emph{fmt}   & (See section~\ref{sec:blkparse-format} for details.) \\ 
+                   &                            & \\
+		   &                            & The -f form specifies a format for all events \\
+                   &                            & \\
+		   &                            & The -F form allows one to specify a format for a specific \\
+		   &                            & event type. The single-character \emph{typ} field is one of the \\
+		   &                            & action specifiers in section~\ref{sec:act-table} \\ \hline
+
+
+-m                 & --missing                  & Print missing entries\\ \hline
+
+-h                 & --hash-by-name             & Hash processes by name, not by PID\\ \hline
+
+-o \emph{file}     & --output=\emph{file}       & Output file \\ \hline
+-O                 & --no-text-output           & Do \emph{not} produce text output, used for binary (-d) only \\ \hline
+
+-d \emph{file}     & --dump-binary=\emph{file}  & Binary output file \\ \hline
+
+-q                 & --quiet                    & Quite mode \\ \hline
+
+-s                 & --per-program-stats        & Displays data sorted by program \\ \hline
+
+-t                 & --track-ios                & Display time deltas per IO \\ \hline
+
+-w \emph{span}     & --stopwatch=\emph{span}    & Display traces for the \emph{span} specified -- where span can be: \\ 
+                   &                            & \emph{end-time} -- Display traces from time 0 through \emph{end-time} (in ns) \\
+		   &                            & or \\
+		   &                            & \emph{start:end-time} -- Display traces from time \emph{start} \\
+		   &                            & through {end-time} (in ns). \\ \hline
+
+-M                 & --no-msgs                  & Do not add messages to binary output file \\\hline
+-v                 & --verbose                  & More verbose marginal on marginal errors \\ \hline
+-V                 & --version                  & Display version \\ \hline
+
+\end{tabular}
+
+\newpage
+\subsection{\label{sec:blkparse-actions}Trace actions}
+
+\begin{description}
+  \item[C -- complete] A previously issued request has been completed.
+  The output will detail the sector and size of that request, as well
+  as the success or failure of it.
+
+  \item[D -- issued] A request that previously resided on the block layer
+  queue or in the io scheduler has been sent to the driver.
+
+  \item[I -- inserted] A request is being sent to the io scheduler for
+  addition to the internal queue and later service by the driver. The
+  request is fully formed at this time.
+
+  \item[Q -- queued] This notes intent to queue io at the given location.
+  No real requests exists yet.
+
+  \item[B -- bounced] The data pages attached to this \emph{bio} are
+  not reachable by the hardware and must be bounced to a lower memory
+  location. This causes a big slowdown in io performance, since the data
+  must be copied to/from kernel buffers. Usually this can be fixed with
+  using better hardware - either a better io controller, or a platform
+  with an IOMMU.
+
+  \item[m -- message] Text message generated via kernel call to
+  \texttt{blk\_add\_trace\_msg}.
+
+  \item[M -- back merge] A previously inserted request exists that ends
+  on the boundary of where this io begins, so the io scheduler can merge
+  them together.
+
+  \item[F -- front merge] Same as the back merge, except this io ends
+  where a previously inserted requests starts.
+
+  \item[G -- get request] To send any type of request to a block device,
+  a \emph{struct request} container must be allocated first.
+
+  \item[S -- sleep] No available request structures were available, so
+  the issuer has to wait for one to be freed.
+
+  \item[P -- plug] When io is queued to a previously empty block device
+  queue, Linux will plug the queue in anticipation of future ios being
+  added before this data is needed.
+
+  \item[U -- unplug] Some request data already queued in the device,
+  start sending requests to the driver. This may happen automatically
+  if a timeout period has passed (see next entry) or if a number of
+  requests have been added to the queue.
+
+  \item[T -- unplug due to timer] If nobody requests the io that was queued
+  after plugging the queue, Linux will automatically unplug it after a
+  defined period has passed.
+
+  \item[X -- split] On raid or device mapper setups, an incoming io may
+  straddle a device or internal zone and needs to be chopped up into
+  smaller pieces for service. This may indicate a performance problem due
+  to a bad setup of that raid/dm device, but may also just be part of
+  normal boundary conditions. dm is notably bad at this and will clone
+  lots of io.
+
+  \item[A -- remap] For stacked devices, incoming io is remapped to device
+  below it in the io stack. The remap action details what exactly is
+  being remapped to what.
+
+\end{description}
+
+\subsection{\label{sec:blkparse-format}Output Description and Formatting}
+
+The output from blkparse can be tailored for specific use - in particular,
+to ease parsing of output, and/or limit output fields to those the user
+wants to see. The data for fields which can be output include:
+
+\smallskip
+\begin{tabular}{|l|l|}\hline
+Field    & Description \\
+Specifier & \\ \hline\hline
+\emph{a} & Action, a (small) string (1 or 2 characters) -- see table below for more details \\ \hline
+\emph{c} & CPU id \\ \hline
+\emph{C} & Command \\ \hline
+\emph{d} & RWBS field, a (small) string (1-3 characters)  -- see section below for more details \\ \hline
+\emph{D} & 7-character string containing the major and minor numbers of
+the event's device \\
+         & (separated by a comma). \\ \hline
+\emph{e} & Error value \\ \hline
+\emph{m} & Minor number of event's device. \\ \hline
+\emph{M} & Major number of event's device. \\ \hline
+\emph{n} & Number of blocks \\ \hline
+\emph{N} & Number of bytes \\ \hline
+\emph{p} & Process ID \\ \hline
+\emph{P} & Display packet data -- series of hexadecimal values\\ \hline
+\emph{s} & Sequence numbers \\ \hline
+\emph{S} & Sector number \\ \hline
+\emph{t} & Time stamp (nanoseconds) \\ \hline
+\emph{T} & Time stamp (seconds) \\ \hline
+\emph{u} & Elapsed value in microseconds (\emph{-t} command line option) \\ \hline
+\emph{U} & Payload unsigned integer \\ \hline
+\end{tabular}
+
+Note that the user can optionally specify field display width, and
+optionally a left-aligned specifier. These precede field specifiers,
+with a '\%' character, followed by the optional left-alignment specifer
+(-) followed by the width (a decimal number) and then the field.
+
+Thus, to specify the command in a 12-character field that is left aligned:
+
+\begin{verbatim}
+-f "%-12C"
+\end{verbatim}
+
+\newpage
+\subsubsection{\label{sec:act-table}Action Table}
+The following table shows the various actions which may be output.
+
+\begin{tabular}{|l|l|}\hline
+Act & Description \\ \hline\hline
+A & IO was remapped to a different device \\ \hline
+B & IO bounced \\ \hline
+C & IO completion \\ \hline
+D & IO issued to driver \\ \hline
+F & IO front merged with request on queue \\ \hline
+G & Get request \\ \hline
+I & IO inserted onto request queue \\ \hline
+M & IO back merged with request on queue \\ \hline
+P & Plug request \\ \hline
+Q & IO handled by request queue code \\ \hline
+S & Sleep request \\ \hline
+T & Unplug due to timeout \\ \hline
+U & Unplug request \\ \hline
+X & Split \\ \hline
+\end{tabular}
+
+\subsubsection{\label{sec:act-table}RWBS Description}
+This is a small string containing at least one character ('R' for read,
+'W' for write, or 'D' for block discard operation), and optionally either
+a 'B' (for barrier operations) or 'S' (for synchronous operations).
+
+\subsubsection{\label{sec:default-output}Default output}
+
+The standard \emph{header} (or initial fields displayed) include:
+
+\begin{verbatim}
+"%D %2c %8s %5T.%9t %5p %2a %3d "
+\end{verbatim}
+
+Breaking this down:
+
+\begin{description}
+  \item[\%D] Displays the event's device major/minor as: \%3d,\%-3d.
+  \item[\%2c] CPU ID (2-character field).
+  \item[\%8s] Sequence number
+  \item[\%5T.\%9t] 5-charcter field for the seconds portion of the
+  time stamp and a 9-character field for the nanoseconds in the time stamp.
+  \item[\%5p] 5-character field for the process ID.
+  \item[\%2a] 2-character field for one of the actions.
+  \item[\%3d] 3-character field for the RWBS data.
+\end{description}
+
+Seeing this in action:
+
+\begin{verbatim}
+  8,0    3        1     0.000000000   697  G   W 223490 + 8 [kjournald]
+\end{verbatim}
+
+The header is the data in this line up to the 223490 (starting block). 
+
+The default output for all event types includes this header.
+
+\paragraph{Default output per action}
+
+\begin{description}
+  \item[C -- complete] If a payload is present, this is presented between
+  parenthesis following the header, followed by the error value. 
+
+  If no payload is present, the sector and number of blocks are presented
+  (with an intervening plus (+) character). If the \emph{-t} option
+  was specified, then the elapsed time is presented. In either case,
+  it is followed by the error value for the completion.
+
+  \item[D -- issued]
+  \item[I -- inserted]
+  \item[Q -- queued]
+  \item[B -- bounced] If a payload is present, the number of payload bytes
+  is output, followed by the payload in hexadecimal between parenthesis.
+
+  If no payload is present, the sector and number of blocks are presented
+  (with an intervening plus (+) character). If the \emph{-t} option was
+  specified, then the elapsed time is presented (in parenthesis). In
+  either case, it is followed by the command associated with the event
+  (surrounded by square brackets).
+
+  \item[M -- back merge]
+  \item[F -- front merge]
+  \item[G -- get request]
+  \item[S -- sleep] The starting sector and number of blocks is output
+  (with an intervening plus (+) character), followed by the command
+  associated with the event (surrounded by square brackets).
+
+  \item[P -- plug] The command associated with the event (surrounded by
+  square brackets) is output.
+
+  \item[U -- unplug]
+  \item[T -- unplug due to timer] The command associated with the event
+  (surrounded by square brackets) is output, followed by the number of
+  requests outstanding.
+
+  \item[X -- split] The original starting sector followed by the new
+  sector (separated by a slash (/) is output, followed by the command
+  associated with the event (surrounded by square brackets).
+
+  \item[A -- remap] Sector and length is output, along with the original
+  device and sector offset.
+
+  \item[m -- message] The supplied message is appended to the end of
+  the standard header.
+
+\end{description}
+
+%------------------------------
+\newpage
+\newpage\section*{\label{sec:blktrace-kg}Appendix: blktrace Kernel Guide}
+
+The blktrace facility provides an efficient event transfer mechanism which
+supplies block IO layer state transition data via the relay
+filesystem. This section provides some details as to the interfaces
+blktrace utilizes in the kernel to effect this. It is good background data
+to help understand some of the outputs and command-line options above.
+
+\subsection{blktrace.h Definitions}
+Files which include $<linux/blktrace.h>$ are supplied with the following
+definitions:
+
+\subsubsection{Trace Action Specifiers}
+\begin{tabular}{|l|l|}\hline
+  BLK\_TA\_QUEUE & (RQ) Command queued to request\_queue. \\
+                 & (BIO) Command queued by elevator. \\ \hline
+  BLK\_TA\_BACKMERGE & Back merging elevator operation \\ \hline
+  BLK\_TA\_FRONTMERGE & Front merging elevator operation \\ \hline
+  BLK\_TA\_GETRQ & Free request retrieved. \\ \hline
+  BLK\_TA\_SLEEPRQ & No requests available, device unplugged. \\ \hline
+  BLK\_TA\_REQUEUE & Request requeued. \\ \hline
+  BLK\_TA\_ISSUE & Command set to driver for request\_queue. \\ \hline
+  BLK\_TA\_COMPLETE & Command completed by driver. \\ \hline
+  BLK\_TA\_PLUG & Device is plugged \\ \hline
+  BLK\_TA\_UNPLUG\_IO & Unplug device as IO is made available. \\ \hline
+  BLK\_TA\_UNPLUG\_TIMER & Unplug device after timer expired. \\ \hline
+  BLK\_TA\_INSERT & Insert request into queue. \\ \hline
+  BLK\_TA\_SPLIT & BIO split into 2 or more requests. \\ \hline
+  BLK\_TA\_BOUNCE & BIO was bounced \\ \hline
+  BLK\_TA\_REMAP & BIO was remapped \\ \hline
+\end{tabular}
+
+%..........................................
+\subsection{blktrace.h Routines}
+Files which include $<linux/blktrace.h>$ are supplied with the following
+kernel routine invocable interfaces:
+
+\begin{description}
+  \item[blk\_add\_trace\_rq(struct request\_queue *q, struct request\_queue 
+  								*rq, u32 what)]
+	Adds a trace event describing the state change of the passed in
+	request\_queue. The \emph{what} parameter describes the change in
+	the request\_queue state, and is one of the request queue action 
+	specifiers -- BLK\_TA\_QUEUE, BLK\_TA\_REQUEUE, BLK\_TA\_ISSUE,
+	or BLK\_TA\_COMPLETE.
+
+  \item[blk\_add\_trace\_bio(struct request\_queue *q, struct bio *bio, 
+  								u32 what)]
+	Adds a trace event for the BIO passed in. The \emph{what} parameter
+	describes the action being performed on the BIO, and is one of
+	BLK\_TA\_BACKMERGE, BLK\_TA\_FRONTMERGE, or BLK\_TA\_QUEUE.
+
+  \item[blk\_add\_trace\_generic(struct request\_queue *q, struct bio *bio, 
+							int rw, u32 what)]
+	Adds a \emph{generic} trace event -- not one of the request queue
+	or BIO traces. The \emph{what} parameter describes the action being 
+	performed on the BIO (if bio is non-NULL), and is one of
+	BLK\_TA\_PLUG, BLK\_TA\_GETRQ or BLK\_TA\_SLEEPRQ.
+
+  \item[blk\_add\_trace\_pdu\_int(struct request\_queue *q, u32 what,
+  								u32 pdu)]
+	Adds a trace with some payload data -- in this case, an unsigned
+	32-bit entity (the \emph{pdu} parameter). The \emph{what} parameter
+	describes the nature of the payload, and is one of
+	BLK\_TA\_UNPLUG\_IO or BLK\_TA\_UNPLUG\_TIMER.
+
+  \item[blk\_add\_trace\_remap(struct request\_queue *q, struct bio  *bio,
+						dev\_t dev, sector\_t sector)]
+	Adds a trace with a remap event. \emph{dev} and \emph{sector} denote
+	the original device this \emph{bio} was mapped from.
+
+  \item[blk\_add\_trace\_msg(struct request\_queue *q, char *fmt, ...)]
+	Adds a formatted message to the output stream. The total message
+	size can not exceed BLK\_TN\_MSG\_MSG characters (currently
+	1024). Standard format conversions are supported (as supplied
+	by \texttt{vscnprintf}.
+
+\end{description}
+\end{document}

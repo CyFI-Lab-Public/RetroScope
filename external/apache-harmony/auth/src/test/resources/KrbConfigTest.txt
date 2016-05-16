@@ -1,0 +1,19 @@
+# comment string
+[libdefaults]
+        default_realm = MY.REALM # comment string
+                           
+# TODO: implement me
+#[realms]
+#    MY.REALM = {
+#        # comment string
+#        kdc = MY.COMPUTER  # comment string
+#        admin_server = MY.COMPUTER
+#    }
+
+[logging] # comment string
+        default = SYSLOG:INFO
+        kdc = FILE:/var/kdc.log
+
+# duplicate section
+[libdefaults]
+        dns_lookup_kdc = true

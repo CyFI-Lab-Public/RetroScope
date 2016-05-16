@@ -1,0 +1,532 @@
+%
+% Copyright (C) 2007 Alan D. Brunelle <Alan.Brunelle@hp.com>
+%
+%  This program is free software; you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation; either version 2 of the License, or
+%  (at your option) any later version.
+%
+%  This program is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  You should have received a copy of the GNU General Public License
+%  along with this program; if not, write to the Free Software
+%  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+%
+%  vi :set textwidth=75
+%
+\documentclass{article}
+\usepackage{multirow,graphicx,placeins}
+
+\begin{document}
+%---------------------
+\title{\texttt{btrecord} and \texttt{btreplay} User Guide}
+\author{Alan D. Brunelle (Alan.Brunelle@hp.com)}
+\date{\today}
+\maketitle
+\begin{abstract}
+\input{abstract.tex}
+\end{abstract}
+\thispagestyle{empty}\newpage
+%---------------------
+\tableofcontents\thispagestyle{empty}\newpage
+%---------------------
+\section{Introduction}
+\input{abstract.tex}
+
+\bigskip 
+This document presents the command line overview for
+\texttt{btrecord} and \texttt{btreplay}, and shows some commonly used
+example usages of it in everyday work here at OSLO's Scalability and
+Performance Group.
+
+\subsection*{Build Note}
+
+To build these tools, one needs to
+place the source directory next to a valid
+\texttt{blktrace}\footnote{\texttt{git://git.kernel.dk/blktrace.git}}
+directory, as it includes \texttt{../blktrace} in the \texttt{Makefile}.
+
+
+%---------------------
+\newpage\section{\texttt{btrecord} and \texttt{btreplay} Operating Model}
+
+The \texttt{blktrace} utility provides the ability to collect detailed
+traces from the kernel for each IO processed by the block IO layer. The
+traces provide a complete timeline for each IO processed, including
+detailed information concerning when an IO was first received by the block
+IO layer -- indicating the device, CPU number, time stamp, IO direction,
+sector number and IO size (number of sectors). Using this information,
+one is able to \emph{replay} the IO again on the same machine or another
+set up entirely.
+
+\subsection{Basic Workflow}
+The basic operating work-flow to replay IOs would be something like:
+
+\begin{enumerate}
+  \item Run \texttt{blktrace} to collect traces. Here you specify the
+  device or devices that you wish to trace and later replay IOs upon. Note:
+  the only traces you are interested in are \emph{QUEUE} requests --
+  thus, to save system resources (including storage for traces), one could
+  specify the \texttt{-a queue} command line option to \texttt{blktrace}.
+
+  \item While \texttt{blktrace} is running, you run the workload that you
+  are interested in. 
+
+  \item When the work load has completed, you stop the \texttt{blktrace}
+  utility (thus saving all traces over the complete workload). 
+
+  \item You extract the pertinent IO information from the traces saved by
+  \texttt{blktrace} using the \texttt{btrecord} utility. This will parse
+  each trace file created by \texttt{blktrace}, and craft IO descriptions
+  to be used in the next phase of the workload processing.
+
+  \item Once \texttt{btrecord} has successfully created a series of data
+  files to be processed, you can run the \texttt{btreplay} utility which
+  attempts to generate the same IOs seen during the sample workload phase.
+\end{enumerate}
+
+\subsection{IO Stream Replay Characteristics}
+  The major characteristics of the IO stream that are kept intact include:
+
+  \begin{description}
+    \item[Device] The IOs are replayed on the same device as was seen
+    during the sample workload.
+
+    \item[IO direction] The same IO direction (read/write) is maintained.
+
+    \item[IO offset] The same device offset is maintained.
+
+    \item[IO size] The same number of sectors are transferred.
+
+    \item[Time differential] The time stamps stored during the
+    \texttt{blktrace} run are used to determine the amount of time between
+    IOs during the sample workload. \texttt{btreplay} \emph{attempts} to
+    maintain the same time differential between IOs, but no guarantees as
+    to complete accuracy are provided by the utility.
+
+    \item[Device IO Stream Ordering] All IOs on a device are submitted in
+    the precise order they were seen during the sample workload run. 
+  \end{description}
+
+  As noted above, the time between IOs may not be accurately maintained
+  during replays. In addition the actual ordering of IOs \emph{between}
+  devices is not necessarily maintained. (Each device with an IO stream
+  maintains its own concept of time, and thus there may be slippage of the
+  time kept between managing threads.)
+
+  \begin{quotation}
+    We have prototyped a different approach, wherein a single managing
+    thread handles all IOs across all devices. This approach, while
+    guaranteeing correct ordering of IOs across all devices, resulted in
+    much worse timing on a per IO basis. 
+  \end{quotation}
+
+\subsection{\texttt{btrecord/btreplay} Method of Operation}
+
+As noted above, \texttt{btrecord} extracts \texttt{QUEUE} operations from
+\texttt{blktrace} output. These \texttt{QUEUE} operations indicate the
+entrance of IOs into the block IO layer. In order to replay these IOs with
+some accuracy in regards to ordering and timeliness, we decided to take
+multiple sequential (in time) IOs and put them in a single \emph{bunch} of
+IOs that will be processed as a single \emph{asynchronous IO} call to the
+kernel\footnote{Attempts to do them individually resulted in too large of a
+turnaround time penalty (user-space to kernel and back). Note that in a
+number of workloads, the IOs are coming in from the page cache handling
+code, and thus are submitted to the block IO layer with \emph{very small}
+time intervals between issues.}. To manage the size of the \emph{bunches},
+the \texttt{btrecord} utility provides you with two controlling knobs:
+
+\begin{description}
+  \item[\texttt{--max-bunch-time}] This is the amount of time to encompass
+  in one bunch -- only IOs within the time specified are eligible
+  for \emph{bunching.} The default time is 10 milliseconds (10,000,000
+  nanoseconds). Refer to section~\ref{sec:c-o-m} on page~\pageref{sec:c-o-m}
+  for more information.
+
+  \item[\texttt{--max-pkts}] A \emph{bunch} size can be anywhere from
+  1 to 512 packets in size and by default we max a bunch to contain no
+  more than 8 individual IOs. With this option, one can increase or
+  decrease the maximum \emph{bunch} size.  Refer to section~\ref{sec:c-o-M}
+  on page~\pageref{sec:c-o-M} for more information.
+\end{description}
+
+Each input data file (one per device per CPU) results in a new record
+data file (again, one per device per CPU) which contains information
+about \emph{bunches} of IOs to be replayed. \texttt{btreplay} operates on
+these record data files by spawning a new pair of threads per file. One
+thread manages the submitting of AIOs per bunch in the record data file,
+while the other thread manages reclaiming AIOs completed\footnote{We
+have found that having the same thread do both results in a further
+reduction in replay timing accuracy.}.
+
+Each submitting thread simply reads the input file of \emph{bunches}
+recorded by \texttt{btrecord}, and attempts to faithfully reproduce the
+ordering and timing of IOs seen during the sample workload. The reclaiming
+thread simply waits for AIO completions, freeing up resources for the
+submitting thread to utilize to submit new AIOs.
+
+The number of CPUs being used on the replay system can be different from
+the number on the recorded system. To help with mappings here the
+\texttt{--cpus} option allows one to state how many CPUs on the replay
+system to utilize. If the number of CPUs on the replay system is less than
+on the recording system, we wrap CPU IDs. This \emph{may} result in an
+overload of CPU processing capabilities on the replay system. (Refer to
+section~\ref{sec:p-o-c} on page~\pageref{sec:p-o-c} for more details about the
+\texttt{--cpus} option.)
+
+\newpage\subsection{Known Deficiencies and Proposed Possible Fixes}
+
+The overall known deficiencies with this current set of utilities is
+outlined here, in some cases ideas on additions and/or improvements are
+included as well.
+
+\begin{enumerate}
+  \item Lack of IO ordering across devices. 
+
+  \begin{quote}
+    \emph{We could institute the notion of global time across threads,
+    and thus ensure IO ordering across devices, with some reduction in
+    timing accuracy.}
+  \end{quote}
+
+  \item Lack of IO timing accuracy -- additional time between IO bunches.
+
+  \begin{quote}
+    \emph{This is the primary problem with any IO replay mechanism -- how
+    to guarantee per-IO timing accuracy with respect to other replayed IOs?
+    One idea to reduce errors in this area would be to push the IO replay
+    into the kernel, where you \emph{may} receive more responsive timings.}
+  \end{quote}
+
+  \item Bunching of IOs results in reduced time amongst IOs within a bunch.
+
+  \begin{quote}
+    \emph{The user has \emph{some} control over this (via the
+    \texttt{--max-pkts} option). One \emph{could} simply specify
+    \texttt{-max-pkts=1} and then each IO would be treated individually. Of
+    course, this would probably then run into the problem of excessive
+    inter-IO times.}
+  \end{quote}
+
+  \item 1-to-1 mapping of devices -- for now the devices on the replay
+  machine must be the same as on the recording machine. 
+
+  \begin{quote}
+    \emph{It should be relatively trivial to add in the notion of
+    mapping -- simply include a file that is read which maps devices
+    on one machine to devices (with offsets and sizes) on the replay
+    machine\footnote{The notion of an offset and device size to replay on
+    could be used to both allow for a single device to masquerade as more
+    than one device, and could be utilized in case the replay device is
+    smaller than the recorded device.}.}
+    
+    \medskip\emph{One could also add in the notion of CPU mappings as well --
+    device $D_{rec}$ managed by CPU $C_{rec}$ on the recorded system
+    shall be replayed on device $D_{rep}$ and CPU $C_{rep}$ on the
+    replay machine.}
+
+    \bigskip
+    \begin{quote}
+      With version 0.9.1 we now support the \texttt{-M} option to do this
+      -- see section~\ref{sec:p-o-M} on page~\pageref{sec:p-o-M} for more
+      information on device mapping.
+    \end{quote}
+  \end{quote}
+
+\end{enumerate}
+
+%---------------------
+\newpage\section{\label{sec:command-line}Command Line Options}
+\subsection{\texttt{btrecord} Command Line Options}
+\begin{figure}[h!]
+\begin{verbatim}
+Usage: btrecord -- version 0.9.3
+
+	[ -d <dir>  : --input-directory=<dir> ] Default: .
+	[ -D <dir>  : --output-directory=<dir>] Default: .
+	[ -F        : --find-traces           ] Default: Off
+	[ -h        : --help                  ] Default: Off
+	[ -m <nsec> : --max-bunch-time=<nsec> ] Default: 10 msec
+	[ -M <pkts> : --max-pkts=<pkts>       ] Default: 8
+	[ -o <base> : --output-base=<base>    ] Default: replay
+	[ -v        : --verbose               ] Default: Off
+	[ -V        : --version               ] Default: Off
+	<dev>...                                Default: None
+\end{verbatim}
+\caption{\label{fig:btrecord--help}\texttt{btrecord --help} Output}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{\label{sec:c-o-d}\texttt{-d} or
+\texttt{--input-directory}\\Set Input Directory}
+
+The \texttt{-d} option requires a single parameter providing the directory
+name for where input files are to be found. The default directory is the
+current directory (\texttt{.}).
+
+\subsubsection{\label{sec:c-o-D}\texttt{-D} or
+\texttt{--output-directory}\\Set Output Directory}
+
+The \texttt{-D} option requires a single parameter providing the directory
+name for where output files are to be placed. The default directory is the
+current directory (\texttt{.}).
+
+\subsubsection{\texttt{-F} or \texttt{--find-traces}\\Find Trace Files
+Automatically}
+
+The \texttt{-F} option instructs \texttt{btrecord} to go find all the
+trace files in the directory specified (either via the \texttt{-d}
+option, or in the default directory '.').
+
+\subsubsection{\texttt{-h} or \texttt{--help}\\Display Help Message}
+\subsubsection{\texttt{-V} or \texttt{--version}\\Display
+\texttt{btrecord}Version}
+
+The \texttt{-h} option displays the command line options and
+defaults, as presented in figure~\ref{fig:btrecord--help} on
+page~\pageref{fig:btrecord--help}.
+
+The \texttt{-V} option displays the \texttt{btreplay} version, as shown here:
+
+\begin{verbatim}
+$ btrecord --version
+btrecord -- version 0.9.0
+\end{verbatim}
+
+Both commands exit immediately after processing the option.
+
+\subsubsection{\label{sec:c-o-m}\texttt{-m} or
+\texttt{--max-bunch-time}\\Set Maximum Time Per Bunch}
+
+The \texttt{-m} option requires a single parameter which specifies an
+amount of time (in nanoseconds) to include in any one bunch of IOs that
+are to be processed. The smaller the value, the smaller the number of
+IOs processed at one time -- perhaps yielding in more realistic replay.
+However, after a certain point the amount of overhead per bunch may result
+in additional real replay time, thus yielding less accurate replay times.
+
+The default value is 10,000,000 nanoseconds (10 milliseconds).
+
+\subsubsection{\label{sec:c-o-M}\texttt{-M} or
+\texttt{--max-pkts}\\Set Maximum Packets Per Bunch}
+
+The \texttt{-M} option requires a single parameter which specifies the
+maximum number of IOs to store in a single bunch. As with the \texttt{-m}
+option (section~\ref{sec:c-o-m}), smaller values \emph{may} or \emph{may not}
+yield more accurate replay times.
+
+The default value is 8, with a maximum value of up to 512 being supported.
+
+\subsubsection{\label{sec:c-o-o}\texttt{-o} or
+\texttt{--output-base}\\Set Base Name for Output Files}
+
+Each output file has 3 fields:
+
+\begin{enumerate}
+  \item Device identifier (taken directly from the device name of the
+  \texttt{blktrace} output file).
+
+  \item \texttt{btrecord} base name -- by default ``replay''.
+
+  \item And the CPU number (again, taken directly from the
+  \texttt{blktrace} output file name).
+\end{enumerate}
+
+This option requires a single parameter that will override the default name
+(replay), and replace it with the specified value.
+
+\subsubsection{\label{sec:c-o-v}\texttt{-v} or
+\texttt{--verbose}\\Select Verbose Output}
+
+This option will output some simple statistics at the end of a successful
+run. Figure~\ref{fig:verb-out} (page~\pageref{fig:verb-out}) shows
+an example of some output, while figure~\ref{fig:verb-defs}
+(page~\pageref{fig:verb-defs}) shows what the fields mean.
+
+\begin{figure}[h!]
+\begin{verbatim}
+sdab:0: 580661 pkts (tot), 126030 pkts (replay), 89809 bunches, 1.4 pkts/bunch
+sdab:1: 2559775 pkts (tot), 430172 pkts (replay), 293029 bunches, 1.5 pkts/bunch
+sdab:2: 653559 pkts (tot), 136522 pkts (replay), 102288 bunches, 1.3 pkts/bunch
+sdab:3: 474773 pkts (tot), 117849 pkts (replay), 69572 bunches, 1.7 pkts/bunch
+\end{verbatim}
+\caption{\label{fig:verb-out}Verbose Output Example}
+\end{figure}
+\FloatBarrier
+
+\begin{figure}[h!]
+\begin{description}
+  \item[Field 1] The first field contains the device name and CPU
+  identifier. Thus: \texttt{sdab:0:} means the device \texttt{sdab} and
+  traces on CPU 0. 
+
+  \item[Field 2] The second field contains the total number of packets
+  processed for each device file. 
+
+  \item[Field 3] The next field shows the number of packets eligible for
+  replay. 
+
+  \item[Field 4] The fourth field contains the total number of IO bunches. 
+
+  \item[Field 5] The last field shows the average number of IOs per bunch
+  recorded.
+\end{description}
+\caption{\label{fig:verb-defs}Verbose Field Definitions}
+\end{figure}
+\FloatBarrier
+
+%---------------------
+\newpage\subsection{\texttt{btreplay} Command Line Options}
+\begin{figure}[h!]
+\begin{verbatim}
+Usage: btreplay -- version 0.9.3
+
+	[ -c <cpus> : --cpus=<cpus>           ] Default: 1
+	[ -d <dir>  : --input-directory=<dir> ] Default: .
+	[ -F        : --find-records          ] Default: Off
+	[ -h        : --help                  ] Default: Off
+	[ -i <base> : --input-base=<base>     ] Default: replay
+	[ -I <iters>: --iterations=<iters>    ] Default: 1
+	[ -M <file> : --map-devs=<file>       ] Default: None
+	[ -N        : --no-stalls             ] Default: Off
+	[ -x <int>  : --acc-factor=<int>      ] Default: 1
+	[ -v        : --verbose               ] Default: Off
+	[ -V        : --version               ] Default: Off
+	[ -W        : --write-enable          ] Default: Off
+	<dev...>                                Default: None
+\end{verbatim}
+\caption{\label{fig:btreplay--help}\texttt{btreplay --help} Output}
+\end{figure}
+\FloatBarrier
+
+\subsubsection{\label{sec:p-o-c}\texttt{-c} or
+\texttt{--cpus}\\Set Number of CPUs to Use}
+
+\subsubsection{\label{sec:p-o-d}\texttt{-d} or
+\texttt{--input-directory}\\Set Input Directory}
+
+The \texttt{-d} option requires a single parameter providing the directory
+name for where input files are to be found. The default directory is the
+current directory (\texttt{.}).
+
+\subsubsection{\texttt{-F} or \texttt{--find-records}\\Find RecordFiles
+Automatically}
+
+The \texttt{-F} option instructs \texttt{btreplay} to go find all the
+record files in the directory specified (either via the \texttt{-d}
+option, or in the default directory '.').
+
+\subsubsection{\texttt{-h} or \texttt{--help}\\Display Help Message}
+\subsubsection{\texttt{-V} or \texttt{--version}\\Display
+\texttt{btreplay}Version}
+
+The \texttt{-h} option displays the command line options and
+defaults, as presented in figure~\ref{fig:btreplay--help} on
+page~\pageref{fig:btreplay--help}.
+
+The \texttt{-V} option displays the \texttt{btreplay} version, as show here:
+
+\begin{verbatim}
+$ btreplay --version
+btreplay -- version 0.9.0
+\end{verbatim}
+
+Both commands exit immediately after processing the option.
+
+\subsubsection{\label{sec:p-o-i}\texttt{-i} or
+\texttt{--input-base}\\Set Base Name for Input Files}
+
+Each input file has 3 fields:
+
+\begin{enumerate}
+  \item Device identifier (taken directly from the device name of the
+  \texttt{blktrace} output file).
+
+  \item \texttt{btrecord} base name -- by default ``replay''.
+
+  \item And the CPU number (again, taken directly from the
+  \texttt{blktrace} output file name).
+\end{enumerate}
+
+This option requires a single parameter that will override the default name
+(replay), and replace it with the specified value.
+
+\subsubsection{\label{sec:p-o-I}\texttt{-I} or
+\texttt{--iterations}\\Set Number of Iterations to Run}
+
+This option requires a single parameter which specifies the number of times
+to run through the input files. The default value is 1.
+
+\subsubsection{\label{sec:p-o-M}\texttt{-M} or \texttt{map-devs}\\
+Specify Device Mappings}
+
+This option requires a single parameter which specifies the name of a
+file containing device mappings. The file must be very simply managed, with
+just two pieces of data per line:
+
+\begin{enumerate}
+  \item The device name on the recorded system (with the \texttt{'/dev/'}
+  removed). Example: \texttt{/dev/sda} would just be \texttt{sda}.
+
+  \item The device name on the replay system to use (again, without the
+  \texttt{'/dev/'} path prepended).
+\end{enumerate}
+
+An example file for when one would map devices \texttt{/dev/sda} and
+\texttt{/dev/sdb} on the recorded system to \texttt{dev/sdg} and
+\texttt{sdh} on the replay system would be:
+
+\begin{verbatim}
+sda sdg
+sdb sdh
+\end{verbatim}
+
+The only entries in the file that are allowed are these two element lines
+-- we do not (yet?) support the notion of blank lines, or comment lines, or
+the like.
+
+The utility \emph{does} allow for multiple \texttt{-M} options to be
+supplied on the command line.
+
+\subsubsection{\label{sec:o-N}\texttt{-N} or \texttt{--no-stalls}\\Disable
+Pre-bunch Stalls}
+
+When specified on the command line, all pre-bunch stall indicators will be
+ignored. IOs will be replayed without inter-bunch delays.
+
+\subsubsection{\label{sec:o-x}\texttt{-x} or \texttt{--acc-factor}\\Acceleration
+Factor}
+
+  While the \texttt{--no-stalls} option allows the traces to be replayed
+  with no waiting time, this option specifies some acceleration factor
+  to be used. If the value of two is used, then the stall time is
+  divided by half resulting in a reduction of the execution time by
+  this factor. Note that if this number is too high, the results will
+  be equivalent of not having stall.
+
+\subsubsection{\label{sec:p-o-v}\texttt{-v} or
+\texttt{--verbose}\\Select Verbose Output}
+
+When specified on the command line, this option instructs \texttt{btreplay}
+to store information concerning each \emph{stall} and IO operation
+performed by \texttt{btreplay}. The name of each file so created will be
+the input file name used with an extension of \texttt{.rep} appended onto
+it. Thus, an input file of the name \texttt{sdab.replay.3} would generate a
+verbose output file with the name \texttt{sdab.replay.3.rep} in the
+directory specified for input files.
+
+In addition, \texttt{btreplay} will also output to \texttt{stderr} the
+names of the input files being processed.
+
+\subsubsection{\label{sec:p-o-W}\texttt{-W} or
+\texttt{--write-enable}\\Enable Writing During Replay}
+
+As a precautionary measure, by default \texttt{btreplay} will \emph{not}
+process \emph{write} requests. In order to enable \texttt{btreplay} to
+actually \emph{write} to devices one must explicitly specify the
+\texttt{-W} option.
+
+\end{document}

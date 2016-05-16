@@ -1,0 +1,39 @@
+--- src/mockito/java/com/google/dexmaker/mockito/UnsafeAllocator.java
++++ src/mockito/java/com/google/dexmaker/mockito/UnsafeAllocator.java
+@@ -92,6 +92,29 @@ abstract class UnsafeAllocator {
+         } catch (Exception ignored) {
+         }
+ 
++        // try dalvikvm, with change https://android-review.googlesource.com/#/c/52331/
++        // public class ObjectStreamClass {
++        //   private static native long getConstructorId(Class<?> c);
++        //   private static native Object newInstance(Class<?> instantiationClass, long methodId);
++        // }
++        try {
++            Method getConstructorId = ObjectStreamClass.class
++                    .getDeclaredMethod("getConstructorId", Class.class);
++            getConstructorId.setAccessible(true);
++            final long constructorId = (Long) getConstructorId.invoke(null, Object.class);
++            final Method newInstance = ObjectStreamClass.class
++                    .getDeclaredMethod("newInstance", Class.class, long.class);
++            newInstance.setAccessible(true);
++            return new UnsafeAllocator() {
++                @Override
++                @SuppressWarnings("unchecked")
++                public <T> T newInstance(Class<T> c) throws Exception {
++                    return (T) newInstance.invoke(null, c, constructorId);
++                }
++            };
++        } catch (Exception ignored) {
++        }
++
+         // give up
+         return new UnsafeAllocator() {
+             @Override
+@@ -100,4 +123,4 @@ abstract class UnsafeAllocator {
+             }
+         };
+     }
+-}
+\ No newline at end of file
++}

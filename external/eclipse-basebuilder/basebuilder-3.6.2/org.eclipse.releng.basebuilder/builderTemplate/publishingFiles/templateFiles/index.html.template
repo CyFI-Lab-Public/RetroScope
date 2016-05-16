@@ -1,0 +1,130 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link rel="stylesheet" href="http://dev.eclipse.org/default_style.css" type="text/css">
+<title>Download</title>
+</head>
+
+<body>
+&nbsp; <table BORDER=0 CELLSPACING=5 CELLPADDING=2 WIDTH="100%" ><tr><td ALIGN=LEFT width="80%"> 
+<p><b><font face="Verdana" size="+3">@type@ Build: @build@</font></b><br>
+@date@ 
+</p>
+<p>These downloads are provided under the <a href="http://www.eclipse.org/legal/notice.html">Eclipse.org 
+Software User Agreement</a>.</p>
+<p>To view the build notes for this build click <a href="buildNotes.php">here</a>.
+<br> To view the test results and compile logs for this build click <a href="testResults.php">here</a>.<BR>
+To view the map file entries for this build click click <A href="directory.txt">here</A>.<BR></td></tr> 
+</table>
+
+<!-- ***********  Requirements **************  -->
+<table border=0 cellspacing=5 cellpadding=2 width="100%" ><tr><td align=LEFT valign=TOP colspan="3" bgcolor="#0080C0"> <b><font face="Arial,Helvetica" color="#FFFFFF">Requirements</font></b></td></tr></table>
+<P>These are the prerequisites to install &lt;your project&gt;. They must 
+be downloaded and installed before the &lt;your component&gt; can be installed.</P><br>
+
+
+<!-- ***********  empty section for use as template for new download section **************  
+
+<table border=0 cellspacing=5 cellpadding=2 width="100%" ><tr><td align=LEFT valign=TOP colspan="3" bgcolor="#999999">
+<b><font face="Arial,Helvetica" color="#FFFFFF">
+NAME OF DOWNLOAD TYPE 
+</font></b></td></tr>
+
+<TR><TD align="LEFT" valign="TOP" colspan="3">
+DESCRIPTION OF DOWNLOAD
+</TD></TR></table>
+
+<table BORDER=0 CELLSPACING=2 CELLPADDING=0 WIDTH="100%" bordercolor="#999999" > 
+<tr><td align=RIGHT valign=TOP width="7%">
+<div align="left"><b>Status</b></div></td>
+<td width="34%"><b>Platform</b></td>
+<td width="59%"><b>Download</b></td></tr>
+TEXTREPLACEMENTSTRING
+</table>
+<table border=0 cellspacing=5 cellpadding=2 width="100%" ><tr><td colspan="2">&nbsp;</td></tr></table>
+
+*******************   end template    *****************************  -->
+
+<!-- ***********  Runtime downloads **************  -->
+<table border=0 cellspacing=5 cellpadding=2 width="100%" ><tr><td align=LEFT valign=TOP colspan="3" bgcolor="#0080C0">
+<b><font face="Arial,Helvetica" color="#FFFFFF">
+&lt;your project&gt; Runtime
+</font></b></td></tr>
+
+<TR><TD align="LEFT" valign="TOP" colspan="3">
+&lt;description&gt;
+</TD></TR></table>
+
+<table border=0 cellspacing=2 cellpadding=0 width="100%" bordercolor="#999999" >
+<tr><td align=RIGHT valign=TOP width="7%">
+<div align="left"><b>Status</b></div></td>
+<td width="34%"><b>Platform</b></td>
+<td width="59%"><b>Download</b></td></tr>
+%runtime% 
+</table>
+<table border=0 cellspacing=5 cellpadding=2 width="100%" ><tr><td colspan="2">&nbsp;</td></tr></table>
+
+
+<!-- ***********  SDK downloads **************  -->
+<table border=0 cellspacing=5 cellpadding=2 width="100%" ><tr><td align=LEFT valign=TOP colspan="3" bgcolor="#999999">
+<b><font face="Arial,Helvetica" color="#FFFFFF">
+SDK
+</font></b></td></tr>
+
+<TR><TD align="LEFT" valign="TOP" colspan="3">
+&lt;description&gt;
+</TD></TR></table>
+
+<table BORDER=0 CELLSPACING=2 CELLPADDING=0 WIDTH="100%" bordercolor="#999999" > 
+<tr><td align=RIGHT valign=TOP width="7%">
+<div align="left"><b>Status</b></div></td>
+<td width="34%"><b>Platform</b></td>
+<td width="59%"><b>Download</b></td></tr>
+<tr><td>%sdk%</td></tr>
+</table>
+<table border=0 cellspacing=5 cellpadding=2 width="100%" ><tr><td colspan="2">&nbsp;</td></tr></table>
+
+
+<!-- **************  Examples downloads  ***************  --> 
+<table border=0 cellspacing=5 cellpadding=2 width="100%" ><tr><td align=LEFT valign=TOP colspan="3" bgcolor="#999999">
+<b><font face="Arial,Helvetica" color="#FFFFFF">
+Examples
+</font></b></td></tr>
+
+<TR><TD align="LEFT" valign="TOP" colspan="3">
+&lt;description&gt;
+</TD></TR></table>
+
+<table border=0 cellspacing=2 cellpadding=0 width="100%" bordercolor="#999999" > 
+<tr><td align=RIGHT valign=TOP width="7%">
+<div align="left"><b>Status</b></div></td>
+<td width="34%"><b>Platform</b></td>
+<td width="59%"><b>Download</b></td></tr>
+%examples% 
+</table>
+<table border=0 cellspacing=5 cellpadding=2 width="100%" ><tr><td colspan="2">&nbsp;</td></tr></table>
+
+
+<!-- **************  JUnit tests download  ***************  --> 
+<table border=0 cellspacing=5 cellpadding=2 width="100%" ><tr><td align=LEFT valign=TOP colspan="3" bgcolor="#999999">
+<b><font face="Arial,Helvetica" color="#FFFFFF">
+JUnit Plugin Tests and Automated Testing Framework
+</font></b></td></tr>
+
+<TR><TD align="LEFT" valign="TOP" colspan="3">
+&lt;description&gt;
+</TD></TR></table>
+
+<table border=0 cellspacing=2 cellpadding=0 width="100%" bordercolor="#999999" > 
+<tr><td align=RIGHT valign=TOP width="7%">
+<div align="left"><b>Status</b></div></td>
+<td width="34%"><b>Platform</b></td>
+<td width="59%"><b>Download</b></td></tr>
+%tests% 
+</table>
+
+
+<table border=0 cellspacing=5 cellpadding=2 width="100%" ><tr><td colspan="2">&nbsp;</td></tr></table>
+</body>
+</html>

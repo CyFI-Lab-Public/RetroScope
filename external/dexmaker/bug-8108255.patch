@@ -1,0 +1,16 @@
+diff -ur src/mockito/java/com/google/dexmaker/mockito/DexmakerMockMaker.java patched_src/mockito/java/com/google/dexmaker/mockito/DexmakerMockMaker.java
+--- src/mockito/java/com/google/dexmaker/mockito/DexmakerMockMaker.java	2013-01-07 11:27:13.000000000 -0800
++++ patched_src/mockito/java/com/google/dexmaker/mockito/DexmakerMockMaker.java	2013-02-15 11:27:44.000000000 -0800
+@@ -45,9 +45,10 @@
+             Class[] classesToMock = new Class[extraInterfaces.length + 1];
+             classesToMock[0] = typeToMock;
+             System.arraycopy(extraInterfaces, 0, classesToMock, 1, extraInterfaces.length);
++            ClassLoader contextClassLoader = Thread.currentThread().getContextClassLoader();
+             @SuppressWarnings("unchecked") // newProxyInstance returns the type of typeToMock
+-            T mock = (T) Proxy.newProxyInstance(typeToMock.getClassLoader(),
+-                    classesToMock, invocationHandler);
++            T mock = (T) Proxy.newProxyInstance(contextClassLoader, classesToMock,
++                    invocationHandler);
+             return mock;
+ 
+         } else {

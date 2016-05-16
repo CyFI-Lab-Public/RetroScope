@@ -1,0 +1,106 @@
+<project name="doclava" default="jar">
+	<property name="jar.dir" value="build/dist/doclava"/>
+	<property name="jar.file" value="${jar.dir}/doclava.jar"/>
+
+	<property environment="env"/>
+	<property name="javahome" value="${env.JAVA_HOME}" />
+	<property name="jsilver" value="lib/jsilver.jar"/>
+	<property name="junit" value="lib/junit-4.8.2.jar"/>
+	
+	<path id="classpath.test">
+		<pathelement location="${junit}" />
+    <pathelement location="${jar.file}" />
+		<pathelement location="build/test" />
+	</path>
+	
+	<target name="compile" description="Compile Java source.">
+		<mkdir dir="build/classes"/>
+
+		<javac srcdir="src"
+         debug="on"
+         destdir="build/classes"
+         source="1.5"
+         target="1.5"
+         extdirs="">
+			<compilerarg value="-Xlint:all"/>
+			<classpath>
+				<pathelement location="${jsilver}"/>
+			</classpath>
+		</javac>
+	</target>
+
+	<target name="jar" depends="compile" description="Build jar.">
+		<mkdir dir="${jar.dir}"/>
+
+		<copy todir="build/classes/assets">
+			<fileset dir="res/assets"/>
+		</copy>
+
+		<jar jarfile="${jar.file}" manifest="src/MANIFEST.mf">
+			<fileset dir="build/classes"/>
+			<zipfileset src="${jsilver}" />
+		</jar>
+	</target>
+
+	<target name="clean"
+      description="Remove generated files.">
+		<delete dir="build"/>
+	</target>
+
+	<target name="clean-jar" 
+		description="cleans and builds a .jar"
+		depends="clean,jar">
+	</target>
+
+	<target name="compile-test">
+	  <mkdir dir="build/test" />
+		
+		<exec executable="/bin/sh">
+		  <arg value="-c"/>
+		  <arg value="find test/doclava/sample -name '*.java' &gt; build/test/src-list"/>
+		</exec>
+		
+	  <javac srcdir="test" destdir="build/test">
+	  	<classpath refid="classpath.test" />
+	  </javac>
+	</target>
+	
+	<target name="test" depends="jar,compile-test">
+	    <junit>
+	    	<classpath refid="classpath.test" />
+	      <formatter type="brief" usefile="false" />
+
+        <batchtest>
+          <fileset dir="build/test">
+          	<include name="**/*Test.class"/>
+         </fileset>
+        </batchtest>
+	    </junit>
+	 </target>
+
+	<target name="doclava" description="Generate documentation">
+		<taskdef name="doclava" classname="com.google.doclava.DoclavaTask" classpath="${jar.file}"/>
+		
+		 <mkdir dir="build"/>
+		 <exec executable="/bin/sh">
+		   <arg value="-c"/>
+		   <arg value="find ./src -name '*.java' &gt; build/src-list"/>
+		 </exec>
+			
+			
+		<doclava>
+			<arguments>
+	        	-quiet
+	        	-bootclasspath "${javahome}/jre/lib/rt.jar"
+	        	-doclet com.google.doclava.Doclava
+	        	-docletpath ${jar.file}
+	        	-classpath ${jar.file}
+	        	-d build/api
+	 	       	-hdf project.name "Junction"
+	        	-stubs build/stubs
+	        	-apixml build/public_api.xml
+	        	@build/src-list
+	      	</arguments>
+		</doclava>
+	</target>
+</project>

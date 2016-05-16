@@ -1,0 +1,16 @@
+<project name="Customized testing instructions" default="customSetup">
+
+<!--All properties here are set in test.properties, with the exception of ${tester}-->
+	<target name="customSetup">		
+		<!--copy the script which sets up environment and invokes the tests on test machine-->
+		<exec dir="." executable="${copyClient}">
+			<arg line="${tester}/testAll.bat ${testMachine}:${executionDir}" />
+		</exec>
+			
+		<!--copy in the properties file for testing with alternate vm args-->	
+		<exec dir="." executable="${copyClient}">
+			<arg line="${tester}/vm.properties ${testMachine}:${executionDir}" />
+		</exec>
+	</target>
+
+</project>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin
+   id="org.eclipse.build.tools"
+   name="org.eclipse.build.tools"
+   version="1.0.0">
+
+   <runtime>
+   </runtime>
+
+   <extension
+         point="org.eclipse.ant.core.extraClasspathEntries">
+      <extraClasspathEntry
+            library="buildTools.jar">
+      </extraClasspathEntry>
+      <extraClasspathEntry
+            library="feedTools.jar">
+      </extraClasspathEntry>
+   </extension>
+	<!-- Tasks -->
+   <extension point="org.eclipse.ant.core.antTasks">
+       <antTask
+            library="buildTools.jar"
+            name="sysProp"
+            class="org.eclipse.releng.SystemProperty">
+      </antTask>
+      <antTask
+            library="buildTools.jar"
+            name="generateBaseFetchScript"
+            class="org.eclipse.releng.generators.FetchBaseTask">
+      </antTask>
+       <antTask
+            library="buildTools.jar"
+            name="generateTestProperties"
+            class="org.eclipse.releng.generators.TestVersionTracker">
+      </antTask>
+      <antTask
+            library="buildTools.jar"
+            name="verifyCompile"
+            class="org.eclipse.releng.CompileErrorCheck">
+       </antTask>
+       <antTask
+            library="buildTools.jar"
+            name="findMachine"
+            class="org.eclipse.releng.FindMachineTask">
+      </antTask>
+      <antTask
+            library="buildTools.jar"
+            name="modifiedMaps"
+            class="org.eclipse.releng.CvsDiffParser">
+      </antTask>
+      <antTask
+            library="buildTools.jar"
+            name="unpackUpdateJars"
+            class="org.eclipse.releng.UnpackUpdateJars">
+      </antTask>
+      <antTask
+            library="buildTools.jar"
+            name="generateExcludeList"
+            class="org.eclipse.releng.GenerateExcludeListTask">
+      </antTask>
+      
+      
+    <!--   <antTask
+            library="feedTools.jar"
+            name="CreateFeed"
+            class="org.eclipse.releng.generators.rss.RSSFeedCreateFeedTask">
+      </antTask> 
+      <antTask
+            library="feedTools.jar"
+            name="AddEntry"
+            class="org.eclipse.releng.generators.rss.RSSFeedAddEntryTask">
+      </antTask> 
+       <antTask
+            library="feedTools.jar"
+            name="GetProperty"
+            class="org.eclipse.releng.generators.rss.RSSFeedGetPropertyTask">
+      </antTask>
+       <antTask
+            library="feedTools.jar"
+            name="UpdateEntry"
+            class="org.eclipse.releng.generators.rss.RSSFeedUpdateEntryTask">
+      </antTask>
+       <antTask
+            library="feedTools.jar"
+            name="PublishFeed"
+            class="org.eclipse.releng.services.rss.RSSFeedPublisherTask">
+      </antTask>
+       <antTask
+            library="feedTools.jar"
+            name="WatchFeed"
+            class="org.eclipse.releng.services.rss.RSSFeedWatcherTask">
+      </antTask> -->
+    </extension>
+</plugin>

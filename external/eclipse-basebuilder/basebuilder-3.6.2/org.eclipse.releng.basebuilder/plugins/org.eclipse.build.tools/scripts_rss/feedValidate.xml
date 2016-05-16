@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<project name="Validate a Feed" default="validateFeed" basedir="../">
+	<!-- TODO: set correct path to EMF plugins -->
+ 	<property name="EMF_HOME" value="../../eclipse-plugins-emf22/eclipse/plugins"/>
+	<echo message="Using EMF_HOME = ${EMF_HOME}"/>
+
+	<taskdef name="validateFeed" 
+	  classname="org.eclipse.releng.util.rss.emf.RSSFeedValidatorDynamicTask">
+		<classpath>
+			<pathelement path="feedValidator.jar"/>
+		     <fileset dir="${EMF_HOME}">
+		        <include name="**/org.eclipse.emf.ecore_*.jar"/>
+		        <include name="**/org.eclipse.emf.common_*.jar"/>
+	    		<include name="**/org.eclipse.emf.ecore.xmi_*.jar"/>
+		    	<include name="**/org.eclipse.xsd_*.jar"/>
+		      </fileset>
+		</classpath>
+	</taskdef>
+
+	<!-- debug: 0|1|2 -->
+	<target name="validateFeed" description="verify if the feed is valid with respect to the schema">
+		<validateFeed
+			debug="2" 
+			XSDFile="../schema/atom10_build.xsd" 
+			XMLFile="../data/builds-emf.xml" >
+		</validateFeed>
+	</target>
+</project>

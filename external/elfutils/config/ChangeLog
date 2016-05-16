@@ -1,0 +1,86 @@
+2008-12-24  Roland McGrath  <roland@redhat.com>
+
+	* Makefile.am ($(srcdir)/elfutils.spec.in): Rewrite awk magic.
+	Put the target inside [if MAINTAINER_MODE].
+
+2008-12-16  Roland McGrath  <roland@redhat.com>
+
+	* version.h.in: New file.
+
+2008-01-12  Ulrich Drepper  <drepper@redhat.com>
+
+	* elfutils.spec.in: Add m4 to build requirements.
+
+2008-01-02  Ulrich Drepper  <drepper@redhat.com>
+
+	* elfutils.spec.in: Changes for disasm branch merge.
+
+2007-08-08  Roland McGrath  <roland@redhat.com>
+
+	* elfutils.spec.in (License): Canonicalize.
+
+2007-04-23  Roland McGrath  <roland@redhat.com>
+
+	* elfutils.spec.in: Distribute eu-unstrip.
+
+2005-08-13  Roland McGrath  <roland@redhat.com>
+
+	* Makefile.am ($(srcdir)/elfutils.spec.in): Add missing $.
+
+2005-07-28  Roland McGrath  <roland@redhat.com>
+
+	* elfutils.spec.in: Remove libdwfl.so from package.
+
+2005-07-21  Ulrich Drepper  <drepper@redhat.com>
+
+	* elfutils.spec.in: Distribute eu-elfcmp.
+
+2005-04-01  Ulrich Drepper  <drepper@redhat.com>
+
+	* elfutils.spec.in: Distribute eu-addr2line.
+
+2005-03-17  Ulrich Drepper  <drepper@redhat.com>
+
+	* elfutils.spec.in: Distribute libdw.{a,so,h}.
+
+2005-02-22  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am: Ignore result of cvs run.
+
+	* elfutils.spec.in: Simplify build process by not using a subdir.
+	This means we can use %configure.
+
+2005-02-18  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am: Automatically added changelog from NEWS file on dist.
+
+2005-02-15  Ulrich Drepper  <drepper@redhat.com>
+
+	* elfutils.spec.in: Make sure RPM_OPT_FLAGS is used.  During
+	%build, really do build the binaries.
+	Remove --enable-shared configure parameters.
+
+2005-02-07  Ulrich Drepper  <drepper@redhat.com>
+
+	* elfutils.spec.in (BuildRequires): Up gcc requirement to 3.4.
+
+2004-11-23  Ulrich Drepper  <drepper@redhat.com>
+
+	* elfutils.spec.in: Some more changes for the RPM with the fake
+	binaries.
+
+2004-01-29  Ulrich Drepper  <drepper@redhat.com>
+
+	* elfutils.spec.in: Update BuildRequires.
+
+2004-01-17  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am: New file.
+	* config.guess: Moved to here from toplevel.
+	* config.rpath: Likewise.
+	* config.sub: Likewise.
+	* depcomp: Likewise.
+	* install-sh: Likewise.
+	* missing: Likewise.
+	* mkinstalldirs: Likewise.
+	* elfutils.spec.in: New file.

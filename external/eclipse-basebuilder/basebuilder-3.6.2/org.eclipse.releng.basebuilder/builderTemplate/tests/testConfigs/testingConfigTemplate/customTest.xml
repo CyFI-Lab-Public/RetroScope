@@ -1,0 +1,15 @@
+<project name="Customized testing instructions" default="noDefault">
+
+	<target name="customSetup">
+		<!--copy the script which invokes the tests -->
+		<copy file="${tester}/runtests.bat" todir="${executionDir}" />
+
+		<!--copy the runtimes to install for testing, excluding the JUnit plug-in tests-->
+		<copy file="${buildDirectory}/${buildLabel}/VE-runtime-${buildId}.zip" todir="${executionDir}" />
+		<copy file="${buildDirectory}/../emf.zip" todir="${executionDir}" />
+		<copy file="${buildDirectory}/../gef.zip" todir="${executionDir}" />
+		<copy file="${buildDirectory}/../eclipse-SDK.zip" todir="${executionDir}" />
+	</target>
+
+	<target name="noDefault"/>
+</project>

@@ -1,0 +1,567 @@
+.TH BLKPARSE 1 "March  6, 2007" "blktrace git\-20070306202522" ""
+
+
+.SH NAME
+blkparse \- produce formatted output of event streams of block devices
+
+
+.SH SYNOPSIS
+.B blkparse [ \fIoptions\fR ] 
+.br
+
+
+.SH DESCRIPTION
+The \fIblkparse\fR utility will attempt to combine streams of events for
+various devices on various CPUs, and produce a formatted output of the event
+information.  Specifically, it will take the (machine-readable) output of the
+\fIblktrace\fR utility and convert it to a nicely formatted and human-readable
+form.
+
+As with \fIblktrace\fR, some details concerning \fIblkparse\fR
+will help in understanding the command line options presented below.
+
+
+.TP 2
+\-
+By default, \fIblkparse\fR expects to run in a post-processing mode; one where
+the trace events have been saved by a previous run of blktrace, and blkparse
+is combining event streams and dumping formatted data.
+
+blkparse may be run in a live manner concurrently with blktrace by specifying
+\fB\-i \-\fR to blkparse, and combining it with the live option for blktrace.
+An example would be:
+
+   % blktrace \-d /dev/sda \-o \- | blkparse \-i \-
+
+.TP 2
+\-
+You can set how many blkparse batches event reads via the \fB\-b\fR option, the
+default is to handle events in batches of 512.
+
+.TP 2
+\-
+If you have saved event traces in blktrace with different output names (via
+the \fB\-o\fR option to blktrace), you must specify the same input name via the
+\fB\-i\fR option.
+
+.TP 2
+\-
+The format of the output data can be controlled via the \fB\-f\fR or \fB\-F\fR
+options \-\- see OUTPUT DESCRIPTION AND FORMATTING for details.
+
+.PP
+By default, blkparse sends formatted data to standard output. This may
+be changed via the \fB\-o\fR option, or text output can be disabled via the
+\fB\-O\fR option. A merged binary stream can be produced using the \fB\-d\fR
+option.
+
+
+
+.SH OPTIONS
+
+\-b \fIbatch\fR
+.br
+\-\-batch={batch}
+.RS
+Standard input read batching
+.RE
+
+\-i \fIfile\fR
+.br
+\-\-input=\fIfile\fR
+.RS
+Specifies base name for input files \-\- default is \fIdevice\fR.blktrace.\fIcpu\fR.
+
+As noted above, specifying \fB\-i \-\fR runs in live mode with blktrace
+(reading data from standard in).
+.RE
+
+\-F \fItyp,fmt\fR
+.br
+\-\-format=\fItyp,fmt\fR
+.br
+\-f \fIfmt\fR
+.br
+\-\-format\-spec=\fIfmt\fR
+.RS
+Sets output format
+(See OUTPUT DESCRIPTION AND FORMATTING for details.)
+
+The \-f form specifies a format for all events
+
+The \-F form allows one to specify a format for a specific
+event type. The single\-character \fItyp\fR field is one of the
+action specifiers described in ACTION IDENTIFIERS.
+.RE
+
+\-M
+.br
+\-\-no-msgs
+.RS
+When \-d is specified, this will stop messages from being output to the
+file. (Can seriously reduce the size of the resultant file when using
+the CFQ I/O scheduler.)
+.RE
+
+\-h
+.br
+\-\-hash\-by\-name
+.RS
+Hash processes by name, not by PID
+.RE
+
+\-o \fIfile\fR
+.br
+\-\-output=\fIfile\fR
+.RS
+Output file
+.RE
+
+\-O
+.br
+\-\-no\-text\-output
+.RS
+Do \fInot\fR produce text output, used for binary (\fB\-d\fR) only
+.RE
+
+\-d \fIfile\fR
+.br
+\-\-dump\-binary=\fIfile\fR
+.RS
+Binary output file
+.RE
+
+\-q
+.br
+\-\-quiet
+.RS
+Quiet mode
+.RE
+
+\-s
+.br
+\-\-per\-program\-stats
+.RS
+Displays data sorted by program
+.RE
+
+\-t
+.br
+\-\-track\-ios
+.RS
+Display time deltas per IO
+.RE
+
+\-w \fIspan\fR
+.br
+\-\-stopwatch=\fIspan\fR
+.RS
+Display traces for the \fIspan\fR specified \-\- where span can be:
+.br
+\fIend\-time\fR \-\- Display traces from time 0 through \fIend\-time\fR (in ns)
+.br
+or
+.br
+\fIstart:end\-time\fR \-\- Display traces from time \fIstart\fR
+through end\-time (in ns).
+.RE
+
+\-v
+.br
+\-\-verbose
+.RS
+More verbose marginal on marginal errors
+.RE
+
+\-V
+.br
+\-\-version
+.RS
+Display version
+.RE
+
+
+.SH "TRACE ACTIONS"
+The following trace actions are recognised:
+
+.HP 4
+\fBC -- complete\fR
+A previously issued request has been completed.  The output will detail the
+sector and size of that request, as well as the success or failure of it.
+
+.HP 4
+\fBD -- issued\fR
+A request that previously resided on the block layer queue or in the i/o
+scheduler has been sent to the driver.
+
+.HP 4
+\fBI -- inserted\fR
+A request is being sent to the i/o scheduler for addition to the internal queue
+and later service by the driver. The request is fully formed at this time.
+
+.HP 4
+\fBQ -- queued\fR
+This notes intent to queue i/o at the given location.  No real requests exists
+yet.
+
+.HP 4
+\fBB -- bounced\fR
+The data pages attached to this \fIbio\fR are not reachable by the hardware
+and must be bounced to a lower memory location. This causes a big slowdown in
+i/o performance, since the data must be copied to/from kernel buffers. Usually
+this can be fixed with using better hardware -- either a better i/o controller,
+or a platform with an IOMMU.
+
+.HP 4
+\fBM -- back merge\fR
+A previously inserted request exists that ends on the boundary of where this i/o
+begins, so the i/o scheduler can merge them together.
+
+.HP 4
+\fBF -- front merge\fR
+Same as the back merge, except this i/o ends where a previously inserted
+requests starts.
+
+.HP 4
+\fBM --front or back merge\fR
+One of the above
+
+.HP 4
+\fBM -- front or back merge\fR
+One of the above.
+
+.HP 4
+\fBG -- get request\fR
+To send any type of request to a block device, a \fIstruct request\fR
+container must be allocated first.
+
+.HP 4
+\fBS -- sleep\fR
+No available request structures were available, so the issuer has to wait for
+one to be freed.
+
+.HP 4
+\fBP -- plug\fR
+When i/o is queued to a previously empty block device queue, Linux will plug the
+queue in anticipation of future ios being added before this data is needed.
+
+.HP 4
+\fBU -- unplug\fR
+Some request data already queued in the device, start sending requests to the
+driver. This may happen automatically if a timeout period has passed (see next
+entry) or if a number of requests have been added to the queue.
+
+.HP 4
+\fBT -- unplug due to timer\fR
+If nobody requests the i/o that was queued after plugging the queue, Linux will
+automatically unplug it after a defined period has passed.
+
+.HP 4
+\fBX -- split\fR
+On raid or device mapper setups, an incoming i/o may straddle a device or
+internal zone and needs to be chopped up into smaller pieces for service. This
+may indicate a performance problem due to a bad setup of that raid/dm device,
+but may also just be part of normal boundary conditions. dm is notably bad at
+this and will clone lots of i/o.
+
+.HP 4
+\fBA -- remap\fR
+For stacked devices, incoming i/o is remapped to device below it in the i/o
+stack. The remap action details what exactly is being remapped to what.
+
+
+
+
+.SH "OUTPUT DESCRIPTION AND FORMATTING"
+
+The output from blkparse can be tailored for specific use -- in particular, to ease
+parsing of output, and/or limit output fields to those the user wants to see. The
+data for fields which can be output include:
+
+.IP \fBa\fR 4
+Action, a (small) string (1 or 2 characters) -- see table below for more details
+
+.IP \fBc\fR 4
+CPU id
+
+.IP \fBC\fR 4
+Command
+
+.IP \fBd\fR 4
+RWBS field, a (small) string (1-3 characters)  -- see section below for more details
+
+.IP \fBD\fR 4
+7-character string containing the major and minor numbers of
+the event's device (separated by a comma).
+
+.IP \fBe\fR 4
+Error value
+
+.IP \fBm\fR 4
+Minor number of event's device.
+
+.IP \fBM\fR 4
+Major number of event's device.
+
+.IP \fBn\fR 4
+Number of blocks
+
+.IP \fBN\fR 4
+Number of bytes
+
+.IP \fBp\fR 4
+Process ID
+
+.IP \fBP\fR 4
+Display packet data \-\- series of hexadecimal values
+
+.IP \fBs\fR 4
+Sequence numbers
+
+.IP \fBS\fR 4
+Sector number
+
+.IP \fBt\fR 4
+Time stamp (nanoseconds)
+
+.IP \fBT\fR 4
+Time stamp (seconds)
+
+.IP \fBu\fR 4
+Elapsed value in microseconds (\fI\-t\fR command line option)
+
+.IP \fBU\fR 4
+Payload unsigned integer
+
+.PP
+Note that the user can optionally specify field display width, and optionally a
+left-aligned specifier. These precede field specifiers, with a '%' character,
+followed by the optional left-alignment specifier (\-) followed by the width (a
+decimal number) and then the field.
+
+Thus, to specify the command in a 12-character field that is left aligned:
+
+    \-f "%\-12C"
+
+
+.SH "ACTION IDENTIFIERS"
+
+The following table shows the various actions which may be output:
+
+.IP A
+IO was remapped to a different device
+
+.IP B
+IO bounced
+
+.IP C
+IO completion
+
+.IP D
+IO issued to driver
+
+.IP F
+IO front merged with request on queue
+
+.IP G
+Get request
+
+.IP I
+IO inserted onto request queue
+
+.IP M
+IO back merged with request on queue
+
+.IP P
+Plug request
+
+.IP Q
+IO handled by request queue code
+
+.IP S
+Sleep request
+
+.IP T
+Unplug due to timeout
+
+.IP U
+Unplug request
+
+.IP X
+Split
+
+
+.SH "RWBS DESCRIPTION"
+
+This is a small string containing at least one character ('R' for read, 'W'
+for write, or 'D' for block discard operation), and optionally either
+a 'B' (for barrier operations) or 'S' (for synchronous operations).
+
+
+.SH "DEFAULT OUTPUT"
+
+The standard header (or initial fields displayed) include:
+
+    "%D %2c %8s %5T.%9t %5p %2a %3d"
+
+Breaking this down:
+
+.IP \fB%D\fR
+Displays the event's device major/minor as: %3d,%\-3d.
+
+.IP \fB%2c\fR
+CPU ID (2-character field).
+
+.IP \fB%8s\fR
+Sequence number
+
+.IP \fB%5T.%9t\fR
+5-character field for the seconds portion of the time stamp and a 9-character field for the nanoseconds in the time stamp.
+
+.IP \fB%5p\fR
+5-character field for the process ID.
+
+.IP \fB%2a\fR
+2-character field for one of the actions.
+
+.IP \fB%3d\fR
+3-character field for the RWBS data.
+
+Seeing this in action:
+
+    8,0    3        1     0.000000000   697  G   W 223490 + 8 [kjournald]
+
+The header is the data in this line up to the 223490 (starting block).
+The default output for all event types includes this header.
+
+
+
+.SH "DEFAULT OUTPUT PER ACTION"
+
+\fBC \-\- complete\fR
+.RS 4
+If a payload is present, this is presented between
+parenthesis following the header, followed by the error value.
+
+If no payload is present, the sector and number of blocks are presented
+(with an intervening plus (+) character). If the \fB\-t\fR option
+was specified, then the elapsed time is presented. In either case,
+it is followed by the error value for the completion.
+.RE
+
+\fBB \-\- bounced\fR
+.br
+\fBD \-\- issued\fR
+.br
+\fBI \-\- inserted\fR
+.br
+\fBQ \-\- queued\fR
+.RS 4
+If a payload is present, the number of payload bytes
+is output, followed by the payload in hexadecimal between parenthesis.
+
+If no payload is present, the sector and number of blocks are presented
+(with an intervening plus (+) character). If the \fB\-t\fR option was
+specified, then the elapsed time is presented (in parenthesis). In
+either case, it is followed by the command associated with the event
+(surrounded by square brackets).
+.RE
+
+\fBF \-\- front merge\fR
+.br
+\fBG \-\- get request\fR
+.br
+\fBM \-\- back merge\fR
+.br
+\fBS \-\- sleep\fR
+.RS 4
+The starting sector and number of blocks is output
+(with an intervening plus (+) character), followed by the command
+associated with the event (surrounded by square brackets).
+.RE
+
+\fBP \-\- plug\fR
+.RS 4
+The command associated with the event (surrounded by
+square brackets) is output.
+.RE
+
+\fBU \-\- unplug\fR
+.br
+\fBT \-\- unplug due to timer\fR
+.RS 4
+The command associated with the event
+(surrounded by square brackets) is output, followed by the number of
+requests outstanding.
+.RE
+
+\fBX \-\- split\fR
+.RS 4
+The original starting sector followed by the new
+sector (separated by a slash (/) is output, followed by the command
+associated with the event (surrounded by square brackets).
+.RE
+
+\fBA \-\- remap\fR
+.RS 4
+Sector and length is output, along with the original
+device and sector offset.
+.RE
+
+
+.SH EXAMPLES
+To trace the i/o on the device \fI/dev/hda\fB and parse the output to human
+readable form, use the following command:
+
+    % blktrace \-d /dev/sda \-o \- | blkparse \-i \-
+
+(see \fIblktrace\fR (8) for more information).
+This same behaviour can be achieve with the convenience script \fIbtrace\fR.
+The command
+
+    % btrace /dev/sda
+
+has exactly the same effect as the previous command. See \fIbtrace\fR (8) for
+more information.
+
+To trace the i/o on a device and save the output for later processing with
+\fIblkparse\fR, use \fIblktrace\fR like this:
+
+    % blktrace /dev/sda /dev/sdb
+
+This will trace i/o on the devices \fI/dev/sda\fR and \fI/dev/sdb\fR and save
+the recorded information in the files \fIsda\fR and \fIsdb\fR in the current
+directory, for the two different devices, respectively.  This trace
+information can later be parsed by the \fIblkparse\fR utility:
+
+    % blkparse sda sdb
+
+which will output the previously recorded tracing information in human
+readable form to stdout. 
+
+
+.SH AUTHORS
+\fIblkparse\fR was written by Jens Axboe, Alan D. Brunelle and Nathan Scott.  This
+man page was created from the \fIblktrace\fR documentation by Bas Zoetekouw.
+
+
+.SH "REPORTING BUGS"
+Report bugs to <linux\-btrace@vger.kernel.org>
+
+.SH COPYRIGHT
+Copyright \(co 2006 Jens Axboe, Alan D. Brunelle and Nathan Scott.
+.br
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+.br
+This manual page was created for Debian by Bas Zoetekouw.  It was derived from
+the documentation provided by the authors and it may be used, distributed and
+modified under the terms of the GNU General Public License, version 2.
+.br
+On Debian systems, the text of the GNU General Public License can be found in
+/usr/share/common\-licenses/GPL\-2.
+
+.SH "SEE ALSO"
+btrace (8), blktrace (8), verify_blkparse (1), blkrawverify (1), btt (1)
+

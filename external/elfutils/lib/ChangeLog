@@ -1,0 +1,76 @@
+2008-08-25  Roland McGrath  <roland@redhat.com>
+
+	* eu-config.h [USE_TLS] (RWLOCK_CALL): New macro.
+	(rwlock_init, rwlock_fini, rwlock_rdlock, rwlock_wrlock, rwlock_unlock):
+	Use it.
+
+2008-08-24  Roland McGrath  <roland@redhat.com>
+
+	* eu-config.h: New file.
+	* Makefile.am (noinst_HEADERS): Add it.
+
+2008-02-01  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am (libeu_a_SOURCES): Add sha1.c.
+	(noinst_HEADERS): Add sha1.h.
+	* sha1.c: New file.
+	* sha1.h: New file.
+
+2008-01-31  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am (libeu_a_SOURCES): Add md5.c.
+	(noinst_HEADERS): Add md5.h.
+	* md5.c: New file.
+	* md5.h: New file.
+
+2006-04-04  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am (libeu_a_SOURCES): We don't need xstrdup in the moment.
+
+2005-08-28  Ulrich Drepper  <drepper@redhat.com>
+
+	* system.h: Define pwrite_retry, write_retry, and pread_retry.
+
+2005-08-06  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am (xmalloc_CFLAGS): Define only if !GPROF.
+
+2005-05-03  Roland McGrath  <roland@redhat.com>
+
+	* crc32_file.c: New file.
+	* Makefile.am (libeu_a_SOURCES): Add it.
+	* system.h: Declare crc32_file.
+
+2005-04-30  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am: Use -ffunction-sections for xmalloc.c.
+
+2005-02-15  Ulrich Drepper  <drepper@redhat.com>
+
+	* dynamicsizehash.c (lookup): Mark val parameter as possibly unused.
+
+2005-02-06  Ulrich Drepper  <drepper@redhat.com>
+
+	* fixedsizehash.h: Mark unused parameters.  Correct CLASS and
+	const order for fshash_find.
+
+	* Makefile.am: Cleanup AM_CFLAGS handling.  Add -Wunused -Wextra.
+
+2005-02-05  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am [MUDFLAP] (AM_CFLAGS): Add -fpic and -fmudflap.
+
+2004-01-17  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am: Support building with mudflap.
+
+2003-09-22  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am (AM_CFLAGS): Add -fpic.
+
+	* Makefile.am (noinst_HEADERS): Add list.h.
+	* list.h: New file.
+
+2003-08-11  Ulrich Drepper  <drepper@redhat.com>
+
+	* Moved to CVS archive.

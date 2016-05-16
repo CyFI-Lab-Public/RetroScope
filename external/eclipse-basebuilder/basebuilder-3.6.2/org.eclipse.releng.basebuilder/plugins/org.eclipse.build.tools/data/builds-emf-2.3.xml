@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="http://www.blogger.com/styles/atom.css" type="text/css"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>EMF Builds</title>
+  <link href="http://download.eclipse.org/tools/emf/feeds/builds.xml" rel="self" type="application/atom+xml"/>
+  <updated>2006-11-14T23:07:56Z</updated>
+  <author>
+    <name>EMF Build Team</name>
+  </author>
+  <id>http://download.eclipse.org/tools/emf/feeds/builds.xml</id>
+  <entry>
+    <title>[announce] EMF 2.3.0M3 (S200611091546) is available</title>
+    <link href="http://www.eclipse.org/emf/downloads/?showAll=1&amp;hlbuild=S200611091546#S200611091546"/>
+    <id>http://www.eclipse.org/emf/downloads/?showAll=1&amp;hlbuild=S200611091546#S200611091546</id>
+    <updated>2006-11-14T23:07:56Z</updated>
+    <summary>
+      <build xmlns="http://www.eclipse.org/2006/BuildFeed" branch="HEAD" datetime="200611091546" href="http://www.eclipse.org/emf/downloads/?showAll=1&amp;hlbuild=S200611091546#S200611091546" type="S" version="2.3.0">
+        <detail config="build.cfg" href="http://www.eclipse.org/downloads/download.php?r=1&amp;file=/tools/emf/downloads/drops/2.3.0/S200611091546/" log="buildlog.txt" map="directory.txt"/>
+        <update>http://download.eclipse.org/tools/emf/updates/</update>
+        <downloads>http://www.eclipse.org/emf/downloads/</downloads>
+        <releasenotes>http://www.eclipse.org/emf/news/release-notes.php?version=2.3.0
+          </releasenotes>
+        <releases>
+          <release arch="ALL" os="ALL" type="SDK" ws="ALL">emf-sdo-xsd-SDK-2.3.0M3.zip</release>
+        </releases>
+        <tests>
+          <test href="http://www.eclipse.org/downloads/download.php?r=1&amp;file=/tools/emf/downloads/drops/2.3.0/S200611091546/testResults.php" type="junit">
+            <result arch="ALL" os="ALL" ws="ALL">PASS</result>
+          </test>
+        </tests>
+        <dependencies>
+          <dependency>http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/M20060919-1045/eclipse-SDK-M20060919-1045-linux-gtk.tar.gz</dependency>
+        </dependencies>
+        <coordinated status="COMPLETE"/>
+      </build>
+    </summary>
+  </entry>
+</feed>

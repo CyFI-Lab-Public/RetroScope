@@ -1,0 +1,65 @@
+# Danish messages for bison.
+# Copyright (C) 2008 Free Software Foundation, Inc.
+# This file is distributed under the same license as the bison package.
+# Keld Simonsen <keld@dkuug.dk>, 2002.
+# Byrial Ole Jensen <byrial@image.dk>, 2002-2004.
+# Joe Hansen <joedalton2@yahoo.dk>, 2008.
+# Keld Simonsen <keld@dkuug.dk>, 2008.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bison-runtime-2.3b\n"
+"Report-Msgid-Bugs-To: bug-bison@gnu.org\n"
+"POT-Creation-Date: 2012-12-12 16:09+0100\n"
+"PO-Revision-Date: 2008-08-25 00:00+0000\n"
+"Last-Translator: Keld Simonsen <keld@dkuug.dk>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/glr.c:855 data/yacc.c:776
+msgid "syntax error: cannot back up"
+msgstr "syntaksfejl: kan ikke lave sikkerhedskopi"
+
+#: data/glr.c:1729
+msgid "syntax is ambiguous"
+msgstr "syntaks er tvetydig"
+
+#: data/glr.c:2014 data/glr.c:2094 data/glr.c:2134 data/glr.c:2399
+#: data/lalr1.cc:947 data/lalr1.cc:967 data/yacc.c:1351 data/yacc.c:1856
+#: data/yacc.c:1862
+msgid "syntax error"
+msgstr "syntaksfejl"
+
+#: data/glr.c:2095 data/lalr1.cc:948 data/yacc.c:1352
+#, c-format
+msgid "syntax error, unexpected %s"
+msgstr "syntaksfejl, uventet %s"
+
+#: data/glr.c:2096 data/lalr1.cc:949 data/yacc.c:1353
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s"
+msgstr "syntaksfejl, uventet %s, forventede %s"
+
+#: data/glr.c:2097 data/lalr1.cc:950 data/yacc.c:1354
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s"
+msgstr "syntaksfejl, uventet %s, forventede %s eller %s"
+
+#: data/glr.c:2098 data/lalr1.cc:951 data/yacc.c:1355
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s"
+msgstr "syntaksfejl, uventet %s, forventede %s eller %s eller %s"
+
+#: data/glr.c:2099 data/lalr1.cc:952 data/yacc.c:1356
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
+msgstr "syntaksfejl, uventet %s, forventede %s eller %s eller %s eller %s"
+
+#: data/glr.c:2459 data/yacc.c:1436 data/yacc.c:1438 data/yacc.c:1616
+#: data/yacc.c:2013
+msgid "memory exhausted"
+msgstr "hukommelsen opbrugt"

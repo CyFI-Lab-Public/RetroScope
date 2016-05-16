@@ -1,0 +1,161 @@
+-- MySQL dump 10.10
+-- 
+-- You can load this file into mysql using: 
+-- $ mysql -u root -p < mysql-modelingschema.dump
+-- 
+-- Note that the database name for the stored CVS data is `modeling`, as in the Eclipse Modeling Project. 
+-- You'll probably want to change that for your project's needs.
+-- 
+-- Host: localhost    Database: modeling
+-- ------------------------------------------------------
+-- Server version	5.0.22-log
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+DROP DATABASE IF EXISTS `modeling`;
+CREATE DATABASE `modeling`;
+
+USE `modeling`;
+
+--
+-- Table structure for table `bugs`
+--
+
+DROP TABLE IF EXISTS `bugs`;
+CREATE TABLE `bugs` (
+  `fid` smallint(5) unsigned NOT NULL,
+  `revision` varchar(15) NOT NULL,
+  `bugid` mediumint(8) unsigned NOT NULL,
+  PRIMARY KEY  (`fid`,`revision`,`bugid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `bugs`
+--
+
+
+/*!40000 ALTER TABLE `bugs` DISABLE KEYS */;
+LOCK TABLES `bugs` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `bugs` ENABLE KEYS */;
+
+--
+-- Table structure for table `commits`
+--
+
+DROP TABLE IF EXISTS `commits`;
+CREATE TABLE `commits` (
+  `fid` smallint(5) unsigned NOT NULL,
+  `revision` varchar(15) NOT NULL,
+  `date` datetime NOT NULL,
+  `author` varchar(20) NOT NULL,
+  `state` enum('Exp','dead') NOT NULL,
+  `linesplus` smallint(5) unsigned default NULL,
+  `linesminus` smallint(5) unsigned default NULL,
+  `message` text NOT NULL,
+  PRIMARY KEY  (`fid`,`revision`),
+  KEY `author` (`author`),
+  FULLTEXT KEY `message` (`message`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `commits`
+--
+
+
+/*!40000 ALTER TABLE `commits` DISABLE KEYS */;
+LOCK TABLES `commits` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `commits` ENABLE KEYS */;
+
+--
+-- Table structure for table `cvsfiles`
+--
+
+DROP TABLE IF EXISTS `cvsfiles`;
+CREATE TABLE `cvsfiles` (
+  `fid` int(11) NOT NULL auto_increment,
+  `cvsname` text NOT NULL,
+  `head` varchar(15) NOT NULL,
+  `keyword_subs` enum('b','k','kv','kvl','v') NOT NULL,
+  `project` varchar(50) NOT NULL,
+  PRIMARY KEY  (`fid`),
+  KEY `project` (`project`),
+  UNIQUE KEY `cvsname` (`cvsname`(333))
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `cvsfiles`
+--
+
+
+/*!40000 ALTER TABLE `cvsfiles` DISABLE KEYS */;
+LOCK TABLES `cvsfiles` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `cvsfiles` ENABLE KEYS */;
+
+--
+-- Table structure for table `filetags`
+--
+
+DROP TABLE IF EXISTS `filetags`;
+CREATE TABLE `filetags` (
+  `fid` mediumint(8) unsigned NOT NULL,
+  `tid` smallint(5) unsigned NOT NULL,
+  `revision` varchar(15) NOT NULL,
+  PRIMARY KEY  (`fid`,`tid`),
+  KEY `tid` (`tid`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `filetags`
+--
+
+
+/*!40000 ALTER TABLE `filetags` DISABLE KEYS */;
+LOCK TABLES `filetags` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `filetags` ENABLE KEYS */;
+
+--
+-- Table structure for table `tags`
+--
+
+DROP TABLE IF EXISTS `tags`;
+CREATE TABLE `tags` (
+  `tid` int(11) NOT NULL auto_increment,
+  `tagname` varbinary(50) NOT NULL,
+  `tagdate` datetime default NULL,
+  PRIMARY KEY  (`tid`),
+  UNIQUE KEY `tagname` (`tagname`),
+  KEY `tagdate` (`tagdate`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tags`
+--
+
+
+/*!40000 ALTER TABLE `tags` DISABLE KEYS */;
+LOCK TABLES `tags` WRITE;
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `tags` ENABLE KEYS */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+

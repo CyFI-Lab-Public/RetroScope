@@ -1,0 +1,38 @@
+#!/bin/sh
+# Copyright (c) 2005 Silicon Graphics, Inc.
+# All rights reserved.
+# 
+#	Nathan Scott <nathans@sgi.com>
+#	14 Sep 2005	Initial version
+# 
+
+TRACEOPTS=""
+PARSEOPTS="-b100000"
+USAGE="Usage: btrace [-s] [-t] [-w N] [-n N] [-b N] [-a <trace>...] [-r <dbg mnt>] <dev>..."
+DIRNAME=`dirname $0`
+
+while getopts "a:w:n:b:r:sthv" c
+do
+	case $c in
+	a)	TRACEOPTS=$TRACEOPTS" -a "$OPTARG" ";;
+	w)	TRACEOPTS=$TRACEOPTS" -w "$OPTARG" ";;
+	n)	TRACEOPTS=$TRACEOPTS" -n "$OPTARG" ";;
+	b)	TRACEOPTS=$TRACEOPTS" -b "$OPTARG" ";;
+	r)	TRACEOPTS=$TRACEOPTS" -r "$OPTARG" ";;
+	s)	PARSEOPTS=$PARSEOPTS" -s";;
+	t)	PARSEOPTS=$PARSEOPTS" -t";;
+	h)	PARSEOPTS=$PARSEOPTS" -h";;
+	v)	PARSEOPTS=$PARSEOPTS" -v";;
+	\?)	echo $USAGE 1>&2
+		exit 2
+		;;
+	esac
+done
+
+shift `expr $OPTIND - 1`
+if [ $# -eq 0 ]; then
+	echo $USAGE 1>&2
+	exit 2
+fi
+
+${DIRNAME}/blktrace ${TRACEOPTS} -o- $@ | ${DIRNAME}/blkparse ${PARSEOPTS} -i-

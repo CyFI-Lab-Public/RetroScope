@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AndroidMockGenerator" default="mockgen.build" basedir="..">
+  <!-- Global Properties -->
+  <property file="../build.properties"/>
+
+  <!-- Android Mock Generator Properties -->
+  <property name="mockgen.bin" value="bin"/>
+  <property name="mockgen.class-bin" value="bin/classes"/>
+  <property name="mockgen.deploy-jar" value="AndroidMockGenerator.jar"/>
+  <property name="mockgen.includes" value="${java-package}/GeneratedMockJar.readme"/>
+  <property name="mockgen.java-files" value="com/google/android/testing/mocking/*.java"/>
+  <property name="mockgen.nodeps-jar" value="AndroidMockGenerator-nodeps.jar"/>
+  <property name="meta-service-folder" value="META-INF/services"/>
+  <property name="annotations-meta-file"
+      value="${meta-service-folder}/javax.annotation.processing.Processor"/>
+
+  <!-- Classpaths -->
+  <path id="generator.path">
+    <pathelement location="${lib-folder}/${easymock-jar}"/>
+    <pathelement location="${lib-folder}/${javassist-jar}"/>
+  </path>
+
+  <!--  Private Targets -->
+  <target name="-mockgen.dirs">
+    <mkdir dir="${mockgen.bin}"/>
+    <mkdir dir="${mockgen.class-bin}"/>
+    <mkdir dir="${mockgen.class-bin}/${meta-service-folder}"/>
+  </target>
+
+  <target name="-mockgen.clean-staging">
+    <delete dir="${staging}"/>
+  </target>
+
+  <!--  Public Targets -->
+  <target name="mockgen.clean" depends="-mockgen.clean-staging">
+    <delete file="${mockgen.deploy-jar}"/>
+    <delete file="${mockgen.nodeps-jar}"/>
+    <delete dir="${mockgen.class-bin}"/>
+  </target>
+
+  <target name="mockgen.build" depends="-mockgen.clean-staging,-mockgen.dirs"
+      description="Builds the Mock Generator jar file">
+    <javac destdir="${mockgen.class-bin}" srcdir="${source-base}"
+           includes="${mockgen.java-files}" debug="true">
+      <classpath refid="generator.path"/>
+    </javac>
+    <copy todir="${mockgen.class-bin}">
+      <fileset dir="${source-base}" includes="${mockgen.includes}"/>
+    </copy>
+    <echo file="${mockgen.class-bin}/${annotations-meta-file}"
+        message="com.google.android.testing.mocking.UsesMocksProcessor"/>
+    <manifestclasspath property="frameworkjar.classpath"
+                       jarfile="${mockgen.bin}/${mockgen.nodeps-jar}">
+      <classpath location="${framework.mock-bin}/${framework.mock-jar}"/>
+    </manifestclasspath>
+    <tstamp>
+      <format property="build.time" pattern="dd-MMMM-yyyy hh:mm aa"/>
+    </tstamp>
+    <jar destfile="${mockgen.bin}/${mockgen.nodeps-jar}" basedir="${mockgen.class-bin}">
+      <manifest>
+        <attribute name="Built-On" value="${build.time}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <target name="mockgen.build-deploy" depends="mockgen.build"
+      description="Builds the Mock Generator jar file with dependencies included.">
+    <unjar dest="${staging}">
+      <fileset dir=".">
+        <include name="${mockgen.bin}/${mockgen.nodeps-jar}"/>
+        <include name="${lib-folder}/${easymock-jar}"/>
+        <include name="${lib-folder}/${javassist-jar}"/>
+      </fileset>
+    </unjar>
+    <tstamp/>
+    <jar destfile="${mockgen.bin}/${mockgen.deploy-jar}" basedir="${staging}">
+      <manifest>
+        <attribute name="Built-On" value="${build.time}"/>
+      </manifest>
+    </jar>
+  </target>
+</project>

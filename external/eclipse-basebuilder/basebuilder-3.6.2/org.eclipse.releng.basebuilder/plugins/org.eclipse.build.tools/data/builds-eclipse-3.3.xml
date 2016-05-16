@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="http://www.blogger.com/styles/atom.css" type="text/css"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Eclipse Builds</title>
+  <link href="http://download.eclipse.org/eclipse/downloads/builds-eclipse.xml" rel="self" type="application/atom+xml"/>
+  <updated>2006-11-14T23:54:27Z</updated>
+  <author>
+    <name>Eclipse Build Team</name>
+  </author>
+  <id>http://download.eclipse.org/eclipse/downloads/builds-eclipse.xml</id>
+  <entry>
+    <title>[announce] Eclipse I20060922-0010 (3.3.0.I20060922-0010) is available</title>
+    <link href="http://download.eclipse.org/eclipse/downloads/drops/I20060922-0010"/>
+    <id>http://download.eclipse.org/eclipse/downloads/drops/I20060922-0010</id>
+    <updated>2006-11-14T23:54:27Z</updated>
+    <summary>
+      <build xmlns="http://www.eclipse.org/2006/BuildFeed" branch="HEAD" datetime="20060922-0010" href="http://download.eclipse.org/eclipse/downloads/drops/I20060922-0010" type="I" version="3.3.0">
+        <detail href="http://www.eclipse.org/downloads/download.php?r=1&amp;file=/eclipse/downloads/drops/I20060922-0010/" map="directory.txt"/>
+        <downloads>http://download.eclipse.org/eclipse/downloads/</downloads>
+        <releasenotes>http://download.eclipse.org/eclipse/downloads/drops/I20060922-0010/buildNotes.php
+          </releasenotes>
+        <releases>
+          <release arch="x86" os="win32" type="SDK" ws="win">eclipse-SDK-I20060922-0010-win32.zip</release>
+          <release arch="x86" os="linux" type="SDK" ws="gtk">eclipse-SDK-I20060922-0010-linux-gtk.tar.gz</release>
+        </releases>
+        <tests>
+          <test href="http://download.eclipse.org/eclipse/downloads/drops/I20060922-0010/testResults.php" type="junit">
+            <result arch="x86" os="win32" ws="win">UNKNOWN</result>
+            <result arch="x86" os="linux" ws="gtk">UNKNOWN</result>
+            <result arch="x86_64" os="linux" ws="gtk">UNKNOWN</result>
+            <result arch="ppc" os="linux" ws="gtk">UNKNOWN</result>
+            <result arch="x86" os="linux" ws="motif">UNKNOWN</result>
+            <result arch="x86" os="solaris8" ws="gtk">UNKNOWN</result>
+            <result arch="x86" os="aix" ws="motif">UNKNOWN</result>
+            <result arch="x86" os="hp-ux" ws="motif">UNKNOWN</result>
+            <result arch="ppc" os="macosx" ws="carbon">UNKNOWN</result>
+          </test>
+          <test href="http://download.eclipse.org/eclipse/downloads/drops/I20060922-0010/performance/performance.php" type="performance">
+            <result arch="x86" id="RHEL4-3GHz-2.5GB" os="linux" ws="gtk">PENDING</result>
+            <result arch="x86" id="winxp-3GHz-2GB" os="win32" ws="win">UNKNOWN</result>
+            <result arch="x86" id="RHEL3-3GHz-2GB" os="linux" ws="gtk">UNKNOWN</result>
+            <result arch="x86" id="winxp-2GHz-512MB" os="win32" ws="win">UNKNOWN</result>
+          </test>
+        </tests>
+        <coordinated status="COMPLETE"/>
+      </build>
+    </summary>
+  </entry>
+</feed>

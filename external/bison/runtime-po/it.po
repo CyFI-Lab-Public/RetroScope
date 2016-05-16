@@ -1,0 +1,65 @@
+# ITALIAN TRANSLATION OF BISON-RUNTIME
+# Copyright (C) 2002, 2010 Free Software Foundation, Inc.
+# This file is distributed under the same license as the bison package.
+#
+# Paolo Bonzini <bonzini@gnu.org>, 2002.
+# Vincenzo Campanella <vinz65@gmail.com>, 2010.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bison-runtime 2.4.3\n"
+"Report-Msgid-Bugs-To: bug-bison@gnu.org\n"
+"POT-Creation-Date: 2012-12-12 16:09+0100\n"
+"PO-Revision-Date: 2010-10-25 07:35+0100\n"
+"Last-Translator: Vincenzo Campanella <vinz65@gmail.com>\n"
+"Language-Team: Italian <tp@lists.linux.it>\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8-bit\n"
+"First-Translator: Paolo Bonzini <bonzini@gnu.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/glr.c:855 data/yacc.c:776
+msgid "syntax error: cannot back up"
+msgstr "errore di sintassi: impossibile tornare indietro"
+
+#: data/glr.c:1729
+msgid "syntax is ambiguous"
+msgstr "la sintassi è ambigua"
+
+#: data/glr.c:2014 data/glr.c:2094 data/glr.c:2134 data/glr.c:2399
+#: data/lalr1.cc:947 data/lalr1.cc:967 data/yacc.c:1351 data/yacc.c:1856
+#: data/yacc.c:1862
+msgid "syntax error"
+msgstr "errore di sintassi"
+
+#: data/glr.c:2095 data/lalr1.cc:948 data/yacc.c:1352
+#, c-format
+msgid "syntax error, unexpected %s"
+msgstr "errore di sintassi, %s non atteso"
+
+#: data/glr.c:2096 data/lalr1.cc:949 data/yacc.c:1353
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s"
+msgstr "errore di sintassi, ricevuto %s anziché %s"
+
+#: data/glr.c:2097 data/lalr1.cc:950 data/yacc.c:1354
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s"
+msgstr "errore di sintassi, ricevuto %s anziché %s o %s"
+
+#: data/glr.c:2098 data/lalr1.cc:951 data/yacc.c:1355
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s"
+msgstr "errore di sintassi, ricevuto %s anziché %s, %s o %s"
+
+#: data/glr.c:2099 data/lalr1.cc:952 data/yacc.c:1356
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
+msgstr "errore di sintassi, ricevuto %s anziché %s, %s, %s o %s"
+
+#: data/glr.c:2459 data/yacc.c:1436 data/yacc.c:1438 data/yacc.c:1616
+#: data/yacc.c:2013
+msgid "memory exhausted"
+msgstr "memoria esaurita"

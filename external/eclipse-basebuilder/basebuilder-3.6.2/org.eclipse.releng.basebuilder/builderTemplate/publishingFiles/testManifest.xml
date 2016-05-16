@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE topLevel [
+  <!ELEMENT topLevel (zipTypes,logFiles)>
+  
+  <!ELEMENT zipTypes (zipType+)>
+  
+  <!ELEMENT zipType (platform)>
+  <!ATTLIST zipType
+  		name	CDATA #REQUIRED
+  >
+   
+  <!ELEMENT platform EMPTY>
+  <!ATTLIST platform
+  		id		ID #REQUIRED
+  		name	CDATA #REQUIRED
+  		fileName CDATA #REQUIRED
+  >
+  		
+  <!ELEMENT logFiles (logFile+)>
+  
+  <!ELEMENT logFile  (effectedFile+)>
+    <!ATTLIST 	zipType
+  		name	CDATA #REQUIRED
+  	>
+  		
+  <!ELEMENT effectedFile EMPTY>
+    <!ATTLIST effectedFile
+  		id		CDATA #REQUIRED
+  >
+]>
+
+<!--
+The element and attribute definitions are as follows:
+
+<zipTypes> - listing of binary distributable categories, ie. SDK, examples, tests.
+
+<zipType> - a category of binary distributable.
+	name - name of binary distributable category.
+
+<platform> - description of a platform-specific or non-platform specific binary distributable.
+	id - unique identifier for the platform relevant to the zip file referenced in fileName attribute.  Used to map compile logs and test logs listed in the manifest to a specific platform of a zipType.
+	name - text that should appear on download page to describe where the binary can be installed, ie. "ALL" or "Windows 98/ME/2000/XP".
+	fileName - html source inserted on download index page to produce link to the distributable.
+
+<logFiles> - listing of JUnit test result files and compile logs and their mappings to <platform> elements.
+	
+<logFile>
+	name - the path to a file relative to value used for 
+
+<effectedFile> - references the value of the id attribute for a platform element.  Used to mark a <platform> with a status depending on the log content.
+
+-->
+
+<topLevel>
+<zipTypes>
+	<!--example
+	
+	<zipType name="zipTypeName">
+		<platform id="ID" name="applicable platforms" fileName='&lt;a href="file.zip">file.zip&lt;/a>'></platform>
+	</zipType>
+	
+	-->
+</zipTypes>
+
+<logFiles>
+	<!--list JUnit test results-->
+	<!--example:  if there are JUnit test failures found in this log, the file identified with id "ID" should be marked with a red x.
+	
+	<logFile name="junittestresult.xml">
+		<effectedFile id="ID"></effectedFile>
+	</logFile>
+	
+	-->
+	
+	<!--list compile logs-->
+	<!--example:  if there are compile errors found in this log, the file identified with id "ID" should be marked with a red x.
+	<logFile name="pluginname/myjar.bin.log">
+		<effectedFile id="ID"></effectedFile>
+	</logFile>
+	-->
+</logFiles>
+</topLevel>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<module>
+  <inherits name="com.google.gwt.user.User"/>
+  <inherits name="com.google.gwt.junit.JUnit"/>
+  <inherits name="com.google.common.primitives.Primitives"/>
+  <inherits name="com.google.common.testing.Testing"/>
+  <inherits name="org.junit.contrib.truth.Truth"/>
+  <inherits name="com.google.common.annotations.Annotations"/>
+  <entry-point class="com.google.common.primitives.TestModuleEntryPoint"/>
+   
+  <source path=""/>
+    
+  <add-linker name="std"/>
+   
+  <super-source path="super"/>
+   
+</module>

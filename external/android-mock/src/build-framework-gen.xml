@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AndroidMockGenerator" default="frameworkgen.build" basedir="..">
+  <!-- Global Properties -->
+  <property file="../build.properties"/>
+
+  <!-- Imports -->
+  <import file="build-mockgen.xml"/>
+
+  <!-- Android Framework Mockgen Properties -->
+  <property name="android-lib-folder" value="${lib-folder}/android"/>
+  <property name="framework.mock-staging" value="staging/android_framework_mocks"/>
+  <property name="android-15-jar" value="android_v15.jar"/>
+  <property name="android-16-jar" value="android_v16.jar"/>
+  <property name="android-201-jar" value="android_v201.jar"/>
+  <property name="android-21-jar" value="android_v21.jar"/>
+  <property name="android-22-jar" value="android_v22.jar"/>
+  <property name="android-23-jar" value="android_v23.jar"/>
+
+  <!-- property name="framework.mock-bin" value=see build.properties -->
+  <!-- property name="framework.mock-jar" value=see build.properties -->
+
+  <!-- Private Targets -->
+  <target name="-frameworkgen.dirs">
+    <mkdir dir="${framework.mock-bin}"/>
+    <mkdir dir="${framework.mock-staging}"/>
+  </target>
+
+  <target name="-frameworkgen.clean-staging">
+    <delete dir="${staging}"/>
+  </target>
+
+  <!-- Public Targets -->
+  <target name="frameworkgen.clean" depends="-frameworkgen.clean-staging">
+    <delete dir="${framework.mock-bin}/${framework.mock-jar}"/>
+    <delete dir="${framework.mock-staging}"/>
+  </target>
+
+  <target name="frameworkgen.build"
+      depends="-frameworkgen.clean-staging,-frameworkgen.dirs,mockgen.build-deploy"
+      description="Builds the mock support files for mocking Android Framework classes.">
+
+    <generate-framework-mocks api-jar-file="${android-15-jar}" api-level="3"/>
+    <generate-framework-mocks api-jar-file="${android-16-jar}" api-level="4"/>
+    <generate-framework-mocks api-jar-file="${android-201-jar}" api-level="6"/>
+    <generate-framework-mocks api-jar-file="${android-21-jar}" api-level="7"/>
+    <generate-framework-mocks api-jar-file="${android-22-jar}" api-level="8"/>
+  	<generate-framework-mocks api-jar-file="${android-23-jar}" api-level="9"/>
+    <jar destfile="${framework.mock-bin}/${framework.mock-jar}"
+         basedir="${framework.mock-staging}" includes="**/*.class" index="true"/>
+  </target>
+
+  <!-- Macros -->
+  <macrodef name="generate-framework-mocks">
+    <attribute name="api-jar-file"/>
+    <attribute name="api-level"/>
+    <sequential>
+      <java classname="com.google.android.testing.mocking.AndroidFrameworkMockGenerator" fork="true">
+        <classpath>
+          <pathelement location="${mockgen.bin}/${mockgen.deploy-jar}"/>
+          <pathelement location="${android-lib-folder}/@{api-jar-file}"/>
+        </classpath>
+        <arg value="${framework.mock-staging}"/>
+        <arg value="@{api-level}"/>
+      </java>
+    </sequential>
+  </macrodef>
+
+</project>

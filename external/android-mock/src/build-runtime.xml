@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="AndroidMockRuntime" default="runtime.build" basedir="..">
+  <!-- Global Properties -->
+  <property file="../build.properties"/>
+
+  <!-- Android Mock Runtime Properties -->
+  <property name="runtime.bin" value="bin"/>
+  <property name="runtime.class-bin" value="bin/classes"/>
+  <property name="runtime.deploy-jar" value="AndroidMockRuntime.jar"/>
+  <property name="runtime.java-files" value="${java-package}/AndroidMock.java 
+    ${java-package}/MockObject.java ${java-package}/UsesMocks.java"/>
+  <property name="runtime.nodeps-jar" value="AndroidMockRuntime-nodeps.jar"/>
+
+  <!-- Classpaths -->
+  <path id="path">
+    <pathelement location="${lib-folder}/${easymock-jar}"/>
+  </path>
+
+  <!-- Private Build Targets -->
+  <target name="-runtime.dirs">
+    <mkdir dir="${runtime.bin}"/>
+    <mkdir dir="${runtime.class-bin}"/>
+  </target>
+
+  <target name="-runtime.clean-staging">
+    <delete dir="${staging}"/>
+  </target>
+
+  <!-- Public Build Targets -->
+  <target name="runtime.clean" depends="-runtime.clean-staging">
+    <delete file="${runtime.deploy-jar}"/>
+    <delete file="${runtime.nodeps-jar}"/>
+    <delete dir="${runtime.class-bin}"/>
+  </target>
+
+  <target name="runtime.build" depends="-runtime.clean-staging,-runtime.dirs"
+      description="Builds the Android Mock Runtime library jar file without dependencies included.">
+    <javac destdir="${runtime.class-bin}" target="1.5" srcdir="${source-base}"
+        includes="${runtime.java-files}" debug="true">
+      <classpath refid="path"/>
+    </javac>
+    <jar destfile="${runtime.bin}/${runtime.nodeps-jar}" basedir="${runtime.class-bin}"/>
+  </target>
+
+  <target name="runtime.build-deploy" depends="runtime.build"
+      description="Builds the Android Mock Runtime library jar file with dependencies included.">
+    <unjar dest="${staging}">
+      <fileset dir=".">
+        <include name="${runtime.bin}/${runtime.nodeps-jar}"/>
+        <include name="${lib-folder}/${easymock-jar}"/>
+      </fileset>
+    </unjar>
+    <jar destfile="${runtime.bin}/${runtime.deploy-jar}" basedir="${staging}"/>
+  </target>
+</project>

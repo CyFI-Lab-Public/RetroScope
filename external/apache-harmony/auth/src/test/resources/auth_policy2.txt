@@ -1,0 +1,5 @@
+grant
+    Principal javax.security.auth.MyPrincipal "duke"
+{
+        permission java.lang.RuntimePermission "createClassLoader";
+};

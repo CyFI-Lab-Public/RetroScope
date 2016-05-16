@@ -1,0 +1,369 @@
+.TH BTT 1 "September 29, 2007" "blktrace git\-20070910192508" ""
+
+
+.SH NAME
+btt \- analyse block i/o traces produces by blktrace
+
+
+.SH SYNOPSIS
+.B btt 
+.br
+[ \-a               | \-\-seek\-absolute ]
+.br
+[ \-A               | \-\-all\-data ]
+.br
+[ \-B <\fIoutput name\fR> | \-\-dump\-blocknos=<\fIoutput name\fR> ]
+.br
+[ \-d <\fIseconds\fR>     | \-\-range\-delta=<\fIseconds\fR> ]
+.br
+[ \-D <\fIdev;...\fR>     | \-\-devices=<\fIdev;...\fR> ]
+.br
+[ \-e <\fIexe,...\fR>     | \-\-exes=<\fIexe,...\fR>  ]
+.br
+[ \-h               | \-\-help ]
+.br
+[ \-i <\fIinput name\fR>  | \-\-input\-file=<\fIinput name\fR> ]
+.br
+[ \-I <\fIoutput name\fR> | \-\-iostat=<\fIoutput name\fR> ]
+.br
+[ \-l <\fIoutput name\fR> | \-\-d2c\-latencies=<\fIoutput name\fR> ]
+.br
+[ \-L <\fIfreq\fR>        | \-\-periodic\-latencies=<\fIfreq\fR> ]
+.br
+[ \-M <\fIdev map\fR>     | \-\-dev\-maps=<\fIdev map\fR>
+.br
+[ \-o <\fIoutput name\fR> | \-\-output\-file=<\fIoutput name\fR> ]
+.br
+[ \-p <\fIoutput name\fR> | \-\-per\-io\-dump=<\fIoutput name\fR> ]
+.br
+[ \-P <\fIoutput name\fR> | \-\-per\-io\-trees=<\fIoutput name\fR> ]
+.br
+[ \-q <\fIoutput name\fR> | \-\-q2c\-latencies=<\fIoutput name\fR> ]
+.br
+[ \-Q <\fIoutput name\fR> | \-\-active\-queue\-depth=<\fIoutput name\fR> ]
+.br
+[ \-r               | \-\-no\-remaps ]
+.br
+[ \-s <\fIoutput name\fR> | \-\-seeks=<\fIoutput name\fR> ]
+.br
+[ \-S <\fIinterval\fR>    | \-\-iostat\-interval=<\fIinterval\fR> ]
+.br
+[ \-t <\fIsec\fR>         | \-\-time\-start=<\fIsec\fR> ]
+.br
+[ \-T <\fIsec\fR>         | \-\-time\-end=<\fIsec\fR> ]
+.br
+[ \-u <\fIoutput name\fR> | \-\-unplug\-hist=<\fIoutput name\fR> ]
+.br
+[ \-v               | \-\-verbose ]
+.br
+[ \-V               | \-\-version ]
+.br
+[ \-z <\fIoutput name\fR> | \-\-q2d\-latencies=<\fIoutput name\fR> ]
+
+
+.SH DESCRIPTION
+
+btt is a post\-processing tool for the block layer IO tracing tool called
+blktrace(8).  As noted in its documentation, blktrace 
+is a block layer IO tracing mechanism which provides detailed
+information about request queue operations up to user space.
+
+btt will take in binary dump data from blkparse, and analyse the events,
+producing a series of output from the analysis. It will also build .dat
+files containing "range data" \-\- showing things like Q activity (periods
+of time while Q events are being produced), C activity (likewise for
+command completions), and etc.
+
+Included with the distribution is a simple 3D plotting utility,
+\fIbno_plot\fR, which can plot the block numbers btt outputs if the \fI-B\fR
+option is specified. The display will display each IO generated, with the time
+(seconds) along the X-axis, the block number (start) along the Y-axis and the
+number of blocks transferred in the IO represented along the Z-axis.
+
+
+.SH OPTIONS
+
+.B \-a
+.br
+.B \-\-seek\-absolute
+.RS 4
+When specified on the command line, this directs btt to calculate
+seek distances based solely upon the ending block address of one IO,
+and the start of the next.  By default \fBbtt\fR uses the concept
+of the closeness to either the beginning or end of the previous IO. See
+the Users Manual for more details about seek distances.
+.RE
+
+.B \-A
+.br
+.B \-\-all\-data
+.RS 4
+Normally \fBbtt\fR will not print out verbose information concerning
+per-process and per-device data.  If you desire that level of detail you can
+specify this option.
+.RE
+
+.B \-B <\fIoutput name\fR>
+.br
+.B \-\-dump\-blocknos=<\fIoutput name\fR>
+.RS 4
+This option will output absolute block numbers to three files prefixed
+by the specified output name:
+.HP
+.I prefix_device_r.dat
+.br
+All read block numbers are output, first column is time (seconds), second is
+the block number, and the third column is the ending block number.
+.HP
+.I prefix_device_w.dat
+.br
+All write block numbers are output, first column is time (seconds), second is
+the block number, and the third column is the ending block number.
+.HP
+.I prefix_device_c.dat
+.br
+All block numbers (read and write) are output, first column is time (seconds),
+second is the block number, and the third column is the ending block number.
+.RE
+
+.B \-d <\fIseconds\fR>
+.br
+.B \-\-range\-delta=<\fIseconds\fR>
+.RS 4
+\fBbtt\fR outputs a file containing Q and C activity, the notion of active
+traces simply means that there are Q or C traces occurring within a certain
+period of each other. The default values is 0.1 seconds; with this option
+allowing one to change that granularity. The smaller the value, the more data
+points provided.
+.RE
+
+.B \-D <\fIdev;...\fR>
+.br
+.B \-\-devices=<\fIdev;...\fR>
+.RS 4
+Normally, \fBbtt\fR will produce data for all devices detected in the
+traces parsed. With this option, one can reduce the analysis to one or more
+devices provided in the string passed to this option. The device identifiers
+are the major and minor number of each device, and each device identifier is
+separated by a colon (:). A valid specifier for devices 8,0 and 8,8 would then
+be: \fI8,0:8,8\fR.
+.RE
+
+.B \-e <\fIexe,...\fR>
+.br
+.B \-\-exes=<\fIexe,...\fR>
+.RS 4
+The \-e option supplies the list of executables that will have I/Os
+analysed.
+.RE
+
+.B \-h
+.br
+.B \-\-help
+.RS 4
+Shows a short summary of possible command line option
+.RE
+
+.B \-i <\fIinput name\fR>
+.br
+.B \-\-input\-file <\fIinput file\fR>
+.RS 4
+Specifies the input file to analyse.  This should be a trace file produced
+by \fIblktrace\fR (8).
+.RE
+
+.B \-I <\fIoutput name\fR>
+.br
+.B \-\-iostat=<\fIoutput name\fR>
+.RS 4
+The \-I option directs btt to output iostat\-like data to the specified
+file.  Refer to the iostat (sysstat) documentation for details on the
+data columns. 
+.RE
+
+.B \-l <\fIoutput name\fR>
+.br
+.B \-\-d2c\-latencies=<\fIoutput name\fR>
+.RS 4
+The \-l option allows one to output per\-IO D2C latencies
+respectively. The supplied argument provides the basis for the output
+name for each device.
+.RE
+
+.B \-L <\fIfreq\fR>
+.br
+.B \-\-periodic\-latencies=<\fIfreq\fR>
+.RS 4
+The \-L option allows one to output periodic latency information for both
+Q2C and D2C latencies. The frequency specified will regulate how often
+an average latency is output -- a floating point value expressing seconds.
+.RE
+
+.B \-M <\fIdev map\fR>
+.br
+.B \-\-dev\-maps=<\fIdev map\fR>
+.RS 4
+The \-M option takes in a file generated by the provided script
+(gen_disk_info.py), and allows for better output of device names.
+.RE
+
+.B \-o <\fIoutput name\fR>
+.br
+.B \-\-output\-file=<\fIoutput name\fR>
+.RS 4
+Specifies the output file name.
+.RE
+
+.B \-p <\fIoutput name\fR>
+.br
+.B \-\-per\-io\-dump=<\fIoutput name\fR>
+.RS 4
+The \-p option will generate a file that contains a list of all IO
+"sequences" \- showing the parts of each IO (Q, A, I/M, D, & C).
+.RE
+
+.B \-P <\fIoutput name\fR>
+.br
+.B \-\-per\-io\-trees=<\fIoutput name\fR>
+.RS 4
+The \-P option will generate a file that contains a list of all IO
+"sequences" \- showing only the Q, D & C operation times. The D & C
+time values are separated from the Q time values with a vertical bar.
+.RE
+
+.B \-q <\fIoutput name\fR>
+.br
+.B \-\-q2c\-latencies=<\fIoutput name\fR>
+.RS 4
+The \-q option allows one to output per\-IO Q2C latencies
+respectively. The supplied argument provides the basis for the output
+name for each device.
+.RE
+
+.B \-Q <\fIoutput name\fR>
+.br
+.B \-\-active\-queue\-depth=<\fIoutput name\fR>
+.RS 4
+The \-Q option allows one to output data files showing the time stamp
+and the depth of active commands (those issued but not completed).
+.RE
+
+.B \-r
+.br
+.B \-\-no\-remaps
+.RS 4
+Ignore remap traces; older kernels did not implement the full remap
+PDU.
+.RE
+
+.B \-s <\fIoutput name\fR>
+.br
+.B \-\-seeks=<\fIoutput name\fR>
+.RS 4
+The \-s option instructs btt to output seek data, the argument provided
+is the basis for file names output. There are two files per device,
+read seeks and write seeks.
+.RE
+
+.B \-S <\fIinterval\fR>
+.br
+.B \-\-iostat\-interval=<\fIinterval\fR>
+.RS 4
+The \-S option specifies the interval to use between data
+output, it defaults to once per second.
+.RE
+
+.B \-t <\fIsec\fR>
+.br
+.B \-\-time\-start=<\fIsec\fR>
+.br
+.B \-T <\fIsec\fR>
+.br
+.B \-\-time\-end=<\fIsec\fR>
+.RS 4
+The \-t/\-T options allow one to set a start and/or end time for analysing
+\- analysing will only be done for traces after \-t's argument and before
+\-T's argument. (\-t and \-T are optional, so if you specify just \-t,
+analysis will occur for all traces after the time specified. Similarly,
+if only \-T is specified, analysis stops after \-T's seconds.)
+.RE
+
+.B \-u <\fIoutput name\fR>
+.br
+.B \-\-unplug\-hist=<\fIoutput name\fR>
+.RS 4
+This option instructs \fBbtt\fR to generate a data file containing histogram
+information for unplug traces on a per device basis. It shows how many
+times an unplug was hit with a specified number of IOs released. There are 21
+output values into the file, as follows:
+
+.RS 4
+a value of 0 represents 0..4 counts
+.br
+a value of 1 represents 5..9 counts
+.br
+a value of 2 represents 10..14 counts
+.br
+etc, until
+.br
+a value of 20 represents 100+ counts
+.br
+.RE
+
+The file name(s) generated use the text string passed as an argument for
+the prefix, followed by the device identifier in \fImajor,minor\fR
+form, with a \fI.dat\fR extension.  For example, with \fI\-u
+up_hist\fR specified on the command line: \fIup_hist_008,032.dat\fR.
+.RE
+
+.B \-V
+.br
+.B \-\-version
+.RS 4
+Shows the version of btt.
+.RE
+
+.B \-v
+.br
+.B \-\-verbose
+.RS 4
+Requests a more verbose output.
+.RE
+
+.B \-z <\fIoutput name\fR>
+.br
+.B \-\-q2d\-latencies=<\fIoutput name\fR>
+.RS 4
+The \-z option allows one to output per\-IO Q2D latencies
+respectively. The supplied argument provides the basis for the output
+name for each device.
+.RE
+
+
+.SH AUTHORS
+\fIbtt\fR was written by Alan D. Brunelle.  This man page was created
+from the \fIblktrace\fR documentation by Bas Zoetekouw.
+
+
+.SH "REPORTING BUGS"
+Report bugs to <linux\-btrace@vger.kernel.org>
+
+.SH COPYRIGHT
+Copyright \(co 2006 Jens Axboe, Alan D. Brunelle and Nathan Scott.
+.br
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+.br
+This manual page was created for Debian by Bas Zoetekouw.  It was derived from
+the documentation provided by the authors and it may be used, distributed and
+modified under the terms of the GNU General Public License, version 2.
+.br
+On Debian systems, the text of the GNU General Public License can be found in
+/usr/share/common\-licenses/GPL\-2.
+
+.SH "SEE ALSO"
+The btt Users Guide, which can be found in /usr/share/doc/blktrace/btt.pdf
+.br
+bno_plot (1), blktrace (8), blkparse (1), verify_blkparse (1), blkrawverify (1), btt (1)
+

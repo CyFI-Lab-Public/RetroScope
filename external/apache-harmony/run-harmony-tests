@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# Make sure there's a vogar on the path, but prefer the user's one.
+export PATH=$PATH:~dalvik-prebuild/vogar/bin
+
+VOGAR="vogar $VOGAR_FLAGS"
+
+# We enumerate the test packages for vogar rather than just giving it the classes.jar
+# so hundreds of packages can be tested in parallel, rather than one big jar file serially.
+all_test_packages=$(find `dirname $0`/*/src/test -name "*.java" | \
+  fgrep -v junit | \
+  fgrep -v org/w3c/domts | \
+  fgrep -v support/src/test/java | \
+  xargs grep -h '^package ' | sed 's/^package //' | sed 's/;$//' | sort | uniq | tr "\n" " ")
+
+# Use the list of packages supplied on the command-line, if any.
+test_packages=${*:-$all_test_packages}
+
+echo "Running tests for following test packages:"
+echo $test_packages | tr " " "\n"
+
+# beans: works, except IndexedPropertyDescriptorTest won't load
+# concurrent: needs vogar to detect code type in the target VM
+# crypto: many of the javax.crypto tests fail due to classloader visibility issues
+# logging: many failures due to missing bundles
+# prefs: many prefs tests fail; this needs investigation
+
+$VOGAR \
+  --vm-arg -Xmx32M \
+  --classpath out/host/common/obj/JAVA_LIBRARIES/apache-harmony-tests-hostdex_intermediates/javalib.jar \
+  --results-dir /home/dalvik-prebuild/vogar-harmony-results \
+  $test_packages \
+  || true

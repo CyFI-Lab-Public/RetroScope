@@ -1,0 +1,25 @@
+grant
+    Principal javax.security.auth.MyPrincipal "duke"
+{
+        permission java.io.FilePermission "/home/duke", "read, write";
+};
+
+grant CodeBase "http://dummy.xxx", 
+    Principal javax.security.auth.MyPrincipal "dummy"
+{
+        permission java.lang.RuntimePermission "createClassLoader";
+};
+
+grant
+    Principal javax.security.auth.MyPrincipal "my",
+    Principal javax.security.auth.OtherPrincipal "other",
+{
+        permission java.security.AllPermission;
+};
+
+grant
+    Principal javax.security.auth.MyPrincipal "bunny"
+{
+        permission java.io.FilePermission "/home/bunny", "read, write";
+        permission java.lang.RuntimePermission "stopThread";
+};

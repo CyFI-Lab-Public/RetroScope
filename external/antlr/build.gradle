@@ -1,0 +1,26 @@
+apply plugin: 'java'
+
+configurations {
+    antlrRuntime
+}
+
+sourceSets {
+    antlrRuntime {
+        java {
+            srcDirs = ["antlr-3.4/runtime/Java/src/main/java"]
+            exclude "**/org/antlr/runtime/tree/DOTTreeGenerator.java"
+        }
+    }
+}
+
+task runtimeJar(type: Jar) {
+    from sourceSets.antlrRuntime.output
+    dependsOn antlrRuntimeClasses
+    baseName "antlr"
+    appendix "runtime"
+    version "3.4"
+}
+
+artifacts {
+    antlrRuntime runtimeJar
+}

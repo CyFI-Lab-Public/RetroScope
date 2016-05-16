@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+
+<project name="Watch Feed" default="watchFeed">
+
+	<taskdef name="WatchFeed" 
+	  classname="org.eclipse.releng.services.rss.RSSFeedWatcherTask" 
+	  classpath="../feedTools.jar"/>
+
+	<!-- 1. Define property file -->
+	<target name="init">
+		<!-- <property file="../properties/feedWatch.emf.properties"/> -->
+		<property file="../properties/feedWatch.uml2.properties"/>
+	</target>
+
+	<!-- 2. Watch feed for certain change conditions and respond if necessary -->
+	<target name="watchFeed" depends="init" description="Watch feed for certain change conditions and respond if necessary">
+		<WatchFeed 
+			debug="${debug}" 
+			file="${file}" 
+			feedURL="${feedURL}"
+			feedWatchActions="${feedWatchActions}"
+		/>
+
+		<!--
+			Different ways to get at the results of the task include:
+			
+			feedWatchAction.Result.0       - The result returned from the <exec> task; if set, something bad happened
+			feedWatchAction.Error.0        - Details about the error that occurred, if set, something bad happened
+			feedWatchAction.Output.0       - Console output from your <exec>, if any; 
+				this will depend on what you run in response to a feed change, and if that process produces console output
+			feedWatchAction.OldValue.0 - The original value of the node you asked for, from the previous cached version of the feed
+			feedWatchAction.NewValue.0 - The changed value of the node you asked for, from the latest version of the feed; 
+				if you asked for changes to the test status for performance tests, this could be "PASS"; 
+				if you asked for any changes to the feed, this will be the XML datestamp of the last update, eg: 2006-05-04T12:14:33Z
+			feedWatchAction.TheValue.0 - Even if the original value is unchanged, this will contain the NewValue. 
+				This is useful to determine if the value changed (check if NewValue.0 is defined), but also to have the value, 
+				in case you need to pass it to a downstream script. For example, you can check //*[name()='entry'][1]/*/*[name()='build']/@type - which
+				if the feed only contains S builds, will never change, and NewValue.0 will be undefined; however, you need the "S" value, 
+				so use this property instead of NewValue.0 in order to pass it to the next script.
+				
+			If you are watching for more than one condition, you can check for feedWatchAction.NewValue.0, feedWatchAction.NewValue.1, feedWatchAction.NewValue.2, etc.
+		-->
+		
+		<!--
+		<echoproperties format="text">
+			<propertyset><propertyref regex="feedWatchAction\.(Result|Error|Output|NewValue|OldValue|TheValue)\.0"/></propertyset>		
+		</echoproperties>
+		-->
+		
+		<echo message="feedWatchAction.OldValue.0 = ${feedWatchAction.OldValue.0}"/>
+		<echo message="feedWatchAction.NewValue.0 = ${feedWatchAction.NewValue.0}"/>
+		<echo message="feedWatchAction.TheValue.0 = ${feedWatchAction.TheValue.0}"/>
+		<echo message="feedWatchAction.OldValue.1 = ${feedWatchAction.OldValue.1}"/>
+		<echo message="feedWatchAction.NewValue.1 = ${feedWatchAction.NewValue.1}"/>
+		<echo message="feedWatchAction.TheValue.1 = ${feedWatchAction.TheValue.1}"/>
+		<echo message="feedWatchAction.OldValue.2 = ${feedWatchAction.OldValue.2}"/>
+		<echo message="feedWatchAction.NewValue.2 = ${feedWatchAction.NewValue.2}"/>
+		<echo message="feedWatchAction.TheValue.2 = ${feedWatchAction.TheValue.2}"/>
+		
+		<!-- 3. now we can respond to a changed/unchanged condition if desired -->
+		<antcall target="respondToFeedUnchanged"/>
+		<antcall target="respondToFeedChanged"/>
+
+	</target>
+	
+	<!-- 3a. If not responding via shell <exec>, respond now by checking property(ies) for results -->
+	<target name="respondToFeedUnchanged" description="Respond to feed unchanged" unless="feedWatchAction.NewValue.0">
+		<echo message="Feed unchanged! Should we do something, like waiting for some period of time and trying again?"/>
+		<!-- add steps to do here, like sleeping & re-firing, sending a nag note to someone, etc.  -->
+	</target>
+	<!-- 3b. If not responding via shell <exec>, respond now by checking property(ies) for results -->
+	<target name="respondToFeedChanged" description="Respond to feed changed" if="feedWatchAction.NewValue.0">
+		<echo message="Feed changed! Time to do something... but what?"/>
+		<!-- add steps to do here, like firing an email, starting a build, etc. -->
+		
+		<!-- eg., wait 30 seconds and try again -->
+		<!-- <echo message="Sleeping..."/>
+		<exec executable="sleep" resolveexecutable="true"><arg line="10"/></exec>
+		<echo message="Spawning..."/>
+		<exec executable="feedWatch.sh" resolveexecutable="true" spawn="true"/> -->
+	</target>
+	
+</project>

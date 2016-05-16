@@ -1,0 +1,2241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<hy:suite xmlns:hy="http://incubator.apache.org/harmony/testing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://incubator.apache.org/harmony/testing excludes.xsd">
+
+	<!-- Applet module test exclusions -->
+
+
+	<!-- Archive module test exclusions -->
+	<hy:type id="tests.api.java.util.zip.GZIPInputStreamTest">
+        <hy:exclude id="test_read$BII" shouldfix="true">
+            <hy:reason>java.io.IOException: Size mismatch</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="test_close" shouldfix="true">
+            <hy:reason>java.io.IOException: Size mismatch</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.util.zip.InflaterInputStreamTest">
+        <hy:exclude id="test_ConstructorLjava_io_InputStream" shouldfix="true">
+            <hy:reason>read() threw an exception while testing constructor</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.util.zip.InflaterTest">
+        <hy:exclude id="test_setDictionary$B" shouldfix="true">
+            <hy:reason>java.lang.IllegalArgumentException in native method</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    
+    <!-- Auth module test exclusions -->
+    <hy:type id="javax.security.auth.login.serialization.SerAccountExpiredExceptionTest">
+        <hy:exclude id="testGolden" shouldfix="true">
+            <hy:reason>java.io.EOFException</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="javax.security.auth.login.serialization.SerCredentialExpiredExceptionTest">
+        <hy:exclude id="testGolden" shouldfix="true">
+            <hy:reason>java.io.EOFException</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="javax.security.auth.x500.X500PrincipalTest">
+        <hy:exclude id="testValidEncoding" shouldfix="true">
+            <hy:reason>Undiagnosed Error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.javax.security.auth.x500.X500PrincipalTest">
+        <hy:exclude id="all" shouldfix="true">
+            <hy:reason>Undiagnosed Error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+
+	<!-- AWT module test exclusions -->
+	
+	
+	<!-- Beans module test exclusions -->
+	<hy:type id="java.beans.beancontext.BeanContextServicesSupportTest">
+        <hy:exclude id="all" shouldfix="true">
+            <hy:reason>protected system package 'java.beans.beancontext'</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="java.beans.beancontext.BeanContextSupportTest">
+        <hy:exclude id="all" shouldfix="true">
+            <hy:reason>protected system package 'java.beans.beancontext'</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.tests.java.beans.BeansTest">
+        <hy:exclude id="testLoadBySpecificClassLoader" shouldfix="true">
+            <hy:reason>Class with name org.apache.harmony.tests.beans.auxiliary.SampleBean is not found</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testLoadByDefaultClassLoader" shouldfix="true">
+            <hy:reason>Class with name org.apache.harmony.tests.beans.auxiliary.SampleBean is not found</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.tests.java.beans.EventHandlerTest">
+        <hy:exclude id="testNullListenerMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInvoke" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInvokeWithNullPropertyName" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateWithDottedParameterCall" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateWithMethodCallWhichIsSetter" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateForStaticMethodAsPropertyGetter" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.tests.java.beans.SimpleBeanInfoTest">
+        <hy:exclude id="testLoadImage" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.BeanDescriptorTest">
+        <hy:exclude id="testBeanDescriptorClass" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testBeanDescriptorClassClass_CustomizerClassNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.BeansTest">
+        <hy:exclude id="testInstantiateClassLoaderString_Class" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiateClassLoaderString_Ser" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiateClassLoaderStringBeanContext_Class" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiateClassLoaderStringBeanContext_Ser" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiateClassLoaderStringBeanContextAppletInitializer_Class" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiateClassLoaderStringBeanContextAppletInitializer_Ser" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIsInstanceOf_BeanNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.CustomizedPersistenceDelegateTest">
+        <hy:exclude id="testArrayPD" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testProxyPD" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPrimitivePD" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testMethodPD" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFieldPD" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.DefaultPersistenceDelegateTest">
+        <hy:exclude id="testInstantiate_NullProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiate_EmptyProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiate_NonExistingGetter" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiate_NonExistingGetterNulEncoder" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiate_InitialUpperCasePropName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiate_NoGetter" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiate_NotRegularGetter" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testMutatesTo_NormalNoProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testMutatesTo_NormalWithEmptyPropertyPublicEqualMethod" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testMutatesTo_Null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_Normal" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_NormalBeanInfo" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_SameInstance" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_TransientProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_NullClass" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_NullInstances" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_NullEncoder" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_NotRegularGetter" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.EncoderTest">
+        <hy:exclude id="testGetExceptionListener" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetExceptionListener_Null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetExceptionListener" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteExpression_Null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_Null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetPersistenceDelegate_BeanInfo" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetPersistenceDelegate_Default" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetPersistenceDelegate_Null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGet_String" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGet_Integer" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemove_String" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+
+	<hy:type id="tests.api.java.beans.EventHandlerTest">
+        <hy:exclude id="testCreateClassObjectString_ObjectNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectString_MethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectString_MethodEmpty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectStringString_TargetNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectStringString_ActionNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectStringString_ActionInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectStringString_PropertyNameNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectStringString_PropertyNameInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectStringStringString_TargetNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectStringStringString_ActionNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectStringStringString_ActionInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectStringStringString_PropertyNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCreateClassObjectStringStringString_PropertyInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInvoke_1" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIncompatibleMethod" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCoverage_1" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInvoke_extend2" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInvoke_extend2_2" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInvoke_extend4_BooleanObject" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventHandlerCreate" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.EventSetDescriptorTest">
+        <hy:exclude id="testEventSetDescriptorClassStringClassString2" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassString_EventNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassString_EventEmpty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassString_EventInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassString_ListenerInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassStringArrayStringString" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassStringArrayStringString_sourceClassNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassStringArrayStringString_eventNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassStringArrayStringString_eventEmpty" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassStringArrayStringString_listenerMethodNamesNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassStringArrayStringString_listenerMethodNamesEmpty" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassStringArrayStringString_addListenerMethodNameNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassStringArrayStringString_removeListenerMethodNameNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassStringArrayStringStringString" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassStringArrayStringStringString_getListenerMethodNameNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorClassStringClassStringArrayStringStringString_getListenerMethodNameInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorStringClassMethodArrayMethodMethod" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorStringClassMethodArrayMethodMethod_EventNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorStringClassMethodArrayMethodMethod_EventEmpty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorStringClassMethodArrayMethodMethod_ListenerTypeNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorStringClassMethodArrayMethodMethod_listenerMethodsNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorStringClassMethodArrayMethodMethod_listenerMethodsInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorStringClassMethodArrayMethodMethod_addListenerMethodInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorStringClassMethodArrayMethodMethod_removeListenerMethodInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorStringClassMethodArrayMethodMethodMethod" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorStringClassMethodArrayMethodMethodMethod_getListenerMethodInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEventSetDescriptorStringClassMethodDescriptorArrayMethodMethod_ListenerMDNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.ExpressionTest">
+        <hy:exclude id="testConstructor_Normal" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_NullTarget" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_ArrayTarget" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_NullMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_NewMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_EmptyMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_NullArguments" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_NullArgument" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_Value_Normal" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_Value_NullTarget" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_Value_ArrayTarget" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_Value_NullMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_Value_NewMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_Value_EmptyMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_Value_NullArguments" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_Value_NullArgument" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_Value_NullValue" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetValue_UnboundedNormalInstanceMethod" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetValue_UnboundedNullMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetValue_UnboundedOverloadedMethods" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetValue_UnboundedNormalConstructor" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetValue_UnboundedOverloadedConstructorsNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetValue_UnboundedAmbitiousStaticMethod" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetValue_UnboundedClassForName" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetValue_UnboundedVoidMethod" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_Value_SetValueCalledIn" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.FeatureDescriptorTest">
+        <hy:exclude id="testSetDisplayName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetValue_ValueNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.IndexedPropertyDescriptorTest">
+        <hy:exclude id="testEquals" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEquals_ReadMethod" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEquals_ReadMethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEquals_WriteMethod" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEquals_WriteMethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEquals_IndexedR" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEquals_IndexedRNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEquals_IndexedW" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEquals_IndexWNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testEquals_PropertyType" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringClass" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringClass_PropertyNameInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringClass_NotIndexedProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringClassStringStringStringString" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringClassStringStringStringString_IndexedReadMethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringClassStringStringStringString_IndexedRWNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringClassStringStringStringString_RNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringMethodMethodMethodMethod" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringMethodMethodMethodMethod_propInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringMethodMethodMethodMethod_ReadMethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringMethodMethodMethodMethod_WriteMethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringMethodMethodMethodMethod_IndexedReadMethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringMethodMethodMethodMethod_IndexedWriteMethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringMethodMethodMethodMethod_IndexedRWNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringMethodMethodMethodMethod_RWNull" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringMethodMethodMethodMethod_RWIncompatible" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIndexedPropertyDescriptorStringMethodMethodMethodMethod_IndexedRWIncompatible" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetIndexedReadMethod_invalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetIndexedReadMethod_null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetIndexedReadMethod_RInvalidArgs" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetIndexedReadMethod_RInvalidArgType" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetIndexedReadMethod_RInvalidReturn" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetIndexedWriteMethod_null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetIndexedWriteMethod" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetIndexedWriteMethod_noargs" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetIndexedWriteMethod_badargtype" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetIndexedWriteMethod_return" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetIndexedWriteMethod_InvalidIndexType" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.IntrospectionExceptionTest">
+        <hy:exclude id="testSerialization_Compatibility" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.IntrospectorTest">
+        <hy:exclude id="testGetBeanInfoClassClass_ClassInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetBeanInfoClassint_IGNORE_IMMEDIATE_Event" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetBeanInfoClassint_IGNORE_ALL_Event" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetBeanInfoSearchPath" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetBeanInfoSearchPath_Default" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIntrospection_5" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIntrospection_8" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIntrospection_9" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIntrospection_10" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIntrospection_11" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIntrospection_13" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testBeanInfo_1" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetBeanInfoSearchPath2" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>        
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.MethodDescriptorTest">
+        <hy:exclude id="testMethodDescriptorMethod" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testMethodDescriptorMethodParameterDescriptorArray" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testMethodDescriptorMethodParameterDescriptorArray_PDNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.PersistenceDelegateTest">
+        <hy:exclude id="testWriteObject_NormalMutatesToFalse" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_NullObject" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_Normal" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_NullClass" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_NullInstances" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInitialize_NullEncoder" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testMutatesTo_Null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.PropertyChangeEventTest">
+        <hy:exclude id="testSerializationCompatibility" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.PropertyChangeSupportTest">
+        <hy:exclude id="testAddPropertyChangeListener_PropertyChangeListener_Normal" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddPropertyChangeListener_PropertyChangeListener_Null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddPropertyChangeListener_PropertyChangeListener_String_Normal" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddPropertyChangeListener_PropertyChangeListener_String_NullListener" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddPropertyChangeListener_PropertyChangeListener_String_NullProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddPropertyChangeListener_PropertyChangeListener_String_Duplicate" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemovePropertyChangeListener_PropertyChangeListener_Normal" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemovePropertyChangeListener_PropertyChangeListener_Null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemovePropertyChangeListener_PropertyChangeListener_String_PropertyRegistered" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemovePropertyChangeListener_PropertyChangeListener_String_NullListener" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemovePropertyChangeListener_PropertyChangeListener_String_NullProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetPropertyChangeListener_String_Normal" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetPropertyChangeListener_String_Null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testHasListener_PropertyRegistered" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testHasListener_Null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFirePropertyChange_Object_NullProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFirePropertyChange_Object_NullListener" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFirePropertyChange_PropertyChangeEvent_NullProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFirePropertyChange_PropertyChangeEvent_NullListener" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFirePropertyChange_Boolean_NullProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFirePropertyChange_Boolean_NullListener" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFirePropertyChange_Int_NullProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFirePropertyChange_Int_NullListener" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerializationCompatibility" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.PropertyDescriptorTest">
+        <hy:exclude id="testPropertyDescriptorStringClass" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyDescriptorStringClass_PropertyNameInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyDescriptorStringClass_ProtectedGetter" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyDescriptorStringClassStringString" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyDescriptorStringClassStringString_ReadMethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyDescriptorStringClassStringString_ReadMethodInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyDescriptorStringClassStringString_WriteMethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyDescriptorStringClassStringString_WriteMethodEmpty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyDescriptorStringClassStringString_WriteMethodInvalid" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyDescriptorStringMethodMethod" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyDescriptorStringMethodMethod_ReadMethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyDescriptorStringMethodMethod_WriteMethodNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetReadMethod_Invalid_returnVoid" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetBound_true" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetBound_false" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetConstrained_true" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetConstrained_false" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.PropertyEditorManagerTest">
+        <hy:exclude id="testGetEditorSearchPath_default" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetEditorSearchPath_null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testBoolEditor_setAsText" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testBoolEditor_setAsText_null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testBoolEditor_setAsText_Invalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testByteEditor" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testByteEditor_null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testByteEditor_invalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testByteEditor_invalid2" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testDoubleEditor" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testDoubleEditor_SetAsText_Null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testDoubleEditor_SetAsText_Invalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFloatEditor" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFloatEditor_SetAsText_Null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFloatEditor_SetAsText_Invalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testLongEditor" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testLongEditor_SetAsText_Null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testLongEditor_SetAsText_Invalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testShortEditor" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testShortEditor_SetAsText_Null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testShortEditor_SetAsText_Invalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIntegerEditor" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIntegerEditor_SetAsText_Null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIntegerEditor_SetAsText_Invalid" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testStringEditor" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testStringEditor_SetAsText_Null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testStringEditor_SetAsText_SpecialChars" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.PropertyEditorSupportTest">
+        <hy:exclude id="testPropertyEditorSupport" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyEditorSupportObject" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyEditorSupportObject_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddPropertyChangeListener" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddPropertyChangeListener_source_null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddPropertyChangeListener_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemovePropertyChangeListener" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemovePropertyChangeListener_null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemovePropertyChangeListener_diff" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemovePropertyChangeListener_null_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetAsText" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetValue" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetValue_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.PropertyVetoExceptionTest">
+        <hy:exclude id="testSerializablization_Compatibility" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.StatementTest">
+        <hy:exclude id="testConstructor_Normal" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_NullTarget" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_ArrayTarget" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_NullMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_NewMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_EmptyMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_NullArguments" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testConstructor_NullArgument" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testExecute_NormalInstanceMethod" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testExecute_NullMethodName" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testExecute_OverloadedMethods" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testExecute_NormalConstructor" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testExecute_OverloadedConstructorsNull" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testExecute_AmbitiousStaticMethod" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testExecute_ClassForName" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testExecute_ArrayGet" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testExecute_ArrayInvalidSet" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testExecute_PrimitiveVSWrapper" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testExecute_IntMethodNullParameter" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.VetoableChangeListenerProxyTest">
+        <hy:exclude id="testVetoableChangeListenerProxy" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.VetoableChangeSupportTest">
+        <hy:exclude id="testAddVetoableChangeListenerStringVetoableChangeListener_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddVetoableChangeListenerVetoableChangeListener_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddVetoableChangeListenerVetoableChangeListener_Proxy" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFireVetoableChangePropertyChangeEvent_Veto" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFireVetoableChangePropertyChangeEvent_listener_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFireVetoableChangeStringbooleanboolean_listener_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFireVetoableChangeStringbooleanboolean_listener_null_property" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveVetoableChangeListenerStringVetoableChangeListener_property" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveVetoableChangeListenerStringVetoableChangeListener_property_more" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveVetoableChangeListenerStringVetoableChangeListener_property_diff" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveVetoableChangeListenerStringVetoableChangeListener_listener_diff" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveVetoableChangeListenerStringVetoableChangeListener_listener_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveVetoableChangeListenerStringVetoableChangeListener_propertyName_Null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveVetoableChangeListenerStringVetoableChangeListener_listener_null_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveVetoableChangeListenerVetoableChangeListener_all_more_diff" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveVetoableChangeListenerVetoableChangeListener_all_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveVetoableChangeListenerVetoableChangeListener_null_null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization_Compatibility" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.XMLDecoderTest">
+        <hy:exclude id="testGetExceptionListener" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadObject_Null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadObject_Integer" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadObject_StringCodec" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadObject_IntArray" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadObject_PropertyDependency" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadObject_NoChange" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadObject_BornFriendChange" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadObject_ManyChanges" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadObject_StaticField" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadObject_Owner" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadObject_Owner_WithWriteStatement" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetExceptionListener_CatchException" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testXMLDecoderInputStream" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testXMLDecoderInputStreamObject" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.XMLEncoderTest">
+        <hy:exclude id="testWriteObject_Null" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_Integer" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_StringCodec" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_IntArray" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_PropertyDependency" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_NoChange" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_BornFriendChange" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_ManyChanges" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_ManyChanges_2" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_SetOwner" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_SetOwnerWithWriteStatement" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testWriteObject_StaticField" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFlush" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.beancontext.BeanContextChildSupportTest">
+        <hy:exclude id="testAddPropertyChangeListener_NullParam" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddVetoableChangeListener_NullParam" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testServiceAvailable" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testServiceRevoked" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetBeanContext" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetBeanContext_VetoedByListener" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetBeanContext_VetoedByValidateMethod" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization_NoPeer" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization_WithPeer" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization_Compatibility" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.beancontext.BeanContextMembershipEventTest">
+        <hy:exclude id="testSerialization" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization_Compatibility" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.beancontext.BeanContextServiceAvailableEventTest">
+        <hy:exclude id="testSerialization" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization_Compatibility" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.beancontext.BeanContextServiceRevokedEventTest">
+        <hy:exclude id="testBeanContextServiceRevokedEvent_NullParam" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testBeanContextServiceRevokedEvent" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetSourceAsBeanContextServices" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization_Compatibility" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.beancontext.BeanContextServicesSupportTest">
+        <hy:exclude id="testAddServiceClassBeanContextServiceProvider_NullParam" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddServiceClassBeanContextServiceProvider_Exist" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddServiceClassBeanContextServiceProviderboolean_FalseParam" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testChildJustRemovedHook" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFireServiceRevokedClassboolean" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetCurrentServiceClasses" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetCurrentServiceSelectors_NullParam" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetCurrentServiceSelectors_NonExist" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetCurrentServiceSelectors" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetService_NullParam" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetService_NonChild" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetService_ThisContext" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetService_ParentContext" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testHasService_ParentService" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReleaseBeanContextResources" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReleaseService_WrongChildOrRequestor" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReleaseService" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRevokeService_ChildContext" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization_Compatibility" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.beans.beancontext.BeanContextSupportTest">
+        <hy:exclude id="testAdd_NonBCC" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAdd_BCC" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAdd_BCP" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAdd_Exist" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAdd_Veto" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddAll" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAddBeanContextMembershipListener" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testAvoidingGui_VisibleChild" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testBcsChildren" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testBcsPreDeserializationHook" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testBcsPreSerializationHook" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testChildDeserializedHook" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testContains" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testContainsAll" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testContainsKey" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testCopyChildren" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetChildBeanContextChild_Both" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetResource_NullParam" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetResource_NonChild" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetResource_NotExist" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetResource" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetResourceAsStream_NullParam" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetResourceAsStream_NonChild" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetResourceAsStream_NotExist" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetResourceAsStream" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInstantiateChild" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIsEmpty" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testIterator" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testNeedsGui_NoVisibleChild" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testNeedsGui_VisibilityChild" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testPropertyChange" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testReadChildren" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveBeanContextMembershipListener" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveObject_NonBCC" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveObject_BCC" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveObject_BCP" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveObject_BCP2" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveObject_NonExist" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveObject_Veto" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testRemoveObjectboolean" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetDesignTime" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetLocale_NullParam" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetLocale" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetLocale_Veto" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testToArray" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testToArrayObjectArray_WrongType" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testToArrayObjectArray_LesserLength" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testToArrayObjectArray_RightLength" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testToArrayObjectArray_GreaterLength" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testVetoableChange" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization_NoPeer" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization_Peer" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSerialization_Compatibility" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    
+    <!-- Crypto module test exclusions -->
+    
+    
+    <!-- JNDI module test exclusions -->
+    
+    
+    <!-- Logging module test exclusions -->
+    <hy:type id="org.apache.harmony.logging.tests.java.util.logging.FileHandlerTest">
+        <hy:exclude id="testSecurity" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFileSecurity" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInvalidProperty" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testInvalidParams" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testSetOutputStream" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testFileHandlerString" shouldfix="true">
+            <hy:reason>Undiagnosed error</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.logging.tests.java.util.logging.LogManagerTest">
+        <hy:exclude id="testDefaultLoggerProperties" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+        <hy:exclude id="testGetProperty" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.logging.tests.java.util.logging.SocketHandlerTest">
+        <hy:exclude id="testPublish_Null" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    
+    <!-- LUNI module test exclusions -->
+    <hy:type id="tests.api.java.io.InputStreamReaderTest">
+        <hy:exclude id="test_read" shouldfix="true">
+            <hy:reason>Undiagnosed failure</hy:reason>
+        </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.io.ObjectInputStreamTest">
+	    <hy:exclude id="test_ConstructorLjava_io_InputStream_subtest0" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.io.ObjectOutputStreamTest">
+	    <hy:exclude id="test_ConstructorLjava_io_OutputStream_subtest0" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_writeObject_NotSerializable" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.io.OutputStreamWriterTest">
+	    <hy:exclude id="testSingleCharIO" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testBlockIO" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_close" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.io.PipedInputStreamTest">
+	    <hy:exclude id="test_receive" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.lang.AssertionErrorTest">
+	    <hy:exclude id="test_ObjectConstructor" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.lang.ClassTest">
+	    <hy:exclude id="test_getResourceLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getResourceAsStreamLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.lang.ProcessTest">
+	    <hy:exclude id="test_getOutputStream" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.lang.StringTest">
+	    <hy:exclude id="test_concatLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getBytes" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getBytesLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.net.DatagramSocketTest">
+	    <hy:exclude id="test_connectLjava_net_InetAddressI" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.net.HttpURLConnectionTest">
+	    <hy:exclude id="test_getResponseCode" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getResponseMessage" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getHeaderFields" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_usingProxy" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.net.InetAddressTest">
+	    <hy:exclude id="test_getHostName" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_toString" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.net.JarURLConnectionTest">
+	    <hy:exclude id="test_getAttributes" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getJarEntry" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getMainAttributes" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.net.MulticastSocketTest">
+	    <hy:exclude id="test_ConstructorI" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getInterface" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getNetworkInterface" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getTimeToLive" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getTTL" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_joinGroupLjava_net_InetAddress" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_joinGroupLjava_net_SocketAddressLjava_net_NetworkInterface" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_leaveGroupLjava_net_InetAddress" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_leaveGroupLjava_net_SocketAddressLjava_net_NetworkInterface" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_sendLjava_net_DatagramPacketB" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_setInterfaceLjava_net_InetAddress" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_setNetworkInterfaceLjava_net_NetworkInterface" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_setTimeToLiveI" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_setTTLB" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_setLoopbackModeZ" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_setReuseAddressZ" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.net.ServerSocketTest">
+	    <hy:exclude id="test_toString" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.net.SocketImplTest">
+	    <hy:exclude id="test_Constructor" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.net.SocketTest">
+	    <hy:exclude id="test_ConstructorLjava_lang_StringILjava_net_InetAddressI" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.net.URLClassLoaderTest">
+	    <hy:exclude id="test_findResourcesLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_newInstance$Ljava_net_URL" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_findClassLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_findResourceLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.net.URLConnectionTest">
+	    <hy:exclude id="test_getContent" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getContentLength" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getContentType" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getHeaderFieldI" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getHeaderFields" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getHeaderFieldKeyI" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getInputStream" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getOutputStream" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_guessContentTypeFromStreamLjava_io_InputStream" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.net.URLTest">
+	    <hy:exclude id="test_ConstructorLjava_lang_StringLjava_lang_StringLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_openStream" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getAuthority" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.util.CalendarTest">
+	    <hy:exclude id="test_setII" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.util.LocaleTest">
+	    <hy:exclude id="test_toString" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    
+    <!-- Math module test exclusions -->
+    
+    
+    <!-- NIO module test exclusions -->
+    
+    
+    <!-- NIO_Char module test exclusions -->
+    <hy:type id="tests.api.java.nio.charset.ASCCharsetEncoderTest">
+	    <hy:exclude id="testCanEncodeCharSequence" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testMultiStepEncode" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testEncodeCharBufferException" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.nio.charset.CharsetEncoderTest">
+	    <hy:exclude id="testEncodeCharBufferException" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.nio.charset.CharsetEncoderTest">
+	    <hy:exclude id="all" shouldfix="true">
+	        <hy:reason>Failure - Exception in constructor</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.nio.charset.CharsetTest">
+	    <hy:exclude id="testEncode_CharBuffer_Normal" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testEncode_String_Normal" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.nio.charset.ConcreteCharsetTest">
+	    <hy:exclude id="all" shouldfix="true">
+	        <hy:reason>Failure - No public constructor</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.nio.charset.GBCharsetEncoderTest">
+	    <hy:exclude id="testEncodeCharBufferException" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testMultiStepEncode" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.nio.charset.ISOCharsetEncoderTest">
+	    <hy:exclude id="testCanEncodeCharSequence" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testSpecificDefaultValue" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testMultiStepEncode" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testEncodeCharBufferException" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.nio.charset.UTF16BECharsetEncoderTest">
+	    <hy:exclude id="testSpecificDefaultValue" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testEncodeCharBufferException" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testMultiStepEncode" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.nio.charset.UTF16CharsetDecoderTest">
+	    <hy:exclude id="testMultiStepDecode" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.nio.charset.UTF16CharsetEncoderTest">
+	    <hy:exclude id="testEncodeCharBufferException" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testMultiStepEncode" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.nio.charset.UTF16LECharsetEncoderTest">
+	    <hy:exclude id="testSpecificDefaultValue" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testEncodeCharBufferException" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testMultiStepEncode" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.nio.charset.UTFCharsetEncoderTest">
+	    <hy:exclude id="testEncodeCharBufferException" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testMultiStepEncode" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    
+    <!-- Prefs module test exclusions -->
+    <hy:type id="org.apache.harmony.prefs.tests.java.util.prefs.AbstractPreferencesTest">
+	    <hy:exclude id="testPutByteArray" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testExportNode" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testExportSubtree" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.prefs.tests.java.util.prefs.FilePreferencesImplTest">
+	    <hy:exclude id="testPutGet" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testChildNodes" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testSecurityException" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.prefs.tests.java.util.prefs.PreferencesTest">
+	    <hy:exclude id="testImportPreferences" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    
+    <!-- Regex module test exclusions -->
+    
+    
+    <!-- RMI module test exclusions -->
+    
+    
+    <!-- Security module test exclusions -->
+    <hy:type id="java.security.serialization.KeyPairTest">
+	    <hy:exclude id="testSerialization02" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.security.AccessControllerTest">
+	    <hy:exclude id="test_doPrivilegedLjava_security_PrivilegedAction" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.security.AlgorithmParameterGeneratorTest">
+	    <hy:exclude id="test_initLjava_security_spec_AlgorithmParameterSpec" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_initLjava_security_spec_AlgorithmParameterSpecLjava_security_SecureRandom" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.security.AlgorithmParametersTest">
+	    <hy:exclude id="test_getEncodedLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.security.KeyStoreTest">
+	    <hy:exclude id="test_aliases" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_containsAliasLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getCertificateLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getCertificateAliasLjava_security_cert_Certificate" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getCertificateChainLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getInstanceLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getInstanceLjava_lang_StringLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getKeyLjava_lang_String$C" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getProvider" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getType" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_isCertificateEntryLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_isKeyEntryLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_loadLjava_io_InputStream$C" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_setCertificateEntryLjava_lang_StringLjava_security_cert_Certificate" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_setKeyEntryLjava_lang_String$B$Ljava_security_cert_Certificate" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_setKeyEntryLjava_lang_StringLjava_security_Key$C$Ljava_security_cert_Certificate" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_size" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.security.PermissionCollectionTest">
+	    <hy:exclude id="test_impliesLjava_security_Permission" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.security.SecureRandomTest">
+	    <hy:exclude id="test_getInstanceLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getInstanceLjava_lang_StringLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.security.SecurityTest">
+	    <hy:exclude id="test_addProviderLjava_security_Provider" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getProvidersLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getProvidersLjava_util_Map" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.security.cert.CertificateFactoryTest">
+	    <hy:exclude id="test_generateCertificateLjava_io_InputStream" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.security.cert.X509CertificateTest">
+	    <hy:exclude id="test_getExtensionValueLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.security.cert.X509CRLEntryTest">
+	    <hy:exclude id="test_getExtensionValueLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="tests.api.java.security.cert.X509CRLTest">
+	    <hy:exclude id="test_getExtensionValueLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+
+    <!-- SQL module test exclusions -->
+    <hy:type id="org.apache.harmony.sql.tests.java.sql.ArrayTest">
+	    <hy:exclude id="all" shouldfix="true">
+	        <hy:reason>This class contains no test methods</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    
+    <!-- Text module test exclusions -->
+    <hy:type id="org.apache.harmony.text.tests.java.text.AttributedCharacterIteratorTest">
+	    <hy:exclude id="test_getRunLimitLjava_text_AttributedCharacterIterator$Attribute" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.text.tests.java.text.ChoiceFormatTest">
+	    <hy:exclude id="test_toPattern" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.text.tests.java.text.CollationKeyTest">
+	    <hy:exclude id="test_toByteArray" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.text.tests.java.text.CollatorTest">
+	    <hy:exclude id="test_getAvailableLocales" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getDecomposition" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_setDecompositionI" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.text.tests.java.text.DecimalFormatSymbolsTest">
+	    <hy:exclude id="test_RIHarmony_compatible" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.text.tests.java.text.DecimalFormatTest">
+	    <hy:exclude id="test_formatDLjava_lang_StringBufferLjava_text_FieldPosition" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_formatJLjava_lang_StringBufferLjava_text_FieldPosition" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_formatToCharacterIteratorLjava_lang_Object" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getCurrency" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_parseLjava_lang_StringLjava_text_ParsePosition" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.text.tests.java.text.MessageFormatTest">
+	    <hy:exclude id="test_applyPatternLjava_lang_String" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_formatToCharacterIteratorLjava_lang_Object" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="org.apache.harmony.text.tests.java.text.NumberFormatTest">
+	    <hy:exclude id="test_formatLjava_lang_ObjectLjava_lang_StringBufferLjava_text_FieldPosition" shouldfix="true">
+	        <hy:reason>Undiagnosed failure</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="test_getCurrency" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    
+    <!-- X-Net module test exclusions -->
+    <hy:type id="javax.net.ServerSocketFactoryTest">
+	    <hy:exclude id="testGetDefault" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="javax.net.SocketFactoryTest">
+	    <hy:exclude id="testGetDefault" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="javax.net.ssl.DefaultSSLServerSocketFactoryTest">
+	    <hy:exclude id="testCreateServerSocketint" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testCreateServerSocketintint" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testCreateServerSocketintintInetAddress" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testGetDefaultCipherSuites" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testGetSupportedCipherSuites" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="javax.net.ssl.DefaultSSLSocketFactoryTest">
+	    <hy:exclude id="testCreateSocketStringint" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testCreateSocketStringintInetAddressint" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testCreateSocketInetAddressint" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testCreateSocketInetAddressintInetAddressint" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testGetDefaultCipherSuites" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testGetSupportedCipherSuites" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testCreateSocketSocketStringintboolean" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="javax.net.ssl.HttpsURLConnectionTest">
+	    <hy:exclude id="testGetDefaultHostnameVerifier" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testGetHostnameVerifier" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="javax.net.ssl.SSLServerSocketFactoryTest">
+	    <hy:exclude id="testGetDefault" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="javax.net.ssl.SSLSocketFactoryTest">
+	    <hy:exclude id="testGetDefault" shouldfix="true">
+	        <hy:reason>Undiagnosed error</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="javax.net.ssl.serialization.HandshakeCompletedEventTest">
+	    <hy:exclude id="testSelf" shouldfix="true">
+	        <hy:reason>This test requires a JSSE provider</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testGolden" shouldfix="true">
+	        <hy:reason>This test requires a JSSE provider</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+    <hy:type id="javax.net.ssl.serialization.SSLSessionBindingEventTest">
+	    <hy:exclude id="testSelf" shouldfix="true">
+	        <hy:reason>This test requires a JSSE provider</hy:reason>
+	    </hy:exclude>
+	    <hy:exclude id="testGolden" shouldfix="true">
+	        <hy:reason>This test requires a JSSE provider</hy:reason>
+	    </hy:exclude>
+    </hy:type>
+    
+</hy:suite>    

@@ -1,0 +1,305 @@
+<HTML>
+<HEAD>
+<TITLE>Automating Product Builds with PDE BUILD</TITLE> <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=iso-8859-1"> 
+</HEAD>
+
+<BODY BGCOLOR="#FFFFFF" TEXT="#000000">
+<P><FONT SIZE="+3"> Automating Builds with PDE BUILD</FONT><BR></P><P>Last Updated: 
+June16, 2005</P><P><FONT SIZE="+1"><A HREF="#intro">Introduction</A></FONT></P><P><FONT SIZE="+1"><A HREF="#preparation">Preparing 
+the infrastrucure</A></FONT></P><UL><LI><A HREF="#commit">Commit feature and plug-in 
+projects to CVS repository</A></LI><LI><A HREF="#createmap">Create map file project</A></LI><LI><A HREF="#gensource">Set 
+up auto-generation of source features and plug-ins</A></LI></UL><P><FONT SIZE="+1"><A HREF="#buildconfigfiles">Preparing 
+Build Configuration Files</A> </FONT></P><UL> <LI><A HREF="#build.properties">Write 
+build.properties</A></LI><LI><A HREF="#customTargets.xml">Write customTargets.xml</A></LI></UL><P><FONT SIZE="+1"><A HREF="#buildexec"> 
+Build Execution</A></FONT></P><UL> <LI><A HREF="#buildmachinesetup">Set up build 
+machine</A></LI><LI><A HREF="#runbuild">Running the build</A></LI></UL><P>&nbsp;</P><HR><P><FONT SIZE="+2"><B><A NAME="intro"></A>Introduction</B></FONT></P><P>This 
+document describes how to automate the building of Eclipse-based features and 
+their plug-ins using script generators in the org.eclipse.pde.build plug-in in 
+Eclipse 3.2 stream SDK.<BR> </P><P>Either an existing Eclipse 3.2 stream SDK or 
+the org.eclipse.releng.basebuilder project on dev.eclipse.org:/home/eclipse can 
+be used in this automated build process. The org.eclipse.releng.basebuilder project 
+contains the minimal set of plug-ins extracted from the latest stable Eclipse 
+3.2 stream SDK build (a milestone or release) needed to run applications and custom 
+Ant tasks in org.eclipse.ant.core, org.eclipse.pde.build, org.eclipse.pde, and 
+org.eclipse.help.base. This project is used by the Eclipse release engineering 
+team to build Eclipse itself. <P>It is assumed the reader is starting with a set 
+of pre-existing features and plug-ins, their build.properties, and has a working 
+knowledge of Apache Ant. In this document, features, plug-ins and fragments are 
+also referred to as &quot;elements&quot;. The word &quot;distribution&quot; is 
+used to describe the end result of building a feature, a functional unit comprised 
+of one or more groupings of plug-ins. The result of building a feature results 
+in a zip or tar.gz file which contains the binary version of the feature and it's 
+plug-ins. If the feature contains nested features (i.e. &lt;includes&gt; elements), 
+the nested features will be built recursively and included in the distribution.<br> 
+<br> For example, the Eclipse SDK distributions are built from the <a href="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.sdk-feature/feature.xml?rev=1.7" target="extra">org.eclipse.sdk 
+feature</a> which is comprised of features org.eclipse.rcp, org.eclipse.rcp.source, 
+org.eclipse.platform, org.eclipse.platform.source, org.eclipse.jdt, org.eclipse.jdt.source, 
+org.eclipse.pde, org.eclipse.pde.source and the org.eclipse.sdk plug-in. The distribution 
+built from the org.eclipse.sdk feature will therefore contain the binary version 
+of the org.eclipse.sdk feature and its one plug-in plus the binary versions of 
+its eight nested features and all their plug-ins.<br> <br> <HR><P><FONT SIZE="+2"><B><A NAME="preparation"></A>Preparing 
+the infrastructure</B></FONT></P><P><B><FONT SIZE="+1" COLOR="#000000"><A NAME="commit"></A>Commit 
+feature and plug-in projects to CVS repository</FONT></B></P><P>Since Eclipse 
+3.0, PDE Build allows a very flexible organization of feature, plug-in and fragment 
+projects in a CVS repository where:</P><UL> <LI> the directory containing the 
+source for an element can exist as a root level CVS module or in any subdirectory 
+in the repository.</LI><LI>the directory name containing the element's source 
+does not have to match the id attribute in it's manifest (feature.xml, plugin.xml, 
+fragment.xml).</LI></UL><P>This flexibility was not present for the Eclipse process 
+prior to version 3.0 which is one reason for the very flat organization of projects 
+in the dev.eclipse.org:/home/eclipse repository. It is recommended that this flat 
+structure <B>not</B> be used as an example. Rather, using a structure similar 
+to the one used for the <A HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.equinox/?cvsroot=Technology_Project" target="extra">Equinox</A> 
+or <A HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.stellation/?cvsroot=Technology_Project" target="extra" >Stellation</A> 
+project should be considered where all files and directories for a given product 
+are stored under a single directory or module at the cvs root level:<BR><BR>&lt;cvs 
+root&gt;<BR><BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/org.eclipse.equinox<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/plugins<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/all 
+plug-ins at this level<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</P><P>Once 
+the source for all elements is committed to a repository, the next step consists 
+of recording the location and access method for each feature, plug-in and fragment 
+in one or more <A HREF="#createmap">map files</A>.</P><P>&nbsp;</P><P><B><FONT SIZE="+1"><A NAME="createmap"></A>Create 
+map file project</FONT></B></P><P>A .map file is a java property file which contains 
+mappings of elements to their CVS locations and access methods. Map files are 
+used by PDE Build early in the build process to generate Ant scripts which use 
+the Ant &lt;cvs&gt; task to export source to a directory. This is described further 
+<A HREF="#getmaps">below</A>.<BR> <BR>Map file entries use the following format:<BR><BR> 
+<B>feature|fragment|plugin@element.Id=&lt;cvs tag&gt;,&lt;access method&gt;:&lt;cvs 
+user&gt;@&lt;cvs repository&gt;,&lt;cvs password&gt;[,&lt;repository path&gt; 
+(no starting slash) ]</B><BR> </P><P>The &lt;repository path&gt; is only required 
+when the module (or directory) containing the source for the element does not 
+match the element.Id or if the directory is not at the root of the repository.<BR> 
+<BR>A map file entry must exist for each feature being built, it's &lt;plugin&gt; 
+elements and it's &lt;includes&gt; elements (ie. nested features and their plug-ins). 
+Adding a plug-in or fragment to a feature therefore requires updating the map 
+files with the new element.<BR><BR><BR><B>Map File Entry Examples</B></P><UL><LI>The 
+org.eclipse.platform plug-in source is located at the root of the <A HREF="http://dev.eclipse.org/viewcvs/" target="extra">dev.eclipse.org:/home/eclipse</A> 
+repository. It is contained in a directory with the name &quot;org.eclipse.platform&quot;. 
+The resulting map file entry for this plug-in is:<BR><BR>plugin@org.eclipse.platform=v20031121,:pserver:anonymous@dev.eclipse.org:/home/eclipse,<BR><BR></LI><LI>The 
+org.eclipse.platform feature source is located at the root of the <A HREF="http://dev.eclipse.org/viewcvs/" target="extra">dev.eclipse.org:/home/eclipse</A> 
+repository in a directory with the name &quot;org.eclipse.platform-feature&quot;. 
+The resulting map file entry for this feature is:<BR><BR>feature@org.eclipse.platform=v20031128,:pserver:anonymous@dev.eclipse.org:/home/eclipse,,org.eclipse.platform-feature<BR><BR></LI><LI>The 
+org.eclipse.gef.sdk feature source is located in directory in the <A HREF="http://dev.eclipse.org/viewcvs/?cvsroot=Tools_Project" target="extra">dev.eclipse.org:/home/tools</A> 
+repository in a subdirectory called &quot;org.eclipse.gef.sdk&quot; of &quot;org.eclipse-gef 
+feature&quot;. The resulting map file entry for this feature is:<BR><BR>feature@org.eclipse.gef.sdk=I_20031117, 
+:pserver:anonymous@dev.eclipse.org:/home/tools,,org.eclipse.gef-feature/org.eclipse.gef.sdk<BR></LI></UL><P>One 
+or more map files can be used to list the elements. The map files can be kept 
+under version control. Some examples of map file projects include <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.releng/">org.eclipse.releng</A>, 
+<A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.gef.releng/?cvsroot=Tools_Project">org.eclipse.gef.releng</A>, 
+<A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.ve.releng/?cvsroot=Tools_Project">org.eclipse.ve.releng</A>.<BR> 
+<BR></P><P><B><FONT SIZE="+1"><A NAME="gensource"></A>Generating source features 
+and plug-ins at build time</FONT></B></P><P>Source features and plug-ins can be 
+generated at build time by PDE Build. Source features and associated source plug-ins 
+are typically generated for a development kit distributions (i.e. SDK). It is 
+also possible to generate a source plug-in only. This is typically the case for 
+example features or JUnit testing features.<BR> <BR>To generate a <B>source feature 
+and associated source plug-in</B> at build time, you will need to do the following:</P><OL> 
+<LI> Add an entry to the build.properties file in the feature project for which 
+you wish to include the source feature and plug-in. The generated source feature 
+should also be listed in the feature.xml as an &lt;includes&gt; element.<BR> <BR> 
+The build.properties entry should use the following format:<BR> <BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;generate.feature@&lt;source.feature.id 
+to generate&gt;=&lt;feature.id from which to which to collect source&gt;, plugin@&lt;plugin.id&gt;<BR> 
+<BR> Example taken from <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.sdk-feature/build.properties?rev=1.4">org.eclipse.sdk-feature/build.properties</A>: 
+<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;generate.feature@org.eclipse.jdt.source=org.eclipse.jdt, 
+plugin@org.eclipse.jdt.doc.isv<BR> <BR> In this example, a source feature and 
+a plug-in, both with id &quot;org.eclipse.jdt.source&quot; will be generated and 
+will contain source from plug-ins listed in the org.eclipse.jdt feature and will 
+also include the plug-in org.eclipse.jdt.doc.isv. The generated org.eclipse.jdt.source 
+plug-in will be automatically listed in the org.eclipse.jdt.source feature.xml. 
+<BR> <BR> <BR> </LI><LI>In the feature project from which the source feature will 
+be generated, a directory called &quot;<B>sourceTemplateFeature</B>&quot; and 
+a directory called &quot;<B>sourceTemplatePlugin</B>&quot; will be required. These 
+directories should contain the files that are included in the root of the generated 
+source feature and plug-in. The feature.xml and plugin.xml files are not required 
+since these are generated. A build.properties is required in the sourceTemplatePlugin 
+directory. This should contain a &quot;bin.includes&quot; setting as well as the 
+entry &quot;sourcePlugin = true&quot;. The plugin.xml file and src/ directory 
+should be listed in the bin.includes.<BR> <BR> See <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.jdt-feature/">org.eclipse.jdt-feature</A> 
+and <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.platform-feature/">org.eclipse.platform-feature</A> 
+for examples.<BR> <BR> </LI></OL><P>To generate a <B>source plug-in only</B> at 
+build time, you will need to do the following:</P><OL> <LI> Add an entry to the 
+build.properties file in the feature project for which you wish to include the 
+source plug-in. The generated source plug-in should also be listed in the feature.xml 
+as a &lt;plugin&gt; element.. <BR> <BR> The build.properties entry should use 
+the following format:<BR> <BR> generate.plugin@&lt;source.plugin.id to generate&gt;=&lt;feature.id 
+from which to which to collect source&gt;, plugin@&lt;plugin.id&gt;<BR> <BR> Example 
+taken from <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.ve.tests-feature/build.properties?rev=1.2&cvsroot=Tools_Project">org.eclipse.ve.tests-feature/build.properties</A>: 
+<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;generate.plugin@org.eclipse.ve.tests.source=org.eclipse.ve.tests<BR> 
+<BR> <BR> </LI><LI>In the runtime feature project from which the source plug-in 
+will be generated, create a directory called &quot;sourceTemplatePlugin&quot; 
+which must contain a build.properties with a &quot;bin.includes&quot; setting 
+and &quot;sourcePlugin=true&quot;. The plugin.xml file and src/ directory should 
+be listed in the bin.includes.<BR> <BR> See <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.ve.examples-feature/sourceTemplatePlugin/?cvsroot=Tools_Project">org.eclipse.ve.examples-feature/sourceTemplatePlugin</A> 
+for an example.<BR> </LI></OL><HR><P><FONT SIZE="+2"><A NAME="buildconfigfiles"></A><B>Preparing 
+Build Configuration Files</B></FONT></P><P>The distilled build process consists 
+of the following four steps:</P><OL><LI>build environment setup</LI><LI>check 
+out source from one or more CVS repositories</LI><LI>compilation</LI><LI> assembly 
+of distribution<BR></LI></OL><P>The script which controls the build sequence is 
+the build.xml Ant script in org.eclipse.pde.build. However this script requires 
+two user-implemented build configuration files,<A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.pde.build/templates/build.properties?rev=HEAD&content-type=text/vnd.viewcvs-markup">build.properties</A> 
+and <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.pde.build/templates/customTargets.xml?rev=HEAD&content-type=text/vnd.viewcvs-markup">customTargets.xml</A>. 
+These two files provide the information on the &quot;where and how&quot; to build 
+specific elements. </P><P>Templates of these files are provided in the <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.pde.build/templates/">org.eclipse.pde.build/templates</A> 
+directory and examples are available in <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.releng.eclipsebuilder/">org.eclipse.releng.eclipsebuilder</A>, 
+<A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.releng.gefbuilder/?cvsroot=Tools_Project">org.eclipse.releng.gefbuilder</A> 
+and <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.ve.releng.builder/?cvsroot=Tools_Project">org.eclipse.ve.releng.builder</A> 
+for building Eclipse, GEF and VE runtimes, respectively.</P><P><B><FONT SIZE="+1"><A NAME="build.properties"></A>build.properties</FONT></B></P><P>The 
+build.properties file defines a number of properties that are used as Ant properties 
+at build time and as arguments to script generators in org.eclipse.pde.build to 
+describe how and where to execute the build. The values for properties listed 
+in this file override any values set in the generated build.xml files. See &quot;Generating 
+Ant scripts from the command line&quot; in the PDE Guide in Eclipse 3.2 stream 
+Help for a description of required and optional properties.</P><P><B><FONT SIZE="+1"><A NAME="customTargets.xml"></A>customTargets.xml</FONT></B></P><P>customTargets.xml 
+is an Ant script containing targets called by PDE Build scripts to provide the 
+following information:</P><OL><LI>the list of elements for which to generate scripts</LI><LI>instruction 
+on retrieval of map file projects</LI><LI>steps to execute before and after the 
+following: retrieving map files, checking out source, generating build.xml scripts, 
+executing build.xml scripts, and assembling the binary distributions.</LI><LI>instruction 
+on things to do after the build is done.</LI></OL><P>The table below lists the 
+targets that are used to provide this information.<BR><BR></P><TABLE WIDTH="100%" BORDER="1"><TR><TD WIDTH="24%">Target</TD><TD WIDTH="76%">Description</TD></TR><TR><TD WIDTH="24%">allElements</TD><TD WIDTH="76%"><P>This 
+target lists all features that will be packaged into a binary distribution where 
+each listing comes in the form of an &lt;ant&gt; call to org.eclipse.pde.build/scripts/genericTargets.xml:<BR><BR><B>&lt;ant 
+antfile=&quot;${genericTargets}&quot; target=&quot;${target}&quot; &gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property 
+name=&quot;type&quot; value=&quot;feature&quot; /&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property 
+name=&quot;id&quot; value=&quot;&lt;element.id&gt;&quot; /&gt;<BR> &lt;/ant&gt;<BR></B><BR> 
+The user is only required to specify a value for properties &quot;type&quot; and 
+id (the value for the id attribute in the feature.xml) for each listing. At this 
+time, only the type &quot;feature&quot; is supported.<BR></P><P>Example from <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.releng.eclipsebuilder/jdt/customTargets.xml?rev=HEAD&content-type=text/xml">org.eclipse.releng.eclipsebuilder/jdt/customTargets.xml</A>:</P><P><B>&lt;target 
+name=&quot;allElements&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ant antfile=&quot;${genericTargets}&quot; 
+target=&quot;${target}&quot; &gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property 
+name=&quot;type&quot; value=&quot;feature&quot; /&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property 
+name=&quot;id&quot; value=&quot;org.eclipse.jdt&quot; /&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ant&gt;<BR>&lt;/target&gt;</B></P><P>The 
+<A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.pde.build/scripts/genericTargets.xml?rev=HEAD&content-type=text/xml">genericTargets.xml 
+</A>script is an Ant script in the org.eclipse.pde.build plug-in containing targets 
+which call PDE Build custom Ant tasks to generate scripts for the specified elements 
+at various stages of the build. This script also executes the generated scripts 
+at various build stages. The target property is set by it's calling script, org.eclipse.pde.build/scripts/build.xml.<BR><BR>For 
+example, the fetch target in the build.xml calls allElements and sets the target 
+to property to &quot;fetchElement&quot;:<BR><BR> &lt;ant antfile=&quot;${customTargets}&quot; 
+target=&quot;allElements&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property 
+name=&quot;target&quot; value=&quot;fetchElement&quot; /&gt;<BR> &lt;/ant&gt;<BR><BR>The 
+result of this is that the fetchElement target in genericTargets.xml is executed 
+using arguments type and id set in allElements.<BR></P></TD></TR><TR><TD WIDTH="24%">assemble.&lt;element.id&gt;[.config.spec]</TD><TD WIDTH="76%"><P>For 
+every configuration specified in the build.properties for the distribution (see 
+<A HREF="#configs">configs</A> above), a target named &quot;assemble.&lt;element.id&gt;.&lt;config.spec&gt;&quot; 
+is required. If the distribution is not platform-specific, the &quot;.&lt;config.spec&gt;&quot; 
+section of the target name is not required. </P><P>Providing the target name should 
+be all that is required unless you wish to give the produced binary distributable 
+file a name different from the default &quot;&lt;elment-id&gt;-&lt;buildid&gt;-&lt;config.spec&gt;.zip&quot;. 
+In this case, an explicit value for the property &quot;archiveName&quot; should 
+be specified at the beginning of the target.<BR><BR>Example from <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.releng.eclipsebuilder/jdt/customTargets.xml?rev=HEAD&content-type=text/xml">org.eclipse.releng.eclipsebuilder/jdt/customTargets.xml</A>:<BR><BR> 
+Since two configurations for building the org.eclipse.jdt distribution are specified 
+in it's build.properties &quot;configs=*,*,* &amp; macosx,carbon,ppc&quot;, the 
+following two targets are provided in the customTargets.xml script.</P><P><FONT COLOR="#000000"><B>&lt;target 
+name=&quot;assemble.org.eclipse.jdt&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property 
+name=&quot;archiveName&quot; value=&quot;eclipse-JDT-${buildId}.zip&quot;/&gt;<BR> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ant antfile=&quot;${assembleScriptName}&quot;/&gt;<BR>&lt;/target&gt;</B></FONT></P><P><B><FONT COLOR="#000000">&lt;target 
+name=&quot;assemble.org.eclipse.jdt.macosx.carbon.ppc&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property 
+name=&quot;archiveName&quot; value=&quot;eclipse-JDT-${buildId}-macosx-carbon.tar.gz&quot;/&gt;<BR> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ant antfile=&quot;${assembleScriptName}&quot;/&gt;<BR>&lt;/target&gt;</FONT></B><BR></P></TD></TR><TR><TD WIDTH="24%"><A NAME="getmaps"></A>getMapFiles</TD><TD WIDTH="76%"><P>The 
+result of executing this target should be to place *.map files in any directory 
+or subdirectory under ${buildDirectory}/maps. All .map files found here are concatenated 
+into a single file ${buildDirectory}/directory.txt. Map file projects are typically 
+kept under version control in a CVS repository. <BR><BR>In the following example 
+from <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.releng.eclipsebuilder/sdk/customTargets.xml?rev=HEAD&content-type=text/xml">org.eclipse.releng.eclipsebuilder/sdk/customTargets.xml</A>, 
+the implementation of this target and it's helper targets are provided to illustrate 
+how map files for Eclipse builds are checked out from a CVS repository and then 
+tagged with the build timestamp to capture the versions of all projects used in 
+the build.<BR><BR><B>&lt;target name=&quot;getMapFiles&quot; depends=&quot;checkLocal&quot; 
+unless=&quot;mapsLocal&quot;&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property 
+name=&quot;mapCvsRoot&quot; value=&quot;:pserver:anonymous@dev.eclipse.org:/home/eclipse&quot; 
+/&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property name=&quot;mapVersionTag&quot; 
+value=&quot;HEAD&quot; /&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;cvs cvsRoot=&quot;${mapCvsRoot}&quot;<BR> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;package=&quot;org.eclipse.releng&quot;<BR> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dest=&quot;${buildDirectory}/maps&quot;<BR> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;tag=&quot;${mapVersionTag}&quot;<BR> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&lt;antcall target=&quot;tagMapFiles&quot; 
+/&gt;<BR>&lt;/target&gt;</B></P><P><B><FONT COLOR="#008000">&lt;!--helper targets---&gt;</FONT><BR></B><B><BR>&lt;target 
+name=&quot;checkLocal&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;available 
+property=&quot;mapsLocal&quot; file=&quot;${buildDirectory}/maps/org.eclipse.releng&quot; 
+/&gt;<BR>&lt;/target&gt;<BR></B></P><P><B>&lt;target name=&quot;tagMapFiles&quot; 
+if=&quot;tagMaps&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;cvs dest=&quot;${buildDirectory}/maps/org.eclipse.releng&quot; 
+command=&quot;tag v${timestamp}&quot; /&gt;<BR>&lt;/target&gt;</B><BR><BR></P></TD></TR><TR><TD WIDTH="24%" HEIGHT="24">preSetup 
+and postSetup</TD><TD WIDTH="76%" HEIGHT="24"><P>Used to run operations before 
+and after retrieving the map files.<BR><BR>Example from <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.releng.gefbuilder/sdk/customTargets.xml?rev=HEAD&content-type=text/xml&cvsroot=Tools_Project">org.eclipse.releng.gefbuilder/sdk</A>. 
+This example demonstrates how the postSetup target (and a helper target) is used 
+to download and install an Eclipse SDK to compile against.</P><P><B>&lt;target 
+name=&quot;postSetup&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;available 
+file=&quot;${buildDirectory}/../eclipse-SDK.zip&quot; property=&quot;baseExists&quot; 
+/&gt; <BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;antcall target=&quot;getBaseEclipse&quot; 
+/&gt; <BR> &lt;/target&gt;<BR></B></P><P><B>&lt;target name=&quot;getBaseEclipse&quot; 
+unless=&quot;baseExists&quot;&gt;</B></P><P><B><FONT COLOR="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--this 
+task definition is available in org.eclipse.releng.basebuilder/plugins/org.eclipse.build.tools. 
+It removes the &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_&nbsp;&lt;version&gt; 
+from all directories specified as a value for the directory attribute. </FONT></B><FONT COLOR="#008000"><B>Not 
+really necessary, but helpful in &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;this 
+case to avoid having/needing hard-coded versions in GEF javadoc scripts.--&gt;</B></FONT><B></B><B><BR></B><B>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;taskdef 
+name=&quot;stripVersions&quot; classname=&quot;org.eclipse.releng.VersionNumberStripper&quot; 
+/&gt; <BR> <BR><FONT COLOR="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!--this 
+property file contains the values for ${eclipseURL} and ${eclipseBuildID}--&gt;</FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;property 
+file=&quot;${buildDirectory}/maps/org.eclipse.gef.releng/maps/build.cfg&quot; 
+/&gt; <BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;get src=&quot;${eclipseURL}/eclipse-SDK-${eclipseBuildID}-win32.zip&quot; 
+dest=&quot;${buildDirectory}/../eclipse-SDK.zip&quot; /&gt; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;exec 
+dir=&quot;${buildDirectory}/..&quot; executable=&quot;unzip&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;arg 
+line=&quot;-o -qq eclipse-SDK.zip&quot; /&gt; <BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/exec&gt;<BR> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;stripVersions 
+directory=&quot;${buildDirectory}/plugins&quot; /&gt; <BR><BR><FONT COLOR="#008000">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- 
+Extract doc.zip so we can create links in GEF java doc --&gt; </FONT><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;exec 
+dir=&quot;${buildDirectory}/plugins/org.eclipse.platform.doc.isv&quot; executable=&quot;unzip&quot;&gt;<BR> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;arg line=&quot;-o 
+-qq doc.zip&quot; /&gt; <BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/exec&gt;<BR> &lt;/target&gt;</B><BR><BR></P></TD></TR><TR><TD WIDTH="24%">preFetch 
+and postFetch </TD><TD WIDTH="76%"><P>Used to run operations before and after 
+fetching source for the build.<BR></P><P>Example from <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.releng.gefbuilder/sdk/customTargets.xml?rev=HEAD&content-type=text/xml&cvsroot=Tools_Project">org.eclipse.releng.gefbuilder/sdk</A>. 
+This example demonstrates how the postFetch target can be used to set the build 
+timestamp as a value for &quot;0&quot; in about.mappings files.<BR><BR><B>&lt;target 
+name=&quot;postFetch&quot;&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;replace dir=&quot;${buildDirectory}/plugins&quot; 
+value=&quot;${timestamp}&quot; token=&quot;@buildid@&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;include 
+name=&quot;**/about.mappings&quot; /&gt; <BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/replace&gt;<BR> 
+&lt;/target&gt;</B></P></TD></TR><TR><TD WIDTH="24%">preGenerate and postGenerate</TD><TD WIDTH="76%"><P>Used 
+to run operations before and after generating build.xml files for features, plug-ins 
+and fragments.<BR><BR>Example from <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.releng.gefbuilder/sdk/customTargets.xml?rev=HEAD&content-type=text/xml&cvsroot=Tools_Project">org.eclipse.releng.gefbuilder/sdk</A>. 
+This example demonstrates how the postGenerate target (and a helper target) is 
+used to run the build.xml scripts to clean the source of any stale, pre-compiled 
+jars that might exist in the source directories. jars are not recompiled if they 
+already exist in plug-in or fragment directories.<BR></P><P> <B>&lt;target name=&quot;postGenerate&quot;&gt;<BR> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;antcall target=&quot;clean&quot; /&gt; <BR> 
+&lt;/target&gt;</B></P><P><B>&lt;target name=&quot;clean&quot; unless=&quot;noclean&quot;&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;antcall 
+target=&quot;allElements&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;param 
+name=&quot;target&quot; value=&quot;cleanElement&quot; /&gt; <BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/antcall&gt;<BR> 
+&lt;/target&gt;<BR></B></P></TD></TR><TR><TD WIDTH="24%">preProcess and postProcess</TD><TD WIDTH="76%"> 
+Used to run operations before and after compiling the source.</TD></TR><TR><TD WIDTH="24%">preAssemble 
+and postAssemble</TD><TD WIDTH="76%">Used to run operations before and after assembling 
+the binary distributables.</TD></TR><TR><TD WIDTH="24%">postBuild</TD><TD WIDTH="76%"><P>Used 
+to run operations at the end of the build.<BR></P><P>Example from <A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/org.eclipse.releng.gefbuilder/sdk/customTargets.xml?rev=HEAD&content-type=text/xml&cvsroot=Tools_Project">org.eclipse.releng.gefbuilder/sdk</A>. 
+This example demonstrates how the postBuild target (and a helper target) is used 
+to gather and place the compile logs in the ${buildLabel} directory. These files 
+are used in the publishing of the GEF build (see below under Publishing the Build 
+section).<BR></P><P><B>&lt;target name=&quot;postBuild&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;antcall 
+target=&quot;gatherLogs&quot; /&gt; <BR> &lt;/target&gt;<BR><BR>&lt;target name=&quot;gatherLogs&quot;&gt;<BR> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;mkdir dir=&quot;${buildDirectory}/${buildLabel}/compilelogs&quot; 
+/&gt; <BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;antcall 
+target=&quot;allElements&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;param 
+name=&quot;target&quot; value=&quot;gatherLogs&quot; /&gt; <BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/antcall&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;unzip 
+dest=&quot;${buildDirectory}/${buildLabel}/compilelogs&quot; overwrite=&quot;true&quot;&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;fileset 
+dir=&quot;${buildDirectory}/features/org.eclipse.gef.sdk&quot;&gt;<BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;include 
+name=&quot;*.log.zip&quot; /&gt; <BR> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/fileset&gt;<BR> 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/unzip&gt;<BR> &lt;/target&gt;</B><BR><BR></P></TD></TR></TABLE><P>&nbsp;</P><HR><P><BR><FONT SIZE="+2"><B><A NAME="buildexec"></A>Build 
+Execution </B></FONT></P><P><FONT SIZE="+1"><A NAME="buildmachinesetup"></A><B>Build 
+machine setup</B></FONT><BR><BR>This build process can be executed on any of the 
+<A target="extra" HREF="http://www.eclipse.org/eclipse/development/eclipse_project_plan_3_2.html#TargetOperatingEnvironments">Eclipse 
+3.2 Reference Platforms</A> plus the following:</P><UL><LI><A target="extra" HREF="http://www.cvshome.org/">CVS</A> 
+client version 1.10 or higher on system path. </LI><LI><A target="extra" HREF="http://www.info-zip.org/pub/infozip/">Info-Zip</A> 
+zip and unzip executables on system path.</LI><LI><A target="extra" HREF="http://dev.eclipse.org/viewcvs/index.cgi/org.eclipse.releng.basebuilder/">org.eclipse.releng.basebuilder</A> 
+from dev.eclipse.org or any Eclipse 3.2 stream SDK install. Please note that the 
+Mailer java class in this project require a j2ee.jar on the classpath to compile 
+and run. This class is not used in the mechanism described in this document.</LI></UL><P>The 
+cvs, zip and unzip executables should be placed on the system path.</P><P> On 
+Windows systems, the HOME environement variable should be set to &quot;c:&quot; 
+(no slash) for CVS operations.</P><P>The org.eclipse.releng.basebuilder project 
+can be placed in any directory.</P><P><BR><B><FONT SIZE="+1"><A NAME="runbuild"></A>Running 
+the Build</FONT></B></P><P>To run the build, execute the following command from 
+../plugins/org.eclipse.pde.build/scripts to <B>build a single distribution</B>:<BR><BR><B>java 
+-jar &lt;path&gt;/startup.jar -application org.eclipse.ant.core.antRunner [-buildfile 
+build.xml] -Dbuilder=&lt;path to directory containing build.properties and customTargets.xml&gt; 
+[Ant property settings to override those in <A HREF="#build.properties" TARGET="_blank">build.properties</A>]</B><B><BR></B></P><P>&nbsp;</P>
+</BODY>
+</HTML>

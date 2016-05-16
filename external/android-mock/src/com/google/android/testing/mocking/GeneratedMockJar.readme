@@ -1,0 +1,32 @@
+Android Mock
+
+Copyright 2010 Google Inc.
+All Rights Reserved.
+Author: swoodward@google.com (Stephen Woodward)
+
+
+Android Mock is a wrapper for EasyMock (2.4) which allows for real Class mocking on
+an Android (Dalvik) VM.
+
+All methods on Android Mock are syntactically equivalent to EasyMock method
+calls, and will delegate calls to EasyMock, while performing the required
+transformations to avoid Dalvik VM troubles.
+
+Calls directly to EasyMock will work correctly only if the Class being mocked
+is in fact an Interface. Calls to Android Mock will work correctly for both
+Interfaces and concrete Classes.
+
+Android Mock requires that the code being mocked be instrumented prior to
+loading to the Dalvik VM by having called the MockGenerator.jar file. Try
+running java -jar MockGenerator.jar --help for more information.
+
+An example usage pattern is:
+
+@UsesMocks(MyClass.class)
+public void testFoo() MyClass {
+  mockObject = AndroidMock.createMock(MyClass.class);
+  AndroidMock.expect(mockObject.foo(0)).andReturn(42);
+  AndroidMock.replay(mockObject); assertEquals(42, mockObject.foo(0));
+  AndroidMock.verify(mockObject);
+}
+

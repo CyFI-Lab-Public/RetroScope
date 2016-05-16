@@ -1,0 +1,47 @@
+.TH BLKRAWVERIFY 1 "March  6, 2007" "blktrace git\-20070306202522" ""
+
+
+.SH NAME
+blkrawverify \- verifies an output file produced by blkparse
+
+
+.SH SYNOPSIS
+.B blkrawverify <\fIdev\fR> [<\fIdev\fR>...]
+.br
+
+
+.SH DESCRIPTION
+
+The \fIblkrawverify\fR utility can be used to verify data retrieved via
+\fIblktrace\fR. It will check for valid event formats, forward progressing
+sequence numbers and time stamps, also does reasonable checks for other
+potential issues within individual events.
+
+Errors found will be tracked in <\fIdev\fR>.verify.out.
+
+
+.SH AUTHORS
+\fIblkparse\fR was written by Jens Axboe, Alan D. Brunelle and Nathan Scott.  This
+man page was created from the \fIblktrace\fR documentation by Bas Zoetekouw.
+
+
+.SH "REPORTING BUGS"
+Report bugs to <linux\-btrace@vger.kernel.org>
+
+.SH COPYRIGHT
+Copyright \(co 2006 Jens Axboe, Alan D. Brunelle and Nathan Scott.
+.br
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+.br
+This manual page was created for Debian by Bas Zoetekouw.  It was derived from
+the documentation provided by the authors and it may be used, distributed and
+modified under the terms of the GNU General Public License, version 2.
+.br
+On Debian systems, the text of the GNU General Public License can be found in
+/usr/share/common\-licenses/GPL\-2.
+
+.SH "SEE ALSO"
+btrace (8), blktrace (8), blkparse (1), verify_blkparse (1), btt (1)
+

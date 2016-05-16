@@ -1,0 +1,17 @@
+blktrace Timeline
+-----------------
+
+Alan D. Brunelle (initial version)
+
+Please refer to the documentation for details.
+
+Resources
+---------
+
+vger hosts a mailing list dedicated to btrace discussion and development.
+The list is called linux-btrace@vger.kernel.org, subscribe by sending
+a mail to majordomo@vger.kernel.org with 'subscribe linux-btrace' in
+the mail body.
+
+2006-04-16, Alan D. Brunelle <Alan.Brunelle@hp.com>
+

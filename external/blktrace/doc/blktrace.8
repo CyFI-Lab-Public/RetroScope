@@ -1,0 +1,259 @@
+.TH BLKTRACE 8 "March  6, 2007" "blktrace git\-20070306202522" ""
+
+
+.SH NAME
+blktrace \- generate traces of the i/o traffic on block devices
+
+
+.SH SYNOPSIS
+.B blktrace \-d \fIdev\fR [ \-r \fIdebugfs_path\fR ] [ \-o \fIoutput\fR ] [\-k ] [ \-w \fItime\fR ] [ \-a \fIaction\fR ] [ \-A \fIaction_mask\fR ] [ \-v ]
+.br
+
+
+.SH DESCRIPTION
+blktrace is a block layer IO tracing mechanism which provides detailed
+information about request queue operations up to user space. There are three
+major components: a kernel component, a utility to record the i/o trace
+information for the kernel to user space, and utilities to analyse and view the
+trace information.  This man page describes blktrace, which records the i/o event
+trace information for a specific block device to a file.
+
+The \fBblktrace\fR utility extracts event traces from the kernel (via
+the relaying through the debug file system). Some background details
+concerning the run\-time behaviour of blktrace will help to understand some
+of the more arcane command line options:
+
+.TP 2
+\-
+blktrace receives data from the kernel in buffers passed up through the
+debug file system (relay). Each device being traced has a file created in
+the mounted directory for the debugfs, which defaults to 
+\fI/sys/kernel/debug\fR \-\- this can be overridden with the \fB\-r\fR command
+line argument.
+
+.TP 2
+\-
+blktrace defaults to collecting all events that can be traced. To
+limit the events being captured, you can specify one or more filter masks
+via the \fB\-a\fR option.
+
+Alternatively, one may specify the entire mask utilising a hexadecimal
+value that is version\-specific. (Requires understanding of the internal
+representation of the filter mask.)
+
+.TP 2
+\-
+As noted above, the events are passed up via a series of buffers stored
+into debugfs files. The size and number of buffers can be specified via
+the \fB\-b\fR and \fB\-n\fR arguments respectively.
+
+.TP 2
+\-
+blktrace stores the extracted data into files stored in the
+local directory. The format of the file names is (by default)
+\fBdevice\fR.\fBblktrace\fR.\fBcpu\fR, where \fBdevice\fR is the base
+device name (e.g, if we are tracing /dev/sda, the base device name would
+be \fBsda\fR); and \fBcpu\fR identifies a CPU for the event stream.
+
+The \fBdevice\fR portion of the event file name can be changed via
+the \fB\-o\fR option.
+
+.TP 2
+\-
+blktrace may also be run concurrently with blkparse to produce
+\fBlive\fR output \-\- to do this specify \fB\-o \-\fR for blktrace.
+
+.TP 2
+\- 
+The default behaviour for blktrace is to run forever until explicitly
+killed by the user (via a control-C, or kill utility invocation).
+There are two ways to modify this:
+
+.TP 5
+  1. 
+You may utilise the blktrace utility itself to kill
+a running trace -- via the \fB\-k\fR option.
+
+.TP 5
+  2.
+You can specify a run-time duration for blktrace via the
+\fB\-w\fR option -- then blktrace will run for the specified number
+of seconds, and then halt.
+
+
+.SH OPTIONS
+
+\-A \fIhex-mask\fR 
+.br
+\-\-set-mask=\fIhex-mask\fR
+.RS
+Set filter mask to \fIhex-mask\fR (see below for masks)
+.RE
+
+\-a \fImask\fR      
+.br
+\-\-act-mask=\fImask\fR      
+.RS
+Add \fImask\fR to current filter (see below for masks) 
+.RE
+
+\-b \fIsize\fR    
+.br
+\-\-buffer\-size=\fIsize\fR   
+.RS
+Specifies buffer size for event extraction (scaled by 1024). The default
+buffer size is 512KiB.
+.RE
+
+\-d \fIdev\fR
+.br
+\-\-dev=\fIdev\fR 
+.RS
+Adds \fIdev\fR as a device to trace  
+.RE
+
+\-I \fIfile\fR
+.br
+\-\-input-devs=\fIfile\fR 
+.RS
+Adds the devices found in \fIfile\fR as devices to trace
+.RE
+
+\-k 
+.br
+\-\-kill 
+.RS
+Kill on-going trace  
+.RE
+
+\-n \fInum\-sub\fR 
+.br
+\-\-num\-sub=\fInum-sub\fR    
+.RS
+Specifies number of buffers to use. blktrace defaults to 4 sub buffers.
+.RE
+
+\-o \fIfile\fR 
+.br
+\-\-output=\fIfile\fR        
+.RS
+Prepend \fIfile\fR to output file name(s)  
+.RE
+
+\-r \fIrel-path\fR
+.br
+\-\-relay=\fIrel-path\fR     
+.RS
+Specifies debugfs mount point  
+.RE
+
+\-V               
+.br
+\-\-version                  
+Outputs version  
+.RE
+
+\-w \fIseconds\fR 
+.br
+\-\-stopwatch=\fIseconds\fR  
+.RS
+Sets run time to the number of seconds specified  
+.RE
+
+
+.SH FILTER MASKS
+The following masks may be passed with the \fI\-a\fR command line
+option, multiple filters may be combined via multiple \fI\-a\fR command
+line options.
+
+.RS
+\fIbarrier\fR: barrier attribute 
+.br
+\fIcomplete\fR: completed by driver
+.br
+\fIfs\fR: requests 
+.br
+\fIissue\fR: issued to driver 
+.br
+\fIpc\fR: packet command events
+.br
+\fIqueue\fR: queue operations 
+.br
+\fIread\fR: read traces 
+.br
+\fIrequeue\fR: requeue operations 
+.br
+\fIsync\fR: synchronous attribute 
+.br
+\fIwrite\fR: write traces
+.br
+\fInotify\fR: trace messages
+.RE
+
+
+.SH REQUEST TYPES
+blktrace distinguishes between two types of block layer requests, file system
+and SCSI commands. The former are dubbed \fBfs\fR requests, the latter
+\fBpc\fR requests. File system requests are normal read/write operations, i.e.
+any type of read or write from a specific disk location at a given size. These
+requests typically originate from a user process, but they may also be
+initiated by the vm flushing dirty data to disk or the file system syncing a
+super or journal block to disk. \fBpc\fR requests are SCSI commands. blktrace
+sends the command data block as a payload so that blkparse can decode it.
+
+
+.SH EXAMPLES
+To trace the i/o on the device \fI/dev/hda\fR and parse the output to human
+readable form, use the following command:
+
+    % blktrace \-d /dev/sda \-o \- | blkparse \-i \-
+
+This same behaviour can be achieve with the convenience script \fIbtrace\fR.
+The command
+
+    % btrace /dev/sda
+
+has exactly the same effect as the previous command. See \fIbtrace\fR (8) for
+more information.
+
+To trace the i/o on a device and save the output for later processing with
+\fIblkparse\fR, use \fIblktrace\fR like this:
+
+    % blktrace /dev/sda /dev/sdb
+
+This will trace i/o on the devices \fI/dev/sda\fR and \fI/dev/sdb\fR and save
+the recorded information in the files \fIsda\fR and \fIsdb\fR in the current
+directory, for the two different devices, respectively.  This trace
+information can later be parsed by the \fIblkparse\fR utility:
+
+    % blkparse sda sdb
+
+which will output the previously recorded tracing information in human
+readable form to stdout.  See \fIblkparse\fR (1) for more information.
+
+
+.SH AUTHORS
+blktrace was written by Jens Axboe, Alan D. Brunelle and Nathan Scott.  This
+man page was created from the blktrace documentation by Bas Zoetekouw.
+
+
+.SH "REPORTING BUGS"
+Report bugs to <linux\-btrace@vger.kernel.org>
+
+.SH COPYRIGHT
+Copyright \(co 2006 Jens Axboe, Alan D. Brunelle and Nathan Scott.
+.br
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+.br
+This manual page was created for Debian by Bas Zoetekouw.  It was derived from
+the documentation provided by the authors and it may be used, distributed and
+modified under the terms of the GNU General Public License, version 2.
+.br
+On Debian systems, the text of the GNU General Public License can be found in
+/usr/share/common\-licenses/GPL\-2.
+
+.SH "SEE ALSO"
+btrace (8), blkparse (1), verify_blkparse (1), blkrawverify (1), btt (1)
+

@@ -1,0 +1,14 @@
+URL: http://code.google.com/p/guava-libraries/source/checkout
+Version: v11.0.2
+License: Apache 2
+Description: "Guava: Google Core Libraries for Java 1.5"
+
+Local Modifications: 
+   Commented out use of the non-public sun.misc.Unsafe
+   from guava/src/com/google/common/primitives/UnsignedBytes.java
+   Look for "BEGIN/END android-changed" markers.
+
+Guava-libraries are a grab bag of utility libraries published by Google as
+open source, including among other things the Google collections libraries.
+
+This code is built as a static library.

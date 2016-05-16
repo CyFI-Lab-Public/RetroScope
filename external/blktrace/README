@@ -1,0 +1,183 @@
+Block IO Tracing
+----------------
+
+Written by Jens Axboe <axboe@kernel.dk> (initial version and kernel support),
+Alan D. Brunelle (threading and splitup into two seperate programs),
+Nathan Scott <nathans@sgi.com> (bug fixes, process names, multiple devices)
+Also thanks to Tom Zanussi <zanussi@us.ibm.com> for good input and
+patches.
+
+
+Requirements
+------------
+
+blktrace was integrated into the mainline kernel between 2.6.16 and 2.6.17-rc1.
+The target trace needs to run on a kernel at least that new.
+
+git://git.kernel.dk/blktrace.git
+
+If you don't have git, you can get hourly snapshots from:
+
+http://brick.kernel.dk/snaps/
+
+The snapshots include the full git object database as well. kernel.org has
+excessively long mirror times, so if you have git installed, you can pull
+the master tree from:
+
+git://git.kernel.dk/blktrace.git
+
+For browsing the repo over http and viewing history etc, you can direct
+your browser to:
+
+http://git.kernel.dk/
+
+
+Usage
+-----
+
+$ blktrace -d <dev> [ -r debug_path ] [ -o output ] [ -k ] [ -w time ]
+		    [ -a action ] [ -A action mask ]
+
+	-d Use specified device. May also be given last after options.
+	-r Path to mounted debugfs, defaults to /sys/kernel/debug.
+	-o File(s) to send output to.
+	-D Directory to prepend to output file names.
+	-k Kill running trace.
+	-w Stop after defined time, in seconds.
+	-a Only trace specific actions (use more -a options to add actions).
+	   Available actions are:
+
+		READ
+		WRITE
+		BARRIER
+		SYNC
+		QUEUE
+		REQUEUE
+		ISSUE
+		COMPLETE
+		FS
+		PC
+
+	-A Give the trace mask directly as a number.
+
+	-b Sub buffer size in KiB.
+	-n Number of sub buffers.
+	-l Run in network listen mode (blktrace server)
+	-h Run in network client mode, connecting to the given host
+	-p Network port to use (default 8462)
+	-s Disable network client use of sendfile() to transfer data
+	-V Print program version info.
+
+$ blkparse -i <input> [ -o <output> ] [ -b rb_batch ] [ -s ] [ -t ] [ -q ]
+		      [ -w start:stop ] [ -f output format ] [ -F format spec ]
+		      [ -d <binary> ]
+
+	-i Input file containing trace data, or '-' for stdin.
+	-D Directory to prepend to input file names.
+	-o Output file. If not given, output is stdout.
+	-b stdin read batching.
+	-s Show per-program io statistics.
+	-h Hash processes by name, not pid.
+	-t Track individual ios. Will tell you the time a request took to
+	   get queued, to get dispatched, and to get completed.
+	-q Quiet. Don't display any stats at the end of the trace.
+	-w Only parse data between the given time interval in seconds. If
+	   'start' isn't given, blkparse defaults the start time to 0.
+	-d Dump sorted data in binary format
+	-f Output format. Customize the output format. The format field
+	   identifiers are:
+
+		%a	- Action
+		%c	- CPU ID
+		%C	- Task command (process) name
+		%d	- Direction (r/w)
+		%D	- Device number
+		%e	- Error number
+		%M	- Major
+		%m	- Minor
+		%N	- Number of bytes
+		%n	- Number of sectors
+		%p	- PID
+		%P	- PDU
+		%s	- Sequence number
+		%S	- Sector number
+		%t	- Time (wallclock - nanoseconds)
+		%T	- Time (wallclock - seconds)
+		%u	- Time (processing - microseconds)
+		%U	- Unplug depth
+
+	-F Format specification. The individual specifiers are:
+
+		A	- Remap
+		B	- Bounce
+		C	- Complete
+		D	- Issue
+		M	- Back merge
+		F	- Front merge
+		G	- Get request
+		I	- Insert
+		P	- Plug
+		Q	- Queue
+		R	- Requeue
+		S	- Sleep requests
+		T	- Unplug timer
+		U	- Unplug IO
+		W	- Bounce
+		X	- Split
+
+	-v More verbose for marginal errors.
+	-V Print program version info.
+
+$ verify_blkparse filename
+
+	Verifies an output file from blkparse. All it does is check if
+	the events in the file are correctly time ordered. If an entry
+	is found that isn't ordered, it's dumped to stdout.
+
+$ blkrawverify <dev> [<dev>...]
+
+	The blkrawverify utility can be used to verify data retrieved
+	via blktrace. It will check for valid event formats, forward
+	progressing sequence numbers and time stamps, also does reasonable
+	checks for other potential issues within invidividual events.
+
+	Errors found will be tracked in <dev>.verify.out.
+
+If you want to do live tracing, you can pipe the data between blktrace
+and blkparse:
+
+% blktrace -d <device> -o - | blkparse -i -
+
+This has a small risk of displaying some traces a little out of sync, since
+it will do batch sorts of input events. Similarly, you can do traces over
+the network. The network 'server' must run:
+
+% blktrace -l
+
+to listen to incoming blktrace connections, while the client should use
+
+% blktrace -d /dev/sda -h <server hostname>
+
+to connect and transfer data over the network.
+
+
+Documentation
+-------------
+
+A users guide is distributed with the source. It is in latex, a
+'make docs' will build a PDF in doc/. You need tetex and latex installed
+to build the document.
+
+
+Resources
+---------
+
+vger hosts a mailing list dedicated to btrace discussion and development.
+The list is called linux-btrace@vger.kernel.org, subscribe by sending
+a mail to majordomo@vger.kernel.org with 'subscribe linux-btrace' in
+the mail body.
+
+
+
+2006-09-05, Jens Axboe <axboe@kernel.dk>
+

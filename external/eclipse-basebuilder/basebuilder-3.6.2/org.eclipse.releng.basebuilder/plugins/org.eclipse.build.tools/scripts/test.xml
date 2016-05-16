@@ -1,0 +1,145 @@
+<project name="Targets to run Automated Tests Locally and Remotely" default="main" basedir=".">
+
+<!--
+This script must be called with the ${tester} property set.
+
+The testing.properties file must contain definitions for all other properties in this script if they are not
+set in a calling script or command line.  See test.properties.template for property descriptions.
+-->
+
+<property name="customTest" value="${tester}/customTest.xml" />
+<property name="testing.properties" value="${tester}/testing.properties" />
+<property file="${testing.properties}" />
+<property name="dropLocation" value="${buildDirectory}" />
+	
+<target name="main">
+	<antcall target="${testTarget}" />
+</target>
+
+<!--
+Targets for setting up and running tests remotely
+It is assumed that keys are set up on test machines to permit connections without user name and password prompts.
+-->
+<target name="runtests-remote" depends="setRemoteLoginClient,setRemoteCopyClient">
+	<property name="testResults" value="${dropLocation}/${buildLabel}/testresults" />
+	
+	<exec dir="." executable="${loginClient}">
+		<arg line="${testMachine} mkdir ${testDir}" />
+	</exec>
+	
+	<!--install the vm used for testing-->
+	<antcall target="installVmForRemote" />
+	
+	<!--set up the automated testing framework-->
+	<exec dir="." executable="${copyClient}">
+		<arg line="${dropLocation}/${buildLabel}/${testFramework} ${testMachine}:${testDir}" />
+	</exec>
+	<exec dir="." executable="${loginClient}">
+		<arg line="${testMachine} unzip -o -qq ${testDir}/${testFramework} -d ${testDir}" />
+	</exec>
+	<exec dir="." executable="${copyClient}">
+		<arg line="${dropLocation}/${buildLabel}/${runtime} ${testMachine}:${executionDir}" />
+	</exec>
+	
+	<!--callback to custom script for post setup-->
+	<ant antfile="${customTest}" target="customSetup" dir="${basedir}"/>
+	
+	<exec dir="." executable="${loginClient}">
+		<arg line="${testMachine} ${testScript} ${args}" />
+	</exec>
+	
+	<!--${testResults} and ${testResults}/consolelogs must exist before rcp and scp copy operations.
+	  Directories contents are copied flattened if the destination directories don't exist.-->
+	<mkdir dir="${testResults}/consolelogs" />
+	
+	<exec dir="." executable="${copyClient}">
+		<arg line="-r ${testMachine}:${executionDir}/results/* ${testResults}"/>
+	</exec>
+	<!--  copy the console log from testing  -->
+	<exec dir="." executable="${copyClient}">
+		<arg line="-r ${testMachine}:${executionDir}/${consolelog} ${testResults}/consolelogs"/>
+	</exec>
+</target>
+
+<target name="setRemoteLoginClient">
+	<!--use rsh if rsh is set, otherwise use default, ssh-->
+	<condition property="loginClient" value="rsh">
+		<isset property="rsh" />
+	</condition>
+	<!--default remote login client-->
+	<property name="loginClient" value="ssh" />	
+</target>
+
+<target name="setRemoteCopyClient">
+	<!--use rcp if rsh is set, otherwise use default, scp-->
+	<condition property="copyClient" value="rcp">
+		<isset property="rsh" />
+	</condition>
+	<!--default remote copy client-->
+	<property name="copyClient" value="scp" />	
+</target>
+
+<target name="installVmForRemote" unless="skipVmInstall">
+	<available file="${vmDest}" property="vmExists" />
+	<antcall target="getVM" />
+	
+	<exec dir="." executable="${copyClient}">
+		<arg line="${vmDest} ${testMachine}:${testDir}" />
+	</exec>
+	
+	<exec dir="." executable="${loginClient}">
+		<arg line="${testMachine} ${vmInstallCommand}" />
+	</exec>
+</target>
+
+
+<!--
+
+Targets for setting up and running tests locally
+
+-->
+<target name="runtests-local">
+	<delete dir="${testDir}" quiet="true"/>
+	<mkdir dir="${testDir}" />
+	<property name="testResults" value="${dropLocation}/${buildLabel}/testresults" />
+	
+	<!--set up testing directory-->
+	<unzip src="${dropLocation}/${buildLabel}/${testFramework}" dest="${testDir}" />
+	
+	<!--install the vm used for testing-->
+	<antcall target="installVmForLocal" />
+	
+	<!--copy in the runtime to test-->
+	<copy todir="${executionDir}" file="${dropLocation}/${buildLabel}/${runtime}" />
+
+	<!--callback to custom script for additional setup-->
+	<ant antfile="${customTest}" target="customSetup" dir="${basedir}" />
+
+	<!--run the tests-->
+	<exec dir="${executionDir}" executable="${testExecutable}">
+  		<arg line="${args}" />
+	</exec>
+
+	<mkdir dir="${testResults}" />
+	<mkdir dir="${testResults}/consolelogs" />
+
+	<copy todir="${testResults}">
+		<fileset dir="${executionDir}/results" />
+	</copy>
+
+	<copy todir="${testResults}/consolelogs" file="${executionDir}/${consolelog}" />
+</target>
+
+<target name="installVmForLocal" unless="skipVmInstall">
+	<available file="${vmDest}" property="vmExists" />
+	<antcall target="getVM" />
+	<exec dir="${testDir}" executable="${vmInstallExecutable}">	
+		<arg line="${vmInstallCommand}" />
+	</exec>
+</target>
+
+<target name="getVM" unless="vmExists">
+	<get src="${vmUrl}" dest="${vmDest}" usetimestamp="true"/>
+</target>
+
+</project>

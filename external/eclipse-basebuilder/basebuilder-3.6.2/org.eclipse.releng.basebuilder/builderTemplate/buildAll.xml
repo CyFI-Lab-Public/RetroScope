@@ -1,0 +1,69 @@
+<project default="run">
+
+	<target name="run">
+		<ant antfile="build.xml" target="init" />
+		<antcall target="buildAll" />
+		<antcall target="test" />
+		<antcall target="publish" />
+		<antcall target="push" />
+	</target>
+
+	<target name="buildAll">
+		<!--add calls to build.xml here to build all components-->
+		
+		<!-- example
+		<ant antfile="build.xml" target="main">
+			<property name="builder" value="" />
+		</ant>
+		-->
+	
+	</target>
+
+	<target name="test" depends="init">
+		<property name="test.xml" value="../org.eclipse.releng.basebuilder/plugins/org.eclipse.build.tools/scripts/test.xml" />
+		<!--
+		<ant antfile="${test.xml}">
+			<property name="tester" value="${basedir}/internalBuildTools/testConfigs/win32-local" />
+		</ant>
+		-->
+	</target>
+
+	<target name="publish" depends="init">
+		<property name="publish.xml" value="../org.eclipse.releng.basebuilder/plugins/org.eclipse.build.tools/scripts/publish.xml" />
+
+		<property name="indexFileName" value="index.html" />
+		<property name="result" value="${buildDirectory}/${buildLabel}" />
+
+		<ant antfile="${publish.xml}" dir="${basedir}">
+			<property name="dropTokenList" value="%sdk%,%runtime%,%examples%,%tests%" />
+			<property name="isBuildTested" value="true" />
+		</ant>
+	</target>
+	
+	<target name="push" depends="init,pushftp,pushrsync">
+	</target>
+	
+	<target name="pushftp" if="ftppush">
+		<echo message="FTP to: ${remoteDirectory}/${buildLabel}"/>	
+	  	<ftp server="${ftpServer}"
+       		userid="${ftpUser}"
+		      password="${ftpPassword}"
+			remotedir="${remoteDirectory}">
+		    <fileset dir="${buildDirectory}">
+				<include name="${buildLabel}/**"/>
+		    </fileset>
+		</ftp>
+		
+		<!-- There may not be anything in buildnotes. ftp won't create directory in that case. But we must have one. -->
+	  	<ftp server="${ftpServer}"
+       		userid="${ftpUser}"
+		      password="${ftpPassword}"
+			action="mkdir"
+			remotedir="${remoteDirectory}/${buildLabel}/buildnotes">
+		</ftp>
+		
+	</target>
+		
+	<target name="pushrsync" if="rsyncpush"/>
+	
+</project>

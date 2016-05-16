@@ -1,0 +1,27 @@
+# List of files which containing translatable strings.
+# Copyright (C) 2000, 2005 Red Hat, Inc.
+
+# Files from the compatibility library
+lib/xmalloc.c
+#lib/xstrdup.c
+lib/xstrndup.c
+
+# Library sources
+libelf/elf_error.c
+libasm/asm_error.c
+libdw/dwarf_error.c
+
+# Program sources
+src/nm.c
+src/readelf.c
+src/size.c
+src/strip.c
+src/ld.c
+src/ldgeneric.c
+src/ldscript.y
+src/elflint.c
+src/addr2line.c
+src/findtextrel.c
+src/elfcmp.c
+src/ranlib.c
+src/strings.c

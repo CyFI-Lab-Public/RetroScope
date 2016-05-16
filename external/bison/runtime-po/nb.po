@@ -1,0 +1,77 @@
+# Norwegian bokmål translation of GNU bison.
+# Copyright (C) 2004 Free Software Foundation, Inc.
+# This file is distributed under the same license as the PACKAGE package.
+# Trond Endrestøl <Trond.Endrestol@gtf.ol.no>, 2004.
+#
+# Send this file as an gzipped attachment to:
+# translation@iro.umontreal.ca
+# with the subject:
+# TP-Robot PACKAGE-VERSION.TEAM.po
+#
+# The subject for the Norwegian bokmål translation of GNU bison-runtime 2.1
+# would then be:
+# TP-Robot bison-runtime-2.1.nb.po
+#
+# Here's the URL for the Norwegian bokmål translation team:
+# http://www.iro.umontreal.ca/translation/registry.cgi?team=nb
+#
+# Here's the URL for the current translations of GNU bison-runtime:
+# http://www.iro.umontreal.ca/translation/registry.cgi?domain=bison-runtime
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: bison-runtime 2.1\n"
+"Report-Msgid-Bugs-To: bug-bison@gnu.org\n"
+"POT-Creation-Date: 2012-12-12 16:09+0100\n"
+"PO-Revision-Date: 2005-09-21 09:35+0200\n"
+"Last-Translator: Trond Endrestøl <Trond.Endrestol@gtf.ol.no>\n"
+"Language-Team: Norwegian Bokmaal <i18n-nb@lister.ping.uio.no>\n"
+"Language: nb\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: data/glr.c:855 data/yacc.c:776
+msgid "syntax error: cannot back up"
+msgstr "syntaksfeil: kan ikke gå tilbake"
+
+#: data/glr.c:1729
+msgid "syntax is ambiguous"
+msgstr "syntaksen er flertydig"
+
+#: data/glr.c:2014 data/glr.c:2094 data/glr.c:2134 data/glr.c:2399
+#: data/lalr1.cc:947 data/lalr1.cc:967 data/yacc.c:1351 data/yacc.c:1856
+#: data/yacc.c:1862
+msgid "syntax error"
+msgstr "syntaksfeil"
+
+#: data/glr.c:2095 data/lalr1.cc:948 data/yacc.c:1352
+#, c-format
+msgid "syntax error, unexpected %s"
+msgstr "syntaksfeil, uforventet %s"
+
+#: data/glr.c:2096 data/lalr1.cc:949 data/yacc.c:1353
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s"
+msgstr "syntaksfeil, uforventet %s, forventet %s"
+
+#: data/glr.c:2097 data/lalr1.cc:950 data/yacc.c:1354
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s"
+msgstr "syntaksfeil, uforventet %s, forventet %s eller %s"
+
+#: data/glr.c:2098 data/lalr1.cc:951 data/yacc.c:1355
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s"
+msgstr "syntaksfeil, uforventet %s, forventet %s eller %s eller %s"
+
+#: data/glr.c:2099 data/lalr1.cc:952 data/yacc.c:1356
+#, c-format
+msgid "syntax error, unexpected %s, expecting %s or %s or %s or %s"
+msgstr "syntaksfeil, uforventet %s, forventet %s eller %s eller %s eller %s"
+
+#: data/glr.c:2459 data/yacc.c:1436 data/yacc.c:1438 data/yacc.c:1616
+#: data/yacc.c:2013
+msgid "memory exhausted"
+msgstr "minne er uttømt"

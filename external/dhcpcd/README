@@ -1,0 +1,80 @@
+dhcpcd - DHCP client daemon
+Copyright (c) 2006-2012 Roy Marples <roy@marples.name>
+
+
+Installation
+------------
+./configure; make; make install
+man dhcpcd for command line options
+man dhcpcd.conf for configuration options
+man dhcpcd-run-hooks to learn how to hook scripts into dhcpcd events
+
+
+Notes
+-----
+If you're cross compiling you may need set the platform if OS is different
+from the host.
+--target=sparc-sun-netbsd5.0
+
+If you're building for an MMU-less system where fork() does not work, you
+should ./configure --disable-fork.
+This also puts the --no-background flag on and stops the --background flag
+from working.
+
+You can change the default dirs with these knobs.
+For example, to satisfy FHS compliance you would do this:-
+./configure --libexecdir=/lib/dhcpcd dbdir=/var/lib/dhcpcd
+
+We now default to using -std=c99. For 64-bit linux, this always works, but
+for 32-bit linux it requires either gnu99 or a patch to asm/types.h.
+Most distros patch linux headers so this should work fine.
+linux-2.6.24 finally ships with a working 32-bit header.
+If your linux headers are older, or your distro hasn't patched them you can
+set CSTD=gnu99 to work around this.
+
+Some BSD systems do not allow the manipulation of automatically added subnet
+routes. You can find discussion here:
+    http://mail-index.netbsd.org/tech-net/2008/12/03/msg000896.html
+BSD systems where this has been fixed are:
+    NetBSD-5.0
+
+We try and detect how dhcpcd should interact with system services during the
+configure stage. If we cannot auto-detect how do to this, or it is wrong then
+you can change this by passing shell commands to --service-exists,
+--servicecmd and optionally --servicestatus.
+
+To prepare dhcpcd for import into a platform source tree (like NetBSD)
+you can use the make import target to create /tmp/dhcpcd-$version and
+populate it with all the source files and hooks needed.
+In this instance, you may wish to disable some configured tests when
+the binary has to run on older versions which lack support, such as getline.
+./configure --without-getline
+
+
+Hooks
+-----
+Not all the hooks in dhcpcd-hooks are installed by default.
+By default we install 01-test, 10-mtu, 20-resolv.conf,
+29-lookup-hostname and 30-hostname.
+The default dhcpcd.conf disables the lookup-hostname hook by default.
+The configure program attempts to find hooks for systems you have installed.
+To add more simply
+./configure -with-hook=ntp.conf
+
+
+Compatibility
+-------------
+dhcpcd-5.0 is only fully command line compatible with dhcpcd-4.0
+For compatibility with older versions, use dhcpcd-4.0
+
+dhcpcd no longer sends a default ClientID for ethernet interfaces.
+This is so we can re-use the address the kernel DHCP client found.
+To retain the old behaviour of sending a default ClientID based on the
+hardware address for interface, simply add the keyword clientid to dhcpcd.conf.
+
+
+ChangeLog
+---------
+We no longer supply a ChangeLog.
+However, you're more than welcome to read the commit log at
+http://roy.marples.name/projects/dhcpcd/log/

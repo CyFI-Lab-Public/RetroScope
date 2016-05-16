@@ -1,0 +1,14 @@
+
+The source code of bison 2.7 was downloaded from http://ftp.gnu.org/gnu/bison/.
+
+To build it with the Android build system, we added 2 subdirectories darwin-lib
+and linux-lib, as well as an Android.mk.
+We used the following steps to generate the Android.mk:
+1) On a Mac OS X machine, run ./configure and make, you'll get a list of
+generated header files from the log. Copy them to darwin-lib; You can also get
+a list of source files from the log. Add them to LOCAL_SRC_FILES in the
+Android.mk.
+2) Do the same thing on a Linux machine.
+3) Comment out the PKGINCLUDEDIR line in darwin-lib/configmake.h and
+linux-lib/configmake.h, because we'll pass in the macro from the build system.
+4) Define libbison and bison in the Android.mk.

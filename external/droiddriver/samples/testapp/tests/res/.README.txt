@@ -1,0 +1,2 @@
+This file keeps eclipse happy as it doesn't seem able to create the res folder it doesn't actually need. It can be removed if the res folder ever gets real content.
+Starting the file with a dot keeps aapt (res compiler) happy.

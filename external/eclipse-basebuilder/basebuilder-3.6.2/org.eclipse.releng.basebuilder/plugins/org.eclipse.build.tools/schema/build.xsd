@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.eclipse.org/2006/BuildFeed" elementFormDefault="qualified" targetNamespace="http://www.eclipse.org/2006/BuildFeed">
+
+  <xs:element name="build">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="1" minOccurs="0" ref="detail"/>
+        <xs:element maxOccurs="1" minOccurs="0" ref="update"/>
+        <xs:element maxOccurs="1" minOccurs="0" ref="downloads"/>
+        <xs:element maxOccurs="1" minOccurs="0" ref="releasenotes"/>
+        
+        <xs:element maxOccurs="1" minOccurs="0" ref="releases"/>
+        
+        <xs:element maxOccurs="1" minOccurs="0" ref="tests"/>
+        
+        <xs:element maxOccurs="1" minOccurs="0" ref="dependencies"/>
+        <xs:element maxOccurs="1" minOccurs="0" ref="coordinated"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="buildVersion" use="required"/>
+      <xs:attribute name="type" type="enumBuildType" use="required"/>
+      <xs:attribute name="datetime" type="buildDatetime" use="required"/>
+      <xs:attribute name="href" type="xs:anyURI" use="required"/>
+      <xs:attribute name="branch" type="xs:token" use="optional"/>
+      <xs:attribute name="jars" type="enumJarSigningStatus" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="detail">
+    <xs:complexType>
+      <xs:attribute name="href" type="xs:anyURI" use="required"/>
+      <xs:attribute name="config" type="xs:token" use="optional"/>
+      <xs:attribute name="log" type="xs:token" use="optional"/>
+      <xs:attribute name="map" type="xs:token" use="optional"/>
+	</xs:complexType>
+  </xs:element>
+
+  <xs:element name="update" type="xs:anyURI"/>
+  <xs:element name="downloads" type="xs:anyURI"/>
+  <xs:element name="releasenotes" type="xs:anyURI"/>
+
+  <xs:element name="releases">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="1" ref="release"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="release">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:anyURI">
+          <xs:attribute name="os" type="enumOS" use="required"/>
+          <xs:attribute name="ws" type="enumWS" use="required"/>
+          <xs:attribute name="arch" type="enumArch" use="optional"/>
+          <xs:attribute name="type" type="enumReleaseType" use="required"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="tests">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="1" ref="test"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="test">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="1" ref="result"/>
+      </xs:sequence>
+      <xs:attribute name="href" type="xs:anyURI" use="optional"/>
+      <xs:attribute name="type" type="enumTestType" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="result">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="enumTestStatus">
+          <xs:attribute name="id" type="xs:token" use="optional"/>
+          <xs:attribute name="os" type="enumOS" use="required"/>
+          <xs:attribute name="ws" type="enumWS" use="required"/>
+          <xs:attribute name="arch" type="enumArch" use="optional"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="dependencies">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" minOccurs="1" ref="dependency"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dependency" type="xs:anyURI"/>
+
+  <xs:element name="coordinated">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+        <xs:attribute name="status" type="enumCoordinatedStatus" use="optional"/>      
+      </xs:extension>
+    </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="enumBuildType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="N"/>
+      <xs:enumeration value="I"/>
+      <xs:enumeration value="M"/>
+      <xs:enumeration value="S"/>
+      <xs:enumeration value="R"/>
+    </xs:restriction>
+  </xs:simpleType> 
+  
+  <xs:simpleType name="enumTestType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="junit"/>
+      <xs:enumeration value="performance"/>
+      <xs:enumeration value="api"/>
+    </xs:restriction>
+  </xs:simpleType> 
+  
+  <xs:simpleType name="enumJarSigningStatus">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value=""/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="UNSIGNED"/>
+      <xs:enumeration value="SIGNREADY"/>
+      <xs:enumeration value="BUILDREADY"/>
+      <xs:enumeration value="SIGNED"/>
+    </xs:restriction>
+  </xs:simpleType> 
+  
+  <xs:simpleType name="enumCoordinatedStatus">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value=""/>
+      <xs:enumeration value="NONE"/>
+      <xs:enumeration value="BUILDCOMPLETE"/>
+      <xs:enumeration value="UMSITEREADY"/>
+      <xs:enumeration value="CALLISTOSITEREADY"/>
+      <xs:enumeration value="COMPLETE"/>
+    </xs:restriction>
+  </xs:simpleType> 
+  
+  <xs:simpleType name="enumTestStatus">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value=""/>
+      <xs:enumeration value="PASS"/>
+      <xs:enumeration value="PENDING"/>
+      <xs:enumeration value="FAIL"/>
+      <xs:enumeration value="AVAILABLE"/>
+      <xs:enumeration value="SKIPPED"/>
+      <xs:enumeration value="UNKNOWN"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="enumOS">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="aix"/>
+      <xs:enumeration value="hp-ux"/>
+      <xs:enumeration value="linux"/>
+      <xs:enumeration value="macosx"/>
+      <xs:enumeration value="qnx"/>
+      <xs:enumeration value="solaris8"/>
+      <xs:enumeration value="wce"/>
+      <xs:enumeration value="win32"/>
+      <xs:enumeration value="ALL"/>
+      <xs:enumeration value="OTHER"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="enumWS">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="carbon"/>
+      <xs:enumeration value="gtk"/>
+      <xs:enumeration value="motif"/>
+      <xs:enumeration value="photon"/>
+      <xs:enumeration value="win"/>
+      <xs:enumeration value="ALL"/>
+      <xs:enumeration value="OTHER"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="enumArch">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="arm"/>
+      <xs:enumeration value="hp9000"/>
+      <xs:enumeration value="ppc"/>
+      <xs:enumeration value="sparc"/>
+      <xs:enumeration value="x86"/>
+      <xs:enumeration value="x86_64"/>
+      <xs:enumeration value="ALL"/>
+      <xs:enumeration value="OTHER"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="enumReleaseType">
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="SDK"/>
+      <xs:enumeration value="runtime"/>
+      <xs:enumeration value="tests"/>
+      <xs:enumeration value="examples"/>
+      <xs:enumeration value="OTHER"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="buildDatetime">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\d{8}-{0,1}\d{0,4}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="buildVersion">
+    <xs:restriction base="xs:token">
+      <xs:pattern value="\d{1,2}.\d{1,2}.\d{1,2}"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

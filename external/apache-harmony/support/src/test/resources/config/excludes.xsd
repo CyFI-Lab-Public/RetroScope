@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	    xmlns="http://incubator.apache.org/harmony/testing" 
+	    targetNamespace="http://incubator.apache.org/harmony/testing">
+
+  <!--
+  * A suite contains zero or more type declarations 
+  -->
+  <xsd:element name="suite">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="type" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+  <!--
+  * A type contains one or more exclude elements.
+  * A type has a single attribute (id) which can be
+  * any meaningful character value that is based on
+  * proper XML naming conventions (must begin with a 
+  * letter or underscore).
+  -->
+  <xsd:element name="type">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="exclude" minOccurs="1" maxOccurs="unbounded"/>
+      </xsd:sequence>
+      <xsd:attribute name="id" type="idtype" use="required" />
+    </xsd:complexType>
+  </xsd:element>
+
+  <!--
+  * An exclude element can have an optional reason
+  * element. 
+  -->
+  <xsd:element name="exclude">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element ref="reason" minOccurs="0" maxOccurs="1"/>
+      </xsd:sequence>
+      <xsd:attribute name="id" type="idtype"  default="all" />
+      <xsd:attribute name="platform" type="platformlisttype" default="all" />
+      <xsd:attribute name="shouldfix" type="booleanstringtype" default="true" />
+    </xsd:complexType>
+  </xsd:element>
+
+<!--
+  * A reason element has no attributes, only parsed
+  * character data.	
+  -->
+  <xsd:element name="reason">
+    <xsd:complexType mixed="true"/>
+  </xsd:element>
+
+ 
+  <!--
+  * Type idtype is any string data.
+  -->
+  <xsd:simpleType name="idtype">
+    <xsd:restriction base="xsd:string"/>
+  </xsd:simpleType>
+  
+
+  <!--
+  * Type platformstringtype is one of the 
+  * strings "all", "win.IA32" or "linux.IA32".
+  -->
+  <xsd:simpleType name="platformstringtype" >
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="win.IA32"/>
+      <xsd:enumeration value="linux.IA32"/>
+      <xsd:enumeration value="all"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+
+
+  <xsd:simpleType name="platformlisttype">
+    <xsd:list itemType="platformstringtype"/>
+  </xsd:simpleType>
+
+
+  <!--
+  * Type booleanstringtype is one of the 
+  * strings "true" or "false".
+  -->
+  <xsd:simpleType name="booleanstringtype" >
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="true"/>
+      <xsd:enumeration value="false"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  
+</xsd:schema>

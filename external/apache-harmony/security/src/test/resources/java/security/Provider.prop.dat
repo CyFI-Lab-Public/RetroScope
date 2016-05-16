@@ -1,0 +1,8 @@
+Property\ 1 = value 1
+serviceName.algName=className 
+serviceName.algName\ attrName= attrValue
+Alg.Alias.engineClassName.aliasName=standardName
+Provider.id\ name = NEW NAME
+Provider.id\ version = 333
+Provider.id\ info=newInfo
+Provider.id\ className=aaa.bbb.ccc

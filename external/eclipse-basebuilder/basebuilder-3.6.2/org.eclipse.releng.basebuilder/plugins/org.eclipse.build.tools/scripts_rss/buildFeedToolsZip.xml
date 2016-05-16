@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<project name="Build feedTools.zip" default="buildFeedToolsZip" basedir="../">
+	<target name="buildFeedToolsZip">
+		<property name="zipfile" value="org.eclipse.build.tools_feedTools.zip"/>
+		<ant antfile="scripts_rss/buildFeedToolsJar.xml" target="buildFeedToolsJar" inheritall="true"/>
+		<echo message="Bundling ${zipfile} ..."/>
+		<delete file="${zipfile}"/>
+		<zip
+			destfile="${zipfile}"
+			includes=".classpath, .project, 
+				feedTools.jar, 
+				src_rss/**/*, 
+				scripts_rss/**/*,
+                schema/**/*,
+		    	data/**/*,
+                properties/feedPublish.*.properties, 
+                properties/feedWatch.*.properties, 
+                properties/_README.txt"
+			basedir="."
+			update="true"/>
+	</target>
+</project>

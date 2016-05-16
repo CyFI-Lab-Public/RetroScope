@@ -1,0 +1,34 @@
+%
+% Copyright (C) 2007 Alan D. Brunelle <Alan.Brunelle@hp.com>
+%
+%  This program is free software; you can redistribute it and/or modify
+%  it under the terms of the GNU General Public License as published by
+%  the Free Software Foundation; either version 2 of the License, or
+%  (at your option) any later version.
+%
+%  This program is distributed in the hope that it will be useful,
+%  but WITHOUT ANY WARRANTY; without even the implied warranty of
+%  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%  GNU General Public License for more details.
+%
+%  You should have received a copy of the GNU General Public License
+%  along with this program; if not, write to the Free Software
+%  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+%
+%  vi :set textwidth=75
+%
+The \texttt{btrecord} and \texttt{btreplay} tools provide the ability to
+record and replay IOs captured by the \texttt{blktrace} utility. Attempts
+are made to maintain ordering, CPU mappings and time-separation of IOs. The
+general workflow is expected to be:
+
+\begin{enumerate}
+  \item Initiate \texttt{blktrace} to capture traces
+  \item Generate traces\ldots
+  \item Stop \texttt{blktrace}
+  \item Run \texttt{btrecord} to convert traces into IO records 
+  \item Utilize \texttt{btreplay} to replay IOs 
+\end{enumerate}
+
+This document will discuss the operating characteristics of
+\texttt{btreplay} and provide detailed command line option descriptions.

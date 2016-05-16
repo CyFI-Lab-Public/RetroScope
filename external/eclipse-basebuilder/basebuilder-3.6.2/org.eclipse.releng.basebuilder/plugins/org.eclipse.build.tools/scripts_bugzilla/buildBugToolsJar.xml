@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+
+<project name="Build bugTools.jar" default="buildBugToolsJar" basedir="../">
+	<target name="buildBugToolsJar">
+	  <echo message="Compiling bugTools ..."/>
+	  <delete file="bugTools.jar"/>
+	  <delete dir="bin/"/>
+  	  <mkdir dir="bin"/>
+	  <javac 
+	  	source="1.4"
+	  	target="1.4"
+		srcdir="."
+	    destdir="bin/"
+	    classpath="../org.eclipse.releng.basebuilder/plugins/org.apache.ant_1.6.5/lib/ant.jar"
+		includes="src_bugzilla/**/*.java, src_bugzilla/**/messages.properties"/>
+	  <echo message="Jarring bugTools.jar ..."/>
+	  <jar 
+		destfile="bugTools.jar" 
+		includes="**/*.class" 
+		basedir="bin"
+	    update="true"/>
+	  <jar 
+		destfile="bugTools.jar" 
+		includes="**/messages.properties" 
+		basedir="src_bugzilla"
+	    update="true"/>
+	</target>
+</project>

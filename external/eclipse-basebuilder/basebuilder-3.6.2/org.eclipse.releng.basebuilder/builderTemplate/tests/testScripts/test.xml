@@ -1,0 +1,77 @@
+<project name="Automated VE Testing" default="all"  basedir="." >
+
+	<!--properties file containing the plugin directory name including version number-->
+	<property file="test.properties" />
+	
+	<!--default directory where test-eclipse will be installed-->
+	<property name="install" value="${basedir}/target" />
+	
+	<!--name that can be added to report name to identify which platform tests results come from-->
+	<property name="platform" value="" />
+
+	<!-- The root of the eclipse installation -->
+	<property name="eclipse-home" value="${install}/eclipse" />
+
+	<!-- The directory that will contain the xml and html results from the tests that are run -->
+ 	<property name="results" value="${basedir}/results" />
+
+	<target name="init">
+	</target>
+
+	<target name="setup" if="clean" description="Reinstall the test Eclipse installation if specified by user">
+		<delete dir="${install}" />
+		<mkdir dir="${install}" />
+				
+		<!--The eclipse SDK must exist before this script is executed-->
+		<exec dir="." executable="unzip">
+			<arg line="-o -qq eclipse-SDK*.zip -d ${install}"/>
+	    </exec>
+	
+		<exec dir="." executable="unzip">
+			<arg line="-o -qq GEF*.zip -d ${install}/eclipse"/>
+    	</exec>
+
+		<exec dir="." executable="unzip">
+			<arg line="-o -qq emf*.zip -d ${install}/eclipse"/>
+    	</exec>
+	
+		<exec dir="." executable="unzip">
+			<arg line="-o -qq VE-runtime-*.zip -d ${install}/eclipse"/>
+    	</exec>
+    	
+		<exec dir="." executable="unzip">
+			<arg line="-o -qq VE-junit-tests-*.zip -d ${install}"/>
+    	</exec>
+	</target>
+
+	<target name="runtests" depends="setup" description="Runs ant on the test.xml for a specified plugin.  Requires a property value setting for testPlugin only if test.properties is not available.  The property testPlugin represents a directory name made up of the plugin id and plugin version.  This directory must contain a valid test.xml.">
+		<ant antfile="${eclipse-home}/plugins/${testPlugin}/test.xml" dir="${eclipse-home}" />
+		<copy file="${eclipse-home}/${report}.xml" tofile="${results}/xml/${report}_${platform}.xml" />
+	</target>
+
+	<target name="ve" description="Runs the org.eclipse.ve.tests test.xml">
+		<antcall target="runtests">
+			<param name="testPlugin" value="${org.eclipse.ve.tests}" />
+			<param name="report" value="org.eclipse.ve.tests" />
+		</antcall>
+	</target>
+
+	<target name="jem" description="Runs the org.eclipse.jem.tests test.xml">
+		<antcall target="runtests">
+			<param name="testPlugin" value="${org.eclipse.jem.tests}" />
+			<param name="report" value="org.eclipse.jem.tests" />
+		</antcall>
+	</target>
+
+	<target name="all">
+		<antcall target="jem" />
+		<antcall target="ve" />
+		<antcall target="genHtml" />
+	</target>
+	
+	<target name="genHtml" description="Generates HTML results with provided JUNIT.XSL provided">
+		<style style="JUNIT.XSL" basedir="${results}/xml" destdir="${results}/html" />
+	</target>
+
+
+</project>

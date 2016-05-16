@@ -1,0 +1,54 @@
+<project default="main">
+
+	<property name="pde.build.scripts"	value="${eclipse.pdebuild.scripts}"/>
+	<property name="buildDirectory" location="${basedir}/src" />	
+
+	<target name="main" depends="checkArgs,init">
+		<ant antfile="build.xml" dir="${pde.build.scripts}" />
+	</target>
+	
+	<target name="checkArgs" unless="builder">
+		<echo message="-Dbuilder=&lt;path&gt; required." />
+		<fail/>
+	</target>
+
+	<target name="init">
+		<touch file="${user.home}/.cvspass" />
+		<available file="${buildDirectory}/label.properties" property="label.properties.exists" />
+		<antcall target="create.label.properties" />
+		<property file="${buildDirectory}/label.properties" />
+	</target>
+
+	<target name="create.label.properties" unless="label.properties.exists">
+		<mkdir dir="${buildDirectory}" />
+		<tstamp/>
+		<property name="date" value="${DSTAMP}" />
+		<property name="time" value="${TSTAMP}" />
+		<property name="timestamp" value="${date}${time}" />
+		<property name="buildType" value="I" />
+		<property name="buildId" value="${buildType}${date}" />
+
+		<!--this naming convention used by php scripts on download server-->
+		<property name="buildLabel" value="${buildType}-${buildId}-${timestamp}" />
+
+		<!--store the build label information in a file-->
+		<echo file="${buildDirectory}/label.properties" append="true" >
+		buildDirectory=${buildDirectory}
+		</echo>
+		<echo file="${buildDirectory}/label.properties" append="true" >
+		buildType=${buildType}
+		</echo>
+		<echo file="${buildDirectory}/label.properties" append="true" >
+		buildId=${buildId}
+		</echo>
+		<echo file="${buildDirectory}/label.properties" append="true" >
+		timestamp=${timestamp}
+		</echo>
+		<echo file="${buildDirectory}/label.properties" append="true" >
+		buildLabel=${buildLabel}
+		</echo>
+	</target>
+
+
+
+</project>

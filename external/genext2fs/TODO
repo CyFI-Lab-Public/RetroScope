@@ -1,0 +1,8 @@
+Disclaimer: I'll probably never do all this ...
+
+- support fancy ext2 options
+- support ext3
+
+- UUID generation
+
+- mke2fs includes reserved blocks in free blocks, maybe we should too

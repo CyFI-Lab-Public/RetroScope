@@ -1,0 +1,106 @@
+/* List the relocation types for sparc.  -*- C -*-
+   Copyright (C) 2005 Red Hat, Inc.
+   This file is part of Red Hat elfutils.
+
+   Red Hat elfutils is free software; you can redistribute it and/or modify
+   it under the terms of the GNU General Public License as published by the
+   Free Software Foundation; version 2 of the License.
+
+   Red Hat elfutils is distributed in the hope that it will be useful, but
+   WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+   General Public License for more details.
+
+   You should have received a copy of the GNU General Public License along
+   with Red Hat elfutils; if not, write to the Free Software Foundation,
+   Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301 USA.
+
+   Red Hat elfutils is an included package of the Open Invention Network.
+   An included package of the Open Invention Network is a package for which
+   Open Invention Network licensees cross-license their patents.  No patent
+   license is granted, either expressly or impliedly, by designation as an
+   included package.  Should you wish to participate in the Open Invention
+   Network licensing program, please visit www.openinventionnetwork.com
+   <http://www.openinventionnetwork.com>.  */
+
+/* 	    NAME,		REL|EXEC|DYN	*/
+
+RELOC_TYPE (NONE,               0)
+RELOC_TYPE (8,                  0)
+RELOC_TYPE (16,                 0)
+RELOC_TYPE (32,                 0)
+RELOC_TYPE (DISP8,              0)
+RELOC_TYPE (DISP16,             0)
+RELOC_TYPE (DISP32,             0)
+RELOC_TYPE (WDISP30,            0)
+RELOC_TYPE (WDISP22,            0)
+RELOC_TYPE (HI22,               0)
+RELOC_TYPE (22,                 0)
+RELOC_TYPE (13,                 0)
+RELOC_TYPE (LO10,               0)
+RELOC_TYPE (GOT10,              0)
+RELOC_TYPE (GOT13,              0)
+RELOC_TYPE (GOT22,              0)
+RELOC_TYPE (PC10,               0)
+RELOC_TYPE (PC22,               0)
+RELOC_TYPE (WPLT30,             0)
+RELOC_TYPE (COPY,               EXEC)
+RELOC_TYPE (GLOB_DAT,           EXEC|DYN)
+RELOC_TYPE (JMP_SLOT,           EXEC|DYN)
+RELOC_TYPE (RELATIVE,           EXEC|DYN)
+RELOC_TYPE (UA32,               0)
+RELOC_TYPE (PLT32,              0)
+RELOC_TYPE (HIPLT22,            0)
+RELOC_TYPE (LOPLT10,            0)
+RELOC_TYPE (PCPLT32,            0)
+RELOC_TYPE (PCPLT22,            0)
+RELOC_TYPE (PCPLT10,            0)
+RELOC_TYPE (10,                 0)
+RELOC_TYPE (11,                 0)
+RELOC_TYPE (64,                 0)
+RELOC_TYPE (OLO10,              0)
+RELOC_TYPE (HH22,               0)
+RELOC_TYPE (HM10,               0)
+RELOC_TYPE (LM22,               0)
+RELOC_TYPE (PC_HH22,            0)
+RELOC_TYPE (PC_HM10,            0)
+RELOC_TYPE (PC_LM22,            0)
+RELOC_TYPE (WDISP16,            0)
+RELOC_TYPE (WDISP19,            0)
+RELOC_TYPE (7,                  0)
+RELOC_TYPE (5,                  0)
+RELOC_TYPE (6,                  0)
+RELOC_TYPE (DISP64,             0)
+RELOC_TYPE (PLT64,              0)
+RELOC_TYPE (HIX22,              0)
+RELOC_TYPE (LOX10,              0)
+RELOC_TYPE (H44,                0)
+RELOC_TYPE (M44,                0)
+RELOC_TYPE (L44,                0)
+RELOC_TYPE (REGISTER,           0)
+RELOC_TYPE (UA64,               0)
+RELOC_TYPE (UA16,               0)
+RELOC_TYPE (TLS_GD_HI22,        0)
+RELOC_TYPE (TLS_GD_LO10,        0)
+RELOC_TYPE (TLS_GD_ADD,         0)
+RELOC_TYPE (TLS_GD_CALL,        0)
+RELOC_TYPE (TLS_LDM_HI22,       0)
+RELOC_TYPE (TLS_LDM_LO10,       0)
+RELOC_TYPE (TLS_LDM_ADD,        0)
+RELOC_TYPE (TLS_LDM_CALL,       0)
+RELOC_TYPE (TLS_LDO_HIX22,      0)
+RELOC_TYPE (TLS_LDO_LOX10,      0)
+RELOC_TYPE (TLS_LDO_ADD,        0)
+RELOC_TYPE (TLS_IE_HI22,        0)
+RELOC_TYPE (TLS_IE_LO10,        0)
+RELOC_TYPE (TLS_IE_LD,          0)
+RELOC_TYPE (TLS_IE_LDX,         0)
+RELOC_TYPE (TLS_IE_ADD,         0)
+RELOC_TYPE (TLS_LE_HIX22,       0)
+RELOC_TYPE (TLS_LE_LOX10,       0)
+RELOC_TYPE (TLS_DTPMOD32,       0)
+RELOC_TYPE (TLS_DTPMOD64,       0)
+RELOC_TYPE (TLS_DTPOFF32,       0)
+RELOC_TYPE (TLS_DTPOFF64,       0)
+RELOC_TYPE (TLS_TPOFF32,        0)
+RELOC_TYPE (TLS_TPOFF64,        0)

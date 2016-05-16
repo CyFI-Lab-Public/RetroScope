@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="src_rss"/>
+	<classpathentry kind="src" path="src_bugzilla"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.eclipse.osgi.util_3.2.100.v20100503.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant.jar"/>
+	<classpathentry kind="var" path="ECLIPSE_HOME/plugins/org.apache.ant_1.7.1.v20090120-1145/lib/ant-launcher.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

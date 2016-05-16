@@ -1,0 +1,11 @@
+2004-01-18  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.in.in: Set PACKAGE to libelf.
+
+2004-01-17  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.in.in: Find mkinstalldirs script in right directory.
+
+2003-08-11  Ulrich Drepper  <drepper@redhat.com>
+
+        * Moved to CVS archive.

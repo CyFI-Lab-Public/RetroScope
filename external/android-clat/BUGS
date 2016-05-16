@@ -1,0 +1,9 @@
+Optional:
+ - ipv6 traceroute to handle 464 transitions
+
+known problems/assumptions:
+ - does not handle ICMP types other than echo/echo reply
+ - does not handle protocols other than ICMP, UDP, and TCP
+ - assumes the handset has its own (routed) /64 ipv6 subnet
+ - assumes the /120 or /128 ipv6 subnet it generates can use the nat64 gateway
+ - assumes the nat64 gateway has the ipv4 address in the last 32 bits of the ipv6 address (that it uses a /96 plat subnet)

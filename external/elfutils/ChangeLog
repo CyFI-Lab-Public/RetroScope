@@ -1,0 +1,206 @@
+2008-12-30  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: We need automake 1.8 now.
+
+2008-12-24  Roland McGrath  <roland@redhat.com>
+
+	* configure.ac: Use automake flags dist-bzip2 no-dist-gzip,
+	distribute only in .tar.bz2 form now.
+
+2008-12-16  Roland McGrath  <roland@redhat.com>
+
+	* Makefile.am (pkginclude_HEADERS): New variable, install version.h.
+	* configure.ac: Create it, substituting @eu_version@ with
+	PACKAGE_VERSION canonicalized to four digits of decimal.
+
+2008-08-25  Roland McGrath  <roland@redhat.com>
+
+	* configure.ac (--enable-tls): Set AM_CONDITIONAL USE_TLS too.
+
+2008-08-21  Roland McGrath  <roland@redhat.com>
+
+	* configure.ac (AH_BOTTOM): Emit #include <eu-config.h> and
+	move the contents to lib/eu-config.h instead of keeping them here.
+
+2007-12-20  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Add support for --enable-debugpred.
+	Update likely/unlikely macros for it.
+
+2007-06-05  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am: Remove traces of mini builds.
+	* configure.ac: Don't use libelf-po/POTFILES.in as config file
+	anymore.
+
+2007-05-16  Roland McGrath  <roland@redhat.com>
+
+	* configure.ac (AM_INIT_AUTOMAKE): Use -Wno-portability.
+
+2006-11-02  Roland McGrath  <roland@redhat.com>
+
+	* Makefile.am (EXTRA_DIST): Add EXCEPTION file.
+
+2006-08-29  Roland McGrath  <roland@redhat.com>
+
+	* configure.ac: Use AM_MAINTAINER_MODE.
+
+2006-07-12  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac (internal_function): Don't use internal visibility.
+
+2006-07-05  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Add dummy automake conditional to get dependencies
+	for non-generic linker right.  See src/Makefile.am.
+
+2005-11-18  Roland McGrath  <roland@redhat.com>
+
+	* Makefile.am (DISTCHECK_CONFIGURE_FLAGS): New variable.
+
+2005-11-16  Roland McGrath  <roland@redhat.com>
+
+	* configure.ac: Define HAVE_LIBASM and STANDALONE conditionals.
+	In config.h, define ELFUTILS_HEADER macro.
+
+2005-11-15  Roland McGrath  <roland@redhat.com>
+
+	* Makefile.am (all_SUBDIRS): Add backends.
+	* configure.ac: Write backends/Makefile.
+
+	* configure.ac: Add --enable-tests-rpath option.
+
+2005-09-16  Roland McGrath  <roland@redhat.com>
+
+	* configure.ac (ALLOW_UNALIGNED) [__ia64__ || __alpha__]:
+	Don't set it, since on IA64 you get error messages for unaligned
+	accesses, and on Alpha it's at least very slow.
+
+2005-08-29  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Fix GCOV make condition generation.
+
+2005-08-28  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Add --enable-gcov option.
+
+2005-08-06  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Add --enable-gprof option.
+
+2005-07-27  Roland McGrath  <roland@redhat.com>
+
+	* Makefile.am (all_SUBDIRS): Put libdwfl before libdw.
+
+2005-07-21  Roland McGrath  <roland@redhat.com>
+
+	* configure.ac: Take --enable-libebl-subdir=DIR to set LIBEBL_SUBDIR.
+
+2005-06-01  Roland McGrath  <roland@redhat.com>
+
+	* Makefile.am (all_SUBDIRS): Add libdwfl.
+	* configure.ac: Write libdwfl/Makefile.
+
+2005-05-19  Roland McGrath  <roland@redhat.com>
+
+	* configure.ac [AH_BOTTOM] (INTDECL, _INTDECL): New macros.
+
+2005-05-10  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Define MODVERSION in config.h.
+
+2005-02-22  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am (all_SUBDIRS): Don't add doc subdir for now.
+	* configure.ac: Don't use doc subdir for now.
+
+2005-02-15  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Remove AM_GNU_GETTEXT use.  Use only AM_PO_SUBDIRS.
+
+2005-02-06  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac (AM_INIT_AUTOMAKE): Removed dist-bzip2.
+
+	* Makefile.am (EXTRA_DIST): Remove splint.rc.
+	* splint.rc: Removed.
+
+2004-09-25  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Make compile with gcc 4.0.
+
+2004-03-06  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Use AS_HELP_STRING where applicable.
+
+2004-01-23  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Check for C99 compiler.
+
+	* configure.ac: Change locking macros in config.h to at least
+	evaluate the parameter.  Define base_cpu to none for generic linker.
+
+2004-01-21  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Print error message in case --disable-generic is
+	used if no linker support for the architecture is available.
+
+2004-01-18  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Dont generate libebl-po/Makefile.in,
+	libdw-po/Makefile.in, libasm-po/Makefile.in.
+
+	* Makefile.am (all_SUBDIRS): Remove libebl-po, libdw-po, libasm-po.
+
+2004-01-17  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Pretty printing of help message.
+
+	* configure.ac: Move AC_SYS_LARGEFILE test to the front.
+
+	* configure.ac: Add --enable-mudflap option.
+
+2004-01-17  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Major cleanups.  Use aux dir.
+	* config.guess: Moved to new config subdir.
+	* config.rpath: Likewise.
+	* config.sub: Likewise.
+	* depcomp: Likewise.
+	* install-sh: Likewise.
+	* missing: Likewise.
+	* mkinstalldirs: Likewise.
+	* Makefile.am (mini_SUBDIRS): Add config.
+	(EXTRA_DIST): Remove config.rpath.
+
+	* configure.ac: Add AC_REVISION.
+
+	* configure.ac: Add --enable-mudflap option.
+
+2004-01-11  Ulrich Drepper  <drepper@redhat.com>
+
+	* configure.ac: Drop libdwarf directory.  Add libdw-po.
+	* Makefile.am (all_SUBDIRS): Likewise.
+	* elfutils.spec: Don't distribute anything from libdwarf.
+
+2004-01-05  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am: Support separate libelf built.
+
+	* elfutils.spec.in: Create separata elfutils-libelf-devel package.
+	Install libdw DSOs.
+
+	* configure.ac (AC_CONFIG_SRCDIR): Use libelf/libelf.h as the file
+	name.
+
+2003-08-13  Ulrich Drepper  <drepper@redhat.com>
+
+	* elfutils.spec.in: Remove references to libebl.so.
+
+2003-08-11  Ulrich Drepper  <drepper@redhat.com>
+
+	* Moved to CVS archive.
+
+2000-08-25  Ulrich Drepper  <drepper@redhat.com>
+
+	* The beginning.  See the NEWS file for the time being.

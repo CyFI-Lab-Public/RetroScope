@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+    
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.antlr</groupId>
+    <artifactId>antlr3-maven-archetype</artifactId>
+    <version>3.4</version>
+    <packaging>maven-archetype</packaging>
+    <name>ANTLR3 Maven Archetype 3.4</name>
+    
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    
+    <!--
+
+    Inherit from the ANTLR master pom, which tells us what
+    version we are and allows us to inherit dependencies
+    and so on.
+
+    Unfortunately, because of a bug in the archetype plugin
+    we cannot use the parent pom because it causes the
+    artifactId in the generated pom to be set to antlr3-maven-archetype
+    We will reinstate this parent usage when that is fixed.
+    
+    <parent>
+        <groupId>org.antlr</groupId>
+        <artifactId>antlr-master</artifactId>
+        <version>3.4</version>
+    </parent>
+    -->
+    <!--
+        The ANTLR Maven artifacts are now released via the Sonotype OSS
+        repository, which means that they are synced to Maven central 
+        within a few minutes of hitting the release repo for Sonotype.
+        To enable this, we inherit from the Sonotype provided parent
+        pom. However, we must also configure our .m2/settings.xml to include
+        the snapshot and staging server and the sonotype password. This 
+        means that only ANTLR developers can released the artifacts, but
+        anyone can build locally.
+      -->
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent> 
+    
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+            <activation>
+                <property>
+                    <name>deploy</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.3</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                   <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    
+  <build>
+
+    <extensions>
+
+      <extension>
+        <groupId>org.apache.maven.archetype</groupId>
+        <artifactId>archetype-packaging</artifactId>
+        <version>2.0</version>
+      </extension>
+
+    </extensions>
+
+        <plugins>
+
+            <plugin>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>2.0</version>
+                <extensions>true</extensions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.1.2</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+			
+            <plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.8</version>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+            
+        </plugins>
+
+  </build>
+
+</project>

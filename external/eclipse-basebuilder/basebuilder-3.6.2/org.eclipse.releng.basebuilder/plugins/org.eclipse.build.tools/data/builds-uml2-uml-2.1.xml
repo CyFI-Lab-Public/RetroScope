@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="http://www.blogger.com/styles/atom.css" type="text/css"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>UML2 Builds</title>
+  <link href="http://download.eclipse.org/modeling/mdt/feeds/builds-uml2-uml-2.0.xml" rel="self" type="application/atom+xml"/>
+  <updated>2006-11-14T23:12:21Z</updated>
+  <author>
+    <name>UML2 Build Team</name>
+  </author>
+  <id>http://download.eclipse.org/modeling/mdt/feeds/builds-uml2-uml-2.0.xml</id>
+  <entry>
+    <title>[announce] UML2 2.0.1 M200609210850 is available</title>
+    <link href="http://www.eclipse.org/modeling/mdt/downloads/?project=uml2-uml&amp;showAll=1&amp;hlbuild=M200609210850#M200609210850"/>
+    <id>http://www.eclipse.org/modeling/mdt/downloads/?project=uml2-uml&amp;showAll=1&amp;hlbuild=M200609210850#M200609210850</id>
+    <updated>2006-11-14T23:12:21Z</updated>
+    <summary>
+      <build xmlns="http://www.eclipse.org/2006/BuildFeed" branch="HEAD" datetime="200609210850" href="http://www.eclipse.org/modeling/mdt/downloads/?project=uml2-uml&amp;showAll=1&amp;hlbuild=M200609210850#M200609210850" type="M" version="2.0.1">
+        <detail config="build.cfg" href="http://www.eclipse.org/downloads/download.php?r=1&amp;file=/modeling/mdt/uml2-uml/downloads/drops/2.0.1/M200609210850/" log="buildlog.txt" map="directory.txt"/>
+        <update>http://download.eclipse.org/modeling/mdt/updates/?project=uml2-uml</update>
+        <downloads>http://www.eclipse.org/modeling/mdt/downloads/?project=uml2-uml#uml2-uml</downloads>
+        <releasenotes>http://www.eclipse.org/modeling/mdt/news/release-notes.php?project=uml2-uml&amp;amp;version=2.0.1
+          </releasenotes>
+        <releases>
+          <release arch="ALL" os="ALL" type="SDK" ws="ALL">uml2-SDK-.zip</release>
+        </releases>
+        <tests>
+          <test href="http://www.eclipse.org/downloads/download.php?r=1&amp;file=/modeling/mdt/uml2-uml/downloads/drops/2.0.1/M200609210850/testResults.php" type="junit">
+            <result arch="ALL" os="ALL" ws="ALL">PASS</result>
+          </test>
+        </tests>
+        <dependencies>
+          <dependency>http://www.eclipse.org/downloads/download.php?file=/eclipse/downloads/drops/M20060919-1045/eclipse-SDK-M20060919-1045-linux-gtk.tar.gz</dependency>
+          <dependency>http://www.eclipse.org/downloads/download.php?file=/tools/emf/downloads/drops/2.2.1/S200609210005/emf-sdo-xsd-SDK-2.2.1RC2.zip</dependency>
+        </dependencies>
+        <coordinated status="COMPLETE"/>
+      </build>
+    </summary>
+  </entry>
+</feed>

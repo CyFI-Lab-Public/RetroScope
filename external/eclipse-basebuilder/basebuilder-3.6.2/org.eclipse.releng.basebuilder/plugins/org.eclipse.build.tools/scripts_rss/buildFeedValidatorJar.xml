@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<project name="Build feedValidator.jar" default="buildFeedValidatorJar" basedir="../">
+	<target name="buildFeedValidatorJar">
+	  <!-- TODO: set correct path to EMF plugins -->
+   	  <property name="EMF_HOME" value="../../eclipse-plugins-emf22/eclipse/plugins"/>
+	  <echo message="Using EMF_HOME = ${EMF_HOME}"/>
+
+	  <echo message="Compiling feedValidator (requires EMF) ..."/>
+	  <delete file="feedValidator.jar"/>
+	  <delete dir="bin_emf/"/>
+  	  <mkdir dir="bin_emf"/>
+	  <javac 
+		srcdir="."
+	    destdir="bin_emf/"
+		includes="src_rss/**/emf/*, src_rss/**/emf/**, src_rss/**/emf/**/*">
+	  	<classpath>
+	  		<path path="/lib/ant.jar"></path>
+	  		<fileset dir="${EMF_HOME}">
+				<include name="org.eclipse.emf.common_*.jar"/>
+				<include name="org.eclipse.emf.ecore_*.jar"/>
+	  			<include name="org.eclipse.emf.ecore.xmi_*.jar"/>
+	  			<include name="org.eclipse.xsd_*.jar"/>
+	  		</fileset>
+	    </classpath>
+	  </javac>
+	  <echo message="Jarring feedValidator.jar ..."/>
+	  <jar 
+		destfile="feedValidator.jar" 
+		basedir="bin_emf"
+	    update="true"/>
+	  <jar 
+		destfile="feedValidator.jar" 
+		includes="**/emf/messages.properties" 
+		basedir="src_rss"
+	    update="true"/>
+	  <delete dir="bin_emf/"/>
+	</target>
+</project>

@@ -1,0 +1,13 @@
+apply plugin: 'java'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['guava/src']
+        }
+    }
+}
+
+dependencies {
+    compile project(':external:jsr305')
+}

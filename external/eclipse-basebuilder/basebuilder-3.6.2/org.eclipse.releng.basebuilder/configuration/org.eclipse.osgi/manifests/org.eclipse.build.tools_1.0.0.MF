@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Generated-from: 1327097251000;type=2
+Bundle-ManifestVersion: 2
+Bundle-Name: org.eclipse.build.tools
+Bundle-SymbolicName: org.eclipse.build.tools; singleton:=true
+Bundle-Version: 1.0.0
+Bundle-Localization: plugin
+Eclipse-LazyStart: true

@@ -1,0 +1,19 @@
+-- Note: use the same username/password values here as set in 
+--   includes/parsecvs-dbaccess.php and in
+--   www/projectName/includes/searchcvs-dbaccess.php
+--
+-- You can load this file into mysql using: 
+-- $ mysql -u root -p < mysql-users.dump
+
+-- Note that the database name for the stored CVS data is `modeling`, as in the Eclipse Modeling Project. 
+-- You'll probably want to change that for your project's needs.
+
+-- Local access (cvs parser) granted to read/write for user 'dbaccessrw' with password 'dbaccessrwpassword'
+CREATE USER 'dbaccessrw'@'localhost' IDENTIFIED BY 'dbaccessrwpassword';
+GRANT USAGE ON *.* TO 'dbaccessrw'@'localhost' IDENTIFIED BY 'dbaccessrwpassword' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+GRANT ALL PRIVILEGES ON `dbaccessrw`.* TO 'dbaccessrw'@'localhost';
+
+-- Remote access (website) granted to read only for user 'dbaccessro' with password 'dbaccessropassword'
+CREATE USER 'dbaccessro'@'%eclipse.org' IDENTIFIED BY 'dbaccessropassword';
+GRANT USAGE ON *.* TO 'dbaccessro'@'%eclipse.org' IDENTIFIED BY 'dbaccessropassword' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+GRANT SELECT ON `modeling`.* TO 'dbaccessro'@'%eclipse.org';

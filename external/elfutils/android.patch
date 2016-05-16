@@ -1,0 +1,491 @@
+diff -r -u -d /local/elfutils-0.138/libdw/dwarf_begin.c ./libdw/dwarf_begin.c
+--- /local/elfutils-0.138/libdw/dwarf_begin.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libdw/dwarf_begin.c	2012-03-09 10:19:33.000000000 -0800
+@@ -94,7 +94,9 @@
+   /* Get an ELF descriptor.  */
+   elf = elf_begin (fd, elfcmd, NULL);
+   if (elf == NULL)
++    /* ANDROID_CHANGE_BEGIN */
+     {
++#if 0
+       /* Test why the `elf_begin" call failed.  */
+       struct stat64 st;
+ 
+@@ -104,6 +106,10 @@
+ 	__libdw_seterrno (DWARF_E_INVALID_FILE);
+       else
+ 	__libdw_seterrno (DWARF_E_IO_ERROR);
++#else
++      __libdw_seterrno (DWARF_E_IO_ERROR);
++#endif
++      /* ANDROID_CHANGE_END */
+     }
+   else
+     {
+diff -r -u -d /local/elfutils-0.138/libdw/dwarf_getpubnames.c ./libdw/dwarf_getpubnames.c
+--- /local/elfutils-0.138/libdw/dwarf_getpubnames.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libdw/dwarf_getpubnames.c	2012-03-12 11:09:29.000000000 -0700
+@@ -60,6 +60,9 @@
+ #include <libdwP.h>
+ #include <dwarf.h>
+ 
++/* ANDROID_CHANGE_BEGIN */
++#include <AndroidFixup.h>
++/* ANDROID_CHANGE_END */
+ 
+ static int
+ get_offsets (Dwarf *dbg)
+diff -r -u -d /local/elfutils-0.138/libdw/dwarf_getsrc_file.c ./libdw/dwarf_getsrc_file.c
+--- /local/elfutils-0.138/libdw/dwarf_getsrc_file.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libdw/dwarf_getsrc_file.c	2012-03-12 12:42:46.000000000 -0700
+@@ -59,7 +59,6 @@
+ 
+ #include "libdwP.h"
+ 
+-
+ int
+ dwarf_getsrc_file (Dwarf *dbg, const char *fname, int lineno, int column,
+ 		   Dwarf_Line ***srcsp, size_t *nsrcs)
+diff -r -u -d /local/elfutils-0.138/libdw/libdw_alloc.c ./libdw/libdw_alloc.c
+--- /local/elfutils-0.138/libdw/libdw_alloc.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libdw/libdw_alloc.c	2012-03-09 10:19:35.000000000 -0800
+@@ -58,6 +58,9 @@
+ #include <sys/param.h>
+ #include "libdwP.h"
+ 
++/* ANDROID_CHANGE_BEGIN */
++#include <AndroidFixup.h>
++/* ANDROID_CHANGE_END */
+ 
+ void *
+ __libdw_allocate (Dwarf *dbg, size_t minsize, size_t align)
+diff -r -u -d /local/elfutils-0.138/libdwfl/dwfl_build_id_find_elf.c ./libdwfl/dwfl_build_id_find_elf.c
+--- /local/elfutils-0.138/libdwfl/dwfl_build_id_find_elf.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libdwfl/dwfl_build_id_find_elf.c	2012-03-12 12:23:29.000000000 -0700
+@@ -52,7 +52,6 @@
+ #include <fcntl.h>
+ #include <unistd.h>
+ 
+-
+ int
+ internal_function
+ __libdwfl_open_by_build_id (Dwfl_Module *mod, bool debug, char **file_name)
+@@ -84,8 +83,16 @@
+ 	    ".debug");
+ 
+   const Dwfl_Callbacks *const cb = mod->dwfl->callbacks;
++
++/* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++  char *path = strdup ((cb->debuginfo_path ? *cb->debuginfo_path : NULL)
++			?: DEFAULT_DEBUGINFO_PATH);
++#else
+   char *path = strdupa ((cb->debuginfo_path ? *cb->debuginfo_path : NULL)
+ 			?: DEFAULT_DEBUGINFO_PATH);
++#endif
++/* ANDROID_CHANGE_END */
+ 
+   int fd = -1;
+   char *dir;
+@@ -103,7 +110,6 @@
+       if (unlikely (name == NULL))
+ 	break;
+       memcpy (mempcpy (name, dir, dirlen), id_name, sizeof id_name);
+-
+       fd = TEMP_FAILURE_RETRY (open64 (name, O_RDONLY));
+       if (fd >= 0)
+ 	{
+@@ -119,6 +125,12 @@
+       free (name);
+     }
+ 
++/* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++  free(path);
++#endif
++/* ANDROID_CHANGE_END */
++
+   /* If we simply found nothing, clear errno.  If we had some other error
+      with the file, report that.  Possibly this should treat other errors
+      like ENOENT too.  But ignoring all errors could mask some that should
+diff -r -u -d /local/elfutils-0.138/libdwfl/dwfl_error.c ./libdwfl/dwfl_error.c
+--- /local/elfutils-0.138/libdwfl/dwfl_error.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libdwfl/dwfl_error.c	2012-03-12 12:39:16.000000000 -0700
+@@ -218,7 +218,14 @@
+   switch (error &~ 0xffff)
+     {
+     case OTHER_ERROR (ERRNO):
++      /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++      strerror_r (error & 0xffff, "bad", 0);
++      return NULL;
++#else
+       return strerror_r (error & 0xffff, "bad", 0);
++#endif
++      /* ANDROID_CHANGE_END */
+     case OTHER_ERROR (LIBELF):
+       return elf_errmsg (error & 0xffff);
+     case OTHER_ERROR (LIBDW):
+diff -r -u -d /local/elfutils-0.138/libdwfl/dwfl_module_build_id.c ./libdwfl/dwfl_module_build_id.c
+--- /local/elfutils-0.138/libdwfl/dwfl_module_build_id.c	2008-12-30 21:48:23.000000000 -0800
++++ ./libdwfl/dwfl_module_build_id.c	2012-03-12 12:40:16.000000000 -0700
+@@ -139,9 +139,17 @@
+   return result;
+ }
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ int
+ __dwfl_module_build_id (Dwfl_Module *mod,
+ 			const unsigned char **bits, GElf_Addr *vaddr)
++#else
++int
++dwfl_module_build_id (Dwfl_Module *mod,
++		      const unsigned char **bits, GElf_Addr *vaddr)
++#endif
++/* ANDROID_CHANGE_END */
+ {
+   if (mod == NULL)
+     return -1;
+@@ -164,6 +172,9 @@
+   *vaddr = mod->build_id_vaddr;
+   return mod->build_id_len;
+ }
++
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ extern __typeof__ (dwfl_module_build_id) INTUSE(dwfl_module_build_id)
+      __attribute__ ((alias ("__dwfl_module_build_id")));
+ asm (".symver "
+@@ -180,3 +191,5 @@
+ }
+ asm (".symver "
+      "_BUG_COMPAT_dwfl_module_build_id, dwfl_module_build_id@ELFUTILS_0.130");
++#endif
++/* ANDROID_CHANGE_END */
+diff -r -u -d /local/elfutils-0.138/libdwfl/dwfl_module_getdwarf.c ./libdwfl/dwfl_module_getdwarf.c
+--- /local/elfutils-0.138/libdwfl/dwfl_module_getdwarf.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libdwfl/dwfl_module_getdwarf.c	2012-03-12 12:24:14.000000000 -0700
+@@ -53,7 +53,6 @@
+ #include <unistd.h>
+ #include "../libdw/libdwP.h"	/* DWARF_E_* values are here.  */
+ 
+-
+ /* Open libelf FILE->fd and compute the load base of ELF as loaded in MOD.
+    When we return success, FILE->elf and FILE->bias are set up.  */
+ static inline Dwfl_Error
+diff -r -u -d /local/elfutils-0.138/libdwfl/dwfl_module_getsrc_file.c ./libdwfl/dwfl_module_getsrc_file.c
+--- /local/elfutils-0.138/libdwfl/dwfl_module_getsrc_file.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libdwfl/dwfl_module_getsrc_file.c	2012-03-12 12:42:55.000000000 -0700
+@@ -50,7 +50,6 @@
+ #include "libdwflP.h"
+ #include "../libdw/libdwP.h"
+ 
+-
+ int
+ dwfl_module_getsrc_file (Dwfl_Module *mod,
+ 			 const char *fname, int lineno, int column,
+diff -r -u -d /local/elfutils-0.138/libdwfl/find-debuginfo.c ./libdwfl/find-debuginfo.c
+--- /local/elfutils-0.138/libdwfl/find-debuginfo.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libdwfl/find-debuginfo.c	2012-03-12 12:24:39.000000000 -0700
+@@ -53,7 +53,6 @@
+ #include <unistd.h>
+ #include "system.h"
+ 
+-
+ /* Try to open64 [DIR/][SUBDIR/]DEBUGLINK, return file descriptor or -1.
+    On success, *DEBUGINFO_FILE_NAME has the malloc'd name of the open file.  */
+ static int
+@@ -145,8 +144,15 @@
+      indicated by the debug directory path setting.  */
+ 
+   const Dwfl_Callbacks *const cb = mod->dwfl->callbacks;
++/* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++  char *path = strdup ((cb->debuginfo_path ? *cb->debuginfo_path : NULL)
++			?: DEFAULT_DEBUGINFO_PATH);
++#else
+   char *path = strdupa ((cb->debuginfo_path ? *cb->debuginfo_path : NULL)
+ 			?: DEFAULT_DEBUGINFO_PATH);
++#endif
++/* ANDROID_CHANGE_END */
+ 
+   /* A leading - or + in the whole path sets whether to check file CRCs.  */
+   bool defcheck = true;
+@@ -156,8 +162,15 @@
+       ++path;
+     }
+ 
++  /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++  char *file_dirname = (file_basename == file_name ? NULL
++			: strndup (file_name, file_basename - 1 - file_name));
++#else
+   char *file_dirname = (file_basename == file_name ? NULL
+ 			: strndupa (file_name, file_basename - 1 - file_name));
++#endif
++  /* ANDROID_CHANGE_END */
+   char *p;
+   while ((p = strsep (&path, ":")) != NULL)
+     {
+@@ -201,17 +214,36 @@
+ 	  case ENOTDIR:
+ 	    continue;
+ 	  default:
++/* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++            free(path);
++            free(file_dirname);
++#endif
++/* ANDROID_CHANGE_END */
+ 	    return -1;
+ 	  }
+       if (validate (mod, fd, check, debuglink_crc))
+ 	{
+ 	  *debuginfo_file_name = fname;
++/* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++          free(path);
++          free(file_dirname);
++#endif
++/* ANDROID_CHANGE_END */
+ 	  return fd;
+ 	}
+       free (fname);
+       close (fd);
+     }
+ 
++/* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++  free(path);
++  free(file_dirname);
++#endif
++/* ANDROID_CHANGE_END */
++
+   /* No dice.  */
+   errno = 0;
+   return -1;
+diff -r -u -d /local/elfutils-0.138/libebl/eblopenbackend.c ./libebl/eblopenbackend.c
+--- /local/elfutils-0.138/libebl/eblopenbackend.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libebl/eblopenbackend.c	2012-03-16 16:55:06.000000000 -0700
+@@ -196,8 +196,15 @@
+ 				 uint32_t descsz, const char *desc);
+ static bool default_debugscn_p (const char *name);
+ static bool default_copy_reloc_p (int reloc);
++/* ANDROID_CHANGE_BEGIN */
++#ifndef __APPLE__
+ static bool default_none_reloc_p (int reloc);
+ static bool default_relative_reloc_p (int reloc);
++#else
++#define default_none_reloc_p 		default_copy_reloc_p
++#define default_relative_reloc_p 	default_copy_reloc_p
++#endif
++/* ANDROID_CHANGE_END */
+ static bool default_check_special_symbol (Elf *elf, GElf_Ehdr *ehdr,
+ 					  const GElf_Sym *sym,
+ 					  const char *name,
+@@ -677,8 +684,12 @@
+ {
+   return false;
+ }
++/* ANDROID_CHANGE_BEGIN */
++#ifndef __APPLE__
+ strong_alias (default_copy_reloc_p, default_none_reloc_p)
+ strong_alias (default_copy_reloc_p, default_relative_reloc_p)
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ static bool
+ default_check_special_symbol (Elf *elf __attribute__ ((unused)),
+diff -r -u -d /local/elfutils-0.138/libebl/libeblP.h ./libebl/libeblP.h
+--- /local/elfutils-0.138/libebl/libeblP.h	2008-12-10 20:33:30.000000000 -0800
++++ ./libebl/libeblP.h	2012-03-09 10:19:37.000000000 -0800
+@@ -55,7 +55,6 @@
+ #include <libebl.h>
+ #include <libintl.h>
+ 
+-
+ /* Backend handle.  */
+ struct ebl
+ {
+diff -r -u -d /local/elfutils-0.138/libelf/elf32_fsize.c ./libelf/elf32_fsize.c
+--- /local/elfutils-0.138/libelf/elf32_fsize.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libelf/elf32_fsize.c	2012-03-09 10:19:38.000000000 -0800
+@@ -88,5 +88,9 @@
+ 	  * __libelf_type_sizes[0][ELFW(ELFCLASS,LIBELFBITS) - 1][type]);
+ #endif
+ }
++/* ANDROID_CHANGE_BEGIN */
++#ifndef __APPLE__
+ #define local_strong_alias(n1, n2) strong_alias (n1, n2)
+ local_strong_alias (elfw2(LIBELFBITS, fsize), __elfw2(LIBELFBITS, msize))
++#endif
++/* ANDROID_CHANGE_END */
+diff -r -u -d /local/elfutils-0.138/libelf/elf_begin.c ./libelf/elf_begin.c
+--- /local/elfutils-0.138/libelf/elf_begin.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libelf/elf_begin.c	2012-03-09 10:19:38.000000000 -0800
+@@ -68,7 +68,6 @@
+ #include "libelfP.h"
+ #include "common.h"
+ 
+-
+ /* Create descriptor for archive in memory.  */
+ static inline Elf *
+ file_read_ar (int fildes, void *map_address, off_t offset, size_t maxsize,
+diff -r -u -d /local/elfutils-0.138/libelf/elf_getdata_rawchunk.c ./libelf/elf_getdata_rawchunk.c
+--- /local/elfutils-0.138/libelf/elf_getdata_rawchunk.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libelf/elf_getdata_rawchunk.c	2012-03-15 11:14:32.000000000 -0700
+@@ -64,7 +64,13 @@
+ Elf_Data *
+ elf_getdata_rawchunk (elf, offset, size, type)
+      Elf *elf;
++     /* ANDROID_CHANGE_BEGIN */
++#if 0
+      off64_t offset;
++#else
++     off_t offset;
++#endif
++     /* ANDROID_CHANGE_END */
+      size_t size;
+      Elf_Type type;
+ {
+@@ -78,8 +84,15 @@
+       return NULL;
+     }
+ 
++   /* ANDROID_CHANGE_BEGIN */
++#if 0
+   if (unlikely (size > elf->maximum_size
+ 		|| (off64_t) (elf->maximum_size - size) < offset))
++#else
++  if (unlikely (size > elf->maximum_size
++		|| (off_t) (elf->maximum_size - size) < offset))
++#endif
++   /* ANDROID_CHANGE_END */
+     {
+       /* Invalid request.  */
+       __libelf_seterrno (ELF_E_INVALID_OP);
+diff -r -u -d /local/elfutils-0.138/libelf/elf.h ./libelf/elf.h
+--- /local/elfutils-0.138/libelf/elf.h	2008-12-10 20:33:30.000000000 -0800
++++ ./libelf/elf.h	2012-03-09 10:19:38.000000000 -0800
+@@ -21,7 +21,15 @@
+ #ifndef _ELF_H
+ #define	_ELF_H 1
+ 
++/* ANDROID_CHANGE_BEGIN */
++/*
++ * elf.h may be directly included from a different project, and features.h does
++ * not exist on host Mac OS.
++ */
++#ifndef __APPLE__
+ #include <features.h>
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ __BEGIN_DECLS
+ 
+diff -r -u -d /local/elfutils-0.138/libelf/gelf_xlate.c ./libelf/gelf_xlate.c
+--- /local/elfutils-0.138/libelf/gelf_xlate.c	2008-12-10 20:33:30.000000000 -0800
++++ ./libelf/gelf_xlate.c	2012-03-09 10:19:39.000000000 -0800
+@@ -229,7 +229,11 @@
+     }
+   }
+ };
++/* ANDROID_CHANGE_BEGIN */
++#ifndef __APPLE__
+ /* For now we only handle the case where the memory representation is the
+    same as the file representation.  Should this change we have to define
+    separate functions.  For now reuse them.  */
+ strong_alias (__elf_xfctstom, __elf_xfctstof)
++#endif
++/* ANDROID_CHANGE_END */
+diff -r -u -d /local/elfutils-0.138/libelf/libelf.h ./libelf/libelf.h
+--- /local/elfutils-0.138/libelf/libelf.h	2008-12-17 16:29:37.000000000 -0800
++++ ./libelf/libelf.h	2012-03-15 11:07:48.000000000 -0700
+@@ -95,7 +95,13 @@
+   Elf_Type d_type;		/* Type of this piece of data.  */
+   unsigned int d_version;	/* ELF version.  */
+   size_t d_size;		/* Size in bytes.  */
++  /* ANDROID_CHANGE_BEGIN */
++#if 0
+   loff_t d_off;			/* Offset into section.  */
++#else
++  off_t d_off;			/* Offset into section.  */
++#endif
++  /* ANDROID_CHANGE_END */
+   size_t d_align;		/* Alignment in section.  */
+ } Elf_Data;
+ 
+@@ -157,7 +163,13 @@
+   uid_t ar_uid;			/* User ID.  */
+   gid_t ar_gid;			/* Group ID.  */
+   mode_t ar_mode;		/* File mode.  */
++  /* ANDROID_CHANGE_BEGIN */
++#if 0
+   loff_t ar_size;		/* File size.  */
++#else
++  off_t ar_size;		/* File size.  */
++#endif
++  /* ANDROID_CHANGE_END */
+   char *ar_rawname;		/* Original name of archive member.  */
+ } Elf_Arhdr;
+ 
+@@ -198,13 +210,25 @@
+ extern int elf_end (Elf *__elf);
+ 
+ /* Update ELF descriptor and write file to disk.  */
+-extern loff_t elf_update (Elf *__elf, Elf_Cmd __cmd);
++/* ANDROID_CHANGE_BEGIN */
++#if 0
++extern off_t elf_update (Elf *__elf, Elf_Cmd __cmd);
++#else
++#endif
++/* ANDROID_CHANGE_END */
++
+ 
+ /* Determine what kind of file is associated with ELF.  */
+ extern Elf_Kind elf_kind (Elf *__elf) __attribute__ ((__pure__));
+ 
+ /* Get the base offset for an object file.  */
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ extern loff_t elf_getbase (Elf *__elf);
++#else
++extern off_t elf_getbase (Elf *__elf);
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ 
+ /* Retrieve file identification data.  */
+@@ -305,9 +329,17 @@
+ /* Get data translated from a chunk of the file contents as section data
+    would be for TYPE.  The resulting Elf_Data pointer is valid until
+    elf_end (ELF) is called.  */
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ extern Elf_Data *elf_getdata_rawchunk (Elf *__elf,
+ 				       loff_t __offset, size_t __size,
+ 				       Elf_Type __type);
++#else
++extern Elf_Data *elf_getdata_rawchunk (Elf *__elf,
++				       off_t __offset, size_t __size,
++				       Elf_Type __type);
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ 
+ /* Return pointer to string at OFFSET in section INDEX.  */
+@@ -318,7 +350,13 @@
+ extern Elf_Arhdr *elf_getarhdr (Elf *__elf);
+ 
+ /* Return offset in archive for current file ELF.  */
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ extern loff_t elf_getaroff (Elf *__elf);
++#else
++extern off_t elf_getaroff (Elf *__elf);
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ /* Select archive element at OFFSET.  */
+ extern size_t elf_rand (Elf *__elf, size_t __offset);

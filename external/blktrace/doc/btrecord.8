@@ -1,0 +1,210 @@
+.TH BTRECORD 8 "December  8, 2007" "blktrace git\-20071207142532" ""
+
+
+.SH NAME
+btrecord \- recreate IO loads recorded by blktrace
+
+
+.SH SYNOPSIS
+.B Usage: 
+
+btrecord [ \fIoptions\fR ] <\fIdev\fR...>
+
+
+.SH DESCRIPTION
+
+.P
+The \fIbtrecord\fR and \fIbtreplay\fR tools provide the ability to
+record and replay IOs captured by the \fIblktrace\fR utility. Attempts
+are made to maintain ordering, CPU mappings and time-separation of IOs. 
+
+
+.P
+The \fIblktrace\fR utility provides the ability to collect detailed
+traces from the kernel for each IO processed by the block IO layer. The
+traces provide a complete timeline for each IO processed, including
+detailed information concerning when an IO was first received by the block
+IO layer \(em indicating the device, CPU number, time stamp, IO direction,
+sector number and IO size (number of sectors). Using this information,
+one is able to \fBreplay\fR the IO again on the same machine or another
+set up entirely.
+
+.P
+The basic operating work-flow to replay IOs would be something like:
+
+.IP \- 2
+  Run \fIblktrace\fR to collect traces. Here you specify the
+  device or devices that you wish to trace and later replay IOs upon. Note:
+  the only traces you are interested in are \fBQUEUE\fR requests \(em
+  thus, to save system resources (including storage for traces), one could
+  specify the \fI-a queue\fR command line option to \fIblktrace\fR.
+
+.IP \- 2
+  While \fIblktrace\fR is running, you run the workload that you
+  are interested in. 
+
+.IP \- 2
+  When the work load has completed, you stop the \fIblktrace\fR
+  utility (thus saving all traces over the complete workload). 
+
+.IP \- 2
+  You extract the pertinent IO information from the traces saved by
+  \fIblktrace\fR using the \fIbtrecord\fR utility. This will parse
+  each trace file created by \fIblktrace\fR, and crafty IO descriptions
+  to be used in the next phase of the workload processing.
+
+.IP \- 2
+  Once \fIbtrecord\fR has successfully created a series of data
+  files to be processed, you can run the \fIbtreplay\fR utility which
+  attempts to generate the same IOs seen during the sample workload phase.
+
+
+.SH OPTIONS
+
+\-d <\fIdir\fR>
+.br
+\-\-input\-directory=<\fIdir\fR>
+.RS
+Set input directory.
+This option requires a single parameter providing the directory
+name for where input files are to be found. The default directory is the
+current directory (\fI.\fR).
+.RE
+
+\-D <\fIdir\fR>
+.br
+\-\-output\-directory=<\fIdir\fR>
+.RS
+Set output directory.
+This option requires a single parameter providing the directory
+name for where output files are to be found. The default directory is the
+current directory (\fI.\fR).
+.RE
+
+\-F
+.br
+\-\-find\-traces
+.RS
+Find trace files automatically
+This option instructs \fIbtreplay\fR to go find all the trace files in the
+directory specified (either via the \fI-d\fR option, or in the default
+directory (\fI.\fR).
+.RE
+
+\-h
+.br
+\-\-help
+.RS
+Show help and exit.
+.RE
+
+\-V
+.br
+\-\-version
+.RS
+Show version number and exit.
+.RE
+
+\-m <\fInanoseconds\fR>
+.br
+\-\-input\-base=<\fInanoseconds\fR>
+.RS
+The \fI\-m\fR option requires a single parameter which specifies an
+amount of time (in nanoseconds) to include in any one bunch of IOs that
+are to be processed. The smaller the value, the smaller the number of
+IOs processed at one time \(em perhaps yielding in more realistic replay.
+However, after a certain point the amount of overhead per bunch may result
+in additional real replay time, thus yielding less accurate replay times.
+.P
+The default value is 10,000,000 nanoseconds (10 milliseconds).
+.RE
+
+\-M <\fInum\fR>
+.br
+\-\-max\-pkts=<\fInum\fR>
+.RS
+Set maximum number of packets per bunch.
+The \fI\-M\fR option requires a single parameter which specifies the
+maximum number of IOs to store in a single bunch. As with the \fI\-m\fR
+option, smaller values may or may not yield more accurate replay times.
+
+The default value is 8, with a maximum value of up to 512 being supported.
+.RE
+
+\-o <\fIbasename\fR>
+.br
+\-\-output\-base=<\fIbasename\fR>
+.RS
+Set base name for output files.
+Each output file has 3 fields:
+.IP 1. 3
+ Device identifier (taken directly from the device name of the
+ \fIblktrace\fR output file).
+.IP 2. 3
+ \fIbtrecord\fR base name \(em by default ``replay''.
+.IP 3. 3
+ The CPU number (again, taken directly from the
+ \fIblktrace\fR output file name).
+.P
+This option requires a single parameter that will override the default name
+(replay), and replace it with the specified value.
+.RE
+
+\-v
+.br
+\-\-verbose
+.RS
+Enable verbose output.
+This option will output some simple statistics at the end of a successful
+run.  Example output is:
+.nf
+.P
+sdab:0: 580661 pkts (tot), 126030 pkts (replay), 89809 bunches, 1.4 pkts/bunch
+sdab:1: 2559775 pkts (tot), 430172 pkts (replay), 293029 bunches, 1.5 pkts/bunch
+sdab:2: 653559 pkts (tot), 136522 pkts (replay), 102288 bunches, 1.3 pkts/bunch
+sdab:3: 474773 pkts (tot), 117849 pkts (replay), 69572 bunches, 1.7 pkts/bunch
+.fi
+.P
+The meaning of the columns is:
+.IP 1. 3
+  The first field contains the device name and CPU identifier. Thus:
+  \fIsdab:0:\fR means the device \fIsdab\fR and traces on CPU 0. 
+.IP 2.
+  The second field contains the total number of packets processed for each
+  device file. 
+.IP 3.
+  The next field shows the number of packets eligible for replay. 
+.IP 4.
+  The fourth field contains the total number of IO bunches. 
+.IP 5.
+  The last field shows the average number of IOs per bunch recorded.
+.RE
+
+
+.SH AUTHORS
+\fIbtrecord\fR was written by Alan D. Brunelle.  This
+man page was created from the \fIbtreplay\fR documentation by Bas Zoetekouw.
+
+
+.SH "REPORTING BUGS"
+Report bugs to <linux\-btrace@vger.kernel.org>
+
+.SH COPYRIGHT
+Copyright \(co 2007 Alan D. Brunelle, Alan D. Brunelle and Nathan Scott.
+.br
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+.br
+This manual page was created for Debian by Bas Zoetekouw.  It was derived from
+the documentation provided by the authors and it may be used, distributed and
+modified under the terms of the GNU General Public License, version 2.
+.br
+On Debian systems, the text of the GNU General Public License can be found in
+/usr/share/common\-licenses/GPL\-2.
+
+.SH "SEE ALSO"
+The full documentation for btreplay can be found in /usr/share/doc/blktrace on Debian systems.
+.br
+blktrace (8), blkparse (1), btreplay (8)
+

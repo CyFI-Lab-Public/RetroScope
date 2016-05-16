@@ -1,0 +1,39 @@
+2007-06-05  Ulrich Drepper  <drepper@redhat.com>
+
+	* gettext.m4: Update from gettext 0.16.1.
+	* iconv.m4: Likewise.
+	* progtest.m4: Likewise.
+	* nls.m4: New file.
+	* po.m4: New file.
+
+2005-02-15  Ulrich Drepper  <drepper@redhat.com>
+
+	* Makefile.am (EXTRA_DIST): Remove glibc21.m4, intdiv0.m4,
+	inttypes.m4, inttypes_h.m4, inttypes-pri.m4, isc-posix.m4,
+	lib-ld.m4, lib-link.m4, lib-prefix.m4, stdint_h.m4, uintmax_t.m4,
+	and ulonglong.m4.
+	* glibc21.m4: Removed.
+	* inttypes_h.m4: Removed.
+	* inttypes.m4: Removed.
+	* inttypes-pri.m4: Removed.
+	* isc-posix.m4: Removed.
+	* lib-ld.m4: Removed.
+	* lib-link.m4: Removed.
+	* lib-prefix.m4: Removed.
+	* stdint_h.m4: Removed.
+	* uintmax_t.m4: Removed.
+	* ulonglong.m4: Removed.
+
+2002-03-22  gettextize  <bug-gnu-gettext@gnu.org>
+
+	* codeset.m4: Upgrade to gettext-0.11.
+	* gettext.m4: Upgrade to gettext-0.11.
+	* glibc21.m4: Upgrade to gettext-0.11.
+	* iconv.m4: Upgrade to gettext-0.11.
+	* isc-posix.m4: New file, from gettext-0.11.
+	* lcmessage.m4: Upgrade to gettext-0.11.
+	* lib-ld.m4: Upgrade to gettext-0.11.
+	* lib-link.m4: Upgrade to gettext-0.11.
+	* lib-prefix.m4: Upgrade to gettext-0.11.
+	* progtest.m4: Upgrade to gettext-0.11.
+	* Makefile.am (EXTRA_DIST): Add the new files.

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava-parent</artifactId>
+    <version>11.0.2</version>
+  </parent>
+  <artifactId>guava-tests</artifactId>
+  <name>Guava Unit Tests</name>
+  <description>
+    The unit tests for the Guava libraries - separated into a 
+    separate artifact to allow for the testlibs to depend on guava
+    itself.
+  </description>
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>guava-testlib</artifactId>
+      <version>${project.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.easymock</groupId>
+      <artifactId>easymock</artifactId>
+      <version>3.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.contrib</groupId>
+      <artifactId>truth</artifactId>
+      <version>0.5.0-beta1</version>
+      <scope>system</scope>
+      <systemPath>${basedir}/lib/libtruth.jar</systemPath>
+    </dependency>
+  </dependencies>
+  <repositories>
+    <repository>
+      <releases><enabled>true</enabled></releases>
+      <snapshots><enabled>false</enabled></snapshots>
+      <id>truth-github</id>
+      <name>Truth Github Repository</name>
+      <url>https://raw.github.com/truth0/repo/master</url>
+    </repository>
+  </repositories>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+    <testResources>
+      <testResource>
+        <directory>${basedir}/test</directory>
+        <excludes>
+          <exclude>**/*.java</exclude>
+        </excludes>
+      </testResource>
+    </testResources>
+    <testSourceDirectory>test</testSourceDirectory>
+  </build>
+</project>

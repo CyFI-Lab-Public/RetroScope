@@ -1,0 +1,9 @@
+-- You can load this file into mysql using:
+-- $ mysql -u root -p < mysql-modelingschema.truncate
+
+USE `modeling`;
+TRUNCATE TABLE `bugs`;
+TRUNCATE TABLE `commits`;
+TRUNCATE TABLE `cvsfiles`;
+TRUNCATE TABLE `filetags`;
+TRUNCATE TABLE `tags`;

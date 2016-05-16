@@ -1,0 +1,6 @@
+This is bsdiff-4.3 from http://www.daemonology.net/bsdiff/.
+
+This file, the Android.mk makefile, and the empty
+MODULE_LICENSE_BSD_LIKE file were added.
+
+Changes in the source are marked with "// android" comments.

@@ -1,0 +1,5 @@
+This is the 1.4.1 release. The new features compared to genext2fs 1.4 are:
+
+	- support for Cygwin and Mac OS X platforms
+
+Please report bugs to genext2fs-devel@lists.sourceforge.net

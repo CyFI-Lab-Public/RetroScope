@@ -1,0 +1,52 @@
+###############################################################################
+# Copyright (c) 2004, 2006 IBM Corporation and others.
+# All rights reserved. This program and the accompanying materials
+# are made available under the terms of the Eclipse Public License v1.0
+# which accompanies this distribution, and is available at
+# http://www.eclipse.org/legal/epl-v10.html
+#
+# Contributors:
+#     IBM Corporation - initial API and implementation
+###############################################################################
+#target to call in test.xml:  runtests-local | runtests-remote
+testTarget=runtests-remote
+
+#use rsh as protocol for login and copying files.
+rsh=true
+
+#directory on test machine where automated testing framework will be installed.  ${buildLabel}
+#set by calling script
+testDir=c:\\buildtest\\${buildLabel}
+
+#name of zip file containing automated testing framework and JUnit test plug-ins
+testFramework=eclipse-Automated-Tests-${buildId}.zip
+
+#name of runtime to install and test
+runtime=eclipse-SDK-${buildId}-win32.zip
+
+#directory where test scripts are launched
+executionDir=${testDir}\\eclipse-testing
+
+#name of file that captures console output from running JUnit plug-in tests
+consolelog=win32_consolelog.txt
+
+#name of script to execute on remote machine
+testScript=start /min ${executionDir}\\testAll.bat
+
+#arguments to $(testScript)
+args=${executionDir} win32_consolelog.txt
+
+#name and path to downloaded vm.
+vmDest=jdk-1_4_2_14-fcs-bin-b03-windows-i586-22_jan_2007.zip
+
+#cvsroot
+cvsRoot=:pserver:anonymous@ottcvs1:/home/cvs/releng
+
+#path to tar.gz or zip of vm used to run tests
+vmDest=jdks/${vmDest}
+
+#command to execute to install the vm
+vmInstallCommand="unzip -o -qq ${testDir}\\${vmDest} -d ${testDir}"
+
+#skip default vm installation
+#skipVmInstall=true

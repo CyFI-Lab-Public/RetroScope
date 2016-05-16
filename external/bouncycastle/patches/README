@@ -1,0 +1,42 @@
+bcprov.patch:
+
+patch against Bouncy Castle's bcprov:
+
+The main differences involve removing algorithms not included in the
+reference implementation (RI).  The libcore
+java.security.StandardNames test support class provides the most
+up-do-date documentation of differences between the RI's list of
+supported algorithms and Android's. Some notable omissions versus the
+RI:
+- LDAP
+- MD2
+- RC2
+
+Other performance (both speed and memory) and correctness changes:
+- singleton DERNull (BouncyCastle now does this but we make constructor private to be sure)
+- similarly made DERBoolean constructor private and moved to DERBoolean.{getInstance,TRUE,FALSE}
+- removed use of Boolean constructor (not-upstreamable due to J2ME requirement upstream)
+- DERObjectIdentifier interns its internal String indentifer value
+- changed uses of 'new Integer' to 'Integers.valueOf'
+- X509CertificateObject.getEncoded caches its result
+- removed references to SecretKeyFactory.PBE/PKCS5 SecretKeyFactory.PBE/PKCS12
+- OpenSSLDigest uses NativeCrypto JNI API
+- JDKKeyStore made more tolerant of non-existant aliases
+- Make BouncyCastleProvider.PROVIDER_NAME final
+- Added wrapper for SecretKeyFactory.PBKDF2WithHmacSHA1
+
+Other security changes:
+- Blacklist fraudulent Comodo certificates in PKIXCertPathValidatorSpi
+- Blacklist compromised DigiNotar Root CA by public key to block cross-signed intermediates
+
+Other changes:
+- Log entry and exit to DHParametersHelper.generateSafePrimes which has long, unpredictable runtime
+
+
+bcpkix.patch:
+
+patch against Bouncy Castle's bcpkix:
+
+The main differences involve:
+- removing algorithms not in our bcprov (MD2, MD4, SHA224, RIPEMD, GOST)
+- using the singleton DERNull.INSTANCE

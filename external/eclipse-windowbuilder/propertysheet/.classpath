@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="var" path="ANDROID_SRC/prebuilts/tools/common/guava-tools/guava-13.0.1.jar" sourcepath="/ANDROID_SRC/prebuilts/tools/common/guava-tools/src.zip"/>
+	<classpathentry kind="var" path="ANDROID_SRC/prebuilts/tools/linux-x86/swt/swt.jar"/>
+	<classpathentry kind="var" path="ANDROID_SRC/prebuilts/tools/common/asm-tools/asm-4.0.jar" sourcepath="/ANDROID_SRC/prebuilts/tools/common/asm-tools/src.zip"/>
+	<classpathentry kind="var" path="ANDROID_SRC/prebuilts/tools/common/eclipse/org.eclipse.core.commands_3.6.0.I20100512-1500.jar"/>
+	<classpathentry kind="var" path="ANDROID_SRC/prebuilts/tools/common/eclipse/org.eclipse.core.expressions_3.4.200.v20100505.jar"/>
+	<classpathentry kind="var" path="ANDROID_SRC/prebuilts/tools/common/eclipse/org.eclipse.core.runtime_3.6.0.v20100505.jar"/>
+	<classpathentry kind="var" path="ANDROID_SRC/prebuilts/tools/common/eclipse/org.eclipse.equinox.common_3.6.0.v20100503.jar"/>
+	<classpathentry kind="var" path="ANDROID_SRC/prebuilts/tools/common/eclipse/org.eclipse.jface_3.6.2.M20110210-1200.jar"/>
+	<classpathentry kind="var" path="ANDROID_SRC/prebuilts/tools/common/eclipse/org.eclipse.osgi_3.6.2.R36x_v20110210.jar"/>
+	<classpathentry kind="var" path="ANDROID_SRC/prebuilts/tools/common/eclipse/org.eclipse.ui.workbench.texteditor_3.6.1.r361_v20100714-0800.jar"/>
+	<classpathentry kind="var" path="ANDROID_SRC/prebuilts/tools/common/eclipse/org.eclipse.ui.workbench_3.6.2.M20110210-1200.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

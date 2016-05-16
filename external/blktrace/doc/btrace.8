@@ -1,0 +1,88 @@
+.TH BTRACE 8 "March  6, 2007" "blktrace git\-20070306202522" ""
+
+
+.SH NAME
+btrace \- perform live tracing for block devices
+
+
+.SH SYNOPSIS
+.B btrace [\-s] [\-t] [\-w \fIN\fN] [\-n \fIN\fR] [\-b \fIN\fR] [\-r \fI<dbg mnt>\fR] [\-a <\fItrace\fR>...] <\fIdev\fR>...
+.br
+
+
+.SH DESCRIPTION
+
+The \fIbtrace\fR script provides a quick and easy way to do live tracing of
+block devices.  It calls \fIblktrace\fR on the specified devices
+and pipes the output through \fIblkparse\fR for formatting.  See blktrace (8)
+for more in-depth information about how \fIblktrace\fR works.  
+
+.SH OPTIONS
+
+.HP 4
+.B \-s
+Displays data sorted by program (see \fIblkparse\fR (1)).
+
+.HP 4
+.B \-t 
+Displays time deltas per IO (see \fIblkparse\fR (1)).
+
+.HP 4
+.B \-w \fIN\fR
+Sets run time to the number of seconds specified (see \fIblktrace\fR (8)).
+
+.HP 4
+.B \-n \fIN\fR
+Specifies the number of buffers to use (see \fIblktrace\fR (8)).
+
+.HP 4
+.B \-b \fIN\fR
+Specifies buffer size for event extraction (scaled by 1024) (see
+\fIblktrace\fR (8)).
+
+.HP 4
+.B \-r \fI<dbg mnt>\fR
+Specifies the debugfs mountpoint.
+
+.HP 4
+.B \-a <\fItrace\fR>...
+Adds mask to current filter (see \fIblktrace\fR (8)).
+
+.HP 4
+.B <\fIdev\fR>
+Specifies the device to trace.
+
+
+.SH EXAMPLE
+Simply running
+
+    % btrace /dev/sda
+
+will show a trace of the device \fI/dev/sda\fR.
+
+
+.SH AUTHORS
+\fIblkparse\fR was written by Jens Axboe, Alan D. Brunelle and Nathan Scott.  This
+man page was created from the \fIblktrace\fR documentation by Bas Zoetekouw.
+
+
+.SH "REPORTING BUGS"
+Report bugs to <linux\-btrace@vger.kernel.org>
+
+.SH COPYRIGHT
+Copyright \(co 2006 Jens Axboe, Alan D. Brunelle and Nathan Scott.
+.br
+This is free software.  You may redistribute copies of it under the terms of
+the GNU General Public License <http://www.gnu.org/licenses/gpl.html>.
+There is NO WARRANTY, to the extent permitted by law.
+.br
+This manual page was created for Debian by Bas Zoetekouw.  It was derived from
+the documentation provided by the authors and it may be used, distributed and
+modified under the terms of the GNU General Public License, version 2.
+.br
+On Debian systems, the text of the GNU General Public License can be found in
+/usr/share/common\-licenses/GPL\-2.
+
+.SH "SEE ALSO"
+blktrace (8), blkparse (1), verify_blkparse (1), blkrawverify (1), btt (1)
+

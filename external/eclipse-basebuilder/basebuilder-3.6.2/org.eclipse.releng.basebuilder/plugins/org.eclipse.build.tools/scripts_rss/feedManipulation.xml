@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+
+<project name="Create Feed, Add Entry, Update Entry, Read Entry" default="doAll">
+
+	<taskdef name="CreateFeed" classname="org.eclipse.releng.generators.rss.RSSFeedCreateFeedTask" classpath="../feedTools.jar"/>
+	<taskdef name="AddEntry" classname="org.eclipse.releng.generators.rss.RSSFeedAddEntryTask" classpath="../feedTools.jar"/>
+	<taskdef name="GetProperty" classname="org.eclipse.releng.generators.rss.RSSFeedGetPropertyTask" classpath="../feedTools.jar"/>
+	<taskdef name="UpdateEntry" classname="org.eclipse.releng.generators.rss.RSSFeedUpdateEntryTask" classpath="../feedTools.jar"/>
+
+	<target name="doAll">
+		<antcall target="addEntry"/>
+		<antcall target="getProperties"/>
+		<antcall target="updateFeed"/>
+	</target>
+
+	<target name="init">
+		<!-- 1. Define property file -->
+
+		<property file="../properties/feedPublish.eclipse.properties"/>		
+		<!--
+			<property file="../properties/feedPublish.emf.properties"/>		
+			<property file="../properties/feedPublish.uml2.properties"/>		
+		-->
+	</target>
+	
+	<target name="create" depends="init">
+		<!-- 2. Create feed (overwrite existing) -->
+
+		<CreateFeed 
+			debug="${debug}" 
+			project="${project}" 
+			file="${file}" 
+			feedURL="${feedURL}"/>
+		
+	</target>
+		
+	<target name="addEntry" depends="init">
+		<!-- 3. Add an entry (and create the feed if it doesn't already exist) -->
+
+		<!-- note: if not providing a buildType, must specify buildID to generate value -->
+		<AddEntry 
+			debug="${debug}" 
+			file="${file}" 
+
+			project="${project}"
+			version="${version}"
+			branch="${branch}"
+			buildID="${buildID}"
+			buildType="${buildType}"
+			feedURL="${feedURL}"
+			buildURL="${buildURL}"
+
+			buildAlias="${buildAlias}"
+			
+			buildDetailURL="${buildDetailURL}"
+			buildConfigURL="${buildConfigURL}"
+			buildLogURL="${buildLogURL}"
+			buildMapURL="${buildMapURL}"
+			
+			dependencyURLs="${dependencyURLs}"
+			releases="${Releases}"
+			
+			releaseNotesURL="${releaseNotesURL}"
+			updateManagerURL="${updateManagerURL}"
+			downloadsURL="${downloadsURL}"
+			jarSigningStatus="${jarSigningStatus}"
+			coordinatedstatus="${coordinatedStatus}"
+			
+			JUnitTestURL="${JUnitTestURL}"
+			performanceTestURL="${performanceTestURL}"
+			APITestURL="${APITestURL}"
+			JUnitTestResults="${JUnitTestResults}"
+			performanceTestResults="${performanceTestResults}"
+			APITestResults="${APITestResults}"
+		/>
+		
+	</target>
+		
+	<target name="getProperties" depends="init">
+		<!-- 4. Display a text or attribute value (ie., get a property) -->
+
+		<!-- on the feed itself, display modified date -->
+		<GetProperty 
+			debug="${debug}" 
+			file="${file}"
+			xpath="/*[name() = 'feed']/*[name() = 'updated']/text()"
+		/>
+
+		<!-- on the first entry, display the modified date -->
+		<GetProperty 
+			debug="${debug}" 
+			file="${file}"
+			xpath="/*/*[name() = 'entry'][1]/*[name() = 'updated']/text()"
+		/>
+
+		<!-- on the first entry, display the build's folder, filename, and type -->
+		<GetProperty 
+			file="${file}"
+			xpath="/*/*[name() = 'entry'][1]/*/*[name() = 'build']/@href"
+		/>
+		<GetProperty 
+			file="${file}"
+			xpath="/*/*[name() = 'entry'][1]/*/*[name() = 'build']/*[name() = 'releases']/*[@os = 'linux'][@ws = 'gtk'][@type = 'SDK']/text()"
+		/>
+		<GetProperty 
+			file="${file}"
+			xpath="/*/*[name() = 'entry'][1]/*/*[name() = 'build']/@type"
+		/>
+
+	</target>
+		
+	<target name="updateFeed" depends="init">
+		<!-- 5. Update an existing entry by changing a property value to something else -->
+		
+		<!-- on the first entry, change the coordinated status to COMPLETE -->
+		<UpdateEntry 
+			file="${file}"
+			xpath="/*/*[name() = 'entry'][1]/*/*/*[name() = 'coordinated']/@status"
+			replacement="COMPLETE"
+		/>
+		<!-- on the first entry, change the performance results (os-ws = RHEL4-3GHz-2.5GB-gtk) to PENDING -->
+		<UpdateEntry 
+			file="${file}"
+			xpath="/*/*[name() = 'entry'][1]/*/*/*/*[@type = 'performance']/*[name() = 'result'][@id = 'RHEL4-3GHz-2.5GB']/text()"
+			replacement="PENDING"
+		/>
+
+	</target>
+	
+</project>
