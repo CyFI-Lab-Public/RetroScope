@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="@color/holo_light_background_color">
+    <RelativeLayout
+        android:id="@+id/wait"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_gravity="center"/>
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:id="@+id/compose"
+        android:visibility="gone">
+        <TableLayout android:id="@+id/content"
+            style="@style/ComposeArea"
+            android:layout_height="match_parent"
+            android:paddingTop="8dip"
+            android:background="@android:color/white"
+            android:layout_gravity="center_horizontal"
+            android:paddingLeft="@dimen/compose_area_left_padding"
+            android:animateLayoutChanges="true">
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/compose_area_right_padding">
+                <FrameLayout
+                    style="@style/FillRowStyle">
+                    <include layout="@layout/compose_from"/>
+                </FrameLayout>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <LinearLayout android:id="@+id/to_content"
+                    style="@style/RecipientComposeFieldLayout"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <LinearLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:addStatesFromChildren="true"
+                        android:gravity="center_vertical"
+                        android:layout_gravity="center_vertical">
+
+                        <TextView style="@style/RecipientComposeHeading"
+                            android:text="@string/to"
+                            android:id="@+id/to_label"
+                            android:contentDescription="@string/to"/>
+
+                        <com.android.ex.chips.RecipientEditTextView
+                            android:id="@+id/to"
+                            style="@style/RecipientEditTextViewStyle"
+                            android:contentDescription="@string/to"/>
+                    </LinearLayout>
+
+                    <View style="@style/RecipientComposeFieldSpacer"/>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="@dimen/compose_area_right_padding"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:layout_gravity="bottom|left"
+                    android:gravity="bottom|left">
+                    <Button android:id="@+id/add_cc_bcc"
+                        android:text="@string/add_cc_label"
+                        style="@style/ComposeButton"
+                        android:layout_marginBottom="6dip"
+                        android:paddingLeft="8dip"
+                        android:focusable="true"
+                        android:clickable="true"/>
+                </RelativeLayout>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/compose_area_right_padding">
+                <com.android.mail.compose.CcBccView
+                    android:id="@+id/cc_bcc_wrapper"
+                    style="@style/FillRowStyle"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:id="@+id/subject_wrapper"
+                    style="@style/ComposeFieldLayout"
+                    android:layout_column="1"
+                    android:layout_weight="1"
+                    android:layout_width="0dip">
+                    <!-- Subject: localization cannot control what field pressing tab will bring the user to. This is controlled at runtime.  -->
+                    <com.android.mail.compose.EnterSubject android:id="@+id/subject"
+                        style="@style/ComposeSubjectView" />
+                </RelativeLayout>
+                <RelativeLayout android:id="@+id/add_photo_attachment"
+                    style="@style/AttachmentButtonStyle"
+                    android:layout_column="2"
+                    android:clickable="true"
+                    android:focusable="true">
+                    <ImageView
+                        android:text="@string/add_file_attachment"
+                        android:src="@drawable/ic_attach_image_holo_light"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="4dip"
+                        android:clickable="false"/>
+                </RelativeLayout>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/compose_area_right_padding">
+                <!-- Compose Area -->
+                <FrameLayout
+                    android:id="@+id/compose_wrapper"
+                    style="@style/FillRowStyle">
+                    <include layout="@layout/compose_body"/>
+                </FrameLayout>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/compose_area_right_padding">
+                <!--  Attachments -->
+                <com.android.mail.compose.AttachmentsView android:id="@+id/attachments"
+                    android:orientation="vertical"
+                    android:layout_marginTop="8dip"
+                    android:animateLayoutChanges="true"
+                    android:paddingTop="2dip"
+                    android:paddingBottom="0dip"
+                    android:paddingLeft="0dip"
+                    android:visibility="gone"
+                    style="@style/FillRowStyle">
+                    <include layout="@layout/compose_attachments" />
+                </com.android.mail.compose.AttachmentsView>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/compose_area_right_padding">
+                <!-- Quoted text -->
+                <com.android.mail.compose.QuotedTextView android:id="@+id/quoted_text_view"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    style="@style/FillRowStyle"/>
+            </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <FrameLayout
+                    android:id="@+id/composearea_tap_trap_bottom"
+                    style="@style/FillRowStyle"
+                    android:clickable="true"/>
+            </TableRow>
+
+        </TableLayout>
+
+    </ScrollView>
+</FrameLayout>

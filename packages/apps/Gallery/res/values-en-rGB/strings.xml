@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="all_images" msgid="1195501551939178807">"All pictures"</string>
+    <string name="all_videos" msgid="3380966619230896013">"All videos"</string>
+    <string name="camera_label" msgid="6346560772074764302">"Camera"</string>
+    <string name="gallery_picker_label" msgid="3080425245006492787">"Gallery"</string>
+    <string name="gallery_label" msgid="7119609703856708011">"Gallery"</string>
+    <string name="gallery_camera_bucket_name" msgid="2924618424339240831">"Camera pictures"</string>
+    <string name="gallery_camera_videos_bucket_name" msgid="3369151581398551623">"Camera videos"</string>
+    <string name="gallery_camera_media_bucket_name" msgid="5560926838411387511">"Camera media"</string>
+    <string name="crop_label" msgid="521114301871349328">"Crop picture"</string>
+    <string name="view_label" msgid="4450531507947335704">"View picture"</string>
+    <string name="preferences_label" msgid="5955678162525051163">"Camera settings"</string>
+    <string name="wait" msgid="8600187532323801552">"Please wait…"</string>
+    <string name="no_storage" product="nosdcard" msgid="4006727786803418058">"You need to mount the shared storage before using the camera."</string>
+    <string name="no_storage" product="default" msgid="6680362958795677723">"You need to insert an SD card before using the camera."</string>
+    <string name="not_enough_space" product="nosdcard" msgid="7966388882416357252">"Your shared storage is full."</string>
+    <string name="not_enough_space" product="default" msgid="6655334407957844653">"Your SD card is full."</string>
+    <string name="preparing_sd" product="nosdcard" msgid="183917364005592061">"Preparing shared storage…"</string>
+    <string name="preparing_sd" product="default" msgid="2914969119574812666">"Preparing SD card…"</string>
+    <string name="wallpaper" msgid="140165383777262070">"Setting wallpaper..."</string>
+    <string name="savingImage" msgid="3051745378545909260">"Saving picture…"</string>
+    <string name="runningFaceDetection" msgid="2293932204708167704">"Please wait…"</string>
+    <string name="view" msgid="6277795271119411881">"View"</string>
+    <string name="details" msgid="8415120088556445230">"Details"</string>
+    <string name="show_on_map" msgid="441725587731006228">"Show on Maps"</string>
+    <string name="rotate" msgid="460017689320955494">"Rotate"</string>
+    <string name="rotate_left" msgid="5888273317282539839">"Rotate left"</string>
+    <string name="rotate_right" msgid="6776325835923384839">"Rotate right"</string>
+    <string name="slide_show" msgid="1965192737233824143">"Slideshow"</string>
+    <string name="multiselect" msgid="4761682939945434146">"Multi-select"</string>
+    <string name="capture_picture" msgid="4114265595549284643">"Capture picture"</string>
+    <string name="capture_video" msgid="4047046282358697155">"Capture video"</string>
+    <string name="crop_save_text" msgid="8140440041190264400">"Save"</string>
+    <string name="crop_discard_text" msgid="5303657888280340603">"Discard"</string>
+    <string name="confirm_delete_title" msgid="263478358046514887">"Delete"</string>
+    <string name="confirm_delete_message" msgid="2141726810668595858">"Delete this picture?"</string>
+    <string name="confirm_delete_video_message" msgid="800016540763376529">"Delete this video?"</string>
+    <string name="confirm_delete_multiple_message" msgid="5184550162588396436">"Delete these media files?"</string>
+    <string name="camera_toss" msgid="3781186798552460833">"Delete"</string>
+    <string name="camera_share" msgid="8207701858325694182">"Share"</string>
+    <string name="camera_set" msgid="3422192914806971182">"Set as"</string>
+    <string name="camera_play" msgid="8248000517869959980">"Play"</string>
+    <string name="camera_attach" msgid="4048659554893435232">"Attach"</string>
+    <string name="camera_cancel" msgid="8203341746672085747">"Cancel"</string>
+    <string name="camera_crop" msgid="5584000454518174632">"Crop"</string>
+    <string name="no_way_to_share_image" msgid="7980215622010396797">"There\'s no app available to share the picture."</string>
+    <string name="no_way_to_share_video" msgid="4506167265329982928">"There\'s no app available to share the video."</string>
+    <string name="no_way_to_share" msgid="5276805314940059662">"There\'s no app available to share the media file(s)."</string>
+    <string name="video_play" msgid="5287787282508002895">"Play"</string>
+    <string name="camera_pick_wallpaper" msgid="7026385960511811641">"Pictures"</string>
+    <string name="camera_setas_wallpaper" msgid="797463183863414289">"Wallpaper"</string>
+    <string name="pref_gallery_category" msgid="5826488887237959433">"General settings"</string>
+    <string name="pref_slideshow_category" msgid="9097962086335681667">"Slideshow settings"</string>
+    <string name="pref_gallery_size_title" msgid="1363406603879434418">"Display size"</string>
+    <string name="pref_gallery_size_summary" msgid="7365675768755956361">"Choose the display size of pictures and videos"</string>
+    <string name="pref_gallery_size_dialogtitle" msgid="757380558320647503">"Picture size"</string>
+  <string-array name="pref_gallery_size_choices">
+    <item msgid="7157691836846678936">"Large"</item>
+    <item msgid="1033164600689216410">"Small"</item>
+  </string-array>
+    <string name="pref_gallery_sort_title" msgid="7447949250045443386">"Sort order"</string>
+    <string name="pref_gallery_sort_summary" msgid="4406174975925645225">"Choose the sort order of pictures and videos"</string>
+    <string name="pref_gallery_sort_dialogtitle" msgid="5787417105532562739">"Picture sort"</string>
+  <string-array name="pref_gallery_sort_choices">
+    <item msgid="5546009539334018063">"Newest first"</item>
+    <item msgid="7931283047572866748">"Newest last"</item>
+  </string-array>
+    <string name="pref_gallery_slideshow_interval_title" msgid="6534904787962619832">"Slideshow interval"</string>
+    <string name="pref_gallery_slideshow_interval_summary" msgid="25973922639324614">"Choose how long each slide displays in the show"</string>
+    <string name="pref_gallery_slideshow_interval_dialogtitle" msgid="6775543119826248900">"Slideshow interval"</string>
+  <string-array name="pref_gallery_slideshow_interval_choices">
+    <item msgid="3089037742117543119">"2 seconds"</item>
+    <item msgid="738579316565625730">"3 seconds"</item>
+    <item msgid="5670078787463530498">"4 seconds"</item>
+  </string-array>
+    <string name="pref_gallery_slideshow_transition_title" msgid="3235158556228218846">"Slideshow transition"</string>
+    <string name="pref_gallery_slideshow_transition_summary" msgid="8294295294239125591">"Choose the effect used when moving from one slide to the next"</string>
+    <string name="pref_gallery_slideshow_transition_dialogtitle" msgid="5483406447721500371">"Slideshow transition"</string>
+  <string-array name="pref_gallery_slideshow_transition_choices">
+    <item msgid="2825716730899894863">"Fade in &amp; out"</item>
+    <item msgid="403116336404005687">"Slide left-right"</item>
+    <item msgid="4901733079450971731">"Slide up-down"</item>
+    <item msgid="9006732482485375438">"Random selection"</item>
+  </string-array>
+    <string name="pref_gallery_slideshow_repeat_title" msgid="6512135022461429738">"Repeat slideshow"</string>
+    <string name="pref_gallery_slideshow_repeat_summary" msgid="8289230397431855268">"Play slideshow more than once"</string>
+    <string name="pref_gallery_slideshow_shuffle_title" msgid="3677508579783015598">"Shuffle slides"</string>
+    <string name="pref_gallery_slideshow_shuffle_summary" msgid="8566948749149325715">"Show pictures in random order"</string>
+    <string name="camerasettings" msgid="2433519618178453928">"Settings"</string>
+    <string name="image_gallery_NoImageView_text" msgid="409595259802877447">"No media found."</string>
+    <string name="pref_gallery_confirm_delete_title" msgid="642429032687845907">"Confirm deletions"</string>
+    <string name="pref_gallery_confirm_delete_summary" msgid="5253456492765525245">"Show confirmation before deleting a picture or video"</string>
+    <string name="no_location_image" msgid="8907867717568887559">"There\'s no location information stored in this image."</string>
+    <string name="details_panel_title" msgid="4753347516759338122">"Details"</string>
+    <string name="details_file_size" msgid="2468878774843246797">"File size:"</string>
+    <string name="details_image_resolution" msgid="8773315928100529437">"Resolution:"</string>
+    <string name="details_image_make" msgid="2888477930210903540">"Manufacturer:"</string>
+    <string name="details_image_model" msgid="3608007849933924336">"Model:"</string>
+    <string name="details_image_whitebalance" msgid="4412514247882436065">"WhiteBalance:"</string>
+    <string name="details_image_latitude" msgid="58222150203989546">"GPS latitude:"</string>
+    <string name="details_image_longitude" msgid="3792725587390654278">"GPS longitude:"</string>
+    <string name="details_image_location" msgid="6460201074393148978">"Location:"</string>
+    <string name="details_duration" msgid="1028116471387901402">"Duration:"</string>
+    <string name="details_date_taken" msgid="348356840586463178">"Date taken:"</string>
+    <string name="details_frame_rate" msgid="122397836963498191">"Frame rate:"</string>
+    <string name="details_bit_rate" msgid="5632311789455402186">"Bit rate:"</string>
+    <string name="details_codec" msgid="5580300450432398126">"Codec:"</string>
+    <string name="details_format" msgid="3700860266600796363">"Format:"</string>
+    <string name="details_dimension_x" msgid="4923037334136168978">"<xliff:g id="WIDTH">%1$d</xliff:g> x <xliff:g id="HEIGHT">%2$d</xliff:g>"</string>
+    <string name="details_ms" msgid="7574063760642857397">"<xliff:g id="MINUTES">%1$02d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g>"</string>
+    <string name="details_hms" msgid="772340067838331166">"<xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g>"</string>
+    <string name="details_fps" msgid="5450871169477340537">"<xliff:g id="FRAMES">%1$d</xliff:g> fps"</string>
+    <string name="details_kbps" msgid="1515369011744784592">"<xliff:g id="SPEED">%1$d</xliff:g> Kbps"</string>
+    <string name="details_mbps" msgid="3291428849607323284">"<xliff:g id="SPEED">%1$g</xliff:g> Mbps"</string>
+    <string name="details_ok" msgid="6848594369924424312">"OK"</string>
+    <string name="context_menu_header" msgid="1185348426222302182">"Picture options"</string>
+    <string name="video_context_menu_header" msgid="7318971116949475029">"Video options"</string>
+    <string name="multiface_crop_help" msgid="2554690102655855657">"Touch a face to begin."</string>
+    <string name="photos_gallery_title" msgid="6914406246471015448">"Gallery"</string>
+    <string name="pick_photos_gallery_title" msgid="8356086704733473321">"Choose picture"</string>
+    <string name="videos_gallery_title" msgid="6150354029982749479">"Gallery"</string>
+    <string name="pick_videos_gallery_title" msgid="568436323607491495">"Choose video"</string>
+    <string name="sendImage" msgid="7279510542799399570">"Share picture via"</string>
+    <string name="setImage" msgid="7246975856983303047">"Set picture as"</string>
+    <string name="sendVideo" msgid="3598567735831863073">"Share video via"</string>
+    <string name="send_media_files" msgid="8201083279723850611">"Share media files via"</string>
+    <string name="movieviewlabel" msgid="7363495772706775465">"Movies"</string>
+    <string name="loading_video" msgid="4013492720121891585">"Loading video…"</string>
+    <string name="resume_playing_title" msgid="8996677350649355013">"Resume video"</string>
+    <string name="resume_playing_message" msgid="8480340146814638566">"Resume playing video from <xliff:g id="DURATION">%s</xliff:g>?"</string>
+    <string name="resume_playing_resume" msgid="3847915469173852416">"Resume playing"</string>
+    <string name="resume_playing_restart" msgid="5471008499835769292">"Start again"</string>
+    <string name="gadget_title" msgid="259405922673466798">"Picture frame"</string>
+    <string name="file_info_title" msgid="1628963357466012538">"File info:"</string>
+    <string name="video_exceed_mms_limit" msgid="3835075281230780010">"The video that you recorded is too large to send via MMS. Try recording a shorter-length clip."</string>
+    <string name="multiselect_share" msgid="5261644537749253581">"Share"</string>
+    <string name="multiselect_delete" msgid="9113461994546744603">"Delete"</string>
+    <string name="multiselect_cancel" msgid="5969428692864002165">"Cancel"</string>
+    <string name="delete_images_message" msgid="2332683687700452577">"Deleting images…"</string>
+</resources>

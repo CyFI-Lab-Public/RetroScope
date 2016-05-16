@@ -1,0 +1,7 @@
+type btmacreader, domain;
+permissive btmacreader;
+type btmacreader_exec, exec_type, file_type;
+type mac_data_file, file_type, data_file_type;
+init_daemon_domain(btmacreader)
+file_type_auto_trans(btmacreader, system_data_file, mac_data_file)
+unconfined_domain(btmacreader)

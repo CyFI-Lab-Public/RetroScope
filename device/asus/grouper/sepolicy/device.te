@@ -1,0 +1,5 @@
+type knv_device, dev_type;
+type elan_ip_device, dev_type;
+type sensors_block_device, dev_type;
+type sysfs_devices_tegradc, dev_type;
+type diag_device, dev_type;

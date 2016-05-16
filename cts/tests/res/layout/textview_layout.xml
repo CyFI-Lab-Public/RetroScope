@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/layout_textviewtest">
+
+    <ScrollView android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            <TextView android:id="@+id/textview_textAttr"
+                    android:text="@string/text_view_hello"
+                    android:textColor="@drawable/black"
+                    android:textColorHighlight="@drawable/yellow"
+                    android:textColorHint="@drawable/red"
+                    android:textColorLink="@drawable/blue"
+                    android:textScaleX="1.2"
+                    android:typeface="normal"
+                    android:textSize="20px"
+                    android:textStyle="normal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        
+            <TextView android:id="@+id/textview_password"
+                    android:password="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        
+            <TextView android:id="@+id/textview_singleLine"
+                    android:singleLine="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+        
+            <TextView android:id="@+id/textview_text"
+                    android:text="@string/text_view_hello"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <TextView android:id="@+id/textview_text_two_lines"
+                    android:text="@string/text_view_hello_two_lines"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            <android.widget.cts.MockTextView
+                    android:id="@+id/mock_textview_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:requiresFadingEdge="horizontal"
+                    android:singleLine="true"
+                    android:text="@string/long_text"
+                    android:gravity="left"
+                    />
+
+            <android.widget.cts.MockTextView
+                    android:id="@+id/mock_textview_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:requiresFadingEdge="horizontal"
+                    android:singleLine="true"
+                    android:text="@string/long_text"
+                    android:gravity="right"
+                    />
+
+            <android.widget.cts.MockTextView
+                    android:id="@+id/mock_textview_center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:requiresFadingEdge="horizontal"
+                    android:singleLine="true"
+                    android:text="@string/long_text"
+                    android:gravity="center"
+                    />
+        </LinearLayout>
+
+    </ScrollView>
+
+    <TextView android:id="@+id/textview_ltr"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"/>
+
+    <TextView android:id="@+id/textview_rtl"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"/>
+
+    <TextView android:id="@+id/textview_drawable_1_1"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:drawableLeft="@drawable/icon_blue"
+              android:drawableRight="@drawable/icon_red"
+              android:drawableTop="@drawable/icon_green"
+              android:drawableBottom="@drawable/icon_yellow"
+            />
+
+    <TextView android:id="@+id/textview_drawable_1_2"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:drawableLeft="@drawable/icon_blue"
+              android:drawableRight="@drawable/icon_red"
+              android:drawableTop="@drawable/icon_green"
+              android:drawableBottom="@drawable/icon_yellow"
+              android:layoutDirection="rtl"
+            />
+
+    <TextView android:id="@+id/textview_drawable_2_1"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:drawableStart="@drawable/icon_blue"
+              android:drawableEnd="@drawable/icon_red"
+              android:drawableTop="@drawable/icon_green"
+              android:drawableBottom="@drawable/icon_yellow"
+            />
+
+    <TextView android:id="@+id/textview_drawable_2_2"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:drawableStart="@drawable/icon_blue"
+              android:drawableEnd="@drawable/icon_red"
+              android:drawableTop="@drawable/icon_green"
+              android:drawableBottom="@drawable/icon_yellow"
+              android:layoutDirection="rtl"
+            />
+
+    <TextView android:id="@+id/textview_drawable_3_1"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:drawableLeft="@drawable/icon_black"
+              android:drawableRight="@drawable/icon_black"
+              android:drawableStart="@drawable/icon_blue"
+              android:drawableEnd="@drawable/icon_red"
+              android:drawableTop="@drawable/icon_green"
+              android:drawableBottom="@drawable/icon_yellow"
+            />
+
+    <TextView android:id="@+id/textview_drawable_3_2"
+              android:layout_height="wrap_content"
+              android:layout_width="wrap_content"
+              android:drawableLeft="@drawable/icon_black"
+              android:drawableRight="@drawable/icon_black"
+              android:drawableStart="@drawable/icon_blue"
+              android:drawableEnd="@drawable/icon_red"
+              android:drawableTop="@drawable/icon_green"
+              android:drawableBottom="@drawable/icon_yellow"
+              android:layoutDirection="rtl"
+            />
+
+
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layoutDirection="ltr">
+
+        <TextView android:id="@+id/textview_drawable_4_1"
+                  android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:drawableStart="@drawable/icon_blue"
+                  android:drawableEnd="@drawable/icon_red"
+                  android:drawableTop="@drawable/icon_green"
+                  android:drawableBottom="@drawable/icon_yellow"
+                />
+
+        <TextView android:id="@+id/textview_drawable_5_1"
+                  android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:drawableLeft="@drawable/icon_black"
+                  android:drawableRight="@drawable/icon_black"
+                  android:drawableStart="@drawable/icon_blue"
+                  android:drawableEnd="@drawable/icon_red"
+                  android:drawableTop="@drawable/icon_green"
+                  android:drawableBottom="@drawable/icon_yellow"
+                />
+
+    </LinearLayout>
+
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layoutDirection="rtl">
+
+        <TextView android:id="@+id/textview_drawable_4_2"
+                  android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:drawableStart="@drawable/icon_blue"
+                  android:drawableEnd="@drawable/icon_red"
+                  android:drawableTop="@drawable/icon_green"
+                  android:drawableBottom="@drawable/icon_yellow"
+                />
+
+        <TextView android:id="@+id/textview_drawable_5_2"
+                  android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:drawableLeft="@drawable/icon_black"
+                  android:drawableRight="@drawable/icon_black"
+                  android:drawableStart="@drawable/icon_blue"
+                  android:drawableEnd="@drawable/icon_red"
+                  android:drawableTop="@drawable/icon_green"
+                  android:drawableBottom="@drawable/icon_yellow"
+                />
+
+    </LinearLayout>
+
+</LinearLayout>

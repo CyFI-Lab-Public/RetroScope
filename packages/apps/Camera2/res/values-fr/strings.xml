@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" msgid="1175086483881127797">"Appareil photo"</string>
+    <string name="video_camera_label" msgid="1723708322021743770">"Caméra"</string>
+    <string name="details_ms" msgid="6618163484662724641">"%1$02d:%2$02d"</string>
+    <string name="details_hms" msgid="4842276230698703554">"%1$d:%2$02d:%3$02d"</string>
+    <string name="set_image" msgid="3969690281401045698">"Définir l\'image comme"</string>
+    <string name="delete" msgid="2714492172818940424">"Supprimer"</string>
+  <plurals name="delete_selection">
+    <item quantity="one" msgid="8811352590292754044">"Supprimer l\'élément sélectionné ?"</item>
+    <item quantity="other" msgid="5075283252850066610">"Supprimer les éléments sélectionnés ?"</item>
+  </plurals>
+    <string name="share" msgid="8581089487762243115">"Partager"</string>
+    <string name="share_panorama" msgid="3558466186935359444">"Partager le panorama"</string>
+    <string name="share_as_photo" msgid="4831213580709167218">"Partager en tant que photo"</string>
+    <string name="deleted" msgid="2036165115527228127">"Photo supprimée."</string>
+    <string name="undo" msgid="5110048345890050107">"ANNULER"</string>
+    <string name="details" msgid="4404020741542549488">"Détails"</string>
+    <string name="close" msgid="4826166926297479820">"Fermer"</string>
+  <plurals name="number_of_items_selected">
+    <item quantity="zero" msgid="9217673864242686656">"%1$d élément sélectionné"</item>
+    <item quantity="one" msgid="5806616411905812727">"%1$d élément sélectionné"</item>
+    <item quantity="other" msgid="3767743589502328221">"%1$d éléments sélectionnés"</item>
+  </plurals>
+  <plurals name="number_of_albums_selected">
+    <item quantity="zero" msgid="8095100906728830821">"%1$d album sélectionné"</item>
+    <item quantity="one" msgid="9063509704521984072">"%1$d album sélectionné"</item>
+    <item quantity="other" msgid="135044054552480485">"%1$d albums sélectionnés"</item>
+  </plurals>
+  <plurals name="number_of_groups_selected">
+    <item quantity="zero" msgid="1942343672734097509">"%1$d groupe sélectionné"</item>
+    <item quantity="one" msgid="1456436514367094505">"%1$d groupe sélectionné"</item>
+    <item quantity="other" msgid="1511467088339194694">"%1$d groupes sélectionnés"</item>
+  </plurals>
+    <string name="show_on_map" msgid="8542853913632649160">"Afficher sur la carte"</string>
+    <string name="rotate_left" msgid="2618440058490662604">"Faire pivoter vers la gauche"</string>
+    <string name="rotate_right" msgid="4896096424267838355">"Faire pivoter vers la droite"</string>
+    <string name="edit" msgid="2776879395749004347">"Modifier"</string>
+    <string name="crop_action" msgid="6933589718464132714">"Rogner"</string>
+    <string name="trim_action" msgid="4736803320203951827">"Couper"</string>
+    <string name="set_as" msgid="5469055085024870081">"Définir comme"</string>
+    <string name="video_err" msgid="1562566029875081552">"Impossible de lire la vidéo."</string>
+    <string name="crop_saved" msgid="4465794038855602739">"L\'image rognée a bien été enregistrée dans le dossier \"<xliff:g id="FOLDER_NAME">%s</xliff:g>\"."</string>
+    <string name="title" msgid="8061744305671964703">"Titre"</string>
+    <string name="description" msgid="8193138501982849808">"Description"</string>
+    <string name="time" msgid="5248213506417024287">"Date/Heure"</string>
+    <string name="location" msgid="564326205780827668">"Lieu"</string>
+    <string name="path" msgid="5927003361865586353">"Chemin d\'accès"</string>
+    <string name="width" msgid="7045750687833828758">"Largeur"</string>
+    <string name="height" msgid="5186001199353423689">"Hauteur"</string>
+    <string name="orientation" msgid="3883761294106680270">"Orientation"</string>
+    <string name="duration" msgid="5316211067383665008">"Durée"</string>
+    <string name="mimetype" msgid="6415940055077963944">"Type MIME"</string>
+    <string name="file_size" msgid="6841070748357980676">"Taille fichier"</string>
+    <string name="maker" msgid="698691509121545856">"Fabricant"</string>
+    <string name="model" msgid="8547493604023069452">"Modèle"</string>
+    <string name="flash" msgid="995041910749174196">"Flash"</string>
+    <string name="aperture" msgid="2453802098282814022">"Ouverture"</string>
+    <string name="focal_length" msgid="8351221512187346229">"Longueur focale"</string>
+    <string name="white_balance" msgid="1600142743496129085">"Balance blancs"</string>
+    <string name="exposure_time" msgid="949787291620767754">"Durée d\'expo"</string>
+    <string name="iso" msgid="8578773821062054902">"ISO"</string>
+    <string name="unit_mm" msgid="5210344300697638286">"mm"</string>
+    <string name="manual" msgid="2444400953521760140">"Manuel"</string>
+    <string name="auto" msgid="2552649885114400474">"Auto"</string>
+    <string name="flash_on" msgid="6573457197393807642">"Flash déclenché"</string>
+    <string name="flash_off" msgid="7889323512830926273">"Flash désactivé"</string>
+    <string name="unknown" msgid="564184550182858146">"Inconnue"</string>
+    <string name="try_to_set_local_album_available_offline" msgid="3363125545009254117">"Cet élément est stocké localement et disponible hors connexion."</string>
+    <string name="please_wait" msgid="1416313324505140068">"Veuillez patienter…"</string>
+    <string name="rendering_photo_sphere" msgid="3032858512989313215">"Rendu de la photo-sphère en cours…"</string>
+    <string name="camera_error_title" msgid="6200558085072670067">"Erreur au niveau de la caméra"</string>
+    <string name="cannot_connect_camera" msgid="4311259792784598381">"Impossible d\'établir une connexion avec la caméra."</string>
+    <string name="camera_disabled" msgid="6963443549010040595">"La caméra a été désactivée en raison des règles de sécurité."</string>
+    <string name="wait" msgid="765601745709933047">"Veuillez patienter…"</string>
+    <string name="no_storage" product="default" msgid="5922012950780548098">"Veuillez insérer une carte SD avant d\'utiliser la caméra."</string>
+    <string name="preparing_sd" product="default" msgid="7435693655017362767">"Préparation de la carte SD en cours…"</string>
+    <string name="access_sd_fail" product="default" msgid="2634861611082499811">"Impossible d\'accéder à la carte SD."</string>
+    <string name="time_lapse_title" msgid="3267978566401228497">"Enregistrement mode Intervalle temps"</string>
+    <string name="capturing" msgid="5255164204641920893">"Prise de vue en cours…"</string>
+    <string name="pref_camera_id_title" msgid="4680648115225411185">"Sélectionner caméra"</string>
+    <string name="pref_camera_id_entry_back" msgid="6386943973628160510">"Arrière"</string>
+    <string name="pref_camera_id_entry_front" msgid="6233067010315787044">"Frontale"</string>
+    <string name="pref_camera_recordlocation_title" msgid="3354956161456185749">"Enregistrer le lieu"</string>
+    <string name="pref_camera_location_label" msgid="8695441802378057719">"LIEU"</string>
+    <string name="pref_camera_timer_title" msgid="4728838281741571323">"Retardateur"</string>
+  <plurals name="pref_camera_timer_entry">
+    <item quantity="one" msgid="8919878087230098328">"1 seconde"</item>
+    <item quantity="other" msgid="5782794798884172289">"%d secondes"</item>
+  </plurals>
+    <!-- no translation found for pref_camera_timer_sound_default (6225207881203007747) -->
+    <skip />
+    <string name="pref_camera_timer_sound_title" msgid="9036987234878551217">"Compte à rebours sonore"</string>
+    <string name="setting_off" msgid="6782191065550276632">"Désactivé"</string>
+    <string name="setting_on" msgid="9086728135773197891">"Activé"</string>
+    <string name="pref_video_quality_title" msgid="5887153490982738588">"Qualité vidéo"</string>
+    <string name="pref_video_quality_entry_high" msgid="1613578418842803393">"Élevée"</string>
+    <string name="pref_video_quality_entry_low" msgid="737962621299050603">"Faible"</string>
+    <string name="pref_video_time_lapse_frame_interval_title" msgid="4975260837607993569">"Intervalle de temps"</string>
+    <string name="pref_camera_settings_category" msgid="4274141528139077830">"Paramètres de l\'application Appareil photo"</string>
+    <string name="pref_camcorder_settings_category" msgid="3553148484755353397">"Paramètres de la caméra"</string>
+    <string name="pref_camera_picturesize_title" msgid="686045304547541815">"Taille de l\'image"</string>
+    <string name="pref_camera_picturesize_entry_13mp" msgid="6728485576074234195">"13 mégapixels"</string>
+    <string name="pref_camera_picturesize_entry_8mp" msgid="7088352012301633667">"8 mégapixels"</string>
+    <string name="pref_camera_picturesize_entry_5mp" msgid="1501745661448065284">"5 mégapixels"</string>
+    <string name="pref_camera_picturesize_entry_4mp" msgid="4786178543089540678">"4 mégapixels"</string>
+    <string name="pref_camera_picturesize_entry_3mp" msgid="140799231761236311">"3 mégapixels"</string>
+    <string name="pref_camera_picturesize_entry_2mp" msgid="450006451326859328">"2 mégapixels"</string>
+    <string name="pref_camera_picturesize_entry_2mp_wide" msgid="1877997036497332813">"2 mégapixels (16:9)"</string>
+    <string name="pref_camera_picturesize_entry_1_5mp" msgid="7089801019442294745">"1,5 mégapixel"</string>
+    <string name="pref_camera_picturesize_entry_1_3mp" msgid="3451742533756821502">"1,3 mégapixel"</string>
+    <string name="pref_camera_picturesize_entry_1mp" msgid="5043732005295894167">"1 mégapixel"</string>
+    <string name="pref_camera_picturesize_entry_vga" msgid="7387786033708903628">"VGA"</string>
+    <string name="pref_camera_picturesize_entry_qvga" msgid="6134562622041084167">"QVGA"</string>
+    <string name="pref_camera_focusmode_title" msgid="3637702747984180030">"Mode de mise au point"</string>
+    <string name="pref_camera_focusmode_entry_auto" msgid="8977409813328199501">"Automatique"</string>
+    <string name="pref_camera_focusmode_entry_infinity" msgid="3887667853236656322">"Infini"</string>
+    <string name="pref_camera_focusmode_entry_macro" msgid="7632276686726851426">"Macro"</string>
+    <string name="pref_camera_focusmode_label_auto" msgid="4884418453600317694">"AUTOMATIQUE"</string>
+    <string name="pref_camera_focusmode_label_infinity" msgid="1673352016120343314">"INFINI"</string>
+    <string name="pref_camera_focusmode_label_macro" msgid="5065639298027996399">"MACRO"</string>
+    <string name="pref_camera_flashmode_title" msgid="8363803841022314574">"Mode Flash"</string>
+    <string name="pref_camera_flashmode_label" msgid="5852483713534762800">"MODE FLASH"</string>
+    <string name="pref_camera_flashmode_entry_auto" msgid="4211992591841657014">"Automatique"</string>
+    <string name="pref_camera_flashmode_entry_on" msgid="3519831202665377698">"Activé"</string>
+    <string name="pref_camera_flashmode_entry_off" msgid="8861322265566617357">"Désactivé"</string>
+    <string name="pref_camera_flashmode_label_auto" msgid="2309144918900450379">"FLASH AUTOMATIQUE"</string>
+    <string name="pref_camera_flashmode_label_on" msgid="373595517770024934">"FLASH ACTIVÉ"</string>
+    <string name="pref_camera_flashmode_label_off" msgid="7175863901446001441">"FLASH DÉSACTIVÉ"</string>
+    <string name="pref_camera_whitebalance_title" msgid="7962809566612868179">"Balance des blancs"</string>
+    <string name="pref_camera_whitebalance_label" msgid="7370366644738746700">"BALANCE DES BLANCS"</string>
+    <string name="pref_camera_whitebalance_entry_auto" msgid="1390631794449502796">"Automatique"</string>
+    <string name="pref_camera_whitebalance_entry_incandescent" msgid="1140391575294372706">"Incandescent"</string>
+    <string name="pref_camera_whitebalance_entry_daylight" msgid="757833578153467254">"Lumière du jour"</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="5157027611220790970">"Fluorescent"</string>
+    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3569589102226796875">"Nuageux"</string>
+    <string name="pref_camera_whitebalance_label_auto" msgid="4305837287360485369">"AUTOMATIQUE"</string>
+    <string name="pref_camera_whitebalance_label_incandescent" msgid="2860805668879945185">"INCANDESCENT"</string>
+    <string name="pref_camera_whitebalance_label_daylight" msgid="4562002095198912409">"LUMIÈRE DU JOUR"</string>
+    <string name="pref_camera_whitebalance_label_fluorescent" msgid="10552295745391742">"FLUORESCENT"</string>
+    <string name="pref_camera_whitebalance_label_cloudy" msgid="4880793739075193336">"NUAGEUX"</string>
+    <string name="pref_camera_scenemode_title" msgid="5709932164781367066">"Mode Scène"</string>
+    <string name="pref_camera_scenemode_entry_auto" msgid="9205644316260850379">"Automatique"</string>
+    <string name="pref_camera_scenemode_entry_hdr_plus" msgid="6759085555519758794">"HDR+"</string>
+    <string name="pref_camera_scenemode_entry_hdr" msgid="3098836808080630955">"HDR"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_plus_on" msgid="1096746750342289067">"HDR+ ACTIVÉ"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_plus_off" msgid="2668770361856397834">"HDR+ DÉSACTIVÉ"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_on" msgid="5232394324298489502">"HDR ACTIVÉ"</string>
+    <string name="pref_camera_scenemode_entry_turn_hdr_off" msgid="7694606461440250206">"HDR DÉSACTIVÉ"</string>
+    <string name="pref_camera_scenemode_entry_action" msgid="5753183620959062015">"Action"</string>
+    <string name="pref_camera_scenemode_entry_night" msgid="3468037364159759991">"Nuit"</string>
+    <string name="pref_camera_scenemode_entry_sunset" msgid="5884302914893488509">"Coucher de soleil"</string>
+    <string name="pref_camera_scenemode_entry_party" msgid="401232668169066415">"Fête"</string>
+    <string name="pref_camera_scenemode_label_auto" msgid="2874586883608401615">"AUCUN"</string>
+    <string name="pref_camera_scenemode_label_action" msgid="1822814017595414923">"ACTION"</string>
+    <string name="pref_camera_scenemode_label_night" msgid="7764371228088101131">"NUIT"</string>
+    <string name="pref_camera_scenemode_label_sunset" msgid="3443610538453611123">"COUCHER DE SOLEIL"</string>
+    <string name="pref_camera_scenemode_label_party" msgid="917499272505930322">"FÊTE"</string>
+    <string name="pref_camera_countdown_label_off" msgid="3986433580620011481">"MINUTEUR DÉSACTIVÉ"</string>
+    <string name="pref_camera_countdown_label_one" msgid="7647972711796868848">"1 SECONDE"</string>
+    <string name="pref_camera_countdown_label_three" msgid="3154170918067103541">"3 SECONDES"</string>
+    <string name="pref_camera_countdown_label_ten" msgid="4372650985906500604">"10 SECONDES"</string>
+    <string name="pref_camera_countdown_label_fifteen" msgid="8469955900530268867">"15 SECONDES"</string>
+    <string name="not_selectable_in_scene_mode" msgid="3260801086980522611">"Impossible de sélectionner ce paramètre en mode Scène."</string>
+    <string name="pref_exposure_title" msgid="7525751789152582800">"Exposition"</string>
+    <string name="pref_exposure_label" msgid="2604738602400261218">"EXPOSITION"</string>
+    <!-- no translation found for pref_camera_hdr_default (5054955236904902318) -->
+    <skip />
+    <!-- no translation found for pref_camera_hdr_plus_default (4827897029274554907) -->
+    <skip />
+    <string name="pref_camera_hdr_label" msgid="1918040375414771185">"HDR"</string>
+    <string name="pref_camera_id_label_back" msgid="1645608049757733858">"CAMÉRA FRONTALE"</string>
+    <string name="pref_camera_id_label_front" msgid="349308803062874842">"CAMÉRA ARRIÈRE"</string>
+    <string name="dialog_ok" msgid="774141340500181131">"OK"</string>
+    <string name="spaceIsLow_content" product="default" msgid="4522771065344332702">"L\'espace disponible sur votre carte SD est insuffisant. Modifiez les paramètres de qualité, ou supprimez des images ou d\'autres fichiers."</string>
+    <string name="video_reach_size_limit" msgid="9196836111505731836">"Taille maximale atteinte."</string>
+    <string name="pano_too_fast_prompt" msgid="2503148095578052177">"Trop rapide"</string>
+    <string name="pano_dialog_prepare_preview" msgid="4445235163599534263">"Préparation du panorama…"</string>
+    <string name="pano_dialog_panorama_failed" msgid="6772546547048693619">"Impossible d\'enregistrer le panorama."</string>
+    <string name="pano_dialog_title" msgid="6662642763395425145">"Panorama"</string>
+    <string name="pano_capture_indication" msgid="4002128831255023954">"Prise de vue panoramique…"</string>
+    <string name="pano_dialog_waiting_previous" msgid="2646847402743245320">"En attente du panorama précédent…"</string>
+    <string name="pano_review_saving_indication_str" msgid="4691771283450663293">"Enregistrement…"</string>
+    <string name="pano_review_rendering" msgid="2743087719999377155">"Rendu du panorama en cours…"</string>
+    <string name="tap_to_focus" msgid="3519718196270593468">"Appuyez pour mettre au point."</string>
+    <string name="pref_video_effect_title" msgid="594570613431209010">"Effets"</string>
+    <string name="effect_none" msgid="3102797925086872636">"Aucun"</string>
+    <string name="effect_goofy_face_squeeze" msgid="1362021544829311452">"Compresser"</string>
+    <string name="effect_goofy_face_big_eyes" msgid="9220121522816762649">"Grands yeux"</string>
+    <string name="effect_goofy_face_big_mouth" msgid="2064008284599552683">"Grande bouche"</string>
+    <string name="effect_goofy_face_small_mouth" msgid="3105849596912069261">"Petite bouche"</string>
+    <string name="effect_goofy_face_big_nose" msgid="6936976307035428164">"Gros nez"</string>
+    <string name="effect_goofy_face_small_eyes" msgid="558042211252573238">"Petits yeux"</string>
+    <string name="effect_backdropper_space" msgid="9133825395915767627">"Dans l\'espace"</string>
+    <string name="effect_backdropper_sunset" msgid="7354053769863638757">"Coucher soleil"</string>
+    <string name="effect_backdropper_gallery" msgid="2333888391153564920">"Votre vidéo"</string>
+    <string name="video_snapshot_hint" msgid="2707403607250082339">"Appuyez ici pour prendre photo pendant enregistrement."</string>
+    <string name="video_recording_started" msgid="3374878415050991030">"L\'enregistrement vidéo a commencé."</string>
+    <string name="video_recording_stopped" msgid="4658626532857624974">"L\'enregistrement vidéo s\'est arrêté."</string>
+    <string name="clear_effects" msgid="6192797848995967992">"Effacer les effets"</string>
+    <string name="effect_silly_faces" msgid="7952713419757286453">"DRÔLES DE TÊTES"</string>
+    <string name="effect_background" msgid="1358432220077975015">"ARRIÈRE-PLAN"</string>
+    <string name="accessibility_shutter_button" msgid="6040483605347230438">"Obturateur"</string>
+    <string name="accessibility_menu_button" msgid="7692103503958544723">"Bouton \"Menu\""</string>
+    <string name="accessibility_mode_picker" msgid="5107120667206453381">"Sélecteur du mode Appareil photo, Vidéo ou Panoramique"</string>
+    <string name="accessibility_check_box" msgid="1084094675439953723">"Case à cocher correspondant au paramètre \"%1$s\""</string>
+    <string name="accessibility_switch_to_camera" msgid="4518394037216725274">"Passer en mode Appareil photo"</string>
+    <string name="accessibility_switch_to_video" msgid="8174781871592793967">"Passer en mode Vidéo"</string>
+    <string name="accessibility_switch_to_panorama" msgid="8322228859117808037">"Passer en mode Panoramique"</string>
+    <string name="accessibility_switch_to_photo_sphere" msgid="5803217570370854725">"Passer en mode Photo Sphere"</string>
+    <string name="accessibility_switch_to_gcam" msgid="7562625440767034695">"Passer en haute qualité"</string>
+    <string name="accessibility_review_cancel" msgid="5462850829869569629">"Examen – Annuler"</string>
+    <string name="accessibility_review_ok" msgid="3486465319880320270">"Examen – OK"</string>
+    <string name="accessibility_review_retake" msgid="2547112860787022130">"Examen – Refaire une photo/vidéo"</string>
+    <string name="capital_on" msgid="1118214824959797269">"ACTIVÉ"</string>
+    <string name="capital_off" msgid="3020696135020167263">"DÉSACTIVÉ"</string>
+    <string name="pref_video_time_lapse_frame_interval_off" msgid="3909611941842585497">"Désactivé"</string>
+    <string name="pref_video_time_lapse_frame_interval_500" msgid="1425296755074319221">"1 demi-seconde"</string>
+    <string name="pref_video_time_lapse_frame_interval_1000" msgid="9126255690984179200">"1 seconde"</string>
+    <string name="pref_video_time_lapse_frame_interval_1500" msgid="5793250074165436905">"1,5 seconde"</string>
+    <string name="pref_video_time_lapse_frame_interval_2000" msgid="1821755013078449188">"2 secondes"</string>
+    <string name="pref_video_time_lapse_frame_interval_2500" msgid="8027471301321122045">"2,5 secondes"</string>
+    <string name="pref_video_time_lapse_frame_interval_3000" msgid="1411114492405867872">"3 secondes"</string>
+    <string name="pref_video_time_lapse_frame_interval_4000" msgid="1197483421014140132">"4 secondes"</string>
+    <string name="pref_video_time_lapse_frame_interval_5000" msgid="7211885329755347592">"5 secondes"</string>
+    <string name="pref_video_time_lapse_frame_interval_6000" msgid="6665825017557898190">"6 secondes"</string>
+    <string name="pref_video_time_lapse_frame_interval_10000" msgid="1126841483618922521">"10 secondes"</string>
+    <string name="pref_video_time_lapse_frame_interval_12000" msgid="8769265988037327085">"12 secondes"</string>
+    <string name="pref_video_time_lapse_frame_interval_15000" msgid="1452711342185926617">"15 secondes"</string>
+    <string name="pref_video_time_lapse_frame_interval_24000" msgid="2505505645705111419">"24 secondes"</string>
+    <string name="pref_video_time_lapse_frame_interval_30000" msgid="3965378176246680626">"1 demi-minute"</string>
+    <string name="pref_video_time_lapse_frame_interval_60000" msgid="1878467100201983878">"1 minute"</string>
+    <string name="pref_video_time_lapse_frame_interval_90000" msgid="496651530019049822">"1,5 minute"</string>
+    <string name="pref_video_time_lapse_frame_interval_120000" msgid="126293364329503816">"2 minutes"</string>
+    <string name="pref_video_time_lapse_frame_interval_150000" msgid="3469164780802564276">"2,5 minutes"</string>
+    <string name="pref_video_time_lapse_frame_interval_180000" msgid="6840421790710639463">"3 minutes"</string>
+    <string name="pref_video_time_lapse_frame_interval_240000" msgid="1682865866425206481">"4 minutes"</string>
+    <string name="pref_video_time_lapse_frame_interval_300000" msgid="6068734332915957652">"5 minutes"</string>
+    <string name="pref_video_time_lapse_frame_interval_360000" msgid="4692565393277579688">"6 minutes"</string>
+    <string name="pref_video_time_lapse_frame_interval_600000" msgid="7109530398883649472">"10 minutes"</string>
+    <string name="pref_video_time_lapse_frame_interval_720000" msgid="259321148909130247">"12 minutes"</string>
+    <string name="pref_video_time_lapse_frame_interval_900000" msgid="6814816608134052996">"15 minutes"</string>
+    <string name="pref_video_time_lapse_frame_interval_1440000" msgid="5691479246748705053">"24 minutes"</string>
+    <string name="pref_video_time_lapse_frame_interval_1800000" msgid="8331728629455012478">"1 demi-heure"</string>
+    <string name="pref_video_time_lapse_frame_interval_3600000" msgid="4829442147263610121">"1 heure"</string>
+    <string name="pref_video_time_lapse_frame_interval_5400000" msgid="7011488725038113884">"1,5 heure"</string>
+    <string name="pref_video_time_lapse_frame_interval_7200000" msgid="7399563587870916008">"2 heures"</string>
+    <string name="pref_video_time_lapse_frame_interval_9000000" msgid="1545856778907835970">"2,5 heures"</string>
+    <string name="pref_video_time_lapse_frame_interval_10800000" msgid="4064231412857457518">"3 heures"</string>
+    <string name="pref_video_time_lapse_frame_interval_14400000" msgid="5174457951350690217">"4 heures"</string>
+    <string name="pref_video_time_lapse_frame_interval_18000000" msgid="5091441456160949740">"5 heures"</string>
+    <string name="pref_video_time_lapse_frame_interval_21600000" msgid="6924571987775154098">"6 heures"</string>
+    <string name="pref_video_time_lapse_frame_interval_36000000" msgid="6959912631566981301">"10 heures"</string>
+    <string name="pref_video_time_lapse_frame_interval_43200000" msgid="6426833030111269499">"12 heures"</string>
+    <string name="pref_video_time_lapse_frame_interval_54000000" msgid="6688725497680331090">"15 heures"</string>
+    <string name="pref_video_time_lapse_frame_interval_86400000" msgid="5510320806095156153">"24 heures"</string>
+    <string name="time_lapse_seconds" msgid="7319683099532506270">"secondes"</string>
+    <string name="time_lapse_minutes" msgid="5325447383033224679">"minutes"</string>
+    <string name="time_lapse_hours" msgid="5294001144133261436">"heures"</string>
+    <string name="time_lapse_interval_set" msgid="2418594453248958440">"OK"</string>
+    <string name="set_time_interval" msgid="2531393962847535331">"Définir l\'intervalle de temps"</string>
+    <string name="set_time_interval_help" msgid="64145154088021389">"La fonctionnalité d\'intervalle de temps est désactivée. Veuillez l\'activer pour définir un intervalle."</string>
+    <string name="set_duration" msgid="1638453882581604341">"Définir la durée en secondes"</string>
+    <string name="count_down_title_text" msgid="7586031110595513050">"Compte à rebours avant la photo"</string>
+    <string name="remember_location_title" msgid="3045040613094030429">"Mémoriser le lieu des photos ?"</string>
+    <string name="remember_location_prompt" msgid="5104210757873140169">"Ajoutez des tags à vos photos et à vos vidéos pour identifier l\'endroit de la prise de vue.\n\nD\'autres applications peuvent accéder à ces informations, ainsi qu\'aux images enregistrées."</string>
+    <string name="remember_location_no" msgid="4412802756840226925">"Non, merci"</string>
+    <string name="remember_location_yes" msgid="4339424460683531388">"Oui"</string>
+    <string name="camera_menu_more_label" msgid="7951917844735828365">"AUTRES OPTIONS"</string>
+    <string name="camera_menu_settings_label" msgid="3862756725328016822">"PARAMÈTRES"</string>
+    <string name="create_tiny_planet" msgid="5186918191372107343">"Créer une petite planète"</string>
+    <string name="saving_tiny_planet" msgid="8828265180177375494">"Enregistrement petite planète…"</string>
+    <string name="tiny_planet_zoom" msgid="2985522360577158474">"Zoom"</string>
+    <string name="tiny_planet_rotate" msgid="5445336705705350004">"Rotation"</string>
+    <string name="crop_save" msgid="2841974981340098579">"Enregistrer"</string>
+    <string name="cannot_load_image" msgid="4100136187076585580">"Impossible de charger l\'image."</string>
+    <string name="switch_photo_filmstrip" msgid="1448511001008888767">"Pellicule"</string>
+    <string name="setting_wallpaper" msgid="2397759659347872725">"Définition du fond d\'écran en cours…"</string>
+</resources>

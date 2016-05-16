@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3658948994665187911">"ჩამოტვირთვის მენეჯერი"</string>
+    <string name="permlab_downloadManager" msgid="7779544811202855500">"ჩამოტვირთვის მენეჯერზე წვდომა."</string>
+    <string name="permdesc_downloadManager" msgid="4237406545998908947">"მიეცით აპლიკაციას ჩამოტვირთვის მენეჯერის წვდომისა და ფაილების ჩამოტვირთვებისთვის მისი გამოყენების უფლება. ბოროტმოქმედმა აპლიკაციებმა შეიძლება ეს გამოიყენონ ჩამოტვირთვების დასაზიანებლად და პირად ინფორმაციაზე წვდომისათვის."</string>
+    <string name="permlab_downloadManagerAdvanced" msgid="7103642833308809655">"ჩამოტვირთვის გაუმჯობესებული მენეჯერის ფუნქციები."</string>
+    <string name="permdesc_downloadManagerAdvanced" msgid="2659546004160962761">"მიეცით აპს ჩამოტვირთვის მენეჯერის გაუმჯობესებულ ფუნქციებზე წვდომის უფლება. ბოროტმოქმედმა აპებმა შეიძლება ეს გამოიყენონ ჩამოტვირთვების დასაზიანებლად და პირად ინფორმაციაზე წვდომისათვის."</string>
+    <string name="permlab_downloadCompletedIntent" msgid="945913803765675685">"ჩამოტვირთვის შეტყობინებების გაგზავნა."</string>
+    <string name="permdesc_downloadCompletedIntent" msgid="2094706189855699533">"მიეცით აპს, უფლება, გააგზავნოს შეტყობინება დასრულებული ჩამოტვირთვების შესახებ. ბოროტმოქმედმა აპლიკაციებმა შეიძლება ეს გამოიყენონ ჩამოტვირთვების დასაზიანებლად და პირად ინფორმაციაზე წვდომისათვის."</string>
+    <string name="permlab_seeAllExternal" product="nosdcard" msgid="4084575448409212628">"ყველა ჩამოტვირთვის USB მეხსიერებაში ნახვა"</string>
+    <string name="permlab_seeAllExternal" product="default" msgid="140058400609165726">"ყველა ჩამოტვირთვის SD ბარათზე ნახვა"</string>
+    <string name="permdesc_seeAllExternal" msgid="1672759909065511233">"მიეცით აპს უფლება, ნახოს ყველა ჩამოტვირთვა SD ბარათზე, განურჩევლად იმისა, თუ რომელმა აპმა ჩამოტვირთა ისინი."</string>
+    <string name="permlab_downloadCacheNonPurgeable" msgid="3069534308882047412">"ჩამოტვირთვის ქეშში სივრცის ამობრუნება"</string>
+    <string name="permdesc_downloadCacheNonPurgeable" msgid="2408760720334570420">"მიეცით აპს უფლება ჩამოტვირთოს ფაილები ჩამოტვირთულ ქეშში. მისი წაშლა ავტომატურად შეუძლებელია მაშინ, როდესაც ჩამოტვირთვის მენეჯერს მეტი სივრცე სჭირდება."</string>
+    <string name="permlab_downloadWithoutNotification" msgid="8837971946078327262">"ფაილების ჩამოტვირთვა შეტყობინებების გარეშე"</string>
+    <string name="permdesc_downloadWithoutNotification" msgid="8483135034298639727">"მიეცით აპს უფლება, ჩამოტვირთოს ფაილები ჩამოტვირთვის მენეჯერიდან მომხმარებლისთვის შეტყობინების ჩვენების გარეშე."</string>
+    <string name="permlab_accessAllDownloads" msgid="2436240495424393717">"ყველა სისტემურ ჩამოტვირთვაზე წვდომა"</string>
+    <string name="permdesc_accessAllDownloads" msgid="1871832254578267128">"მიეცით აპს უფლება ნახოს და შეცვალოს ნებისმიერი ჩამოტვირთვა, რომელიც ინიცირებული იყო სისტემის ნებისმიერი აპის მიერ."</string>
+    <string name="download_unknown_title" msgid="7015124071247271585">"&lt;უსათაურო&gt;"</string>
+    <string name="notification_download_complete" msgid="5443563299253103667">"ჩამოტვირთვა დასრულდა."</string>
+    <string name="notification_download_failed" msgid="8612136111952014978">"წარუმატებელი ჩამოტვირთვა."</string>
+    <string name="notification_need_wifi_for_size" msgid="2556172885154833575">"ჩამოტვირთვის ზომა ითხოვს Wi-Fi-ს."</string>
+    <string name="notification_paused_in_background" msgid="4328508073283591772">"უკანა ფონზე დაპაუზებული."</string>
+    <string name="wifi_required_title" msgid="1995971416871498179">"ჩამოტვირთვა ოპერატორის ქსელისთვის ძალიან დიდია"</string>
+    <string name="wifi_required_body" msgid="3067694630143784449">"ამ <xliff:g id="SIZE">%s </xliff:g> ჩამოტვირთვის განსახორციელებლად უნდა გამოიყენოთ WiFi. \n\nშეეხეთ <xliff:g id="QUEUE_TEXT">%s </xliff:g>, რათა დაიწყოთ ეს ჩამოტვირთვა მომავალში, როგორც კი ჩაერთვებით WiFi ქსელში."</string>
+    <string name="wifi_recommended_title" msgid="7441589306734687400">"ჩააყენებთ ჩამოტვირთვების რიგში?"</string>
+    <string name="wifi_recommended_body" msgid="1314735166699936073">"ამ <xliff:g id="SIZE">%s </xliff:g> ჩამოტვირთვის დაწყება ახლა შეამცირებს თქვენი ელემენტის სიცოცხლეს და/ან გამოიწვევს თქვენი მობილური ინტერნეტის ინტენსიურ გამოყენებას. ეს თავისთავად განაპირობებს თქვენი მობილური ოპერატორისთვის შესაბამისი საფასურის გადახდას თქვენი ინტერნეტ გეგმიდან გამომდინარე. \n\n შეეხეთ <xliff:g id="QUEUE_TEXT">%s</xliff:g>, რათა დაიწყოთ ეს ჩამოტვირთვა მომავალში, როგორც კი ჩაერთვებით WiFi ქსელში."</string>
+    <string name="button_queue_for_wifi" msgid="422576726189179221">"რიგი"</string>
+    <string name="button_cancel_download" msgid="2430166148737975604">"გაუქმება"</string>
+    <string name="button_start_now" msgid="792123674007840864">"დაწყება ახლავე"</string>
+    <string name="download_percent" msgid="6889426633242976698">"<xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+  <plurals name="notif_summary_active">
+    <item quantity="one" msgid="8475775855911967027">"1 ფაილი იტვირთება"</item>
+    <item quantity="other" msgid="9087228371320573153">"<xliff:g id="NUMBER">%d</xliff:g> ფაილი იტვირთება"</item>
+  </plurals>
+  <plurals name="notif_summary_waiting">
+    <item quantity="one" msgid="5537481763963544278">"1 ფაილი მოლოდინის რეჟმშია"</item>
+    <item quantity="other" msgid="549229034166062887">"<xliff:g id="NUMBER">%d</xliff:g> ფაილი მოლოდინის რეჟიმშია"</item>
+  </plurals>
+    <string name="download_remaining" msgid="3139295890887972718">"<xliff:g id="DURATION">%s</xliff:g> მარცხნივ"</string>
+    <string name="download_no_application_title" msgid="7935659741162801699">"ფაილის გახსნა ვერ ხერხდება"</string>
+    <string name="root_downloads" msgid="4098414876292351487">"ჩამოტვირთვები"</string>
+    <string name="download_queued" msgid="3302638231377947451">"რიგშია"</string>
+    <string name="download_running" msgid="3925050393361158266">"მიმდინარეობს"</string>
+    <string name="download_error" msgid="5144180777324573236">"ვერ განხორციელდა"</string>
+</resources>

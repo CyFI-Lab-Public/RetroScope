@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Title for the Calendar Storage process. -->
+    <string name="calendar_storage">Calendar Storage</string>
+
+    <!-- [CHAR LIMIT=NONE] Boot message while upgrading calendar. -->
+    <string name="upgrade_msg">Upgrading Calendar database.</string>
+
+    <!-- Temporary Calendar name to use before we have the calendar name from the server -->
+    <string name="calendar_default_name">Default</string>
+
+    <!-- Caption on secret calendar info -->
+    <string name="calendar_info">Calendar info</string>
+
+    <!-- Error message for secret calendar info -->
+    <string name="calendar_info_error">Error</string>
+
+    <!-- No calendars message for secret calendar info -->
+    <string name="calendar_info_no_calendars">No calendars</string>
+
+    <!-- Event count message for secret calendar info -->
+    <string name="calendar_info_events">Events: <xliff:g id = "events">%1$d</xliff:g></string>
+
+    <!-- Event and dirty event count message for secret calendar info -->
+    <string name="calendar_info_events_dirty">Events: <xliff:g id = "events">%1$d</xliff:g>, Unsaved: <xliff:g id = "dirty events">%2$d</xliff:g></string>
+
+    <!-- What to show in messaging that refers to this provider, e.g. AccountSyncSettings -->
+    <string name="provider_label">Calendar</string>
+
+    <!-- Debug tool - dialog - delete file now [CHAR LIMIT=NONE] -->
+    <string name="debug_tool_delete_button">Delete now</string>
+
+    <!-- Debug tool - dialog - start copying [CHAR LIMIT=NONE] -->
+    <string name="debug_tool_start_button">Start</string>
+    
+    <!-- Debug tool - Main message shown to the user when starting up the debug tool [CHAR LIMIT=NONE] -->
+    <string name="debug_tool_message">You are about to 1) make a copy of your calendar database to the SD card/USB storage, which is readable by any app, and 2) email it. Remember to delete the copy as soon as you have successfully copied it off the device or the email is received.</string>
+
+    <!-- Debug tool - email subject [CHAR LIMIT=NONE] -->
+    <string name="debug_tool_email_sender_picker">Choose a program to send your file</string>
+
+    <!-- Debug tool - email subject [CHAR LIMIT=NONE] -->
+    <string name="debug_tool_email_subject">Calendar Db attached</string>
+
+    <!-- Debug tool - email body [CHAR LIMIT=NONE] -->
+    <string name="debug_tool_email_body">Attached is my Calendar database with all my appointments and personal information. Handle with care.</string>
+</resources>

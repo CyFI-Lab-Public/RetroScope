@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <dimen name="conversation_view_margin_side">16dp</dimen>
+    <dimen name="conversation_view_margin_side_minus_gradient">15dp</dimen>
+    <dimen name="conversation_header_margin_side">15dp</dimen>
+    <dimen name="conversation_header_font_size">24sp</dimen>
+    <dimen name="conversation_header_vertical_padding">26dip</dimen>
+    <dimen name="conversation_header_vertical_padding_condensed">26dip</dimen>
+    <dimen name="conversation_header_side_padding">24dip</dimen>
+    <dimen name="conversation_message_content_margin_side">24dp</dimen>
+    <dimen name="conversation_page_gutter">0dip</dimen>
+    <dimen name="message_border_height">16dp</dimen>
+    <dimen name="message_header_inner_side_padding">16dp</dimen>
+    <dimen name="message_header_contact_photo_width">64dp</dimen>
+    <dimen name="message_header_contact_photo_height">64dp</dimen>
+    <dimen name="message_header_action_button_width">56dp</dimen>
+    <dimen name="message_header_action_button_height">56dp</dimen>
+    <dimen name="message_details_header_padding_start_collapsed">104dip</dimen>
+    <dimen name="message_sender_name_text_size">20sp</dimen>
+    <dimen name="message_header_subtitle_text_size">16sp</dimen>
+    <dimen name="super_collapsed_height">39sp</dimen>
+    <dimen name="super_collapsed_text_size">16sp</dimen>
+    <dimen name="attachment_tile_min_size">180dp</dimen>
+    <dimen name="attachment_tile_max_size">254dp</dimen>
+    <dimen name="wait_padding">32dp</dimen>
+
+    <dimen name="compose_area_left_padding">80dip</dimen>
+    <dimen name="compose_area_right_padding">80dip</dimen>
+    <dimen name="search_view_width">400dip</dimen>
+    <dimen name="spinner_frame_width">170dp</dimen>
+</resources>

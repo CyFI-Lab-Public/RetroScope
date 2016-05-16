@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!--
+ Copyright (C) 2008-2011  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<resources>
+  <!-- common part -->
+    <!-- Preferences -->
+    <string name="preference_ime_setting_app">设定</string>
+
+    <string name="preference_key_setting_menu">键盘设定</string>
+
+    <string name="preference_key_sound_title">击键音</string>
+    <string name="preference_key_sound_summary">按下键时的声音。</string>
+
+    <string name="preference_key_vibration_title">击键振动</string>
+    <string name="preference_key_vibration_summary">按下键时的机体振动。</string>
+
+    <string name="preference_preview_title">键标扩大</string>
+    <string name="preference_preview_summary">按下键时弹出扩大的键位标志。</string>
+
+    <string name="preference_auto_caps_title">首字母大写</string>
+    <string name="preference_auto_caps_summary">输入英文时文章最前面的字母自动转变为大写字母。</string>
+
+    <string name="preference_keyboard_skin_title">键盘自定义</string>
+    <string name="preference_keyboard_skin_summary">切换到键盘自定义功能。</string>
+
+    <string name="preference_conversion_menu_ja">日语用输入设定</string>
+    <string name="preference_conversion_menu_en">英语用输入设定</string>
+
+    <string name="preference_prediction_title_ja">日语用预测输入</string>
+    <string name="preference_prediction_title_en">英语用预测输入</string>
+    <string name="preference_prediction_summary">显示预测候选字词。</string>
+
+    <string name="preference_correct_spell_title_en">英语用错误修正</string>
+    <string name="preference_correct_spell_summary">修正错误输入并显示正确的候补词。</string>
+
+    <string name="preference_input_learning_title_ja">日语用学习词典</string>
+    <string name="preference_input_learning_title_en">英语用学习词典</string>
+    <string name="preference_input_learning_summary">将输入的字词保存在学习词典。</string>
+
+    <string name="preference_aboutime_menu">关于IME</string>
+    
+    <string name="preference_dictionary_menu">词典</string>
+    <string name="preference_dictionary_menu_ja">日语用户词典</string>
+    <string name="preference_dictionary_menu_en">英语用户词典</string>
+    <string name="preference_dictionary_menu_zhcn">中文用户词典</string>
+
+    <string name="preference_user_dictionary">用户词典</string>
+
+    <string name="preference_user_dictionary_edit_words_title">单词添加/编辑/删除</string>
+    <string name="preference_user_dictionary_edit_words_summary">编辑用户词典中的单词。</string>
+    <string name="preference_user_dictionary_edit_words_summary_ja">编辑日语用户词典的单词。</string>
+    <string name="preference_user_dictionary_edit_words_summary_en">编辑英语用户词典的单词。</string>
+    <string name="preference_user_dictionary_edit_words_summary_zhcn">编辑中文用户词典的单词。</string>
+
+    <string name="preference_user_dictionary_clear_learning_title">学习词典初始化</string>
+    <string name="preference_user_dictionary_clear_learning_summary">清空学习词典的内容。</string>
+
+    <string name="preference_user_dictionary_clear_user_title">用户词典初始化</string>
+    <string name="preference_user_dictionary_clear_user_summary">清空用户词典的内容。</string>
+
+    <!-- Dialog Messages -->
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">取消</string>
+    <string name="dialog_button_close">关闭</string>
+
+    <string name="dialog_clear_user_dictionary_message">删除所有用户词典的内容吗？</string>
+    <string name="dialog_clear_learning_dictionary_message">删除所有学习词典的内容吗？</string>
+    <string name="dialog_clear_user_dictionary_done">已经删除了所有用户词典的内容。</string>
+    <string name="dialog_clear_learning_dictionary_done">已经删除了所有学习词典的内容。</string>
+
+    <!-- user dictionary -->
+    <string name="user_dictionary_list_words">单词一览</string>
+    <string name="user_dictionary_edit_words">单词编辑</string>
+    <string name="user_dictionary_title_read">读音</string>
+    <string name="user_dictionary_title_candidate">候补词</string>
+    <string name="user_dictionary_add">添加</string>
+    <string name="user_dictionary_edit">编辑</string>
+    <string name="user_dictionary_delete">删除</string>
+    <string name="user_dictionary_delete_confirm">删除选择的单词吗？</string>
+    <string name="user_dictionary_delete_complete">已经删除。</string>
+    <string name="user_dictionary_delete_fail">删除失败。</string>
+    <string name="user_dictionary_words_duplication_message">已经添加过这个单词。</string>
+    <string name="user_dictionary_over_max_text_size_message">单词过长。</string>
+    <string name="user_dictionary_creating_wordlist">生成中</string>
+    <string name="user_dictionary_init">用户词典初始化</string>
+ 
+      <string name="button_candidate_select">选择</string>
+      <string name="button_candidate_delete">删除</string>
+
+    <string name="ti_input_mode_full_hirakana_title_txt">平假名-汉字</string>
+    <string name="ti_input_mode_full_katakana_title_txt">全角片假名</string>
+    <string name="ti_input_mode_half_katakana_title_txt">半角片假名</string>
+    <string name="ti_input_mode_full_alphabet_title_txt">全角字母</string>
+    <string name="ti_input_mode_half_alphabet_title_txt">半角字母</string>
+    <string name="ti_input_mode_full_number_title_txt">全角数字</string>
+    <string name="ti_input_mode_half_number_title_txt">半角数字</string>
+
+    <string name="ti_long_press_dialog_input_mode_txt">输入模式</string>
+
+</resources>
+

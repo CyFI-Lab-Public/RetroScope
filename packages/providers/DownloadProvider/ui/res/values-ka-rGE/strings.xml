@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3070921713463294774">"ჩამოტვირთულები"</string>
+    <string name="download_title_sorted_by_date" msgid="5898014492155434221">"ჩამოტვირთულები - სორტირებულია თარიღის მიხედვით"</string>
+    <string name="download_title_sorted_by_size" msgid="1417193166677094813">"ჩამოტვირთულები - სორტირებულია ზომის მიხედვით"</string>
+    <string name="no_downloads" msgid="1029667411186146836">"ჩამოტვირთულები არ არის."</string>
+    <string name="missing_title" msgid="830115697868833773">"&lt;უცნობი&gt;"</string>
+    <string name="button_sort_by_size" msgid="7331549713691146251">"სორტირება ზომის მიხედვით"</string>
+    <string name="button_sort_by_date" msgid="8800842892684101528">"სორტირება თარიღის მიხედვით"</string>
+    <string name="download_queued" msgid="104973307780629904">"რიგშია"</string>
+    <string name="download_running" msgid="4656462962155580641">"მიმდინარეობს"</string>
+    <string name="download_success" msgid="7006048006543495236">"დასრულება"</string>
+    <string name="download_error" msgid="8081329546008568251">"წარუმატებელი"</string>
+    <string name="dialog_title_not_available" msgid="5746317632356158515">"ჩამოტვირთვა ვერ განხორციელდა"</string>
+    <string name="dialog_failed_body" msgid="587545111677064427">"გსურთ, ფაილის ჩამოტვირთვა სცადოთ ხელახლა მოგვიანებით თუ წაშალოთ ის რიგიდან?"</string>
+    <string name="dialog_title_queued_body" msgid="6760681913815015219">"ფაილი რიგშია"</string>
+    <string name="dialog_queued_body" msgid="708552801635572720">"ეს ფაილი რიგშია მომავალი ჩამოტვირთვისთვის და ჯერ მიუწვდომელია."</string>
+    <string name="dialog_file_missing_body" msgid="3223012612774276284">"ჩამოტვირთული ფაილის მოძიება ვერ ხერხდება."</string>
+    <string name="dialog_insufficient_space_on_external" msgid="8692452156251449195">"ჩამოტვირთვა ვერ დასრულდა. გარე მეხსიერებაში არ არის საკმარისი სივრცე."</string>
+    <string name="dialog_insufficient_space_on_cache" msgid="6313630206163908994">"Can\'t finish download. There isn\'t enough space on internal download storage."</string>
+    <string name="dialog_cannot_resume" msgid="8664509751358983543">"ჩამოტვირთვა შეწყდა და გაგრძელება შეუძლებელია."</string>
+    <string name="dialog_file_already_exists" msgid="8308563940663449590">"ჩამოტვირთვა შეუძლებელია. დანიშნულების ფაილი უკვე არსებობს."</string>
+    <string name="dialog_media_not_found" msgid="4468088418758018765">"ჩამოტვირთვა ვერ ხერხდება. გარე მედია მიუწვდომელია."</string>
+    <string name="download_no_application_title" msgid="7024782176657362251">"ფაილის გახსნა ვერ ხერხდება"</string>
+    <string name="remove_download" msgid="6372920256257247857">"წაშლა"</string>
+    <string name="delete_download" msgid="76629022653866471">"წაშლა"</string>
+    <string name="keep_queued_download" msgid="5144882786014818569">"შენარჩუნება"</string>
+    <string name="cancel_running_download" msgid="5232704030969221112">"გაუქმება"</string>
+    <string name="retry_download" msgid="7617100787922717912">"გამეორება"</string>
+    <string name="deselect_all" msgid="6348198946254776764">"ყველა მონიშვნის მოხსნა"</string>
+    <string name="select_all" msgid="634074918366265804">"ყველას არჩევა"</string>
+    <string name="selected_count" msgid="2101564570019753277">"მონიშნულია <xliff:g id="NUMBER">%1$d</xliff:g>, სულ <xliff:g id="TOTAL">%2$d</xliff:g>-დან"</string>
+    <string name="download_share_dialog" msgid="3355867339806448955">"გაზიარება"</string>
+</resources>

@@ -1,0 +1,90 @@
+1 0 {
+2    _id=1
+3    account_name=null
+4    account_type=null
+5    deleted=0
+6    dirty=1
+7    sourceid=null
+8    version=1
+9    sync1=null
+10    sync2=null
+11    sync3=null
+12    sync4=null
+13    display_name_source=40
+14    display_name=Number And Mail
+15    display_name_alt=Mail, Number And
+16    sort_key=Number And Mail
+17    sort_key_alt=Mail, Number And
+18 }
+19 1 {
+20    _id=2
+21    account_name=null
+22    account_type=null
+23    deleted=0
+24    dirty=1
+25    sourceid=null
+26    version=1
+27    sync1=null
+28    sync2=null
+29    sync3=null
+30    sync4=null
+31    display_name_source=40
+32    display_name=Number
+33    display_name_alt=Number
+34    sort_key=Number
+35    sort_key_alt=Number
+36 }
+37 2 {
+38    _id=3
+39    account_name=null
+40    account_type=null
+41    deleted=0
+42    dirty=1
+43    sourceid=null
+44    version=1
+45    sync1=null
+46    sync2=null
+47    sync3=null
+48    sync4=null
+49    display_name_source=40
+50    display_name=Mail
+51    display_name_alt=Mail
+52    sort_key=Mail
+53    sort_key_alt=Mail
+54 }
+55 3 {
+56    _id=4
+57    account_name=null
+58    account_type=null
+59    deleted=0
+60    dirty=1
+61    sourceid=null
+62    version=1
+63    sync1=null
+64    sync2=null
+65    sync3=null
+66    sync4=null
+67    display_name_source=20
+68    display_name=698-147-02
+69    display_name_alt=698-147-02
+70    sort_key=698-147-02
+71    sort_key_alt=698-147-02
+72 }
+73 4 {
+74    _id=5
+75    account_name=null
+76    account_type=null
+77    deleted=0
+78    dirty=1
+79    sourceid=null
+80    version=1
+81    sync1=null
+82    sync2=null
+83    sync3=null
+84    sync4=null
+85    display_name_source=10
+86    display_name=mail@dom.com
+87    display_name_alt=mail@dom.com
+88    sort_key=mail@dom.com
+89    sort_key_alt=mail@dom.com
+90 }

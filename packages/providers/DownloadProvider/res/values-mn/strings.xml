@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3658948994665187911">"Татан авалтын Менежер"</string>
+    <string name="permlab_downloadManager" msgid="7779544811202855500">"Татан авалтын менежерт хандалт хийх."</string>
+    <string name="permdesc_downloadManager" msgid="4237406545998908947">"Апп нь татан авалтын менежерт хандалт хийх, үүнийг ашиглан файл татах боломжтой. Хортой апп-ууд үүнийг ашиглан татан авалтыг тасалдуулах, хувийн мэдээлэлд хандалт хийх боломжтой."</string>
+    <string name="permlab_downloadManagerAdvanced" msgid="7103642833308809655">"Татан авалтын менежерийн дэлгэрэнгүй функцууд."</string>
+    <string name="permdesc_downloadManagerAdvanced" msgid="2659546004160962761">"Апп нь татан авалтын менежерийн дэлгэрэнгүй функцуудад хандалт хийх боломжтой. Хортой апп-ууд үүнийг ашиглан татан авалтыг тасалдуулах, хувийн мэдээлэлд хандалт хийх боломжтой."</string>
+    <string name="permlab_downloadCompletedIntent" msgid="945913803765675685">"Татан авалтын мэдэгдэл илгээх."</string>
+    <string name="permdesc_downloadCompletedIntent" msgid="2094706189855699533">"Апп нь татан авч дууссан талаарх мэдэгдэл явуулах боломжтой. Хортой апп-ууд энийг ашиглан файл татдаг бусад апп-уудыг төөрөгдөлд оруулж болно."</string>
+    <string name="permlab_seeAllExternal" product="nosdcard" msgid="4084575448409212628">"Татаж авсан бүх файлыг USB сангаас харах"</string>
+    <string name="permlab_seeAllExternal" product="default" msgid="140058400609165726">"Татаж авсан бүх файлыг SD картаас харах"</string>
+    <string name="permdesc_seeAllExternal" msgid="1672759909065511233">"Апп нь аль апп-с татсанаас хамаарахгүйгээр SD картад хадгалагдсан бүх файлыг харах боломжтой."</string>
+    <string name="permlab_downloadCacheNonPurgeable" msgid="3069534308882047412">"Татан авалтын кеш дотор зай нөөцлөх"</string>
+    <string name="permdesc_downloadCacheNonPurgeable" msgid="2408760720334570420">"Апп нь татан авалтын менежерт илүү зай хэрэгтэй болсон үед автоматаар устгалгүйгээр файлыг татан авалтын кеш-д хадгалах боломжтой."</string>
+    <string name="permlab_downloadWithoutNotification" msgid="8837971946078327262">"мэдэгдэл өгөхгүйгээр файлуудыг татаж авах"</string>
+    <string name="permdesc_downloadWithoutNotification" msgid="8483135034298639727">"Апп нь хэрэглэгчид ямар нэгэн мэдэгдэл харуулахгүйгээр татан авагчаар дамжуулан файл татаж авах боломжтой."</string>
+    <string name="permlab_accessAllDownloads" msgid="2436240495424393717">"Системийн татан авсан бүх файлуудад хандалт хийх"</string>
+    <string name="permdesc_accessAllDownloads" msgid="1871832254578267128">"Апп нь системийн дурын апп-н эхлүүлсэн бүх татан авалтуудыг үзэх, өөрчлөх боломжтой."</string>
+    <string name="download_unknown_title" msgid="7015124071247271585">"&lt;Гарчиггүй&gt;"</string>
+    <string name="notification_download_complete" msgid="5443563299253103667">"Татаж авч дууслаа."</string>
+    <string name="notification_download_failed" msgid="8612136111952014978">"Амжилттай татаж авлаа."</string>
+    <string name="notification_need_wifi_for_size" msgid="2556172885154833575">"Татаж авах хэмжээ Wi-Fi шаардана."</string>
+    <string name="notification_paused_in_background" msgid="4328508073283591772">"Ар талд түр зогсоогдсон"</string>
+    <string name="wifi_required_title" msgid="1995971416871498179">"Татан авалт нь операторын сүлжээнд хэт том байна"</string>
+    <string name="wifi_required_body" msgid="3067694630143784449">"Та энэ <xliff:g id="SIZE">%s </xliff:g> татан авалтыг гүйцээхийн тулд Wi-Fi-д холбогдох шаардлагатай. Та дараагийн удаа Wi-Fi сүлжээнд холбогдмогц энэ татан авалтыг эхлүүлэхийн тулд \n\nХүрнэ үү <xliff:g id="QUEUE_TEXT">%s </xliff:g>"</string>
+    <string name="wifi_recommended_title" msgid="7441589306734687400">"Дараа татахаар хүлээлгэх үү?"</string>
+    <string name="wifi_recommended_body" msgid="1314735166699936073">"Энэ <xliff:g id="SIZE">%s </xliff:g> татан авалтыг одоо эхлүүлснээр таны зайны цэнэг дуусах болон/эсхүл мобайл дата холболтыг хэт их хэрэглэх, улмаар өндөр төлбөр төлөхөд хүрч болзошгүй. Дараагийн удаа WiFi сүлжээнд холбогдохдоо татаж эхлүүлэхийн тулд доорхыг \n\n Товшино уу <xliff:g id="QUEUE_TEXT">%s</xliff:g>."</string>
+    <string name="button_queue_for_wifi" msgid="422576726189179221">"Хүлээх"</string>
+    <string name="button_cancel_download" msgid="2430166148737975604">"Цуцлах"</string>
+    <string name="button_start_now" msgid="792123674007840864">"Одоо эхлүүлэх"</string>
+    <string name="download_percent" msgid="6889426633242976698">"<xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+  <plurals name="notif_summary_active">
+    <item quantity="one" msgid="8475775855911967027">"1 файл татаж байна"</item>
+    <item quantity="other" msgid="9087228371320573153">"<xliff:g id="NUMBER">%d</xliff:g> файл татаж байна"</item>
+  </plurals>
+  <plurals name="notif_summary_waiting">
+    <item quantity="one" msgid="5537481763963544278">"1 файл хүлээлгэнд"</item>
+    <item quantity="other" msgid="549229034166062887">"<xliff:g id="NUMBER">%d</xliff:g> файл хүлээлгэнд"</item>
+  </plurals>
+    <string name="download_remaining" msgid="3139295890887972718">"<xliff:g id="DURATION">%s</xliff:g> үлдсэн"</string>
+    <string name="download_no_application_title" msgid="7935659741162801699">"Файлыг нээж чадахгүй байна"</string>
+    <string name="root_downloads" msgid="4098414876292351487">"Татан авалтууд"</string>
+    <string name="download_queued" msgid="3302638231377947451">"Хүлээлгэнд"</string>
+    <string name="download_running" msgid="3925050393361158266">"Үргэлжилж байгаа"</string>
+    <string name="download_error" msgid="5144180777324573236">"Амжилтгүй"</string>
+</resources>

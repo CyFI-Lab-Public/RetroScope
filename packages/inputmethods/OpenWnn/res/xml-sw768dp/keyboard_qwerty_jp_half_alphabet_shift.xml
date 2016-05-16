@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+         xmlns:pj="http://schemas.android.com/apk/res/jp.co.omronsoft.openwnn"
+         android:keyWidth="7%p"
+         android:horizontalGap="0.9%p"
+         android:verticalGap="0.9%p"
+         android:keyHeight="@dimen/key_height"
+           >
+ 
+  <Row>
+    <Key android:codes="-106" android:keyLabel="記号" android:keyEdgeFlags="left" pj:isSecondKey="true" android:horizontalGap="0.1%" />
+    <Key android:codes="113" android:keyLabel="Q"/>
+    <Key android:codes="119" android:keyLabel="W"/>
+    <Key android:codes="101" android:keyLabel="E"/>
+    <Key android:codes="114" android:keyLabel="R"/>
+    <Key android:codes="116" android:keyLabel="T"/>
+    <Key android:codes="121" android:keyLabel="Y"/>
+    <Key android:codes="117" android:keyLabel="U"/>
+    <Key android:codes="105" android:keyLabel="I"/>
+    <Key android:codes="111" android:keyLabel="O"/>
+    <Key android:codes="112" android:keyLabel="P"/>
+    <Key android:codes="-100" android:keyIcon="@drawable/key_del" android:keyWidth="12%p"
+         android:keyEdgeFlags="right" android:isRepeatable="true" pj:isSecondKey="true"/>
+  </Row>
+ 
+  <Row>
+    <Key android:codes="-308"  android:keyLabel=".?123" android:keyWidth="10%p" android:keyEdgeFlags="left" pj:isSecondKey="true" android:horizontalGap="0.1%" />
+    <Key android:codes="97"  android:keyLabel="A"/>
+    <Key android:codes="115" android:keyLabel="S"/>
+    <Key android:codes="100" android:keyLabel="D"/>
+    <Key android:codes="102" android:keyLabel="F"/>
+    <Key android:codes="103" android:keyLabel="G"/>
+    <Key android:codes="104" android:keyLabel="H"/>
+    <Key android:codes="106" android:keyLabel="J"/>
+    <Key android:codes="107" android:keyLabel="K"/>
+    <Key android:codes="108" android:keyLabel="L"/>
+    <Key android:codes="-101" android:keyIcon="@drawable/key_qwerty_return"
+         android:keyEdgeFlags="right" android:keyWidth="17%p" pj:isSecondKey="true"/>
+  </Row>
+
+  <Row>
+    <Key android:codes="-1" android:keyIcon="@drawable/key_qwerty_shift_locked" android:keyWidth="12.2%p"
+         android:isModifier="true" android:isSticky="false" android:keyEdgeFlags="left" pj:isSecondKey="true" android:horizontalGap="0.1%" />
+    <Key android:codes="122" android:keyLabel="Z"/>
+    <Key android:codes="120" android:keyLabel="X"/>
+    <Key android:codes="99" android:keyLabel="C"/>
+    <Key android:codes="118" android:keyLabel="V"/>
+    <Key android:codes="98" android:keyLabel="B"/>
+    <Key android:codes="110" android:keyLabel="N"/>
+    <Key android:codes="109" android:keyLabel="M"/>
+    <Key android:codes="33" android:keyLabel="!" />
+    <Key android:codes="63" android:keyLabel="\?" />
+    <Key android:codes="-218" android:keyIcon="@drawable/key_qwerty_left" pj:isSecondKey="true" android:isRepeatable="true"/>
+    <Key android:codes="-217" android:keyIcon="@drawable/key_qwerty_right" android:keyEdgeFlags="right" pj:isSecondKey="true" android:isRepeatable="true"/>
+  </Row>
+
+  <Row android:rowEdgeFlags="bottom">
+    <Key android:codes="-301" android:keyIcon="@drawable/key_mode_half_alpha"
+         android:keyWidth="12%p" android:horizontalGap="15%p" pj:isSecondKey="true"/>
+    <Key android:codes="32" android:keyLabel=" " android:keyWidth="50%p" android:isRepeatable="true"/>
+  </Row>
+
+</Keyboard>
+

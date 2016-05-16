@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.android.rpc_performance"
+      android:versionCode="1"
+      android:versionName="1.0">
+
+  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.WRITE_SDCARD" />
+  <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+  <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="7" />
+
+  <application android:label="RPC Performance">
+
+    <activity android:name="ProviderPerfActivity"
+              android:label="RPC Performance"
+              android:configChanges="orientation|keyboardHidden">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+      </intent-filter>
+    </activity>
+
+    <provider android:name=".Provider"
+              android:label="Cross-process no-op Provider"
+              android:authorities="com.android.rpc_performance"
+              android:multiprocess="false"
+              android:exported="true"
+              android:process=":rpcperfprovider" />
+
+    <provider android:name=".LocalProvider"
+              android:label="In-memory no-op Provider"
+              android:authorities="com.android.rpc_performance.local"
+              android:multiprocess="true"
+              android:exported="true" />
+
+    <service android:name=".MiscService"
+             android:label="Playground Service"
+             android:exported="true"
+             android:process=":rpcperfservice" />
+
+  </application>
+
+</manifest>

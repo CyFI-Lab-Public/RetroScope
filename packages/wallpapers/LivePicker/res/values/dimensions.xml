@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* copyright (c) 2008 the android open source project
+*
+* licensed under the apache license, version 2.0 (the "license");
+* you may not use this file except in compliance with the license.
+* you may obtain a copy of the license at
+*
+*      http://www.apache.org/licenses/license-2.0
+*
+* unless required by applicable law or agreed to in writing, software
+* distributed under the license is distributed on an "as is" basis,
+* without warranties or conditions of any kind, either express or implied.
+* see the license for the specific language governing permissions and
+* limitations under the license.
+*/
+-->
+
+<resources>
+    <dimen name="live_wallpaper_thumbnail_text_size">14dip</dimen>
+    <dimen name="live_wallpaper_thumbnail_text_offset">12dip</dimen>
+    <dimen name="live_wallpaper_thumbnail_width">75dip</dimen>
+    <dimen name="live_wallpaper_thumbnail_height">75dip</dimen>
+    <dimen name="dialog_content_inset">0dip</dimen>
+    <dimen name="live_wallpaper_preview_button_width">160dip</dimen>
+</resources>

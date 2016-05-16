@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.android.providers.downloads"
+        android:sharedUserId="android.media">
+
+    <!-- Allows access to the Download Manager -->
+    <permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"
+        android:label="@string/permlab_downloadManager"
+        android:description="@string/permdesc_downloadManager"
+        android:protectionLevel="signatureOrSystem" />
+
+    <!-- Allows advanced access to the Download Manager -->
+    <permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER_ADVANCED"
+        android:label="@string/permlab_downloadManagerAdvanced"
+        android:description="@string/permdesc_downloadManagerAdvanced"
+        android:protectionLevel="signatureOrSystem" />
+
+    <!-- Allows to send download completed intents -->
+    <permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS"
+        android:label="@string/permlab_downloadCompletedIntent"
+        android:description="@string/permdesc_downloadCompletedIntent"
+        android:protectionLevel="signature" />
+
+    <!-- Allows to download non-purgeable files to the cache partition through the public API -->
+    <permission android:name="android.permission.DOWNLOAD_CACHE_NON_PURGEABLE"
+        android:label="@string/permlab_downloadCacheNonPurgeable"
+        android:description="@string/permdesc_downloadCacheNonPurgeable"
+        android:protectionLevel="signatureOrSystem"/>
+
+    <!-- Allows to queue downloads without a notification shown while the download runs. -->
+    <permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"
+        android:permissionGroup="android.permission-group.NETWORK"
+        android:label="@string/permlab_downloadWithoutNotification"
+        android:description="@string/permdesc_downloadWithoutNotification"
+        android:protectionLevel="normal"/>
+
+    <!-- Allows an app to access all downloads in the system via the /all_downloads/ URIs.  The
+         protection level could be relaxed in the future to support third-party download
+         managers. -->
+    <permission android:name="android.permission.ACCESS_ALL_DOWNLOADS"
+        android:label="@string/permlab_accessAllDownloads"
+        android:description="@string/permdesc_accessAllDownloads"
+        android:protectionLevel="signature"/>
+
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+    <uses-permission android:name="android.permission.ACCESS_CACHE_FILESYSTEM" />
+    <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_ALL_DOWNLOADS" />
+    <uses-permission android:name="android.permission.UPDATE_DEVICE_STATS" />
+    <!-- TODO: replace with READ_NETWORK_POLICY permission when it exists -->
+    <uses-permission android:name="android.permission.CONNECTIVITY_INTERNAL" />
+    <uses-permission android:name="android.permission.MODIFY_NETWORK_ACCOUNTING" />
+
+    <application android:process="android.process.media"
+                 android:label="@string/app_label"
+                 android:icon="@mipmap/ic_launcher_download">
+
+        <provider android:name=".DownloadProvider"
+                  android:authorities="downloads" android:exported="true">
+          <!-- Anyone can access /my_downloads, the provider internally restricts access by UID for
+               these URIs -->
+          <path-permission android:pathPrefix="/my_downloads"
+                           android:permission="android.permission.INTERNET"/>
+          <!-- to access /all_downloads, ACCESS_ALL_DOWNLOADS permission is required -->
+          <path-permission android:pathPrefix="/all_downloads"
+                           android:permission="android.permission.ACCESS_ALL_DOWNLOADS"/>
+          <!-- Temporary, for backwards compatibility -->
+          <path-permission android:pathPrefix="/download"
+                           android:permission="android.permission.INTERNET"/>
+          <!-- Apps with access to /all_downloads/... can grant permissions, allowing them to share
+               downloaded files with other viewers -->
+          <grant-uri-permission android:pathPrefix="/all_downloads/"/>
+          <!-- Apps with access to /my_downloads/... can grant permissions, allowing them to share
+               downloaded files with other viewers -->
+          <grant-uri-permission android:pathPrefix="/my_downloads/"/>
+        </provider>
+
+        <provider
+            android:name=".DownloadStorageProvider"
+            android:authorities="com.android.providers.downloads.documents"
+            android:grantUriPermissions="true"
+            android:exported="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS">
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
+
+        <service android:name=".DownloadService"
+                android:permission="android.permission.ACCESS_DOWNLOAD_MANAGER" />
+        <receiver android:name=".DownloadReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".SizeLimitActivity"
+                  android:launchMode="singleTask"
+                  android:theme="@style/Theme.Translucent"/>
+    </application>
+</manifest>

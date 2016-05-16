@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- This is the name of the Download Manager application. -->
+    <string name="app_label">Download Manager</string>
+
+    <!-- This is the short description of a permission associated with the
+        Android Download Manager. It is displayed as part of the description
+        of any application that was granted that permission.
+        This specific permission controls access to the Download Manager by
+        applications that initiate downloads. -->
+    <string name="permlab_downloadManager">Access download manager.</string>
+    <!-- This is the long description of a permission associated with the
+        Android Download Manager. It is displayed as part of the description
+        of any application that was granted that permission.
+        This specific permission controls access to the Download Manager by
+        applications that initiate downloads. -->
+    <string name="permdesc_downloadManager">Allows the app to
+        access the download manager and to use it to download files.
+        Malicious apps can use this to disrupt downloads and access
+        private information.</string>
+
+    <!-- This is the short description of a permission associated with the
+        Android Download Manager. It is displayed as part of the description
+        of any application that was granted that permission.
+        This specific permission controls access to some advanced (and
+        dangerous) features from the Download Manager that are needed by
+        system applications but aren't necessary for regular applications
+        that just initiate plain downloads. -->
+    <string name="permlab_downloadManagerAdvanced">Advanced download
+        manager functions.</string>
+    <!-- This is the long description of a permission associated with the
+        Android Download Manager. It is displayed as part of the description
+        of any application that was granted that permission.
+        This specific permission controls access to some advanced (and
+        dangerous) features from the Download Manager that are needed by
+        system applications but aren't necessary for regular applications
+        that just initiate plain downloads. -->
+    <string name="permdesc_downloadManagerAdvanced">Allows the app to
+        access the download manager\'s advanced functions.
+        Malicious apps can use this to disrupt downloads and access
+        private information.</string>
+
+    <string name="permlab_downloadCompletedIntent">Send download
+        notifications.</string>
+    <!-- This is the long description of a permission associated with the
+        Android Download Manager. It is displayed as part of the description
+        of any application that was granted that permission.
+        This specific permission allows an application to tell other
+        applications that their downloads have completed. -->
+    <string name="permdesc_downloadCompletedIntent">Allows the app
+        to send notifications about completed downloads. Malicious apps
+        can use this to confuse other apps that download
+        files.</string>
+
+    <!-- Title for permission to see all downloads to EXTERNAL [CHAR LIMIT=25] -->
+    <string name="permlab_seeAllExternal" product="nosdcard">See all downloads to USB storage</string>
+    <!-- Title for permission to see all downloads to EXTERNAL -->
+    <string name="permlab_seeAllExternal" product="default">See all downloads to SD card</string>
+    <!-- Description for the permission to see all downloads to EXTERNAL -->
+    <string name="permdesc_seeAllExternal">Allows the app to see all
+        downloads to the SD card, regardless of which app downloaded
+        them.</string>
+
+    <!-- The label for the permission to download files to the download cache
+    that can't be automatically deleted by the download manager to free up
+    space [CHAR LIMIT=50] -->
+    <string name="permlab_downloadCacheNonPurgeable">Reserve space in the
+    download cache</string>
+    <!-- The full sentence description for the permission to download files to
+    the download cache that can't be automatically deleted by the download
+    manager to free up space [CHAR LIMIT=160] -->
+    <string name="permdesc_downloadCacheNonPurgeable">Allows the app to
+    download files to the download cache, which can\'t be automatically deleted
+    when the download manager needs more space.</string>
+
+    <!-- The label for the permission to download files through the download
+    manager without any notification being shown to the user [CHAR LIMIT=50] -->
+    <string name="permlab_downloadWithoutNotification">download files without
+        notification</string>
+
+    <!-- The full sentence description for the permission to download files
+    through the download manager without any notification being shown to the
+    user [CHAR LIMIT=160] -->
+    <string name="permdesc_downloadWithoutNotification">Allows the app
+    to download files through the download manager without any notification
+    being shown to the user.</string>
+
+    <!-- The label for the permission to access all downloads in the download
+    manager, not just those owned by the calling user [CHAR LIMIT=50] -->
+    <string name="permlab_accessAllDownloads">Access all system
+    downloads</string>
+
+    <!-- The full sentence description for the permission to access all
+    downloads in the download manager, not just those owned by the calling user
+    [CHAR LIMIT=160] -->
+    <string name="permdesc_accessAllDownloads">Allows the app to view
+    and modify all downloads initiated by any app on the system.</string>
+
+
+    <!-- This is the title that is used when displaying the notification
+    for a download that doesn't have a title associated with it. -->
+    <string name="download_unknown_title">&lt;Untitled&gt;</string>
+
+    <!-- When a download completes, a notification is displayed, and this
+        string is used to indicate that the download successfully completed.
+        Note that such a download could have been initiated by a variety of
+        applications, including (but not limited to) the browser, an email
+        application, a content marketplace. -->
+    <string name="notification_download_complete">Download complete.</string>
+
+    <!-- When a download completes, a notification is displayed, and this
+        string is used to indicate that the download failed.
+        Note that such a download could have been initiated by a variety of
+        applications, including (but not limited to) the browser, an email
+        application, a content marketplace. -->
+    <string name="notification_download_failed">Download unsuccessful.</string>
+
+    <!-- When a download is paused because it's too large to download over a
+        mobile connection, and Wi-Fi is unavailable, this string is displayed in
+        the system notification for the running download, beneath the download
+        title and description.  Note that such a download could have been
+        initiated by a variety of applications, including (but not limited to)
+        the browser, an email application, a content marketplace.
+        [CHAR LIMIT=24] -->
+    <string name="notification_need_wifi_for_size">Download size requires Wi-Fi.</string>
+
+    <!-- Notification shown when a download has been paused because a user policy
+        has blocked network access to applications running in background. [CHAR LIMIT=24] -->
+    <string name="notification_paused_in_background">Paused in background.</string>
+
+    <!-- Title for dialog when a download exceeds the carrier-specified maximum size of downloads
+        over the mobile network and Wi-Fi is required.  The user has the choice to either queue the
+        download to start next time Wi-Fi is available or cancel the download altogether. [CHAR
+        LIMIT=50] -->
+    <string name="wifi_required_title">Download too large for operator network</string>
+
+    <!-- Text for dialog when a download exceeds the carrier-specified maximum size of downloads
+        over the mobile network and Wi-Fi is required.  The user has the choice to either queue the
+        download to start next time Wi-Fi is available or cancel the download altogether. [CHAR
+        LIMIT=200] -->
+    <string name="wifi_required_body">You must use Wi-Fi to complete this
+        <xliff:g id="size" example="12.3KB">%s
+        </xliff:g> download. \n\nTouch <xliff:g id="queue_text" example="Queue">%s
+        </xliff:g> to start this download the next time you\'re connected to a Wi-Fi
+        network.</string>
+
+    <!-- Title for dialog when a download exceeds the carrier-specified recommended maximum size of
+        downloads over the mobile network, and the user may choose to start the download over mobile
+        anyway or to queue for download to start next time a Wi-Fi connection is available [CHAR
+        LIMIT=50] -->
+    <string name="wifi_recommended_title">Queue for download later?</string>
+
+    <!-- Text for dialog when a download exceeds the carrier-specified recommended maximum size of
+        downloads over the mobile network, and the user may choose to start the download over mobile
+        anyway or to queue for download to start next time a Wi-Fi connection is available [CHAR
+        LIMIT=200] -->
+    <string name="wifi_recommended_body">Starting this <xliff:g id="size" example="12.3KB">%s
+        </xliff:g> download now may shorten your battery life and/or result in
+        excessive usage of your mobile data connection, which can lead to charges by
+        your mobile operator depending on your data plan.\n\n
+        Touch <xliff:g id="queue_text" example="Queue">%s</xliff:g> to start this download
+        the next time you\'re connected to a Wi-Fi network.</string>
+
+
+    <!-- Text for button to queue a download to start next time Wi-Fi is available [CHAR LIMIT=25]
+        -->
+    <string name="button_queue_for_wifi">Queue</string>
+
+    <!-- Text for button to cancel a download because it's too large to proceed over the mobile
+         network and the user does not want to queue it for Wi-Fi [CHAR LIMIT=25] -->
+    <string name="button_cancel_download">Cancel</string>
+
+    <!-- Text for button to start a download over the mobile connection now, even though it's over
+         the carrier-specified recommended maximum size for downloads over the mobile connection
+         [CHAR LIMIT=25] -->
+    <string name="button_start_now">Start now</string>
+
+    <!-- Short representation of download progress percentage. [CHAR LIMIT=8] -->
+    <string name="download_percent"><xliff:g id="number">%d</xliff:g><xliff:g id="percent">%%</xliff:g></string>
+
+    <!-- Title summarizing active downloads. [CHAR LIMIT=32] -->
+    <plurals name="notif_summary_active">
+        <item quantity="one">1 file downloading</item>
+        <item quantity="other"><xliff:g id="number">%d</xliff:g> files downloading</item>
+    </plurals>
+
+    <!-- Title summarizing waiting downloads. [CHAR LIMIT=32] -->
+    <plurals name="notif_summary_waiting">
+        <item quantity="one">1 file waiting</item>
+        <item quantity="other"><xliff:g id="number">%d</xliff:g> files waiting</item>
+    </plurals>
+
+    <!-- Time remaining until download is complete. [CHAR LIMIT=32] -->
+    <string name="download_remaining"><xliff:g id="duration" example="3 minutes">%s</xliff:g> left</string>
+
+    <!-- Text for a toast appearing when a user clicks on a completed download, informing the user
+         that there is no application on the device that can open the file that was downloaded
+         [CHAR LIMIT=200] -->
+    <string name="download_no_application_title">Can\'t open file</string>
+
+    <!-- Label describing Downloads as a storage root [CHAR LIMIT=32] -->
+    <string name="root_downloads">Downloads</string>
+
+    <!-- Status indicating that the download has been queued to start in the future.  Appears for an
+         individual item in the download list.  [CHAR LIMIT=24] -->
+    <string name="download_queued">Queued</string>
+    <!-- Status indicating that the system is currently downloading the file.  Appears for an
+         individual item in the download list.  [CHAR LIMIT=24] -->
+    <string name="download_running">In progress</string>
+    <!-- Status indicating that the download has ended without completing successfully.  Appears for
+         an individual item in the download list.  [CHAR LIMIT=24] -->
+    <string name="download_error">Unsuccessful</string>
+
+    <!-- Representation of download progress percentage when running. [CHAR LIMIT=24] -->
+    <string name="download_running_percent">In progress, <xliff:g id="number">%d</xliff:g><xliff:g id="percent">%%</xliff:g></string>
+
+</resources>

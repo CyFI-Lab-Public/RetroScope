@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2009, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- TODO: these settings depend on the language. They should be put either in the dictionary
+         header, or in the subtype maybe? -->
+    <!-- Symbols that are suggested between words -->
+    <string name="suggested_punctuations">!,?,\\,,:,;,\",(,),\',-,/,@,_</string>
+    <!-- Symbols that are normally preceded by a space (used to add an auto-space before these) -->
+    <string name="symbols_preceded_by_space">([{&amp;</string>
+    <!-- Symbols that are normally followed by a space (used to add an auto-space after these) -->
+    <string name="symbols_followed_by_space">.,;:!?)]}&amp;</string>
+    <!-- Symbols that separate words -->
+    <!-- Don't remove the enclosing double quotes, they protect whitespace (not just U+0020) -->
+    <string name="symbols_word_separators">"&#x0009;&#x0020;\n"()[]{}*&amp;&lt;&gt;+=|.,;:!?/_\"</string>
+    <!-- Word connectors -->
+    <string name="symbols_word_connectors">\'-</string>
+    <!-- The sentence separator code point, for capitalization -->
+    <!-- U+002E: "." FULL STOP   ; 2Eh = 46d -->
+    <integer name="sentence_separator">46</integer>
+    <!-- Whether this language uses spaces between words -->
+    <bool name="current_language_has_spaces">true</bool>
+
+    <!--  Always show the suggestion strip -->
+    <string name="prefs_suggestion_visibility_show_value">0</string>
+    <!--  Show the suggestion strip only on portrait mode -->
+    <string name="prefs_suggestion_visibility_show_only_portrait_value">1</string>
+    <!--  Always hide the suggestion strip -->
+    <string name="prefs_suggestion_visibility_hide_value">2</string>
+    <!--  Default value of the visibility of the suggestion strip -->
+    <string name="prefs_suggestion_visibility_default_value">0</string>
+    <!--  Option to show/hide the suggestion strip -->
+    <string-array name="prefs_suggestion_visibility_values">
+       <item>@string/prefs_suggestion_visibility_show_value</item>
+       <item>@string/prefs_suggestion_visibility_show_only_portrait_value</item>
+       <item>@string/prefs_suggestion_visibility_hide_value</item>
+    </string-array>
+    <string-array name="prefs_suggestion_visibilities">
+       <item>@string/prefs_suggestion_visibility_show_name</item>
+       <item>@string/prefs_suggestion_visibility_show_only_portrait_name</item>
+       <item>@string/prefs_suggestion_visibility_hide_name</item>
+    </string-array>
+
+    <string name="auto_correction_threshold_mode_index_off">0</string>
+    <string name="auto_correction_threshold_mode_index_modest">1</string>
+    <string name="auto_correction_threshold_mode_index_aggressive">2</string>
+    <string name="auto_correction_threshold_mode_index_very_aggressive">3</string>
+    <string-array name="auto_correction_threshold_mode_indexes">
+      <item>@string/auto_correction_threshold_mode_index_off</item>
+      <item>@string/auto_correction_threshold_mode_index_modest</item>
+      <item>@string/auto_correction_threshold_mode_index_aggressive</item>
+      <item>@string/auto_correction_threshold_mode_index_very_aggressive</item>
+    </string-array>
+    <string-array name="auto_correction_threshold_modes">
+      <item>@string/auto_correction_threshold_mode_off</item>
+      <item>@string/auto_correction_threshold_mode_modest</item>
+      <item>@string/auto_correction_threshold_mode_aggressive</item>
+      <item>@string/auto_correction_threshold_mode_very_aggressive</item>
+    </string-array>
+
+    <string name="voice_mode_main">0</string>
+    <string name="voice_mode_symbols">1</string>
+    <string name="voice_mode_off">2</string>
+    <string-array name="voice_input_modes_values">
+        <item>@string/voice_mode_main</item>
+        <item>@string/voice_mode_symbols</item>
+        <item>@string/voice_mode_off</item>
+    </string-array>
+    <!-- Array of Voice Input modes -->
+    <string-array name="voice_input_modes">
+        <item>@string/voice_input_modes_main_keyboard</item>
+        <item>@string/voice_input_modes_symbols_keyboard</item>
+        <item>@string/voice_input_modes_off</item>
+    </string-array>
+    <!-- Array of Voice Input modes summary -->
+    <string-array name="voice_input_modes_summary">
+        <item>@string/voice_input_modes_summary_main_keyboard</item>
+        <item>@string/voice_input_modes_summary_symbols_keyboard</item>
+        <item>@string/voice_input_modes_summary_off</item>
+    </string-array>
+
+    <!-- Title for Latin keyboard debug settings activity / dialog -->
+    <string name="english_ime_debug_settings">Android keyboard Debug settings</string>
+    <string name="prefs_debug_mode">Debug Mode</string>
+    <string name="prefs_force_non_distinct_multitouch">Force non-distinct multitouch</string>
+
+    <!-- Keyboard theme names -->
+    <string name="layout_gingerbread">Gingerbread</string>
+    <string name="layout_ics">IceCreamSandwich</string>
+
+    <!-- For keyboard theme switcher dialog -->
+    <string-array name="keyboard_layout_modes">
+        <item>@string/layout_ics</item>
+        <item>@string/layout_gingerbread</item>
+    </string-array>
+    <string-array name="keyboard_layout_modes_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+    <!-- Subtype locale display name exceptions.
+         For each exception, there should be related string resources for display name that may have
+         explicit keyboard layout. The string resource name must be "subtype_<locale>" or
+         "subtype_with_layout_<locale>. Please refer to strings.xml for these resources. -->
+    <string-array name="subtype_locale_exception_keys">
+        <item>en_US</item>
+        <item>en_GB</item>
+        <item>es_US</item>
+    </string-array>
+
+    <!-- Generic subtype label -->
+    <string name="subtype_generic">%s</string>
+
+    <!-- Predefined keyboard layouts for additional subtype -->
+    <string-array name="predefined_layouts">
+        <item>qwerty</item>
+        <item>qwertz</item>
+        <item>azerty</item>
+        <item>dvorak</item>
+        <item>colemak</item>
+        <item>pcqwerty</item>
+    </string-array>
+    <!-- Predefined keyboard layout display names -->
+    <string-array name="predefined_layout_display_names">
+        <item>QWERTY</item>
+        <item>QWERTZ</item>
+        <item>AZERTY</item>
+        <item>Dvorak</item>
+        <item>Colemak</item>
+        <item>PC</item>
+    </string-array>
+    <!-- Description for generic subtype that has predefined layout.
+         The string resource name must be "subtype_generic_<layout name>".
+         The string resource with "No language" also must be added to strings.xml and the resource
+         name must be "subtype_no_language_<layout name>" -->
+    <string name="subtype_generic_qwerty">%s (QWERTY)</string>
+    <string name="subtype_generic_qwertz">%s (QWERTZ)</string>
+    <string name="subtype_generic_azerty">%s (AZERTY)</string>
+    <string name="subtype_generic_dvorak">%s (Dvorak)</string>
+    <string name="subtype_generic_colemak">%s (Colemak)</string>
+    <string name="subtype_generic_pcqwerty">%s (PC)</string>
+
+    <!-- Description for Bulgarian (BDS) subtype. -->
+    <string name="subtype_bulgarian_bds">%s (BDS)</string>
+
+    <!-- Compatibility map from subtypeLocale:subtypeExtraValue to keyboardLayoutSet -->
+    <string-array name="locale_and_extra_value_to_keyboard_layout_set_map">
+        <item>en_US:TrySuppressingImeSwitcher,AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>qwerty</item>
+        <item>en_GB:TrySuppressingImeSwitcher,AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>qwerty</item>
+        <item>ar:SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>arabic</item>
+        <item>cs:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>qwertz</item>
+        <item>da:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>nordic</item>
+        <item>de:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>qwertz</item>
+        <item>es:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>spanish</item>
+        <item>fi:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>nordic</item>
+        <item>fr:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>azerty</item>
+        <item>fr_CA:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>qwerty</item>
+        <item>hr:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>qwertz</item>
+        <item>hu:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>qwertz</item>
+        <item>it:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>qwerty</item>
+        <item>iw:SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>hebrew</item>
+        <item>nb:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>nordic</item>
+        <item>nl:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>qwerty</item>
+        <item>pl:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>qwerty</item>
+        <item>ru:SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>east_slavic</item>
+        <item>sr:SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>south_slavic</item>
+        <item>sv:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>nordic</item>
+        <item>tr:AsciiCapable,SupportTouchPositionCorrection,EmojiCapable</item>
+        <item>qwerty</item>
+    </string-array>
+
+    <string name="settings_warning_researcher_mode">Attention!  You are using the special keyboard for research purposes.</string>
+</resources>

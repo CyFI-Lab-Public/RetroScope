@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" msgid="78565911793142902">"NFC ծառայություն"</string>
+    <string name="nfcUserLabel" msgid="7708535817084357357">"Nfc"</string>
+    <string name="inbound_me_profile_title" msgid="6146013785225412693">"NFC-ով ստացված կոնտակտ"</string>
+    <string name="inbound_me_profile_text" msgid="2342757196108092923">"Հպեք՝ այս անձին որպես կոնտակտ ավելացնելու համար:"</string>
+    <string name="outbound_me_profile_title" msgid="2523625031572784769">"NFC-ով տվյալների փոխանցման գործընթացն ավարտված է"</string>
+    <string name="outbound_me_profile_text" msgid="5594998841143667989">"Հպեք՝ այս անձին ձեր կոնտակտային տվյալները փոխանցելու համար:"</string>
+    <string name="accessibility_nfc_enabled" msgid="7796246979948787735">"NFC-ն միացված է:"</string>
+    <string name="touch" msgid="4727218133711188355">"Հպեք՝ ռադիոճառագայթով փոխանցելու համար"</string>
+    <string name="beam_progress" msgid="7453634884807323920">"Մուտքային փոխանցում..."</string>
+    <string name="beam_outgoing" msgid="4679536649779123495">"Փոխանցվում է..."</string>
+    <string name="beam_complete" msgid="477026736424637435">"Ռադիոհաղորդմամբ գործընթացն ավարտված է"</string>
+    <string name="beam_failed" msgid="5116241718189888630">"Ռադիոհաղորդմամբ գործընթացն ավարտված չէ"</string>
+    <string name="beam_canceled" msgid="5425192751826544741">"Ռադիոհաղորդմամբ գործընթացը չեղարկված է"</string>
+    <string name="cancel" msgid="61873902552555096">"Չեղարկել"</string>
+    <string name="beam_touch_to_view" msgid="7853129156831642630">"Հպեք՝ դիտելու համար"</string>
+    <string name="beam_handover_not_supported" msgid="4083165921751489015">"Ընդունողի սարքը չի աջակցում ռադիոհաղորդմամբ մեծ ֆայլերի փոխանցումը:"</string>
+    <string name="beam_try_again" msgid="3364677301009783455">"Սարքերը կրկին միմյանց հետ կցել"</string>
+    <string name="connecting_headset" msgid="3929250919225573008">"Միանում է"</string>
+    <string name="connected_headset" msgid="4047751837023241955">"Միացված է"</string>
+    <string name="connect_headset_failed" msgid="7500801585498094863">"Չհաջողվեց միանալ"</string>
+    <string name="disconnecting_headset" msgid="868262189044372780">"Անջատվում է"</string>
+    <string name="disconnected_headset" msgid="4066109452701733916">"Անջատված է"</string>
+    <string name="pairing_headset" msgid="6443461444755646137">"Զուգավորում"</string>
+    <string name="pairing_headset_failed" msgid="6509629663883514688">"Չհաջողվեց զուգավորել"</string>
+    <string name="failed_to_enable_bt" msgid="7229153323594758077">"Չհաջողվեց միացնել Bluetooth-ը"</string>
+    <string name="confirm_pairing" msgid="4112568077038265363">"Վստա՞հ եք, որ ցանկանում եք զուգավորել <xliff:g id="DEVICE_NAME">%1$s</xliff:g> Bluetooth սարքը:"</string>
+    <string name="pair_yes" msgid="3525614878559994448">"Այո"</string>
+    <string name="pair_no" msgid="5022308368904055020">"Ոչ"</string>
+    <string name="tap_again_to_pay" msgid="5754988005412859897">"Կրկին հպեք՝ <xliff:g id="APP">%1$s</xliff:g> հավելվածով վճարելու համար"</string>
+    <string name="tap_again_to_complete" msgid="5423640945118279123">"Կրկին հպեք՝ <xliff:g id="APP">%1$s</xliff:g> հավելվածով ավարտելու համար:"</string>
+    <string name="transaction_failure" msgid="7828102078637936513">"Այս գործարքը չի կարող ավարտվել <xliff:g id="APP">%1$s</xliff:g> հավելվածով:"</string>
+    <string name="could_not_use_app" msgid="8137587876138569083">"Չկարողացանք օգտագործել <xliff:g id="APP">%1$s</xliff:g> հավելվածը:"</string>
+    <string name="pay_with" msgid="5531545488795798945">"Վճարել"</string>
+    <string name="complete_with" msgid="6797459104103012992">"Ավարտել"</string>
+    <string name="default_pay_app_removed" msgid="4108250545457437360">"Հպելու և վճարելու համար ձեր նախընտրած ծառայությունը հեռացվել է: Ընտրե՞լ մեկ ուրիշը:"</string>
+</resources>

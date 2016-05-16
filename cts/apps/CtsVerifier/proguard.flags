@@ -1,0 +1,10 @@
+-keepclasseswithmembernames class * {
+    native <methods>;
+}
+
+-keepclassmembers class com.android.cts.verifier.os.FileUtils$FileStatus {
+    private <fields>;
+}
+
+-dontwarn android.hardware.Sensor
+-dontwarn java.util.concurrent.ConcurrentLinkedDeque

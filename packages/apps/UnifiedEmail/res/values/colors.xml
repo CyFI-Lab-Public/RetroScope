@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <color name="gray_text_color">#777777</color>
+    <color name="dark_gray_text_color">#58585b</color>
+    <color name="light_gray">#cccccc</color>
+    <!-- if you want to make something blue, please try to use THIS blue -->
+    <color name="mail_app_blue">@android:color/holo_blue_light</color>
+    <!-- Conversation List Item Colors -->
+    <color name="subject_text_color_unread">@color/dark_gray_text_color</color>
+    <color name="snippet_text_color_unread">#777777</color>
+    <color name="senders_text_color_unread">@color/dark_gray_text_color</color>
+    <color name="subject_text_color_read">@color/subject_text_color_unread</color>
+    <color name="snippet_text_color_read">@color/snippet_text_color_unread</color>
+    <color name="senders_text_color_read">@color/senders_text_color_unread</color>
+    <color name="date_text_color">@color/dark_gray_text_color</color>
+    <color name="message_info_text_color">@color/gray_text_color</color>
+    <color name="ap_background_color">#fff1f1f2</color>
+    <color name="ap_overflow_badge_color">#cceeeeee</color>
+    <color name="ap_overflow_text_color">#ff4f4c4c</color>
+
+    <color name="drafts">#ff990000</color>
+    <color name="attachment_bg_color">#ffdddddd</color>
+    <color name="swiped_bg_color">#ff999999</color>
+    <color name="holo_light_background_color">#ffe8e8e8</color>
+    <!-- Keep the following two colors in sync with LabelColorUtils.DEFAULT_COLORS (UnifiedGmail) -->
+    <color name="default_folder_background_color">#dddddd</color>
+    <color name="default_folder_foreground_color">@color/gray_text_color</color>
+
+    <!-- Folder List/Drawer colors -->
+    <color name="account_item_selected_text_color">@color/mail_app_blue</color>
+    <color name="folder_list_heading_text_color">@color/dark_gray_text_color</color>
+    <color name="list_background_color">#eeeeee</color>
+
+    <!-- Compose colors -->
+    <color name="compose_label_text">#aaaaaa</color>
+    <color name="quoted_text_color">@color/gray_text_color</color>
+    <string name="quoted_text_background_color_string" translatable="false">@android:color/white</string>
+    <!-- Must match the quoted_text_background_color_string -->
+    <color name="compose_background_color">@android:color/white</color>
+    <string name="quoted_text_font_color_string" translatable="false">@color/gray_text_color</string>
+    <color name="quotedTextColor">@color/gray_text_color</color>
+
+    <color name="conv_header_add_label_text">@android:color/black</color>
+    <color name="conv_header_add_label_background">#eeeeee</color>
+
+    <!-- Conversation message header colors -->
+    <color name="conversation_view_border_color">#eeeeee</color>
+    <color name="conv_header_text_light">#a6a8ab</color>
+    <color name="conv_header_text_dark">@color/dark_gray_text_color</color>
+    <color name="conv_header_text_link_blue">#35b4e3</color>
+
+    <!-- Folder colors -->
+    <color name="folder_disabled_drop_target_text_color">#999999</color>
+
+    <!--  Color of the semi-transparent shadow box on attachment tiles -->
+    <color name="attachment_tile_shadow_box_color">#7F000000</color>
+    <!--  Color of the subtitle message in the attachment tile -->
+    <color name="attachment_tile_subtitle_color">#999999</color>
+    <color name="attachment_image_background_color">#E5E5E5</color>
+
+    <!-- Color of the parent folders and dividers for hierarchical folder descriptions in the move to folder -->
+    <color name="hierarchical_folder_parent_color">@color/gray_text_color</color>
+
+    <color name="high_spam_color">#CC0000</color>
+
+    <color name="notification_template_icon_low_bg">#0cffffff</color>
+
+    <!-- Make sure to also update LetterTileProvider#NUM_OF_TILE_COLORS when adding or removing colors -->
+    <array name="letter_tile_colors">
+        <item>#f16364</item>
+        <item>#f58559</item>
+        <item>#f9a43e</item>
+        <item>#e4c62e</item>
+        <item>#67bf74</item>
+        <item>#59a2be</item>
+        <item>#2093cd</item>
+        <item>#ad62a7</item>
+    </array>
+    <color name="letter_tile_default_color">#d66161</color>
+
+    <color name="letter_tile_font_color">#ffffff</color>
+
+    <color name="tile_divider_color">#ffffff</color>
+
+    <!-- Teaser colors -->
+
+    <!-- The color of the section name text in the teaser -->
+    <color name="teaser_main_text">@color/dark_gray_text_color</color>
+
+    <!-- swipe to refresh text color, this matches the color in
+        progressbar_solid_holo.png -->
+    <color name="swipe_to_refresh_text_color">#0099cc</color>
+
+    <!-- The background color of the message header -->
+    <color name="message_header_background_color">@android:color/white</color>
+    <color name="message_border_gradient_color">#ebebeb</color>
+
+    <!-- The color of the icon background in the teaser -->
+    <color name="folder_teaser_icon_background">#eeeeee</color>
+    <!-- The color of the senders text in the teaser -->
+    <color name="folder_teaser_senders_text">#58585b</color>
+    <!-- The color of the count text in the teaser -->
+    <color name="folder_teaser_count_text">@android:color/black</color>
+</resources>

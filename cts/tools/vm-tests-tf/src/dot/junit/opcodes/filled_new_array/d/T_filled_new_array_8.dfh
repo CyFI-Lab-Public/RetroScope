@@ -1,0 +1,297 @@
+// Processing 'tools/cts/dalvik-opcodes/out/classes_dasm/dot/junit/opcodes/filled_new_array/d/T_filled_new_array_8.dex'...
+// Opened 'tools/cts/dalvik-opcodes/out/classes_dasm/dot/junit/opcodes/filled_new_array/d/T_filled_new_array_8.dex', DEX version '035'
+// DEX file header:
+// parsed: offset 0, len 8: magic               : 'dex
+// 035'
+    64 65 78 0A 30 33 35 00 
+// parsed: offset 8, len 4: checksum            : 5bac58f0
+    F0 58 AC 5B 
+// parsed: offset 12, len 20: signature           : d1b9...67e0
+    D1 B9 FB 64 E5 F3 AB 93 DC 90 83 01 BD F0 6C A0 7E B2 67 E0 
+// parsed: offset 32, len 4: file_size           : 644
+    84 02 00 00 
+// parsed: offset 36, len 4: header_size         : 112
+    70 00 00 00 
+// parsed: offset 40, len 4: endian_tag          : 0x12345678
+    78 56 34 12 
+// parsed: offset 44, len 4: link_size           : 0
+    00 00 00 00 
+// parsed: offset 48, len 4: link_off            : 0 (0x000000)
+    00 00 00 00 
+// parsed: offset 52, len 4: map_off             : 508 (0x0001fc)
+    FC 01 00 00 
+// parsed: offset 56, len 4: string_ids_size     : 9
+    09 00 00 00 
+// parsed: offset 60, len 4: string_ids_off      : 112 (0x000070)
+    70 00 00 00 
+// parsed: offset 64, len 4: type_ids_size       : 5
+    05 00 00 00 
+// parsed: offset 68, len 4: type_ids_off        : 148 (0x000094)
+    94 00 00 00 
+// parsed: offset 72, len 4: proto_ids_size      : 2
+    02 00 00 00 
+// parsed: offset 76, len 4: proto_ids_off       : 168 (0x0000a8)
+    A8 00 00 00 
+// parsed: offset 80, len 4: field_ids_size      : 0
+    00 00 00 00 
+// parsed: offset 84, len 4: field_ids_off       : 0 (0x000000)
+    00 00 00 00 
+// parsed: offset 88, len 4: method_ids_size     : 3
+    03 00 00 00 
+// parsed: offset 92, len 4: method_ids_off      : 192 (0x0000c0)
+    C0 00 00 00 
+// parsed: offset 96, len 4: class_defs_size     : 1
+    01 00 00 00 
+// parsed: offset 100, len 4: class_defs_off      : 216 (0x0000d8)
+    D8 00 00 00 
+// parsed: offset 104, len 4: data_size           : 396
+    8C 01 00 00 
+// parsed: offset 108, len 4: data_off            : 248 (0x0000f8)
+    F8 00 00 00 
+// 
+// string_ids:
+// parsed: offset 112, len 4: [0] string_data_off: 354 (0x000162) "<init>"
+    62 01 00 00 
+// parsed: offset 116, len 4: [1] string_data_off: 362 (0x00016a) "I"
+    6A 01 00 00 
+// parsed: offset 120, len 4: [2] string_data_off: 365 (0x00016d) "LIIIII"
+    6D 01 00 00 
+// parsed: offset 124, len 4: [3] string_data_off: 373 (0x000175) "Ldot/junit/opcodes/filled_new_array/d/T_filled_new_array_8;"
+    75 01 00 00 
+// parsed: offset 128, len 4: [4] string_data_off: 434 (0x0001b2) "Ljava/lang/Object;"
+    B2 01 00 00 
+// parsed: offset 132, len 4: [5] string_data_off: 454 (0x0001c6) "T_filled_new_array_8.java"
+    C6 01 00 00 
+// parsed: offset 136, len 4: [6] string_data_off: 481 (0x0001e1) "V"
+    E1 01 00 00 
+// parsed: offset 140, len 4: [7] string_data_off: 484 (0x0001e4) "[I"
+    E4 01 00 00 
+// parsed: offset 144, len 4: [8] string_data_off: 488 (0x0001e8) "run"
+    E8 01 00 00 
+
+// type_ids:
+// parsed: offset 148, len 4: [0] descriptor_idx: 1 (0x000001) "I"
+    01 00 00 00 
+// parsed: offset 152, len 4: [1] descriptor_idx: 3 (0x000003) "Ldot/junit/opcodes/filled_new_array/d/T_filled_new_array_8;"
+    03 00 00 00 
+// parsed: offset 156, len 4: [2] descriptor_idx: 4 (0x000004) "Ljava/lang/Object;"
+    04 00 00 00 
+// parsed: offset 160, len 4: [3] descriptor_idx: 6 (0x000006) "V"
+    06 00 00 00 
+// parsed: offset 164, len 4: [4] descriptor_idx: 7 (0x000007) "[I"
+    07 00 00 00 
+
+// proto_ids:
+// parsed: offset 168, len 12: [0] 
+//     shorty_idx: 6 (0x000006) "V"
+//     return_type_idx: 3 (0x000003) "V"
+//     parameters_off: 0 (0x000000)
+    06 00 00 00 03 00 00 00 00 00 00 00 
+// parsed: offset 180, len 12: [1] 
+//     shorty_idx: 2 (0x000002) "LIIIII"
+//     return_type_idx: 4 (0x000004) "[I"
+//     parameters_off: 340 (0x000154)
+    02 00 00 00 04 00 00 00 54 01 00 00 
+
+// field_ids:
+
+// methods_ids:
+// parsed: offset 192, len 8: [0] class_idx: 1 (0x000001)  proto_idx: 0 (0x000000) name_idx: 0 (0x000000) "<init>"
+    01 00 00 00 00 00 00 00 
+// parsed: offset 200, len 8: [1] class_idx: 1 (0x000001)  proto_idx: 1 (0x000001) name_idx: 8 (0x000008) "run"
+    01 00 01 00 08 00 00 00 
+// parsed: offset 208, len 8: [2] class_idx: 2 (0x000002)  proto_idx: 0 (0x000000) name_idx: 0 (0x000000) "<init>"
+    02 00 00 00 00 00 00 00 
+
+// class_defs:
+// parsed: offset 216, len 32: Class [0]
+//     class_idx: 1 "Ldot/junit/opcodes/filled_new_array/d/T_filled_new_array_8;"
+//     access_flags: 0x000001 (PUBLIC)
+//     superclass_idx: 2 "Ljava/lang/Object;"
+//     interfaces_off: 0 (0x000000)
+//     source_file_idx: 5 "T_filled_new_array_8.java"
+//     annotations_off: 0 (0x000000)
+//     class_data_off: 493 (0x0001ed)
+//     static_values_off: 0 (0x000000)
+    01 00 00 00 01 00 00 00 02 00 00 00 00 00 00 00 05 00 00 00 00 00 00 00 ED 01 00 00 00 00 00 00 
+// data_section:
+// CODE_ITEM for "dot.junit.opcodes.filled_new_array.d.T_filled_new_array_8.<init>"
+    // parsed: offset 248, len 2: registers_size: 10
+        0A 00 
+    // parsed: offset 250, len 2: ins_size: 1
+        01 00 
+    // parsed: offset 252, len 2: outs_size: 1
+        01 00 
+    // parsed: offset 254, len 2: tries_size: 0
+        00 00 
+    // parsed: offset 256, len 4: debug_info_off: 0 (0x000000)
+        00 00 00 00 
+    // parsed: offset 260, len 4: insns_size: 23
+        17 00 00 00 
+    // insns:
+        // parsed: offset 264, len 6: |0000: invoke-direct {v9}, Ljava/lang/Object;.<init>:()V // method@0002
+            70 10 02 00 09 00 
+        // parsed: offset 270, len 6: |0003: const v5, #float 0.000000 // #0x00000000 int
+            14 05 00 00 00 00 
+        // parsed: offset 276, len 6: |0006: const v6, #float 0.000000 // #0x00000000 int
+            14 06 00 00 00 00 
+        // parsed: offset 282, len 6: |0009: const v7, #float 0.000000 // #0x00000000 int
+            14 07 00 00 00 00 
+        // parsed: offset 288, len 6: |000c: const v8, #float 0.000000 // #0x00000000 int
+            14 08 00 00 00 00 
+        // parsed: offset 294, len 6: |000f: const v9, #float 0.000000 // #0x00000000 int
+            14 09 00 00 00 00 
+        // parsed: offset 300, len 6: |0012: filled-new-array {v5, v6, v7, v8, v9}, [I // class@0004
+//@mod            24 59 04 00 65 87 
+            24 F9 04 00 65 87 
+        // parsed: offset 306, len 2: |0015: move-result-object v0
+            0C 00 
+        // parsed: offset 308, len 2: |0016: return-void
+            0E 00 
+    // tries: 
+    // handlers: 
+// parsed: offset 310, len 2: PADDING
+    00 00 
+// CODE_ITEM for "dot.junit.opcodes.filled_new_array.d.T_filled_new_array_8.run"
+    // parsed: offset 312, len 2: registers_size: 10
+        0A 00 
+    // parsed: offset 314, len 2: ins_size: 6
+        06 00 
+    // parsed: offset 316, len 2: outs_size: 0
+        00 00 
+    // parsed: offset 318, len 2: tries_size: 0
+        00 00 
+    // parsed: offset 320, len 4: debug_info_off: 0 (0x000000)
+        00 00 00 00 
+    // parsed: offset 324, len 4: insns_size: 5
+        05 00 00 00 
+    // insns:
+        // parsed: offset 328, len 6: |0000: filled-new-array {v5, v6, v7, v8, v9}, [I // class@0004
+//@mod            24 59 04 00 65 87 
+            24 F9 04 00 65 87 
+        // parsed: offset 334, len 2: |0003: move-result-object v0
+            0C 00 
+        // parsed: offset 336, len 2: |0004: return-object v0
+            11 00 
+    // tries: 
+    // handlers: 
+// parsed: offset 338, len 2: PADDING
+    00 00 
+// TYPE_LIST
+    // parsed: offset 340, len 4: size: 5
+        05 00 00 00 
+    // parsed: offset 344, len 2: type_item [0] type_idx: 0
+        00 00 
+    // parsed: offset 346, len 2: type_item [1] type_idx: 0
+        00 00 
+    // parsed: offset 348, len 2: type_item [2] type_idx: 0
+        00 00 
+    // parsed: offset 350, len 2: type_item [3] type_idx: 0
+        00 00 
+    // parsed: offset 352, len 2: type_item [4] type_idx: 0
+        00 00 
+// parsed: offset 354, len 8: TYPE_STRING_DATA_ITEM [0] "<init>"
+    06 3C 69 6E 69 74 3E 00 
+// parsed: offset 362, len 3: TYPE_STRING_DATA_ITEM [1] "I"
+    01 49 00 
+// parsed: offset 365, len 8: TYPE_STRING_DATA_ITEM [2] "LIIIII"
+    06 4C 49 49 49 49 49 00 
+// parsed: offset 373, len 61: TYPE_STRING_DATA_ITEM [3] "Ldot/junit/opcodes/filled_new_array/d/T_filled_new_array_8;"
+    3B 4C 64 6F 74 2F 6A 75 6E 69 74 2F 6F 70 63 6F 64 65 73 2F 66 69 6C 6C 65 64 5F 6E 65 77 5F 61 72 72 61 79 2F 64 2F 54 5F 66 69 6C 6C 65 64 5F 6E 65 77 5F 61 72 72 61 79 5F 38 3B 00 
+// parsed: offset 434, len 20: TYPE_STRING_DATA_ITEM [4] "Ljava/lang/Object;"
+    12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 4F 62 6A 65 63 74 3B 00 
+// parsed: offset 454, len 27: TYPE_STRING_DATA_ITEM [5] "T_filled_new_array_8.java"
+    19 54 5F 66 69 6C 6C 65 64 5F 6E 65 77 5F 61 72 72 61 79 5F 38 2E 6A 61 76 61 00 
+// parsed: offset 481, len 3: TYPE_STRING_DATA_ITEM [6] "V"
+    01 56 00 
+// parsed: offset 484, len 4: TYPE_STRING_DATA_ITEM [7] "[I"
+    02 5B 49 00 
+// parsed: offset 488, len 5: TYPE_STRING_DATA_ITEM [8] "run"
+    03 72 75 6E 00 
+// CLASS_DATA_ITEM for class [0] "Ldot/junit/opcodes/filled_new_array/d/T_filled_new_array_8;"
+    // parsed: offset 493, len 1: static_fields_size: 0
+        00 
+    // parsed: offset 494, len 1: instance_fields_size: 0
+        00 
+    // parsed: offset 495, len 1: direct_methods_size: 1
+        01 
+    // parsed: offset 496, len 1: virtual_methods_size: 1
+        01 
+    // static_fields:
+    // instance_fields:
+    // direct_methods:
+        // method [0]:
+            // parsed: offset 497, len 1: method_idx_diff: 0 (method_idx: 0 "<init>")
+                00 
+            // parsed: offset 498, len 3: access_flags: 0x010001 (PUBLIC CONSTRUCTOR)
+                81 80 04 
+            // parsed: offset 501, len 2: code_off: 248 (0x0000f8)
+                F8 01 
+    // virtual_methods:
+        // method [0]:
+            // parsed: offset 503, len 1: method_idx_diff: 1 (method_idx: 1 "run")
+                01 
+            // parsed: offset 504, len 1: access_flags: 0x000001 (PUBLIC)
+                01 
+            // parsed: offset 505, len 2: code_off: 312 (0x000138)
+                B8 02 
+// parsed: offset 507, len 1: PADDING
+    00 
+// map_list:
+    // parsed: offset 508, len 4: size: 11
+        0B 00 00 00 
+    // parsed: offset 512, len 12: [0] type: 0x0000 TYPE_HEADER_ITEM
+    //      unused: 0
+    //      size: 1
+    //      offset: 0 (0x000000)
+        00 00 00 00 01 00 00 00 00 00 00 00 
+    // parsed: offset 524, len 12: [1] type: 0x0001 TYPE_STRING_ID_ITEM
+    //      unused: 0
+    //      size: 9
+    //      offset: 112 (0x000070)
+        01 00 00 00 09 00 00 00 70 00 00 00 
+    // parsed: offset 536, len 12: [2] type: 0x0002 TYPE_TYPE_ID_ITEM
+    //      unused: 0
+    //      size: 5
+    //      offset: 148 (0x000094)
+        02 00 00 00 05 00 00 00 94 00 00 00 
+    // parsed: offset 548, len 12: [3] type: 0x0003 TYPE_PROTO_ID_ITEM
+    //      unused: 0
+    //      size: 2
+    //      offset: 168 (0x0000a8)
+        03 00 00 00 02 00 00 00 A8 00 00 00 
+    // parsed: offset 560, len 12: [4] type: 0x0005 TYPE_METHOD_ID_ITEM
+    //      unused: 0
+    //      size: 3
+    //      offset: 192 (0x0000c0)
+        05 00 00 00 03 00 00 00 C0 00 00 00 
+    // parsed: offset 572, len 12: [5] type: 0x0006 TYPE_CLASS_DEF_ITEM
+    //      unused: 0
+    //      size: 1
+    //      offset: 216 (0x0000d8)
+        06 00 00 00 01 00 00 00 D8 00 00 00 
+    // parsed: offset 584, len 12: [6] type: 0x2001 TYPE_CODE_ITEM
+    //      unused: 0
+    //      size: 2
+    //      offset: 248 (0x0000f8)
+        01 20 00 00 02 00 00 00 F8 00 00 00 
+    // parsed: offset 596, len 12: [7] type: 0x1001 TYPE_TYPE_LIST
+    //      unused: 0
+    //      size: 1
+    //      offset: 340 (0x000154)
+        01 10 00 00 01 00 00 00 54 01 00 00 
+    // parsed: offset 608, len 12: [8] type: 0x2002 TYPE_STRING_DATA_ITEM
+    //      unused: 0
+    //      size: 9
+    //      offset: 354 (0x000162)
+        02 20 00 00 09 00 00 00 62 01 00 00 
+    // parsed: offset 620, len 12: [9] type: 0x2000 TYPE_CLASS_DATA_ITEM
+    //      unused: 0
+    //      size: 1
+    //      offset: 493 (0x0001ed)
+        00 20 00 00 01 00 00 00 ED 01 00 00 
+    // parsed: offset 632, len 12: [10] type: 0x1000 TYPE_MAP_LIST
+    //      unused: 0
+    //      size: 1
+    //      offset: 508 (0x0001fc)
+        00 10 00 00 01 00 00 00 FC 01 00 00 

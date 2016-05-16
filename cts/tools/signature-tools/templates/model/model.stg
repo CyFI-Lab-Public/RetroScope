@@ -1,0 +1,135 @@
+group model;
+
+ElementType(element) ::= <<
+$({$element.class.simpleName$})(element = element)$
+>>
+
+Modifier(element) ::= <<
+$element$
+>>
+
+SigAnnotation(element) ::= <<
+@$ElementType(element = element.type)$
+$if(element.elements)$
+{$element.elements:{$SigAnnotationElement(element=it)$}$}
+$endif$
+>>
+
+SigAnnotationElement(element) ::= <<
+$element.declaringField.name$=$element.value$
+>>
+
+SigAnnotationField(element) ::= <<
+$SigField(element = element)$ $if(element.defaultValue)$ default=$element.defaultValue$$endif$
+>>
+
+SigArrayType(element) ::= <<
+$ElementType(element = element.componentType)$[]
+>>
+
+
+SigClassDefinition(element) ::= <<
+$Annotations(element = element)$
+$Modifiers(element = element)$$element.kind$ $element:ClassReferenceLink(link_style="discreet")$
+$TypeParameters(element = element)$
+$if(element.superClass)$ extends $ElementType(element=element.superClass)$$endif$
+$if(element.interfaces)$ implements $element.interfaces:{$ElementType(element=it)$}; separator=", "$$endif$
+>>
+
+ClassReferenceProjection(element) ::= <<
+$SigClassReference(element= element)$
+>>
+
+SigClassReference(element) ::= <<
+$ClassReferenceLink(it = element.classDefinition, link_style="discreet")$
+>>
+
+SigConstructor(element) ::= <<
+$Annotations(element= element, separator=" ")$
+$Modifiers(element= element)$
+$TypeParameters(element= element)$
+$SigExecutableMember(element= element)$
+>>
+
+//FIXME add SigEnumConstantReference to format correct in either case
+SigEnumConstant(element) ::= <<
+enum constant $ElementType(element=element.type)$.$element.name$
+>>
+
+SigExecutableMember(element) ::= <<
+$element.name$($element.parameters:{$SigParameter(element=it)$}; separator=", "$)
+$if(element.exceptions)$ throws $element.exceptions:{$ElementType(element=it)$}; separator=", "$$endif$
+>>
+
+SigField(element) ::= <<
+$Annotations(element = element, separator="<br/>")$
+$Modifiers(element = element)$$ElementType(element=element.type)$ $element.name$
+>>
+
+MethodProjection(element) ::= <<
+$SigMethod(element=element)$
+>>
+
+SigMethod(element) ::= <<
+$Annotations(element=element)$
+$Modifiers(element=element)$
+$TypeParameters(element=element)$
+$ElementType(element=element.returnType)$ $SigExecutableMember(element = element)$
+>>
+
+SigPackage(element) ::= <<
+$element.name$
+>>
+
+SigParameter(element) ::= <<
+$Annotations(element = element, separator=" ")$
+$ElementType(element=element.type)$
+>>
+
+ParameterizedTypeProjection(element) ::= <<
+$SigParameterizedType(element = element)$
+>>
+
+SigParameterizedType(element) ::= <<
+$if(element.ownerType)$$ElementType(element=element.ownerType)$$endif$
+$SigClassReference(element=element.rawType)$
+$if(element.typeArguments)$&lt;$element.typeArguments:{$ElementType(element=it)$}$&gt;$endif$
+>>
+
+SigPrimitiveType(element) ::= <<
+$element.name$
+>>
+
+SigTypeVariableDefinition(element) ::= <<
+$element.name$$if(!element.upperBounds.empty)$ extends $element.upperBounds:{$ElementType(element=it)$}; separator=", "$$endif$
+>>
+
+SigTypeVariableReference(element) ::= <<
+$element.typeVariableDefinition.name$
+>>
+
+SigWildcardType(element) ::= <<
+?
+$if(element.lowerBound)$ super $ElementType(element=element.lowerBound)$$endif$
+$if(!element.upperBounds.empty)$ extends $element.upperBounds:{$ElementType(element=it)$}; separator=", "$$endif$
+>>
+
+
+/* helper templates*/
+
+Modifiers(element) ::= <<
+$if(element.modifiers)$
+$element.modifiers; separator=" "$$\ $
+$endif$
+>>
+
+Annotations(element, separator) ::= <<
+$if(element.annotations)$
+$element.annotations:{$SigAnnotation(element=it)$}; separator=separator$
+$separator$
+$endif$
+>>
+
+TypeParameters(element) ::= <<
+$if(element.typeParameters)$ &lt;$element.typeParameters:{$SigTypeVariableDefinition(element=it)$}; separator=", "$&gt;$endif$
+>>

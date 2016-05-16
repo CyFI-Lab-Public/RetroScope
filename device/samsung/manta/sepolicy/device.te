@@ -1,0 +1,4 @@
+type mali_device, dev_type, mlstrustedobject;
+type secmem_device, dev_type;
+# Unified Memory Management device
+type ump_device, dev_type;

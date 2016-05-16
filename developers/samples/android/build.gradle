@@ -1,0 +1,58 @@
+List<String> samples = [
+"security/keystore/BasicAndroidKeyStore",
+"connectivity/sync/BasicSyncAdapter",
+"connectivity/network/NetworkConnect",
+"connectivity/network/BasicNetworking",
+"connectivity/bluetooth/BluetoothLeGatt",
+"content/multiuser/AppRestrictions",
+"content/contacts/BasicContactables",
+"content/documentsUi/StorageClient",
+"content/documentsUi/StorageProvider",
+"views/TextLinkify",
+"input/gestures/BasicGestureDetect",
+"input/multitouch/BasicMultitouch",
+"testing/ActivityInstrumentation",
+"media/MediaRecorder",
+"media/BasicMediaRouter",
+"media/BasicMediaDecoder",
+"ui/holo/BorderlessButtons",
+"ui/accessibility/BasicAccessibility",
+"ui/lists/CustomChoiceList",
+"ui/views/TextSwitcher",
+"ui/views/HorizontalPaging",
+"ui/actionbarcompat/Styled",
+"ui/actionbarcompat/ListPopupMenu",
+"ui/actionbarcompat/ShareActionProvider",
+"ui/actionbarcompat/Basic",
+"ui/notifications/BasicNotifications",
+"ui/notifications/CustomNotifications",
+"ui/actionbar/DoneBar",
+"ui/window/BasicImmersiveMode",
+"ui/window/AdvancedImmersiveMode",
+"ui/window/ImmersiveMode",
+"background/alarms/RepeatingAlarm"
+]
+
+List<String> taskNames = [
+    "clean",
+    "refresh",
+    "build",
+    "emitAnt",
+    "emitGradle",
+    "emitBrowseable",
+    "emitGradleZip",
+]
+
+taskNames.each { taskName ->
+    def task = project.hasProperty(taskName) ? project.tasks[taskName] : project.task(taskName)
+    println task
+    samples.each { sample ->
+        File sampleDir = new File(sample)
+        task.dependsOn project.task([type: GradleBuild], "${sample}_${taskName}", {
+            buildFile = "${sample}/build.gradle"
+            dir = sample
+            tasks = [taskName]
+        })
+    }
+}
+

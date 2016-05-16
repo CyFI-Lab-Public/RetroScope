@@ -1,0 +1,7 @@
+C++: No special library required in host side, but gcc/g++ and std c++ library should be present.
+Python : version 2.6.5 or higher (should be /usr/bin/python)
+Necessary Python libraries:
+	- Python SciPy, NumPy
+	sudo apt-get install python-scipy python-numpy python-matplotlib
+
+run make cts_audio frop top dir.

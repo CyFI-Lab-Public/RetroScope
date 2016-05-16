@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.phone.tests">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.PERFORM_CDMA_PROVISIONING" />
+
+    <application android:label="@string/app_name">
+        <uses-library android:name="android.test.runner" />
+
+        <!-- Miscellaneous phone app-related test activities -->
+
+        <!-- Test activity that mimics the behavior of 3rd party apps
+             firing off CALL and DIAL intents. -->
+        <!-- To run:
+                adb shell am start -n com.android.phone.tests/.CallDialTest
+        -->
+        <activity android:name="CallDialTest"
+                  android:label="@string/callDialTestLabel">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Test activity mimicking the PERFORM_CDMA_PROVISIONING behavior of
+             SetupWizard, useful for testing "non-interactive" OTASP. -->
+        <activity android:name="OtaspTestActivity"
+                  android:label="OtaspTest">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <service android:name="SendInstantTextTestService"
+                 android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE" >
+            <intent-filter>
+                <action android:name="android.intent.action.RESPOND_VIA_MESSAGE" />
+                <data android:scheme="sms" />
+                <data android:scheme="smsto" />
+            </intent-filter>
+        </service>
+    </application>
+
+    <!--
+        The prefered way is to use 'runtest':
+           runtest phone-unit
+
+         runtest is a wrapper around 'adb shell'. The low level shell command is:
+           adb shell am instrument -w com.android.phone.tests/android.test.InstrumentationTestRunner
+
+         To run a single test case:
+           adb shell am instrument -w com.android.phone.tests/android.test.InstrumentationTestRunner
+                                   -e com.android.phone.unit.FooUnitTest
+    -->
+    <instrumentation android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.android.phone"
+        android:label="Phone application tests." />
+</manifest>

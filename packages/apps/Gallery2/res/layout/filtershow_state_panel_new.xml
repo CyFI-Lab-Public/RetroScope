@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:custom="http://schemas.android.com/apk/res/com.android.gallery3d"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@color/background_main_toolbar">
+
+    <View
+            android:background="@color/toolbar_separation_line"
+            android:layout_height="1dip"
+            android:layout_width="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <HorizontalScrollView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:scrollbars="none">
+
+        <com.android.gallery3d.filtershow.state.StatePanelTrack
+                android:id="@+id/listStates"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="48dip"
+                custom:elemEndSize="128dip"
+                custom:elemSize="128dip"
+                android:layout_margin="0dip"
+                android:animateLayoutChanges="true" />
+
+    </HorizontalScrollView>
+
+    <ImageButton
+            android:id="@+id/toggleVersionsPanel"
+            android:layout_width="wrap_content"
+            android:layout_height="48dip"
+            android:src="@drawable/filtershow_versions_compare"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+    <View
+            android:background="@color/toolbar_separation_line"
+            android:layout_height="1dip"
+            android:layout_width="match_parent"/>
+
+</LinearLayout>

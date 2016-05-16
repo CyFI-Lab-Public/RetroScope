@@ -1,0 +1,2 @@
+-keep class com.android.providers.userdictionary.UserDictionaryProvider
+-keep class * extends android.app.backup.BackupAgent

@@ -1,0 +1,84 @@
+<!--
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  -->
+
+<resources>
+
+    <!-- Padding between the action bar's bottom edge and the first header
+         in contacts/group lists. -->
+    <dimen name="list_header_extra_top_padding">0dip</dimen>
+
+    <!-- Minimum height used with @drawable/list_section_divider_holo_custom.
+         Right now the drawable has implicit 32dip minimal height, which is confusing.
+         This value is for making the hidden configuration explicit in xml. -->
+    <dimen name="list_section_divider_min_height">32dip</dimen>
+
+    <!--  Vertical and horizontal padding in between contact tiles -->
+    <dimen name="contact_tile_divider_padding">1dip</dimen>
+
+    <!-- Left and right padding for a contact detail item -->
+    <dimen name="detail_item_side_margin">16dip</dimen>
+
+    <!-- ContactTile Layouts -->
+    <!--
+      Use sp instead of dip so that the shadowbox heights can all scale uniformly
+      when the font size is scaled for accessibility purposes
+    -->
+    <dimen name="contact_tile_shadowbox_height">48sp</dimen>
+
+    <!-- Top padding of the ListView in the contact tile list -->
+    <dimen name="contact_tile_list_padding_top">0dip</dimen>
+
+    <!-- For contact filter setting screens -->
+    <dimen name="contact_filter_left_margin">16dip</dimen>
+    <dimen name="contact_filter_right_margin">16dip</dimen>
+    <dimen name="contact_filter_item_min_height">48dip</dimen>
+    <dimen name="contact_filter_icon_size">32dip</dimen>
+
+    <!-- Padding to be used between a visible scrollbar and the contact list -->
+    <dimen name="list_visible_scrollbar_padding">32dip</dimen>
+
+    <dimen name="contact_browser_list_header_left_margin">16dip</dimen>
+    <dimen name="contact_browser_list_header_right_margin">@dimen/list_visible_scrollbar_padding</dimen>
+    <dimen name="contact_browser_list_item_text_indent">8dip</dimen>
+
+    <!-- Size of the shortcut icon. 0dip means: use the system default -->
+    <dimen name="shortcut_icon_size">0dip</dimen>
+
+    <!-- Width of darkened border for shortcut icon -->
+    <dimen name="shortcut_icon_border_width">1dp</dimen>
+
+    <!-- Text size of shortcut icon overlay text -->
+    <dimen name="shortcut_overlay_text_size">12dp</dimen>
+
+    <!-- Extra vertical padding for darkened background behind shortcut icon overlay text -->
+    <dimen name="shortcut_overlay_text_background_padding">1dp</dimen>
+
+    <!-- Width of height of an icon from a third-party app in the networks section of the contact card. -->
+    <dimen name="detail_network_icon_size">32dip</dimen>
+
+    <!-- Empty message margins -->
+    <dimen name="empty_message_top_margin">48dip</dimen>
+
+    <!-- contact browser list margins -->
+    <dimen name="contact_browser_list_item_photo_size">64dip</dimen>
+    <dimen name="contact_browser_list_top_margin">8dip</dimen>
+
+    <!-- Dimensions for "No contacts" string in PhoneFavoriteFragment for the All contacts
+         with phone numbers section
+    -->
+    <dimen name="contact_phone_list_empty_description_size">20sp</dimen>
+    <dimen name="contact_phone_list_empty_description_padding">10dip</dimen>
+</resources>

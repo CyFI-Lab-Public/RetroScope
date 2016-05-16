@@ -1,0 +1,36 @@
+/*
+ * Copyright (C) 2013 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License
+ * is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+ * or implied. See the License for the specific language governing permissions and limitations under
+ * the License.
+ */
+precision mediump float;
+uniform vec3 u_LightPos;
+uniform sampler2D u_Texture1;
+uniform sampler2D u_Texture2;
+uniform int u_Time;
+varying vec3 v_Position;
+varying vec2 v_TexCoordinate;
+void main() {
+  float weight = abs(mod(float(u_Time), 101.0) - 50.0) / 50.0;// loop between 0.0 and 1.0
+  float offset = abs(float(u_Time) / 1000.0);
+  // Get normal from bump map.
+  vec3 map1 = texture2D(u_Texture1, v_TexCoordinate + offset).xyz * 2.0 - 1.0;
+  vec3 map2 = texture2D(u_Texture2, v_TexCoordinate + offset).xyz * 2.0 - 1.0;
+  vec3 normal = normalize((map1 * weight) + (map2 * (1.0 - weight)));
+  // Get a lighting direction vector from the light to the vertex.
+  vec3 lightVector = normalize(u_LightPos - v_Position);
+  // Calculate the dot product of the light vector and vertex normal.
+  float diffuse = max(dot(lightVector, normal), 0.0);
+  // Add ambient lighting
+  diffuse = diffuse + 0.025;
+  // Use the diffuse illumination to get final output color.
+  gl_FragColor = vec4(1.0 - diffuse, 1.0 - diffuse, 1.0, 1.0 - (diffuse * 0.9));// Semi transparent blue.
+}

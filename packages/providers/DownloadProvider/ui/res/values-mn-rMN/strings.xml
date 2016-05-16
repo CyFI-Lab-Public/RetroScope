@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3070921713463294774">"Татан авалтууд"</string>
+    <string name="download_title_sorted_by_date" msgid="5898014492155434221">"Татан авалтууд - Хугацаагаар эрэмбэлсэн"</string>
+    <string name="download_title_sorted_by_size" msgid="1417193166677094813">"Татан авалтууд - Хэмжээгээр эрэмбэлэгдсэн"</string>
+    <string name="no_downloads" msgid="1029667411186146836">"Татан авалт байхгүй."</string>
+    <string name="missing_title" msgid="830115697868833773">"&lt;Тодорхойгүй&gt;"</string>
+    <string name="button_sort_by_size" msgid="7331549713691146251">"Хэмжээгээр эрэмбэлэх"</string>
+    <string name="button_sort_by_date" msgid="8800842892684101528">"Огноогоор эрэмбэлэх"</string>
+    <string name="download_queued" msgid="104973307780629904">"Хүлээлгэнд"</string>
+    <string name="download_running" msgid="4656462962155580641">"Үргэлжилж байгаа"</string>
+    <string name="download_success" msgid="7006048006543495236">"Дуусгах"</string>
+    <string name="download_error" msgid="8081329546008568251">"Амжилтгүй"</string>
+    <string name="dialog_title_not_available" msgid="5746317632356158515">"Татан авч чадсангүй"</string>
+    <string name="dialog_failed_body" msgid="587545111677064427">"Та файлыг дараа татан авахаар үлдээх үү эсхүл хүлээлгээс хасах уу?"</string>
+    <string name="dialog_title_queued_body" msgid="6760681913815015219">"Файл хүлээлгэнд"</string>
+    <string name="dialog_queued_body" msgid="708552801635572720">"Файлыг ирээдүйд татаж авахаар хүлээлгэнд оруулсан бөгөөд одоо алга байна."</string>
+    <string name="dialog_file_missing_body" msgid="3223012612774276284">"Татаж авсан файлыг олох боломжгүй байна."</string>
+    <string name="dialog_insufficient_space_on_external" msgid="8692452156251449195">"Татан авалтыг дуусгаж чадангүй. Гадаад татан авалтын санд хангалттай зай байхгүй байна."</string>
+    <string name="dialog_insufficient_space_on_cache" msgid="6313630206163908994">"Татан авалтыг дуусгаж чадангүй. Дотоод татан авалтын санд хангалттай зай байхгүй байна."</string>
+    <string name="dialog_cannot_resume" msgid="8664509751358983543">"Татан авалт таслагдсан бөгөөд дахин үргэлжлүүлэх боломжгүй."</string>
+    <string name="dialog_file_already_exists" msgid="8308563940663449590">"Татаж авах боломжгүй. Хуулах файл байна."</string>
+    <string name="dialog_media_not_found" msgid="4468088418758018765">"Татаж авах боломжгүй. Гадаад медиа холбох боломжгүй."</string>
+    <string name="download_no_application_title" msgid="7024782176657362251">"Файлыг нээх боломжгүй"</string>
+    <string name="remove_download" msgid="6372920256257247857">"Устгах"</string>
+    <string name="delete_download" msgid="76629022653866471">"Устгах"</string>
+    <string name="keep_queued_download" msgid="5144882786014818569">"Байлгах"</string>
+    <string name="cancel_running_download" msgid="5232704030969221112">"Цуцлах"</string>
+    <string name="retry_download" msgid="7617100787922717912">"Дахин оролдох"</string>
+    <string name="deselect_all" msgid="6348198946254776764">"Бүгдийг сонгохгүй"</string>
+    <string name="select_all" msgid="634074918366265804">"Бүгдийг сонгох"</string>
+    <string name="selected_count" msgid="2101564570019753277">"<xliff:g id="TOTAL">%2$d</xliff:g>-с <xliff:g id="NUMBER">%1$d</xliff:g> нь сонгогдсон"</string>
+    <string name="download_share_dialog" msgid="3355867339806448955">"Дараахаар дамжуулан хуваалцах"</string>
+</resources>

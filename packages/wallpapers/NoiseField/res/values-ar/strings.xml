@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="wallpaper_label" msgid="5531350352180127395">"الفقاعات التفسيرية"</string>
+    <string name="wallpaper_author" msgid="2347976935955560839">"Google"</string>
+</resources>

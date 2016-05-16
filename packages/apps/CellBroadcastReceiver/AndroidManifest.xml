@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (C) 2011 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.android.cellbroadcastreceiver">
+
+    <original-package android:name="com.android.cellbroadcastreceiver" />
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_EMERGENCY_BROADCAST" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
+
+    <application android:name="CellBroadcastReceiverApp"
+            android:label="@string/app_label"
+            android:icon="@mipmap/ic_launcher_cell_broadcast">
+
+        <service android:name="CellBroadcastAlertAudio"
+                 android:exported="false" />
+
+        <service android:name="CellBroadcastAlertService"
+                 android:exported="false" />
+
+        <service android:name="CellBroadcastConfigService"
+                 android:exported="false" />
+
+        <service android:name="CellBroadcastAlertReminder"
+                 android:exported="false" />
+
+        <provider android:name="CellBroadcastContentProvider"
+                  android:authorities="cellbroadcasts"
+                  android:readPermission="android.permission.READ_CELL_BROADCASTS" />
+
+        <activity android:name="CellBroadcastListActivity"
+                  android:label="@string/app_label"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+<!-- Uncomment this category to show the Cell Broadcasts launcher icon.
+     Otherwise, set "config_cellBroadcastAppLinks" to true in a config.xml overlay
+     to add links to Cell Broadcast activities via Settings and MMS menu items.
+                <category android:name="android.intent.category.LAUNCHER" />
+ -->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.cellbroadcastreceiver.UPDATE_LIST_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- Settings opened by ListActivity menu, Settings app link or opt-out dialog. -->
+        <activity android:name="CellBroadcastSettings"
+                  android:label="@string/sms_cb_settings"
+                  android:launchMode="singleTask"
+                  android:exported="true" />
+
+        <activity android:name="CellBroadcastAlertDialog"
+                  android:theme="@android:style/Theme.Holo.Dialog"
+                  android:launchMode="singleTask"
+                  android:exported="false"
+                  android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+
+        <!-- Full-screen version of CellBroadcastAlertDialog to display alerts over lock screen. -->
+        <activity android:name="CellBroadcastAlertFullScreen"
+                  android:excludeFromRecents="true"
+                  android:theme="@style/AlertFullScreenTheme"
+                  android:launchMode="singleTask"
+                  android:exported="false"
+                  android:configChanges="orientation|keyboardHidden|keyboard|navigation" />
+
+        <!-- Container activity for CMAS opt-in/opt-out dialog. -->
+        <activity android:name="CellBroadcastOptOutActivity"
+                  android:exported="false" />
+
+        <!-- Require sender permissions to prevent SMS spoofing -->
+        <receiver android:name="PrivilegedCellBroadcastReceiver"
+            android:permission="android.permission.BROADCAST_SMS">
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_EMERGENCY_CB_RECEIVED" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_CB_RECEIVED" />
+            </intent-filter>
+
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SMS_SERVICE_CATEGORY_PROGRAM_DATA_RECEIVED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Require sender permission for querying latest area info broadcast -->
+        <receiver android:name="PrivilegedCellBroadcastReceiver"
+            android:permission="android.permission.READ_PHONE_STATE">
+            <intent-filter>
+                 <action android:name="android.cellbroadcastreceiver.GET_LATEST_CB_AREA_INFO" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="CellBroadcastReceiver">
+            <intent-filter>
+                 <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+
+            <intent-filter>
+                 <action android:name="android.intent.action.AIRPLANE_MODE" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

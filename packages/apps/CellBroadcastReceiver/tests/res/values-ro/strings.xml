@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="2102435118079140813">"Teste transmisie celulară"</string>
+    <string name="button_etws_normal_type" msgid="3852703138521119537">"Trimiteţi difuzare ETWS normală"</string>
+    <string name="button_etws_cancel_type" msgid="7194264116649371175">"Difuzaţi un mesaj de anulare ETWS"</string>
+    <string name="button_etws_test_type" msgid="6353906188028139901">"Difuzaţi un mesaj de test ETWS"</string>
+    <string name="button_cmas_pres_alert" msgid="5905111586384766558">"Trimiteţi o alertă prezidenţială CMAS"</string>
+    <string name="button_cmas_extreme_alert" msgid="6111658124447111920">"Trimiteţi o alertă extremă CMAS"</string>
+    <string name="button_cmas_severe_alert" msgid="9051731172452500819">"Trimiteţi o alertă gravă CMAS"</string>
+    <string name="button_cmas_amber_alert" msgid="4217147800913845288">"Trimiteţi o alertă CMAS AMBER"</string>
+    <string name="button_cmas_monthly_test" msgid="1609320625517248393">"Trimiteţi lunar o alertă de test CMAS"</string>
+    <string name="button_gsm_7bit_type" msgid="4757698592787955850">"Difuzaţi un mesaj de test GSM pe 7 biţi"</string>
+    <string name="button_gsm_7bit_umts_type" msgid="4377077702628367387">"Difuzaţi un mesaj de test UMTS pe 7 biţi"</string>
+    <string name="button_gsm_7bit_nopadding_type" msgid="5289528095948674862">"Difuzaţi un mesaj de dimensiune completă GSM pe 7 biţi"</string>
+    <string name="button_gsm_7bit_nopadding_umts_type" msgid="7953047238483884846">"Difuzaţi un mesaj de dimensiune completă UMTS pe 7 biţi"</string>
+    <string name="button_gsm_7bit_multipage_type" msgid="8516540964071070491">"Difuzaţi un mesaj multipagină GSM pe 7 biţi"</string>
+    <string name="button_gsm_7bit_multipage_umts_type" msgid="474883728254547100">"Difuzaţi un mesaj multipagină UMTS pe 7 biţi"</string>
+    <string name="button_gsm_7bit_with_language_type" msgid="7414138913180046493">"Trimiteţi un mesaj GSM pe 7 biţi în care să precizaţi limba"</string>
+    <string name="button_gsm_7bit_with_language_body_gsm_type" msgid="7365993929355114874">" Trimiteţi un mesaj în format GSM pe 7 biţi cu limba în corpul mesajului"</string>
+    <string name="button_gsm_7bit_with_language_body_umts_type" msgid="1201329758881885921">"Trimiteţi un mesaj UMTS pe 7 biţi în care să precizaţi limba"</string>
+    <string name="button_gsm_ucs2_type" msgid="6652864601384080678">"Difuzaţi un mesaj de test GSM UCS-2"</string>
+    <string name="button_gsm_ucs2_umts_type" msgid="2985879481785569626">"Difuzaţi un mesaj de test UMTS UCS-2"</string>
+    <string name="button_gsm_ucs2_multipage_umts_type" msgid="4557772309524939206">"Difuzaţi un mesaj multipagină UMTS UCS-2"</string>
+    <string name="button_gsm_ucs2_with_language_type" msgid="8992961254390480388">"Trimiteţi mesaj GSM UCS-2 în care să precizaţi limba"</string>
+    <string name="button_gsm_ucs2_with_language_umts_type" msgid="1080788762601688380">"Trimiteţi un mesaj UMTS UCS-2 în care să precizaţi limba"</string>
+    <string name="button_delay_broadcast" msgid="5138650276363839541">"Întârziaţi 5 secunde înaintea trimiterii"</string>
+    <string name="message_id_label" msgid="4365322663037110887">"ID-ul mesajului:"</string>
+    <string name="category_id_label" msgid="8472814003810180738">"Categorie:"</string>
+</resources>

@@ -1,0 +1,7 @@
+# Qualcomm MSM Interface (QMI) socket types
+type qmux_audio_socket, file_type;
+type qmux_bluetooth_socket, file_type;
+type qmux_gps_socket, file_type;
+type qmux_radio_socket, file_type;
+
+type audio_firmware_file, file_type;

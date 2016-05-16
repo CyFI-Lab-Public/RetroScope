@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name">Search</string>
+
+    <!-- Toast text shown when the app fails to remove an item from
+         the search history. [CHAR_LIMIT=60] -->
+    <string name="remove_from_history_failed">Couldn\'t remove item from history.</string>
+
+    <!-- Source selector -->
+    <string name="corpus_selection_heading">Search</string>
+
+    <!-- Search settings menu item -->
+    <string name="menu_settings">Search settings</string>
+
+    <!-- Title for 'system search' category of search settings -->
+    <string name="system_search_category_title">Phone</string>
+
+    <!-- Title and summary used for the option to clear search shortcuts from the system
+         search history -->
+    <string name="clear_shortcuts_summary">Clear shortcuts to recently chosen search suggestions</string>
+
+    <!-- Help menu item. Opens a web page with information about how to use Quick Search Box.
+         [CHAR LIMIT=20] -->
+    <string name="menu_help">Help</string>
+
+    <!-- Search source label for the Google search source. -->
+    <string name="google_search_label">Google</string>
+
+    <!-- This is the hint text shown in the search widget, before text is entered. -->
+    <!-- This translation MUST MATCH the string "search_hint" which is found in
+         Home/res/values/strings.xml -->
+    <string name="google_search_hint">Google Search</string>
+
+    <!-- Search settings description for the Google search source. [CHAR LIMIT=50] -->
+    <string name="google_search_description">Google Search suggestions</string>
+
+    <!-- Title for Voice Search hints bubble -->
+    <string name="voice_search_hint_title">Try saying:</string>
+
+</resources>

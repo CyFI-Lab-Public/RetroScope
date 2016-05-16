@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:androidprv="http://schemas.android.com/apk/prv/res/android"
+        package="com.android.phone"
+        coreApp="true"
+        android:sharedUserId="android.uid.phone"
+        android:sharedUserLabel="@string/phoneAppLabel"
+>
+
+    <original-package android:name="com.android.phone" />
+
+    <protected-broadcast android:name="android.intent.action.SERVICE_STATE" />
+    <protected-broadcast android:name="android.intent.action.RADIO_TECHNOLOGY" />
+    <protected-broadcast android:name="android.intent.action.EMERGENCY_CALLBACK_MODE_CHANGED" />
+    <protected-broadcast android:name="android.intent.action.SIG_STR" />
+    <protected-broadcast android:name="android.intent.action.ANY_DATA_STATE" />
+    <protected-broadcast android:name="android.intent.action.DATA_CONNECTION_FAILED" />
+    <protected-broadcast android:name="android.intent.action.SIM_STATE_CHANGED" />
+    <protected-broadcast android:name="android.intent.action.NETWORK_SET_TIME" />
+    <protected-broadcast android:name="android.intent.action.NETWORK_SET_TIMEZONE" />
+    <protected-broadcast android:name="android.intent.action.ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS" />
+    <protected-broadcast android:name="android.intent.action.ACTION_MDN_STATE_CHANGED" />
+    <protected-broadcast android:name="android.provider.Telephony.SPN_STRINGS_UPDATED" />
+    <protected-broadcast android:name="android.provider.Telephony.SIM_FULL" />
+    <protected-broadcast android:name="com.android.internal.telephony.data-restart-trysetup" />
+    <protected-broadcast android:name="com.android.internal.telephony.data-stall" />
+
+    <uses-permission android:name="android.permission.BIND_CALL_SERVICE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CALL_PRIVILEGED" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.REORDER_TASKS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.STATUS_BAR" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.SEND_RESPOND_VIA_MESSAGE" />
+    <uses-permission android:name="android.permission.SET_TIME_ZONE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+    <uses-permission android:name="android.permission.DEVICE_POWER" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_APN_SETTINGS" />
+    <uses-permission android:name="android.permission.BROADCAST_SMS"/>
+    <uses-permission android:name="android.permission.BROADCAST_WAP_PUSH"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SHUTDOWN" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.PERFORM_CDMA_PROVISIONING" />
+    <uses-permission android:name="android.permission.USE_SIP" />
+    <uses-permission android:name="android.permission.REBOOT" />
+    <uses-permission android:name="android.permission.UPDATE_LOCK" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" />
+    <uses-permission android:name="com.android.smspush.WAPPUSH_MANAGER_BIND" />
+    <uses-permission android:name="android.permission.MANAGE_USERS" />
+    <uses-permission android:name="android.permission.UPDATE_APP_OPS_STATS" />
+    <uses-permission android:name="android.permission.CONNECTIVITY_INTERNAL" />
+    <uses-permission android:name="android.permission.SET_PREFERRED_APPLICATIONS" />
+
+    <!-- This tells the activity manager to not delay any of our activity
+         start requests, even if they happen immediately after the user
+         presses home. -->
+    <uses-permission android:name="android.permission.STOP_APP_SWITCHES" />
+
+    <application android:name="PhoneApp"
+                 android:persistent="true"
+                 android:label="@string/phoneAppLabel"
+                 android:icon="@mipmap/ic_launcher_phone"
+                 android:supportsRtl="true">
+            <provider android:name="IccProvider"
+                      android:authorities="icc"
+                      android:multiprocess="true"
+                      android:exported="true"
+                      android:readPermission="android.permission.READ_CONTACTS"
+                      android:writePermission="android.permission.WRITE_CONTACTS" />
+
+        <!-- Dialer UI that only allows emergency calls -->
+        <activity android:name="EmergencyDialer"
+            android:label="@string/emergencyDialerIconLabel"
+            android:theme="@style/EmergencyDialerTheme"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.android.phone.EmergencyDialer.DIAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.android.phone.EmergencyDialer.DIAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="tel" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="ADNList" />
+
+        <activity android:name="SimContacts"
+            android:label="@string/simContacts_title"
+            android:theme="@style/SimImportTheme"
+            android:screenOrientation="portrait"
+            android:icon="@mipmap/ic_launcher_contacts">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/sim-contact" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="FdnList"
+                android:label="@string/fdnListLabel"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/sim-contact" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="OutgoingCallBroadcaster"
+                android:theme="@style/OutgoingCallBroadcasterTheme"
+                android:permission="android.permission.CALL_PHONE"
+                android:screenOrientation="nosensor"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:excludeFromRecents="true">
+            <!-- CALL action intent filters, for the various ways
+                 of initiating an outgoing call. -->
+            <intent-filter>
+                <action android:name="android.intent.action.CALL" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="tel" />
+            </intent-filter>
+            <intent-filter android:icon="@drawable/ic_launcher_sip_call">
+                <action android:name="android.intent.action.CALL" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="sip" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.CALL" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="voicemail" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.CALL" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/phone" />
+                <data android:mimeType="vnd.android.cursor.item/phone_v2" />
+                <data android:mimeType="vnd.android.cursor.item/person" />
+            </intent-filter>
+        </activity>
+
+        <activity-alias android:name="EmergencyOutgoingCallBroadcaster"
+                android:targetActivity="OutgoingCallBroadcaster"
+                android:permission="android.permission.CALL_PRIVILEGED">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.CALL_EMERGENCY" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="tel" />
+            </intent-filter>
+            <intent-filter android:icon="@drawable/ic_launcher_sip_call"
+                    android:priority="1000">
+                <action android:name="android.intent.action.CALL_EMERGENCY" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="sip" />
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.CALL_EMERGENCY" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="voicemail" />
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.CALL_EMERGENCY" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/phone" />
+                <data android:mimeType="vnd.android.cursor.item/person" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity-alias android:name="PrivilegedOutgoingCallBroadcaster"
+                android:targetActivity="OutgoingCallBroadcaster"
+                android:screenOrientation="nosensor"
+                android:permission="android.permission.CALL_PRIVILEGED">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.CALL_PRIVILEGED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="tel" />
+            </intent-filter>
+            <intent-filter android:icon="@drawable/ic_launcher_sip_call"
+                    android:priority="1000">
+                <action android:name="android.intent.action.CALL_PRIVILEGED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="sip" />
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.CALL_PRIVILEGED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="voicemail" />
+            </intent-filter>
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.CALL_PRIVILEGED" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/phone" />
+                <data android:mimeType="vnd.android.cursor.item/phone_v2" />
+                <data android:mimeType="vnd.android.cursor.item/person" />
+            </intent-filter>
+        </activity-alias>
+
+        <receiver android:name="ProcessOutgoingCallTest" android:exported="false"
+            android:enabled="false">
+            <intent-filter android:priority="1">
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Trampoline activity that handles the PERFORM_CDMA_PROVISIONING intent. -->
+        <activity android:name="InCallScreenShowActivation"
+            android:permission="android.permission.PERFORM_CDMA_PROVISIONING"
+            android:label="@string/phoneIconLabel"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="com.android.phone.PERFORM_CDMA_PROVISIONING" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- "Mobile network settings" screen, used on both
+             non-voice-capable tablets and regular phone devices. -->
+        <activity android:name="MobileNetworkSettings"
+            android:label="@string/settings_label"
+            android:theme="@style/Theme.Settings">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.DATA_ROAMING_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity-alias android:name="Settings"
+            android:targetActivity="MobileNetworkSettings" />
+
+        <!-- networks setting -->
+        <!-- service to handle network query requests sent to RIL -->
+        <service android:name="NetworkQueryService" />
+
+        <!-- clearing of missed call notifications  -->
+        <service android:name="ClearMissedCallsService" />
+
+        <activity android:name="NetworkSetting"
+                android:label="@string/networks"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:theme="@android:style/Theme.Holo.DialogWhenLarge">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.settings.NETWORK_OPERATOR_SETTINGS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="GsmUmtsOptions"
+                android:label="@string/gsm_umts_options"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="CdmaOptions"
+                android:label="@string/cdma_options"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="GsmUmtsCallOptions"
+                android:label="@string/gsm_umts_options"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="CdmaCallOptions"
+                android:label="@string/cdma_options"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="GsmUmtsCallForwardOptions"
+                android:label="@string/labelCF"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="GsmUmtsAdditionalCallOptions"
+                android:label="@string/labelGSMMore"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="CellBroadcastSms"
+            android:label="@string/cell_broadcast_sms"
+            android:theme="@android:style/Theme.Holo.DialogWhenLarge">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <!-- fdn setting -->
+        <activity android:name="FdnSetting"
+                android:label="@string/fdn"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="EnableFdnScreen"
+                android:label=""
+                android:theme="@style/SettingsLight">
+        </activity>
+
+        <!-- SIM PIN setting -->
+        <activity android:name="EnableIccPinScreen"
+                android:label="@string/enable_pin"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEVELOPMENT_PREFERENCE" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="ChangeIccPinScreen"
+                android:label="@string/change_pin"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEVELOPMENT_PREFERENCE" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="GetPin2Screen"
+                android:label="@string/get_pin2"
+                android:theme="@style/SettingsLight"
+                android:windowSoftInputMode="stateVisible">
+        </activity>
+
+        <activity android:name="EditFdnContactScreen"
+                android:theme="@style/SettingsLight"
+                android:windowSoftInputMode="stateVisible">
+        </activity>
+
+        <activity android:name="DeleteFdnContactScreen"
+                android:theme="@style/SettingsLight"
+                android:label="@string/delete_fdn_contact">
+        </activity>
+
+        <activity android:name="DataRoamingReenable" android:label="@string/android:dialog_alert_title"
+            android:theme="@android:style/Theme.Holo.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <!-- data roaming setting -->
+        <activity android:name="RoamingSetting"
+                android:label="@string/roaming"
+                android:theme="@android:style/Theme.Holo.DialogWhenLarge">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <!-- "Call settings" UI, used only on voice-capable phone devices. -->
+        <activity android:name="CallFeaturesSetting"
+                android:label="@string/call_settings"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.android.phone.CallFeaturesSetting.ADD_VOICEMAIL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- bluetooth phone service -->
+        <service android:name="BluetoothPhoneService">
+            <intent-filter>
+                <action android:name="android.bluetooth.IBluetoothHeadsetPhone" />
+            </intent-filter>
+        </service>
+
+        <!-- Broadcast Receiver that will process BOOT Complete and launch OTA -->
+        <receiver android:name="OtaStartupReceiver" android:exported="false"
+                androidprv:primaryUserOnly="true">
+            <intent-filter android:priority="100">
+                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- CDMA Emergency Callback Mode -->
+        <service android:name="EmergencyCallbackModeService">
+        </service>
+
+        <!-- service to dump telephony information -->
+        <service android:name="TelephonyDebugService" />
+
+        <activity android:name="EmergencyCallbackModeExitDialog"
+            android:excludeFromRecents="true"
+            android:label="@string/ecm_exit_dialog"
+            android:launchMode="singleTop"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            <intent-filter>
+                <action android:name="com.android.phone.action.ACTION_SHOW_ECM_EXIT_DIALOG" />
+                <action android:name="android.intent.action.ACTION_SHOW_NOTICE_ECM_BLOCK_OTHERS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="SipBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.android.phone.SIP_INCOMING_CALL" />
+                <action android:name="com.android.phone.SIP_ADD_PHONE" />
+                <action android:name="com.android.phone.SIP_REMOVE_PHONE" />
+                <action android:name="android.net.sip.SIP_SERVICE_UP" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:label="Sip Settings"
+                  android:name=".sip.SipSettings"
+                  android:theme="@style/SettingsLight"
+                  android:launchMode="singleTop"
+                  android:configChanges="orientation|screenSize|keyboardHidden"
+                  android:uiOptions="splitActionBarWhenNarrow">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.net.sip.NOTIFY" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".sip.SipEditor"
+                android:theme="@style/SettingsLight"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:uiOptions="splitActionBarWhenNarrow">
+        </activity>
+        <activity android:name=".SipCallOptionHandler"
+                android:theme="@style/SipCallOptionHandlerTheme"
+                android:screenOrientation="nosensor"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:excludeFromRecents="true">
+        </activity>
+
+        <activity android:name="RespondViaSmsManager$Settings"
+                android:label="@string/respond_via_sms_setting_title"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:theme="@style/SettingsLight">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="ErrorDialogActivity"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:excludeFromRecents="true"
+                android:launchMode="singleInstance"
+                android:theme="@style/Empty">
+        </activity>
+
+        <activity android:name="MMIDialogActivity"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:excludeFromRecents="true"
+                android:launchMode="singleInstance"
+                android:theme="@style/Empty">
+        </activity>
+
+        <activity android:name=".TextMessagePackageChooser"
+                android:label="@string/respond_via_sms_setting_title"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:theme="@style/Theme.Transparent">
+        </activity>
+
+        <activity android:name="HfaActivity"
+                android:configChanges="orientation|screenSize|keyboardHidden"
+                android:launchMode="singleInstance"
+                android:theme="@style/Empty"
+                android:exported="false">
+        </activity>
+
+        <receiver android:name="CallerInfoCacheUpdateReceiver">
+            <intent-filter>
+                <action android:name="com.android.phone.UPDATE_CALLER_INFO_CACHE" />
+            </intent-filter>
+        </receiver>
+
+        <!-- BroadcastReceiver for receiving Intents from Notification mechanism. -->
+        <receiver android:name="PhoneGlobals$NotificationBroadcastReceiver" exported="false">
+            <intent-filter>
+                <action android:name="com.android.phone.ACTION_HANG_UP_ONGOING_CALL" />
+                <action android:name="com.android.phone.ACTION_CALL_BACK_FROM_NOTIFICATION" />
+                <action android:name="com.android.phone.ACTION_SEND_SMS_FROM_NOTIFICATION" />
+            </intent-filter>
+        </receiver>
+
+        <!-- service to dump telephony information -->
+        <service android:name="HfaService" android:exported="false"/>
+
+    </application>
+</manifest>

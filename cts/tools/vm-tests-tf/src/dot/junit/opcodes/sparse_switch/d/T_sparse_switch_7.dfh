@@ -1,0 +1,276 @@
+// Processing 'out/classes_dasm/dot/junit/opcodes/sparse_switch/d/T_sparse_switch_7.dex'...
+// Opened 'out/classes_dasm/dot/junit/opcodes/sparse_switch/d/T_sparse_switch_7.dex', DEX version '035'
+// DEX file header:
+// parsed: offset 0, len 8: magic               : 'dex
+// 035'
+    64 65 78 0A 30 33 35 00 
+// parsed: offset 8, len 4: checksum            : ffcf536e
+    6E 53 CF FF 
+// parsed: offset 12, len 20: signature           : d1bd...dc70
+    D1 BD 9D 22 FC DA 04 F6 69 A9 22 1D 41 70 69 23 80 60 DC 70 
+// parsed: offset 32, len 4: file_size           : 620
+    6C 02 00 00 
+// parsed: offset 36, len 4: header_size         : 112
+    70 00 00 00 
+// parsed: offset 40, len 4: endian_tag          : 0x12345678
+    78 56 34 12 
+// parsed: offset 44, len 4: link_size           : 0
+    00 00 00 00 
+// parsed: offset 48, len 4: link_off            : 0 (0x000000)
+    00 00 00 00 
+// parsed: offset 52, len 4: map_off             : 484 (0x0001e4)
+    E4 01 00 00 
+// parsed: offset 56, len 4: string_ids_size     : 8
+    08 00 00 00 
+// parsed: offset 60, len 4: string_ids_off      : 112 (0x000070)
+    70 00 00 00 
+// parsed: offset 64, len 4: type_ids_size       : 4
+    04 00 00 00 
+// parsed: offset 68, len 4: type_ids_off        : 144 (0x000090)
+    90 00 00 00 
+// parsed: offset 72, len 4: proto_ids_size      : 2
+    02 00 00 00 
+// parsed: offset 76, len 4: proto_ids_off       : 160 (0x0000a0)
+    A0 00 00 00 
+// parsed: offset 80, len 4: field_ids_size      : 0
+    00 00 00 00 
+// parsed: offset 84, len 4: field_ids_off       : 0 (0x000000)
+    00 00 00 00 
+// parsed: offset 88, len 4: method_ids_size     : 3
+    03 00 00 00 
+// parsed: offset 92, len 4: method_ids_off      : 184 (0x0000b8)
+    B8 00 00 00 
+// parsed: offset 96, len 4: class_defs_size     : 1
+    01 00 00 00 
+// parsed: offset 100, len 4: class_defs_off      : 208 (0x0000d0)
+    D0 00 00 00 
+// parsed: offset 104, len 4: data_size           : 380
+    7C 01 00 00 
+// parsed: offset 108, len 4: data_off            : 240 (0x0000f0)
+    F0 00 00 00 
+// 
+// string_ids:
+// parsed: offset 112, len 4: [0] string_data_off: 346 (0x00015a) "<init>"
+    5A 01 00 00 
+// parsed: offset 116, len 4: [1] string_data_off: 354 (0x000162) "I"
+    62 01 00 00 
+// parsed: offset 120, len 4: [2] string_data_off: 357 (0x000165) "II"
+    65 01 00 00 
+// parsed: offset 124, len 4: [3] string_data_off: 361 (0x000169) "Ldot/junit/opcodes/sparse_switch/d/T_sparse_switch_7;"
+    69 01 00 00 
+// parsed: offset 128, len 4: [4] string_data_off: 416 (0x0001a0) "Ljava/lang/Object;"
+    A0 01 00 00 
+// parsed: offset 132, len 4: [5] string_data_off: 436 (0x0001b4) "T_sparse_switch_7.java"
+    B4 01 00 00 
+// parsed: offset 136, len 4: [6] string_data_off: 460 (0x0001cc) "V"
+    CC 01 00 00 
+// parsed: offset 140, len 4: [7] string_data_off: 463 (0x0001cf) "run"
+    CF 01 00 00 
+
+// type_ids:
+// parsed: offset 144, len 4: [0] descriptor_idx: 1 (0x000001) "I"
+    01 00 00 00 
+// parsed: offset 148, len 4: [1] descriptor_idx: 3 (0x000003) "Ldot/junit/opcodes/sparse_switch/d/T_sparse_switch_7;"
+    03 00 00 00 
+// parsed: offset 152, len 4: [2] descriptor_idx: 4 (0x000004) "Ljava/lang/Object;"
+    04 00 00 00 
+// parsed: offset 156, len 4: [3] descriptor_idx: 6 (0x000006) "V"
+    06 00 00 00 
+
+// proto_ids:
+// parsed: offset 160, len 12: [0] 
+//     shorty_idx: 2 (0x000002) "II"
+//     return_type_idx: 0 (0x000000) "I"
+//     parameters_off: 340 (0x000154)
+    02 00 00 00 00 00 00 00 54 01 00 00 
+// parsed: offset 172, len 12: [1] 
+//     shorty_idx: 6 (0x000006) "V"
+//     return_type_idx: 3 (0x000003) "V"
+//     parameters_off: 0 (0x000000)
+    06 00 00 00 03 00 00 00 00 00 00 00 
+
+// field_ids:
+
+// methods_ids:
+// parsed: offset 184, len 8: [0] class_idx: 1 (0x000001)  proto_idx: 1 (0x000001) name_idx: 0 (0x000000) "<init>"
+    01 00 01 00 00 00 00 00 
+// parsed: offset 192, len 8: [1] class_idx: 1 (0x000001)  proto_idx: 0 (0x000000) name_idx: 7 (0x000007) "run"
+    01 00 00 00 07 00 00 00 
+// parsed: offset 200, len 8: [2] class_idx: 2 (0x000002)  proto_idx: 1 (0x000001) name_idx: 0 (0x000000) "<init>"
+    02 00 01 00 00 00 00 00 
+
+// class_defs:
+// parsed: offset 208, len 32: Class [0]
+//     class_idx: 1 "Ldot/junit/opcodes/sparse_switch/d/T_sparse_switch_7;"
+//     access_flags: 0x000001 (PUBLIC)
+//     superclass_idx: 2 "Ljava/lang/Object;"
+//     interfaces_off: 0 (0x000000)
+//     source_file_idx: 5 "T_sparse_switch_7.java"
+//     annotations_off: 0 (0x000000)
+//     class_data_off: 468 (0x0001d4)
+//     static_values_off: 0 (0x000000)
+    01 00 00 00 01 00 00 00 02 00 00 00 00 00 00 00 05 00 00 00 00 00 00 00 D4 01 00 00 00 00 00 00 
+// data_section:
+// CODE_ITEM for "dot.junit.opcodes.sparse_switch.d.T_sparse_switch_7.<init>"
+    // parsed: offset 240, len 2: registers_size: 1
+        01 00 
+    // parsed: offset 242, len 2: ins_size: 1
+        01 00 
+    // parsed: offset 244, len 2: outs_size: 1
+        01 00 
+    // parsed: offset 246, len 2: tries_size: 0
+        00 00 
+    // parsed: offset 248, len 4: debug_info_off: 0 (0x000000)
+        00 00 00 00 
+    // parsed: offset 252, len 4: insns_size: 4
+        04 00 00 00 
+    // insns:
+        // parsed: offset 256, len 6: |0000: invoke-direct {v0}, Ljava/lang/Object;.<init>:()V // method@0002
+            70 10 02 00 00 00 
+        // parsed: offset 262, len 2: |0003: return-void
+            0E 00 
+    // tries: 
+    // handlers: 
+// CODE_ITEM for "dot.junit.opcodes.sparse_switch.d.T_sparse_switch_7.run"
+    // parsed: offset 264, len 2: registers_size: 5
+        05 00 
+    // parsed: offset 266, len 2: ins_size: 2
+        02 00 
+    // parsed: offset 268, len 2: outs_size: 0
+        00 00 
+    // parsed: offset 270, len 2: tries_size: 0
+        00 00 
+    // parsed: offset 272, len 4: debug_info_off: 0 (0x000000)
+        00 00 00 00 
+    // parsed: offset 276, len 4: insns_size: 30
+        1E 00 00 00 
+    // insns:
+        // parsed: offset 280, len 6: |0000: sparse-switch v4, 00000010 //  +0x00000010
+            2C 04 10 00 00 00 
+        // parsed: offset 286, len 6: |0003: const v4, #float nan // #0xffffffff int
+            14 04 FF FF FF FF 
+        // parsed: offset 292, len 2: |0006: return v4
+            0F 04 
+        // parsed: offset 294, len 6: |0007: const v4, #float 0.000000 // #0x00000002 int
+            14 04 02 00 00 00 
+        // parsed: offset 300, len 2: |000a: return v4
+            0F 04 
+        // parsed: offset 302, len 6: |000b: const v4, #float 0.000000 // #0x00000014 int
+            14 04 14 00 00 00 
+        // parsed: offset 308, len 2: |000e: return v4
+            0F 04 
+        // parsed: offset 310, len 2: |000f: nop // spacer
+            00 00 
+        // parsed: offset 312, len 28: |0010: sparse-switch-data (14 units)
+//@mod            00 02 03 00 FF FF FF FF 0A 00 00 00 0F 00 00 00 07 00 00 00 0B 00 00 00 0B 00 00 00 
+            00 02 03 00 FF FF FF FF 0A 00 00 00 0F 00 00 00 07 00 00 00 0B 00 00 00 0B 01 00 00 
+    // tries: 
+    // handlers: 
+// TYPE_LIST
+    // parsed: offset 340, len 4: size: 1
+        01 00 00 00 
+    // parsed: offset 344, len 2: type_item [0] type_idx: 0
+        00 00 
+// parsed: offset 346, len 8: TYPE_STRING_DATA_ITEM [0] "<init>"
+    06 3C 69 6E 69 74 3E 00 
+// parsed: offset 354, len 3: TYPE_STRING_DATA_ITEM [1] "I"
+    01 49 00 
+// parsed: offset 357, len 4: TYPE_STRING_DATA_ITEM [2] "II"
+    02 49 49 00 
+// parsed: offset 361, len 55: TYPE_STRING_DATA_ITEM [3] "Ldot/junit/opcodes/sparse_switch/d/T_sparse_switch_7;"
+    35 4C 64 6F 74 2F 6A 75 6E 69 74 2F 6F 70 63 6F 64 65 73 2F 73 70 61 72 73 65 5F 73 77 69 74 63 68 2F 64 2F 54 5F 73 70 61 72 73 65 5F 73 77 69 74 63 68 5F 37 3B 00 
+// parsed: offset 416, len 20: TYPE_STRING_DATA_ITEM [4] "Ljava/lang/Object;"
+    12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 4F 62 6A 65 63 74 3B 00 
+// parsed: offset 436, len 24: TYPE_STRING_DATA_ITEM [5] "T_sparse_switch_7.java"
+    16 54 5F 73 70 61 72 73 65 5F 73 77 69 74 63 68 5F 37 2E 6A 61 76 61 00 
+// parsed: offset 460, len 3: TYPE_STRING_DATA_ITEM [6] "V"
+    01 56 00 
+// parsed: offset 463, len 5: TYPE_STRING_DATA_ITEM [7] "run"
+    03 72 75 6E 00 
+// CLASS_DATA_ITEM for class [0] "Ldot/junit/opcodes/sparse_switch/d/T_sparse_switch_7;"
+    // parsed: offset 468, len 1: static_fields_size: 0
+        00 
+    // parsed: offset 469, len 1: instance_fields_size: 0
+        00 
+    // parsed: offset 470, len 1: direct_methods_size: 1
+        01 
+    // parsed: offset 471, len 1: virtual_methods_size: 1
+        01 
+    // static_fields:
+    // instance_fields:
+    // direct_methods:
+        // method [0]:
+            // parsed: offset 472, len 1: method_idx_diff: 0 (method_idx: 0 "<init>")
+                00 
+            // parsed: offset 473, len 3: access_flags: 0x010001 (PUBLIC CONSTRUCTOR)
+                81 80 04 
+            // parsed: offset 476, len 2: code_off: 240 (0x0000f0)
+                F0 01 
+    // virtual_methods:
+        // method [0]:
+            // parsed: offset 478, len 1: method_idx_diff: 1 (method_idx: 1 "run")
+                01 
+            // parsed: offset 479, len 1: access_flags: 0x000001 (PUBLIC)
+                01 
+            // parsed: offset 480, len 2: code_off: 264 (0x000108)
+                88 02 
+// parsed: offset 482, len 2: PADDING
+    00 00 
+// map_list:
+    // parsed: offset 484, len 4: size: 11
+        0B 00 00 00 
+    // parsed: offset 488, len 12: [0] type: 0x0000 TYPE_HEADER_ITEM
+    //      unused: 0
+    //      size: 1
+    //      offset: 0 (0x000000)
+        00 00 00 00 01 00 00 00 00 00 00 00 
+    // parsed: offset 500, len 12: [1] type: 0x0001 TYPE_STRING_ID_ITEM
+    //      unused: 0
+    //      size: 8
+    //      offset: 112 (0x000070)
+        01 00 00 00 08 00 00 00 70 00 00 00 
+    // parsed: offset 512, len 12: [2] type: 0x0002 TYPE_TYPE_ID_ITEM
+    //      unused: 0
+    //      size: 4
+    //      offset: 144 (0x000090)
+        02 00 00 00 04 00 00 00 90 00 00 00 
+    // parsed: offset 524, len 12: [3] type: 0x0003 TYPE_PROTO_ID_ITEM
+    //      unused: 0
+    //      size: 2
+    //      offset: 160 (0x0000a0)
+        03 00 00 00 02 00 00 00 A0 00 00 00 
+    // parsed: offset 536, len 12: [4] type: 0x0005 TYPE_METHOD_ID_ITEM
+    //      unused: 0
+    //      size: 3
+    //      offset: 184 (0x0000b8)
+        05 00 00 00 03 00 00 00 B8 00 00 00 
+    // parsed: offset 548, len 12: [5] type: 0x0006 TYPE_CLASS_DEF_ITEM
+    //      unused: 0
+    //      size: 1
+    //      offset: 208 (0x0000d0)
+        06 00 00 00 01 00 00 00 D0 00 00 00 
+    // parsed: offset 560, len 12: [6] type: 0x2001 TYPE_CODE_ITEM
+    //      unused: 0
+    //      size: 2
+    //      offset: 240 (0x0000f0)
+        01 20 00 00 02 00 00 00 F0 00 00 00 
+    // parsed: offset 572, len 12: [7] type: 0x1001 TYPE_TYPE_LIST
+    //      unused: 0
+    //      size: 1
+    //      offset: 340 (0x000154)
+        01 10 00 00 01 00 00 00 54 01 00 00 
+    // parsed: offset 584, len 12: [8] type: 0x2002 TYPE_STRING_DATA_ITEM
+    //      unused: 0
+    //      size: 8
+    //      offset: 346 (0x00015a)
+        02 20 00 00 08 00 00 00 5A 01 00 00 
+    // parsed: offset 596, len 12: [9] type: 0x2000 TYPE_CLASS_DATA_ITEM
+    //      unused: 0
+    //      size: 1
+    //      offset: 468 (0x0001d4)
+        00 20 00 00 01 00 00 00 D4 01 00 00 
+    // parsed: offset 608, len 12: [10] type: 0x1000 TYPE_MAP_LIST
+    //      unused: 0
+    //      size: 1
+    //      offset: 484 (0x0001e4)
+        00 10 00 00 01 00 00 00 E4 01 00 00 

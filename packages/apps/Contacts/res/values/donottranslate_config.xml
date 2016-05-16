@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2009, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<resources>
+
+    <!-- Flag indicating whether to show images in browse list -->
+    <bool name="config_browse_list_show_images">true</bool>
+
+    <!-- Flag indicating whether to show images in browse list -->
+    <bool name="config_browse_list_reverse_images">true</bool>
+
+    <!-- If true, phonetic name is included in the contact editor by default -->
+    <bool name="config_editor_include_phonetic_name">false</bool>
+
+    <!-- If true, Contacts uses two panes: List and Detail. If false, Details are
+         shown in their own screens. This flag must be in sync with the layout definitions. -->
+    <bool name="config_use_two_panes">false</bool>
+
+    <!--  If true, Contacts uses two panes in the favorites view, one for starred and one for
+          frequently contacted.  If false, only one list is shown with starred on top and frequently
+          contacted listed below. Note: This should not be true if config_use_two_panes is
+          false. -->
+    <bool name="config_use_two_panes_in_favorites">false</bool>
+
+    <!-- If true, the "home" icon on the action bar will be shown. -->
+    <bool name="show_home_icon">false</bool>
+
+    <!--
+      If true, the "view updates from group" button in the action bar will be
+      shown. Otherwise it will be part of the content on the group detail page.
+    -->
+    <bool name="config_show_group_action_in_action_bar">false</bool>
+
+    <!-- Width of a tab in the tab carousel as a percentage of the current screen width on the
+         contact detail page -->
+    <item name="tab_width_screen_width_percentage" type="fraction">75%</item>
+
+    <!-- Height of the tab carousel as a percentage of the current screen width on the
+         contact detail page -->
+    <item name="tab_height_screen_width_percentage" type="fraction">50%</item>
+
+    <!-- Help URL pointing to main TOC for People. This is intentionally empty because
+         the overlay will fill this in during build time. -->
+    <string name="help_url_people_main"></string>
+
+    <!-- Help URL pointing to adding contacts in People. This is intentionally empty because
+         the overlay will fill this in during build time. -->
+    <string name="help_url_people_add"></string>
+
+    <!-- Help URL pointing to editing contacts in People. This is intentionally empty because
+         the overlay will fill this in during build time. -->
+    <string name="help_url_people_edit"></string>
+</resources>

@@ -1,0 +1,5 @@
+<!-- Copyright 2013, Google Inc. -->
+<resources>
+    <!-- Number of menu items to display in the ActionBar -->
+    <integer name="actionbar_max_items">4</integer>
+</resources>

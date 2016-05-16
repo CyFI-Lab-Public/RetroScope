@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<case name="test_io" version="1.0" description="Test Input / Output">
+	<setup> <!-- 1 setup -->
+		<!-- prepare sound source id: to be used in output, sine 1000Hz, 1000ms long -->
+		<sound id="sound1" type="sin:10000:1000:1000" preload="1" />
+	</setup>
+
+	<action> <!-- 1 action -->
+		<!--  equivalent of for loop. all children will be completed before moving to the next 
+		      stage.repeat up to 100 times unless stopped by some condition -->
+		<sequential repeat="1" index="i">
+			<output device="host" id="sound1" gain="100" sync="start"/>
+			<output device="DUT" id="sound1" gain="100" sync="start"/>
+			<input device="host" id="host1" gain="100" time="500" sync="start"/>
+			<input device="DUT" id="device1" gain="100" time="500" sync="start"/>
+		</sequential>
+		<sequential repeat="1" index="i2">
+		    <process method="builtin:rms_mva" input="id:host1,consti:0,consti:0" output="val:rms_host" />
+		    <process method="builtin:rms_mva" input="id:device1,consti:0,consti:20000" output="val:rms_device" />
+		</sequential>
+	</action>
+	<save  file="host1,device1" report="rms_.*"/>
+</case>

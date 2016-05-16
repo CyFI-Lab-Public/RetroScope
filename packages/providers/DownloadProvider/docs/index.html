@@ -1,0 +1,1206 @@
+<html>
+
+<head>
+  <title>Download Provider</title>
+</head>
+<body>
+<a name="PageTop"></a>
+<div>
+ <h1>Download Provider</h1>
+<p />
+<h2><a name="_Contents"> </a>  Contents </h2>
+<p />
+<p />
+<ul>
+<li> <a href="#High_level_requirements">High-level requirements</a>
+<ul>
+<li> <a href="#Requirements_for_Android">Requirements for Android</a>
+</li>
+<li> <a href="#Requirements_for_Cupcake">Requirements for Cupcake</a>
+</li>
+<li> <a href="#Requirements_for_Donut">Requirements for Donut</a>
+</li>
+</ul>
+</li>
+<li> <a href="#Technology_Evaluation">Technology Evaluation</a>
+<ul>
+<li> <a href="#Possible_scope_for_Cupcake">Possible scope for Cupcake</a>
+</li>
+<li> <a href="#Reducing_the_number_of_classes">Reducing the number of classes</a>
+</li>
+<li> <a href="#Reducing_the_list_of_visible_col">Reducing the list of visible columns</a>
+</li>
+<li> <a href="#Hiding_the_URI_column">Hiding the URI column</a>
+</li>
+<li> <a href="#Handling_redirects">Handling redirects</a>
+</li>
+<li> <a href="#ContentProvider_for_download_UI">ContentProvider for download UI</a>
+</li>
+<li> <a href="#Getting_rid_of_OTHER_UID">Getting rid of OTHER_UID</a>
+</li>
+<li> <a href="#Only_using_SDK_APIs_">Only using SDK APIs.</a>
+</li>
+</ul>
+</li>
+<li> <a href="#Schedule">Schedule</a>
+</li>
+<li> <a href="#Detailed_Requirements">Detailed Requirements</a>
+</li>
+<li> <a href="#System_Architecture">System Architecture</a>
+<ul>
+<li> <a href="#Internal_Product_Dependencies">Internal Product Dependencies</a>
+</li>
+</ul>
+</li>
+<li> <a href="#Interface_Documentation">Interface Documentation</a>
+<ul>
+<li> <a href="#Permissions">Permissions</a>
+</li>
+<li> <a href="#Content_Provider">Content Provider</a>
+<ul>
+<li> <a href="#URIs">URIs</a>
+</li>
+<li> <a href="#Columns">Columns</a>
+</li>
+<li> <a href="#Destination_Values">Destination Values</a>
+</li>
+<li> <a href="#Visibility_Values">Visibility Values</a>
+</li>
+<li> <a href="#Control_Values">Control Values</a>
+</li>
+<li> <a href="#Status_Values">Status Values</a>
+</li>
+<li> <a href="#Status_Helper_Functions">Status Helper Functions</a>
+</li>
+</ul>
+</li>
+<li> <a href="#Intents">Intents</a>
+</li>
+<li> <a href="#Differences_between_1_0_and_Cupc">Differences between 1.0 and Cupcake</a>
+<ul>
+<li> <a href="#Writing_code_that_works_on_both_">Writing code that works on both the 1.0 and Cupcake versions of the download manager.</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li> <a href="#Functional_Specification">Functional Specification</a>
+<ul>
+<li> <a href="#Release_notes_for_Cupcake">Release notes for Cupcake</a>
+</li>
+</ul>
+</li>
+<li> <a href="#Product_Architecture">Product Architecture</a>
+</li>
+<li> <a href="#Implementation_Documentation">Implementation Documentation</a>
+<ul>
+<li> <a href="#Database_formats">Database formats</a>
+</li>
+</ul>
+</li>
+<li> <a href="#Future_Directions">Future Directions</a>
+<ul>
+<li> <a href="#API">API</a>
+</li>
+<li> <a href="#HTTP_Handling">HTTP Handling</a>
+</li>
+<li> <a href="#File_names">File names</a>
+</li>
+<li> <a href="#UI">UI</a>
+</li>
+<li> <a href="#Handling_of_specific_MIME_types">Handling of specific MIME types</a>
+</li>
+<li> <a href="#Management_of_downloads_based_on">Management of downloads based on environment</a>
+</li>
+<li> <a href="#Management_of_simultaneous_downl">Management of simultaneous downloads</a>
+</li>
+<li> <a href="#Minor_functional_changes_edge_ca">Minor functional changes, edge cases</a>
+</li>
+<li> <a href="#Architecture_and_Implementation">Architecture and Implementation</a>
+</li>
+<li> <a href="#Code_style_refactoring">Code style, refactoring</a>
+</li>
+<li> <a href="#Browser_changes">Browser changes</a>
+</li>
+</ul>
+</li>
+</ul>
+<p />
+<hr />
+<p />
+<h2><a name="High_level_requirements"> </a> High-level requirements </h2>
+<!--_>small<High-level description of the major requirements, features and goals of the product/feature.>/small<_-->
+<p />
+<h3><a name="Requirements_for_Android"> </a> Requirements for Android </h3>
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Req# </th><th > Description </th><th > Detailed Requirements </th><th > Status </th></tr>
+<tr><td > DLMGR_A_1 </td><td > The Download Manager MUST satisfy the basic download needs of OTA Updates. </td><td > &nbsp; </td><td > <b>YES</b> done in 1.0 </td></tr>
+<tr><td > DLMGR_A_2 </td><td > The Download Manager MUST satisfy the basic download needs of Market. </td><td > &nbsp; </td><td > <b>YES</b> done in 1.0 </td></tr>
+<tr><td > DLMGR_A_3 </td><td > The Download Manager MUST satisfy the basic download needs of Gmail. </td><td > &nbsp; </td><td > <b>YES</b> done in 1.0 </td></tr>
+<tr><td > DLMGR_A_4 </td><td > The Download Manager MUST satisfy the basic download needs of the Browser. </td><td > &nbsp; </td><td > <b>YES</b> done in 1.0 </td></tr>
+<tr><td > DLMGR_A_5 </td><td > Downloads MUST happen and continue in the background, independently of the application in front. </td><td > &nbsp; </td><td > <b>YES</b> done in 1.0 </td></tr>
+<tr><td > DLMGR_A_6 </td><td > Downloads MUST be reliable even on unreliable network connections, within the capabilities of the underlying protocol and of the server. </td><td > &nbsp; </td><td > <b>YES</b> done in 1.0 </td></tr>
+<tr><td > DLMGR_A_7 </td><td > User-accessible files MUST be stored on the external storage card, and only files that are explicitly supported by an installed application must be downloaded. </td><td > &nbsp; </td><td > <b>YES</b> done in 1.0 </td></tr>
+<tr><td > DLMGR_A_8 </td><td > OMA downloads SHOULD be supported. </td><td > &nbsp; </td><td > <b>NO</b> deferred beyond Cupcake (not enough time) </td></tr>
+<tr><td > DLMGR_A_9 </td><td > The Download Manager SHOULD only download when using high-speed (3G/wifi) links, or only when not roaming (if that can be detected). </td><td > &nbsp; </td><td > <b>NO</b> deferred beyond Cupcake (not enough time) </td></tr>
+<tr><td > DLMGR_A_10 </td><td > Downloads SHOULD be user-controllable (if allowed by the initiating application), including pause, resume, and restart of failed downloads. </td><td > 4001 </td><td > <b>NO</b> deferred beyond Cupcake (not enough time, need precise specifications) </td></tr>
+</table>
+<p />
+<h3><a name="Requirements_for_Cupcake"> </a> Requirements for Cupcake </h3>
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Req# </th><th > Description </th><th > Detailed Requirements </th><th > Status </th></tr>
+<tr><td > DLMGR_C_1 </td><td > The Download Manager SHOULD resume downloads where the socket got cleanly closed while the download was incomplete (common behavior on proxies and Google servers) </td><td > 2005 </td><td > <b>YES</b> done in Cupcake </td></tr>
+<tr><td > DLMGR_C_2 </td><td > The Download Manager SHOULD retry/resume downloads instead of aborting when the server returns a HTTP code 503 </td><td > 2006 </td><td > <b>YES</b> done in Cupcake </td></tr>
+<tr><td > DLMGR_C_3 </td><td > The Download Manager SHOULD randomize the retry delay </td><td > 2007 </td><td > <b>YES</b> done in Cupcake </td></tr>
+<tr><td > DLMGR_C_4 </td><td > The Download Manager SHOULD use the retry-after header (delta-seconds) for 503 responses </td><td > 2008 </td><td > <b>YES</b> done in Cupcake </td></tr>
+<tr><td > DLMGR_C_5 </td><td > The Download Manager MAY hide columns that aren't strictly necessary </td><td > 1010 </td><td > <b>YES</b> done in Cupcake </td></tr>
+<tr><td > DLMGR_C_6 </td><td > The Download Manager SHOULD allow the initiating app to pause an ongoing download </td><td > 1011 </td><td > <b>YES</b> done in Cupcake </td></tr>
+<tr><td > DLMGR_C_7 </td><td > The Download Manager SHOULD not display multiple notification icons for completed downloads. </td><td > 4002 </td><td > <b>NO</b> deferred beyond Cupcake (no precise specifications, need framework support) </td></tr>
+<tr><td > DLMGR_C_8 </td><td > The Download Manager SHOULD delete old files from /cache </td><td > 3006 </td><td > <b>NO</b> deferred beyond Cupcake (no precise specifications) </td></tr>
+<tr><td > DLMGR_C_9 </td><td > The Download Manager SHOULD handle redirects </td><td > 2009 </td><td > <b>YES</b> done in Cupcake </td></tr>
+</table>
+<p />
+<h3><a name="Requirements_for_Donut"> </a> Requirements for Donut </h3>
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Req# </th><th > Description </th><th > Detailed Requirements </th><th > Status </th></tr>
+</table>
+<p />
+<h2><a name="Technology_Evaluation"> </a> Technology Evaluation </h2>
+<!--_>small<Initial Engineering evaluation based on the Statement of Requirements.>/small<_-->
+<p />
+<b>ALSO</b> See also <a href="#Future_Directions">future directions</a> for possible additional technical changes.
+<p />
+<h3><a name="Possible_scope_for_Cupcake"> </a> Possible scope for Cupcake </h3>
+<p />
+Because there is no testing environment in place in the 1.0 code, and because the schedule between
+1.0 and Cupcake doesn't leave enough time to develop a testing environment solid enough to be able
+to test the database upgrades from 1.0 database scheme to a new scheme, any work done in Cupcake will
+have to work within the existing 1.0 database scheme.
+<p />
+<h3><a name="Reducing_the_number_of_classes"> </a> Reducing the number of classes </h3>
+<p />
+Each class in the system has a measurable RAM cost (because of the associated Class objects),
+and therefore reducing the number of classes when possible or relevant can reduce the memory
+requirements. That being said, classes that extend system classes and are necessary for the
+operation of the download manager can't be removed.
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Class </th><th > Comments </th></tr>
+<tr><td > <code>com.android.providers.downloads.Constants</code> </td><td > Only contains constants, can be merged into another class. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadFileInfo</code> </td><td > Should be merged with <code>DownloadInfo</code>. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadInfo</code> </td><td > Once we only store information in RAM about downloads that are explicitly active, can be merged with <code>DownloadThread</code>. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadNotification</code> </td><td > Looks like it could be merged with <code>DownloadProvider</code> or <code>DownloadService</code>. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadNotification.NotificationItem</code> </td><td > Can probably be eliminated by using queries intelligently. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadProvider</code> </td><td > Extends <code>ContentProvider</code>, can't be eliminated. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadProvider.DatabaseHelper</code> </td><td > Can probably be eliminated by re-implementing by hand the logic of <code>SQLiteOpenHelper</code>. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadProvider.ReadOnlyCursorWrapper</code> </td><td > Can be eliminated once <code>Cursor</code> is read-only system-wide. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadReceiver</code> </td><td > Extends <code>BroadcastReceiver</code>, can't be eliminated. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadService</code> </td><td > Extends <code>Service</code>, unlikely that this can be eliminated. TBD. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadService.DownloadManagerContentObserver</code> </td><td > Extends <code>ContentObserver</code>, can be eliminated if the download manager can be re-architected to not depend on <code>ContentObserver</code> any more. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadService.MediaScannerConnection</code> </td><td > Can probably be merged into another class. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadService.UpdateThread</code> </td><td > Can probably be made to implement <code>Runnable</code> instead and merged into another class, can be eliminated if the download manager can be re-architected to not depend on <code>ContentObserver</code> any more. </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadThread</code> </td><td > Can probably be made to implement <code>Runnable</code> instead. Unclear whether this can be eliminated as we will probably need one object that represents an ongoing download (unless the entire state can be stored on the stack with primitive types, which is unlikely). </td></tr>
+<tr><td > <code>com.android.providers.downloads.Helpers</code> </td><td > Can't be instantiated, can be merged into another class. </td></tr>
+<tr><td > <code>com.android.providers.downloads.Helpers.Lexer</code> </td><td > Keeps state about an ongoing lex, can probably be merged into another class by making the lexer <code>synchronized</code>, since the operation is short-lived. </td></tr>
+</table>
+<p />
+<h3><a name="Reducing_the_list_of_visible_col"> </a> Reducing the list of visible columns </h3>
+<p />
+Security in the download provider is primarily enforced with two separate mechanisms:
+<p />
+<ul>
+<li> Column restrictions, such that only a small number of the download provider's columns can be read or queried by applications.
+</li>
+<li> UID restrictions, such that only the application that initiated a download can access information about that download.
+</li>
+</ul>
+<p />
+The first mechanism is expected to be fairly robust (the implementation is quite simple, based on projection maps, which are highly
+structured), but the second one relies on arbitrary strings (URIs and SQL fragments) passed by applications and is therefore at a
+higher risk of being compromised. Therefore, sensitive information stored in unrestricted columns (for which the first mechanism
+doesn't apply) is at a greater risk than other information.
+<p />
+Here's the list of columns that can currently be read/queried, with comments:
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Column </th><th > Notes </th></tr>
+<tr><td > <code>_ID</code> </td><td > Needs to be visible so that the app can uniquely identify downloads. No security concern: those numbers are sequential and aren't hard to guess. </td></tr>
+<tr><td > <code>_DATA</code> </td><td > Probably should not be visible to applications. <b>WARNING</b> Security concern: This holds filenames, including those of private files. While file permissions are supposed to kick in and protect the files, hiding private filenames deeper in would probably be a reasonable idea. </td></tr>
+<tr><td > <code>MIMETYPE</code> </td><td > Needs to be visible so that app can display the icon matching the mime type.  Intended to be visible by 3rd-party download UIs. <b>TODO</b> Security TBD before we implement support for 3rd-party UIs. </td></tr>
+<tr><td > <code>VISIBILITY</code> </td><td > Needs to be visible in case an app has both visible and invisible downloads. No obvious security concern. </td></tr>
+<tr><td > <code>DESTINATION</code> </td><td > Needs to be visible in case an app has multiple destinations and wants to distinguish between them. Also used internally by the download manager. No obvious security concern. </td></tr>
+<tr><td > <code>STATUS</code> </td><td > Needs to be visible (1004). No obvious security concern. </td></tr>
+<tr><td > <code>LAST_MODIFICATION</code> </td><td > Needs to be visible, e.g. so that apps can sort downloads by date of last activity, or discard old downloads. No obvious security concern. </td></tr>
+<tr><td > <code>NOTIFICATION_PACKAGE</code> </td><td > Allows individual apps running under shared UIDs to identify their own downloads. No security concern: can be queried through package manager. </td></tr>
+<tr><td > <code>NOTIFICATION_CLASS</code> </td><td > See <code>NOTIFICATION_PACKAGE</code>. </td></tr>
+<tr><td > <code>TOTAL_BYTES</code> </td><td > Needs to be visible so that the app can display a progress bar. No obvious security concern. Intended to be visible by 3rd-party download UIs. </td></tr>
+<tr><td > <code>CURRENT_BYTES</code> </td><td > See <code>TOTAL_BYTES</code>. </td></tr>
+<tr><td > <code>TITLE</code> </td><td > Intended to be visible by 3rd-party download UIs. <b>TODO</b> Security and Privacy TBD before we implement support for 3rd-party UIs. </td></tr>
+<tr><td > <code>DESCRIPTION</code> </td><td > See <code>TITLE</code>. </td></tr>
+</table>
+<p />
+<h3><a name="Hiding_the_URI_column"> </a> Hiding the URI column </h3>
+<p />
+The <code>URI</code> column is visible to the initiating application, which is a mild security risk. It should be hidden, but the OTA update mechanism relies on it to check duplicate downloads and to display the download that's currently ongoing in the settings app. If another string column was exposed to the initiating applications, the OTA update mechanism could use that one, and <code>URI</code> could then be hidden. For Cupcake, without changing the database schema, the <code>ENTITY</code> column could be re-used as it's currently unused.
+<p />
+<h3><a name="Handling_redirects"> </a> Handling redirects </h3>
+<p />
+There are two important aspects to handle redirects:
+<p />
+<ul>
+<li> Storing the intermediate URIs in the provider.
+</li>
+<li> Protecting against redirect loops.
+</li>
+</ul>
+<p />
+If the <code>URI</code> column gets hidden, it could be used to store the intermediate URIs. After 1.0 the only available integer columns were <code>METHOD</code> and <code>CONTROL</code>. <code>CONTROL</code> was re-exposed to applications and can't be used. <code>METHOD</code> is slated to be re-used for 503 retry-after delays. It could be split into two halves, one for retry-after and one for the redirect count. It would make more sense to count the redirect loop with <code>FAILED_CONNECTIONS</code>, but since there's already quite some code using it it'd take a bit more effort. Ideally handling of redirects would be delayed until a future release, with a cleanup of the database schema (going along with the cleanup of the handling of filenames).
+<p />
+Because of the pattern used to read/write <code>DownloadInfo</code> and <code>DownloadProvider</code>, it's impractical to store multiple small integers into a large one. Therefore, since there are no integer columns left in the database, redirects will have to wait beyond Cupcake.
+<p />
+<h3><a name="ContentProvider_for_download_UI"> </a> ContentProvider for download UI </h3>
+<p />
+In order to allow a UI that can "see" all the relevant downloads, there'll need to be a separate URI (or set of URIs) in the content provider: trying to use the exact same URIs for regular download control and for UI purposes (distinguishing them based on the permissions of the caller) will break down if a same app (or actually a same UID) tries to do both. It'll also break down if the system process tries to do regular download activities, since it has all permissions.
+<p />
+Beyond that, there's little technical challenge: there are already mechanisms in place to restrict the list of columns that can be inserted, queried and updated (inserting of course makes no sense through the UI channel), they just need to be duplicated for the case of the UI. The download provider also knows how to check the permissions of its caller, there isn't anything new here.
+<p />
+<h3><a name="Getting_rid_of_OTHER_UID"> </a> Getting rid of OTHER_UID </h3>
+<p />
+Right now <code>OTHER_UID</code> is used by checkin/update to allow the settings app to display the name of an ongoing OTA update, and by Market to allow the system to install the new apks. It is however a dangerous feature, at least because it touches a part of the code that is critical to the download manager security (separation of applications).
+<p />
+Getting rid of <code>OTHER_UID</code> would be beneficial for the download manager, but the existing functionality has to be worked around. At this point, the idea that I consider the most likely would be to have checkin and market implement =ContentProvider= wrappers around their downloads, and expose those content providers to whichever app they want, with whichever security mechanism they wish to have.
+<p />
+<h3><a name="Only_using_SDK_APIs_"> </a> Only using SDK APIs. </h3>
+<p />
+It'd be good if the download manager could be built against the SDK as much as possible.
+<p />
+Here's the list of APIs as of Nov 5 2008 that aren't in the current public API but that are used by the download manager:
+<p />
+<pre>
+com.google.android.collect.Lists
+android.drm.mobile1.DrmRawContent
+android.media.IMediaScannerService
+android.net.http.AndroidHttpClient
+android.os.FileUtils
+android.provider.DrmStore
+</pre>
+<p />
+<!-- ---++ Sales Validation-->
+<!--_>small<Whether there's a market for the product/feature.>/small<_-->
+<p />
+<!--The 1.0 "must" features are all mandatory in all versions of Android.-->
+<p />
+<!-- ---++ Business Case-->
+<!--_>small<Whether the high-level evaluations (technical and sales) done so far justify further investment.>/small<_-->
+<p />
+<!--There are enough common requirements between the various applications that need to perform reliable background downloads that implementing a centralized download manager is more cost-effective than having each application implement their own subset of the overall feature set.-->
+<p />
+<h2><a name="Schedule"> </a> Schedule </h2>
+<p />
+<!--_>small<The relevant milestones for this project.>/small<_-->
+<p />
+<ul>
+<li> No future milestones currently defined
+</li>
+</ul>
+<p />
+<h2><a name="Detailed_Requirements"> </a> Detailed Requirements </h2>
+<!--_>small<Detailed lists of all requirements.>/small<_-->
+<p />
+<!--$S$ _Do not change requirement numbers, do not delete requirements (mark them obsolete if necessary), so that the numbers remain unique over time_-->
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Req# </th><th > History </th><th > Status </th><th > Feature </th><th > Description </th><th > Notes </th></tr>
+<tr><td > <em>1xxx</em> </td><td > <em>N/A</em> </td><td > &nbsp; </td><td > <em>API</em> </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > 1001 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Download Manager API </td><td > The download manager provides an API that allows applications to initiate downloads. </td><td > &nbsp; </td></tr>
+<tr><td > 1002 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Cookies </td><td > The download manager API allows applications to pass cookies to the download manager. </td><td > &nbsp; </td></tr>
+<tr><td > 1003 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Security </td><td > The download manager provides a mechanism that prevents arbitrary applications from accessing meta-data about current and past downloads. </td><td > In 1.0, known holes between apps </td></tr>
+<tr><td > 1004 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Status to Initiator </td><td > The download manager allows the application initiating a download to query the status of that download. </td><td > &nbsp; </td></tr>
+<tr><td > 1005 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Cancel by Initiator </td><td > The download manager allows the application initiating a download to cancel that download. </td><td > &nbsp; </td></tr>
+<tr><td > 1006 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Notify Initiator </td><td > The download manager notifies the application initiating a download when the download completes (with success or failure) </td><td > &nbsp; </td></tr>
+<tr><td > 1007 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Fire and Forget </td><td > The download manager does not rely on the initiating application when saving the file to a shared filesystem area </td><td > &nbsp; </td></tr>
+<tr><td > 1008 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Short User-Readable Description </td><td > The download manager allows the initiating application to optionally provide a user-readable short description of the download </td><td > &nbsp; </td></tr>
+<tr><td > 1009 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Long User-Readable Description </td><td > The download manager allows the initiating application to optionally provide a user-readable full description of the download </td><td > &nbsp; </td></tr>
+<tr><td > 1010 </td><td > Cupcake <b>YES</b> </td><td > Cupcake P3 <b>YES</b>  </td><td > Restrict column access </td><td > The download provider doesn't allow access to columns that aren't strictly necessary. </td><td > &nbsp; </td></tr>
+<tr><td > 1011 </td><td > Cupcake <b>YES</b> </td><td > Cupcake P2 <b>YES</b>  </td><td > Pause downloads </td><td > The download provider allows the application initiating a download to pause that download. </td><td > &nbsp; </td></tr>
+<tr><td > <em>2xxx</em> </td><td > <em>N/A</em> </td><td > &nbsp; </td><td > <em>HTTP</em> </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > 2001 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > HTTP Support </td><td > The download manager supports all the features of HTTP 1.1 (RFC 2616) that are relevant to file downloads. </td><td > Codes 3xx weren't considered relevant when those requirements were written </td></tr>
+<tr><td > 2002 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Resume Downloads </td><td > The download manager resumes downloads that get interrupted. </td><td > &nbsp; </td></tr>
+<tr><td > 2003 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Flaky Downloads </td><td > The download manager has mechanism that prevent excessive retries of downloads that consistently fail or get interrupted. </td><td > &nbsp; </td></tr>
+<tr><td > 2004 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Resume after Reboot </td><td > The download manager resumes downloads across device reboots. </td><td > &nbsp; </td></tr>
+<tr><td > 2005 </td><td > Cupcake <b>YES</b> </td><td > Cupcake P2 <b>YES</b>  </td><td > Resume after socket closed </td><td > The download manager resumes incomplete downloads after the socket gets cleanly closed </td><td > This is necessary in order to reliably download through GFEs, though it pushes us further away from being able to download from servers that don't implement pipelining. </td></tr>
+<tr><td > 2006 </td><td > Cupcake <b>YES</b> </td><td > Cupcake P2 <b>YES</b>  </td><td > Resume after 503 </td><td > The download manager resumes or retries downloads when the server returns an HTTP code 503 </td><td > &nbsp; </td></tr>
+<tr><td > 2007 </td><td > Cupcake <b>YES</b> </td><td > Cupcake P2 <b>YES</b>  </td><td > Random retry delay </td><td > The download manager uses partial randomness when retrying downloads on an exponential backoff pattern. </td><td > &nbsp; </td></tr>
+<tr><td > 2008 </td><td > Cupcake <b>YES</b> </td><td > Cupcake P2 <b>YES</b>  </td><td > Retry-after delta-seconds </td><td > The download manager uses the retry-after header in a 503 response to decide when to retry the request </td><td > Handling of absolute dates will be covered by a separate requirement. </td></tr>
+<tr><td > 2009 </td><td > Cupcake <b>YES</b> </td><td > Cupcake P2 <b>YES</b>  </td><td > Redirects </td><td > The download manager handles common redirects. </td><td > &nbsp; </td></tr>
+<tr><td > <em>25xx</em> </td><td > <em>N/A</em> </td><td > &nbsp; </td><td > <em>HTTP/Conditions</em> </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <em>3xxx</em> </td><td > <em>N/A</em> </td><td > &nbsp; </td><td > <em>Storage</em> </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > 3001 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > File Storage </td><td > The download manager stores the results of downloads in persistent storage. </td><td > &nbsp; </td></tr>
+<tr><td > 3002 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Max File Size </td><td > The download manager is able to handle large files (order of magnitude: 50MB) </td><td > &nbsp; </td></tr>
+<tr><td > 3003 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Destination File Permissions </td><td > The download manager restricts access to the internal storage to applications with the appropriate permissions </td><td > &nbsp; </td></tr>
+<tr><td > 3004 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > Initiator File Access </td><td > The download manager allows the initiating application to access the destination file </td><td > &nbsp; </td></tr>
+<tr><td > 3005 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > File Types </td><td > The download manager does not save files that can't be displayed by any currently installed application </td><td > &nbsp; </td></tr>
+<tr><td > 3006 </td><td > Cupcake <b>NO</b> </td><td > Cupcake P3 <b>NO</b>  </td><td > Old Files in /cache </td><td > The download manager deletes old files in /cache </td><td > &nbsp; </td></tr>
+<tr><td > <em>35xx</em> </td><td > <em>N/A</em> </td><td > &nbsp; </td><td > <em>Storage/Filename</em> </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <em>4xxx</em> </td><td > <em>N/A</em> </td><td > &nbsp; </td><td > <em>UI</em> </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > 4001 </td><td > 1.0 <b>NO</b> </td><td > &nbsp; </td><td > Download Manager UI </td><td > The download manager provides a UI that lets user get information about current downloads and control them. </td><td > Didn't get spec on time to be able to even consider it. </td></tr>
+<tr><td > 4002 </td><td > Cupcake <b>NO</b> </td><td > Cupcake P2 <b>NO</b>  </td><td > Single Notification Icon </td><td > The download manager displays a single icon in the notification bar regardless of the number of ongoing and completed downloads. </td><td > No spec in Cupcake timeframe. </td></tr>
+<tr><td > <em>5xxx</em> </td><td > <em>N/A</em> </td><td > &nbsp; </td><td > <em>MIME</em> </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <em>52xx</em> </td><td > <em>N/A</em> </td><td > &nbsp; </td><td > <em>MIME/DRM</em> </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > 5201 </td><td > 1.0 <b>YES</b> </td><td > &nbsp; </td><td > DRM </td><td > The download manager respects the DRM information it receives with the responses </td><td > &nbsp; </td></tr>
+<tr><td > <em>54xx</em> </td><td > <em>N/A</em> </td><td > &nbsp; </td><td > <em>MIME/OMA</em> </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <em>60xx</em> </td><td > <em>N/A</em> </td><td > &nbsp; </td><td > <em>Misc</em> </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <em>65xx</em> </td><td > <em>N/A</em> </td><td > &nbsp; </td><td > <em>Misc/Browser</em> </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+</table>
+<p />
+<h2><a name="System_Architecture"> </a> System Architecture </h2>
+<!--_>small<How the product/feature fits with outside entities in the big picture.>/small<_-->
+<p />
+<pre>
++----------------------+    +--------------------------------------+    +-------------+
+|                      |    |                                      |    |             |
+|   Download Manager   |    |  Browser / Gmail / Market / Updater  |    |  Viewer App |
+|                      |    |                                      |    |             |
++----------------------+    +--------------------------------------+    +-------------+
+    ^    |    ^                                             ^                ^
+    |    |    |                                             |                |
+    |    |    |                                             |                |
+    |    |    |      +---------------------------+          |                |
+    |    |    |      |                           |          |                |
+    |    |    |      |                           |          |                |
+    |    |    +-------- - - - - - - - - - - - - ------------+                |
+    |    |           |                           |                           |
+    |    |           |                           |                           |
+    |    +------------- - - - - - - - - - - - - -----------------------------+
+    |                |                           |
+    |                |                           |
+    +---------------&gt;|     Android framework     |
+                     |                           |
+                     |                           |
+                     +---------------------------+
+</pre>
+<p />
+<pre>
+          Application                        Download Manager                         Viewer App
+               |                                     |                                     |
+               |         initiate download           |                                     |
+               |------------------------------------&gt;|                                     |
+               |&lt;------------------------------------|                                     |
+               |        content provider URI         |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |           query download            |                                     |
+               |------------------------------------&gt;|                                     |
+               |&lt;------------------------------------|                                     |
+               |              Cursor                 |                                     |
+               |                                     |                                     |
+               |       register ContentObserver      |                                     |
+               |------------------------------------&gt;|                                     |
+               |                                     |                                     |
+               |     ContentObserver notification    |                                     |
+               |&lt;------------------------------------|                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |    intent "notification clicked"    |                                     |
+               |&lt;------------------------------------|                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |      intent "download complete"     |                                     |
+               |&lt;------------------------------------|                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |            intent "view"            |
+               |                                     |------------------------------------&gt;|
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |           update download           |                                     |
+               |------------------------------------&gt;|                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |         open downloaded file        |                                     |
+               |------------------------------------&gt;|                                     |
+               |&lt;------------------------------------|                                     |
+               |         ParcelFileDescriptor        |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |           delete download           |                                     |
+               |------------------------------------&gt;|                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               |                                     |                                     |
+               v                                     v                                     v
+</pre>
+<p />
+<h3><a name="Internal_Product_Dependencies"> </a> Internal Product Dependencies </h3>
+<p />
+<ul>
+<li> <em>[reverse dependency]</em> GMail depends on the download manager to download attachments.
+</li>
+<li> <em>[reverse dependency]</em> OTA Update depends on the download manager to download system images.
+</li>
+<li> <em>[reverse dependency]</em> Vending Machine depends on the download manager to download content.
+</li>
+<li> <em>[reverse dependency]</em> Browser depends on the download manager to download non-browsable.
+</li>
+<li> Download Manager depends on a notification system to let the user know when downloads complete or otherwise require attention.
+</li>
+<li> Download Manager depends on a mechanism to share files with another app (letting apps access its files, or accessing apps' files).
+</li>
+<li> Download Manager depends on the ability to associate individual downloads with separate applications and to restrict apps to only access their own downloads.
+</li>
+<li> Download Manager depends on an HTTP stack that predictably processes all relevant kinds of HTTP requests and responses.
+</li>
+<li> Download Manager depends on a connectivity manager that reports accurate information about the status of the different data connections.
+</li>
+</ul>
+<p />
+<h2><a name="Interface_Documentation"> </a> Interface Documentation </h2>
+<!--_>small<Details of all the interfaces exposed by all the modules that implement the product/feature.>/small<_-->
+<p />
+<b>WARNING</b> Since none of those APIs are public, they are all subject to change. If you're working in the Android source tree, do <em>NOT</em> use the explicit values, <em>ONLY</em> use the symbolic constants, unless you <em>REALLY</em> know what you're doing and are willing to deal with the consequences; you've been warned.
+<p />
+The various constants that are meant to be used by applications are all defined in the <code>android.provider.Downloads</code> class. Whenever possible, the constants should be used instead of the explicit values.
+<p />
+<h3><a name="Permissions"> </a> Permissions </h3>
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Constant name </th><th > Permission name </th><th > Access restrictions </th><th > Description </th></tr>
+<tr><td > <code>Downloads.PERMISSION_ACCESS</code> </td><td > <code>"android.permission.ACCESS_DOWNLOAD_MANAGER"</code> </td><td > Signature or System </td><td > Applications that want to access the Download Manager MUST have this permission. </td></tr>
+<tr><td > <code>Downloads.PERMISSION_ACCESS_ADVANCED</code> </td><td > <code>"android.permission.ACCESS_DOWNLOAD_MANAGER_ADVANCED"</code> </td><td > Signature or System </td><td > This permission protects some legacy APIs that new applications SHOULD NOT use. </td></tr>
+<tr><td > <code>Downloads.PERMISSION_CACHE</code> </td><td > <code>"android.permission.ACCESS_CACHE_FILESYSTEM"</code> </td><td > Signature </td><td > This permission allows an app to access the /cache filesystem, and is only needed by the Update code. Other applications SHOULD NOT use this permission </td></tr>
+<tr><td > <code>Downloads.PERMISSION_SEND_INTENTS</code> </td><td > <code>"android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS"</code> </td><td > Signature </td><td > The download manager holds this permission, and the receivers through which applications get intents of completed downloads SHOULD require this permission from the sender </td></tr>
+</table>
+<p />
+<h3><a name="Content_Provider"> </a> Content Provider </h3>
+<p />
+The primary interface that applications use to communicate with the download manager is exposed as a ContentProvider.
+<p />
+<h4><a name="URIs"> </a> URIs </h4>
+<p />
+The URIs for the Content Provider are:
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Constant name </th><th > URI </th><th > Description </th></tr>
+<tr><td > <code>Downloads.CONTENT_URI</code> </td><td > <code>Uri.parse("content://downloads/download")</code> </td><td > The URI of the whole Content Provider, used to insert new rows, or to query all rows. </td></tr>
+<tr><td > N/A </td><td > <code>ContentUris.withAppendedId(CONTENT_URI, &lt;id&gt;)</code> </td><td > The URI of an individual download. <code>&lt;id&gt;</code> is the value of the <code>Download._ID</code> column </td></tr>
+</table>
+<p />
+<h4><a name="Columns"> </a> Columns </h4>
+<p />
+The following columns are available:
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Constant name </th><th > Column name </th><th > SQL Type </th><th > Access </th><th > Description </th><th > Notes </th></tr>
+<tr><td > <code>Downloads._ID</code> </td><td > <code>"_id"</code> </td><td > Integer </td><td > Read </td><td > &nbsp; </td><td > Inherited from <code>BaseColumns._ID</code>. </td></tr>
+<tr><td > <code>Downloads.URI</code> </td><td > <code>"uri"</code> </td><td > Text </td><td > Init </td><td > &nbsp; </td><td > Used to be readable. </td></tr>
+<tr><td > <code>Downloads.APP_DATA</code> </td><td > <code>"entity"</code> </td><td > Text </td><td > Init/Read/Modify </td><td > &nbsp; </td><td > Actual column name will change in the future. </td></tr>
+<tr><td > <code>Downloads.NO_INTEGRITY</code> </td><td > <code>"no_integrity"</code> </td><td > Boolean </td><td > Init </td><td > &nbsp; </td><td > Used to be readable. </td></tr>
+<tr><td > <code>Downloads.FILENAME_HINT</code> </td><td > <code>"hint"</code> </td><td > Text </td><td > Init </td><td > &nbsp; </td><td > Used to be readable. </td></tr>
+<tr><td > <code>Downloads._DATA</code> </td><td > <code>"_data"</code> </td><td > Text </td><td > Read </td><td > &nbsp; </td><td > Used to be <code>Downloads.FILENAME</code> and <code>"filename"</code>. </td></tr>
+<tr><td > <code>Downloads.MIMETYPE</code> </td><td > <code>"mimetype"</code> </td><td > Text </td><td > Init/Read </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.DESTINATION</code> </td><td > <code>"destination"</code> </td><td > Integer </td><td > Init </td><td > &nbsp; </td><td > See <a href="#DestinationValues">Destination codes</a> for details of legal values. Used to be readable. </td></tr>
+<tr><td > <code>Downloads.VISIBILITY</code> </td><td > <code>"visibility"</code> </td><td > Integer </td><td > Init/Read/Modify </td><td > &nbsp; </td><td > See <a href="#VisibilityValues">Visibility codes</a> for details of legal values. </td></tr>
+<tr><td > <code>Downloads.CONTROL</code> </td><td > <code>"control"</code> </td><td > Integer </td><td > Init/Read/Modify </td><td > &nbsp; </td><td > See <a href="#ControlValues">Control codes</a> for details of legal values. </td></tr>
+<tr><td > <code>Downloads.STATUS</code> </td><td > <code>"status"</code> </td><td > Integer </td><td > Read </td><td > &nbsp; </td><td > See <a href="#StatusValues">Status codes</a> for details of possible values. </td></tr>
+<tr><td > <code>Downloads.LAST_MODIFICATION</code> </td><td > <code>"lastmod"</code> </td><td > Bigint </td><td > Read </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.NOTIFICATION_PACKAGE</code> </td><td > <code>"notificationpackage"</code> </td><td > Text </td><td > Init/Read </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.NOTIFICATION_CLASS</code> </td><td > <code>"notificationclass"</code> </td><td > Text </td><td > Init/Read </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.NOTIFICATION_EXTRAS</code> </td><td > <code>"notificationextras"</code> </td><td > Text </td><td > Init </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.COOKIE_DATA</code> </td><td > <code>"cookiedata"</code> </td><td > Text </td><td > Init </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.USER_AGENT</code> </td><td > <code>"useragent"</code> </td><td > Text </td><td > Init </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.REFERER</code> </td><td > <code>"referer"</code> </td><td > Text </td><td > Init </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.TOTAL_BYTES</code> </td><td > <code>"total_bytes"</code> </td><td > Integer </td><td > Read </td><td > &nbsp; </td><td > Might gain Init access in the future. </td></tr>
+<tr><td > <code>Downloads.CURRENT_BYTES</code> </td><td > <code>"current_bytes"</code> </td><td > Integer </td><td > Read </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.OTHER_UID</code> </td><td > <code>"otheruid"</code> </td><td > Integer </td><td > Init </td><td > &nbsp; </td><td > Requires the <code>android.permission.ACCESS_DOWNLOAD_MANAGER_ADVANCED</code> permission. Used to be readable and writable. Might disappear entirely if possible. </td></tr>
+<tr><td > <code>Downloads.TITLE</code> </td><td > <code>"title"</code> </td><td > String </td><td > Init/Read/Modify </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.DESCRIPTION</code> </td><td > <code>"description"</code> </td><td > String </td><td > Init/Read/Modify </td><td > &nbsp; </td><td > &nbsp; </td></tr>
+</table>
+<p />
+<h4><a name="Destination_Values"> </a> Destination Values </h4>
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Constants name </th><th > Constant value </th><th > Description </th><th > Notes </th></tr>
+<tr><td > <code>Downloads.DESTINATION_EXTERNAL</code> </td><td > <code>0</code> </td><td > Saves the file to the SD card. </td><td > Default value. Fails is SD card is not present. </td></tr>
+<tr><td > <code>Downloads.DESTINATION_CACHE_PARTITION</code> </td><td > <code>1</code> </td><td > Saves the file to the internal cache partition. </td><td > Requires the <code>"android.permission.ACCESS_DOWNLOAD_MANAGER_ADVANCED"</code> permission </td></tr>
+<tr><td > <code>Downloads.DESTINATION_CACHE_PARTITION_PURGEABLE</code> </td><td > <code>2</code> </td><td > Saves the file to the internal cache partition. </td><td > The download can get deleted at any time by the download manager when it needs space. </td></tr>
+</table>
+<p />
+<h4><a name="Visibility_Values"> </a> Visibility Values </h4>
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Constants name </th><th > Constant value </th><th > Description </th><th > Notes </th></tr>
+<tr><td > <code>Downloads.VISIBILITY_VISIBLE_NOTIFY_COMPLETED</code> </td><td > <code>0</code> </td><td > The download is visible in download UIs, and it shows up in the notification area during download and after completion. </td><td > Default value for external downloads. </td></tr>
+<tr><td > <code>Downloads.VISIBILITY_VISIBLE</code> </td><td > <code>1</code> </td><td > The download is visible in download UIs, and it shows up in the notification area during download but not after completion. </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.VISIBILITY_HIDDEN</code> </td><td > <code>2</code> </td><td > The download is hidden from download UIs and doesn't show up in the notification area. </td><td > Default value for internal downloads. </td></tr>
+</table>
+<p />
+<h4><a name="Control_Values"> </a> Control Values </h4>
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Constants name </th><th > Constant value </th><th > Description </th><th > Notes </th></tr>
+<tr><td > <code>Downloads.CONTROL_RUN</code> </td><td > <code>0</code> </td><td > The download is allowed to run. </td><td > Default value. </td></tr>
+<tr><td > <code>Downloads.CONTROL_PAUSED</code> </td><td > <code>0</code> </td><td > The download is paused. </td><td > &nbsp; </td></tr>
+</table>
+<p />
+<h4><a name="Status_Values"> </a> Status Values </h4>
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Constants name </th><th > Constant value </th><th > Description </th><th > Notes </th></tr>
+<tr><td > <code>Downloads.STATUS_PENDING</code> </td><td > <code>190</code> </td><td > Download hasn't started. </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.STATUS_PENDING_PAUSED</code> </td><td > <code>191</code> </td><td > Download hasn't started and can't start immediately (network unavailable, paused by user). </td><td > Not currently used. </td></tr>
+<tr><td > <code>Downloads.STATUS_RUNNING</code> </td><td > <code>192</code> </td><td > Download has started and is running </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.STATUS_RUNNING_PAUSED</code> </td><td > <code>193</code> </td><td > Download has started, but can't run at the moment (network unavailable, paused by user). </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.STATUS_SUCCESS</code> </td><td > <code>200</code> </td><td > Download completed successfully. </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.STATUS_BAD_REQUEST</code> </td><td > <code>400</code> </td><td > Couldn't initiate the request, or server response 400. </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.STATUS_NOT_ACCEPTABLE</code> </td><td > <code>406</code> </td><td > No handler to view the file (external downloads), or server response 406. </td><td > External downloads are meant to be user-visible, and are aborted if there's no application to handle the relevant MIME type. </td></tr>
+<tr><td > <code>Downloads.STATUS_LENGTH_REQUIRED</code> </td><td > <code>411</code> </td><td > The download manager can't know the length of the download. </td><td > Because of the unreliability of cell networks, the download manager only performs downloads when it can verify that it has received all the data for a download, except if the initiating app sets the <code>Downloads.NO_INTEGRITY</code> flag. </td></tr>
+<tr><td > <code>Downloads.STATUS_PRECONDITION_FAILED</code> </td><td > <code>412</code> </td><td > The download manager can't resume an interrupted download, because it didn't receive enough information from the server to be able to resume. </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.STATUS_CANCELED</code> </td><td > <code>490</code> </td><td > The download was canceled by a cause outside the Download Manager. </td><td > Formerly known as <code>Downloads.STATUS_CANCELLED</code>. Might be impossible to observe in 1.0. </td></tr>
+<tr><td > <code>Downloads.STATUS_UNKNOWN_ERROR</code> </td><td > <code>491</code> </td><td > The download was aborted because of an unknown error. </td><td > Formerly known as <code>Downloads.STATUS_ERROR</code>. Typically the result of a runtime exception that is not explicitly handled. </td></tr>
+<tr><td > <code>Downloads.STATUS_FILE_ERROR</code> </td><td > <code>492</code> </td><td > The download was aborted because the data couldn't be saved. </td><td > Most commonly happens when the filesystem is full. </td></tr>
+<tr><td > <code>Downloads.STATUS_UNHANDLED_REDIRECT</code> </td><td > <code>493</code> </td><td > The download was aborted because the server returned a redirect code 3xx that the download manager doesn't handle. </td><td > The download manager currently handles 301, 302 and 307. </td></tr>
+<tr><td > <code>Downloads.STATUS_TOO_MANY_REDIRECTS</code> </td><td > <code>494</code> </td><td > The download was aborted because the download manager received too many redirects while trying to find the actual file. </td><td > &nbsp; </td></tr>
+<tr><td > <code>Downloads.STATUS_UNHANDLED_HTTP_CODE</code> </td><td > <code>495</code> </td><td > The download was aborted because the server returned a status code that the download manager doesn't handle. </td><td > Standard codes 3xx, 4xx and 5xx don't trigger this. </td></tr>
+<tr><td > <code>Downloads.STATUS_HTTP_DATA_ERROR</code> </td><td > <code>496</code> </td><td > The download was aborted because of an unrecoverable error trying to get data over the network. </td><td > Typically this happens when the download manager received several I/O Exceptions in a row while the network is available and without being able to download any data. </td></tr>
+<tr><td > &nbsp; </td><td > <code>4xx</code> </td><td > standard HTTP/1.1 4xx codes returned by the server are used as-is. </td><td > Don't rely on non-standard values being passed through, especially the higher values that would collide with download manager codes. </td></tr>
+<tr><td > &nbsp; </td><td > <code>5xx</code> </td><td > standard HTTP/1.1 5xx codes returned by the server are used as-is. </td><td > Don't rely on non-standard values being passed through. </td></tr>
+</table>
+<p />
+<h4><a name="Status_Helper_Functions"> </a> Status Helper Functions </h4>
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Function signature </th><th > Description </th></tr>
+<tr><td > <code>public static boolean Downloads.isStatusInformational(int status)</code> </td><td > Returns whether the status code matches a download that hasn't completed yet. </td></tr>
+<tr><td > <code>public static boolean Downloads.isStatusSuspended(int status)</code> </td><td > Returns whether the download hasn't completed yet but isn't currently making progress. </td></tr>
+<tr><td > <code>public static boolean Downloads.isStatusSuccess(int status)</code> </td><td > Returns whether the download successfully completed. </td></tr>
+<tr><td > <code>public static boolean Downloads.isStatusError(int status)</code> </td><td > Returns whether the download failed. </td></tr>
+<tr><td > <code>public static boolean Downloads.isStatusClientError(int status)</code> </td><td > Returns whether the download failed because of a client error. </td></tr>
+<tr><td > <code>public static boolean Downloads.isStatusServerError(int status)</code> </td><td > Returns whether the download failed because of a server error. </td></tr>
+<tr><td > <code>public static boolean Downloads.isStatusCompleted(int status)</code> </td><td > Returns whether the download completed (with no distinction between success and failure). </td></tr>
+</table>
+<p />
+<h3><a name="Intents"> </a> Intents </h3>
+<p />
+The download manager sends an intent broadcast <code>Downloads.DOWNLOAD_COMPLETED_ACTION</code> when a download completes.
+<p />
+The download manager sends an intent broadcast <code>Downloads.NOTIFICATION_CLICKED_ACTION</code> when the user clicks a download notification that doesn't match a download that can be opened (e.g. because the notification is for several downloads at a time, or because it's for an incomplete download, or because it's for a private download).
+<p />
+The download manager starts an activity with <code>Intent.ACTION_VIEW</code> when the user clicks a download notification that matches a download that can be opened.
+<p />
+<h3><a name="Differences_between_1_0_and_Cupc"> </a> Differences between 1.0 and Cupcake </h3>
+<p />
+<b>WARNING</b> These are the differences for apps built from source in the Android source tree, i.e. they don't cover any of the cases of binary incompatibility.
+<p />
+<ul>
+<li> Cursors returned by the content provider are now read-only.
+</li>
+<li> SQL "where" statements are now verified and must follow a rigid syntax (the most visible aspect being that all parameters much be single-quoted).
+</li>
+<li> Columns and constants that were unused or ineffective are gone: METHOD, NO_SYSTEM_FILES, DESTINATION_DATA_CACHE, OTA_UPDATE.
+</li>
+<li> OTHER_UID and DESTINATION_CACHE_PARTITION require android.permission.ACCESS_DOWNLOAD_MANAGER_ADVANCED.
+</li>
+<li> The list of columns that can be queried and read is limited: <code>_ID</code>, <code>APP_DATA</code>, <code>_DATA</code>, <code>MIMETYPE</code>, <code>CONTROL</code>, <code>STATUS</code>, <code>LAST_MODIFICATION</code>, <code>NOTIFICATION_PACKAGE</code>, <code>NOTIFICATION_CLASS</code>, <code>TOTAL_BYTES</code>, <code>CURRENT_BYTES</code>, <code>TITLE</code>, <code>DESCRIPTION</code>.
+</li>
+<li> The list of columns that can be initialized by apps is limited: <code>URI</code>, <code>APP_DATA</code>, <code>NO_INTEGRITY</code>, <code>FILENAME_HINT</code>, <code>MIMETYPE</code>, <code>DESTINATION</code>, <code>VISIBILITY</code>, <code>CONTROL</code>, <code>STATUS</code>, <code>LAST_MODIFICATION</code>, <code>NOTIFICATION_PACKAGE</code>, <code>NOTIFICATION_CLASS</code>, <code>NOTIFICATION_EXTRAS</code>, <code>COOKIE_DATA</code>, <code>USER_AGENT</code>, <code>REFERER</code>, <code>OTHER_UID</code>, <code>TITLE</code>, <code>DESCRIPTION</code>.
+</li>
+<li> The list of columns that can be updated by apps is limited: <code>APP_DATA</code>, <code>VISIBILITY</code>, <code>CONTROL</code>, <code>TITLE</code>, <code>DESCRIPTION</code>.
+</li>
+<li> Downloads to the SD card default to have notifications that are visible after completion, internal downloads default to notifications that are always hidden.
+</li>
+<li> The constant FILENAME was renamed Downloads._DATA.
+</li>
+<li> Downloads can be paused and resumed by writing to the CONTROL column. <code>Downloads.CONTROL_RUN</code> (Default) makes the download go, <code>Downloads.CONTROL_PAUSED</code> pauses it.
+</li>
+<li> New column APP_DATA that is untouched by the download manager, used to store app-specific info about the downloads.
+</li>
+<li> Minor differences unlikely to affect applications:
+<ul>
+<li> The notification class/package must now match the UID.
+</li>
+<li> The backdoor to see the entire provider (which was intended to implement UIs) is gone.
+</li>
+<li> Private column names were removed from the public API.
+</li>
+</ul>
+</li>
+</ul>
+<p />
+<h4><a name="Writing_code_that_works_on_both_"> </a> Writing code that works on both the 1.0 and Cupcake versions of the download manager. </h4>
+<p />
+If you're not 100% sure that you need to be reading this chapter, don't read it.
+<p />
+Basic rule: don't use features that only exist in one of the two implementations (POST, downloads to /data...).
+<p />
+Also, don't use columns in 1.0 that are protected or hidden in Cupcake.
+<p />
+Unfortunately, that's not always entirely possible.
+<p />
+Areas of concern:
+<ul>
+<li> Some columns were renamed. FILENAME became Downloads._DATA ("_data"), and ENTITY became APP_DATA ("entity").
+<ul>
+<li> The difference can be used to distinguish between 1.0 and Cupcake, though reflection.
+</li>
+<li> The difference prevents from using any of the symbolic constants directly in source code: if the same binary wants to run on both 1.0 and Cupcake, it will have to hard-code the values of those constants or use reflection to get to them.
+</li>
+</ul>
+</li>
+<li> URI column accessible in 1.0 but protected in Cupcake. Code that relies on being able to re-read its URI should be using APP_DATA in Cupcake, but that column doesn't exist as such in 1.0.
+<ul>
+<li> If the code detects that it's running on Cupcake, write URI to APP_DATA in addition to URI, and query and read from the appropriate column.
+</li>
+<li> Since the underlying column for APP_DATA exists in both 1.0 and Cupcake even though it has different names, it can actually be used in both cases (see note above about renamed columns).
+</li>
+</ul>
+</li>
+<li> Some of the error codes have been renumbered. STATUS_UNHANDLED_HTTP_CODE and STATUS_HTTP_DATA_ERROR were bumped up from 494 and 495 to 495 and 496.
+</li>
+<li> Backward compatibility is not guaranteed: the download manager APIs weren't meant to be backward compatible yet. As such it's impossible to guarantee that code that uses the Cupcake download manager will be binary-compatible with future versions.
+<ul>
+<li> I intend to eventually change the column name for APP_DATA to "app_data". Because of that, code should use reflection to get to that name instead of hard-coding "entity", so that it always gets the right value for the string.
+</li>
+<li> I intend to refine the handling of filenames and content URIs, exposing separate columns for situations where a download can be accessed both as a file and through a content URI (e.g. stuff that is recognized by the media scanner). Unfortunately at this point this feature isn't clear in my mind. I'd recommend using reflection to look for the Downloads._DATA column, and if it isn't there to look for the FILENAME column (which has the advantage of also dealing with the difference between 1.0 and Cupcake).
+</li>
+<li> I intend to renumber the error codes, especially those in the 4xx range, and especially those below 490 (which overlap with standard HTTP error codes but will probably be separated). Reflection would improve the probability to getting to them in the future. Unfortunately, the names of the constants are likely to change in the process, in order to disambiguate codes coming from HTTP from those generated locally. I might try to stick to the following pattern: where a constant is currently named STATUS_XXX, its locally-generated version in the future might be named STATUS_LOCAL_XXX while the current constant name might disappear. Using reflection to try to get to the possible new name instead of using the old name might improve the probability of compatibility in the future. That being said, it is critically important to properly handle the full ranges or error codes, especially the 4xx range, as "expected" errors, and it is far preferable to not try to distinguish between those codes at all: use the functions Downloads.isError and Downloads.isClientError to easily recognize those entire ranges. In order of probability, the 1xx range is the second most likely to be affected.
+</li>
+</ul>
+</li>
+</ul>
+<p />
+<h2><a name="Functional_Specification"> </a> Functional Specification </h2>
+<em><small>All the details about what the product does.</small></em>
+<p />
+<b>TODO</b>
+<p />
+<h3><a name="Release_notes_for_Cupcake"> </a> Release notes for Cupcake </h3>
+<p />
+<ul>
+<li> HTTP codes 301, 302, 303 and 307 (redirects) are now supported 
+</li>
+<li> HTTP code 503 is now handled, with support for retry-after in delay-seconds  
+</li>
+<li> Downloads that were cleanly interrupted are now resumed instead of failing 
+</li>
+<li> Applications can now pause their downloads 
+</li>
+<li> Retry delays are now randomized 
+</li>
+<li> Connectivity is now checked on all interfaces 
+</li>
+<li> Downloads with invalid characters in file name can now be saved 
+</li>
+<li> Various security fixes       
+</li>
+<li> Minor API changes (see <a href="#Differences_between_1_0_and_Cupc">API differences between 1.0 and Cupcake</a>)
+</li>
+</ul>
+<p />
+<h2><a name="Product_Architecture"> </a> Product Architecture </h2>
+<em><small>How the tasks are split between the different modules that implement the product/feature.</small></em>
+<p />
+<b>TODO</b> To be completed
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Class </th></tr>
+<tr><td > <code>com.android.providers.downloads.Constants</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadFileInfo</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadInfo</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadNotification</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadNotification.NotificationItem</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadProvider extends ContentProvider</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadProvider.DatabaseHelper extends SQLiteOpenHelper</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadProvider.ReadOnlyCursorWrapper extends CursorWrapper implements CrossProcessCursor</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadReceiver extends BroadcastReceiver</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadService extends Service</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadService.DownloadManagerContentObserver extends ContentObserver</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadService.MediaScannerConnection implements ServiceConnection</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadService.UpdateThread extends Thread</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.DownloadThread extends Thread</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.Helpers</code> </td></tr>
+<tr><td > <code>com.android.providers.downloads.Helpers.Lexer</code> </td></tr>
+</table>
+<p />
+The download manager is built primarily around a ContentProvider and a Service. The ContentProvider part is the front end, i.e. applications communicate with the download manager through the provider. The Service part is the back end, which contains the actual download logic, running as a background process.
+<p />
+As a first approach, the provider is essentially a canonical provider backed by a SQLite3 database. The biggest difference between the download provider and a "plain" provider is that the download provider aggressively validates its inputs, for security reasons.
+<p />
+The service is a background process that performs the actual downloads as requested by the applications. The service doesn't offer any bindable interface, the service object exists strictly so that the system knows how to prioritize the download manager's process against other processes when memory is tight.
+<p />
+Communication between the provider and the service is done through public Android APIs, so that the two components are deeply decoupled (they could in fact run in different processes). The download manager starts the service whenever a change is made that can start or restart a download. The service observes and queries the provider for changes, and updates the provider as the download progresses.
+<p />
+<p />
+There are a few secondary classes that provide auxiliary functions.
+<p />
+A Receiver listens to several broadcasts. Is receives some system broadcasts when the system boots (so that the download manager can resume downloads that were interrupted when the system was turned off) or when the connectivity changes (so that the download manager can restart downloads that were interrupted when connectivity was lost). It also receives intents when the user selects a download notification.
+<p />
+<p />
+Finally, some helper classes provide support functions.
+<p />
+Most significantly, DownloadThread is responsible for performing the actual downloads as part of the DownloadService's functionality, while UpdateThread is responsible for updating the DownloadInfo whenever the DownloadProvider data changes.
+<p />
+DownloadInfo and DownloadFileInfo hold pure data structures, with little or no actual logic.
+<p />
+Lexer takes care of validating the snippets of SQL data that are received from applications, to avoid cases of SQL injection.
+<p />
+<p />
+<p />
+<p />
+<p />
+<p />
+The service keeps a copy of the provider data in RAM, so that it can determine what changed in the provider when it receives a change notification through the ContentObserver. That data is kept in an array of DownloadInfo structures.
+<p />
+Each DownloadThread performs the operations for a single download (or, more precisely, for a single HTTP transaction). Each DownloadThread is backed by a DownloadInfo object. which is in fact on of the objects kept by the DownloadService. While a download is running, the DownloadService can influence the download by writing data into the relevant DownloadInfo object, and the DownloadThread checks that object at appropriate times during the download.
+<p />
+Because the DownloadService updates the DownloadInfo objects asynchronously from everything else (it uses a dedicated thread for that purpose), a lot of care has to be taken when upgrading the DownloadInfo object. In fact, only the DownloadService's updateThread function can update that object, and it should be considered read-only to every other bit of code. Even within the updateThread function, some care must be taken to ensure that the DownloadInfos don't get out of sync with the provider.
+<p />
+On the other hand, the DownloadService's updateThread function does upgrade the DownloadInfo when it spawns new DownloadThreads (and in a few more circumstances), and when it does that it must also update the DownloadProvider (or risk seeing its DownloadInfo data get overwritten).
+<p />
+Because of all that, all code outside of the DowloadService's updateThread must neither read from DownloadProvider nor write to the DownloadInfo objects under any circumstances. The DownloadService's updateFunction is responsible for copying data from the DownloadProvider to the DownloadInfo objects, and must ensure that the DownloadProvider remains in sync with the information it writes into the DownloadInfo objects.
+<p />
+<p />
+<p />
+<h2><a name="Implementation_Documentation"> </a> Implementation Documentation </h2>
+<em><small>How individual modules are implemented.</small></em>
+<p />
+<b>TODO</b> To be completed
+<p />
+<h3><a name="Database_formats"> </a> Database formats </h3>
+<p />
+Android 1.0, format version <code>31</code>, table <code>downloads</code>:
+<p />
+<table border="1" cellspacing="1" cellpadding="2">
+<tr><th > Column </th><th > Type </th></tr>
+<tr><td > <code>"_id"</code> </td><td > <code>INTEGER PRIMARY KEY AUTOINCREMENT</code> </td></tr>
+<tr><td > <code>"uri"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"method"</code> </td><td > <code>INTEGER</code> </td></tr>
+<tr><td > <code>"entity"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"no_integrity"</code> </td><td > <code>BOOLEAN</code> </td></tr>
+<tr><td > <code>"hint"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"otaupdate"</code> </td><td > <code>BOOLEAN</code> </td></tr>
+<tr><td > <code>"_data"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"mimetype"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"destination"</code> </td><td > <code>INTEGER</code> </td></tr>
+<tr><td > <code>"no_system"</code> </td><td > <code>BOOLEAN</code> </td></tr>
+<tr><td > <code>"visibility"</code> </td><td > <code>INTEGER</code> </td></tr>
+<tr><td > <code>"control"</code> </td><td > <code>INTEGER</code> </td></tr>
+<tr><td > <code>"status"</code> </td><td > <code>INTEGER</code> </td></tr>
+<tr><td > <code>"numfailed"</code> </td><td > <code>INTEGER</code> </td></tr>
+<tr><td > <code>"lastmod"</code> </td><td > <code>BIGINT</code> </td></tr>
+<tr><td > <code>"notificationpackage"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"notificationclass"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"notificationextras"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"cookiedata"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"useragent"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"referer"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"total_bytes"</code> </td><td > <code>INTEGER</code> </td></tr>
+<tr><td > <code>"current_bytes"</code> </td><td > <code>INTEGER</code> </td></tr>
+<tr><td > <code>"etag"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"uid"</code> </td><td > <code>INTEGER</code> </td></tr>
+<tr><td > <code>"otheruid"</code> </td><td > <code>INTEGER</code> </td></tr>
+<tr><td > <code>"title"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"description"</code> </td><td > <code>TEXT</code> </td></tr>
+<tr><td > <code>"scanned"</code> </td><td > <code>BOOLEAN</code> </td></tr>
+</table>
+<p />
+Cupcake, format version <code>100</code>: Same as format version <code>31</code>.
+<p />
+<h2><a name="Future_Directions"> </a> Future Directions </h2>
+<!--_>small<What could be done in the future to improve the product.>/small<_-->
+<p />
+<b>WARNING</b> This section is for informative purposes only.
+<p />
+<h3><a name="API"> </a> API </h3>
+<p />
+<ul>
+<li> Expose Download Manager to 3rd party apps - security, robustness .
+</li>
+<li> Validate application-provided user agent, cookies, etc... to protect against e.g. header injection.
+</li>
+<li> Allow trust-and-verify MIME type.
+</li>
+<li> Extract response string from HTTP responses, extract entity from failed responses
+</li>
+<li> If app fails to be notified, retry later - don't give up because of a single failure.
+</li>
+<li> Support data: URIs .
+</li>
+<li> Download files to app-provided content provider .
+</li>
+<li> Don't pass HTTP codes above about 490 to the initiating app (figure out what the threshold should be).
+</li>
+<li> Allow initiating app to specify that it wants wifi-only downloads .
+</li>
+<li> Provide SQL "where" clauses for the different categories of status codes, matching isStatusXXX().
+</li>
+<li> There has to be a mechanism by which old downloads are automatically purged from /cache if there's not enough space .
+</li>
+<li> Clicking the notification for a completed download should go through the initiating app instead of directly opening the file (but what about fire and forget?).
+</li>
+<li> Clean up the difference between pending_network (waiting for network) and running_paused (user paused the download).
+</li>
+<li> Allow any app to access the downloaded file (but no other column) of user-downloaded files .
+</li>
+<li> Provider should return more errors and throw fewer exceptions if possible.
+</li>
+<li> Add option to auto-dismiss notifications for completed downloads after a given time .
+</li>
+<li> Delete filename in case of failure - better handle the separation between filename and content URI.
+</li>
+<li> Allow the initiating application to specify that it wants to restart downloads from scratch if they're interrupted and can't be resumed .
+</li>
+<li> Save images directly from browser without re-downloading data .
+</li>
+<li> Give applications the ability to explicitly specify the full target filename (not just a hint).
+</li>
+<li> Give applications the ability to download multiple files into multiple set locations as if they were a single "package".
+</li>
+<li> Give applications the ability to download files only if they haven't been already downloaded.
+</li>
+<li> Give applications the ability to download files that have already been downloaded only if there's a newer version.
+</li>
+<li> Set-cookie in the response.
+</li>
+<li> basic auth .
+</li>
+<li> app-provided prompts for basic auth, ssl, redirects.
+</li>
+<li> File should be hidden from initiating application when DRM.
+</li>
+<li> Delay writing of app-visible filename column until file visible (split user-visible vs private files?).
+</li>
+<li> Separate locally-generated status codes from standard HTTP codes.
+</li>
+<li> Allow app to specify it doesn't want to resume downloads across reboots (because they might require additional work).
+</li>
+<li> Allow app to prioritize user-initiated downloads.
+</li>
+<li> Allow app to specify length of download (full trust, or trust-and-verify).
+</li>
+<li> Support POST.
+</li>
+<li> Support PUT.
+</li>
+<li> Support plugins for additional protocols and download descriptors.
+</li>
+<li> Rename columns to have an appropriate COLUMN_ prefix. 
+</li>
+</ul>
+<p />
+<h3><a name="HTTP_Handling"> </a> HTTP Handling </h3>
+<p />
+<ul>
+<li> Fail download immediately on authoritative unresolved hostnames .
+</li>
+<li> The download manager should use the browser's user-agent by default.
+</li>
+<li> Redirect with HTTP Refresh headers (download current and target content with non-zero refresh).
+</li>
+<li> Handle content-encoding header.
+</li>
+<li> Handle transfer-encoding header.
+</li>
+<li> Find other ways to validate interrupted downloads (signature, last-mod/if-modified-since) .
+</li>
+<li> Make downloads time out in case of long time with no activity.
+</li>
+</ul>
+<p />
+<h3><a name="File_names"> </a> File names </h3>
+<p />
+<ul>
+<li> Protect against situations where there's already a "downloads" directory on SD card.
+</li>
+<li> Deal with filenames with invalid characters.
+</li>
+<li> Refine the logic that builds filenames to better match desktop browsers - drop the query string.
+</li>
+<li> URI-decode filenames generated from URIs.
+</li>
+<li> Better deal with filenames that end in '.'.
+</li>
+<li> Deal with URIs that end in '/' or '?'.
+</li>
+<li> Investigate how to better deal with filenames that have multiple extensions.
+</li>
+</ul>
+<p />
+<h3><a name="UI"> </a> UI </h3>
+<p />
+<ul>
+<li> Prompt for redirects across domains or cancel.
+</li>
+<li> Prompt for redirects from SSL or cancel.
+</li>
+<li> Prompt for basic auth or cancel.
+</li>
+<li> Prompt for SSL with untrusted/invalid/expired certificates or cancel.
+</li>
+<li> Reduce number of icons in the title bar, possibly as low as 1 (animated if there are ongoing downloads, fixed if all downloads have completed) .
+</li>
+<li> UI to cancel visible downloads.
+</li>
+<li> UI to pause visible downloads.
+</li>
+<li> Reorder downloads.
+</li>
+<li> View SSL certificates.
+</li>
+<li> Indicate secure downloads.
+</li>
+</ul>
+<p />
+<h3><a name="Handling_of_specific_MIME_types"> </a> Handling of specific MIME types </h3>
+<p />
+<ul>
+<li> Parse HTML for redirects with meta tag.
+</li>
+<li> Handle charsets and transcoding of text files.
+</li>
+<li> Deal with multiparts.
+</li>
+<li> Support OMA downloads with DD and data in same multipart, i.e. combined delivery.
+</li>
+<li> Assume application/octet-stream for http responses with no mime type.
+</li>
+<li> Download anything if an app supports application/octet-stream.
+</li>
+<li> Download any text/* if an application supports text/plain.
+</li>
+<li> Should the media scanner be invoked on DRM downloads?
+</li>
+<li> Refresh header with timer should be followed if content is not downloadable.
+</li>
+<li> Support OMA downloads.
+</li>
+<li> Support MIDP-OTA downloads.
+</li>
+<li> Support Sprint MCD downloads.
+</li>
+<li> Sniff content when receiving MIME-types known to be inaccurately sent by misconfigured servers.
+</li>
+</ul>
+<p />
+<h3><a name="Management_of_downloads_based_on"> </a> Management of downloads based on environment </h3>
+<p />
+<ul>
+<li> If the device routinely connects over wifi, delay non-interactive downloads by a certain amount of time in case wifi becomes available
+</li>
+<li> Turn on wifi if possible
+</li>
+<li> Fall back to cell when wifi is available but download doesn't proceed
+</li>
+<li> Be smarter about spurious losses (i.e. exceptions while network appears up) when the active network changes (e.g. turn on wifi while downloading over cell).
+</li>
+<li> Investigate the use of wifi locks, especially when performing non-resumable downloads.
+</li>
+<li> Poll network state (and maybe even try to connect) even without notifications from the connectivity manager (in case the notifications go AWOL or get inconsistent) .
+</li>
+<li> Pause when conditions degrade .
+</li>
+<li> Pause when roaming.
+</li>
+<li> Throttle or pause when user is active.
+</li>
+<li> Pause on slow networks (2G).
+</li>
+<li> Pause when battery is low.
+</li>
+<li> Throttle to not overwhelm the link.
+</li>
+<li> Pause when sync is active.
+</li>
+<li> Deal with situations where the active connection is down but there's another connection available 
+</li>
+<li> Download files at night when the user is not explicitly waiting.
+</li>
+</ul>
+<p />
+<h3><a name="Management_of_simultaneous_downl"> </a> Management of simultaneous downloads </h3>
+<p />
+<ul>
+<li> Pipeline requests on limited number of sockets, run downloads sequentially .
+</li>
+<li> Manage bandwidth to not starve foreground tasks.
+</li>
+<li> Run unsized downloads on their own (on a per-filesystem basis) to avoid failing multiple of them because of a full filesystem .
+</li>
+</ul>
+<p />
+<h3><a name="Minor_functional_changes_edge_ca"> </a> Minor functional changes, edge cases </h3>
+<p />
+<ul>
+<li> The database could be somewhat checked when it's opened.
+</li>
+<li> <em>[DownloadProvider.java]</em> When upgrading the database, the numbering of ids should restart where it left off.
+</li>
+<li> <em>[DownloadProvider.java]</em> Handle errors when failing to start the service.
+</li>
+<li> <em>[DownloadProvider.java]</em> Explicitly populate all database columns that have documented default values, investigate whether that can be done at the SQL level.
+</li>
+<li> <em>[DownloadProvider.java]</em> It's possible that the last update time should be updated by the Sevice logic, not by the content provider.
+</li>
+<li> When relevant, combine logged messages on fewer lines.
+</li>
+<li> <em>[DownloadService.java]</em> Trim the database in the provider, not in the service. Notify application when trimming. Investigate why the row count seems off by one. Enforce on an ongoing basis.
+</li>
+<li> <em>[DownloadThread.java]</em> When download is restarted and MIME type wasn't provided by app, don't re-use MIME type.
+</li>
+<li> <em>[DownloadThread.java]</em> Deal with mistmatched file data sizes (between database and filesystem) when resuming a download, or with missing files that should be here.
+</li>
+<li> <em>[DownloadThread.java]</em> Validate that the response content-length can be properly parsed (i.e. presence of a string doesn't guarantee correctness).
+</li>
+<li> <em>[DownloadThread.java]</em> Be finer-grained with the way file permissions are managed in /cache - don't 0644 everything .
+</li>
+<li> Truncate files before deleting them, in case they're still open cross-process.
+</li>
+<li> Restart from scratch downloads that had very little progress .
+</li>
+<li> Deal with situations where /data is full as it prevents the database from growing (DoS) .
+</li>
+<li> Wait until file scanned to notify that download is completed.
+</li>
+<li> Missing some detailed logging about IOExceptions.
+</li>
+<li> Allow to disable LOGD debugging independently from system setting.
+</li>
+<li> Pulling the battery during a download corrupts files (lots of zeros written) .
+</li>
+<li> Should keep a bit of "emergency" database storage to initiate the download of an OTA update, in a file that is pre-allocated whenever possible (how to know it's an OTA update?).
+</li>
+<li> Figure out how to hook up into dumpsys and event log.
+</li>
+<li> Use the event log to log download progress.
+</li>
+<li> Use /cache to stage downloads that eventually go to the sd card, to avoid having sd files open too long in case the use pulls the card and to avoid partial files for too long.
+</li>
+<li> Maintain per-application usage statistics.
+</li>
+<li> There might be corner cases where the notifications are slightly off because different notifications might be using PendingIntents that can't be distinguished (differing only by their extras).
+</li>
+</ul>
+<p />
+<h3><a name="Architecture_and_Implementation"> </a> Architecture and Implementation </h3>
+<p />
+<ul>
+<li> The content:// Uri of individual downloads could be cached instead of being re-built whenever it's needed.
+</li>
+<li> <em>[DownloadProvider.java]</em> Solidify extraction of id from URI
+</li>
+<li> <em>[DownloadProvider.java]</em> Use ContentURIs.parseId(uri) to extra the id from various functions.
+</li>
+<li> <em>[DownloadProvider.java]</em> Use StringBuilder to build the various queries.
+</li>
+<li> <em>[DownloadService.java]</em> Cache interface to the media scanner service more aggressively.
+</li>
+<li> <em>[DownloadService.java]</em> Investigate why unbinding from the media scanner service sometimes throws an exception 
+</li>
+<li> <em>[DownloadService.java]</em> Handle exceptions in the service's UpdateThread - mark that there's no thread left.
+</li>
+<li> <em>[DownloadService.java]</em> At the end of UpdateThread, closing the cursor should be done even if there's an exception. Also log the exception, as we'd be in an inconsistent state.
+</li>
+<li> <em>[DownloadProvider.java]</em> Investigate whether the download provider should aggressively cache the result of <code>getContext()</code> and <code>getContext().getContentResolver()</code>
+</li>
+<li> Document the database columns that are most likely to stay unchanged throughout versions, to increase the chance being able to perform downgrades.
+</li>
+<li> <em>[DownloadService.java]</em> Sanity-check the ordering of the local cache when adding/removing rows.
+</li>
+<li> <em>[DownloadService.java]</em> Factor the code that checks for DRM types into a separate function.
+</li>
+<li> <em>[DownloadService.java]</em> Factor the code that notifies applications into a separate function (codepath with early 406 failure)
+</li>
+<li> <em>[DownloadService.java]</em> Check for errors when spawning download threads.
+</li>
+<li> <em>[DownloadService.java]</em> Potential race condition when a download completes at the same time as it gets deleted through the content provider - see deleteDownload().
+</li>
+<li> <em>[DownloadService.java]</em> Catch all exceptions in scanFile - don't trust a remote process to the point where we'd let it crash us.
+</li>
+<li> <em>[DownloadService.java]</em> Limit number of attempts to scan a file.
+</li>
+<li> <em>[DownloadService.java]</em> Keep less data in RAM, especially about completed downloads. Investigating cutting unused columns if necessary 
+</li>
+<li> <em>[DownloadThread.java]</em> Don't let exceptions out of run() - that'd kill the service, which'd accomplish no good.
+</li>
+<li> <em>[DownloadThread.java]</em> Keep track of content-length responses in a long, not in a string that we keep parsing .
+</li>
+<li> <em>[DownloadThread.java]</em> Use variable-size buffer to avoid thousands of operations on large downloads 
+</li>
+<li> <em>[Helpers.java]</em> Deal with atomicity of checking/creating file.
+</li>
+<li> <em>[Helpers.java]</em> Handle differences between content-location separators and filesystem separators.
+</li>
+<li> Optimize database queries: use projections to reduce number of columns and get constant column numbers.
+</li>
+<li> Index last-mod date in DB, because of ordered searches. Investigate whether other columns need to be indexed (Hidden?)
+</li>
+<li> Deal with the fact that sqlite INTEGER matches java long (63-bit) .
+</li>
+<li> Use a single HTTP client for the entire download manager.
+</li>
+<li> Could use fewer alarms - currently setting new alarm each time database updated .
+</li>
+<li> Obsolete columns should be removed from the database .
+</li>
+<li> Assign relevant names to threads.
+</li>
+<li> Investigate and handle the different subclasses of IOException appropriately .
+</li>
+<li> There's potentially a race condition around read-modify-write cycles in the database, between the Service's updateFromProvider thread and the worker threads (and possibly more). Those should be synchronized appropriately, and the provider should be hardened to prevent asynchronous changes to sensitive data (or to synchronize when there's no other way, though I'd rather avoid that) .
+</li>
+<li> Temporary file leaks when downloads are deleted while the service isn't running .
+</li>
+<li> Increase priority of updaterThread while in the critical section (to avoid issues of priority inheritance with the main thread).
+</li>
+<li> Explicitly specify which interface to use for a given download (to get better sync with the connection manager).
+</li>
+<li> Cancel the requests on more kinds of errors instead of trusting the garbage collector. 
+</li>
+<li> Issues with the fact that parseInt can throw exceptions on invalid server headers.
+</li>
+</ul>
+<p />
+<h3><a name="Code_style_refactoring"> </a> Code style, refactoring </h3>
+<p />
+<ul>
+<li> Fix lint warnings
+</li>
+<li> Make sure that comments fit in 80 columns to match style guide
+</li>
+<li> Unify code style when dealing with lines longer than 100 characters
+</li>
+<li> <em>[Constants.java]</em> constants should be organized by logical groups to improve readability.
+</li>
+<li> Use fewer internal classes (Helpers, Constants...) .
+</li>
+</ul>
+<p />
+<h3><a name="Browser_changes"> </a> Browser changes </h3>
+<p />
+<ul>
+<li> Move download UI outside of browser, so that browser doesn't need to access the provider.
+</li>
+<li> Make browser sniff zips and jars to see if they're apks.
+</li>
+<li> Live handoff of browser-initiated downloads (download in browser, browser update download UI, hand over to download manager on retry).
+</li>
+</ul>
+</body>
+</html>

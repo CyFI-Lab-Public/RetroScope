@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="sharedUserLabel" msgid="8024311725474286801">"ແອັບພລິເຄຊັນຫຼັກຂອງ Android"</string>
+    <string name="app_label" msgid="3389954322874982620">"ບ່ອນຈັດເກັບຂໍ້ມູນລາຍຊື່ຜູ່ຕິດຕໍ່"</string>
+    <string name="provider_label" msgid="6012150850819899907">"ລາຍຊື່ຜູ່ຕິດຕໍ່"</string>
+    <string name="upgrade_msg" msgid="8640807392794309950">"ກຳລັງອັບເກຣດຖານຂໍ້ມູນລາຍຊື່ຜູ່ຕິດຕໍ່."</string>
+    <string name="upgrade_out_of_memory_notification_ticker" msgid="7638747231223520477">"ການອັບເກຣດລາຍຊື່ຜູ່ຕິດຕໍ່ ຈະຕ້ອງໃຊ້ໜ່ວຍຄວາມຈຳເພີ່ມຕື່ມ."</string>
+    <string name="upgrade_out_of_memory_notification_title" msgid="8888171924684998531">"ອັບເກຣດບ່ອນຈັດເກັບຂໍ້ມູນລາຍຊື່ຜູ່ຕິດຕໍ່"</string>
+    <string name="upgrade_out_of_memory_notification_text" msgid="8438179450336437626">"ແຕະເພື່ອສິ້ນສຸດຂັ້ນຕອນການອັບເກຣດ."</string>
+    <string name="default_directory" msgid="93961630309570294">"ລາຍຊື່ຜູ່ຕິດຕໍ່"</string>
+    <string name="local_invisible_directory" msgid="705244318477396120">"ອື່ນໆ"</string>
+    <string name="read_write_all_voicemail_label" msgid="4557216100818257560">"ເຂົ້າເຖິງຂໍ້ຄວາມສຽງທັງໝົດ"</string>
+    <string name="read_write_all_voicemail_description" msgid="8029809937805761356">"ອະນຸຍາດໃຫ້ແອັບຯສາມາດບັນທຶກ ແລະດຶງຂໍ້ມູນຂໍ້ຄວາມສຽງທັງໝົດ ທີ່ອຸປະກອນນີ້ສາມາດເຂົ້າເຖິງໄດ້."</string>
+    <string name="voicemail_from_column" msgid="435732568832121444">"ຂໍ້ຄວາມສຽງຈາກ "</string>
+    <string name="debug_dump_title" msgid="4916885724165570279">"ສຳເນົາຖານຂໍ້ມູນລາຍຊື່ຜູ່ຕິດຕໍ່"</string>
+    <string name="debug_dump_database_message" msgid="406438635002392290">"ທ່ານກຳລັງຈະ 1) ສ້າງສຳເນົາຂອງຖານຂໍ້ມູນເຊິ່ງຈະມີ ຂໍ້ມູນທີ່ກ່ຽວຂ້ອງກັບລາຍຊື່ຜູ່ຕິດຕໍ່ ແລະບັນທຶກການໂທທັງໝົດ ເພື່ອຈັດເກັບໃນບ່ອນຈັດເກັບຂໍ້ມູນພາຍໃນ ແລະ 2) ສົ່ງມັນໄປທາງອີເມວ. ຫຼັງຈາກທ່ານສຳເນົາຂໍ້ມູນທີ່ສ້າງອອກຈາກອຸປະກອນນີ້ ຫຼືສົ່ງມັນຜ່ານທາງອີເມວສຳເລັດແລ້ວ ຢ່າລືມລຶບມັນອອກໂດຍທັນທີ."</string>
+    <string name="debug_dump_delete_button" msgid="7832879421132026435">"ລຶບອອກດຽວນີ້"</string>
+    <string name="debug_dump_start_button" msgid="2837506913757600001">"ເລີ່ມ​ຕົ້ນ"</string>
+    <string name="debug_dump_email_sender_picker" msgid="3534420908672176460">"ເລືອກໂປຣແກຣມເພື່ອສົ່ງໄຟລ໌ຂອງທ່ານ"</string>
+    <string name="debug_dump_email_subject" msgid="108188398416385976">"ແນບໄຟລ໌ຖານຂໍ້ມູນລາຍຊື່ຜູ່ຕິດຕໍ່ແລ້ວ"</string>
+    <string name="debug_dump_email_body" msgid="4577749800871444318">"ໄຟລ໌ທີ່ແນບມານຳ ແມ່ນຖານຂໍ້ມູນຂອງລາຍຊື່ຜູ່ຕິດຕໍ່ຂອງຂ້ອຍ. ກະລຸນາຈັດການດ້ວຍຄວາມລະມັດລະວັງ."</string>
+</resources>

@@ -1,0 +1,45 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.android.certinstaller">
+
+    <original-package android:name="com.android.certinstaller" />
+
+    <permission android:name="com.android.certinstaller.INSTALL_AS_USER"
+                android:protectionLevel="signature" />
+
+    <application android:label="@string/app_name"
+                 android:allowBackup="false">
+        <activity android:name=".CertInstallerMain"
+                  android:theme="@style/Transparent"
+                  android:configChanges="orientation|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.credentials.INSTALL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="application/x-x509-ca-cert" />
+                <data android:mimeType="application/x-x509-user-cert" />
+                <data android:mimeType="application/x-x509-server-cert" />
+                <data android:mimeType="application/x-pkcs12" />
+                <data android:mimeType="application/application/x-pem-file" />
+                <data android:mimeType="application/pkix-cert" />
+            </intent-filter>
+        </activity>
+
+        <activity-alias android:name=".InstallCertAsUser"
+                        android:targetActivity=".CertInstallerMain"
+                        android:permission="com.android.certinstaller.INSTALL_AS_USER">
+            <intent-filter>
+                <action android:name="android.credentials.INSTALL_AS_USER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity-alias>
+
+        <activity android:name=".CertInstaller"
+                  android:theme="@style/Transparent"
+                  android:configChanges="orientation|keyboardHidden"
+                  android:exported="false">
+        </activity>
+    </application>
+</manifest>

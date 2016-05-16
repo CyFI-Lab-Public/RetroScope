@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<case name="dut_recording_thd" version="1.0" description="Check THD in DUT's recording side">
+	<setup>
+		<!-- prepare sound source id: to be used in output, sine 1000Hz, 40000ms long -->
+		<sound id="sound1" type="sin:32000:1000:40000" />
+		<!--  Only for starting client app early. The data is not used -->
+		<sound id="sound2" type="sin:1:1000:2" preload="1"/>
+	</setup>
+	<action>
+		<sequential repeat="1" index="i">
+			<output device="host" id="sound1" gain="100" sync="start" waitforcompletion="0" />
+			<sequential repeat="2" index="j">
+				<input device="host" id="host_in_$j" gain="100" time="4000" sync="start" />
+				<input device="DUT" id="dut_in_$j" gain="100" time="2000" sync="start" />
+			</sequential>
+		</sequential>
+		<sequential repeat="2" index="k">
+			<!-- input: host record, device record, signal frequency in Hz, THD for pass in percentile, output: THD calculated -->
+			<process method="script:recording_thd" input="id:host_in_$k,id:dut_in_$k,consti:1000,constf:1.0" output="val:thd_host_$k,val:thd_device_$k" />
+		</sequential>
+	</action>
+	<save file="host_in_.*,dut_in_.*" report="thd_.*" />
+</case>

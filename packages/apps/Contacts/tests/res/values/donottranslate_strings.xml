@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="contactsIntents">Contacts Intents</string>
+    <string name="result">Result returned by activity</string>
+
+    <string-array name="allIntents">
+        <!-- List modes -->
+        <item>LIST_DEFAULT</item>
+        <item>LIST_ALL_CONTACTS_ACTION</item>
+        <item>LIST_CONTACTS_WITH_PHONES_ACTION (deprecated)</item>
+        <item>LIST_STARRED_ACTION</item>
+        <item>LIST_FREQUENT_ACTION</item>
+        <item>LIST_STREQUENT_ACTION</item>
+        <item>LIST_GROUP_ACTION</item>
+        <item>VIEW (content uri without any id)</item>
+        <item>ACTION_PICK: contact</item>
+        <item>ACTION_PICK: contact (legacy)</item>
+        <item>ACTION_PICK: phone</item>
+        <item>ACTION_PICK: phone (legacy)</item>
+        <item>ACTION_PICK: postal</item>
+        <item>ACTION_PICK: postal (legacy)</item>
+        <item>ACTION_PICK: e-mail</item>
+        <item>ACTION_CREATE_SHORTCUT: contact</item>
+        <item>ACTION_CREATE_SHORTCUT: dial</item>
+        <item>ACTION_CREATE_SHORTCUT: message</item>
+        <item>ACTION_GET_CONTENT: contact</item>
+        <item>ACTION_GET_CONTENT: contact (legacy)</item>
+        <item>ACTION_GET_CONTENT: phone</item>
+        <item>ACTION_GET_CONTENT: phone (legacy)</item>
+        <item>ACTION_GET_CONTENT: postal</item>
+        <item>ACTION_GET_CONTENT: postal (legacy)</item>
+        <item>ACTION_INSERT_OR_EDIT</item>
+        <item>ACTION_INSERT_OR_EDIT_PHONE_NUMBER</item>
+        <item>ACTION_INSERT_OR_EDIT_EMAIL_ADDRESS</item>
+        <item>ACTION_SEARCH (call button)</item>
+        <item>ACTION_SEARCH: contact</item>
+        <item>ACTION_SEARCH: email</item>
+        <item>ACTION_SEARCH: phone</item>
+        <item>SEARCH_SUGGESTION_CLICKED: contact</item>
+        <item>TODO: JOIN_CONTACT</item>
+
+        <!-- Edit Contact -->
+        <item>EDIT (content uri with only id)</item>
+        <item>EDIT (lookup uri without id)</item>
+        <item>EDIT (lookup uri)</item>
+        <item>EDIT (called for raw contact)</item>
+        <item>EDIT (legacy style uri)</item>
+        <item>EDIT (create new contact)</item>
+        <item>EDIT (create new contact with data)</item>
+        <item>EDIT (create new contact for account)</item>
+        <item>EDIT (create new contact for account with data)</item>
+        <item>EDIT (create new raw contact)</item>
+        <item>EDIT (create new legacy)</item>
+
+        <!-- View Contact -->
+        <item>VIEW (content uri with only id)</item>
+        <item>VIEW (lookup uri without id)</item>
+        <item>VIEW (lookup uri)</item>
+        <item>VIEW (called for raw contact)</item>
+        <item>VIEW (legacy style uri)</item>
+
+        <!-- Various ways to start Contacts -->
+        <item>DIAL</item>
+        <item>DIAL phone (deprecated)</item>
+        <item>DIAL person (deprecated)</item>
+        <item>DIAL voicemail</item>
+        <item>CALL BUTTON</item>
+        <item>DIAL tel</item>
+        <item>VIEW tel</item>
+        <item>VIEW calls (call-log after a phone call)</item>
+        <item>VIEW calls item</item>
+        <item>CallDetailActivity (legacy)</item>
+        <item>CallLogActivity (legacy)</item>
+    </string-array>
+
+    <string name="pinnedHeaderList">Pinned Headers</string>
+    <string name="quickContactTests">Quick Contact modes</string>
+    <string name="pickContact">Pick contact</string>
+    <string name="fillCallLogTest">Fill call log test</string>
+    <string name="addToCallLogButton">Add</string>
+    <string name="numberOfCallLogEntries">Number of call log entries to add:</string>
+    <string name="useRandomNumbers">Use random numbers</string>
+    <string name="addedLogEntriesToast">Added %1$d call log entries.</string>
+    <string name="noLogEntriesToast">No entries in the call log yet.  Need at least one record for the template.  Or use random numbers.</string>
+
+    <string name="chooseAContactButton">Choose a contact to add stream items to</string>
+    <string name="exitButton">Exit</string>
+    <string name="streamItemPopulator">Populate stream items</string>
+
+    <string-array name="pinnedHeaderUseCases">
+        <item>One short section - no headers</item>
+        <item>Two short sections with headers</item>
+        <item>Five short sections with headers</item>
+    </string-array>
+
+    <string name="attribution_google_plus">Google+</string>
+    <string name="attribution_google_talk">Google Talk</string>
+    <string name="attribution_flicker">Flicker</string>
+    <string name="attribution_twitter">Twitter</string>
+
+    <string name="authenticator_basic_label">Test adapter</string>
+</resources>

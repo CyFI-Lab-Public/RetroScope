@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="calendar_storage" msgid="5387668002987562770">"Dung lượng Lịch"</string>
+    <string name="upgrade_msg" msgid="2792831029435070926">"Đang nâng cấp cơ sở dữ liệu Lịch."</string>
+    <string name="calendar_default_name" msgid="6924293766625167275">"Mặc định"</string>
+    <string name="calendar_info" msgid="6687678621418059281">"Thông tin lịch"</string>
+    <string name="calendar_info_error" msgid="5575162446528419982">"Lỗi"</string>
+    <string name="calendar_info_no_calendars" msgid="4287534468186704433">"Không có lịch."</string>
+    <string name="calendar_info_events" msgid="1805502308105103803">"Sự kiện: <xliff:g id="EVENTS">%1$d</xliff:g>"</string>
+    <string name="calendar_info_events_dirty" msgid="8879392112564499515">"Sự kiện: <xliff:g id="EVENTS_0">%1$d</xliff:g>, Chưa lưu: <xliff:g id="DIRTY_EVENTS">%2$d</xliff:g>"</string>
+    <string name="provider_label" msgid="2306513350843464739">"Lịch"</string>
+    <string name="debug_tool_delete_button" msgid="5052706251268452090">"Xóa ngay bây giờ"</string>
+    <string name="debug_tool_start_button" msgid="5384780896342913563">"Bắt đầu"</string>
+    <string name="debug_tool_message" msgid="4862486669932821937">"Bạn sắp 1) sao chép cơ sở dữ liệu lịch của mình vào thẻ SD/bộ nhớ USB mà bất kỳ ứng dụng nào cũng có thể đọc và 2) gửi email bản sao đó. Hãy nhớ xóa bản sao đó khỏi thiết bị ngay khi bạn đã sao chép thành công hoặc email đã được nhận."</string>
+    <string name="debug_tool_email_sender_picker" msgid="2000311987477419397">"Chọn chương trình để gửi tệp của bạn"</string>
+    <string name="debug_tool_email_subject" msgid="2403590332256471194">"Lịch Db được đính kèm"</string>
+    <string name="debug_tool_email_body" msgid="4835949635324134017">"Phần đính kèm là cơ sở dữ liệu lịch của tôi với tất cả các cuộc hẹn và thông tin cá nhân. Hãy cẩn trọng khi xử lý."</string>
+</resources>

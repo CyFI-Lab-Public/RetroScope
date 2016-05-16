@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3070921713463294774">"Descărcări"</string>
+    <string name="download_title_sorted_by_date" msgid="5898014492155434221">"Descărcări – sortate după dată"</string>
+    <string name="download_title_sorted_by_size" msgid="1417193166677094813">"Descărcări – sortate după dimensiune"</string>
+    <string name="no_downloads" msgid="1029667411186146836">"Nu există descărcări."</string>
+    <string name="missing_title" msgid="830115697868833773">"&lt;Necunoscut&gt;"</string>
+    <string name="button_sort_by_size" msgid="7331549713691146251">"Sortaţi după dimensiune"</string>
+    <string name="button_sort_by_date" msgid="8800842892684101528">"Sortaţi după dată"</string>
+    <string name="download_queued" msgid="104973307780629904">"În aştept."</string>
+    <string name="download_running" msgid="4656462962155580641">"În curs"</string>
+    <string name="download_success" msgid="7006048006543495236">"Finalizat"</string>
+    <string name="download_error" msgid="8081329546008568251">"Nereuşită"</string>
+    <string name="dialog_title_not_available" msgid="5746317632356158515">"Nu s-a putut descărca"</string>
+    <string name="dialog_failed_body" msgid="587545111677064427">"Doriţi să reîncercaţi descărcarea fişierului mai târziu sau să îl ştergeţi din lista de aşteptare?"</string>
+    <string name="dialog_title_queued_body" msgid="6760681913815015219">"Fişier în coadă"</string>
+    <string name="dialog_queued_body" msgid="708552801635572720">"Fişierul este adăugat în coadă pentru descărcare ulterioară, prin urmare nu este disponibil încă."</string>
+    <string name="dialog_file_missing_body" msgid="3223012612774276284">"Nu se poate găsi fişierul descărcat."</string>
+    <string name="dialog_insufficient_space_on_external" msgid="8692452156251449195">"Nu se poate finaliza descărcarea. Nu există suficient spaţiu de stocare extern."</string>
+    <string name="dialog_insufficient_space_on_cache" msgid="6313630206163908994">"Nu se poate finaliza descărcarea. Nu există suficient spaţiu de stocare intern."</string>
+    <string name="dialog_cannot_resume" msgid="8664509751358983543">"Descărcarea a fost întreruptă şi nu poate fi reluată."</string>
+    <string name="dialog_file_already_exists" msgid="8308563940663449590">"Nu se poate descărca. Fişierul de destinaţie există deja."</string>
+    <string name="dialog_media_not_found" msgid="4468088418758018765">"Nu se poate descărca. Nu este disponibil un mediu de stocare extern."</string>
+    <string name="download_no_application_title" msgid="7024782176657362251">"Fişierul nu poate fi deschis"</string>
+    <string name="remove_download" msgid="6372920256257247857">"Eliminaţi"</string>
+    <string name="delete_download" msgid="76629022653866471">"Ștergeţi"</string>
+    <string name="keep_queued_download" msgid="5144882786014818569">"Păstraţi"</string>
+    <string name="cancel_running_download" msgid="5232704030969221112">"Anulaţi"</string>
+    <string name="retry_download" msgid="7617100787922717912">"Reîncercaţi"</string>
+    <string name="deselect_all" msgid="6348198946254776764">"Deselectaţi-le pe toate"</string>
+    <string name="select_all" msgid="634074918366265804">"Selectaţi-le pe toate"</string>
+    <string name="selected_count" msgid="2101564570019753277">"Au fost selectate <xliff:g id="NUMBER">%1$d</xliff:g> din <xliff:g id="TOTAL">%2$d</xliff:g>"</string>
+    <string name="download_share_dialog" msgid="3355867339806448955">"Distribuiţi prin"</string>
+</resources>

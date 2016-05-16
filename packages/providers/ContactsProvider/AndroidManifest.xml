@@ -1,0 +1,117 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.android.providers.contacts"
+        android:sharedUserId="android.uid.shared"
+        android:sharedUserLabel="@string/sharedUserLabel">
+
+    <permission
+            android:name="com.android.voicemail.permission.READ_WRITE_ALL_VOICEMAIL"
+            android:label="@string/read_write_all_voicemail_label"
+            android:description="@string/read_write_all_voicemail_description"
+            android:permissionGroup="android.permission-group.PERSONAL_INFO"
+            android:protectionLevel="system|signature"
+            />
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.BIND_DIRECTORY_SEARCH" />
+    <uses-permission android:name="android.permission.UPDATE_APP_OPS_STATS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="com.android.voicemail.permission.ADD_VOICEMAIL" />
+    <uses-permission android:name="com.android.voicemail.permission.READ_WRITE_ALL_VOICEMAIL" />
+
+    <application android:process="android.process.acore"
+        android:label="@string/app_label"
+        android:icon="@drawable/app_icon"
+        android:allowBackup="false">
+
+        <provider android:name="ContactsProvider2"
+            android:authorities="contacts;com.android.contacts"
+            android:label="@string/provider_label"
+            android:multiprocess="false"
+            android:exported="true"
+            android:readPermission="android.permission.READ_CONTACTS"
+            android:writePermission="android.permission.WRITE_CONTACTS">
+            <path-permission
+                    android:pathPrefix="/search_suggest_query"
+                    android:readPermission="android.permission.GLOBAL_SEARCH" />
+            <path-permission
+                    android:pathPrefix="/search_suggest_shortcut"
+                    android:readPermission="android.permission.GLOBAL_SEARCH" />
+            <path-permission
+                    android:pathPattern="/contacts/.*/photo"
+                    android:readPermission="android.permission.GLOBAL_SEARCH" />
+            <grant-uri-permission android:pathPattern=".*" />
+        </provider>
+
+        <provider android:name="CallLogProvider"
+            android:authorities="call_log"
+            android:syncable="false" android:multiprocess="false"
+            android:exported="true"
+            android:readPermission="android.permission.READ_CALL_LOG"
+            android:writePermission="android.permission.WRITE_CALL_LOG">
+        </provider>
+
+        <provider android:name="VoicemailContentProvider"
+            android:authorities="com.android.voicemail"
+            android:syncable="false" android:multiprocess="false"
+            android:exported="true"
+            android:permission="com.android.voicemail.permission.ADD_VOICEMAIL">
+        </provider>
+
+        <!-- Handles database upgrades after OTAs, then disables itself -->
+        <receiver android:name="ContactsUpgradeReceiver">
+            <!-- This broadcast is sent after the core system has finished
+                 booting, before the home app is launched or BOOT_COMPLETED
+                 is sent. -->
+            <intent-filter>
+                <action android:name="android.intent.action.PRE_BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="PackageIntentReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_ADDED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REPLACED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_CHANGED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="LocaleChangeReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.LOCALE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+
+        <service android:name="VoicemailCleanupService"/>
+
+        <activity android:name=".debug.ContactsDumpActivity"
+                android:label="@string/debug_dump_title"
+                android:theme="@android:style/Theme.Holo.Dialog"
+                >
+            <intent-filter>
+                <action android:name="com.android.providers.contacts.DUMP_DATABASE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <provider android:name=".debug.DumpFileProvider"
+            android:authorities="com.android.contacts.dumpfile"
+            android:exported="true">
+        </provider>
+
+    </application>
+</manifest>

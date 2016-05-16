@@ -1,0 +1,6 @@
+<host-apdu-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/transportService1">
+        <aid-group>
+            <aid-filter android:name="F001020304"/>
+        </aid-group>
+</host-apdu-service>

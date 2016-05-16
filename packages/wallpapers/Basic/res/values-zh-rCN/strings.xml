@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+* Copyright (C) 2008 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="wallpapers" msgid="7890805662847963863">"Android 动态壁纸"</string>
+    <string name="wallpaper_walkaround" msgid="5548084303782181478">"透视"</string>
+    <string name="wallpaper_walkaround_author" msgid="7292960549371044078">"Google"</string>
+    <string name="wallpaper_walkaround_desc" msgid="1714824320382778730">"通过手机进行观察，安心惬意地四处走动。"</string>
+    <string name="wallpaper_grass" msgid="4753389782988032116">"天空草地"</string>
+    <string name="wallpaper_grass_author" msgid="9197652780831360471">"Google"</string>
+    <string name="wallpaper_grass_desc" msgid="7808225799564607409">"一片片草叶在白天或夜晚的天空下轻轻摇曳。"</string>
+    <string name="wallpaper_galaxy" msgid="4698294375306738428">"星系"</string>
+    <string name="wallpaper_galaxy_author" msgid="5455561260819111338">"Google"</string>
+    <string name="wallpaper_galaxy_desc" msgid="6816969378845338629">"由缓慢旋转的星体组成的星系。"</string>
+    <string name="wallpaper_fall" msgid="1500920940722360941">"水面落叶"</string>
+    <string name="wallpaper_fall_author" msgid="8860429843949521342">"Google"</string>
+    <string name="wallpaper_fall_desc" msgid="595888373487204297">"秋叶飘零&lt;br&gt;落入下方微波荡漾的池塘：&lt;br&gt;流体背景风格"</string>
+    <string name="wallpaper_clock" msgid="6555051461698958610">"极地时钟"</string>
+    <string name="wallpaper_clock_author" msgid="8779094427834551330">"Google"</string>
+    <string name="wallpaper_clock_desc" msgid="6767980298898740026">"以顺时针圆弧的形式显示日期和时间：月、日、小时、分和秒。"</string>
+    <string name="wallpaper_nexus" msgid="3789061608411260304">"交错光幕"</string>
+    <string name="wallpaper_nexus_author" msgid="8492858637541249441">"Google"</string>
+    <string name="wallpaper_nexus_desc" msgid="5562598238151885905">"神经网络之一斑。"</string>
+    <string name="clock_settings" msgid="7837858747417927288">"极地时钟设置"</string>
+    <string name="show_seconds" msgid="8525899907567218168">"显示秒"</string>
+    <string name="variable_line_width" msgid="8487094734462263605">"让环的宽度各不相同"</string>
+    <string name="palette" msgid="1636154448241520718">"调色板"</string>
+    <string name="palette_gray" msgid="4575370050214496017">"铁灰色"</string>
+    <string name="palette_violet" msgid="6124851215872884048">"午夜"</string>
+    <string name="palette_matrix" msgid="2755109999115087511">"绿屏"</string>
+    <string name="palette_white_c" msgid="3846812107437715188">"北极熊（动态）"</string>
+    <string name="palette_black_c" msgid="1521258571661038231">"黑洞（动态）"</string>
+    <string name="palette_halloween" msgid="1502590278217616811">"南瓜派"</string>
+    <string name="palette_zenburn" msgid="5537306782860767365">"异国情调的水果沙拉"</string>
+    <string name="palette_oceanic" msgid="7336134088073550028">"蓝色激光"</string>
+</resources>

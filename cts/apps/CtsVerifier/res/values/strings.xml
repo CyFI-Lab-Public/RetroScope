@@ -1,0 +1,824 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="app_name">CTS Verifier</string>
+
+    <string name="title_version">CTS Verifier %1$s</string>
+
+    <string name="pass_button_text">Pass</string>
+    <string name="info_button_text">Info</string>
+    <string name="fail_button_text">Fail</string>
+    <string name="next_button_text">Next</string>
+
+    <!-- Strings for TestListActivity -->
+    <string name="test_category_audio">Audio</string>
+    <string name="test_category_camera">Camera</string>
+    <string name="test_category_device_admin">Device Administration</string>
+    <string name="test_category_hardware">Hardware</string>
+    <string name="test_category_networking">Networking</string>
+    <string name="test_category_sensors">Sensors</string>
+    <string name="test_category_security">Security</string>
+    <string name="test_category_streaming">Streaming</string>
+    <string name="test_category_features">Features</string>
+    <string name="test_category_deskclock">Clock</string>
+    <string name="test_category_other">Other</string>
+    <string name="clear">Clear</string>
+    <string name="test_results_cleared">Test results cleared.</string>
+    <string name="view">View</string>
+    <string name="test_results_error">Couldn\'t create test results report.</string>
+    <string name="export">Export</string>
+    <string name="no_storage">Cannot save report to external storage, see log for details.</string>
+    <string name="report_saved">Report saved to: %s</string>
+
+    <!-- Strings for ReportViewerActivity -->
+    <string name="report_viewer">Report Viewer</string>
+
+    <!-- Strings for BackupTestActivity -->
+    <string name="backup_test">Data Backup Test</string>
+    <string name="backup_info">This test checks that data backup and automatic restore works
+        properly. The test activity lists some preferences and files that are backed up and
+        restored by the CTS Verifier. If backup and restore is working properly, these values
+        should be restored after running the backup manager, uninstalling the app, and reinstalling
+        the CTS Verifier.
+        \n\nPress the \"Generate Test Data\" to populate these values
+        and then follow the on screen instructions to finish the test.
+    </string>
+    <string name="bu_preferences">Preferences</string>
+    <string name="bu_files">Files</string>
+    <string name="bu_loading">Loading...</string>
+    <string name="bu_generate">Generate Test Data</string>
+    <string name="bu_generate_error">Error occurred while generating test data...</string>
+    <string name="bu_instructions">Random values for the preferences and files have been saved.
+        \n\nFollow the instructions below to check that the data backup and restore works:
+        \n\n1. Make sure backup and automatic restore are enabled in settings. Depending on the
+        backup transport supported by the device you may need to do additional steps. For instance
+        you may need to set a Google account as the backup account for the device.
+        \n\n2. Run the backup manager: adb shell bmgr run
+        \n\n3. Uninstall the program: adb uninstall com.android.cts.verifier
+        \n\n4. Reinstall the CTS Verifier and verify that the values are still the same.
+    </string>
+    <string name="bu_settings">Settings</string>
+
+    <!-- Strings for Device Administration tests -->
+    <string name="da_policy_serialization_test">Policy Serialization Test</string>
+    <string name="da_policy_serialization_info">This test checks that a device policy is properly
+        saved and loaded across reboots.\n\nPress the \"Generate Policy\" button to create
+        a random policy. Then press the \"Apply Policy\" button to apply the policy. Reboot the
+        device and verify that all rows in the policy list are green. Red items indicate policy
+        settings that were not loaded properly.
+    </string>
+    <string name="da_no_policy">1. Press the \"Generate Policy\" to create a random device
+        policy\n\n2. Press \"Apply Policy\" to put the policy into effect.\n\n3. Reboot your
+        device and return to this test in the CTS Verifier.
+    </string>
+    <string name="da_generate_policy">Generate Policy</string>
+    <string name="da_apply_policy">Apply Policy</string>
+    <string name="da_random_policy">Random policy generated.</string>
+    <string name="da_policy_reboot">Reboot your device and return to this CTS Verifier test.</string>
+    <string name="da_password_quality">Password Quality</string>
+    <string name="da_password_quality_alphabetic">Alphabetic</string>
+    <string name="da_password_quality_alphanumeric">Alphanumeric</string>
+    <string name="da_password_quality_numeric">Numeric</string>
+    <string name="da_password_quality_something">Something</string>
+    <string name="da_password_minimum_length">Minimum Password Length</string>
+    <string name="da_maximum_failed_passwords_for_wipe">Maximum Failed Passwords for Wipe</string>
+    <string name="da_maximum_time_to_lock">Maximum Time to Lock</string>
+    <string name="da_policy_info">Expected value: %1$s\nActual value: %2$s</string>
+
+    <string name="da_screen_lock_test">Screen Lock Test</string>
+    <string name="da_screen_lock_info">This test checks that the DevicePolicyManager\'s lockNow
+        method immediately locks the screen. It should lock the screen immediately despite any
+        settings that may specify a timeout.\n\nClick the \"Force Lock\" button to lock the screen.
+        Your screen should be locked and require the password to be entered.
+    </string>
+    <string name="da_force_lock">Force Lock</string>
+    <string name="da_lock_success">It appears the screen was locked successfully!</string>
+    <string name="da_lock_error">It does not look like the screen was locked...</string>
+
+    <!-- Strings for BluetoothActivity -->
+    <string name="bluetooth_test">Bluetooth Test</string>
+    <string name="bluetooth_test_info">The Bluetooth Control tests check whether or not the device
+        can disable and enable Bluetooth properly.\n\nThe Device Communication tests require two
+        devices to pair and exchange messages. The two devices must be:
+        \n\n1. a candidate device implementation running the software build to be tested
+        \n\n2. a separate device implementation already known to be compatible</string>
+
+    <string name="bt_control">Bluetooth Control</string>
+    <string name="bt_device_communication">Device Communication</string>
+
+    <string name="bt_toggle_bluetooth">Toggle Bluetooth</string>
+    <string name="bt_toggle_instructions">Disable and enable Bluetooth to successfully complete this test.</string>
+    <string name="bt_enable_bluetooth">Enable Bluetooth</string>
+    <string name="bt_disable_bluetooth">Disable Bluetooth</string>
+    <string name="bt_disabling">Disabling Bluetooth...</string>
+    <string name="bt_disabling_error">Could not disable Bluetooth...</string>
+
+    <string name="bt_connection_access_server">Connection Access Server</string>
+    <string name="bt_connection_access_client">Connection Access Client</string>
+    <string name="bt_connection_access_server_info">
+        Start the CTS Verifier on another device, start the Bluetooth test, and choose
+        \"Connection Access Client\" to setup the test.
+        \n\nFirst, unpair the devices via Bluetooth settings. Then connect the devices together
+        using the \"Make Discoverable\" and \"Pick Server\" buttons.
+        \n\nA connection access request should appear on the server and enable the pass button.
+    </string>
+    <string name="bt_connection_access_client_info">
+        Start the CTS Verifier on another device, start the Bluetooth test, and choose
+        \"Connection Access Server\" to complete the test.
+        \n\nMake the device acting as the server discoverable and connect to it via the
+        \"Pick Server\" button. Check that the server displays the connection access request
+        dialog. The client device does not need to do anything else.
+    </string>
+    <string name="bt_ca_dialog">Was the connection access request dialog shown?</string>
+    <string name="bt_ca_tips">
+        Tap the \"Bluetooth Settings\" button and check that both devices are not paired
+        before running the test.
+        \n\nUse the \"Make Discoverable\" and \"Pick Server\" buttons to connect the two Bluetooth
+        devices together and start the test.
+    </string>
+
+    <string name="bt_secure_server">Secure Server</string>
+    <string name="bt_secure_server_instructions">Start the CTS Verifier on another device, start the Bluetooth test, and choose \"Secure Client\" to complete the test.</string>
+    <string name="bt_insecure_server">Insecure Server</string>
+    <string name="bt_insecure_server_instructions">Start the CTS Verifier on another device, start the Bluetooth test, and choose \"Insecure Client\" to complete the test.</string>
+    <string name="bt_waiting">Waiting for client...</string>
+    <string name="bt_listening">Listening...</string>
+    <string name="bt_connecting">Connecting...</string>
+    <string name="bt_connected">Connected</string>
+    <string name="bt_received_messages">Received Messages</string>
+    <string name="bt_sent_messages">Sent Messages</string>
+    <string name="bt_no_messages">No messages</string>
+    <string name="bt_make_discoverable">Make Discoverable</string>
+    <string name="bt_pick_server">Pick Server</string>
+    <string name="bt_insecure_pairing_error_title">Pairing dialog shown?</string>
+    <string name="bt_insecure_pairing_error_message">Insecure connections should not show the pairing dialog!</string>
+
+    <string name="bt_secure_client">Secure Client</string>
+    <string name="bt_insecure_client">Insecure Client</string>
+
+    <string name="bt_device_picker">Device Picker</string>
+    <string name="bt_paired_devices">Paired Devices</string>
+    <string name="bt_new_devices">New Devices</string>
+    <string name="bt_no_devices">No devices</string>
+    <string name="bt_scan">Scan for Devices</string>
+    <string name="bt_scanning">Scanning...</string>
+    <string name="bt_unpair">Device must be unpaired via Bluetooth settings before completing the test.\n\nUnpair the device in settings, make the server discoverable, and rescan to pick this device.</string>
+    <string name="bt_settings">Bluetooth Settings</string>
+
+    <!-- Strings for FeatureSummaryActivity -->
+    <string name="feature_summary">Hardware/Software Feature Summary</string>
+    <string name="feature_summary_info">This is a test for...</string>
+    <string name="fs_disallowed">WARNING: device reports a disallowed feature name</string>
+    <string name="fs_missing_wifi_telephony">WARNING: device reports neither WiFi nor telephony</string>
+    <string name="fs_no_data">No data.</string>
+    <string name="fs_legend_good">standard feature reported by device</string>
+    <string name="fs_legend_indeterminate">optional feature not reported by device</string>
+    <string name="fs_legend_warning">non-standard feature reported by device</string>
+    <string name="fs_legend_error">required feature not reported, or forbidden feature reported</string>
+
+    <string name="empty"></string>
+
+    <!-- Strings for Location tests -->
+    <string name="location_gps_test">GPS Test</string>
+    <string name="location_gps_test_info">This test verifies basic GPS behavior
+        and callback scheduling.
+        Make sure the device has line of sight to GPS satellites
+        (for example, outside, or near a window)
+        and then press OK to run the automated tests.</string>
+
+    <!-- Strings for NfcTestActivity -->
+    <string name="nfc_test">NFC Test</string>
+    <string name="nfc_test_info">The Peer-to-Peer Data Exchange tests require two devices with
+        NFC enabled to exchange messages. One device must be the candidate device running the
+        software build to be tested, while the other device must be an implementation already
+        known to be compatible.\n\nThe Tag Verification tests check that your
+        device can properly read and write to tags of different technologies. The MIFARE
+        Ultralight test is only applicable for devices that support it.
+        \n\nThe Host-based card emulation tests check that your device has properly implemented
+             host-based card emulation.
+    </string>
+
+    <string name="nfc_not_enabled">NFC is not enabled!</string>
+    <string name="nfc_not_enabled_message">These tests require NFC to be enabled. Click the
+        button below to goto Settings and enable it.</string>
+    <string name="nfc_settings">NFC Settings</string>
+
+    <string name="ndef_push_not_enabled">NDEF Push is not enabled!</string>
+    <string name="ndef_push_not_enabled_message">These tests require Android Beam to be enabled.
+        Click the button below to goto NFC Sharing Settings and enable it.</string>
+    <string name="ndef_push_settings">NFC Sharing Settings</string>
+
+    <string name="nfc_pee_2_pee">Peer-to-Peer Data Exchange</string>
+    <string name="nfc_ndef_push_sender">NDEF Push Sender</string>
+    <string name="nfc_ndef_push_receiver">NDEF Push Receiver</string>
+
+    <string name="nfc_tag_verification">Tag Verification</string>
+    <string name="nfc_ndef">NDEF</string>
+    <string name="nfc_mifare_ultralight">MIFARE Ultralight</string>
+
+    <string name="nfc_ndef_push_sender_info">Start the \"CTS Verifier NDEF Receiver\" test on
+        another device and touch the devices back to back. The receiver should show a
+        dialog indicating it has successfully received the correct message!</string>
+    <string name="nfc_ndef_push_sender_instructions">Touch this device to the back of another
+        device running the \"CTS Verifier NDEF Receiver\"...</string>
+
+    <string name="nfc_ndef_push_receiver_info">Start the \"CTS Verifier NDEF Sender\" test on
+        another device and touch the devices back to back. The receiver should show a
+        dialog indicating it has successfully received the correct message!</string>
+    <string name="nfc_ndef_push_receiver_instructions">Touch this device to the back of another
+        device running the \"CTS Verifier NDEF Sender\"...</string>
+    <string name="nfc_ndef_push_receive_success">Successfully received the correct NDEF push
+        message.</string>
+    <string name="nfc_ndef_push_receive_failure">Failed to receive the correct NDEF push
+        message.</string>
+
+    <string name="nfc_tag_verifier">NFC Tag Verifier</string>
+    <string name="nfc_tag_verifier_info">Follow the on-screen instructions to write and read
+        a tag of the chosen technology.</string>
+
+    <string name="nfc_scan_tag">Place device on a writable %s tag...</string>
+    <string name="nfc_write_tag_title">Writable tag discovered!</string>
+    <string name="nfc_write_tag_message">Press OK to write to this tag...</string>
+    <string name="nfc_scan_tag_again">Tap the same %s tag again to confirm that its contents match...</string>
+    <string name="nfc_wrong_tag_title">Wrong type of tag scanned</string>
+    <string name="nfc_no_tech">No tag technologies detected...</string>
+
+    <string name="nfc_writing_tag">Writing NFC tag...</string>
+    <string name="nfc_writing_tag_error">Error writing NFC tag...</string>
+    <string name="nfc_reading_tag">Reading NFC tag...</string>
+    <string name="nfc_reading_tag_error">Error reading NFC tag...</string>
+
+    <string name="nfc_result_success">Test passed!</string>
+    <string name="nfc_result_failure">Test failed!</string>
+
+    <string name="nfc_result_message">Written data:\n%1$s\n\nRead data:\n%2$s</string>
+    <string name="nfc_ndef_content">Id: %1$s\nMime: %2$s\nPayload: %3$s</string>
+
+    <string name="nfc_hce">Host-based card emulation</string>
+    <string name="nfc_hce_reader_tests">HCE reader tests</string>
+    <string name="nfc_hce_emulator_tests">HCE emulator tests</string>
+    <string name="nfc_hce_emulator_test_info">The host-based card emulation
+        tests require two devices to be completed. The HCE emulator tests are used
+        to actually test the host-based card emulation feature of the device-under-test. So the
+        device running the emulator tests must be the candidate device running the software
+        to be tested. \n\nFor each emulator test, there is a corresponding "reader test"
+        in the "HCE reader tests" section. The "reader test" acts as a NFC terminal/POS
+        and makes sure the device-under-test implements card emulation correctly.
+    </string>
+    <string name="nfc_hce_reader_test_info">The host-based card emulation
+        tests require two devices to be completed. The HCE emulator tests are used
+        to actually test the host-based card emulation feature of the device-under-test. So the
+        device running the emulator tests must be the candidate device running the software
+        to be tested. \n\nFor each emulator test, there is a corresponding "reader test"
+        in the "HCE reader tests" section. The "reader test" acts as a NFC terminal/POS
+        and makes sure the device-under-test implements card emulation correctly.
+    </string>
+    <string name="nfc_hce_please_wait">Please wait</string>
+    <string name="nfc_hce_setting_up">Setting up card emulation services...</string>
+
+    <string name="nfc_hce_default_route_emulator">Default route (Emulator)</string>
+    <string name="nfc_hce_default_route_reader">Default route (Reader)</string>
+    <string name="nfc_hce_default_route_emulator_help">This test verifies that the default route for ISO-DEP (ISO14443-4) frames is the host CPU. It does this by selecting an AID that any Android HCE phone will respond to if the select command is routed to the host. Please verify that there is no rule in the routing table that points this AID to the host. This test may be passed if the "PASS" button on the reader side lights up after tapping the devices together.</string>
+
+    <string name="nfc_hce_protocol_params_emulator">Protocol parameters (Emulator)</string>
+    <string name="nfc_hce_protocol_params_reader">Protocol parameters (Reader)</string>
+    <string name="nfc_hce_protocol_params_emulator_help">This test verifies that the Nfc-A and ISO-DEP protocol parameters are being set correctly. The test may be passed when no FAIL entries show up in the results below. Note that the reader device may be different from the device under test - the DUT itself does not need to be able to act as the reader for this test. \n\n Note that for each test there are 3 possible outcomes:\n1) OK -> test has passed;\n2) FAIL -> test has failed and this must be fixed;\n3) FAIL EMVCO -> this protocol parameter is deviating from the requirements in the EMV Contactless Communication Protocol specification.\n\nWhile it is allowed to ship a HCE implementation with EMVCo failures, it may not perform optimal when EMVco based payment HCE apps are run on the device.</string>
+
+    <string name="nfc_hce_single_payment_emulator">Single payment (Emulator)</string>
+    <string name="nfc_hce_single_payment_reader">Single payment (Reader)</string>
+
+    <string name="nfc_hce_dual_payment_emulator">Two payment services (Emulator)</string>
+    <string name="nfc_hce_dual_payment_reader">Two payment services (Reader)</string>
+
+    <string name="nfc_hce_change_default_emulator">Change default payment service (Emulator)</string>
+    <string name="nfc_hce_change_default_reader">Change default payment service (Reader)</string>
+
+    <string name="nfc_hce_tap_reader_title">Tap reader</string>
+    <string name="nfc_hce_tap_reader_message">Select the corresponding reader test on the remote device, click OK on this dialog, and tap devices together. The pass button will be enabled if the test passes.</string>
+
+    <string name="nfc_hce_single_non_payment_emulator">Single non-payment (Emulator)</string>
+    <string name="nfc_hce_single_non_payment_reader">Single non-payment (Reader)</string>
+
+    <string name="nfc_hce_dual_non_payment_emulator">Two non-payment services (Emulator)</string>
+    <string name="nfc_hce_dual_non_payment_reader">Two non-payment services (Reader)</string>
+
+    <string name="nfc_hce_conflicting_non_payment_emulator">Two conflicting non-payment services (Emulator)</string>
+    <string name="nfc_hce_conflicting_non_payment_reader">Two conflicting non-payment services (Reader)</string>
+
+    <string name="nfc_hce_offhost_service_emulator">Off-host service (Emulator)</string>
+    <string name="nfc_hce_offhost_service_reader">Off-host service (Reader)</string>
+    <string name="nfc_hce_offhost_emulator_help">This tests enables a service that declares some AIDs to reside off-host. This test only needs to be passed if your device has a secure element (either embedded or UICC.). The responses from the secure element are not verified by the test - it is up to the tester to verify the responses are as expected.</string>
+
+    <string name="nfc_hce_on_and_offhost_service_emulator">On and off-host services (Emulator)</string>
+    <string name="nfc_hce_on_and_offhost_service_reader">On and off-host services (Reader)</string>
+    <string name="nfc_hce_on_and_offhost_emulator_help">This tests enables a service that declares some AIDs to reside off-host, and another service that runs on host. It then first sends an APDU sequence that goes off-host, and subsequently some APDUs that should go to the on-host service. This test only needs to be passed if your device has a secure element (either embedded or UICC.). The pass button will be enabled if the on-host sequence is performed as expected. The responses from the secure element are not verified by the test - it is up to the tester to verify the responses are as expected. </string>
+
+    <string name="nfc_hce_tap_test_emulator">50 successful taps test (Emulator)</string>
+    <string name="nfc_hce_tap_test_reader">50 successful taps test (Reader)</string>
+    <string name="nfc_hce_tap_test_emulator_help">This test requires you to complete at least 50 HCE taps, to ensure stability of the HCE feature. The NFC service and controller should not crash or hang during any of the 50 taps.</string>
+    <string name="nfc_hce_throughput_emulator">HCE throughput test (Emulator)</string>
+    <string name="nfc_hce_throughput_reader">HCE throughput test (Reader)</string>
+    <string name="nfc_hce_throughput_emulator_help">This tests verifies that your HCE implementation can reach a decent throughput. While Android does not have any requirements on HCE performance, many HCE applications such as transport and payment apps do. If the average APDU roundtrip time is more than 50ms, please take a look at your implementation to see where the delay is coming from.</string>
+    <string name="nfc_hce_change_default_help">You will now be asked whether you want to make Payment Service #1 the default app. Select yes.</string>
+    <string name="nfc_hce_conflicting_non_payment_help">When tapping the first time, you will be shown a dialog that asks you to choose between TransportService #1 and TransportService #2. Select TransportService #2. Verify a dialog is shown that asks you to tap again to complete. Now tap again, and if communication with TransportService #2 is successfull the pass button will be enabled."</string>
+    <string name="nfc_payment_service_desc">NFC Payment service</string>
+    <string name="ppse">PPSE</string>
+    <string name="mastercard">MasterCard</string>
+    <string name="paymentService1">Payment Service #1</string>
+    <string name="paymentService2">Payment Service #2</string>
+    <string name="transportService1">TransportService #1</string>
+    <string name="transportService2">TransportService #2</string>
+    <string name="accessService">AccessService</string>
+    <string name="offhostService">OffhostService</string>
+
+    <!-- Strings for Sensor Test Activities -->
+    <!-- Accelerometer -->
+    <string name="snsr_accel_test">Accelerometer Test</string>
+    <string name="snsr_accel_test_info">This test verifies that the accelerometer is working properly. As you move the device around through space, the triangle should always point down (i.e. in the direction of gravity.) If it does not, the accelerometer is improperly configured.</string>
+    <string name="snsr_accel_m_test">Accelerometer Measurement Tests</string>
+
+    <!-- Gyroscope -->
+    <string name="snsr_gyro_test">Gyroscope Test</string>
+    <string name="snsr_gyro_test_info">This test verifies that the gyroscope is working properly.\n\nRotate your device as shown by the 3D block. A green background or a check mark indicates that the gyroscope\'s value is correct. A red background or a X mark indicates that the gyroscope\'s value is not right.\n\nThere are 6 parts of the test corresponding to each rotation. Press Pass for all the stages to complete this test.</string>
+    <string name="snsr_gyro_test_progress">Test %1$d of %2$d</string>
+    <string name="snsr_gyro_test_no_gyro_title">No gyroscope?</string>
+    <string name="snsr_gyro_test_no_gyro_message">It doesn\'t seem like you have a gyroscope, so you don\'t need to run this test.</string>
+    <string name="snsr_gyro_test_degrees_title">Wrong units?</string>
+    <string name="snsr_gyro_test_degrees_message">These values looks like degrees per second. These should be radians per second!</string>
+    <string name="snsr_gyro_m_test">Gyroscope Measurement Test</string>
+
+    <!-- Magnetic Field -->
+    <string name="snsr_mag_m_test">Magnetic Field Measurement Tests</string>
+
+    <!-- Strings for SuidFilesActivity -->
+    <string name="suid_files">SUID File Scanner</string>
+    <string name="suid_files_info">This test will attempt to find unauthorized SUID binaries, but it is not comprehensive due to permission restrictions.\n\nAuthorized SUID binaries will appear green, while unauthorized SUID binaries will appear red.\n\nPress OK to start the scan...</string>
+    <string name="scanning_directory">Scanning directory...</string>
+    <string name="file_status">User: %1$s\nGroup: %2$s\nPermissions: %3$s\nPath: %4$s</string>
+    <string name="no_file_status">Could not stat file...</string>
+    <string name="congratulations">Congratulations!</string>
+    <string name="no_suid_files">No unauthorized suid files detected!</string>
+
+    <!-- Strings for Camera Analyzer -->
+    <string name="camera_analyzer">Camera Analyzer</string>
+    <string name="ca_find_checkerboard_label">Find target</string>
+    <string name="ca_check_formats_label">Output formats</string>
+    <string name="ca_exposure_test_label">Exposure Comp.</string>
+    <string name="ca_result_label">Results will be here</string>
+    <string name="ca_wb_test_label">White Balance</string>
+    <string name="ca_lock_test_label">AE Lock</string>
+    <string name="ca_metering_label">Metering Area</string>
+    <string name="ca_focus_modes_label">Focus Modes</string>
+    <string name="ca_info">This test checks the image quality of the camera of this device. It requires a MacBeth 4x6 color checker. With an ADK board and a lamp connected to it on the Relay 1 port, all tests can be run automatically. Without the ADK board, all the tests except the Auto Exposure Lock Test can be run automatically and the Auto Exposure Lock Test will require users to turn on/off a lamp according to the instruction given. </string>
+
+    <!-- Strings for Camera Orientation -->
+    <string name="camera_orientation">Camera Orientation</string>
+    <string name="co_info">This test verifies the orientation capabilities of
+    camera preview and capture.\n - The left view shows a preview window rotated
+    clockwise by a given magnitude of degrees.\n - The right view, after taking
+    a photo, shows the captured image.\n - For each camera and orientation, both
+    the left and right views should appear rotated clockwise by the amount of
+    degrees specified. Choose \"Pass\" if this is the case. Otherwise, choose
+    \"Fail\".\n - For front-facing cameras, the test will horizontally mirror
+    the captured image prior to rotation, in attempt to make the left and right
+    views appear the same.\n - The physical orientation of the device does not
+    matter.\n - Read the message above the \"Take Photo\" button for
+    step-by-step instructions.
+    </string>
+    <string name="co_preview_label">Camera preview</string>
+    <string name="co_format_label">Oriented photo</string>
+    <string name="co_camera_label">Camera:</string>
+    <string name="co_orientation_label">Orientation</string>
+    <string name="co_orientation_direction_label">clockwise</string>
+    <string name="co_instruction_heading_label">Instruction:</string>
+    <string name="co_instruction_text_photo_label">Take a photo</string>
+    <string name="co_instruction_text_passfail_label">Choose \"Pass\" if the left view is oriented the same as the right view. Otherwise, choose \"Fail\".</string>
+    <string name="co_instruction_text_extra_label">(mirrored horizontally prior to rotation, since camera is front-facing)</string>
+    <string name="co_photo_button_caption">Take Photo</string>
+
+    <!-- Strings for Camera Intents -->
+    <string name="camera_intents">Camera Intents</string>
+    <string name="ci_info">
+    This test verifies that the default camera app is firing intents
+    after pictures/videos are taken. It also verifies that when the
+    default camera app is invoked via intents, the launch intents work,
+    and the broadcast intents are received when appropriate per the SDK
+    documentation.\n\n
+    - Read the message above the \"Start Test\" button for
+    step-by-step instructions.
+    </string>
+    <string name="ci_preview_label">Camera preview</string>
+    <string name="ci_format_label">Oriented photo</string>
+    <string name="ci_camera_label">Camera:</string>
+    <string name="ci_intents_label">Intents Test</string>
+    <string name="ci_intents_direction_label">clockwise</string>
+    <string name="ci_instruction_heading_label">Instructions:</string>
+    <string name="ci_instruction_text_photo_label">READ BEFORE STARTING TEST</string>
+    <string name="ci_instruction_text_passfail_label">Choose \"Pass\" if the right intent is fired after taking a photo from the camera app. Otherwise, choose \"Fail\".</string>
+    <string name="ci_instruction_text_app_picture_label">\n
+    1. Click Start Test. \n
+    2. Go to home screen (HOME key). \n
+    3. Launch Camera application. \n
+    4. Capture photo. \n
+    5. Return to CTS verifier app. \n
+    6. Pass button will light up if intent was received.\n
+    7. Click "Pass" if possible.
+    </string>
+    <string name="ci_instruction_text_app_video_label">\n
+    1. Click Start Test. \n
+    2. Go to home screen (HOME key). \n
+    3. Launch Camera application. \n
+    4. Capture video. \n
+    5. Return to CTS verifier app. \n
+    6. Pass button will light up if intent was received.\n
+    7. Click "Pass" if possible.
+    </string>
+    <string name="ci_instruction_text_intent_picture_label">\n
+    1. Click Start Test.\n
+    2. Camera app will launch, prompting to take photo.\n
+    3. Capture/confirm photo using camera app controls.\n
+    4. Pass button will light up if intent was NOT received.\n
+    5. Click "Pass" if possible.
+    </string>
+    <string name="ci_instruction_text_intent_video_label">\n
+    1. Click Start Test.\n
+    2. Camera app will launch, prompting to take video.\n
+    3. Capture/confirm video using camera app controls.\n
+    4. Pass button will light up if intent was received.\n
+    5. Click "Pass" if possible.
+    </string>
+    <string name="ci_start_test_button_caption">Start Test</string>
+
+    <!-- Strings for Camera Formats -->
+    <string name="camera_format">Camera Formats</string>
+    <string name="cf_info">This test checks that all the supported
+    output formats for camera preview callbacks work correctly, and
+    that the mandatory formats are available. \n - The left view shows
+    a standard preview window. \n - The right view shows the output
+    processed from camera preview callbacks. \n - For each camera,
+    resolution, and format combination in the dropdowns, the right
+    view should look the same as the left, and neither should have
+    streaks, lines, or other artifacts. \n - For front-facing cameras,
+    the right view must be horizontally mirrored relative to the left
+    view.\n - Note that the frame rate of the right view may be much
+    lower than on the left; this is not an indication of a failed
+    test.
+    </string>
+    <string name="cf_preview_label">Normal preview</string>
+    <string name="cf_format_label">Processed callback data</string>
+
+    <!-- Strings for Camera Video -->
+    <string name="record_button_text">Test</string>
+    <string name="camera_video">Camera Video</string>
+    <string name="video_info"> This test checks video capture
+    at different resolutions. \n - The left view window shows the preview.
+    \n - Pressing the test button will trigger three
+    seconds of video recording. Playback will show up in the right view
+    window after recording is complete. \n - Use the spinners to choose
+    camera and resolution combinations. The playback should be similar
+    to what you saw in preview. \n - After all possible combinations
+    are tested, the pass button will be enabled. You may press the pass
+    button to indicate a pass. \n - You may press fail button any time during
+    the test to indicate failure.
+    </string>
+    <string name="video_capture_label">Video capture</string>
+    <string name="video_playback_label">Video playback</string>
+    <string name="dialog_fail_test">Test failed</string>
+    <string name="fail_quit">Fail and quit</string>
+    <string name="cancel">Cancel</string>
+    <string name="status_ready">Ready</string>
+    <string name="status_recording">Recording</string>
+    <string name="status_playback">Playing back</string>
+
+    <!-- Strings for USB accessory test activity -->
+    <string name="usb_accessory_test">USB Accessory Test</string>
+    <string name="usb_accessory_test_info">
+        1. Connect your Android device to a computer and run the \'cts-usb-accessory\' program
+        included with the CTS Verifier bundle.
+        \n\n2. If you have not started the CTS Verifier, press \'OK\' when asked to open the CTS
+        Verifier when the accessory is connected. \n\nIf you are already in this test,
+        then you can press \'Cancel\' but press \'OK\' in the next dialog asking whether to allow
+        CTS Verifier to access the accessory.
+        \n\n3. You should see the accessory and the CTS Verifier display a series of messages
+        which indicates that the accessory support is working properly.
+    </string>
+    <string name="usb_not_available_title">USB accessory feature is not available?</string>
+    <string name="usb_not_available_message">If your device is supposed to support USB accessories, your API implementation is not behaving correctly!</string>
+    <string name="usb_received_messages">Received Messages</string>
+    <string name="usb_sent_messages">Sent Messages</string>
+    <string name="usb_no_messages">No messages</string>
+    <string name="usb_message_thread_started">Starting message processing...</string>
+    <string name="usb_message_thread_exception">Exception occurred while processing a message...</string>
+    <string name="usb_message_thread_ended">Stopping message processing...</string>
+    <string name="usb_test_passed">Received all expected messages. Pass button enabled!</string>
+    <string name="usb_file_descriptor_error">Could not open file descriptor for USB accessory... try reconnecting and restarting the accessory?</string>
+
+    <!-- Strings for StreamingVideoActivity -->
+    <string name="streaming_video">Streaming Video Quality Verifier</string>
+    <string name="streaming_video_info">This is a test for assessing the quality of streaming videos.  Play each stream and verify that the video is smooth and in sync with the audio, and that there are no quality problems.</string>
+    <string name="sv_no_data">No videos.</string>
+    <string name="sv_failed_title">Test Failed</string>
+    <string name="sv_failed_message">Unable to play stream.  See log for details.</string>
+
+    <!-- Strings for P2pTestActivity -->
+    <string name="p2p_test">Wi-Fi Direct Test</string>
+    <string name="p2p_test_info">
+        The Wi-Fi Direct tests require two devices with Wi-Fi Direct enabled to exchange
+        messages. One device must be the candidate device running the software build to
+        be tested, while the other device must be an implementation already known to be
+        compatible.\n\nOne device should start the requester test, and the other should
+        start the responder test. Your device must pass both requester and responder
+        tests.
+        </string>
+    <string name="p2p_group_formation">Group Formation</string>
+    <string name="p2p_join">Group Join</string>
+    <string name="p2p_service_discovery">Service Discovery</string>
+
+    <string name="p2p_go_neg_responder_test">GO Negotiation Responder Test</string>
+    <string name="p2p_go_neg_requester_test">GO Negotiation Requester Test</string>
+    <string name="p2p_group_owner_test">Group Owner Test</string>
+    <string name="p2p_group_client_test">Group Client Test</string>
+    <string name="p2p_service_discovery_responder_test">
+        Service Discovery Responder Test</string>
+    <string name="p2p_service_discovery_requester_test">
+        Service Discovery Requester Test</string>
+
+    <string name="p2p_go_neg_responder">GO Negotiation Responder</string>
+    <string name="p2p_go_neg_requester">GO Negotiation Requester</string>
+    <string name="p2p_accept_client">Group Owner</string>
+    <string name="p2p_join_go">Group Client</string>
+    <string name="p2p_service_discovery_responder">Service Discovery Responder</string>
+    <string name="p2p_service_discovery_requester">Service Discovery Requester</string>
+
+    <string name="p2p_go_neg_responder_info">
+        Start the \"GO Negotiation Requester Test\" on the other device and follow
+        the instructions.</string>
+    <string name="p2p_accept_client_info">
+        Start the \"Group Client Test\" on the other device and follow
+        the instructions.</string>
+    <string name="p2p_service_discovery_responder_info">
+        Start the \"Service Discovery Requester Test\" on the other device and follow
+        the instructions.</string>
+
+    <string name="p2p_go_neg_requester_info">
+        Start the \"GO Negotiation Responder Test\" on the other device.
+        Then run each test individually by clicking on it\'s name.</string>
+    <string name="p2p_join_go_info">
+        Start the \"Group Owner Test\" on the other device.
+        Then run each test individually by clicking on it\'s name.</string>
+    <string name="p2p_service_discovery_requester_info">
+        Start the \"Service Discovery Responder Test\" on the other device.
+        Then run each test individually by clicking on it\'s name.</string>
+
+    <string name="p2p_not_enabled">Wi-Fi is not enabled</string>
+    <string name="p2p_not_enabled_message">These tests require Wi-Fi to be enabled.
+        Click the button below to go to system settings and enable Wi-Fi.</string>
+    <string name="p2p_settings">Wi-Fi Direct Settings</string>
+
+    <string name="p2p_result_success">Test passed successfully.</string>
+
+    <string name="p2p_go_neg_responder_ready">
+        The go negotiation responder is now ready to start. Start
+        the \"GO Negotiation Requester Test\" on the other device.
+        Keep the screen here until all tests on the other device are
+        finished.</string>
+    <string name="p2p_go_ready">
+        The group owner is now ready to start. Start the \"Join
+        Group Test\" on the other device.
+        Keep the screen here until all tests on the other device are
+        finished.</string>
+    <string name="p2p_service_responder_ready">
+        The service responder is now ready to start. Start the
+        \"Service Discovery Requester Test\" on the other device.
+        Keep the screen here until all tests on the other device are
+        finished.</string>
+
+    <string name="p2p_setup_error">
+        Test failed.\n\nSet up error. Check whether Wi-Fi can be enabled.</string>
+    <string name="p2p_unexpected_error">
+        Test failed.\n\nUnexpected error. Check logcat.</string>
+    <string name="p2p_add_local_service_error">
+        Test failed.\n\nFailed to add local service.</string>
+    <string name="p2p_add_service_request_error">
+        Test failed.\n\nFailed to add service request.</string>
+    <string name="p2p_remove_service_request_error">
+        Test failed.\n\nFailed to remove service request.</string>
+    <string name="p2p_clear_service_requests_error">
+        Test failed.\n\nFailed to clear service requests.</string>
+    <string name="p2p_connect_error">
+        Test failed.\n\nFailed to start a p2p connection to the target device.</string>
+    <string name="p2p_remove_group_error">
+        Test failed.\n\nFailed to remove a p2p group.</string>
+    <string name="p2p_discover_peers_error">
+        Test failed.\n\nFailed to discover peers.</string>
+    <string name="p2p_discover_services_error">
+        Test failed.\n\nFailed to discover services.</string>
+    <string name="p2p_ceate_group_error">
+        Test failed.\n\nFailed to start up group owner.</string>
+    <string name="p2p_no_service_requests_error">
+        Test failed.\n\n\"NO_SERVICE_REQUESTS\" error did not occur.</string>
+    <string name="p2p_receive_invalid_response_error">
+        Test failed.\n\nReceived an invalid message or could not receive
+         the expected message.\n\n</string>
+    <string name="p2p_target_not_found_error">Test failed.\n\n
+        The target responder device was NOT found. Start up the responder
+        test on the other device, then run the test again.</string>
+    <string name="p2p_target_invalid_role_error">Test failed.\n\n
+        The target responder must be p2p device. However, the target responder
+        device was group owner. Check the test case on the other device.</string>
+    <string name="p2p_target_invalid_role_error2">Test failed.\n\n
+        The target responder must be group owner. However, the target responder
+        device was p2p device. Check the test case on the other device.</string>
+    <string name="p2p_connection_error">
+        Test failed.\n\nFailed to establish a p2p connection.</string>
+    <string name="p2p_detect_disconnection_error">
+        Test failed.\n\nFailed to detect client disconnection.</string>
+    <string name="p2p_disconnect_error">
+        Test failed.\n\nFailed to disconnect a p2p connection.</string>
+
+    <string name="p2p_search_target">Search Target</string>
+    <string name="p2p_searching_target">Searching for target device ...</string>
+    <string name="p2p_checking_serv_capab">Checking the service discovery
+        capability ...</string>
+    <string name="p2p_connecting_with_pbc">Trying to connect the target device ...\n\n
+        Click the \"OK\" button on the other device to accept the connection
+        request from this device.</string>
+    <string name="p2p_connecting_with_pin">Trying to connect the target device ...\n\n
+        Enter the pin number on the other device.</string>
+    <string name="p2p_waiting_for_peer_to_connect">Waiting for peer to
+        connect ...</string>
+    <string name="p2p_waiting_for_peer_to_disconnect">Waiting for peer
+        to disconnect ...</string>
+
+    <string name="camera_fov_calibration">Camera FOV Calibration</string>
+    <string name="camera_fov_calibration_done">Done</string>
+    <string name="camera_fov_general_settings">General settings</string>
+    <string name="camera_fov_label_options">Settings</string>
+    <string name="camera_fov_tap_to_take_photo">Tap to calibrate</string>
+    <string name="camera_fov_marker_distance">Marker distance (in cm)</string>
+    <string name="camera_fov_marker_distance_description">The distance in centimeters between
+        the solid lines on the target pattern.</string>
+    <string name="camera_fov_target_distance">Target distance (in cm)</string>
+    <string name="camera_fov_target_distance_description">The distance in centimeters from the
+        device to the target pattern.</string>
+    <string name="camera_fov_settings_button_text">Setup</string>
+    <string name="camera_fov_change_preview_sizes_button_text">Preview Sizes</string>
+    <string name="camera_fov_choose_preview_size_for_camera">Choose preview size for camera %1$s</string>
+    <string name="camera_fov_displayed_fov_label">Displayed FOV : </string>
+    <string name="camera_fov_reported_fov_label">Reported  FOV : </string>
+    <string name="camera_fov_reported_fov_problem">Reported FOV problem</string>
+    <string name="camera_fov_reported_fov_problem_message">The reported FOV before takePicture() is
+        different from when onPictureTaken() is called.\nAs picture size has not been changed, the
+        reported FOV should be identical at both times.\n\nFOV before/after: %1$f / %2$f</string>
+
+    <string name="camera_fov_panorama_wallpaper_title">Photo Sphere Live Wallpaper</string>
+    <string name="camera_fov_panorama_wallpaper_description">This live wallapper displays photo
+        spheres.</string>
+    <string name="camera_fov_select_panorama">Select panorama</string>
+    <string name="camera_fov_select_panorama_description">Select a panorama to display in the
+       live wallpaper.</string>
+    <string name="camera_fov_reset_panorama">Reset panorama</string>
+    <string name="camera_fov_reset_panorama_description">Resets the panorama to show the demo
+        file.</string>
+    <string name="camera_fov_enable_compass_mode">Enable compass mode</string>
+    <string name="camera_fov_enable_compass_mode_description">If enabled, the panorama orients
+        itself according to the current rotation of the device.</string>
+
+    <string name="test_category_notifications">Notifications</string>
+    <string name="nls_test">Notification Listener Test</string>
+    <string name="nls_service_name">Notification Listener for CTS Verifier</string>
+    <string name="nls_info">This test checks that a NotificationListenerService can be enabled
+        and disabled, and that once enabled the service is able to receive notificaitons and
+        dismiss them.
+    </string>
+    <string name="nls_enable_service">Please enable \"Notification Listener for CTS Verifier\"
+        under Security > Notification Access and return here.</string>
+    <string name="nls_disable_service">Please disable \"Notification Listener for CTS Verifier\"
+        under Security > Notification Access and return here.</string>
+    <string name="nls_start_settings">Launch Settings</string>
+    <string name="nls_service_started">Service should start once enabled.</string>
+    <string name="nls_note_received">Check that notification was received.</string>
+    <string name="nls_payload_intact">Check that notification payload was intact.</string>
+    <string name="nls_clear_one">Check that service can clear a notification.</string>
+    <string name="nls_clear_all">Check that service can clear all notifications.</string>
+    <string name="nls_service_stopped">Service should stop once disabled.</string>
+    <string name="nls_note_missed">Check that notification was not received.</string>
+
+    <string name="cacert_test">CA Cert Notification Test</string>
+    <string name="cacert_info">This test checks that when a CA Certificate is installed, the user is notified.</string>
+    <string name="cacert_do_something">Do it</string>
+    <string name="cacert_done">Done</string>
+    <string name="cacert_install_cert">Use the CertInstaller to install the certificate. When it opens, just tap "Okay". If this button does nothing, pass the test and move on.</string>
+    <string name="cacert_check_cert_in_settings">Visit the user-installed trusted credentials page and confirm that the "Internet Widgits Pty Ltd" cert appears in the list.</string>
+    <string name="cacert_check_notification">Please look at the new notification and confirm: It say the network may be monitored. Tapping it brings up a more detailed explanation and a button to check trusted credentials. Tapping that button brings up the Trusted Credentials page you just visited.</string>
+    <string name="cacert_dismiss_notification">Dismiss the notification. If it cannot be dismissed, fail the test.</string>
+
+    <string name="caboot_test">CA Cert Notification on Boot test</string>
+    <string name="caboot_info">This test is to confirm that when the user has installed a trusted credential, the system notifies the user when it boots.</string>
+    <string name="caboot_check_cert_installed">Please check here to see whether a certificate is already installed. (If this button does nothing, pass the test and move on.)</string>
+    <string name="caboot_check_creds">Check Credentials</string>
+    <string name="caboot_if_not_installed">Only if there is no credential currently installed, install one. (If this button does nothing, pass the test and move on.)</string>
+    <string name="caboot_install_cert">Install credential</string>
+    <string name="caboot_reboot_desc">Please reboot the device and return to this test.</string>
+    <string name="caboot_after_boot">AFTER REBOOTING: Check that there is a notification that the network may be monitored. Opening that notification should show a dialog box giving more information, with a button to check trusted credentials. This should open up the same view of trusted credentials that you get via the "Check credentials" button.</string>
+
+    <!-- Strings for Widget -->
+    <string name="widget_framework_test">Widget Framework Test</string>
+    <string name="widget_framework_test_info">This test checks some basic features of the widget
+        framework. In order to perform the test, press the Home button. Add the widget
+        titled "CTS Verifier" to the home screen. Follow the instructions in the widget.</string>
+    <string name="widget_name">Widget Framework Test</string>
+    <string name="widget_pass">Pass</string>
+    <string name="widget_fail">Fail</string>
+
+    <!-- Strings for DeskClock -->
+    <string name="deskclock_tests">Alarms and Timers Tests</string>
+    <string name="deskclock_tests_info">
+        The Alarms and Timers tests verify that the Clock app implements the AlarmClock API properly.
+    </string>
+    <string name="deskclock_group_alarms">Alarms</string>
+    <string name="deskclock_group_timers">Timers</string>
+
+    <string name="dc_show_alarms_test">Show Alarms Test</string>
+    <string name="dc_show_alarms_test_info">
+        This test verifies that the SHOW_ALARMS API works.\n
+        1. Press the "Show Alarms" button.\n
+        2. Verify that a UI of the clock app is launched and displays the list of alarms\n
+    </string>
+    <string name="dc_show_alarms_button">Show Alarms</string>
+
+    <string name="dc_set_alarm_with_ui_test">Set Alarm Test</string>
+    <string name="dc_set_alarm_with_ui_test_info">
+        This test verifies that the ACTION_SET_ALARM with no parameters API works.\n
+        1. Press the "Set Alarm" button.\n
+        2. Verify that the clock app is launched and displays a UI to manage alarms.\n
+    </string>
+    <string name="dc_set_alarm_button">Set Alarm</string>
+    <string name="dc_set_alarm_verify_button">Verify</string>
+
+    <string name="dc_start_alarm_test">Start Alarm Test</string>
+    <string name="dc_start_alarm_test_info">
+        This test verifies that the ACTION_SET_ALARM API actually starts an alarm.\n
+        1. Press the "Start Alarm" button.\n
+        2. Make sure the alarms UI is NOT shown\n
+        3. Wait for the alarm to fire (may take up to 2 minutes)\n
+        4. Verify that the alarm title is: "Start Alarm Test",\n
+           the alarm is silent and vibrating (if the device supports vibrate).\n
+        5. Dismiss the alarm.\n
+        6. Verify that the alarm is not in the Clock\'s alarms list. The Verify button opens
+           the alarm view.\n
+    </string>
+    <string name="dc_start_alarm_button">Start Alarm</string>
+
+    <string name="dc_full_alarm_test">Full Alarm Test</string>
+    <string name="dc_full_alarm_test_info">
+        This test verifies that the ACTION_SET_ALARM API supports all extras.\n
+        1. Press the "Create Alarm" button.\n
+        2. Verify that you see one alarm with the following information:\n
+           Name of alarm: Create Alarm Test. \n
+           Vibrate: on.\n
+           Ringtone: silent.\n
+           Time:  01:23. \n
+           Repeating on: Monday and Wednesday. \n
+    </string>
+    <string name="dc_full_alarm_button">Create Alarm</string>
+
+    <string name="dc_set_timer_with_ui_test">Set Timer Test</string>
+    <string name="dc_set_timer_with_ui_test_info">
+        This test verifies that the ACTION_SET_TIMER API with no paramters open the UI\n
+        1. Press the "Set Timer" button.\n
+        2. Verify that the an app is launched and displays a UI to manage timers.\n
+    </string>
+    <string name="dc_set_timer_with_ui_button">Set Timer</string>
+
+    <string name="dc_start_timer_test">Start Timer Test</string>
+    <string name="dc_start_timer_test_info">
+        This test verifies that the ACTION_SET_TIMER API actually starts a timer\n
+        1. Press the "Start Timer" button.\n
+        2. Verify that a timer is started  and NO timers UI is shown.\n
+        3. Verify that the timer named "Start Timer Test" rings after 30 seconds. Dismiss it.\n
+        4. Verify that the timer is deleted after the dismissal.\n
+    </string>
+    <string name="dc_start_timer_button">Start Timer</string>
+
+    <string name="dc_start_timer_with_ui_test">Start Timer With UI Test</string>
+    <string name="dc_start_timer_with_ui_test_info">
+        This test verifies that the ACTION_SET_TIMER API actually starts a timer with UI\n
+        1. Press the "Start Timer" button.\n
+        2. Verify that a timer is started  and the timers UI is shown with a timer named "Start Timer Test".\n
+        3. Verify that the timer rings after 30 seconds.\n
+    </string>
+</resources>

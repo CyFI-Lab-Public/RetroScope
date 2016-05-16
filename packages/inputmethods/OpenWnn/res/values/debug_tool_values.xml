@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<resources>
+    <string name="openwnn_label">OpenWnn</string>
+    <string name="app_openwnn_test">OpenWnn onEvent() Test</string>
+    <string name="execButton">Execute onEvent Test</string>
+    <string name="openwnn_engine_label">OpenWnnEngine</string>
+    <string name="execButton2">Engine All</string>
+
+    <string name="debug_openwnn_engine_en">OpenWnnEngineEN</string>
+    <string name="debug_openwnn_engine_jajp">OpenWnnEngineJAJP</string>
+    <string name="debug_openwnn_engine_znch">OpenWnnEngineZNCH</string>
+    <string name="debug_texttype_anything">textType:anything</string>
+    <string name="debug_texttype_integer">textType:integer</string>
+    <string name="debug_texttype_signed">textType:signed</string>
+    <string name="debug_texttype_demical">textType:demical</string>
+    <string name="debug_texttype_password">textType:password</string>
+    <string name="debug_texttype_phone">textType:phoneNumber</string>
+    <string name="debug_texttype_singleLine">android:singleLine</string>
+    <string name="debug_texttype_date_time">android:inputType</string>
+</resources>

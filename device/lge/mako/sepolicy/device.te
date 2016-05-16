@@ -1,0 +1,17 @@
+# GPU (used by most UI apps)
+type gpu_device, dev_type;
+
+# Qualcomm Secure Execution Environment Communicator (QSEECOM) device
+type qseecom_device, dev_type;
+
+type diag_device, dev_type;
+type bcm2079x_device, dev_type;
+
+# Qualcomm MSM Audio ACDB device
+type msm_acdb_device, dev_type;
+
+# Kickstart device used by QC qcks
+type kickstart_device, dev_type;
+
+# SMD device, used by hci_qcomm_init
+type smd_device, dev_type;

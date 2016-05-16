@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!--symbols -->
+<keystring>
+<!-- 1. Nature -->
+<!-- Weather -->
+<string value="\udbb8\udc00"/>
+<string value="\udbb8\udc01"/>
+<string value="\udbb8\udc02"/>
+<string value="\udbb8\udc03"/>
+<string value="\udbb8\udc04"/>
+<string value="\udbb8\udc05"/>
+<string value="\udbb8\udc06"/>
+<string value="\udbb8\udc07"/>
+<string value="\udbb8\udc08"/>
+<string value="\udbb8\udc09"/>
+<string value="\udbb8\udc0a"/>
+<string value="\udbb8\udc0b"/>
+<string value="\udbb8\udc0c"/>
+<string value="\udbb8\udc0d"/>
+<string value="\udbb8\udc0e"/>
+<string value="\udbb8\udc0f"/>
+<string value="\udbb8\udc10"/>
+<!-- Moon -->
+<string value="\udbb8\udc11"/>
+<string value="\udbb8\udc12"/>
+<string value="\udbb8\udc13"/>
+<string value="\udbb8\udc14"/>
+<string value="\udbb8\udc15"/>
+<string value="\udbb8\udc16"/>
+<string value="\udbb8\udc17"/>
+<!-- Time -->
+<string value="\udbb8\udc18"/>
+<string value="\udbb8\udc19"/>
+<string value="\udbb8\udc1a"/>
+<string value="\udbb8\udc1b"/>
+<string value="\udbb8\udc1c"/>
+<string value="\udbb8\udc1d"/>
+<string value="\udbb8\udc1e"/>
+<string value="\udbb8\udc1f"/>
+<string value="\udbb8\udc20"/>
+<string value="\udbb8\udc21"/>
+<string value="\udbb8\udc22"/>
+<string value="\udbb8\udc23"/>
+<string value="\udbb8\udc24"/>
+<string value="\udbb8\udc25"/>
+<string value="\udbb8\udc26"/>
+<string value="\udbb8\udc27"/>
+<string value="\udbb8\udc28"/>
+<string value="\udbb8\udc29"/>
+<string value="\udbb8\udc2a"/>
+<!-- Zodiacal Symbols -->
+<string value="\udbb8\udc2b"/>
+<string value="\udbb8\udc2c"/>
+<string value="\udbb8\udc2d"/>
+<string value="\udbb8\udc2e"/>
+<string value="\udbb8\udc2f"/>
+<string value="\udbb8\udc30"/>
+<string value="\udbb8\udc31"/>
+<string value="\udbb8\udc32"/>
+<string value="\udbb8\udc33"/>
+<string value="\udbb8\udc34"/>
+<string value="\udbb8\udc35"/>
+<string value="\udbb8\udc36"/>
+<string value="\udbb8\udc37"/>
+<!-- Places in Nature -->
+<string value="\udbb8\udc38"/>
+<string value="\udbb8\udc39"/>
+<string value="\udbb8\udc3a"/>
+<string value="\udbb8\udc3b"/>
+<!-- Plants -->
+<string value="\udbb8\udc3c"/>
+<string value="\udbb8\udc3d"/>
+<string value="\udbb8\udc3e"/>
+<string value="\udbb8\udc3f"/>
+<string value="\udbb8\udc40"/>
+<string value="\udbb8\udc41"/>
+<string value="\udbb8\udc42"/>
+<string value="\udbb8\udc43"/>
+<string value="\udbb8\udc44"/>
+<string value="\udbb8\udc45"/>
+<string value="\udbb8\udc46"/>
+<string value="\udbb8\udc47"/>
+<string value="\udbb8\udc48"/>
+<string value="\udbb8\udc49"/>
+<string value="\udbb8\udc4a"/>
+<string value="\udbb8\udc4b"/>
+<string value="\udbb8\udc4c"/>
+<string value="\udbb8\udc4d"/>
+<string value="\udbb8\udc4e"/>
+<!-- Fruits -->
+<string value="\udbb8\udc4f"/>
+<string value="\udbb8\udc50"/>
+<string value="\udbb8\udc51"/>
+<string value="\udbb8\udc52"/>
+<string value="\udbb8\udc53"/>
+<string value="\udbb8\udc54"/>
+<string value="\udbb8\udc55"/>
+<string value="\udbb8\udc56"/>
+<string value="\udbb8\udc57"/>
+<string value="\udbb8\udc58"/>
+<string value="\udbb8\udc59"/>
+<string value="\udbb8\udc5a"/>
+<string value="\udbb8\udc5b"/>
+<!-- 2. Human/Living Things -->
+<!-- Facial Parts -->
+<string value="\udbb8\udd90"/>
+<string value="\udbb8\udd91"/>
+<string value="\udbb8\udd92"/>
+<string value="\udbb8\udd93"/>
+<string value="\udbb8\udd94"/>
+<!-- Personal Care -->
+<string value="\udbb8\udd95"/>
+<string value="\udbb8\udd96"/>
+<string value="\udbb8\udd97"/>
+<string value="\udbb8\udd98"/>
+<string value="\udbb8\udd99"/>
+<!-- People / Personalities -->
+<string value="\udbb8\udd9a"/>
+<string value="\udbb8\udd9b"/>
+<string value="\udbb8\udd9c"/>
+<string value="\udbb8\udd9d"/>
+<string value="\udbb8\udd9e"/>
+<string value="\udbb8\udd9f"/>
+<string value="\udbb8\udda0"/>
+<string value="\udbb8\udda1"/>
+<string value="\udbb8\udda2"/>
+<string value="\udbb8\udda3"/>
+<string value="\udbb8\udda4"/>
+<string value="\udbb8\udda5"/>
+<string value="\udbb8\udda6"/>
+<string value="\udbb8\udda7"/>
+<string value="\udbb8\udda8"/>
+<string value="\udbb8\udda9"/>
+<string value="\udbb8\uddaa"/>
+<string value="\udbb8\uddab"/>
+<string value="\udbb8\uddac"/>
+<string value="\udbb8\uddad"/>
+<string value="\udbb8\uddae"/>
+<string value="\udbb8\uddaf"/>
+<string value="\udbb8\uddb0"/>
+<string value="\udbb8\uddb1"/>
+<string value="\udbb8\uddb2"/>
+<string value="\udbb8\uddb3"/>
+<string value="\udbb8\uddb4"/>
+<string value="\udbb8\uddb5"/>
+<string value="\udbb8\uddb6"/>
+<!-- Animals -->
+<string value="\udbb8\uddb7"/>
+<string value="\udbb8\uddb8"/>
+<string value="\udbb8\uddb9"/>
+<string value="\udbb8\uddba"/>
+<string value="\udbb8\uddbb"/>
+<string value="\udbb8\uddbc"/>
+<string value="\udbb8\uddbd"/>
+<string value="\udbb8\uddbe"/>
+<string value="\udbb8\uddbf"/>
+<string value="\udbb8\uddc0"/>
+<string value="\udbb8\uddc1"/>
+<string value="\udbb8\uddc2"/>
+<string value="\udbb8\uddc3"/>
+<string value="\udbb8\uddc4"/>
+<string value="\udbb8\uddc5"/>
+<string value="\udbb8\uddc6"/>
+<string value="\udbb8\uddc7"/>
+<string value="\udbb8\uddc8"/>
+<string value="\udbb8\uddc9"/>
+<string value="\udbb8\uddca"/>
+<string value="\udbb8\uddcb"/>
+<string value="\udbb8\uddcc"/>
+<string value="\udbb8\uddcd"/>
+<string value="\udbb8\uddce"/>
+<string value="\udbb8\uddcf"/>
+<string value="\udbb8\uddd0"/>
+<string value="\udbb8\uddd1"/>
+<string value="\udbb8\uddd2"/>
+<string value="\udbb8\uddd3"/>
+<string value="\udbb8\uddd4"/>
+<string value="\udbb8\uddd5"/>
+<string value="\udbb8\uddd6"/>
+<string value="\udbb8\uddd7"/>
+<string value="\udbb8\uddd8"/>
+<string value="\udbb8\uddd9"/>
+<string value="\udbb8\uddda"/>
+<string value="\udbb8\udddb"/>
+<string value="\udbb8\udddc"/>
+<string value="\udbb8\udddd"/>
+<string value="\udbb8\uddde"/>
+<string value="\udbb8\udddf"/>
+<string value="\udbb8\udde0"/>
+<string value="\udbb8\udde1"/>
+<string value="\udbb8\udde2"/>
+<string value="\udbb8\udde3"/>
+<!-- 3. Faces and Smiley's -->
+<!-- Faces -->
+<string value="\udbb8\udf20"/>
+<string value="\udbb8\udf21"/>
+<string value="\udbb8\udf22"/>
+<string value="\udbb8\udf23"/>
+<string value="\udbb8\udf24"/>
+<string value="\udbb8\udf25"/>
+<string value="\udbb8\udf26"/>
+<string value="\udbb8\udf27"/>
+<string value="\udbb8\udf28"/>
+<string value="\udbb8\udf29"/>
+<string value="\udbb8\udf2a"/>
+<string value="\udbb8\udf2b"/>
+<string value="\udbb8\udf2c"/>
+<string value="\udbb8\udf2d"/>
+<string value="\udbb8\udf2e"/>
+<string value="\udbb8\udf2f"/>
+<string value="\udbb8\udf30"/>
+<string value="\udbb8\udf31"/>
+<string value="\udbb8\udf32"/>
+<string value="\udbb8\udf33"/>
+<string value="\udbb8\udf34"/>
+<string value="\udbb8\udf35"/>
+<string value="\udbb8\udf36"/>
+<string value="\udbb8\udf37"/>
+<string value="\udbb8\udf38"/>
+<string value="\udbb8\udf39"/>
+<string value="\udbb8\udf3a"/>
+<string value="\udbb8\udf3b"/>
+<string value="\udbb8\udf3c"/>
+<string value="\udbb8\udf3d"/>
+<string value="\udbb8\udf3e"/>
+<string value="\udbb8\udf3f"/>
+<string value="\udbb8\udf40"/>
+<string value="\udbb8\udf41"/>
+<string value="\udbb8\udf42"/>
+<string value="\udbb8\udf43"/>
+<string value="\udbb8\udf44"/>
+<string value="\udbb8\udf45"/>
+<string value="\udbb8\udf46"/>
+<string value="\udbb8\udf47"/>
+<!-- More faces (animals, persons, characters) -->
+<string value="\udbb8\udf48"/>
+<string value="\udbb8\udf49"/>
+<string value="\udbb8\udf4a"/>
+<string value="\udbb8\udf4b"/>
+<string value="\udbb8\udf4c"/>
+<string value="\udbb8\udf4d"/>
+<string value="\udbb8\udf4e"/>
+<string value="\udbb8\udf4f"/>
+<string value="\udbb8\udf50"/>
+<string value="\udbb8\udf51"/>
+<string value="\udbb8\udf52"/>
+<string value="\udbb8\udf53"/>
+<string value="\udbb8\udf54"/>
+<string value="\udbb8\udf55"/>
+<string value="\udbb8\udf56"/>
+<string value="\udbb8\udf57"/>
+<string value="\udbb8\udf58"/>
+<string value="\udbb8\udf59"/>
+<string value="\udbb8\udf5a"/>
+<string value="\udbb8\udf5b"/>
+<string value="\udbb8\udf5c"/>
+<string value="\udbb8\udf5d"/>
+<string value="\udbb8\udf5e"/>
+<string value="\udbb8\udf5f"/>
+<string value="\udbb8\udf60"/>
+<string value="\udbb8\udf61"/>
+<string value="\udbb8\udf62"/>
+<string value="\udbb8\udf63"/>
+<string value="\udbb8\udf64"/>
+<string value="\udbb8\udf65"/>
+<string value="\udbb8\udf66"/>
+<string value="\udbb8\udf67"/>
+<string value="\udbb8\udf68"/>
+<string value="\udbb8\udf69"/>
+</keystring>

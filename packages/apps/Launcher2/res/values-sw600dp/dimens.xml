@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <dimen name="app_icon_size">64dp</dimen>
+    <dimen name="reveal_radius">64dp</dimen>
+    <dimen name="app_icon_drawable_padding">3dp</dimen>
+    <dimen name="app_icon_padding_top">4dp</dimen>
+
+<!-- qsb_bar_height_inset represents qsb_bar_height minus the padding
+         that we put on each page for allowing folders to draw out of bounds -->
+    <dimen name="qsb_bar_height_inset">34dp</dimen>
+    <dimen name="qsb_bar_height">48dp</dimen>
+    <dimen name="qsb_padding_left">16dp</dimen>
+    <dimen name="qsb_padding_right">16dp</dimen>
+
+    <dimen name="search_bar_height">48dp</dimen>
+
+<!-- Hotseat -->
+    <dimen name="hotseat_cell_width">70dp</dimen>
+    <dimen name="hotseat_cell_height">70dp</dimen>
+    <dimen name="hotseat_width_gap">-1dp</dimen>
+    <dimen name="hotseat_height_gap">-1dp</dimen>
+    <dimen name="button_bar_height">94dip</dimen>
+    <dimen name="button_bar_height_bottom_padding">14dp</dimen>
+    <dimen name="button_bar_height_top_padding">20dp</dimen>
+    <dimen name="button_bar_width_left_padding">25dp</dimen>
+    <dimen name="button_bar_width_right_padding">25dp</dimen>
+    <dimen name="button_bar_height_plus_padding">104dp</dimen>
+
+<!-- Folders -->
+    <!-- The size of the image which sits behind the preview of the folder contents -->
+    <dimen name="folder_preview_size">68dp</dimen>
+    <dimen name="folder_cell_width">86dp</dimen>
+    <dimen name="folder_cell_height">90dp</dimen>
+    <dimen name="folder_width_gap">3dp</dimen>
+    <dimen name="folder_height_gap">3dp</dimen>
+    <dimen name="folder_padding">6dp</dimen>
+
+    <dimen name="cell_layout_left_padding_port">12dp</dimen>
+    <dimen name="cell_layout_right_padding_port">12dp</dimen>
+    <dimen name="workspace_divider_padding_left">19dp</dimen>
+    <dimen name="workspace_divider_padding_right">19dp</dimen>
+
+<!-- AppsCustomize -->
+    <dimen name="apps_customize_cell_width">96dp</dimen>
+    <dimen name="apps_customize_cell_height">96dp</dimen>
+    <dimen name="apps_customize_pageLayoutPaddingLeft">12dp</dimen>
+    <dimen name="apps_customize_pageLayoutPaddingRight">12dp</dimen>
+    <dimen name="apps_customize_tab_bar_height">60dp</dimen>
+    <dimen name="apps_customize_tab_bar_margin_top">8dp</dimen>
+    <dimen name="apps_customize_widget_cell_width_gap">20dp</dimen>
+    <dimen name="apps_customize_widget_cell_height_gap">24dp</dimen>
+    <dimen name="app_widget_preview_label_margin_top">8dp</dimen>
+    <dimen name="app_widget_preview_label_margin_left">@dimen/app_widget_preview_padding_left</dimen>
+    <dimen name="app_widget_preview_label_margin_right">@dimen/app_widget_preview_padding_right</dimen>
+<!-- Workspace cell size -->
+    <dimen name="workspace_cell_width_land">88dp</dimen>
+    <dimen name="workspace_cell_width_port">96dp</dimen>
+    <dimen name="workspace_cell_height_land">88dp</dimen>
+    <dimen name="workspace_cell_height_port">96dp</dimen>
+    <dimen name="workspace_width_gap_land">32dp</dimen>
+    <dimen name="workspace_width_gap_port">0dp</dimen>
+    <dimen name="workspace_height_gap_land">0dp</dimen>
+    <dimen name="workspace_height_gap_port">24dp</dimen>
+</resources>

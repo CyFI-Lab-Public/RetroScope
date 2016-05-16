@@ -1,0 +1,1 @@
+genfscon functionfs / u:object_r:ffs:s0

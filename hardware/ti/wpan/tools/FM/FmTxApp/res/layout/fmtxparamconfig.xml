@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:id="@+id/ParentLayout" android:orientation="vertical"
+	android:background="@drawable/wallpaper33">
+
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:id="@+id/scrollview1"
+		android:layout_weight="1">
+		<LinearLayout android:id="@+id/widget224"
+			android:layout_width="fill_parent" android:orientation="vertical"
+			android:layout_height="fill_parent">
+			<LinearLayout android:id="@+id/widget28"
+				android:layout_width="fill_parent" android:layout_below="@+id/widget0"
+				android:layout_alignParentLeft="true"
+				android:layout_height="50dip" android:layout_marginTop="10dip">
+					<TextView android:id="@+id/txtEmpFilter" android:text="@string/empFilter"
+						android:layout_height="fill_parent" android:layout_width="fill_parent"
+						android:layout_weight="1" android:layout_marginLeft="15dip"
+						android:textSize="18sp" android:textStyle="normal"
+						android:textColor="@android:color/white">
+					</TextView>
+					<Spinner android:id="@+id/spnEmpFilter"
+						android:layout_height="fill_parent" android:layout_width="fill_parent"
+						android:layout_weight="1" android:layout_marginRight="15dip">
+					</Spinner>
+
+			</LinearLayout>
+			<LinearLayout android:id="@+id/widget63"
+				android:layout_width="fill_parent" android:layout_below="@+id/widget28"
+				android:layout_alignParentLeft="true" android:layout_height="50dip">
+
+					<TextView android:id="@+id/txtMusicSpeech" android:text="@string/MusicSpeech"
+						android:textSize="18sp" android:layout_height="fill_parent"
+						android:layout_width="fill_parent" android:layout_weight="1"
+						android:layout_marginLeft="15dip"
+						android:textStyle="normal" android:textColor="@android:color/white">
+					</TextView>
+					<Spinner android:id="@+id/spnMusicSpeech"
+						android:layout_height="fill_parent" android:layout_width="fill_parent"
+						android:layout_weight="1" android:layout_marginRight="15dip">
+					</Spinner>
+
+			</LinearLayout>
+			<LinearLayout android:id="@+id/widget130"
+				android:layout_width="fill_parent" android:layout_below="@+id/widget63"
+				android:layout_alignParentLeft="true" android:layout_height="50dip">
+
+					<TextView android:id="@+id/txtPty" android:text="@string/ptyCode"
+						android:textSize="18sp" android:layout_height="fill_parent"
+						android:layout_width="fill_parent" android:layout_weight="1"
+						android:layout_marginLeft="15dip" android:textColor="@android:color/white">
+					</TextView>
+					<EditText android:id="@+id/EdtPty"
+						android:textSize="18sp" android:gravity="left"
+						android:layout_width="fill_parent"
+						android:editable="true" android:layout_height="fill_parent"
+						android:layout_weight="1"
+						android:layout_marginRight="15dip">
+					</EditText>
+
+			</LinearLayout>
+			<LinearLayout android:id="@+id/widget140"
+				android:layout_width="fill_parent" android:layout_below="@+id/widget130"
+				android:layout_alignParentLeft="true" android:layout_height="60dip">
+				<TextView android:id="@+id/txtgroupmask" android:text="@string/txgroupmask"
+					android:layout_height="50dip" android:textSize="18sp"
+					android:textColor="@android:color/white"
+					android:layout_weight="1" android:layout_marginLeft="15dip" android:layout_width="100dip">
+				</TextView>
+				<RadioButton android:id="@+id/rbtnPs" android:text="@string/PS"
+					android:layout_height="50dip" android:layout_weight="1" android:layout_width="wrap_content">
+				</RadioButton>
+				<RadioButton android:id="@+id/rbtnRt" android:text="@string/RT"
+					android:layout_height="50dip" android:layout_weight="1" android:layout_width="wrap_content">
+				</RadioButton>
+
+				<RadioButton android:id="@+id/rbtnEcc" android:text="@string/ecc"
+					android:layout_height="50dip" android:layout_weight="1" android:layout_width="wrap_content">
+				</RadioButton>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/widget131"
+				android:layout_width="fill_parent" android:layout_below="@+id/widget140"
+				android:layout_alignParentLeft="true" android:layout_height="50dip">
+				<TextView android:id="@+id/txtEcc" android:text="@string/ecc"
+					android:textSize="18sp"
+					android:gravity="center_vertical"
+					android:textColor="@android:color/white"
+					android:layout_height="fill_parent" android:layout_width="fill_parent"
+						android:layout_weight="1" android:layout_marginLeft="15dip">
+				</TextView>
+				<EditText android:id="@+id/EdtEcc"
+					android:textSize="18sp"
+
+					android:editable="true" android:layout_height="fill_parent" android:layout_width="fill_parent"
+						android:layout_weight="1" android:layout_marginRight="15dip">
+				</EditText>
+			</LinearLayout>
+
+			<LinearLayout android:id="@+id/widget231"
+				android:layout_width="fill_parent" android:layout_height="50dip">
+				<TextView android:id="@+id/txtRadioText"
+					android:textSize="18sp" android:text="@string/radioText"
+					android:textColor="@android:color/white" android:layout_height="fill_parent" android:layout_width="fill_parent"
+						android:layout_weight="1" android:layout_marginLeft="15dip">
+				</TextView>
+				<EditText android:id="@+id/EdtRadioText"
+					android:textSize="18sp"
+					android:editable="true" android:layout_height="fill_parent" android:layout_width="fill_parent"
+						android:layout_weight="1" android:layout_marginRight="15dip">
+				</EditText>
+			</LinearLayout>
+		</LinearLayout>
+	</ScrollView>
+	<LinearLayout android:id="@+id/widget173"
+		android:layout_below="@+id/widget231" android:layout_width="fill_parent"
+		android:layout_height="50dip">
+		<Button android:id="@+id/btnOk" android:text="@string/btnOk"
+			android:layout_width="wrap_content" android:layout_height="fill_parent"
+			android:layout_weight="1">
+		</Button>
+		<Button android:id="@+id/btnCancel" android:text="@string/btnCancel"
+
+			android:layout_width="wrap_content" android:layout_height="fill_parent"
+			android:layout_weight="1">
+		</Button>
+	</LinearLayout>
+</LinearLayout>
+

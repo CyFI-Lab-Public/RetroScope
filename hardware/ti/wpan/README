@@ -1,0 +1,18 @@
+wpan.git contains the Bluetooth, FM code by Texas Instruments for
+WiLink connectivity chipsets on OMAP Platforms
+
+Android.mk - Root Makefile calling all subdir makefiles
+bt_sco_app - Command line application to send PCM configuruations to WL12xx chip(optional)
+and connect to BT headset via SCO.
+bt_voice_call_set - Derived from bt_sco_app for Modem purposes.
+fmradio - Stack and Command line application for FM on WiLink chipsets
+fmradio_omap3 - Derived from fmradio (older version) on OMAP3 platforms
+README - This file
+ti_st -
+	kfmapp/ - V4L2 FM application to be used with V4L2 drivers for FM on WL.
+	uim/ - User-Space Initilization Manager for TI Shared Transport Drivers (to be
+	used with kernel version 2.6.32 and below drivers)
+	uim-rfkill/ - Derived from uim/ to be used with K32 and above TI ST drivers.
+	uim-sysfs/ - User-Space Init Manager for TI Shared Transport Drivers (per kernel.org)
+tools -
+        BluetoothSCOApp/ - BT SCO UI App for connect to BT headset via SCO

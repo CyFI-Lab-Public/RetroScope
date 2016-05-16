@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+* Copyright (C) 2008 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="application_name" msgid="4119979710394894209">"Live na Tagapili ng Wallpaper"</string>
+    <string name="live_wallpaper_picker_title" msgid="4811278937634144675">"Pumili ng live na wallpaper"</string>
+    <string name="live_wallpaper_picker_label" msgid="3218000114890071946">"Mga Live na Wallpaper"</string>
+    <string name="live_wallpaper_preview_title" msgid="1130080613611954763">"Preview ng live na wallpaper"</string>
+    <string name="configure_wallpaper" msgid="7396598925806288258">"Mga Setting…"</string>
+    <string name="wallpaper_instructions" msgid="4215640646180727542">"Itakda ang wallpaper"</string>
+    <string name="live_wallpaper_empty" msgid="4278728108785853407">"Walang mga live na wallpaper."</string>
+    <string name="set_live_wallpaper" msgid="2381437614949033266">"Itakda ang wallpaper"</string>
+    <string name="wallpaper_title_and_author" msgid="8891734217843935304">"<xliff:g id="TITLE">%1$s</xliff:g> ni <xliff:g id="AUTHOR">%2$s</xliff:g>"</string>
+    <string name="live_wallpaper_loading" msgid="2488371303130330734">"Naglo-load ng live wallpaper..."</string>
+    <string name="wallpaper_cancel" msgid="7340240618834119228">"Kanselahin"</string>
+</resources>

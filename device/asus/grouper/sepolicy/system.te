@@ -1,0 +1,5 @@
+allow { system system_app }knv_device:chr_file rw_file_perms;
+allow system sysfs_devices_system_cpu:file w_file_perms;
+allow system sysfs_devices_system_cpu:dir r_dir_perms;
+allow system elan_ip_device:chr_file rw_file_perms;
+allow system diag_device:chr_file rw_file_perms;

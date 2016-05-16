@@ -1,0 +1,70 @@
+page.title=Building Audio Accessories
+@jd:body
+
+<!--
+    Copyright 2010 The Android Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<p>In building an audio accessory, such as an audio dock or other playback device, you should
+consider how your accessory will connect with Android devices. In particular, you should decide
+if your accessory will use Universal Serial Bus (USB) or a Bluetooth connection to stream music or
+other audio content.</p>
+<h2 id="audio-over-usb">Audio over USB</h2>
+<p>An accessory that connects with Android over USB connection must use the Android Open
+Accessory (AOA) protocol version 2.0. This version of the AOA protocol is supported on Android 4.1
+(API Level 16) and higher. Once an Android device connects to an accessory that supports this
+protocol, the Android system treats it as a standard audio output device and routes all audio to
+that accessory. No secondary software application is required on the Android device.</p>
+<p><strong>Note:</strong> Due to the low power output of Android devices, the Android Open Accessory
+Protocol requires that accessories act as a USB host, which means that the connecting accessory
+must power the bus.</p>
+<h3 id="next-steps">Next steps</h3>
+<p>To get started on building an audio accessory that uses a USB connection:</p>
+<ul>
+<li>Select a hardware platform or build a hardware device that can support USB host mode.</li>
+<li>Review the <a href="{@docRoot}accessories/aoa2.html">AOA 2.0 protocol</a> specification to understand
+  how to implement this protocol on your accessory hardware.</li>
+<li>Review the ADK 2012 <a href="http://developer.android.com/tools/adk/adk2.html#src-download">firmware source code</a>
+  (<code>&lt;adk-src&gt;/adk2012/board/library/ADK2/</code>), which includes an example implementation
+  of an audio playback accessory using a USB connection.</li>
+</ul>
+<p><strong>Note:</strong> The AOA 2.0 protocol also supports the
+<a href="{@docRoot}accessories/aoa2.html#hid-support">human interface device</a> (HID) protocol through a USB
+connection, enabling accessories such as audio docks to provide hardware play back controls such
+as pause, fast-forward or volume buttons.</p>
+<h2 id="audio-over-bluetooth">Audio over Bluetooth</h2>
+<p>An accessory that connects with Android over Bluetooth can use an Advanced Audio Distribution
+Profile (A2DP) connection stream music for playback. Playing audio over a Bluetooth with A2DP is
+supported on Android 1.5 (API Level 3) and higher. An Android user can connect to an accessory
+that supports this profile using the system Settings &gt; Bluetooth and play music directly to the
+accessory without the need for a secondary application.</p>
+<p><strong>Note:</strong> If you want to provide a custom application for output to your audio
+accessory, note that the Android 3.0 (API Level 11) allows applications to operate an A2DP
+connection using the
+<a href="http://developer.android.com/reference/android/bluetooth/BluetoothA2dp.html"><code>BluetoothA2dp</code></a>
+class.</p>
+<h3 id="next-steps_1">Next steps</h3>
+<p>To get started on building an audio accessory that uses a Bluetooth connection:</p>
+<ul>
+<li>Select a hardware platform or build an hardware device that can support Bluetooth
+  communications and the A2DP connection profile.</li>
+<li>Review the ADK 2012
+  <a href="http://developer.android.com/tools/adk/adk2.html#src-download">firmware source code</a>
+  (<code>&lt;adk-src&gt;/adk2012/board/library/ADK2/</code>), which includes an example implementation
+  of an audio playback accessory using a Bluetooth connection.</li>
+</ul>
+<p><strong>Note:</strong> The ADK 2012 source code includes an open source Bluetooth stack that
+is built for the Texas Instruments CC2564 chip, but can work with any Bluetooth chip that
+implements a standard Host/Controller Interface (HCI).</p>
+

@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="all_images" msgid="1195501551939178807">"Kaikki kuvat"</string>
+    <string name="all_videos" msgid="3380966619230896013">"Kaikki videot"</string>
+    <string name="camera_label" msgid="6346560772074764302">"Kamera"</string>
+    <string name="gallery_picker_label" msgid="3080425245006492787">"Galleria"</string>
+    <string name="gallery_label" msgid="7119609703856708011">"Galleria"</string>
+    <string name="gallery_camera_bucket_name" msgid="2924618424339240831">"Kameran kuvat"</string>
+    <string name="gallery_camera_videos_bucket_name" msgid="3369151581398551623">"Kameran videot"</string>
+    <string name="gallery_camera_media_bucket_name" msgid="5560926838411387511">"Kameran tiedostot"</string>
+    <string name="crop_label" msgid="521114301871349328">"Leikkaa kuvaa"</string>
+    <string name="view_label" msgid="4450531507947335704">"Näytä kuva"</string>
+    <string name="preferences_label" msgid="5955678162525051163">"Kameran asetukset"</string>
+    <string name="wait" msgid="8600187532323801552">"Odota…"</string>
+    <string name="no_storage" product="nosdcard" msgid="4006727786803418058">"Ota jaettu tallennustila käyttöön ennen kameran käyttöä."</string>
+    <string name="no_storage" product="default" msgid="6680362958795677723">"Aseta SD-kortti ennen kameran käyttämistä."</string>
+    <string name="not_enough_space" product="nosdcard" msgid="7966388882416357252">"Jaettu tallennustilasi on täynnä."</string>
+    <string name="not_enough_space" product="default" msgid="6655334407957844653">"SD-kortti on täynnä."</string>
+    <string name="preparing_sd" product="nosdcard" msgid="183917364005592061">"Valmistellaan jaettua tallennustilaa..."</string>
+    <string name="preparing_sd" product="default" msgid="2914969119574812666">"Valmistellaan SD-korttia…"</string>
+    <string name="wallpaper" msgid="140165383777262070">"Asetetaan taustakuvaa..."</string>
+    <string name="savingImage" msgid="3051745378545909260">"Tallennetaan kuvaa…"</string>
+    <string name="runningFaceDetection" msgid="2293932204708167704">"Odota…"</string>
+    <string name="view" msgid="6277795271119411881">"Näytä"</string>
+    <string name="details" msgid="8415120088556445230">"Tiedot"</string>
+    <string name="show_on_map" msgid="441725587731006228">"Näytä Mapsissa"</string>
+    <string name="rotate" msgid="460017689320955494">"Kierrä"</string>
+    <string name="rotate_left" msgid="5888273317282539839">"Kierrä vastapäivään"</string>
+    <string name="rotate_right" msgid="6776325835923384839">"Kierrä myötäpäivään"</string>
+    <string name="slide_show" msgid="1965192737233824143">"Diaesitys"</string>
+    <string name="multiselect" msgid="4761682939945434146">"Monivalinta"</string>
+    <string name="capture_picture" msgid="4114265595549284643">"Ota kuva"</string>
+    <string name="capture_video" msgid="4047046282358697155">"Tallenna video"</string>
+    <string name="crop_save_text" msgid="8140440041190264400">"Tallenna"</string>
+    <string name="crop_discard_text" msgid="5303657888280340603">"Hylkää"</string>
+    <string name="confirm_delete_title" msgid="263478358046514887">"Poista"</string>
+    <string name="confirm_delete_message" msgid="2141726810668595858">"Poistetaanko tämä kuva?"</string>
+    <string name="confirm_delete_video_message" msgid="800016540763376529">"Poistetaanko tämä video?"</string>
+    <string name="confirm_delete_multiple_message" msgid="5184550162588396436">"Poistetaanko nämä mediatiedostot?"</string>
+    <string name="camera_toss" msgid="3781186798552460833">"Poista"</string>
+    <string name="camera_share" msgid="8207701858325694182">"Jaa"</string>
+    <string name="camera_set" msgid="3422192914806971182">"Aseta"</string>
+    <string name="camera_play" msgid="8248000517869959980">"Toista"</string>
+    <string name="camera_attach" msgid="4048659554893435232">"Liitä"</string>
+    <string name="camera_cancel" msgid="8203341746672085747">"Peruuta"</string>
+    <string name="camera_crop" msgid="5584000454518174632">"Leikkaa"</string>
+    <string name="no_way_to_share_image" msgid="7980215622010396797">"Käytettävissä ei ole sovelluksia, joilla kuva voidaan jakaa."</string>
+    <string name="no_way_to_share_video" msgid="4506167265329982928">"Käytettävissä ei ole sovelluksia, joilla video voidaan jakaa."</string>
+    <string name="no_way_to_share" msgid="5276805314940059662">"Käytettävissä ei ole sovelluksia, joilla mediatiedostoja voidaan jakaa."</string>
+    <string name="video_play" msgid="5287787282508002895">"Toista"</string>
+    <string name="camera_pick_wallpaper" msgid="7026385960511811641">"Kuvat"</string>
+    <string name="camera_setas_wallpaper" msgid="797463183863414289">"taustakuvaksi"</string>
+    <string name="pref_gallery_category" msgid="5826488887237959433">"Yleiset asetukset"</string>
+    <string name="pref_slideshow_category" msgid="9097962086335681667">"Diaesityksen asetukset"</string>
+    <string name="pref_gallery_size_title" msgid="1363406603879434418">"Näyttökoko"</string>
+    <string name="pref_gallery_size_summary" msgid="7365675768755956361">"Valitse kuvien ja videoiden näyttökoko"</string>
+    <string name="pref_gallery_size_dialogtitle" msgid="757380558320647503">"Kuvan koko"</string>
+  <string-array name="pref_gallery_size_choices">
+    <item msgid="7157691836846678936">"Suuri"</item>
+    <item msgid="1033164600689216410">"Pieni"</item>
+  </string-array>
+    <string name="pref_gallery_sort_title" msgid="7447949250045443386">"Lajittelutapa"</string>
+    <string name="pref_gallery_sort_summary" msgid="4406174975925645225">"Valitse kuvien ja videoiden lajittelutapa"</string>
+    <string name="pref_gallery_sort_dialogtitle" msgid="5787417105532562739">"Kuvien lajittelu"</string>
+  <string-array name="pref_gallery_sort_choices">
+    <item msgid="5546009539334018063">"Uusin ensin"</item>
+    <item msgid="7931283047572866748">"Uusin viimeiseksi"</item>
+  </string-array>
+    <string name="pref_gallery_slideshow_interval_title" msgid="6534904787962619832">"Diaesityksen aikaväli"</string>
+    <string name="pref_gallery_slideshow_interval_summary" msgid="25973922639324614">"Valitse, miten kauan kuvat näkyvät diaesityksessä"</string>
+    <string name="pref_gallery_slideshow_interval_dialogtitle" msgid="6775543119826248900">"Diaesityksen aikaväli"</string>
+  <string-array name="pref_gallery_slideshow_interval_choices">
+    <item msgid="3089037742117543119">"2 sekuntia"</item>
+    <item msgid="738579316565625730">"3 sekuntia"</item>
+    <item msgid="5670078787463530498">"4 sekuntia"</item>
+  </string-array>
+    <string name="pref_gallery_slideshow_transition_title" msgid="3235158556228218846">"Diaesityksen siirtymä"</string>
+    <string name="pref_gallery_slideshow_transition_summary" msgid="8294295294239125591">"Valitse tehoste, jota käytetään diojen siirtymissä"</string>
+    <string name="pref_gallery_slideshow_transition_dialogtitle" msgid="5483406447721500371">"Diaesityksen siirtymä"</string>
+  <string-array name="pref_gallery_slideshow_transition_choices">
+    <item msgid="2825716730899894863">"Nosto ja häivytys"</item>
+    <item msgid="403116336404005687">"Liuku vaakasuunnassa"</item>
+    <item msgid="4901733079450971731">"Liuku pystysuunnassa"</item>
+    <item msgid="9006732482485375438">"Satunnainen valinta"</item>
+  </string-array>
+    <string name="pref_gallery_slideshow_repeat_title" msgid="6512135022461429738">"Toista diaesitys"</string>
+    <string name="pref_gallery_slideshow_repeat_summary" msgid="8289230397431855268">"Toista diaesitys useammin kuin kerran"</string>
+    <string name="pref_gallery_slideshow_shuffle_title" msgid="3677508579783015598">"Diojen satunnaistoisto"</string>
+    <string name="pref_gallery_slideshow_shuffle_summary" msgid="8566948749149325715">"Näytä kuvat satunnaisessa järjestyksessä"</string>
+    <string name="camerasettings" msgid="2433519618178453928">"Asetukset"</string>
+    <string name="image_gallery_NoImageView_text" msgid="409595259802877447">"Mediatiedostoja ei löydy."</string>
+    <string name="pref_gallery_confirm_delete_title" msgid="642429032687845907">"Vahvista poistot"</string>
+    <string name="pref_gallery_confirm_delete_summary" msgid="5253456492765525245">"Näytä vahvistus ennen kuvan tai videon poistamista"</string>
+    <string name="no_location_image" msgid="8907867717568887559">"Tähän kuvaan ei ole tallennettu sijaintitietoja."</string>
+    <string name="details_panel_title" msgid="4753347516759338122">"Tiedot"</string>
+    <string name="details_file_size" msgid="2468878774843246797">"Tiedostokoko:"</string>
+    <string name="details_image_resolution" msgid="8773315928100529437">"Resoluutio:"</string>
+    <string name="details_image_make" msgid="2888477930210903540">"Valmistaja:"</string>
+    <string name="details_image_model" msgid="3608007849933924336">"Malli:"</string>
+    <string name="details_image_whitebalance" msgid="4412514247882436065">"Valkotasapaino:"</string>
+    <string name="details_image_latitude" msgid="58222150203989546">"GPS-leveyspiiri:"</string>
+    <string name="details_image_longitude" msgid="3792725587390654278">"GPS-pituuspiiri:"</string>
+    <string name="details_image_location" msgid="6460201074393148978">"Sijainti:"</string>
+    <string name="details_duration" msgid="1028116471387901402">"Kesto:"</string>
+    <string name="details_date_taken" msgid="348356840586463178">"Kuvauspäivä:"</string>
+    <string name="details_frame_rate" msgid="122397836963498191">"Kuvataajuus:"</string>
+    <string name="details_bit_rate" msgid="5632311789455402186">"Bittinopeus:"</string>
+    <string name="details_codec" msgid="5580300450432398126">"Pakkauksenhallinta:"</string>
+    <string name="details_format" msgid="3700860266600796363">"Muoto:"</string>
+    <string name="details_dimension_x" msgid="4923037334136168978">"<xliff:g id="WIDTH">%1$d</xliff:g>x<xliff:g id="HEIGHT">%2$d</xliff:g>"</string>
+    <string name="details_ms" msgid="7574063760642857397">"<xliff:g id="MINUTES">%1$02d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g>"</string>
+    <string name="details_hms" msgid="772340067838331166">"<xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g>"</string>
+    <string name="details_fps" msgid="5450871169477340537">"<xliff:g id="FRAMES">%1$d</xliff:g> fps"</string>
+    <string name="details_kbps" msgid="1515369011744784592">"<xliff:g id="SPEED">%1$d</xliff:g> kb/s"</string>
+    <string name="details_mbps" msgid="3291428849607323284">"<xliff:g id="SPEED">%1$g</xliff:g> Mb/s"</string>
+    <string name="details_ok" msgid="6848594369924424312">"OK"</string>
+    <string name="context_menu_header" msgid="1185348426222302182">"Kuva-asetukset"</string>
+    <string name="video_context_menu_header" msgid="7318971116949475029">"Videovalinnat"</string>
+    <string name="multiface_crop_help" msgid="2554690102655855657">"Aloita koskettamalla kasvoja."</string>
+    <string name="photos_gallery_title" msgid="6914406246471015448">"Galleria"</string>
+    <string name="pick_photos_gallery_title" msgid="8356086704733473321">"Valitse kuva"</string>
+    <string name="videos_gallery_title" msgid="6150354029982749479">"Galleria"</string>
+    <string name="pick_videos_gallery_title" msgid="568436323607491495">"Valitse video"</string>
+    <string name="sendImage" msgid="7279510542799399570">"Jaa kuva"</string>
+    <string name="setImage" msgid="7246975856983303047">"Aseta kuva"</string>
+    <string name="sendVideo" msgid="3598567735831863073">"Jaa video:"</string>
+    <string name="send_media_files" msgid="8201083279723850611">"Jaa mediatiedostoja"</string>
+    <string name="movieviewlabel" msgid="7363495772706775465">"Videot"</string>
+    <string name="loading_video" msgid="4013492720121891585">"Ladataan videota…"</string>
+    <string name="resume_playing_title" msgid="8996677350649355013">"Jatka videon toistoa"</string>
+    <string name="resume_playing_message" msgid="8480340146814638566">"Jatketaanko videon toistoa kohdasta <xliff:g id="DURATION">%s</xliff:g>?"</string>
+    <string name="resume_playing_resume" msgid="3847915469173852416">"Jatka toistoa"</string>
+    <string name="resume_playing_restart" msgid="5471008499835769292">"Aloita alusta"</string>
+    <string name="gadget_title" msgid="259405922673466798">"Valokuvakehys"</string>
+    <string name="file_info_title" msgid="1628963357466012538">"Tiedoston tiedot:"</string>
+    <string name="video_exceed_mms_limit" msgid="3835075281230780010">"Tallentamaasi videota ei voida lähettää multimediaviestinä, koska se on liian suuri. Kokeile tallentaa lyhyempi video."</string>
+    <string name="multiselect_share" msgid="5261644537749253581">"Jaa"</string>
+    <string name="multiselect_delete" msgid="9113461994546744603">"Poista"</string>
+    <string name="multiselect_cancel" msgid="5969428692864002165">"Peruuta"</string>
+    <string name="delete_images_message" msgid="2332683687700452577">"Kuvia poistetaan..."</string>
+</resources>

@@ -1,0 +1,278 @@
+
+The calibrator and other useful utilities for TI wireless solution,
+based on wl12xx driver.
+
+Calibration is a process in which specific radio configuration parameters are
+generated and saved into the NVS file, later to be used by the wl12xx driver
+upon initialization.
+These configuration parameters are specific to the chip on the specific design
+and therefore are sent back to the driver to store in non-volatile memory for
+later use. Upon initialization, the wl12xx driver will load an NVS file where
+it expects to read those parameters and send them to the chip.
+
+The NVS file contains 2 main parts - one stores the calibration parameters and
+the other one stores initialization information required for the wl12xx driver.
+
+--- Build procedure
+
+Kernel configuration.
+Make sure your kernel is configured to support nl80211 testmode commands
+(NL80211_TESTMODE=y). Also enable following configurations:
+CRC7=m
+FW_LOADER=m
+
+In userspace there is dependent on libnl v2.x package. It can be downloaded
+from http://www.infradead.org/~tgr/libnl/files/libnl-2.0.tar.gz
+
+Set follow environment variables:
+export NFSROOT=<path to roofs of a target where installed libnl library>
+export CROSS_COMPILE=arm-none-linux-gnueabi-
+make
+make install
+
+Make sure that calibrator utility and go.sh script placed in the same dir.
+
+--- How to calibrate
+
+Native Linux calibration procedure.
+
+    ./go.sh -c <path to INI file> [<path to firmware directory>]
+
+Android calibration procedure.
+
+    Based on adb utility which comes native with Android SDK
+
+    adb shell "echo Going to stop GUI"
+    adb shell "stop"
+
+    adb shell "echo Create reference NVS"
+    adb shell "calibrator set ref_nvs /data/TQS_D_1.7.ini"
+
+    adb shell "echo Copy reference NVS file"
+    adb shell "cat ./new-nvs.bin > /system/etc/firmware/ti-connectivity/wl1271-nvs.bin"
+
+    adb shell "echo Insert wl12xx SDIO module"
+    adb shell "insmod /system/lib/modules/wl12xx_sdio.ko"
+
+    adb shell "echo Calibrate device"
+    adb shell "calibrator wlan0 plt power_mode on"
+    adb shell "calibrator wlan0 plt tune_channel 0 7"
+    adb shell "calibrator wlan0 plt tx_bip 1 1 1 1 1 1 1 1"
+    adb shell "calibrator wlan0 plt power_mode off"
+
+    adb shell "echo Set MAC address in NVS file"
+    adb shell "calibrator set nvs_mac ./new-nvs.bin 08:00:28:90:64:31"
+
+    adb shell "echo Remove wl12xx modules"
+    adb shell "rmmod wl12xx_sdio wl12xx"
+    adb shell "rmmod wl12xx"
+
+    adb shell "echo Copy calibrated NVS file"
+    adb shell "cat ./new-nvs.bin > /system/etc/firmware/ti-connectivity/wl1271-nvs.bin"
+    adb shell "insmod /system/lib/modules/wl12xx.ko"
+
+    adb shell "echo Going to start GUI"
+    adb shell "start"
+
+--- How to calibrate with AutoFEM
+
+The wl12xx driver has ability to use it's NVS file with radio parameters for 2
+different frontend modules. The driver requires firmware at boot time which
+FEM parameters it needs and provides radio parameters according to answer.
+
+There is also scenario when driver decides which radio parameters to give
+to firmware. In such case, 2 parameters should be set. The autofem should be
+0 and fem_manuf should be 0 or 1, depends on FEM manufacturer.
+
+In order to prepare NVS file with radio parameters for 2 FEMs, do follows
+
+    ./go.sh -c2 <path to INI file> [<path to INI file>]
+
+There is option to use the feature manualy. In such case, there is need to set
+AutoFEM flag to 0 and explicitly set fem_manuf flag.
+
+    ./calibrator set autofem <0-manual|1-auto> [<nvs file>]
+    ./calibrator set fem_manuf <0|1> [<nvs file>]
+
+--- How to choose INI file
+
+It is very important to select INI file according to the firmware (see below).
+Those files organized in 3 directories:
+station - currently supported station firmware (wl1271-fw.bin)
+access_point - currently supported access point (wl1271-fw-ap.bin)
+
+For Beagle board and Panda board use ini_files/station/127x/TQS_S_2.6.ini
+For Blaze board with ES2.1 or ES2.1 use ini_files/station/128x/TQS_D_1.7.ini
+
+
+--- How to change MAC address in calibrated NVS
+
+./calibrator set nvs_mac <nvs file> [<mac addr xx:xx:xx:xx:xx:xx>]
+
+If the MAC address missing, the random valid value will be added.
+
+
+--- How to dump NVS file
+
+calibrator get dump_nvs [<nvs filename>]
+
+
+--- Firmware files
+
+The firmware files can be reached from git repository
+git://git.kernel.org/pub/scm/linux/kernel/git/dwmw2/linux-firmware.git
+under directory ti-connectivity.
+There are 2 firmware files there:
+wl1271-fw.bin    - station firmware
+wl1271-fw-ap.bin    - access point firmware
+
+
+--- Detailed instructions for calibrator procedures
+
+The following detailed instructions are collection of commands done by
+default calibration procedure.
+
+    TxBip procedure (calibration)
+
+It is important to set MAC address to an interface before the procedure.
+For example, `ifconfig wlan0 hw ether xx:xx:xx:xx:xx:xx'
+There are 2 ways to do it - short where all parameters has default values and
+full where you have to set all parameters manually.
+
+Short way:
+calibrator plt calibrate
+
+Full way:
+calibrator wlan0 plt power_mode on
+calibrator wlan0 plt tx_bip <0|1> <0|1> <0|1> <0|1> <0|1> <0|1> <0|1> <0|1>
+calibrator wlan0 plt power_mode off
+
+Result of this procedure is new NVS file created locally ./new-nvs.bin
+In order to use it, copy the file to /lib/firmware/wl1271-nvs.bin and reload.
+
+    TxCont procedure
+
+calibrator wlan0 plt power_mode on
+calibrator wlan0 plt tune_channel <band> <channel>
+calibrator wlan0 plt tx_cont <delay> <rate> <size> <amount> <power> <seed> <pkt mode> <DC on/off> <gi> <preamble> <type> <scramble> <clpc> <seq nbr mode> <dest mac>
+calibrator wlan0 plt tx_stop
+calibrator wlan0 plt power_mode off
+
+Description: This test sends packets of data directly to air. It receives
+several parameters as described bellow, to enable diversity of
+operational modes.
+It is mostly used to see Energy and radio impact on Air.
+Content of Packet can be Random, or Zero, One, Zero, one...
+
+Packets send are configurable with following parameters:
+  Delay between packets in microseconds
+  Rate
+    1 Mbps -   0x00000001       MCS_0 - 0x00002000
+    2 Mbps -   0x00000002       MCS_1 - 0x00004000
+    5.5 Mbps - 0x00000004       MCS_2 - 0x00008000
+    6 Mbps -   0x00000008       MCS_3 - 0x00010000
+    9 Mbps -   0x00000010       MCS_4 - 0x00020000
+    11 Mbps -  0x00000020       MCS_5 - 0x00040000
+    12 Mbps -  0x00000040       MCS_6 - 0x00080000
+    18 Mbps -  0x00000080       MCS_7 - 0x00100000
+    24 Mbps -  0x00000200
+    36 Mbps -  0x00000400
+    48 Mbps -  0x00000800
+    54 Mbps -  0x00001000
+  Size of data field in MPDU (in bytes, 0 - 2284)
+  Amount - number of packets in case of using series mode
+  Power - output power in dBm*1000
+  Seed - value for the scrambler
+  Packet mode - 0-single, 1-multipile, 3-continuous, 4-FCC
+  DC on/off - activate DCF
+  gi - guard interval on/off for 11n rates
+  Preamble
+    1 Mbps - long preamble mode=0
+    2, 5.5, 11 Mbps - long preamble mode=0, short preamble mode=1
+    6, 9, 12, 18, 24, 36, 48, 54 Mbps - ofdm preamble mode=4
+    from MCS_0 to MCS_7 - n mixed mode preamble mode=6, greenfield preamble mode=7
+  Type is 0-data packet, 1-ack, 2-probe req, 3-random data, 4-user data
+  Scrambler - on/off
+  CLPC
+    range 0-100 is disable calibration
+  Sequence number mode (incremented or fixed)
+  Destination Mac address
+
+    RxStat procedure
+
+There are 2 ways to do it - short where all parameters has default values and
+full where you have to set all parameters manually.
+
+Short way:
+calibrator plt rx_statistics
+
+In the short way each time the statistics will be reseted.
+
+Full way:
+calibrator wlan0 plt power_mode on
+calibrator wlan0 plt start_rx_statcs
+calibrator wlan0 plt get_rx_statcs
+calibrator wlan0 plt stop_rx_statcs
+calibrator wlan0 plt power_mode off
+
+While willing to reset the statistic run:
+calibrator wlan0 plt reset_rx_statcs
+
+    Update NVS file procedure
+
+This is procedure changes ini part of NVS file. It helps when there is need
+to change ini part of NVS which already calibrated.
+
+calibrator set upd_nvs <ini file> [<nvs file>]
+
+If NVS filename parameter not provided the current NVS file will be used from
+destination directory (usually /lib/firmware).
+
+
+--- Miscellaneous procedures
+
+    Read MAC address from NVS file
+
+calibrator get nvs_mac <nvs filename>
+
+
+    Push local NVS to the system:
+
+calibrator phy <phyname> set push_nvs <nvs filename>
+
+
+    Set NVS to use auto FEM detection
+
+calibrator set autofem 1
+
+
+    Set FEM manufacturer
+
+calibrator set fem_manuf 0|1
+
+
+    Tone transmission testing
+Get in PLT mode
+calibrator wlan0 plt power_mode on
+
+Run TxTone transmission
+calibrator set plt_tx_tone <power> <tone type>
+Power
+Tone type
+ 1 - Single tone
+ 2 - Carrier FeedThrough
+
+Stop transmission
+calibrator wlan0 plt tx_stop
+
+Get out from PLT mode
+calibrator wlan0 plt power_mode off
+
+-------------------------------------------------------------------------------
+
+The project can be accessed from git repository:
+    git clone git://github.com/gxk/ti-utils.git
+
+Please send all patches to Gery Kahn <geryk@ti.com>
+and CC linux-wireless@vger.kernel.org for community review.
+

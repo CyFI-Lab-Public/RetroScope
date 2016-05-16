@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2013 Google Inc. -->
+<com.android.mail.ui.ConversationPhotoTeaserView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/swiped_bg_color" >
+
+    <LinearLayout
+        android:id="@+id/swipeable_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/conversation_read_selector"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/arrow"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="12dp"
+            android:duplicateParentState="true"
+            android:src="@drawable/ic_arrow"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:duplicateParentState="true"
+            android:fontFamily="sans-serif-light"
+            android:text="@string/conversation_photo_welcome_text"
+            android:textColor="@color/teaser_main_text"
+            android:textSize="16sp" />
+
+        <View
+            android:id="@+id/dismiss_separator"
+            android:layout_width="1dip"
+            android:layout_height="match_parent"
+            android:background="@color/teaser_main_text"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginLeft="16dp"/>
+
+        <ImageButton
+            android:id="@+id/dismiss_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:scaleType="center"
+            android:contentDescription="@string/dismiss_tip_hover_text"
+            android:src="@drawable/ic_cancel_holo_light"
+            style="@style/DismissButtonStyle" />
+
+        <include layout="@layout/teaser_right_edge" />
+    </LinearLayout>
+
+</com.android.mail.ui.ConversationPhotoTeaserView>

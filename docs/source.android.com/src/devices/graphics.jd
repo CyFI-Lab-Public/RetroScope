@@ -1,0 +1,381 @@
+page.title=Graphics
+@jd:body
+
+<!--
+    Copyright 2010 The Android Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<div id="qv-wrapper">
+  <div id="qv">
+    <h2>In this document</h2>
+    <ol id="auto-toc">
+    </ol>
+  </div>
+</div>
+
+<p>
+  The Android framework has a variety of graphics rendering APIs for 2D and 3D that interact with
+  your HAL implementations and graphics drivers, so it is important to have a good understanding of
+  how they work at a higher level. There are two general ways that app developers can draw things
+  to the screen: with Canvas or OpenGL.
+</p>
+<p>
+  <a href="http://developer.android.com/reference/android/graphics/Canvas.html">android.graphics.Canvas</a>
+  is a 2D graphics API and is the most widely used graphics API by
+  developers. Canvas operations draw all the stock <a href="http://developer.android.com/reference/android/view/View.html">android.view.View</a>s
+  and custom <a href="http://developer.android.com/reference/android/view/View.html">android.view.View</a>s in Android. Prior to Android 3.0, Canvas used the Skia 2D drawing library to
+  draw, which could not take advantage of hardware acceleration.
+</p>
+<p>
+  Introduced in Android 3.0, hardware acceleration for Canvas APIs uses a new drawing library
+  called OpenGLRenderer that translates Canvas operations to OpenGL operations so that they can
+  execute on the GPU. Developers had to opt-in to this feature previously, but beginning in Android
+  4.0, hardware-accelerated Canvas is enabled by default. Consequently, a hardware GPU that
+  supports OpenGL ES 2.0 is mandatory for Android 4.0 devices.
+</p>
+<p>
+  The OpenGLRenderer does not interact with Skia, so we
+  anticipate Skia to be slowly phased out without adverse effects to developers. Skia is currently
+  deprecated and in maintenance mode but will be neccessary for a while because most apps published
+  today still rely on non-hardware accelerated Canvas operations. In addition, not all Skia
+  operations are supported by OpenGL, so some operations are still done in software with Skia, even
+  with hardware acceleration turned on.
+</p>
+<p>
+  The other main way that developers render graphics is by using OpenGL ES 1.x or 2.0 to directly
+  render to a surface.  Android provides OpenGL ES interfaces in the
+  <a href="http://developer.android.com/reference/android/opengl/package-summary.html">android.opengl</a> package
+  that a developer can use to call into your GL implementation with the SDK or with native APIs
+  provided in the Android NDK. 
+
+  <p class="note"><strong>Note:</strong>A third option, Renderscript, was introduced in Android 3.0 to
+  serve as a platform-agnostic graphics rendering API (it used OpenGL ES 2.0 under the hood), but
+  will be deprecated starting in the Android 4.1 release.
+</p>
+<h2 id="render">
+  How Android Renders Graphics
+</h2>
+<p>
+  No matter what rendering API developers use, everything is rendered onto a buffer of pixel data
+  called a "surface." Every window that is created on the Android platform is backed by a surface.
+  All of the visible surfaces that are rendered to are composited onto the display
+  by the SurfaceFlinger, Android's system service that manages composition of surfaces.
+  Of course, there are more components that are involved in graphics rendering, and the
+  main ones are described below:
+</p>
+
+<dl>
+  <dt>
+    <strong>Image Stream Producers</strong>
+  </dt>
+    <dd>Image stream producers can be things such as an OpenGL ES game, video buffers from the media server,
+      a Canvas 2D application, or basically anything that produces graphic buffers for consumption.
+    </dd>
+
+  <dt>
+    <strong>Image Stream Consumers</strong>
+  </dt>
+  <dd>The most common consumer of image streams is SurfaceFlinger, the system service that consumes
+    the currently visible surfaces and composites them onto the display using
+    information provided by the Window Manager. SurfaceFlinger is the only service that can
+    modify the content of the display. SurfaceFlinger uses OpenGL and the
+    hardware composer to compose a group of surfaces. Other OpenGL ES apps can consume image
+    streams as well, such as the camera app consuming a camera preview image stream.
+  </dd>
+  <dt>
+    <strong>SurfaceTexture</strong>
+  </dt>
+  <dd>SurfaceTexture contains the logic that ties image stream producers and image stream consumers together
+    and is made of three parts: <code>SurfaceTextureClient</code>, <code>ISurfaceTexture</code>, and
+    <code>SurfaceTexture</code> (in this case, <code>SurfaceTexture</code> is the actual C++ class and not
+    the name of the overall component). These three parts facilitate the producer (<code>SurfaceTextureClient</code>),
+    binder (<code>ISurfaceTexture</code>), and consumer (<code>SurfaceTexture</code>)
+    components of SurfaceTexture in processes such as requesting memory from Gralloc,
+    sharing memory across process boundaries, synchronizing access to buffers, and pairing the appropriate consumer with the producer.
+    SurfaceTexture can operate in both asynchronous (producer never blocks waiting for consumer and drops frames) and
+    synchronous (producer waits for consumer to process textures) modes. Some examples of image
+    producers are the camera preview produced by the camera HAL or an OpenGL ES game. Some examples
+    of image consumers are SurfaceFlinger or another app that wants to display an OpenGL ES stream
+    such as the camera app displaying the camera viewfinder.
+  </dd>
+
+ <dt>
+    <strong>Window Manager</strong>
+  </dt>
+  <dd>
+    The Android system service that controls window lifecycles, input and focus events, screen
+    orientation, transitions, animations, position, transforms, z-order, and many other aspects of
+    a window (a container for views). A window is always backed by a surface. The Window Manager
+    sends all of the window metadata to SurfaceFlinger, so SurfaceFlinger can use that data
+    to figure out how to composite surfaces on the display.
+  </dd>
+  
+  <dt>
+    <strong>Hardware Composer</strong>
+  </dt>
+  <dd>
+    The hardware abstraction for the display subsystem. SurfaceFlinger can delegate certain
+    composition work to the hardware composer to offload work from the OpenGL and the GPU. This makes
+    compositing faster than having SurfaceFlinger do all the work. Starting with Jellybean MR1,
+    new versions of the hardware composer have been introduced. See the <code>hardware/libhardware/include/hardware/gralloc.h</code> <a href="#hwc">Hardware composer</a> section
+    for more information.
+  </dd>
+
+    <dt>
+    <strong>Gralloc</strong>
+  </dt>
+  <dd>Allocates memory for graphics buffers. See the  If you
+    are using version 1.1 or later of the <a href="#hwc">hardware composer</a>, this HAL is no longer needed.</dd>
+  
+ 
+</dl>
+<p>
+  The following diagram shows how these components work together:
+</p><img src="images/graphics_surface.png">
+<p class="img-caption">
+  <strong>Figure 1.</strong> How surfaces are rendered
+</p>
+
+</p>
+<h2 id="provide">
+  What You Need to Provide
+</h2>
+<p>
+ The following list and sections describe what you need to provide to support graphics in your product:
+</p>
+<ul>
+  <li>OpenGL ES 1.x Driver
+  </li>
+  <li>OpenGL ES 2.0 Driver
+  </li>
+  <li>EGL Driver
+  </li>
+  <li>Gralloc HAL implementation
+  </li>
+  <li>Hardware Composer HAL implementation
+  </li>
+  <li>Framebuffer HAL implementation
+  </li>
+</ul>
+<h3 id="gl">
+  OpenGL and EGL drivers
+</h3>
+<p>
+  You must provide drivers for OpenGL ES 1.x, OpenGL ES 2.0, and EGL. Some key things to keep in
+  mind are:
+</p>
+<ul>
+  <li>The GL driver needs to be robust and conformant to OpenGL ES standards.
+  </li>
+  <li>Do not limit the number of GL contexts. Because Android allows apps in the background and
+  tries to keep GL contexts alive, you should not limit the number of contexts in your driver. It
+  is not uncommon to have 20-30 active GL contexts at once, so you should also be careful with the
+  amount of memory allocated for each context.
+  </li>
+  <li>Support the YV12 image format and any other YUV image formats that come from other
+    components in the system such as media codecs or the camera.
+  </li>
+  <li>Support the mandatory extensions: <code>GL_OES_texture_external</code>,
+  <code>EGL_ANDROID_image_native_buffer</code>, and <code>EGL_ANDROID_recordable</code>. We highly
+  recommend supporting <code>EGL_ANDROID_blob_cache</code> and <code>EGL_KHR_fence_sync</code> as
+  well.</li>
+</ul>
+
+<p>
+  Note that the OpenGL API exposed to app developers is different from the OpenGL interface that
+  you are implementing. Apps do not have access to the GL driver layer, and must go through the
+  interface provided by the APIs.
+</p>
+<h4>
+  Pre-rotation
+</h4>
+<p>Many times, hardware overlays do not support rotation, so the solution is to pre-transform the buffer before
+  it reaches SurfaceFlinger. A query hint in ANativeWindow was added (<code>NATIVE_WINDOW_TRANSFORM_HINT</code>)
+  that represents the most likely transform to be be applied to the buffer by SurfaceFlinger.
+
+  Your GL driver can use this hint to pre-transform the buffer before it reaches SurfaceFlinger, so when the buffer
+  actually reaches SurfaceFlinger, it is correctly transformed. See the ANativeWindow
+  interface defined in <code>system/core/include/system/window.h</code> for more details. The following
+  is some pseudo-code that implements this in the hardware composer:
+</p>
+
+<pre>
+ANativeWindow->query(ANativeWindow, NATIVE_WINDOW_DEFAULT_WIDTH, &w);
+ANativeWindow->query(ANativeWindow, NATIVE_WINDOW_DEFAULT_HEIGHT, &h);
+ANativeWindow->query(ANativeWindow, NATIVE_WINDOW_TRANSFORM_HINT, &hintTransform);
+if (hintTransform & HAL_TRANSFORM_ROT_90)
+swap(w, h);
+
+native_window_set_buffers_dimensions(anw, w, h);
+ANativeWindow->dequeueBuffer(...);
+
+// here GL driver renders content transformed by " hintTransform "
+
+int inverseTransform;
+inverseTransform = hintTransform;
+if (hintTransform & HAL_TRANSFORM_ROT_90)
+   inverseTransform ^= HAL_TRANSFORM_ROT_180;
+
+native_window_set_buffers_transform(anw, inverseTransform);
+
+ANativeWindow->queueBuffer(...);
+</pre>
+
+<h3 id="gralloc">
+  Gralloc HAL
+</h3>
+<p>
+  The graphics memory allocator is needed to allocate memory that is requested by
+  SurfaceTextureClient in image producers. You can find a stub implementation of the HAL at
+  <code>hardware/libhardware/modules/gralloc.h</code>
+</p>
+<h4>
+  Protected buffers
+</h4>
+<p>
+  There is a gralloc usage flag <code>GRALLOC_USAGE_PROTECTED</code> that allows
+  the graphics buffer to be displayed only through a hardware protected path.
+</p>
+<h3 id="hwc">
+  Hardware Composer HAL
+</h3>
+<p>
+  The hardware composer is used by SurfaceFlinger to composite surfaces to the screen. The hardware
+  composer abstracts things like overlays and 2D blitters and helps offload some things that would
+  normally be done with OpenGL. 
+</p>
+
+<p>Jellybean MR1 introduces a new version of the HAL. We recommend that you start using version 1.1 of the hardware
+  composer HAL as it will provide support for the newest features (explicit synchronization, external displays, etc).
+  Keep in mind that in addition to 1.1 version, there is also a 1.0 version of the HAL that we used for internal
+  compatibility reasons and a 1.2 draft mode of the hardware composer HAL. We recommend that you implement
+  version 1.1 until 1.2 is out of draft mode.
+</p>
+
+ <p>Because the physical display hardware behind the hardware composer
+  abstraction layer can vary from device to device, it is difficult to define recommended features, but
+  here is some guidance:</p>
+
+<ul>
+  <li>The hardware composer should support at least 4 overlays (status bar, system bar, application,
+  and live wallpaper) for phones and 3 overlays for tablets (no status bar).</li>
+  <li>Layers can be bigger than the screen, so the hardware composer should be able to handle layers
+    that are larger than the display (For example, a wallpaper).</li>
+  <li>Pre-multiplied per-pixel alpha blending and per-plane alpha blending should be supported at the same time.</li>
+  <li>The hardware composer should be able to consume the same buffers that the GPU, camera, video decoder, and Skia buffers are producing,
+    so supporting some of the following properties is helpful:
+   <ul>
+     <li>RGBA packing order</li>
+     <li>YUV formats</li>
+     <li>Tiling, swizzling, and stride properties</li>
+   </ul>
+  </li>
+  <li>A hardware path for protected video playback must be present if you want to support protected content.</li>
+</ul>
+<p>
+  The general recommendation when implementing your hardware composer is to implement a no-op
+  hardware composer first. Once you have the structure done, implement a simple algorithm to
+  delegate composition to the hardware composer. For example, just delegate the first three or four
+  surfaces to the overlay hardware of the hardware composer. After that focus on common use cases,
+  such as:
+</p>
+<ul>
+  <li>Full-screen games in portrait and landscape mode
+  </li>
+  <li>Full-screen video with closed captioning and playback control
+  </li>
+  <li>The home screen (compositing the status bar, system bar, application window, and live
+  wallpapers)
+  </li>
+  <li>Protected video playback
+  </li>
+  <li>Multiple display support
+  </li>
+</ul>
+<p>
+  After implementing the common use cases, you can focus on optimizations such as intelligently
+  selecting the surfaces to send to the overlay hardware that maximizes the load taken off of the
+  GPU. Another optimization is to detect whether the screen is updating. If not, delegate composition
+  to OpenGL instead of the hardware composer to save power. When the screen updates again, contin`ue to
+  offload composition to the hardware composer.
+</p>
+
+<p>
+  You can find the HAL for the hardware composer in the
+  <code>hardware/libhardware/include/hardware/hwcomposer.h</code> and <code>hardware/libhardware/include/hardware/hwcomposer_defs.h</code>
+  files. A stub implementation is available in the <code>hardware/libhardware/modules/hwcomposer</code> directory.
+</p>
+
+<h4>
+  VSYNC
+</h4>
+<p>
+  VSYNC synchronizes certain events to the refresh cycle of the display. Applications always
+  start drawing on a VSYNC boundary and SurfaceFlinger always composites on a VSYNC boundary.
+  This eliminates stutters and improves visual performance of graphics.
+  The hardware composer has a function pointer</p>
+
+    <pre>int (waitForVsync*) (int64_t *timestamp)</pre>
+
+  <p>that points to a function you must implement for VSYNC. This function blocks until
+    a VSYNC happens and returns the timestamp of the actual VSYNC.
+    A client can receive a VSYNC timestamps once, at specified intervals, or continously (interval of 1). 
+    You must implement VSYNC to have no more than a 1ms lag at the maximum (1/2ms or less is recommended), and
+    the timestamps returned must be extremely accurate.
+</p>
+
+<h4>Explicit synchronization</h4>
+<p>Explicit synchronization is required in Jellybean MR1 and later and provides a mechanism
+for Gralloc buffers to be acquired and released in a synchronized way.
+Explicit synchronization allows producers and consumers of graphics buffers to signal when
+they are done with a buffer. This allows the Android system to asynchronously queue buffers
+to be read or written with the certainty that another consumer or producer does not currently need them.</p>
+<p>
+This communication is facilitated with the use of synchronization fences, which are now required when requesting
+a buffer for consuming or producing. The
+ synchronization framework consists of three main parts:</p>
+<ul>
+  <li><code>sync_timeline</code>: a monotonically increasing timeline that should be implemented
+    for each driver instance. This basically is a counter of jobs submitted to the kernel for a particular piece of hardware.</li>
+    <li><code>sync_pt</code>: a single value or point on a <code>sync_timeline</code>. A point
+      has three states: active, signaled, and error. Points start in the active state and transition
+      to the signaled or error states. For instance, when a buffer is no longer needed by an image
+      consumer, this <code>sync_point</code> is signaled so that image producers
+      know that it is okay to write into the buffer again.</li>
+    <li><code>sync_fence</code>: a collection of <code>sync_pt</code>s that often have different
+      <code>sync_timeline</code> parents (such as for the display controller and GPU). This allows
+      multiple consumers or producers to signal that
+      they are using a buffer and to allow this information to be communicated with one function parameter.
+      Fences are backed by a file descriptor and can be passed from kernel-space to user-space.
+      For instance, a fence can contain two <code>sync_point</code>s that signify when two separate
+      image consumers are done reading a buffer. When the fence is signaled,
+      the image producers now know that both consumers are done consuming.</li>
+    </ul>
+
+<p>To implement explicit synchronization, you need to do provide the following:
+
+<ul>
+  <li>A kernel-space driver that implements a synchronization timeline for a particular piece of hardware. Drivers that
+    need to be fence-aware are generally anything that accesses or communicates with the hardware composer.
+    See the <code>system/core/include/sync/sync.h</code> file for more implementation details. The
+    <code>system/core/libsync</code> directory includes a library to communicate with the kernel-space </li>
+  <li>A hardware composer HAL module (version 1.1 or later) that supports the new synchronization functionality. You will need to provide
+  the appropriate synchronization fences as parameters to the <code>set()</code> and <code>prepare()</code> functions in the HAL. As a last resort,
+you can pass in -1 for the file descriptor parameters if you cannot support explicit synchronization for some reason. This
+is not recommended, however.</li>
+  <li>Two GL specific extensions related to fences, <code>EGL_ANDROID_native_fence_sync</code> and <code>EGL_ANDROID_wait_sync</code>,
+    along with incorporating fence support into your graphics drivers.</ul>
+
+
+

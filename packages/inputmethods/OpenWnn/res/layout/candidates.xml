@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!-- candidate list -->
+<FrameLayout
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   >
+  <LinearLayout
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     >
+
+  <LinearLayout
+     android:id="@+id/candview_tab"
+     android:orientation="vertical"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     >
+    <LinearLayout
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@color/candidate_tab_back"
+       >
+      <TextView
+         android:id="@+id/candview_symbol"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:background="@drawable/cand_tab"
+         android:singleLine="true"
+         android:gravity="center"
+         android:text="@string/cand_tab_symbol_txt"
+         android:textColor="@color/tab_textcolor_no_select"
+         android:textSize="@dimen/tab_text_size"
+         android:soundEffectsEnabled="false"
+         />
+      <TextView
+         android:id="@+id/candview_emoticon"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:layout_weight="1"
+         android:background="@drawable/cand_tab"
+         android:singleLine="true"
+         android:gravity="center"
+         android:text="@string/cand_tab_emoticon_txt"
+         android:textColor="@color/tab_textcolor_no_select"
+         android:textSize="@dimen/tab_text_size"
+         android:soundEffectsEnabled="false"
+         />
+    </LinearLayout>
+  </LinearLayout>
+
+  <ScrollView
+     android:id="@+id/candview_scroll"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:fadingEdgeLength="0dip"
+     android:scrollbars="vertical"
+     android:background="@color/candidate_back"
+     >
+    <LinearLayout 
+       android:id="@+id/candview_base"
+       android:orientation="vertical"
+       android:layout_width="match_parent" 
+       android:layout_height="wrap_content"
+       >
+      <!--View
+         android:layout_height="wrap_content" 
+         android:layout_width="match_parent" 
+         android:background="@drawable/candidate_top"
+         /-->
+      <LinearLayout 
+         android:id="@+id/candidates_1st_view"
+         android:orientation="vertical"
+         android:layout_width="match_parent" 
+         android:layout_height="wrap_content"
+         />
+      <AbsoluteLayout
+         android:id="@+id/candidates_2nd_view"
+         android:layout_width="match_parent" 
+         android:layout_height="wrap_content"
+         />
+    </LinearLayout>
+  </ScrollView>
+  </LinearLayout>
+  <LinearLayout
+     android:id="@+id/read_more"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content" 
+     android:fadingEdgeLength="0dip"
+     android:orientation="vertical"
+     android:gravity="right"
+     >
+    <ImageView
+       android:id="@+id/read_more_button"
+       android:layout_height="wrap_content"
+       android:layout_width="wrap_content"
+       android:paddingRight="2dip"
+       android:soundEffectsEnabled="false"
+       />
+  </LinearLayout>
+</FrameLayout>

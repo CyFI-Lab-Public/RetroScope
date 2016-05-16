@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="sharedUserLabel" msgid="8024311725474286801">"Applicazioni di base Android"</string>
+    <string name="app_label" msgid="3389954322874982620">"Archiviazione contatti"</string>
+    <string name="provider_label" msgid="6012150850819899907">"Contatti"</string>
+    <string name="upgrade_msg" msgid="8640807392794309950">"Upgrade del database dei contatti."</string>
+    <string name="upgrade_out_of_memory_notification_ticker" msgid="7638747231223520477">"L\'upgrade dei contatti richiede più memoria."</string>
+    <string name="upgrade_out_of_memory_notification_title" msgid="8888171924684998531">"Upgrade dell\'archivio dei contatti"</string>
+    <string name="upgrade_out_of_memory_notification_text" msgid="8438179450336437626">"Tocca per completare l\'upgrade."</string>
+    <string name="default_directory" msgid="93961630309570294">"Contatti"</string>
+    <string name="local_invisible_directory" msgid="705244318477396120">"Altro"</string>
+    <string name="read_write_all_voicemail_label" msgid="4557216100818257560">"Accesso a tutti i messaggi vocali"</string>
+    <string name="read_write_all_voicemail_description" msgid="8029809937805761356">"Consente all\'applicazione di archiviare recuperare tutti i messaggi vocali a cui questo dispositivo può accedere."</string>
+    <string name="voicemail_from_column" msgid="435732568832121444">"Messaggio vocale da "</string>
+    <string name="debug_dump_title" msgid="4916885724165570279">"Copia database di contatti"</string>
+    <string name="debug_dump_database_message" msgid="406438635002392290">"Stai per 1) creare una copia del tuo database che include tutte le informazioni di contatto e tutti i registri chiamate nella memoria interna e 2) inviarla tramite email. Ricorda di eliminare la copia non appena è stata correttamente copiata dal dispositivo o non appena ricevi l\'email."</string>
+    <string name="debug_dump_delete_button" msgid="7832879421132026435">"Elimina adesso"</string>
+    <string name="debug_dump_start_button" msgid="2837506913757600001">"Inizia"</string>
+    <string name="debug_dump_email_sender_picker" msgid="3534420908672176460">"Scegli un programma per inviare il file"</string>
+    <string name="debug_dump_email_subject" msgid="108188398416385976">"Database di contatti allegato"</string>
+    <string name="debug_dump_email_body" msgid="4577749800871444318">"In allegato è presente il mio database di contatti contenente tutte le informazioni sui miei contatti. Trattare con cura."</string>
+</resources>

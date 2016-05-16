@@ -1,0 +1,55 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PhotoCaptureActivity" >
+
+    <SurfaceView
+        android:id="@+id/camera_fov_camera_preview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" />
+
+    <com.android.cts.verifier.camera.fov.CameraPreviewView
+        android:id="@+id/camera_fov_preview_overlay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <Button
+            android:id="@+id/camera_fov_settings_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="@string/camera_fov_settings_button_text" />
+
+        <Button
+            android:id="@+id/camera_fov_change_preview_size_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/camera_fov_settings_button"
+            android:text="@string/camera_fov_change_preview_sizes_button_text" />
+
+        <TextView
+            android:id="@+id/camera_fov_tap_to_take_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:padding="10sp"
+            android:text="@string/camera_fov_tap_to_take_photo"
+            android:textSize="18sp" />
+
+        <Spinner
+            android:id="@+id/camera_fov_resolution_selector"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:padding="10sp"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+</FrameLayout>

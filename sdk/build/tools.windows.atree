@@ -1,0 +1,124 @@
+#
+# Copyright (C) 2011 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+#
+# These are the files that comprise the tools component of the Windows SDK.
+#
+# IMPORTANT: for a binary to be included here, it must be built --
+# typically by adding it to WIN_SDK_TARGETS in windows_sdk_tools.mk.
+#
+
+rm tools/android
+prebuilts/devtools/tools/android.bat              tools/android.bat
+
+rm tools/ddms
+prebuilts/devtools/tools/ddms.bat                 tools/ddms.bat
+
+rm tools/dmtracedump
+bin/dmtracedump.exe                         strip tools/dmtracedump.exe
+
+rm tools/draw9patch
+prebuilts/devtools/tools/draw9patch.bat           tools/draw9patch.bat
+
+rm tools/lint
+prebuilts/devtools/tools/lint.bat                 tools/lint.bat
+
+rm tools/jobb
+prebuilts/devtools/tools/jobb.bat                 tools/jobb.bat
+
+
+rm tools/emulator
+rm tools/emulator-arm
+rm tools/emulator-x86
+rm tools/emulator-mips
+bin/emulator.exe                            strip tools/emulator.exe
+bin/emulator-arm.exe                        strip tools/emulator-arm.exe
+bin/emulator-x86.exe                        strip tools/emulator-x86.exe
+bin/emulator-mips.exe                       strip tools/emulator-mips.exe
+# Emulator libraries
+rm tools/lib/libOpenglRender.so
+rm tools/lib/libGLES_CM_translator.so
+rm tools/lib/libGLES_V2_translator.so
+rm tools/lib/libEGL_translator.so
+lib/libOpenglRender.dll                           tools/lib/libOpenglRender.dll
+lib/libGLES_CM_translator.dll                     tools/lib/libGLES_CM_translator.dll
+lib/libGLES_V2_translator.dll                     tools/lib/libGLES_V2_translator.dll
+lib/libEGL_translator.dll                         tools/lib/libEGL_translator.dll
+# Copy the emulator NOTICE in the tools dir
+external/qemu/NOTICE                              tools/emulator_NOTICE.txt
+
+rm tools/etc1tool
+bin/etc1tool.exe                            strip tools/etc1tool.exe
+
+rm tools/hierarchyviewer
+prebuilts/devtools/tools/hierarchyviewer.bat      tools/hierarchyviewer.bat
+
+rm tools/hprof-conv
+bin/hprof-conv.exe                          strip tools/hprof-conv.exe
+
+rm tools/mksdcard
+bin/mksdcard.exe                            strip tools/mksdcard.exe
+
+rm tools/monkeyrunner
+prebuilts/devtools/tools/monkeyrunner.bat         tools/monkeyrunner.bat
+
+rm tools/proguard/bin
+prebuilts/tools/common/proguard/proguard4.7/bin/proguard.bat    tools/proguard/bin/proguard.bat
+prebuilts/tools/common/proguard/proguard4.7/bin/retrace.bat     tools/proguard/bin/retrace.bat
+prebuilts/tools/common/proguard/proguard4.7/bin/proguardgui.bat tools/proguard/bin/proguardgui.bat
+
+rm tools/sqlite3
+bin/sqlite3.exe                             strip tools/sqlite3.exe
+
+rm tools/traceview
+prebuilts/devtools/tools/traceview.bat            tools/traceview.bat
+
+rm tools/uiautomatorviewer
+prebuilts/devtools/tools/uiautomatorviewer.bat    tools/uiautomatorviewer.bat
+
+rm tools/zipalign
+bin/zipalign.exe                            strip tools/zipalign.exe
+
+# RCP Monitor. Remove linux stuff and replace by Windows files.
+rm tools/monitor
+rm tools/lib/monitor-x86
+rm tools/lib/monitor-x86_64
+sdk/monitor/monitor.bat                           tools/monitor.bat
+eclipse/monitor-win32.win32.x86/monitor           tools/lib/monitor-x86
+eclipse/monitor-win32.win32.x86_64/monitor        tools/lib/monitor-x86_64
+
+
+# Copy the AVD & SDK Manager (aka avd/sdklauncher) to the root of the SDK as
+# well as in SDK/tools/lib (so that tools updates can update the root one too)
+bin/avdlauncher.exe                               "AVD Manager.exe"
+bin/sdklauncher.exe                               "SDK Manager.exe"
+bin/avdlauncher.exe                               "tools/lib/AVD Manager.exe"
+bin/sdklauncher.exe                               "tools/lib/SDK Manager.exe"
+
+# Supporting bat files
+sdk/files/post_tools_install.bat                  tools/lib/post_tools_install.bat
+sdk/find_java/find_java.bat                       tools/lib/find_java.bat
+bin/find_java.exe                           strip tools/lib/find_java.exe
+bin/find_lock.exe                           strip tools/lib/find_lock.exe
+
+prebuilts/tools/windows/swt/swt.jar               tools/lib/x86/swt.jar
+prebuilts/tools/windows-x86_64/swt/swt.jar        tools/lib/x86_64/swt.jar
+
+external/sonivox/jet_tools/JetCreator             tools/Jet/JetCreator
+external/sonivox/jet_tools/JetCreator_content     tools/Jet/demo_content
+external/sonivox/jet_tools/logic_templates        tools/Jet/logic_templates
+prebuilts/tools/windows/jetcreator/EASDLL.dll     tools/Jet/JetCreator/EASDLL.dll
+

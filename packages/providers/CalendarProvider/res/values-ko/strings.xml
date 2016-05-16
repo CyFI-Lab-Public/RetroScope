@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="calendar_storage" msgid="5387668002987562770">"캘린더 저장"</string>
+    <string name="upgrade_msg" msgid="2792831029435070926">"캘린더 데이터베이스 업그레이드 중"</string>
+    <string name="calendar_default_name" msgid="6924293766625167275">"기본값"</string>
+    <string name="calendar_info" msgid="6687678621418059281">"캘린더 정보"</string>
+    <string name="calendar_info_error" msgid="5575162446528419982">"오류"</string>
+    <string name="calendar_info_no_calendars" msgid="4287534468186704433">"캘린더 없음"</string>
+    <string name="calendar_info_events" msgid="1805502308105103803">"일정: <xliff:g id="EVENTS">%1$d</xliff:g>개"</string>
+    <string name="calendar_info_events_dirty" msgid="8879392112564499515">"일정: <xliff:g id="EVENTS_0">%1$d</xliff:g>개, 저장되지 않은 일정: <xliff:g id="DIRTY_EVENTS">%2$d</xliff:g>개"</string>
+    <string name="provider_label" msgid="2306513350843464739">"캘린더"</string>
+    <string name="debug_tool_delete_button" msgid="5052706251268452090">"지금 삭제"</string>
+    <string name="debug_tool_start_button" msgid="5384780896342913563">"시작"</string>
+    <string name="debug_tool_message" msgid="4862486669932821937">"모든 앱에서 읽을 수 있는 SD 카드/USB 저장소에 캘린더 데이터베이스의 1) 사본을 만들고 2) 이메일로 보내려고 합니다. 기기 이외의 장소에 사본을 만들거나 사본의 이메일 수신이 완료된 후에는 해당 사본을 즉시 삭제하시기 바랍니다."</string>
+    <string name="debug_tool_email_sender_picker" msgid="2000311987477419397">"파일을 전송할 프로그램을 선택하세요."</string>
+    <string name="debug_tool_email_subject" msgid="2403590332256471194">"캘린더 DB 첨부"</string>
+    <string name="debug_tool_email_body" msgid="4835949635324134017">"모든 일정이 담긴 캘린더 데이터베이스와 개인 정보가 첨부되어 있습니다. 신중하게 처리해 주세요."</string>
+</resources>

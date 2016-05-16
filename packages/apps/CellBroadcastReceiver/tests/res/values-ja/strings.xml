@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="2102435118079140813">"緊急警報のテスト"</string>
+    <string name="button_etws_normal_type" msgid="3852703138521119537">"ETWS標準放送を送信"</string>
+    <string name="button_etws_cancel_type" msgid="7194264116649371175">"ETWSキャンセルブロードキャストを送信"</string>
+    <string name="button_etws_test_type" msgid="6353906188028139901">"ETWSテストブロードキャストを送信"</string>
+    <string name="button_cmas_pres_alert" msgid="5905111586384766558">"CMASの国家レベルの警報を送信"</string>
+    <string name="button_cmas_extreme_alert" msgid="6111658124447111920">"CMASの最重要警報を送信"</string>
+    <string name="button_cmas_severe_alert" msgid="9051731172452500819">"CMASの重要警報を送信"</string>
+    <string name="button_cmas_amber_alert" msgid="4217147800913845288">"CMASの誘拐事件速報を送信"</string>
+    <string name="button_cmas_monthly_test" msgid="1609320625517248393">"CMASの毎月のテスト警報を送信"</string>
+    <string name="button_gsm_7bit_type" msgid="4757698592787955850">"GSM 7-bitテストブロードキャストを送信"</string>
+    <string name="button_gsm_7bit_umts_type" msgid="4377077702628367387">"UMTS 7-bitテストブロードキャストを送信"</string>
+    <string name="button_gsm_7bit_nopadding_type" msgid="5289528095948674862">"GSM 7-bitフルレングスブロードキャストを送信"</string>
+    <string name="button_gsm_7bit_nopadding_umts_type" msgid="7953047238483884846">"UMTS 7-bitフルレングスブロードキャストを送信"</string>
+    <string name="button_gsm_7bit_multipage_type" msgid="8516540964071070491">"GSM 7-bitマルチページブロードキャストを送信"</string>
+    <string name="button_gsm_7bit_multipage_umts_type" msgid="474883728254547100">"UMTS 7-bitマルチページブロードキャストを送信"</string>
+    <string name="button_gsm_7bit_with_language_type" msgid="7414138913180046493">"言語と共にGSM 7-bitを送信"</string>
+    <string name="button_gsm_7bit_with_language_body_gsm_type" msgid="7365993929355114874">"本文の言語と共にGSM 7-bitを送信"</string>
+    <string name="button_gsm_7bit_with_language_body_umts_type" msgid="1201329758881885921">"言語と共にUMTS 7-bitを送信"</string>
+    <string name="button_gsm_ucs2_type" msgid="6652864601384080678">"GSM UCS-2テストブロードキャストを送信"</string>
+    <string name="button_gsm_ucs2_umts_type" msgid="2985879481785569626">"UMTS UCS-2テストブロードキャストを送信"</string>
+    <string name="button_gsm_ucs2_multipage_umts_type" msgid="4557772309524939206">"UMTS UCS-2マルチページブロードキャストを送信"</string>
+    <string name="button_gsm_ucs2_with_language_type" msgid="8992961254390480388">"言語と共にGSM UCS-2を送信"</string>
+    <string name="button_gsm_ucs2_with_language_umts_type" msgid="1080788762601688380">"言語と共にUMTS UCS-2を送信"</string>
+    <string name="button_delay_broadcast" msgid="5138650276363839541">"送信を5秒遅らせる"</string>
+    <string name="message_id_label" msgid="4365322663037110887">"メッセージID:"</string>
+    <string name="category_id_label" msgid="8472814003810180738">"カテゴリ:"</string>
+</resources>

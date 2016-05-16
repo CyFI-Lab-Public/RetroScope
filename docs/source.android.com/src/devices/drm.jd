@@ -1,0 +1,178 @@
+page.title=DRM
+@jd:body
+
+<!--
+    Copyright 2010 The Android Open Source Project     
+
+    Licensed under the Apache License, Version 2.0 (the "License");    
+    you may not use this file except in compliance with the License.   
+    You may obtain a copy of the License at    
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software    
+    distributed under the License is distributed on an "AS IS" BASIS,    
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.   
+    See the License for the specific language governing permissions and    
+    limitations under the License.   
+-->
+
+<div id="qv-wrapper">
+  <div id="qv">
+    <h2>In this document</h2>
+    <ol id="auto-toc">
+    </ol>
+  </div>
+</div>
+
+<p>This document introduces Widevine DRM security levels
+  and certification requirements. It explains how to integrate and distribute Widevine DRM
+  for your product. Android provides the Widevine DRM solution with a royalty-free
+  license and we recommend that you use it for
+  your protected playback solution. </p>
+
+<h2 id="overview">Overview</h2>
+<p>
+Availability of rich digital content is important to users on mobile devices. To make their content widely available,
+Android developers and digital content publishers need a consistent DRM implementation supported across the Android
+ecosystem. In order to make that digital content available on Android devices and to ensure that there is at least
+one consistent DRM available across all devices, Google provides Widevine DRM for free on compatible Android devices.
+On Android 3.0 and higher platforms, the Widevine DRM plugin is integrated with the Android DRM framework and uses
+hardware-backed protection to secure movie content and user credentials.
+</p>
+
+<p>
+The content protection provided by the Widevine DRM plugin depends on the security and content protection capabilities of the underlying hardware platform. The hardware capabilities of the device include hardware secure boot to establish a chain of trust of security and protection of cryptographic keys. Content protection capabilities of the device include protection of decrypted frames in the device and content output protection via a trusted output protection mechanism. Not all hardware platforms support all the above security and content protection features. Security is never implemented in a single place in the stack, but instead relies on the integration of hardware, software, and services. The combination of hardware security functions, a trusted boot mechanism, and an isolated secure OS for handling security functions is critical to provide a secure device.</p>
+
+
+<h3 id="framework">Android DRM Framework</h3>
+<p>Android 3.0 and higher platforms provide an extensible DRM framework that lets applications manage protected content using a
+    choice of DRM mechanisms. For application developers, the framework offers an
+    abstract, unified API that simplifies the management of protected content.
+    The API hides the complexity of DRM operations and allows a consistent operation mode for both protected and unprotected
+    content across a variety of DRM schemes. For device manufacturers, content owners, and Internet digital media providers
+    the DRM framework plugin API provides a means of adding support for a DRM scheme of choice into the Android system, for
+    secure enforcement of content protection.
+
+    <p><strong>Note:</strong> We recommend that you integrate the Widevine
+    solution as it is already implemented and ready for you to use. </p>
+</p>
+
+<h3 id="plugin">Widevine DRM Plugin</h3>
+
+<p>
+Built on top of the Android DRM framework, the Widevine DRM plugin offers DRM and advanced copy protection features on Android devices. Widevine DRM is available in binary form under a royalty free license from Widevine. The Widevine DRM plugin provides the capability to license, securely distribute, and protect playback of multimedia content. Protected content is secured using an encryption scheme based on the open AES (Advanced Encryption Standard). An application can decrypt the content only if it obtains a license from the Widevine DRM licensing server for the current user. Widevine DRM functions on Android in the same way as it does on other platforms. Figure 1 shows how the WideVine Crypto Plugin fits into the Android stack:</p>
+
+
+ <img src="images/drm_hal.png" alt="" />
+
+ <p class="img-caption"><strong>Figure 1.</strong> Widevine Crypto Plugin</p>
+
+
+<h2 id="integrating">Integrating Widevine into Your Product</h2>
+
+<p>The following sections go over the different security levels that Widevine supports and the requirements that your product must meet to
+support Widevine. After reading the information, you need to determine the security level for your target hardware, integration, and Widevine keybox provisioning requirements.
+</p>
+<p >
+To integrate and distribute Widevine DRM on Android devices, contact your Android technical account manager to begin Widevine DRM integration.
+We recommend you engage early in your device development process with the Widevine team to provide the highest level of content protection on the device. 
+Certify devices using the Widevine test player and submit results to your Android technical account manager for approval.
+</p>
+
+<h3 id="security">
+Widevine DRM security levels
+</h3>
+
+<p>Security is never implemented in a single place in the stack, but instead relies on the integration of hardware, software, and services. The combination of hardware security functions, a trusted boot mechanism, and an isolated secure OS for handling security functions is critical to provide a secure device.</p>
+
+<p>
+At the system level, Android offers the core security features of the Linux kernel, extended and customized for mobile devices. In the application framework, Android provides an extensible DRM framework and system architecture for checking and enforcing digital rights. The Widevine DRM plugin integrates with the hardware platform to leverage the available security capabilities. The level of security offered is determined by a combination of the security capabilities of the hardware platform and the integration with Android and the Widevine DRM plugin. Widevine DRM security supports the three levels of security shown in the table below. 
+</p>
+
+<table>
+
+<tr>
+<th>Security Level</th>
+<th>Secure Bootloader</th>
+<th>Widevine Key Provisioning</th>
+<th>Security Hardware or ARM Trust Zone</th>
+<th>Widevine Keybox and Video Key Processing</th>
+<th>Hardware Video Path</th>
+</tr>
+<tr>
+  <td>Level 1</td>
+  <td>Yes</td>
+  <td>Factory provisioned Widevine Keys</td>
+  <td>Yes</td>
+  <td>Keys never exposed in clear to host CPU</td>
+  <td>Hardware protected video path</td>
+<tr>
+
+<tr>
+  <td>Level 2</td>
+  <td>Yes</td>
+  <td>Factory provisioned Widevine Keys</td>
+  <td>Yes</td>
+  <td>Keys never exposed in clear to host CPU</td>
+  <td>Hardware protected video path</td>
+<tr>
+
+<tr>
+  <td>Level 3</td>
+  <td>Yes*</td>
+  <td>Field provisioned Widevine Keys</td>
+  <td>No</td>
+  <td>Clear keys exposed to host CPU</td>
+  <td>Clear video streams delivered to video decoder</td>
+<tr>
+
+</table>
+
+<p><superscript>*</superscript>Device implementations may use a trusted bootloader, where in the bootloader is authenticated via an OEM key stored on a system partition.</p>
+
+<h3 id="security-details">
+Security level details
+</h3>
+<h4>
+Level 1
+</h4>
+<p>In this implementation Widevine DRM keys and decrypted content are never exposed to the host CPU. Only security hardware or a protected security co-processor uses clear key values and the media content is decrypted by the secure hardware. This level of security requires factory provisioning of the Widevine key-box or requires the Widevine key-box to be protected by a device key installed at the time of manufacturing. The following describes some key points to this security level:
+</p>
+
+<ul>
+  <li>Device manufacturers must provide a secure bootloader. The chain of trust from the bootloader must extend through any software or firmware components involved in the security implementation, such as the ARM TrustZone protected application and any components involved in the enforcement of the secure video path. </li>
+  <li>The Widevine key-box must be encrypted with a device-unique secret key that is not visible to software or probing methods outside of the TrustZone.</li>
+  <li>The Widevine key-box must be installed in the factory or delivered to the device using an approved secure delivery mechanism.</li>
+  <li>Device manufacturers must provide an implementation of the Widevine Level 1 OEMCrypto API that performs all key processing and decryption in a trusted environment.</li>
+</ul>
+
+<h4>Level 2</h4>
+<p>
+  In this security level, the Widevine keys are never exposed to the host CPU. Only security hardware or a protected security co-processor uses clear key values. An AES crypto block performs the high throughput AES decryption of the media stream.  The resulting clear media buffers are returned to the CPU for delivery to the video decoder. This level of security requires factory provisioning of the Widevine key-box or requires the Widevine key box to be protected by a key-box installed at the time of manufacturing.
+  The following list describes some key requirements of this security level:
+</p>
+
+<ul>
+  <li>Device manufacturers must provide a secure bootloader. The chain of trust from the bootloader must extend through any software or firmware components involved in the security implementation, such as the TrustZone protected application. </li>
+  <li>The Widevine key-box must be encrypted with a device-unique secret key that is not visible to software or probing methods outside of the TrustZone.</li>
+  <li>The Widevine key-box must be installed in the factory or delivered to the device using an approved secure delivery mechanism.</li>
+  <li>Device manufacturers must provide an implementation of the Widevine Level 2 OEMCrypto API that performs all key processing and decryption in a trusted environment.</li>
+  <li>Device manufacturers must provide a bootloader that loads signed system images only. For devices that allow users to load a custom operating system or gain root privileges on the device by unlocking the bootloader, device manufacturers must support the following:
+    <ul>
+      <li>Device manufacturers must provide a bootloader that allows a Widevine key-box to be written only when the bootloader is in a locked state.</li>
+      <li>The Widevine key-box must be stored in a region of memory that is erased or is inaccessible when the device bootloader is in an unlocked state.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4>Level 3</h4>
+<p>
+This security level relies on the secure bootloader to verify the system image. An AES crypto block performs the AES decryption of the media stream and the resulting clear media buffers are returned to the CPU for delivery to the video decoder.
+</p>
+
+<p>Device manufacturers must provide a bootloader that loads signed system images only. For devices that allow users to load a custom operating system or gain root privileges on the device by unlocking the bootloader, device manufacturers must support the following:</p>
+    <ul>
+      <li>Device manufacturers must provide a bootloader that allows a Widevine key-box to be written only when the bootloader is in a locked state.</li>
+      <li>The Widevine key-box must be stored in a region of memory that is erased or is inaccessible when the device bootloader is in an unlocked state.</li>
+    </ul>

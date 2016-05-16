@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="app_name">CtsPreferenceTestCases</string>
+    <string name="test_prefs">Test Preferences</string>
+
+    <string name="preferences_from_xml">Preference/1. Preferences from XML</string>
+    <string name="launching_preferences">Preference/2. Launching preferences</string>
+    <string name="preference_dependencies">Preference/3. Preference dependencies</string>
+    <string name="default_values">Preference/4. Default values</string>
+    <string name="preferences_from_code">Preference/5. Preferences from code</string>
+    <string name="advanced_preferences">Preference/6. Advanced preferences</string>
+    <string name="fragment_preferences">Preference/7. Fragment</string>
+    <string name="preference_with_headers">Preference/8. Headers</string>
+
+    <string name="launch_preference_activity">Launch PreferenceActivity</string>
+    <string name="counter_value_is">The counter value is</string>
+
+    <string name="inline_preferences">In-line preferences</string>
+    <string name="dialog_based_preferences">Dialog-based preferences</string>
+    <string name="launch_preferences">Launch preferences</string>
+    <string name="preference_attributes">Preference attributes</string>
+
+    <string name="title_checkbox_preference">Checkbox preference</string>
+    <string name="summary_checkbox_preference">This is a checkbox</string>
+    <string name="summary_on_checkbox_preference">Checkbox preference On</string>
+    <string name="summary_off_checkbox_preference">Checkbox preference Off</string>
+
+    <string name="title_switch_preference">Switch preference</string>
+    <string name="summary_switch_preference">This is a switch</string>
+    <string name="summary_on_switch_preference">Switch Summary On</string>
+    <string name="summary_off_switch_preference">Switch Summary Off</string>
+     <string name="switchtext_on">Switch Text On</string>
+    <string name="switchtext_off">Switch Text Off</string>
+
+    <string name="summary_switch_preference_yes_no">This is a switch with custom text</string>
+
+    <string name="title_yesno_preference">Yes or no preference</string>
+    <string name="summary_yesno_preference">An example that uses a yes/no dialog</string>
+    <string name="dialog_title_yesno_preference">Do you like bananas?</string>
+
+    <string name="title_edittext_preference">Edit text preference</string>
+    <string name="summary_edittext_preference">An example that uses an edit text dialog</string>
+    <string name="dialog_title_edittext_preference">Enter your favorite animal</string>
+
+    <string name="title_list_preference">List preference</string>
+    <string name="summary_list_preference">An example that uses a list dialog</string>
+    <string name="dialog_title_list_preference">Choose one</string>
+
+    <string name="title_screen_preference">Screen preference</string>
+    <string name="summary_screen_preference">Shows another screen of preferences</string>
+
+    <string name="title_fragment_preference">Fragment preference</string>
+    <string name="summary_fragment_preference">Shows another fragment of preferences</string>
+
+    <string name="title_next_screen_toggle_preference">Toggle preference</string>
+    <string name="summary_next_screen_toggle_preference">
+    Preference that is on the next screen but same hierarchy</string>
+
+    <string name="title_intent_preference">Intent preference</string>
+    <string name="summary_intent_preference">Launches an Activity from an Intent</string>
+
+    <string name="title_my_preference">My preference</string>
+    <string name="summary_my_preference">This is a custom counter preference</string>
+
+    <string name="title_advanced_toggle_preference">Haunted preference</string>
+    <string name="summary_on_advanced_toggle_preference">I\'m on! :)</string>
+    <string name="summary_off_advanced_toggle_preference">I\'m off! :(</string>
+
+    <string name="title_parent_preference">Parent checkbox preference</string>
+    <string name="summary_parent_preference">This is visually a parent</string>
+    <string name="title_child_preference">Child checkbox preference</string>
+    <string name="summary_child_preference">This is visually a child</string>
+
+    <string name="example_preference_dependency">Example preference dependency</string>
+    <string name="title_wifi">WiFi</string>
+    <string name="title_wifi_settings">WiFi settings</string>
+
+    <string name="default_value_list_preference">beta</string>
+    <string name="default_value_edittext_preference">Default value</string>
+    <string name="text_edittext_preference">Edit Text</string>
+    <string name="preset_title">Preset Title</string>
+    <string name="dialog_message">"Dialog Message"</string>
+    
+    <string name="title_dialog_preference">Dialog preference</string>
+    <string name="dialogtitle_dialog_preference">Dialog Title</string>
+    <string name="summary_dialog_preference">An example that uses a dialog</string>
+    <string name="positive_button_text">"Accept"</string>
+    <string name="negative_button_text">"Decline"</string>
+
+    <string name="cust_title_dialog_preference">Custom Dialog preference</string>
+    <string name="cust_dialogtitle_dialog_preference">Custom Dialog Title</string>
+
+    <string name="preference_group_title">Preference Group Title</string>
+    <string name="custom_preference_group_title">Custom Preference Group</string>
+
+    <string name="custom_preference">Custom Preference</string>
+</resources>

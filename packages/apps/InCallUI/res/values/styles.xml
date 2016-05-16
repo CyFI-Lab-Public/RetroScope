@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2013 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  -->
+
+<resources>
+    <drawable name="grayBg">#FF333333</drawable>
+
+    <style name="info_label">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:textAppearance">@style/TextAppearance.info_label</item>
+        <item name="android:paddingEnd">4dip</item>
+    </style>
+
+    <style name="info_layout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">10dip</item>
+        <item name="android:paddingTop">10dip</item>
+        <item name="android:paddingEnd">10dip</item>
+        <item name="android:paddingBottom">10dip</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="entry_layout">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="TextAppearance" parent="android:TextAppearance">
+    </style>
+
+    <style name="TextAppearance.info_label">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+    <!-- Buttons in the main "button row" of the in-call onscreen touch UI. -->
+    <style name="InCallButton">
+        <item name="android:layout_width">0px</item>
+        <item name="android:layout_height">@dimen/in_call_button_height</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <!-- "Compound button" variation of InCallButton.
+         These buttons have the concept of two states: checked and unchecked.
+         (This style is just like "InCallButton" except that we also
+         clear out android:textOn and android:textOff, to avoid the default
+         text label behavior of the ToggleButton class.) -->
+    <style name="InCallCompoundButton" parent="InCallButton">
+        <item name="android:textOn">@null</item>
+        <item name="android:textOff">@null</item>
+    </style>
+
+    <style name="VerticalSeparator">
+        <item name="android:layout_width">2dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@android:color/black</item>
+    </style>
+
+    <!-- "End" button; similar to InCallButton. -->
+    <style name="InCallEndButton">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">@dimen/in_call_end_button_height</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <!-- Buttons in extra button row. -->
+    <style name="InCallExtraRowButton">
+        <item name="android:layout_width">@dimen/extra_row_button_width</item>
+        <item name="android:layout_height">@dimen/extra_row_button_height</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- Text label drawn alongside buttons in the "extra button row" of
+         the in-call onscreen touch UI. -->
+    <style name="InCallExtraRowButtonLabel">
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textColor">@color/incall_call_banner_text_color</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_marginStart">5dip</item>
+        <item name="android:layout_marginEnd">5dip</item>
+    </style>
+
+    <style name="InCallAnimationStyle" parent="@android:style/Animation.Activity">
+        <!-- Suppress task-to-task animation happening during the transition from
+             OutgoingCallBroadcaster (and SipOptionHandler) to InCallActivity.
+             The transition unexpectedly happens during the transition (inside the phone task),
+             because InCallActivity is using android:launchMode="singleInstance".
+
+             - taskOpenEnterAnimation/taskOpenExitAnimation is used for the first time
+               InCallActivity instance is created.
+
+             - taskToFrontEnterAnimation/taskToFrontExitAnimation is used when InCallActivity
+               is already available.
+               (Note that InCallActivity won't be destroyed once it is created)
+
+             TODO: try removing the flag instead -->
+        <item name="android:taskOpenEnterAnimation">@anim/activity_open_enter</item>
+        <item name="android:taskOpenExitAnimation">@anim/activity_open_exit</item>
+        <item name="android:taskToFrontEnterAnimation">@anim/activity_open_enter</item>
+        <item name="android:taskToFrontExitAnimation">@anim/activity_open_exit</item>
+    </style>
+
+    <!-- Theme for the InCallActivity activity.  This gives us a totally black
+         window background instead of the default dark grey.  (We don't just use
+         Theme.Black.NoTitleBar directly, since we want any popups or dialogs
+         from the InCallActivity to have the correct holo style. -->
+    <style name="Theme.InCallScreen" parent="@android:style/Theme.Holo.NoActionBar">
+        <item name="android:windowBackground">@android:color/black</item>
+        <item name="android:windowAnimationStyle">@style/InCallAnimationStyle</item>
+    </style>
+
+    <style name="DialpadButtonStyle">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:soundEffectsEnabled">false</item>
+    </style>
+
+    <style name="DialtactsDigitsTextAppearance">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">@dimen/dialpad_digits_text_size</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+        <item name="android:freezesText">true</item>
+        <item name="android:editable">true</item>
+        <item name="android:cursorVisible">false</item>
+    </style>
+
+    <style name="PrimaryCallInfoPrimaryCallBanner">
+        <item name="android:layout_alignParentTop">true</item>
+    </style>
+    <style name="PrimaryCallInfoSupplementaryInfoContainer">
+        <item name="android:layout_below">@id/primary_call_banner</item>
+    </style>
+
+    <style name="SecondaryCallInfoSecondaryCallName">
+        <item name="android:layout_gravity">top|left</item>
+    </style>
+    <style name="SecondaryCallInfoSecondaryCallStatus">
+        <item name="android:layout_gravity">top|right</item>
+    </style>
+</resources>

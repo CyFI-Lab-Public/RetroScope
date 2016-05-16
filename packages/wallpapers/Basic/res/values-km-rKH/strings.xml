@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+* Copyright (C) 2008 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="wallpapers" msgid="7890805662847963863">"ផ្ទាំង​រូបភាព​រស់​រវើក​របស់ Android"</string>
+    <string name="wallpaper_walkaround" msgid="5548084303782181478">"មើល​តាម​រយៈ"</string>
+    <string name="wallpaper_walkaround_author" msgid="7292960549371044078">"Google"</string>
+    <string name="wallpaper_walkaround_desc" msgid="1714824320382778730">"មើល​តាម​ទូរស័ព្ទ​របស់​អ្នក និង​ដើរ​ដោយ​គ្មាន​គ្រោះថ្នាក់។"</string>
+    <string name="wallpaper_grass" msgid="4753389782988032116">"ស្មៅ"</string>
+    <string name="wallpaper_grass_author" msgid="9197652780831360471">"Google"</string>
+    <string name="wallpaper_grass_desc" msgid="7808225799564607409">"Blades of grass wave gently in front of a day or night sky."</string>
+    <string name="wallpaper_galaxy" msgid="4698294375306738428">"Galaxy"</string>
+    <string name="wallpaper_galaxy_author" msgid="5455561260819111338">"Google"</string>
+    <string name="wallpaper_galaxy_desc" msgid="6816969378845338629">"A galaxy made of slowly swirling stars."</string>
+    <string name="wallpaper_fall" msgid="1500920940722360941">"ទឹក"</string>
+    <string name="wallpaper_fall_author" msgid="8860429843949521342">"Google"</string>
+    <string name="wallpaper_fall_desc" msgid="595888373487204297">"Autumn leaves tumble&lt;br&gt; To the rippling pond below:&lt;br&gt; Liquid background Zen"</string>
+    <string name="wallpaper_clock" msgid="6555051461698958610">"នាឡិកា​​រាង​មូល"</string>
+    <string name="wallpaper_clock_author" msgid="8779094427834551330">"Google"</string>
+    <string name="wallpaper_clock_desc" msgid="6767980298898740026">"បង្ហាញ​កាលបរិច្ឆេទ និង​ពេលវេលា​ជា​ធ្នូ​ច្រាស​ទ្រនិច​នាឡិកា៖ ខែ, ថ្ងៃ, ម៉ោង, នាទី និង​វិនាទី។"</string>
+    <string name="wallpaper_nexus" msgid="3789061608411260304">"Nexus"</string>
+    <string name="wallpaper_nexus_author" msgid="8492858637541249441">"Google"</string>
+    <string name="wallpaper_nexus_desc" msgid="5562598238151885905">"A peek inside the neural network."</string>
+    <string name="clock_settings" msgid="7837858747417927288">"ការ​កំណត់​នាឡិកា​មាន​រាង​មូល"</string>
+    <string name="show_seconds" msgid="8525899907567218168">"បង្ហាញ​វិនាទី"</string>
+    <string name="variable_line_width" msgid="8487094734462263605">"Vary ring widths"</string>
+    <string name="palette" msgid="1636154448241520718">"ក្ដារ​លាយ​ពណ៌"</string>
+    <string name="palette_gray" msgid="4575370050214496017">"ដែក"</string>
+    <string name="palette_violet" msgid="6124851215872884048">"កណ្ដាល​អធ្រាត្រ"</string>
+    <string name="palette_matrix" msgid="2755109999115087511">"អេក្រង់​​​បៃតង"</string>
+    <string name="palette_white_c" msgid="3846812107437715188">"ខ្លា​ឃ្មុំ​ប៉ូល (អថេរ)"</string>
+    <string name="palette_black_c" msgid="1521258571661038231">"រន្ធ​ខ្មៅ (អថេរ)"</string>
+    <string name="palette_halloween" msgid="1502590278217616811">"ចំណិត​ល្ពៅ"</string>
+    <string name="palette_zenburn" msgid="5537306782860767365">"សាឡាត់​​អាឡេន"</string>
+    <string name="palette_oceanic" msgid="7336134088073550028">"ឡាស៊ែរ​​ខៀវ"</string>
+</resources>

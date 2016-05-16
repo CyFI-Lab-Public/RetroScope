@@ -1,0 +1,75 @@
+1 0 {
+2    _id=1
+3    display_name=Number And Mail
+4    sort_key=Number And Mail
+5    photo_id=null
+6    times_contacted=0
+7    last_time_contacted=0
+8    custom_ringtone=null
+9    send_to_voicemail=0
+10    starred=0
+11    in_visible_group=1
+12    has_phone_number=1
+13    is_user_profile=0
+14    lookup=0r1-414F3F292F4927412D3F27373D
+15 }
+16 1 {
+17    _id=2
+18    display_name=Number
+19    sort_key=Number
+20    photo_id=null
+21    times_contacted=0
+22    last_time_contacted=0
+23    custom_ringtone=null
+24    send_to_voicemail=0
+25    starred=0
+26    in_visible_group=1
+27    has_phone_number=1
+28    is_user_profile=0
+29    lookup=0r2-414F3F292F49
+30 }
+31 2 {
+32    _id=3
+33    display_name=Mail
+34    sort_key=Mail
+35    photo_id=null
+36    times_contacted=0
+37    last_time_contacted=0
+38    custom_ringtone=null
+39    send_to_voicemail=0
+40    starred=0
+41    in_visible_group=1
+42    has_phone_number=0
+43    is_user_profile=0
+44    lookup=0r3-3F27373D
+45 }
+46 3 {
+47    _id=4
+48    display_name=698-147-02
+49    sort_key=698-147-02
+50    photo_id=null
+51    times_contacted=0
+52    last_time_contacted=0
+53    custom_ringtone=null
+54    send_to_voicemail=0
+55    starred=0
+56    in_visible_group=1
+57    has_phone_number=1
+58    is_user_profile=0
+59    lookup=0r4-1E2422141A201216
+60 }
+61 4 {
+62    _id=5
+63    display_name=mail@dom.com
+64    sort_key=mail@dom.com
+65    photo_id=null
+66    times_contacted=0
+67    last_time_contacted=0
+68    custom_ringtone=null
+69    send_to_voicemail=0
+70    starred=0
+71    in_visible_group=1
+72    has_phone_number=0
+73    is_user_profile=0
+74    lookup=0r5-3F27373D2D433F2B433F
+75 }

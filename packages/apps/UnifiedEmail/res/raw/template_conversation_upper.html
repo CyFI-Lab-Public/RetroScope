@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta id="meta-viewport" name="viewport" content="width=device-width,initial-scale=1.0"
+      data-zoom-on="maximum-scale=2" data-zoom-off="user-scalable=no" />
+  <style>
+    .elided-text,
+    .quoted-text {
+        color: purple;
+    }
+    .mail-elided-text {
+        color: #666;
+        font: bold 11px sans-serif;
+        margin: 12px 0 6px;
+    }
+    .mail-message-content {
+    }
+    .mail-message-content pre {
+        white-space: pre-wrap;
+    }
+    body {
+        font-size: 80%%;
+    }
+    blockquote {
+        margin-left: 0.8ex !important;
+        margin-right: 0 !important;
+        border-left:1px #ccc solid !important;
+        padding-left: 1ex !important;
+    }
+    table.munged {
+        width: auto !important;
+        table-layout: auto !important;
+    }
+    td.munged {
+        width: auto !important;
+        white-space: normal !important;
+    }
+    .initial-load {
+        /* 0x0 and 1x1 may be short-circuited by WebView */
+        width: 2px;
+        height: 2px;
+        -webkit-transform: translate3d(0, 0, 1px);
+        -webkit-animation-name: initial-load-noop-animation;
+        -webkit-animation-duration: 1ms;  /* doesn't matter */
+    }
+
+    /* Animating the z-position is fast and does not actually change anything in the default
+     * perspective.
+     */
+    @-webkit-keyframes initial-load-noop-animation {
+        from {
+            -webkit-transform: translate3d(0, 0, 1px);
+        }
+        to {
+            -webkit-transform: translate3d(0, 0, 0);
+        }
+    }
+    %s
+  </style>
+</head>
+<body style="margin: 0 %spx;">
+<div id="conversation-header" class="spacer" style="height: %spx;"></div>

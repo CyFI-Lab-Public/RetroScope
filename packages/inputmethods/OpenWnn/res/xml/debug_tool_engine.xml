@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<OpenWnnEngine>
+	<!-- key testName is Unique -->
+
+	<!-- OpenWnnEngineEN -->
+	<!-- For int predict(ComposingText text, int minLen, int maxLen) -->
+	<!-- param = "target<null or empty or text or comma>,minLen,maxLen,text" -->
+	<key testName = "TestCase01_predict" targetClassName = "OpenWnnEngineEN"
+	     targetMethod = "predict" param = "null,0,-1," intRet = "0" isRet = "" strRet = ""/>
+
+	<key testName = "TestCase02_predict" targetClassName = "OpenWnnEngineEN"
+		 targetMethod = "predict" param = "empty,0,-1," intRet = "0" isRet ="" strRet = ""/>
+
+	<key testName = "TestCase03_predict" targetClassName = "OpenWnnEngineEN"
+		 targetMethod = "predict" param = "text,10,5,testCase03" intRet = "1" isRet ="" strRet = ""/>
+
+	<key testName = "TestCase04_predict" targetClassName = "OpenWnnEngineEN"
+		 targetMethod = "predict" param = "comma,10,5," intRet = "1" isRet ="" strRet = ""/>
+
+	<!-- For convert() -->
+	<key testName = "TestCase01_convert" targetClassName = "OpenWnnEngineEN"
+	     targetMethod = "convert" param = "convertTest" intRet = "0" isRet = "" strRet = ""/>
+
+	<!-- For searchDictionary() -->
+
+	<key testName = "TestCase01_searchDictionary" targetClassName = "OpenWnnEngineEN"
+	     targetMethod = "searchDictionary" param = "convertTest" intRet = "0" isRet = "" strRet = ""/>
+
+	<!-- For getNextCandidate() -->
+	<!-- WnnWord getNextCandidate() -->
+	<!-- before predict() call -->
+	<key testName = "TestCase01_getNextCandidate" targetClassName = "OpenWnnEngineEN"
+	     targetMethod = "getNextCandidate" param = "getNextCondi" intRet = "" isRet = "" strRet = "getNextCondi"/>
+
+	<!-- predict() not call. -->
+	<key testName = "TestCase02_getNextCandidate" targetClassName = "OpenWnnEngineEN"
+	     targetMethod = "getNextCandidate" param = "" intRet = "" isRet = "" strRet = ""/>
+
+	<!-- For learn() -->
+	<!-- boolean learn(WnnWord word) WnnWord(String candidate, String stroke, int frequency) -->
+	<!-- param = "candidate,stroke,frequency" -->
+	<key testName = "TestCase01_learn" targetClassName = "OpenWnnEngineEN"
+	     targetMethod = "learn" param = "learn,learn,0" intRet = "" isRet = "true" strRet = ""/>
+
+	<key testName = "TestCase02_learn" targetClassName = "OpenWnnEngineEN"
+	     targetMethod = "learn" param = "nolearn,nolearn,0" intRet = "" isRet = "true" strRet = ""/>
+
+	<!-- For addWord() -->
+	<!-- int addWord(WnnWord word) WnnWord(String candidate, String stroke, int frequency) -->
+	<!-- param = "candidate,stroke,frequency"-->
+	<key testName = "TestCase01_addWord" targetClassName = "OpenWnnEngineEN"
+	     targetMethod = "addWord" param = "addWordText,addWordText,0" intRet = "0" isRet = "" strRet = ""/>
+
+	<!-- For deleteWord() -->
+	<!-- boolean deleteWord(WnnWord word) WnnWord(String candidate, String stroke, int frequency) -->
+	<!-- param = "candidate,stroke,frequency"-->
+	<key testName = "TestCase01_deleteWord" targetClassName = "OpenWnnEngineEN"
+	     targetMethod = "deleteWord" param = "deleteWord,deleteWord,0" intRet = "" isRet = "false" strRet = ""/>
+
+	<!-- void setPreferences(SharedPreferences pref) -->
+	<key testName = "TestCase01_setPreferences" targetClassName = "OpenWnnEngineEN"
+	     targetMethod = "setPreferences" param = "" intRet = "" isRet = "" strRet = ""/>
+
+
+	<!-- OpenWnnEngineJAJP -->
+	<!-- For int predict(ComposingText text, int minLen, int maxLen) -->
+	<!-- param = "target<null or empty or text or comma>,minLen,maxLen,text" -->
+	<key testName = "TestCase01_predict" targetClassName = "OpenWnnEngineJAJP"
+	     targetMethod = "predict" param = "null,0,-1," intRet = "0" isRet = "" strRet = ""/>
+</OpenWnnEngine>

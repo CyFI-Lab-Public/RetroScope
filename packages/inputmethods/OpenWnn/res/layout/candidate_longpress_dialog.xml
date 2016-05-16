@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!-- candidate list -->
+<LinearLayout
+   xmlns:android="http://schemas.android.com/apk/res/android"
+   android:orientation="vertical"
+   android:layout_width="match_parent"
+   android:layout_height="wrap_content"
+   android:gravity="center"
+   >
+  <TextView
+     android:id="@+id/candidate_longpress_dialog_text"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:textSize="@dimen/candidate_longpress_dialog_candidate_word_size"
+     android:textColor="@color/candidate_longpress_dialog_text"
+     android:gravity="center"
+   />
+  <HorizontalScrollView
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     android:layout_width="wrap_content"
+     android:layout_height="match_parent"
+     >
+    <LinearLayout
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center"
+       >
+      <Button
+         android:id="@+id/candidate_longpress_dialog_cancel"
+         android:layout_height="match_parent"
+         android:layout_width="wrap_content"
+         android:text="@string/dialog_button_cancel"
+         android:textSize="@dimen/candidate_longpress_dialog_button_word_size"
+         android:soundEffectsEnabled="false"
+         />
+      <Button
+         android:id="@+id/candidate_longpress_dialog_select"
+         android:layout_height="match_parent"
+         android:layout_width="wrap_content"
+         android:text="@string/button_candidate_select"
+         android:textSize="@dimen/candidate_longpress_dialog_button_word_size"
+         android:soundEffectsEnabled="false"
+         />
+      <Button
+         android:id="@+id/candidate_longpress_dialog_delete"
+         android:layout_height="match_parent"
+         android:layout_width="wrap_content"
+         android:text="@string/button_candidate_delete"
+         android:textSize="@dimen/candidate_longpress_dialog_button_word_size"
+         android:visibility="gone"
+         android:soundEffectsEnabled="false"
+         />
+    </LinearLayout>
+  </HorizontalScrollView>
+</LinearLayout>

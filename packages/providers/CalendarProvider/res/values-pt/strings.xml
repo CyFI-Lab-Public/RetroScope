@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="calendar_storage" msgid="5387668002987562770">"Armazenamento de agenda"</string>
+    <string name="upgrade_msg" msgid="2792831029435070926">"Atualizando o banco de dados da agenda."</string>
+    <string name="calendar_default_name" msgid="6924293766625167275">"Padrão"</string>
+    <string name="calendar_info" msgid="6687678621418059281">"Informações da agenda"</string>
+    <string name="calendar_info_error" msgid="5575162446528419982">"Erro"</string>
+    <string name="calendar_info_no_calendars" msgid="4287534468186704433">"Nenhuma agenda disponível"</string>
+    <string name="calendar_info_events" msgid="1805502308105103803">"Eventos: <xliff:g id="EVENTS">%1$d</xliff:g>"</string>
+    <string name="calendar_info_events_dirty" msgid="8879392112564499515">"Eventos: <xliff:g id="EVENTS_0">%1$d</xliff:g>, Não salvos: <xliff:g id="DIRTY_EVENTS">%2$d</xliff:g>"</string>
+    <string name="provider_label" msgid="2306513350843464739">"Agenda"</string>
+    <string name="debug_tool_delete_button" msgid="5052706251268452090">"Excluir agora"</string>
+    <string name="debug_tool_start_button" msgid="5384780896342913563">"Início"</string>
+    <string name="debug_tool_message" msgid="4862486669932821937">"Você está prestes a 1) fazer uma cópia de seu banco de dados da agenda para o cartão SD/armazenamento USB, que pode ser lido por qualquer aplicativo e 2) enviá-lo por e-mail. Lembre-se de excluir o banco de dados após tê-lo copiado ou ter recebido o e-mail."</string>
+    <string name="debug_tool_email_sender_picker" msgid="2000311987477419397">"Selecione um programa para enviar seu arquivo"</string>
+    <string name="debug_tool_email_subject" msgid="2403590332256471194">"O banco de dados da agenda foi anexado"</string>
+    <string name="debug_tool_email_body" msgid="4835949635324134017">"O banco de dados da minha agenda está anexado, contendo todos os meus compromissos e informações pessoais. Use-o com cuidado."</string>
+</resources>

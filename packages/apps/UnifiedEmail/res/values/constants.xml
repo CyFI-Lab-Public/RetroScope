@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <!-- Boolean value indicating whether the tablet UI should be used. -->
+    <integer name="use_tablet_ui">0</integer>
+    <integer name="conversation_header_mode">1</integer>
+    <integer name="conversation_list_search_header_mode">1</integer>
+
+    <!-- left/right conversations will auto-load if they have no more than this number of messages -->
+    <integer name="max_auto_load_messages">20</integer>
+
+    <!-- Frequency (in milliseconds) for the refresh of timestamps in conversation list fragments. -->
+    <integer name="timestamp_update_interval">60000</integer>
+
+    <!-- Relative weights of the different views.  These three
+         determine how much of the screen width is taken by the
+         different views. For the default layout (phone), these values
+         are equal. These are only used in TwoPaneLayout, so they need
+         to be specified for sw600dp and sw720dp layouts. -->
+    <integer name="folder_list_weight">1</integer>
+    <integer name="conversation_list_weight">1</integer>
+    <integer name="conversation_view_weight">1</integer>
+    <!-- Max unread count to show for a folder -->
+    <integer name="maxUnreadCount">999</integer>
+    <integer name="swipeScrollSlop">2</integer>
+    <integer name="leaveBehindSwipeScrollSlop">25</integer>
+    <integer name="widget_refresh_delay_ms">4000</integer>
+    <integer name="widget_folder_refresh_delay_ms">500</integer>
+    <!-- Flip interval for account name and unread count -->
+    <integer name="widget_account_unread_flip_ms">5000</integer>
+    <!-- We don't want the unread count to flicker too much in the action bar, when a lot of
+    activity.  Throttle loader updates. -->
+    <integer name="folder_item_refresh_delay_ms">500</integer>
+    <!-- Delay showing undo bar after a destructive action long enough for the user to process the animations for what just happened -->
+    <integer name="show_undo_bar_delay_ms">200</integer>
+    <!-- Delay dismissing undo bar after a touch so we know whether to hide the action bar or to reposition it during view mode change -->
+    <integer name="dismiss_undo_bar_delay_ms">300</integer>
+    <integer name="conversation_desired_font_size_px">14</integer>
+    <!-- matches 'font-size' style in template_conversation_upper.html -->
+    <integer name="conversation_unstyled_font_size_px">13</integer>
+    <integer name="conversation_webview_viewport_px">980</integer>
+
+    <!-- Whether the list is collapsible in conversation view mode -->
+    <bool name="list_collapsible">true</bool>
+
+    <!-- Whether to show single or 2 pane search results -->
+    <bool name="show_two_pane_search_results">false</bool>
+
+    <!-- Whether to show the archive item as disabled rather than hiding it entirely -->
+    <bool name="show_disabled_archive_menu_item">false</bool>
+
+    <!-- Amount of memory in bytes allocated for image cache -->
+    <integer name="config_image_cache_max_bytes">1500000</integer>
+
+    <!-- Number of decoded contact photo bitmaps retained in an LRU cache -->
+    <integer name="config_image_cache_max_bitmaps">24</integer>
+
+    <!-- Whether to display folder colors in the widget -->
+    <bool name="display_folder_colors_in_widget">false</bool>
+
+    <integer name="max_num_notification_digest_items">10</integer>
+
+    <!-- Wait at least this long for the webview to render conversation content before showing the loading dialog -->
+    <integer name="conversationview_show_loading_delay">500</integer>
+
+    <!-- Wait at least this long to dismiss the spinner when loading a conversation -->
+    <integer name="conversationview_min_show_loading">250</integer>
+
+    <integer name="webview_initial_delay">1000</integer>
+
+    <!-- The width or height of the preview will not exceed this -->
+    <integer name="attachment_preview_max_size">256</integer>
+
+    <!-- Whether or not to use a nice transition when showing the folder list fragment; used in 2-pane layouts -->
+    <integer name="use_folder_list_fragment_transition">1</integer>
+
+    <!-- The timeout, in milliseconds, before the "Undo" notification is removed. -->
+    <integer name="undo_notification_timeout">6000</integer>
+
+    <!-- The max number of contact images to show in a conversation list item -->
+    <integer name="max_list_item_images">4</integer>
+
+
+    <!-- True if addresses can be veiled, to show a friendly text message instead. -->
+    <bool name="veiled_address_enabled">false</bool>
+
+    <integer name="swipe_senders_length">25</integer>
+
+    <!-- Number of menu items to display in the ActionBar -->
+    <integer name="actionbar_max_items">3</integer>
+
+    <!-- Number of menu items to hide from the ActionBar by subtracting from actionbar_max_items in non-cab mode -->
+    <integer name="actionbar_hidden_non_cab_items_no_physical_button">1</integer>
+
+    <!-- Duration of progress bar animation for attachment previews -->
+    <integer name="ap_progress_animation_duration">4000</integer>
+    <!-- Duration of fade in/out animation for attachment previews -->
+    <integer name="ap_fade_animation_duration">500</integer>
+    <!-- Duration of placeholder pulse animation for attachment previews -->
+    <integer name="ap_placeholder_animation_duration">1000</integer>
+    <!-- Delay before showing progress bar animations for attachment previews that are loading -->
+    <integer name="ap_progress_animation_delay">2000</integer>
+    <!-- Max overflow count to show for attachment previews -->
+    <integer name="ap_overflow_max_count">99</integer>
+
+    <!-- Duration of the animations for entering/exiting CAB mode -->
+    <integer name="conv_item_view_cab_anim_duration">350</integer>
+
+    <!-- Number of nested folders to display in the conversation list, before hiding the remainder under "Show more" -->
+    <integer name="nested_folders_collapse_threshold">1</integer>
+</resources>

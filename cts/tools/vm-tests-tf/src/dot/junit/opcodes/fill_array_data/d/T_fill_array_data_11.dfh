@@ -1,0 +1,264 @@
+// Processing 'out/classes_dasm/dot/junit/opcodes/fill_array_data/d/T_fill_array_data_11.dex'...
+// Opened 'out/classes_dasm/dot/junit/opcodes/fill_array_data/d/T_fill_array_data_11.dex', DEX version '035'
+// DEX file header:
+// parsed: offset 0, len 8: magic               : 'dex
+// 035'
+    64 65 78 0A 30 33 35 00 
+// parsed: offset 8, len 4: checksum            : 59eb4a7d
+    7D 4A EB 59 
+// parsed: offset 12, len 20: signature           : 083f...2af8
+    08 3F 75 AF 24 45 09 F6 52 52 56 37 0A 56 D4 2A 88 76 2A F8 
+// parsed: offset 32, len 4: file_size           : 604
+    5C 02 00 00 
+// parsed: offset 36, len 4: header_size         : 112
+    70 00 00 00 
+// parsed: offset 40, len 4: endian_tag          : 0x12345678
+    78 56 34 12 
+// parsed: offset 44, len 4: link_size           : 0
+    00 00 00 00 
+// parsed: offset 48, len 4: link_off            : 0 (0x000000)
+    00 00 00 00 
+// parsed: offset 52, len 4: map_off             : 468 (0x0001d4)
+    D4 01 00 00 
+// parsed: offset 56, len 4: string_ids_size     : 8
+    08 00 00 00 
+// parsed: offset 60, len 4: string_ids_off      : 112 (0x000070)
+    70 00 00 00 
+// parsed: offset 64, len 4: type_ids_size       : 4
+    04 00 00 00 
+// parsed: offset 68, len 4: type_ids_off        : 144 (0x000090)
+    90 00 00 00 
+// parsed: offset 72, len 4: proto_ids_size      : 2
+    02 00 00 00 
+// parsed: offset 76, len 4: proto_ids_off       : 160 (0x0000a0)
+    A0 00 00 00 
+// parsed: offset 80, len 4: field_ids_size      : 0
+    00 00 00 00 
+// parsed: offset 84, len 4: field_ids_off       : 0 (0x000000)
+    00 00 00 00 
+// parsed: offset 88, len 4: method_ids_size     : 3
+    03 00 00 00 
+// parsed: offset 92, len 4: method_ids_off      : 184 (0x0000b8)
+    B8 00 00 00 
+// parsed: offset 96, len 4: class_defs_size     : 1
+    01 00 00 00 
+// parsed: offset 100, len 4: class_defs_off      : 208 (0x0000d0)
+    D0 00 00 00 
+// parsed: offset 104, len 4: data_size           : 364
+    6C 01 00 00 
+// parsed: offset 108, len 4: data_off            : 240 (0x0000f0)
+    F0 00 00 00 
+// 
+// string_ids:
+// parsed: offset 112, len 4: [0] string_data_off: 322 (0x000142) "<init>"
+    42 01 00 00 
+// parsed: offset 116, len 4: [1] string_data_off: 330 (0x00014a) "Ldot/junit/opcodes/fill_array_data/d/T_fill_array_data_11;"
+    4A 01 00 00 
+// parsed: offset 120, len 4: [2] string_data_off: 390 (0x000186) "Ljava/lang/Object;"
+    86 01 00 00 
+// parsed: offset 124, len 4: [3] string_data_off: 410 (0x00019a) "T_fill_array_data_11.java"
+    9A 01 00 00 
+// parsed: offset 128, len 4: [4] string_data_off: 437 (0x0001b5) "V"
+    B5 01 00 00 
+// parsed: offset 132, len 4: [5] string_data_off: 440 (0x0001b8) "VL"
+    B8 01 00 00 
+// parsed: offset 136, len 4: [6] string_data_off: 444 (0x0001bc) "[I"
+    BC 01 00 00 
+// parsed: offset 140, len 4: [7] string_data_off: 448 (0x0001c0) "run"
+    C0 01 00 00 
+
+// type_ids:
+// parsed: offset 144, len 4: [0] descriptor_idx: 1 (0x000001) "Ldot/junit/opcodes/fill_array_data/d/T_fill_array_data_11;"
+    01 00 00 00 
+// parsed: offset 148, len 4: [1] descriptor_idx: 2 (0x000002) "Ljava/lang/Object;"
+    02 00 00 00 
+// parsed: offset 152, len 4: [2] descriptor_idx: 4 (0x000004) "V"
+    04 00 00 00 
+// parsed: offset 156, len 4: [3] descriptor_idx: 6 (0x000006) "[I"
+    06 00 00 00 
+
+// proto_ids:
+// parsed: offset 160, len 12: [0] 
+//     shorty_idx: 4 (0x000004) "V"
+//     return_type_idx: 2 (0x000002) "V"
+//     parameters_off: 0 (0x000000)
+    04 00 00 00 02 00 00 00 00 00 00 00 
+// parsed: offset 172, len 12: [1] 
+//     shorty_idx: 5 (0x000005) "VL"
+//     return_type_idx: 2 (0x000002) "V"
+//     parameters_off: 316 (0x00013c)
+    05 00 00 00 02 00 00 00 3C 01 00 00 
+
+// field_ids:
+
+// methods_ids:
+// parsed: offset 184, len 8: [0] class_idx: 0 (0x000000)  proto_idx: 0 (0x000000) name_idx: 0 (0x000000) "<init>"
+    00 00 00 00 00 00 00 00 
+// parsed: offset 192, len 8: [1] class_idx: 0 (0x000000)  proto_idx: 1 (0x000001) name_idx: 7 (0x000007) "run"
+    00 00 01 00 07 00 00 00 
+// parsed: offset 200, len 8: [2] class_idx: 1 (0x000001)  proto_idx: 0 (0x000000) name_idx: 0 (0x000000) "<init>"
+    01 00 00 00 00 00 00 00 
+
+// class_defs:
+// parsed: offset 208, len 32: Class [0]
+//     class_idx: 0 "Ldot/junit/opcodes/fill_array_data/d/T_fill_array_data_11;"
+//     access_flags: 0x000001 (PUBLIC)
+//     superclass_idx: 1 "Ljava/lang/Object;"
+//     interfaces_off: 0 (0x000000)
+//     source_file_idx: 3 "T_fill_array_data_11.java"
+//     annotations_off: 0 (0x000000)
+//     class_data_off: 453 (0x0001c5)
+//     static_values_off: 0 (0x000000)
+    00 00 00 00 01 00 00 00 01 00 00 00 00 00 00 00 03 00 00 00 00 00 00 00 C5 01 00 00 00 00 00 00 
+// data_section:
+// CODE_ITEM for "dot.junit.opcodes.fill_array_data.d.T_fill_array_data_11.<init>"
+    // parsed: offset 240, len 2: registers_size: 1
+        01 00 
+    // parsed: offset 242, len 2: ins_size: 1
+        01 00 
+    // parsed: offset 244, len 2: outs_size: 1
+        01 00 
+    // parsed: offset 246, len 2: tries_size: 0
+        00 00 
+    // parsed: offset 248, len 4: debug_info_off: 0 (0x000000)
+        00 00 00 00 
+    // parsed: offset 252, len 4: insns_size: 4
+        04 00 00 00 
+    // insns:
+        // parsed: offset 256, len 6: |0000: invoke-direct {v0}, Ljava/lang/Object;.<init>:()V // method@0002
+            70 10 02 00 00 00 
+        // parsed: offset 262, len 2: |0003: return-void
+            0E 00 
+    // tries: 
+    // handlers: 
+// CODE_ITEM for "dot.junit.opcodes.fill_array_data.d.T_fill_array_data_11.run"
+    // parsed: offset 264, len 2: registers_size: 10
+        0A 00 
+    // parsed: offset 266, len 2: ins_size: 2
+        02 00 
+    // parsed: offset 268, len 2: outs_size: 0
+        00 00 
+    // parsed: offset 270, len 2: tries_size: 0
+        00 00 
+    // parsed: offset 272, len 4: debug_info_off: 0 (0x000000)
+        00 00 00 00 
+    // parsed: offset 276, len 4: insns_size: 18
+        12 00 00 00 
+    // insns:
+        // parsed: offset 280, len 6: |0000: fill-array-data v9, 00000004 //  +0x00000004
+            26 09 04 00 00 00 
+        // parsed: offset 286, len 2: |0003: return-void
+            0E 00 
+        // parsed: offset 288, len 28: |0004: array-data (14 units)
+//@mod            00 03 04 00 05 00 00 00 01 00 00 00 02 00 00 00 03 00 00 00 04 00 00 00 05 00 00 00 
+            00 03 04 00 06 00 00 00 01 00 00 00 02 00 00 00 03 00 00 00 04 00 00 00 05 00 00 00 
+    // tries: 
+    // handlers: 
+// TYPE_LIST
+    // parsed: offset 316, len 4: size: 1
+        01 00 00 00 
+    // parsed: offset 320, len 2: type_item [0] type_idx: 3
+        03 00 
+// parsed: offset 322, len 8: TYPE_STRING_DATA_ITEM [0] "<init>"
+    06 3C 69 6E 69 74 3E 00 
+// parsed: offset 330, len 60: TYPE_STRING_DATA_ITEM [1] "Ldot/junit/opcodes/fill_array_data/d/T_fill_array_data_11;"
+    3A 4C 64 6F 74 2F 6A 75 6E 69 74 2F 6F 70 63 6F 64 65 73 2F 66 69 6C 6C 5F 61 72 72 61 79 5F 64 61 74 61 2F 64 2F 54 5F 66 69 6C 6C 5F 61 72 72 61 79 5F 64 61 74 61 5F 31 31 3B 00 
+// parsed: offset 390, len 20: TYPE_STRING_DATA_ITEM [2] "Ljava/lang/Object;"
+    12 4C 6A 61 76 61 2F 6C 61 6E 67 2F 4F 62 6A 65 63 74 3B 00 
+// parsed: offset 410, len 27: TYPE_STRING_DATA_ITEM [3] "T_fill_array_data_11.java"
+    19 54 5F 66 69 6C 6C 5F 61 72 72 61 79 5F 64 61 74 61 5F 31 31 2E 6A 61 76 61 00 
+// parsed: offset 437, len 3: TYPE_STRING_DATA_ITEM [4] "V"
+    01 56 00 
+// parsed: offset 440, len 4: TYPE_STRING_DATA_ITEM [5] "VL"
+    02 56 4C 00 
+// parsed: offset 444, len 4: TYPE_STRING_DATA_ITEM [6] "[I"
+    02 5B 49 00 
+// parsed: offset 448, len 5: TYPE_STRING_DATA_ITEM [7] "run"
+    03 72 75 6E 00 
+// CLASS_DATA_ITEM for class [0] "Ldot/junit/opcodes/fill_array_data/d/T_fill_array_data_11;"
+    // parsed: offset 453, len 1: static_fields_size: 0
+        00 
+    // parsed: offset 454, len 1: instance_fields_size: 0
+        00 
+    // parsed: offset 455, len 1: direct_methods_size: 1
+        01 
+    // parsed: offset 456, len 1: virtual_methods_size: 1
+        01 
+    // static_fields:
+    // instance_fields:
+    // direct_methods:
+        // method [0]:
+            // parsed: offset 457, len 1: method_idx_diff: 0 (method_idx: 0 "<init>")
+                00 
+            // parsed: offset 458, len 3: access_flags: 0x010001 (PUBLIC CONSTRUCTOR)
+                81 80 04 
+            // parsed: offset 461, len 2: code_off: 240 (0x0000f0)
+                F0 01 
+    // virtual_methods:
+        // method [0]:
+            // parsed: offset 463, len 1: method_idx_diff: 1 (method_idx: 1 "run")
+                01 
+            // parsed: offset 464, len 1: access_flags: 0x000001 (PUBLIC)
+                01 
+            // parsed: offset 465, len 2: code_off: 264 (0x000108)
+                88 02 
+// parsed: offset 467, len 1: PADDING
+    00 
+// map_list:
+    // parsed: offset 468, len 4: size: 11
+        0B 00 00 00 
+    // parsed: offset 472, len 12: [0] type: 0x0000 TYPE_HEADER_ITEM
+    //      unused: 0
+    //      size: 1
+    //      offset: 0 (0x000000)
+        00 00 00 00 01 00 00 00 00 00 00 00 
+    // parsed: offset 484, len 12: [1] type: 0x0001 TYPE_STRING_ID_ITEM
+    //      unused: 0
+    //      size: 8
+    //      offset: 112 (0x000070)
+        01 00 00 00 08 00 00 00 70 00 00 00 
+    // parsed: offset 496, len 12: [2] type: 0x0002 TYPE_TYPE_ID_ITEM
+    //      unused: 0
+    //      size: 4
+    //      offset: 144 (0x000090)
+        02 00 00 00 04 00 00 00 90 00 00 00 
+    // parsed: offset 508, len 12: [3] type: 0x0003 TYPE_PROTO_ID_ITEM
+    //      unused: 0
+    //      size: 2
+    //      offset: 160 (0x0000a0)
+        03 00 00 00 02 00 00 00 A0 00 00 00 
+    // parsed: offset 520, len 12: [4] type: 0x0005 TYPE_METHOD_ID_ITEM
+    //      unused: 0
+    //      size: 3
+    //      offset: 184 (0x0000b8)
+        05 00 00 00 03 00 00 00 B8 00 00 00 
+    // parsed: offset 532, len 12: [5] type: 0x0006 TYPE_CLASS_DEF_ITEM
+    //      unused: 0
+    //      size: 1
+    //      offset: 208 (0x0000d0)
+        06 00 00 00 01 00 00 00 D0 00 00 00 
+    // parsed: offset 544, len 12: [6] type: 0x2001 TYPE_CODE_ITEM
+    //      unused: 0
+    //      size: 2
+    //      offset: 240 (0x0000f0)
+        01 20 00 00 02 00 00 00 F0 00 00 00 
+    // parsed: offset 556, len 12: [7] type: 0x1001 TYPE_TYPE_LIST
+    //      unused: 0
+    //      size: 1
+    //      offset: 316 (0x00013c)
+        01 10 00 00 01 00 00 00 3C 01 00 00 
+    // parsed: offset 568, len 12: [8] type: 0x2002 TYPE_STRING_DATA_ITEM
+    //      unused: 0
+    //      size: 8
+    //      offset: 322 (0x000142)
+        02 20 00 00 08 00 00 00 42 01 00 00 
+    // parsed: offset 580, len 12: [9] type: 0x2000 TYPE_CLASS_DATA_ITEM
+    //      unused: 0
+    //      size: 1
+    //      offset: 453 (0x0001c5)
+        00 20 00 00 01 00 00 00 C5 01 00 00 
+    // parsed: offset 592, len 12: [10] type: 0x1000 TYPE_MAP_LIST
+    //      unused: 0
+    //      size: 1
+    //      offset: 468 (0x0001d4)
+        00 10 00 00 01 00 00 00 D4 01 00 00 

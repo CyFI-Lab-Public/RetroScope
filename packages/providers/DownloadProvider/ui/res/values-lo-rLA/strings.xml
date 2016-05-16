@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3070921713463294774">"ດາວໂຫລດ"</string>
+    <string name="download_title_sorted_by_date" msgid="5898014492155434221">"ດາວໂຫລດ - ຮຽງຕາມວັນທີ"</string>
+    <string name="download_title_sorted_by_size" msgid="1417193166677094813">"ດາວໂຫລດ - ຮຽງຕາມຂະຫນາດ"</string>
+    <string name="no_downloads" msgid="1029667411186146836">"ບໍ່ມີການດາວໂຫລດ."</string>
+    <string name="missing_title" msgid="830115697868833773">"&lt;ບໍ່ຮູ້ຈັກ&gt;"</string>
+    <string name="button_sort_by_size" msgid="7331549713691146251">"ຮຽງຕາມຂະຫນາດ"</string>
+    <string name="button_sort_by_date" msgid="8800842892684101528">"ຮຽງຕາມວັນທີ"</string>
+    <string name="download_queued" msgid="104973307780629904">"ເຂົ້າຄິວແລ້ວ"</string>
+    <string name="download_running" msgid="4656462962155580641">"ກຳລັງດຳເນີນການ"</string>
+    <string name="download_success" msgid="7006048006543495236">"ສໍາເລັດ"</string>
+    <string name="download_error" msgid="8081329546008568251">"ບໍ່ສຳເລັດ"</string>
+    <string name="dialog_title_not_available" msgid="5746317632356158515">"ບໍ່ສາມາດດາວໂຫລດໄດ້"</string>
+    <string name="dialog_failed_body" msgid="587545111677064427">"ທ່ານຕ້ອງການລອງດາວໂຫລດໄຟລ໌ນີ້ໃໝ່ໃນພາຍຫຼັງບໍ່ ຫຼືຈະລຶບມັນອອກຈາກຄິວ?"</string>
+    <string name="dialog_title_queued_body" msgid="6760681913815015219">"ໄຟລ໌ຢູ່ໃນຄິວ"</string>
+    <string name="dialog_queued_body" msgid="708552801635572720">"ໄຟລ໌ນີ້ຖືກເຂົ້າຄິວໄວ້ເພື່ອການດາວໂຫລດໃນອະນາຄົດ ມັນຍັງບໍ່ສາມາດໃຊ້ໄດ້ເທື່ອ."</string>
+    <string name="dialog_file_missing_body" msgid="3223012612774276284">"ບໍ່ສາມາດຊອກຫາໄຟລ໌ທີ່ດາວໂຫລດມາໄດ້."</string>
+    <string name="dialog_insufficient_space_on_external" msgid="8692452156251449195">"ບໍ່ສາມາດດາວໂຫລດໃຫ້ສຳເລັດໄດ້. ບ່ອນຈັດເກັບຂໍ້ມູນດາວໂຫລດພາຍນອກບໍ່ພຽງພໍ."</string>
+    <string name="dialog_insufficient_space_on_cache" msgid="6313630206163908994">"ບໍ່ສາມາດດາວໂຫລດໃຫ້ສຳເລັດໄດ້. ບ່ອນຈັດເກັບຂໍ້ມູນດາວໂຫລດພາຍໃນບໍ່ພຽງພໍ."</string>
+    <string name="dialog_cannot_resume" msgid="8664509751358983543">"ການດາວໂຫລດຖືກລົບກວນ ແລະບໍ່ສາມາດສືບຕໍ່ໄດ້."</string>
+    <string name="dialog_file_already_exists" msgid="8308563940663449590">"ບໍ່ສາມາດດາວໂຫລດໄດ້. ໄຟລ໌ເປົ້າໝາຍມີຢູ່ແລ້ວ."</string>
+    <string name="dialog_media_not_found" msgid="4468088418758018765">"ບໍ່ສາມາດດາວໂຫລດໄດ້. ອຸປະກອນພາຍນອກບໍ່ສາມາດນຳໃຊ້ໄດ້."</string>
+    <string name="download_no_application_title" msgid="7024782176657362251">"ບໍ່ສາມາດເປີດໄຟລ໌"</string>
+    <string name="remove_download" msgid="6372920256257247857">"ລຶບ"</string>
+    <string name="delete_download" msgid="76629022653866471">"ລຶບ"</string>
+    <string name="keep_queued_download" msgid="5144882786014818569">"ເກັບໄວ້"</string>
+    <string name="cancel_running_download" msgid="5232704030969221112">"ຍົກເລີກ"</string>
+    <string name="retry_download" msgid="7617100787922717912">"ລອງໃໝ່"</string>
+    <string name="deselect_all" msgid="6348198946254776764">"ບໍ່ເລືອກທັງໝົດ"</string>
+    <string name="select_all" msgid="634074918366265804">"ເລືອກທັງຫມົດ"</string>
+    <string name="selected_count" msgid="2101564570019753277">"ເລືອກ <xliff:g id="NUMBER">%1$d</xliff:g> ຈາກ <xliff:g id="TOTAL">%2$d</xliff:g>"</string>
+    <string name="download_share_dialog" msgid="3355867339806448955">"ແບ່ງປັນຜ່ານ"</string>
+</resources>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3070921713463294774">"دانلودها"</string>
+    <string name="download_title_sorted_by_date" msgid="5898014492155434221">"دانلودها - مرتب شده بر اساس تاریخ"</string>
+    <string name="download_title_sorted_by_size" msgid="1417193166677094813">"دانلودها - مرتب شده بر اساس اندازه"</string>
+    <string name="no_downloads" msgid="1029667411186146836">"خیر دانلودها."</string>
+    <string name="missing_title" msgid="830115697868833773">"‏&lt;ناشناس&gt;"</string>
+    <string name="button_sort_by_size" msgid="7331549713691146251">"بر اساس اندازه مرتب شود"</string>
+    <string name="button_sort_by_date" msgid="8800842892684101528">"ترتیب براساس تاریخ"</string>
+    <string name="download_queued" msgid="104973307780629904">"در صف"</string>
+    <string name="download_running" msgid="4656462962155580641">"در حال انجام"</string>
+    <string name="download_success" msgid="7006048006543495236">"کامل"</string>
+    <string name="download_error" msgid="8081329546008568251">"ناموفق"</string>
+    <string name="dialog_title_not_available" msgid="5746317632356158515">"دانلود ممکن نیست."</string>
+    <string name="dialog_failed_body" msgid="587545111677064427">"می‌خواهید بعداً دوباره برای دانلود فایل تلاش کنید یا آن را از صف خارج کنید؟"</string>
+    <string name="dialog_title_queued_body" msgid="6760681913815015219">"فایل‌ در نوبت"</string>
+    <string name="dialog_queued_body" msgid="708552801635572720">"این فایل برای دانلود در آینده در نوبت قرار گرفته است، بنابراین هنوز در دسترس نیست."</string>
+    <string name="dialog_file_missing_body" msgid="3223012612774276284">"نمی‌توانم فایل‌های دانلود شده را پیدا کنم."</string>
+    <string name="dialog_insufficient_space_on_external" msgid="8692452156251449195">"نمی‌توان دانلود را به پایان رساند. فضای کافی در حافظه خارجی وجود ندارد."</string>
+    <string name="dialog_insufficient_space_on_cache" msgid="6313630206163908994">"نمی‌توان دانلود را به پایان رساند. فضای کافی در حافظهٔ داخلی دانلود وجود ندارد."</string>
+    <string name="dialog_cannot_resume" msgid="8664509751358983543">"دانلود قطع شد و نمی‌توان آن را از سرگیری کرد."</string>
+    <string name="dialog_file_already_exists" msgid="8308563940663449590">"دانلود نمی‌شود. فایل مقصد از قبل موجود است."</string>
+    <string name="dialog_media_not_found" msgid="4468088418758018765">"دانلود نمی‌شود. رسانه خارجی در دسترس نیست."</string>
+    <string name="download_no_application_title" msgid="7024782176657362251">"بازکردن فایل ممکن نیست"</string>
+    <string name="remove_download" msgid="6372920256257247857">"حذف"</string>
+    <string name="delete_download" msgid="76629022653866471">"حذف"</string>
+    <string name="keep_queued_download" msgid="5144882786014818569">"حفظ"</string>
+    <string name="cancel_running_download" msgid="5232704030969221112">"لغو"</string>
+    <string name="retry_download" msgid="7617100787922717912">"امتحان مجدد"</string>
+    <string name="deselect_all" msgid="6348198946254776764">"لغو انتخاب همه"</string>
+    <string name="select_all" msgid="634074918366265804">"انتخاب همه"</string>
+    <string name="selected_count" msgid="2101564570019753277">"<xliff:g id="NUMBER">%1$d</xliff:g> مورد انتخاب شده از <xliff:g id="TOTAL">%2$d</xliff:g> مورد"</string>
+    <string name="download_share_dialog" msgid="3355867339806448955">"اشتراک‌گذاری از طریق"</string>
+</resources>

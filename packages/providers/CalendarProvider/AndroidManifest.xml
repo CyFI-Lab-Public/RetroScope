@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.android.providers.calendar"
+        android:sharedUserId="android.uid.calendar">
+
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.google.android.googleapps.permission.GOOGLE_AUTH" />
+    <uses-permission android:name="com.google.android.googleapps.permission.GOOGLE_AUTH.cl" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SUBSCRIBED_FEEDS_READ" />
+    <uses-permission android:name="android.permission.SUBSCRIBED_FEEDS_WRITE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.UPDATE_APP_OPS_STATS" />
+
+    <application android:label="@string/calendar_storage"
+                 android:icon="@drawable/app_icon">
+        <!-- TODO: Remove dependency of application on the test runner
+             (android.test) library. -->
+        <uses-library android:name="android.test.runner" />
+
+        <provider android:name="CalendarProvider2" android:authorities="com.android.calendar"
+                android:label="@string/provider_label"
+                android:multiprocess="false"
+                android:exported="true"
+                android:readPermission="android.permission.READ_CALENDAR"
+                android:writePermission="android.permission.WRITE_CALENDAR" />
+
+        <!-- This is used to keep the provider alive long enough to send update
+             intent broadcasts. -->
+        <service android:name=".EmptyService" />
+        <!-- This is used to keep the provider alive long enough to clean up scheduled
+             alarms after boot. -->
+        <service android:name=".CalendarReceiver$RemoveScheduledAlarmsEmptyService" />
+
+        <activity android:name="CalendarContentProviderTests" android:label="Calendar Content Provider"
+                android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.UNIT_TEST" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="CalendarReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name="CalendarDebug" android:label="@string/calendar_info">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="CalendarDebugActivity" android:label="@string/calendar_info"
+                android:theme="@android:style/Theme.Holo.Dialog">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <receiver android:name="CalendarDebugReceiver">
+            <intent-filter>
+                 <action android:name="android.provider.Telephony.SECRET_CODE" />
+                 <data android:scheme="android_secret_code" android:host="225" />
+            </intent-filter>
+       </receiver>
+
+       <!-- Handles database upgrades after OTAs, then disables itself -->
+       <receiver android:name="CalendarUpgradeReceiver">
+           <!-- This broadcast is sent after the core system has finished
+                booting, before the home app is launched or BOOT_COMPLETED
+                is sent. -->
+           <intent-filter>
+               <action android:name="android.intent.action.PRE_BOOT_COMPLETED"/>
+           </intent-filter>
+       </receiver>
+
+        <receiver android:name="CalendarProviderBroadcastReceiver">
+            <intent-filter>
+                <action android:name="com.android.providers.calendar.intent.CalendarProvider2" />
+                <category android:name="com.android.providers.calendar"/>
+            </intent-filter>
+        </receiver>
+        <service android:name="CalendarProviderIntentService"/>
+
+    </application>
+</manifest>

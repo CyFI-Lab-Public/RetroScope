@@ -1,0 +1,44 @@
+# Disable the warnings of using dynamic method call in common library.
+-dontnote com.android.gallery3d.common.*
+
+# ctors of subclasses of CameraPreference are called with Java reflection.
+-keep class * extends com.android.camera.CameraPreference {
+  <init>(...);
+}
+
+-keep class com.android.camera.CameraActivity {
+  public boolean isRecording();
+  public long getAutoFocusTime();
+  public long getShutterLag();
+  public long getShutterToPictureDisplayedTime();
+  public long getPictureDisplayedToJpegCallbackTime();
+  public long getJpegCallbackFinishTime();
+  public long getCaptureStartTime();
+}
+
+-keep class com.android.camera.VideoModule {
+  public void onCancelBgTraining(...);
+  public void onProtectiveCurtainClick(...);
+}
+
+-keep class * extends android.app.Activity {
+  @com.android.camera.OnClickAttr <methods>;
+}
+
+-keep class com.android.camera.CameraHolder {
+  public static void injectMockCamera(...);
+}
+
+# Disable the warnings of using dynamic method calls in EffectsRecorder
+-dontnote com.android.camera.EffectsRecorder
+
+# For unit testing:
+
+# - Required for running exif tests on userdebug
+-keep class com.android.gallery3d.exif.ExifTag { *; }
+-keep class com.android.gallery3d.exif.ExifData { *; }
+-keep class com.android.gallery3d.exif.ExifInterface { *; }
+-keepclassmembers class com.android.gallery3d.exif.Util {
+  *** closeSilently(...);
+}
+

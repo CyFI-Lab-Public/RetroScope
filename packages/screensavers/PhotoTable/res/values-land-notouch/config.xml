@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <!-- Maximum number of photos to leave on the table. -->
+    <integer name="table_capacity">6</integer>
+
+    <!-- Number of images to discard at a time. -->
+    <integer name="redeal_count">2</integer>
+
+    <!-- Parts per million ratio between image size on the table and screen size. -->
+    <integer name="table_ratio">333333</integer>
+
+    <!-- Duration in milliseconds for the pickup animation. -->
+    <integer name="photo_pickup_duration">1500</integer>
+
+    <!-- Enable hardware layer optimization (interferes with dragging). -->
+    <bool name="enable_background_optimization">true</bool>
+</resources>

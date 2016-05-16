@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- Menu for the action mode invoked when items are selected
+     in the conversation list. Order is important!  -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Depends on AccountCapabilities.ARCHIVE and
+         FolderCapabilities.ARCHIVE. Only one of archive or
+         remove_folder are shown, and they have the same drawable, so
+         show the first one.
+    -->
+    <item
+        android:id="@+id/archive"
+        android:title="@string/archive"
+        android:showAsAction="never"
+        android:icon="@drawable/archive"
+        android:alphabeticShortcut="@string/trigger_y_char"/>
+
+    <item
+        android:id="@+id/remove_folder"
+        android:title="@string/remove_folder"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_remove_label"
+        android:alphabeticShortcut="@string/trigger_y_char"
+        android:visible="false" />
+
+    <!-- Depends on FolderCapabilities.DELETE -->
+    <item
+        android:id="@+id/delete"
+        android:title="@string/delete"
+        android:showAsAction="never"
+        android:icon="@drawable/trash"/>
+    <!-- Depends on the user viewing a draft label, and the above menu item not being shown -->
+    <item
+        android:id="@+id/discard_drafts"
+        android:title="@string/discard_drafts"
+        android:showAsAction="never"
+        android:icon="@drawable/trash"
+        android:visible="false" />
+
+    <!-- Only one of mark read or mark unread is shown. -->
+    <item
+        android:id="@+id/read"
+        android:title="@string/mark_read"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_menu_mark_read_holo_light" />
+
+    <item
+        android:id="@+id/unread"
+        android:title="@string/mark_unread"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_menu_mark_unread_holo_light" />
+
+    <item
+        android:id="@+id/move_to"
+        android:title="@string/menu_move_to"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_menu_move_to_holo_light" />
+
+    <item
+        android:id="@+id/change_folders"
+        android:showAsAction="never"
+        android:title="@string/menu_change_folders"
+        android:icon="@drawable/ic_menu_folders_holo_light" />
+
+    <item
+        android:id="@+id/move_to_inbox"
+        android:showAsAction="never"
+        android:title="@string/menu_move_to_inbox" />
+
+    <item android:id="@+id/star"
+        android:title="@string/add_star"
+        android:showAsAction="never" />
+
+    <item android:id="@+id/remove_star"
+        android:title="@string/remove_star"
+        android:showAsAction="never" />
+
+    <item
+        android:id="@+id/mark_important"
+        android:title="@string/mark_important"
+        android:showAsAction="never" />
+
+    <item
+        android:id="@+id/mark_not_important"
+        android:title="@string/mark_not_important"
+        android:showAsAction="never" />
+
+    <!-- Availability based on account -->
+    <item
+        android:id="@+id/mute"
+        android:title="@string/mute"
+        android:showAsAction="never" />
+
+    <!-- Availability based on account -->
+    <item
+        android:id="@+id/report_spam"
+        android:title="@string/report_spam"
+        android:showAsAction="never" />
+    <!-- Availability based on account -->
+    <item
+        android:id="@+id/mark_not_spam"
+        android:title="@string/mark_not_spam"
+        android:showAsAction="never" />
+    <!-- Availability based on account -->
+    <item
+        android:id="@+id/report_phishing"
+        android:title="@string/report_phishing"
+        android:showAsAction="never" />
+
+</menu>

@@ -1,0 +1,33 @@
+<resources>
+
+    <string name="app_name">Print Service</string>
+    <string name="description">This print serivice exposes one fake printer and
+         on print sends an email to svetoslavganov@google.com</string>
+    <string name="settings">This is an activitiy with some print service settings.</string>
+    <string name="settings_activity_label">Settings activity</string>
+    <string name="add_pritners_activity_label">Add printers activity</string>
+
+    <string name="resolution_200x200">200x200</string>
+    <string name="resolution_300x300">300x300</string>
+    <string name="resolution_600x600">600x600</string>
+    <string name="input_tray_first">First input tray</string>
+    <string name="input_tray_second">Second input tray</string>
+    <string name="output_tray_first">First output tray</string>
+    <string name="output_tray_second">Second output tray</string>
+
+    <string name="print_now">Print now</string>
+    <string name="print_delayed">Print dealyed</string>
+    <string name="fail_now">Fail now</string>
+    <string name="fail_delayed">Fail delayed</string>
+    <string name="block_now">Block now</string>
+    <string name="block_delayed">Block delayed</string>
+    <string name="block_and_delayed_unblock">Block and delayed unblock</string>
+    <string name="cancel_yes">Cancel</string>
+    <string name="cancel_no">Don\'t cancel</string>
+
+    <string name="fail_reason">Don\'t feel like doing it</string>
+
+    <string name="on_print_job_pending_activity_title">New print job pending. What to do?</string>
+    <string name="on_cancle_print_job_requested_activity_title">Print job cancel reqeusted. What to do?</string>
+
+</resources>

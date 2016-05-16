@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!--symbols -->
+<keystring>
+<!-- 6. Foods -->
+<!-- Prepared Food -->
+<string value="\udbba\udd60"/>
+<string value="\udbba\udd61"/>
+<string value="\udbba\udd62"/>
+<string value="\udbba\udd63"/>
+<string value="\udbba\udd64"/>
+<string value="\udbba\udd65"/>
+<string value="\udbba\udd66"/>
+<string value="\udbba\udd67"/>
+<string value="\udbba\udd68"/>
+<string value="\udbba\udd69"/>
+<string value="\udbba\udd6a"/>
+<string value="\udbba\udd6b"/>
+<string value="\udbba\udd6c"/>
+<string value="\udbba\udd6d"/>
+<string value="\udbba\udd6e"/>
+<string value="\udbba\udd6f"/>
+<string value="\udbba\udd70"/>
+<string value="\udbba\udd71"/>
+<string value="\udbba\udd72"/>
+<string value="\udbba\udd73"/>
+<string value="\udbba\udd74"/>
+<string value="\udbba\udd75"/>
+<string value="\udbba\udd76"/>
+<string value="\udbba\udd77"/>
+<string value="\udbba\udd78"/>
+<string value="\udbba\udd79"/>
+<string value="\udbba\udd7a"/>
+<string value="\udbba\udd7b"/>
+<string value="\udbba\udd7c"/>
+<string value="\udbba\udd7d"/>
+<string value="\udbba\udd7e"/>
+<string value="\udbba\udd7f"/>
+<string value="\udbba\udd80"/>
+<!-- Drink -->
+<string value="\udbba\udd81"/>
+<string value="\udbba\udd82"/>
+<string value="\udbba\udd83"/>
+<string value="\udbba\udd84"/>
+<string value="\udbba\udd85"/>
+<string value="\udbba\udd86"/>
+<string value="\udbba\udd87"/>
+<string value="\udbba\udd88"/>
+<!-- 7. Abstract Concepts -->
+<!-- Arrows -->
+<string value="\udbba\udef0"/>
+<string value="\udbba\udef1"/>
+<string value="\udbba\udef2"/>
+<string value="\udbba\udef3"/>
+<string value="\udbba\udef4"/>
+<string value="\udbba\udef5"/>
+<string value="\udbba\udef6"/>
+<string value="\udbba\udef7"/>
+<string value="\udbba\udef8"/>
+<string value="\udbba\udef9"/>
+<string value="\udbba\udefa"/>
+<string value="\udbba\udefb"/>
+<string value="\udbba\udefc"/>
+<string value="\udbba\udefd"/>
+<string value="\udbba\udefe"/>
+<string value="\udbba\udeff"/>
+<string value="\udbba\udf00"/>
+<string value="\udbba\udf01"/>
+<string value="\udbba\udf02"/>
+<string value="\udbba\udf03"/>
+<!-- Punctuation -->
+<string value="\udbba\udf04"/>
+<string value="\udbba\udf05"/>
+<string value="\udbba\udf06"/>
+<string value="\udbba\udf07"/>
+<string value="\udbba\udf08"/>
+<string value="\udbba\udf09"/>
+<string value="\udbba\udf0a"/>
+<string value="\udbba\udf0b"/>
+<!-- Hearts -->
+<string value="\udbba\udf0c"/>
+<string value="\udbba\udf0d"/>
+<string value="\udbba\udf0e"/>
+<string value="\udbba\udf0f"/>
+<string value="\udbba\udf10"/>
+<string value="\udbba\udf11"/>
+<string value="\udbba\udf12"/>
+<string value="\udbba\udf13"/>
+<string value="\udbba\udf14"/>
+<string value="\udbba\udf15"/>
+<string value="\udbba\udf16"/>
+<string value="\udbba\udf17"/>
+<string value="\udbba\udf18"/>
+<string value="\udbba\udf19"/>
+<!-- Cards -->
+<string value="\udbba\udf1a"/>
+<string value="\udbba\udf1b"/>
+<string value="\udbba\udf1c"/>
+<string value="\udbba\udf1d"/>
+<!-- Letter Signs and other Signs -->
+<string value="\udbba\udf1e"/>
+<string value="\udbba\udf1f"/>
+<string value="\udbba\udf20"/>
+<string value="\udbba\udf21"/>
+<string value="\udbba\udf22"/>
+<string value="\udbba\udf23"/>
+<string value="\udbba\udf24"/>
+<string value="\udbba\udf25"/>
+<string value="\udbba\udf26"/>
+<string value="\udbba\udf27"/>
+<string value="\udbba\udf28"/>
+<string value="\udbba\udf29"/>
+<string value="\udbba\udf2a"/>
+<string value="\udbba\udf2b"/>
+<string value="\udbba\udf2c"/>
+<string value="\udbba\udf2d"/>
+<string value="\udbba\udf2e"/>
+<string value="\udbba\udf2f"/>
+<string value="\udbba\udf30"/>
+<string value="\udbba\udf31"/>
+<string value="\udbba\udf32"/>
+<string value="\udbba\udf33"/>
+<string value="\udbba\udf34"/>
+<string value="\udbba\udf35"/>
+<string value="\udbba\udf36"/>
+<string value="\udbba\udf37"/>
+<string value="\udbba\udf38"/>
+<string value="\udbba\udf39"/>
+<string value="\udbba\udf3a"/>
+<string value="\udbba\udf3b"/>
+<string value="\udbba\udf3c"/>
+<string value="\udbba\udf3d"/>
+<string value="\udbba\udf3e"/>
+<string value="\udbba\udf3f"/>
+<string value="\udbba\udf40"/>
+<string value="\udbba\udf41"/>
+<string value="\udbba\udf42"/>
+<string value="\udbba\udf43"/>
+<string value="\udbba\udf44"/>
+<string value="\udbba\udf45"/>
+<string value="\udbba\udf46"/>
+<string value="\udbba\udf47"/>
+<string value="\udbba\udf48"/>
+<string value="\udbba\udf49"/>
+<string value="\udbba\udf4a"/>
+<string value="\udbba\udf4b"/>
+<string value="\udbba\udf4c"/>
+<string value="\udbba\udf4d"/>
+<string value="\udbba\udf4e"/>
+<string value="\udbba\udf4f"/>
+<string value="\udbba\udf50"/>
+<!-- Arithmetic Operators -->
+<string value="\udbba\udf51"/>
+<string value="\udbba\udf52"/>
+<string value="\udbba\udf53"/>
+<string value="\udbba\udf54"/>
+<!-- Emotion Symbols -->
+<string value="\udbba\udf55"/>
+<string value="\udbba\udf56"/>
+<string value="\udbba\udf57"/>
+<string value="\udbba\udf58"/>
+<string value="\udbba\udf59"/>
+<string value="\udbba\udf5a"/>
+<string value="\udbba\udf5b"/>
+<string value="\udbba\udf5c"/>
+<string value="\udbba\udf5d"/>
+<string value="\udbba\udf5e"/>
+<string value="\udbba\udf5f"/>
+<!-- Shapes / Sparkles -->
+<string value="\udbba\udf60"/>
+<string value="\udbba\udf61"/>
+<string value="\udbba\udf62"/>
+<string value="\udbba\udf63"/>
+<string value="\udbba\udf64"/>
+<string value="\udbba\udf65"/>
+<string value="\udbba\udf66"/>
+<string value="\udbba\udf67"/>
+<string value="\udbba\udf68"/>
+<string value="\udbba\udf69"/>
+<string value="\udbba\udf6a"/>
+<string value="\udbba\udf6b"/>
+<string value="\udbba\udf6c"/>
+<string value="\udbba\udf6d"/>
+<string value="\udbba\udf6e"/>
+<string value="\udbba\udf6f"/>
+<string value="\udbba\udf70"/>
+<string value="\udbba\udf71"/>
+<string value="\udbba\udf72"/>
+<string value="\udbba\udf73"/>
+<string value="\udbba\udf74"/>
+<string value="\udbba\udf75"/>
+<string value="\udbba\udf76"/>
+<string value="\udbba\udf77"/>
+<string value="\udbba\udf78"/>
+<string value="\udbba\udf79"/>
+<!-- School -->
+<string value="\udbba\udf7a"/>
+<string value="\udbba\udf7b"/>
+<string value="\udbba\udf7c"/>
+<string value="\udbba\udf7d"/>
+<string value="\udbba\udf7e"/>
+<string value="\udbba\udf7f"/>
+<string value="\udbba\udf80"/>
+<!-- Internet Specific -->
+<string value="\udbba\udf81"/>
+<string value="\udbba\udf82"/>
+<string value="\udbba\udf83"/>
+<string value="\udbba\udf84"/>
+<string value="\udbba\udf85"/>
+<string value="\udbba\udf86"/>
+<string value="\udbba\udf87"/>
+<string value="\udbba\udf88"/>
+<string value="\udbba\udf89"/>
+<string value="\udbba\udf8a"/>
+<string value="\udbba\udf8b"/>
+<string value="\udbba\udf8c"/>
+<string value="\udbba\udf8d"/>
+<string value="\udbba\udf8e"/>
+<string value="\udbba\udf8f"/>
+<string value="\udbba\udf90"/>
+<string value="\udbba\udf91"/>
+<string value="\udbba\udf92"/>
+<!-- Hand Signals -->
+<string value="\udbba\udf93"/>
+<string value="\udbba\udf94"/>
+<string value="\udbba\udf95"/>
+<string value="\udbba\udf96"/>
+<string value="\udbba\udf97"/>
+<string value="\udbba\udf98"/>
+<string value="\udbba\udf99"/>
+<string value="\udbba\udf9a"/>
+<string value="\udbba\udf9b"/>
+<string value="\udbba\udf9c"/>
+<string value="\udbba\udf9d"/>
+<string value="\udbba\udf9e"/>
+<string value="\udbba\udf9f"/>
+<string value="\udbba\udfa0"/>
+<string value="\udbba\udfa1"/>
+<string value="\udbba\udfa2"/>
+<!-- 8. Business logos/symbols -->
+<!-- DoCoMo specific -->
+<string value="\udbbb\ude10"/>
+<string value="\udbbb\ude11"/>
+<string value="\udbbb\ude12"/>
+<string value="\udbbb\ude13"/>
+<string value="\udbbb\ude14"/>
+<string value="\udbbb\ude15"/>
+<string value="\udbbb\ude16"/>
+<string value="\udbbb\ude17"/>
+<string value="\udbbb\ude18"/>
+<string value="\udbbb\ude19"/>
+<string value="\udbbb\ude1a"/>
+<string value="\udbbb\ude1b"/>
+<string value="\udbbb\ude1c"/>
+<string value="\udbbb\ude1d"/>
+<string value="\udbbb\ude1e"/>
+<string value="\udbbb\ude1f"/>
+<string value="\udbbb\ude20"/>
+<string value="\udbbb\ude21"/>
+<string value="\udbbb\ude22"/>
+<string value="\udbbb\ude23"/>
+<string value="\udbbb\ude24"/>
+<string value="\udbbb\ude25"/>
+<string value="\udbbb\ude26"/>
+<string value="\udbbb\ude27"/>
+<string value="\udbbb\ude28"/>
+<string value="\udbbb\ude29"/>
+<string value="\udbbb\ude2a"/>
+<string value="\udbbb\ude2b"/>
+<string value="\udbbb\ude2c"/>
+<string value="\udbbb\ude2d"/>
+<string value="\udbbb\ude2e"/>
+<string value="\udbbb\ude2f"/>
+<string value="\udbbb\ude30"/>
+<string value="\udbbb\ude31"/>
+<string value="\udbbb\ude32"/>
+<string value="\udbbb\ude33"/>
+<!-- KDDI specific -->
+<string value="\udbbb\ude40"/>
+<string value="\udbbb\ude41"/>
+<string value="\udbbb\ude42"/>
+<string value="\udbbb\ude43"/>
+<string value="\udbbb\ude44"/>
+<string value="\udbbb\ude45"/>
+<string value="\udbbb\ude46"/>
+<string value="\udbbb\ude47"/>
+<string value="\udbbb\ude48"/>
+<string value="\udbbb\ude49"/>
+<string value="\udbbb\ude4a"/>
+<!-- Softbank specific -->
+<string value="\udbbb\ude70"/>
+<string value="\udbbb\ude71"/>
+<string value="\udbbb\ude72"/>
+<string value="\udbbb\ude73"/>
+<string value="\udbbb\ude74"/>
+<string value="\udbbb\ude75"/>
+<string value="\udbbb\ude76"/>
+<string value="\udbbb\ude77"/>
+<string value="\udbbb\ude78"/>
+<string value="\udbbb\ude79"/>
+<string value="\udbbb\ude7a"/>
+<string value="\udbbb\ude7b"/>
+<string value="\udbbb\ude7c"/>
+<string value="\udbbb\ude7d"/>
+<!-- Google specific -->
+<string value="\udbbb\udea0"/>
+</keystring>

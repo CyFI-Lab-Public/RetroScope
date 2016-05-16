@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+  <LinearLayout android:layout_height="wrap_content"
+                android:layout_width="fill_parent"
+                android:orientation="vertical">
+
+      <TextView  
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Policy:"
+         />
+
+      <CheckBox
+         android:id="@+id/policy_no_write"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"
+         android:text="Detect writes" />
+
+      <CheckBox
+         android:id="@+id/policy_no_reads"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"
+         android:text="Detect reads" />
+
+      <CheckBox
+         android:id="@+id/policy_no_network"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"
+         android:text="Detect network" />
+
+      <CheckBox
+         android:id="@+id/policy_custom"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"
+         android:text="Detect custom events" />
+
+      <CheckBox
+         android:id="@+id/policy_penalty_log"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"
+         android:text="Penalty: Log?" />
+
+      <CheckBox
+         android:id="@+id/policy_penalty_flash"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"
+         android:text="Penalty: Flash?" />
+
+      <CheckBox
+         android:id="@+id/policy_penalty_dialog"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"
+         android:text="Penalty: Dialog" />
+
+      <CheckBox
+         android:id="@+id/policy_penalty_dropbox"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"
+         android:text="Penalty: Dropbox" />
+
+      <CheckBox
+         android:id="@+id/policy_penalty_death"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"
+         android:text="Penalty: Death" />
+
+      <CheckBox
+         android:id="@+id/policy_penalty_network_death"
+         android:layout_height="wrap_content"
+         android:layout_width="fill_parent"
+         android:text="Penalty: Death-on-network" />
+
+      <TextView  
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Actions:"
+         />
+
+      <Button
+         android:id="@+id/write_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="sqlite write on UI thread"
+         />
+
+      <Button
+         android:id="@+id/write_loop_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="fake write (in a loop)"
+         />
+
+      <Button
+         android:id="@+id/read_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="sqlite read on UI thread"
+         />
+
+      <Button
+         android:id="@+id/dns_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="DNS lookup on main thread"
+         />
+
+      <Button
+         android:id="@+id/http_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="(Default) HTTP on main thread"
+         />
+
+      <Button
+         android:id="@+id/http2_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="HttpURLConnection on main thread"
+         />
+
+      <Button
+         android:id="@+id/http3_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="HttpURLConnection (to raw IP)"
+         />
+
+      <Button
+         android:id="@+id/binder_local_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Binder call (local) to write disk"
+         />
+
+      <Button
+         android:id="@+id/binder_remote_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Binder call (remote) to write disk"
+         />
+
+      <Button
+         android:id="@+id/binder_oneway_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Binder 1-way to write disk"
+         />
+
+      <Button
+         android:id="@+id/service_dump"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Dump (remote) service which writes"
+         />
+
+      <Button
+         android:id="@+id/binder_check_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Check binder/service policies"
+         />
+
+      <Button
+         android:id="@+id/linger_close_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Linger close()"
+         />
+
+      <Button
+         android:id="@+id/nonlinger_close_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Non-linger close()"
+         />
+
+      <Button
+         android:id="@+id/leak_cursor_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Leak an SQLiteCursor"
+         />
+
+      <Button
+         android:id="@+id/custom_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Custom slow call"
+         />
+
+      <Button
+         android:id="@+id/gc_instance_button"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:text="Class instances test"
+         />
+
+  </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<com.android.camera.ui.CameraControls
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/camera_controls"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+        <View
+            android:id="@+id/blocker"
+            android:clickable="true"
+            android:layout_height="match_parent"
+            android:layout_width="@dimen/switcher_size"
+            android:layout_gravity="right" />
+
+        <include layout="@layout/menu_indicators"
+            android:layout_width="64dip"
+            android:layout_height="64dip"
+            android:layout_marginTop="-5dip"
+            android:layout_marginRight="6dip"
+            android:layout_gravity="top|right"/>
+
+        <com.android.camera.ui.PieMenuButton
+            android:id="@+id/menu"
+            style="@style/SwitcherButton"
+            android:contentDescription="@string/accessibility_menu_button"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="2dip" />
+
+        <com.android.camera.ui.CameraSwitcher
+            android:id="@+id/camera_switcher"
+            style="@style/SwitcherButton"
+            android:layout_gravity="right|bottom"
+            android:layout_marginRight="2dip"
+            android:contentDescription="@string/accessibility_mode_picker" />
+
+        <com.android.camera.ShutterButton
+            android:id="@+id/shutter_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginRight="@dimen/shutter_offset"
+            android:clickable="true"
+            android:contentDescription="@string/accessibility_shutter_button"
+            android:focusable="true"
+            android:scaleType="center"
+            android:src="@drawable/btn_new_shutter" />
+
+        <ImageView
+            android:id="@+id/preview_thumb"
+            android:visibility="invisible"
+            android:layout_width="@dimen/capture_size"
+            android:layout_height="@dimen/capture_size"
+            android:scaleType="centerInside"
+            android:layout_gravity="top|right" />
+
+</com.android.camera.ui.CameraControls>

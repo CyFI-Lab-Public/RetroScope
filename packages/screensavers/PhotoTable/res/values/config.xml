@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+  <!-- Milliseconds between drops. -->
+  <integer name="table_drop_period">45000</integer>
+
+  <!-- Milliseconds to wait before the next fast drop.-->
+  <integer name="fast_drop">3000</integer>
+
+  <!-- Milliseconds between drops. -->
+  <integer name="carousel_drop_period">10000</integer>
+
+  <!-- Milliseconds to wait before the next immediate drop.-->
+  <integer name="now_drop">500</integer>
+
+  <!-- Length of flip animation in milliseconds.-->
+  <integer name="flip_duration">1000</integer>
+
+  <!-- Maximum number of photos to leave on the table.-->
+  <integer name="table_capacity">10</integer>
+
+  <!-- Number of images to discard at a time.-->
+  <integer name="redeal_count">5</integer>
+
+  <!-- Parts per million ratio between image size and screen size. -->
+  <integer name="image_ratio">500000</integer>
+
+  <!-- Parts per million ratio between image size on the table and screen size. -->
+  <integer name="table_ratio">250000</integer>
+
+  <!-- The maximum allowed rotation of images thrown onto the table. -->
+  <integer name="max_image_rotation">30</integer>
+
+  <!-- Maximum number of image paths to load before shuffling. -->
+  <integer name="image_queue_size">1000</integer>
+
+  <!-- Enable manual rotation of images. -->
+  <bool name="enable_manual_image_rotation">false</bool>
+
+  <!-- Enable flinging away photos. -->
+  <bool name="enable_fling">true</bool>
+
+  <!-- Honor tap on table to exit. -->
+  <bool name="enable_tap_to_exit">false</bool>
+
+  <!-- Parts per million damping coefficient of the table. -->
+  <integer name="table_damping">950000</integer>
+
+  <!-- Maximum number of albums to pull for "Photos from Posts". -->
+  <integer name="max_post_albums">100</integer>
+
+  <!-- Parts per million maximum cropping allow to fit image to screen. -->
+  <integer name="max_crop_ratio">1200000</integer>
+
+  <!-- starting angle in degrees for thrown images (always lands near zero). -->
+  <integer name="image_throw_rotatioan">-200</integer>
+
+  <!-- time thrown image land, in parts per million from 0 to 1. -->
+  <integer name="soft_landing_time">500000</integer>
+
+  <!-- fraction of distance covered before landing, in parts per million from 0 to 1. -->
+  <integer name="soft_landing_distance">900000</integer>
+
+  <!-- Drop animation exponent. -->
+  <integer name="drop_deceleration_exponent">4</integer>
+
+  <!-- Number of unloadable images to skip before giving up. -->
+  <integer name="bad_image_skip_limit">10</integer>
+
+  <!-- Size of image recycling pool when on metered data.  -->
+  <integer name="recycle_image_pool_size">20</integer>
+
+  <!-- Number of images to pre-load. -->
+  <integer name="num_images_to_preload">5</integer>
+
+  <!-- distance from edge to start a valid edge swipe as a fraction of
+  touch area width, in parts per million from 0 to 1. -->
+  <integer name="table_edge_swipe_gutter">50000</integer>
+
+  <!-- minimum length of a valid edge swipe as a fraction of
+  touch area width, in parts per million from 0 to 1. -->
+  <integer name="table_edge_swipe_threshold">100000</integer>
+
+  <!-- Parts per million gain applied to generalized touch gestures. -->
+  <integer name="generalized_touch_gain">2000000</integer>
+
+  <!-- Enable story mode. -->
+  <bool name="enable_story_mode">true</bool>
+
+  <!-- Duration in milliseconds for the pickup animation. -->
+  <integer name="photo_pickup_duration">1000</integer>
+
+  <!-- Milliseconds that the selection will remain without user interaction. -->
+  <integer name="max_selection_time">30000</integer>
+
+  <!-- Milliseconds that the focus will remain without user interaction. -->
+  <integer name="max_focus_time">5000</integer>
+
+  <!-- Enable hardware layer optimization (interferes with dragging). -->
+  <bool name="enable_background_optimization">false</bool>
+
+</resources>
+

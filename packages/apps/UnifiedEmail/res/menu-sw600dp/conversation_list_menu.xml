@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2012 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/compose"
+        android:title="@string/menu_compose"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_menu_compose_normal_holo_light"
+        android:alphabeticShortcut="@string/trigger_compose_char" />
+
+    <!-- Available only for accounts with SERVER_SEARCH and in a folder
+      that supports FOLDER_SERVER_SEARCH -->
+    <item android:id="@+id/search"
+        android:title="@string/menu_search"
+        android:showAsAction="always|collapseActionView"
+        android:icon="@drawable/ic_menu_search_holo_light"
+        android:actionLayout="@layout/mail_actionbar_searchview" />
+
+    <item android:id="@+id/refresh"
+        android:title="@string/refresh"
+        android:showAsAction="never"
+        android:alphabeticShortcut="@string/trigger_refresh_char" />
+
+    <!-- Available only in the trash folder, when the account supports emptying it -->
+    <item android:id="@+id/empty_trash"
+        android:title="@string/empty_trash"
+        android:showAsAction="never" />
+
+    <!-- Available only in the spam folder, when the account supports emptying it -->
+    <item android:id="@+id/empty_spam"
+        android:title="@string/empty_spam"
+        android:showAsAction="never" />
+
+    <!-- Available for Folders with SUPPORTS_SETTINGS capability -->
+    <item android:id="@+id/folder_options"
+        android:title="@string/menu_folder_options"
+        android:showAsAction="never"  />
+
+    <item android:id="@+id/settings"
+        android:title="@string/menu_settings"
+        android:showAsAction="never" />
+
+    <item
+        android:id="@+id/feedback_menu_item"
+        android:title="@string/feedback"
+        android:showAsAction="never" />
+
+    <!-- Available if the account specifies a help url -->
+    <item
+        android:id="@+id/help_info_menu_item"
+        android:title="@string/help_and_info"
+        android:showAsAction="never" />
+
+</menu>

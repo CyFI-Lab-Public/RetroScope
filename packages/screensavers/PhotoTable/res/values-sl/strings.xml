@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" msgid="6441943862284988546">"Fotografije za ohranjevalnik zaslona"</string>
+    <string name="table_screensaver_name" msgid="1150228032617397055">"aplikacija Photo Table"</string>
+    <string name="flipper_screensaver_name" msgid="6988572107391523141">"aplikacija Photo Frame"</string>
+    <string name="posts_album_name" msgid="5628151551239729515">"Fotografije iz objav"</string>
+    <string name="unknown_album_name" msgid="2135521368192091267">"Album brez imena"</string>
+    <string name="stock_photo_album_name" msgid="3150527596227525460">"Fotografije na zalogi"</string>
+    <string name="local_source_name" msgid="6487253091085518505">"Fotografije v napravi"</string>
+    <string name="need_to_configure" msgid="1269102638159389032">"Izbrana ni nobena fotografija."</string>
+    <string name="photodream_select_all" msgid="6364858563337927827">"Izberi vse"</string>
+    <string name="photodream_select_none" msgid="8816452124894525861">"Počisti vse"</string>
+    <string name="no_photos" msgid="4262083523147564199">"V napravi ni fotografij."</string>
+</resources>

@@ -1,0 +1,7 @@
+__Todo__
+
+Add more complex tests
+Check if fileformat version matches dex reader
+Add support for big endian encoded files
+dex.reader.DexEncodedValueImpl has some FIXMEs
+dex.reader.DexBuffer needs to be polished regarding unsigned datatypes 

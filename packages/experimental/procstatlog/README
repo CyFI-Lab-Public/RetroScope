@@ -1,0 +1,7 @@
+procstatlog:
+
+A statically linked binary that polls and dumps /proc/*/stat files
+on an ongoing basis, to measure CPU and other activity as a function
+of time during system operation.
+
+Owner: Dan Egnor <egnor@google.com>

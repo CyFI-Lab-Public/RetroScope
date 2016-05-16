@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="title_activity_filter_show" msgid="2036539130684382763">"फोटो सम्पादक"</string>
+    <string name="cannot_load_image" msgid="5023634941212959976">"तस्बिर लोड गर्न सकेन!"</string>
+    <string name="cannot_edit_original" msgid="5890293845882609388">"मूल सम्पादन गर्न सक्दैन"</string>
+    <!-- no translation found for original_picture_text (3076213290079909698) -->
+    <skip />
+    <string name="setting_wallpaper" msgid="4679087092300036632">"सेटिङ वालपेपर"</string>
+    <string name="download_failure" msgid="5923323939788582895">"फोटो डाउनलोड गर्न सकेन। नेटवर्क उपलब्ध छैन।"</string>
+    <string name="original" msgid="3524493791230430897">"मूल"</string>
+    <string name="saved" msgid="6678827180814174711">"सुरक्षित गरियो"</string>
+    <string name="borders" msgid="2067345080568684614">"किनाराहरू"</string>
+    <string name="filtershow_undo" msgid="6781743189243585101">"अन्डु गर्नुहोस्"</string>
+    <string name="filtershow_redo" msgid="4219489910543059747">"पुनःगर्नुहोस्"</string>
+    <string name="show_imagestate_panel" msgid="281932769701043015">"एप्लाइड प्रभावहरू देखाउनुहोस्"</string>
+    <string name="hide_imagestate_panel" msgid="7207643485811695257">"एप्लाइड प्रभाव लुकाउनुहोस्"</string>
+    <string name="export_image" msgid="3202835713172222134">"निर्यात गर्नुहोस्"</string>
+    <string name="print_image" msgid="1942989216591621413">"प्रिन्ट गर्नुहोस्"</string>
+    <string name="export_flattened" msgid="9046192331465915411">"सिधा गरिएको चित्र निर्यात गर्नुहोस्"</string>
+    <string name="select_output_settings" msgid="1268532018080310748">"निर्यात गरिएको चित्र इतिहास बिना प्रतिलिपि हुने छ।"</string>
+    <string name="quality" msgid="179292110309050529">"गुण"</string>
+    <string name="size" msgid="4639404642236356037">"आकार"</string>
+    <string name="x" msgid="6810256999024563662">"x"</string>
+    <string name="menu_settings" msgid="6428291655769260831">"सेटिङहरू"</string>
+    <string name="unsaved" msgid="8704442449002374375">"यो तस्बिरमा बचत नगरिएका परिवर्तनहरू छन्।"</string>
+    <string name="save_before_exit" msgid="2680660633675916712">"के तपाईँ निस्कनुभन्दा पहिले बचत गर्न चाहनु हुन्छ?"</string>
+    <string name="save_and_exit" msgid="3628425023766687419">"बचत गरेर निस्कनुहोस्"</string>
+    <string name="save_and_processing" msgid="6371565035837463194">"पूर्ण रिजोलुसन चित्र प्रसोधन गर्दै"</string>
+    <string name="exit" msgid="242642957038770113">"निकास"</string>
+    <string name="history" msgid="455767361472692409">"इतिहास"</string>
+    <string name="reset" msgid="9013181350779592937">"पुनःसेट गर्नुहोस्"</string>
+    <!-- no translation found for history_original (150973253194312841) -->
+    <skip />
+    <string name="imageState" msgid="8632586742752891968">"एप्लाइड प्रभावहरू"</string>
+    <string name="compare_original" msgid="8140838959007796977">"तुलना"</string>
+    <string name="apply_effect" msgid="1218288221200568947">"लागू गर्नुहोस्"</string>
+    <string name="reset_effect" msgid="7712605581024929564">"पुनःसेट गर्नुहोस्"</string>
+    <string name="aspect" msgid="4025244950820813059">"पक्ष"</string>
+    <string name="aspect1to1_effect" msgid="1159104543795779123">"१:१"</string>
+    <string name="aspect4to3_effect" msgid="7968067847241223578">"४:३"</string>
+    <string name="aspect3to4_effect" msgid="7078163990979248864">"३:४"</string>
+    <string name="aspect4to6_effect" msgid="1410129351686165654">"४:६"</string>
+    <string name="aspect5to7_effect" msgid="5122395569059384741">"५:७"</string>
+    <string name="aspect7to5_effect" msgid="5780001758108328143">"७:५"</string>
+    <string name="aspect9to16_effect" msgid="7740468012919660728">"१६:९"</string>
+    <string name="aspectNone_effect" msgid="6263330561046574134">"कुनै पनि होइन"</string>
+    <!-- no translation found for aspectOriginal_effect (5678516555493036594) -->
+    <skip />
+    <string name="Fixed" msgid="8017376448916924565">"निश्चित"</string>
+    <string name="tinyplanet" msgid="2783694326474415761">"सानो ग्रह"</string>
+    <string name="exposure" msgid="6526397045949374905">"एक्सपोजर"</string>
+    <string name="sharpness" msgid="6463103068318055412">"तिखोपन"</string>
+    <string name="contrast" msgid="2310908487756769019">"अन्तर"</string>
+    <string name="vibrance" msgid="3326744578577835915">"भाइब्रेन्स"</string>
+    <string name="saturation" msgid="7026791551032438585">"सन्तृप्ति"</string>
+    <string name="bwfilter" msgid="8927492494576933793">"BW फिल्टर"</string>
+    <string name="wbalance" msgid="6346581563387083613">"स्वतःरङ्ग"</string>
+    <string name="hue" msgid="6231252147971086030">"रङ्ग"</string>
+    <string name="shadow_recovery" msgid="3928572915300287152">"छायाँहरू"</string>
+    <string name="highlight_recovery" msgid="8262208470735204243">"हाइलाइटहरू"</string>
+    <string name="curvesRGB" msgid="915010781090477550">"कर्भहरू"</string>
+    <string name="vignette" msgid="934721068851885390">"भिग्नेट"</string>
+    <string name="vignette_main" msgid="6046495605390665423">"भिग्नेट"</string>
+    <string name="vignette_exposure" msgid="6862058227309534094">"एक्स्पोजर"</string>
+    <string name="vignette_saturation" msgid="1617055207565719771">"सेचुरेसन"</string>
+    <string name="vignette_contrast" msgid="955732121756799897">"भिन्नता"</string>
+    <string name="vignette_falloff" msgid="690918055030064199">"फलअफ्"</string>
+    <string name="redeye" msgid="4508883127049472069">"रातो आँखो"</string>
+    <string name="imageDraw" msgid="6918552177844486656">"चित्र बनाउनुहोस्"</string>
+    <string name="straighten" msgid="26025591664983528">"सीधा गर्नुहोस्"</string>
+    <string name="crop" msgid="5781263790107850771">"क्रप गर्नुहोस्"</string>
+    <string name="rotate" msgid="2796802553793795371">"घुमाउनुहोस्"</string>
+    <string name="mirror" msgid="5482518108154883096">"ऐना"</string>
+    <string name="negative" msgid="6998313764388022201">"नकारात्मक"</string>
+    <string name="none" msgid="6633966646410296520">"कुनै पनि होइन"</string>
+    <string name="edge" msgid="7036064886242147551">"किनाराहरू"</string>
+    <string name="kmeans" msgid="2080952022674981541">"पोस्टेराइज गर्नुहोस्"</string>
+    <string name="downsample" msgid="3552938534146980104">"डाउनस्याम्पल"</string>
+    <string name="grad" msgid="546774853424848655">"Graduated"</string>
+    <string name="editor_grad_brightness" msgid="5937316734380235741">"चमक"</string>
+    <string name="editor_grad_contrast" msgid="3454456673401803360">"कन्ट्रास्ट"</string>
+    <string name="editor_grad_saturation" msgid="3760247354109521726">"संतृप्तता"</string>
+    <string name="editor_chan_sat_main" msgid="4427652337797121940">"मुख्य"</string>
+    <string name="editor_chan_sat_red" msgid="1699222266490540696">"रातो"</string>
+    <string name="editor_chan_sat_yellow" msgid="1488997071882154179">"पहेँलो"</string>
+    <string name="editor_chan_sat_green" msgid="1514055896212975167">"हरियो"</string>
+    <string name="editor_chan_sat_cyan" msgid="1367634650172508288">"सायन"</string>
+    <string name="editor_chan_sat_blue" msgid="384409736863387895">"नीलो"</string>
+    <string name="editor_chan_sat_magenta" msgid="6689215719351415546">"म्याजेन्टा"</string>
+    <string name="editor_grad_style" msgid="2168414479007745179">"शैली"</string>
+    <string name="editor_grad_new" msgid="4857265951369377379">"नयाँ"</string>
+    <string name="curves_channel_rgb" msgid="7909209509638333690">"RGB"</string>
+    <string name="curves_channel_red" msgid="4199710104162111357">"रातो"</string>
+    <string name="curves_channel_green" msgid="3733003466905031016">"हरियो"</string>
+    <string name="curves_channel_blue" msgid="9129211507395079371">"नीलो"</string>
+    <string name="draw_style" msgid="2036125061987325389">"शैली"</string>
+    <string name="draw_size" msgid="4360005386104151209">"आकार"</string>
+    <string name="draw_hue" msgid="4975135843189267133">"रङ्ग"</string>
+    <string name="draw_saturation" msgid="5394395648014454882">"संतृप्तता"</string>
+    <string name="draw_value" msgid="6571604055161538273">"चमक"</string>
+    <string name="draw_color" msgid="2119030386987211193">"रङ्ग"</string>
+    <string name="draw_style_line" msgid="9216476853904429628">"पंक्तिहरू"</string>
+    <string name="draw_style_brush_spatter" msgid="7612691122932981554">"चिन्हक"</string>
+    <string name="draw_style_brush_marker" msgid="8468302322165644292">"स्प्याटर"</string>
+    <string name="draw_clear" msgid="6728155515454921052">"हटाउनुहोस्"</string>
+    <string name="color_border_size" msgid="8745307483517793073">"मोटाइ"</string>
+    <string name="color_border_corner_size" msgid="7637235159438869979">"कुना आकार"</string>
+    <string name="color_border_color" msgid="8765458414425980711">"रङ"</string>
+    <string name="color_border_clear" msgid="4418261191091091722">"हटाउनुहोस्"</string>
+    <string name="color_pick_select" msgid="734312818059057394">"कस्टम रङ्ग छान्नुहोस्"</string>
+    <string name="color_pick_title" msgid="6195567431995308876">"रङ्ग छान्नुहोस्"</string>
+    <string name="draw_size_title" msgid="3121649039610273977">"साइज चयन गर्नुहोस्"</string>
+    <string name="draw_size_accept" msgid="6781529716526190028">"ठिक छ"</string>
+    <string name="state_panel_original" msgid="9069584409934164419">"मूल"</string>
+    <string name="state_panel_result" msgid="318640531123298676">"परिणाम"</string>
+    <string name="filtershow_notification_label" msgid="1653168445525855247">"चित्र सुरक्षित गर्दै"</string>
+    <string name="filtershow_notification_message" msgid="2661871765484036286">"प्रसोधन गरिँदै ..."</string>
+    <string name="filtershow_save_preset" msgid="3933550455577927439">"वर्तमान पूर्वसेट सुरक्षित गर्नुहोस्"</string>
+    <string name="filtershow_manage_preset" msgid="3872896753708921286">"प्रयोगकर्ता पूर्वसेटहरू प्रबन्ध गर्नुहोस्"</string>
+    <string name="filtershow_new_preset" msgid="8923930134923416617">"नयाँ पूर्वसेट"</string>
+    <string name="filtershow_preset_name" msgid="7015939727047649866">"पूर्वसेट नाम"</string>
+    <string name="filtershow_show_info_panel" msgid="5773036746043711115">"सूचना"</string>
+    <string name="filtershow_show_info_panel_name" msgid="5908258517140549439">"चित्र नाम"</string>
+    <string name="filtershow_show_info_panel_size" msgid="1714666849204493017">"चित्र आकार"</string>
+    <string name="filtershow_show_info_panel_histogram" msgid="2669188469897955809">"हिस्टोग्राम"</string>
+    <string name="filtershow_show_info_panel_exif" msgid="4965486882625125154">"EXIF डेटा"</string>
+    <string name="filtershow_add_button_looks" msgid="8630823661416925426">"पूर्वसेट"</string>
+    <string name="filtershow_add_button_versions" msgid="7620107266685809612">"संस्करण"</string>
+    <string name="filtershow_version_original" msgid="1413894292200912828">"मूल"</string>
+    <string name="filtershow_version_current" msgid="6609334422797468952">"वर्तमान"</string>
+    <string name="filtershow_exif_model" msgid="3543206476046267466">"मोडेल"</string>
+    <string name="filtershow_exif_aperture" msgid="5076571522763604380">"प्वाल"</string>
+    <string name="filtershow_exif_focal_length" msgid="5925151469731623706">"फोकल लम्बाइ:"</string>
+    <string name="filtershow_exif_iso" msgid="5822494416955625317">"ISO"</string>
+    <string name="filtershow_exif_subject_distance" msgid="4920632253433906646">"Subject Distance"</string>
+    <string name="filtershow_exif_date" msgid="8882402253732028544">"मिति लिइयो"</string>
+    <string name="filtershow_exif_f_stop" msgid="6081797865604483139">"F Stop"</string>
+    <string name="filtershow_exif_exposure_time" msgid="4099067062781294115">"खु्ला गरिएको समय"</string>
+    <string name="filtershow_exif_copyright" msgid="8801875918803737581">"प्रतिलिपि अधिकार"</string>
+</resources>

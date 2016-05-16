@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+**
+**  Copyright 2010 Google Inc. All Rights Reserved.
+**
+-->
+
+<resources>
+    <!-- maximum size for album art. the real size of the albumart will be divided by two
+    until both width and height are below this value. -->
+    <dimen name="maximum_thumb_size">320dip</dimen>
+</resources>

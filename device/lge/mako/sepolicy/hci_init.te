@@ -1,0 +1,6 @@
+type hci_init, domain;
+permissive hci_init;
+type hci_exec, file_type, exec_type;
+type hci_data_file, file_type;
+domain_auto_trans(shell, hci_exec, hci_init)
+unconfined_domain(hci_init)

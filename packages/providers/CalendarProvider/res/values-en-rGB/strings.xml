@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="calendar_storage" msgid="5387668002987562770">"Calendar Storage"</string>
+    <string name="upgrade_msg" msgid="2792831029435070926">"Upgrading Calendar database."</string>
+    <string name="calendar_default_name" msgid="6924293766625167275">"Default"</string>
+    <string name="calendar_info" msgid="6687678621418059281">"Calendar info"</string>
+    <string name="calendar_info_error" msgid="5575162446528419982">"Error"</string>
+    <string name="calendar_info_no_calendars" msgid="4287534468186704433">"No calendars"</string>
+    <string name="calendar_info_events" msgid="1805502308105103803">"Events: <xliff:g id="EVENTS">%1$d</xliff:g>"</string>
+    <string name="calendar_info_events_dirty" msgid="8879392112564499515">"Events: <xliff:g id="EVENTS_0">%1$d</xliff:g>, Unsaved: <xliff:g id="DIRTY_EVENTS">%2$d</xliff:g>"</string>
+    <string name="provider_label" msgid="2306513350843464739">"Calendar"</string>
+    <string name="debug_tool_delete_button" msgid="5052706251268452090">"Delete now"</string>
+    <string name="debug_tool_start_button" msgid="5384780896342913563">"Start"</string>
+    <string name="debug_tool_message" msgid="4862486669932821937">"You are about to 1) make a copy of your calendar database to the SD card/USB storage, which is readable by any app, and 2) email it. Remember to delete the copy as soon as you have successfully copied it off the device or the email is received."</string>
+    <string name="debug_tool_email_sender_picker" msgid="2000311987477419397">"Select a programme to send your file"</string>
+    <string name="debug_tool_email_subject" msgid="2403590332256471194">"Calendar Db attached"</string>
+    <string name="debug_tool_email_body" msgid="4835949635324134017">"Attached is my calendar database with all my appointments and personal information. Please handle with care."</string>
+</resources>

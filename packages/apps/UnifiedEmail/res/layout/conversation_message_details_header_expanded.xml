@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<android.support.v7.widget.GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/details_expanded_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
+    app:columnCount="3"
+    app:rowCount="6"
+    style="@style/MessageDetailsHeaderStyle" >
+
+    <TextView
+        android:id="@+id/from_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_column="0"
+        app:layout_row="0"
+        android:text="@string/from_heading"
+        android:visibility="gone"
+        style="@style/MessageHeaderDetailsHeadingStyle" />
+    <TextView
+        android:id="@+id/from_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_gravity="fill_horizontal"
+        android:layout_marginBottom="4dp"
+        app:layout_column="1"
+        app:layout_row="0"
+        android:visibility="gone"
+        style="@style/MessageDetailsValueStyle" />
+    <ImageView
+        android:id="@+id/details_expander"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_column="2"
+        app:layout_row="0"
+        android:contentDescription="@string/collapse_recipient_details"
+        android:src="@drawable/ic_menu_expander_maximized_holo_light"
+        style="@style/DetailsExpanderStyle" />
+    <TextView
+        android:id="@+id/replyto_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_column="0"
+        app:layout_row="1"
+        android:text="@string/replyto_heading"
+        android:visibility="gone"
+        style="@style/MessageHeaderDetailsHeadingStyle" />
+    <TextView
+        android:id="@+id/replyto_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_gravity="fill_horizontal"
+        android:layout_marginBottom="4dp"
+        app:layout_column="1"
+        app:layout_row="1"
+        android:visibility="gone"
+        style="@style/MessageDetailsValueStyle" />
+    <TextView
+        android:id="@+id/to_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_column="0"
+        app:layout_row="2"
+        android:text="@string/to_heading"
+        android:visibility="gone"
+        style="@style/MessageHeaderDetailsHeadingStyle" />
+    <TextView
+        android:id="@+id/to_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_gravity="fill_horizontal"
+        android:layout_marginBottom="4dp"
+        app:layout_column="1"
+        app:layout_row="2"
+        android:visibility="gone"
+        style="@style/MessageDetailsValueStyle" />
+    <TextView
+        android:id="@+id/cc_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_column="0"
+        app:layout_row="3"
+        android:text="@string/cc_heading"
+        android:visibility="gone"
+        style="@style/MessageHeaderDetailsHeadingStyle" />
+    <TextView
+        android:id="@+id/cc_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_gravity="fill_horizontal"
+        android:layout_marginBottom="4dp"
+        app:layout_column="1"
+        app:layout_row="3"
+        android:visibility="gone"
+        style="@style/MessageDetailsValueStyle" />
+    <TextView
+        android:id="@+id/bcc_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_column="0"
+        app:layout_row="4"
+        android:text="@string/bcc_heading"
+        android:visibility="gone"
+        style="@style/MessageHeaderDetailsHeadingStyle" />
+    <TextView
+        android:id="@+id/bcc_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_gravity="fill_horizontal"
+        android:layout_marginBottom="4dp"
+        app:layout_column="1"
+        app:layout_row="4"
+        android:visibility="gone"
+        style="@style/MessageDetailsValueStyle" />
+    <TextView
+        android:id="@+id/date_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_column="0"
+        app:layout_row="5"
+        android:text="@string/date_heading"
+        android:visibility="gone"
+        style="@style/MessageHeaderDetailsHeadingStyle" />
+    <TextView
+        android:id="@+id/date_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_gravity="fill_horizontal"
+        android:layout_marginBottom="4dp"
+        app:layout_column="1"
+        app:layout_row="5"
+        android:visibility="gone"
+        style="@style/MessageDetailsValueStyle" />
+
+</android.support.v7.widget.GridLayout>

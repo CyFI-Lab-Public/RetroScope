@@ -1,0 +1,9 @@
+# See system/core/logcat/event.logtags for a description of the format of this file.
+
+option java_package com.android.phone;
+
+70301 phone_ui_enter
+70302 phone_ui_exit
+70303 phone_ui_button_click (text|3)
+70304 phone_ui_ringer_query_elapsed
+70305 phone_ui_multiple_query

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2012 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/search_status_view"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/notification_view_height"
+    android:minHeight="@dimen/notification_view_height"
+    android:background="@drawable/banner_background_search"
+    android:visibility="gone"
+    android:orientation="horizontal" >
+
+    <TextView
+        android:id="@+id/search_status_text_view"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dip"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="18sp"
+        android:textColor="#777777"
+        android:text="@string/search_results_header"
+        android:layout_weight=".8"
+        android:ellipsize="marquee"
+        android:singleLine="true"/>
+
+    <TextView android:id="@+id/search_result_count_view"
+        android:layout_width="0dip"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|right"
+        android:paddingRight="8dip"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#777777"
+        android:layout_weight=".2"/>
+
+</LinearLayout>

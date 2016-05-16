@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<palettes>
+  <!-- basic white polar clock with color-cycling rings -->
+  <palette kind="cycling"
+    id="palette_white_c"
+    background="#FFFFFFFF"
+    saturation="0.8" brightness="0.9" />
+  <!-- same as above, but on black -->
+  <palette kind="cycling"
+    id="palette_black_c"
+    background="#FF000000"
+    saturation="1.0" brightness="0.25" />
+  <!-- a nice gray color scheme with an orange seconds ring -->
+  <palette kind="fixed"
+    id="palette_gray"
+    background="#FF555555"
+    second="#FFCC8800" minute="#FF333333" hour="#FF000000"
+    day="#FF999999" month="#FF777777" />
+  <!-- smooth black with a purple cast -->
+  <palette kind="fixed"
+    id="palette_violet"
+    background="#FF181020"
+    second="#FF602070" minute="#603050" hour="#FF040008"
+    day="#FF706080" month="#FF403050" />
+  <!-- green on black -->
+  <palette kind="fixed"
+    id="palette_matrix"
+    background="#FF002200"
+    second="#FF00FF00" minute="#FF00BB00" hour="#FF007700"
+    day="#FF00AA00" month="#FF006600" />
+  <!-- orange -->
+  <palette kind="fixed"
+    id="palette_halloween"
+    background="#FF884400"
+    second="#FFFFFF00" minute="#FFFF8800" hour="#FFFF8800"
+    day="#FF000000" month="#FF000000" />
+  <!-- based on Zenburn by Jani Nurminen -->
+  <palette kind="fixed"
+    id="palette_zenburn"
+    background="#FF3f3f3f"
+    second="#FF8aCCCF" minute="#FFCB9292" hour="#FFCCDC90"
+    day="#FFDCA3A3" month="#FF7f9f7f" />
+  <!-- electric blue -->
+  <palette kind="fixed"
+    id="palette_oceanic"
+    background="#FF000066"
+    second="#FF6666FF" minute="#FF0000FF" hour="#FF0000AA"
+    day="#FF000033" month="#FF000011" />
+</palettes>

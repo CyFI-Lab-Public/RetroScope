@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ * Copyright (C) 2009 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://compatibility.android.com/cts_result/1.15"
+           xmlns="http://compatibility.android.com/cts_result/1.15"
+           elementFormDefault="qualified">
+
+<xs:element name="TestResult">
+  <xs:complexType>
+    <xs:sequence>
+      <xs:element name="DeviceInfo" type="deviceInfoType"/>
+      <xs:element name="HostInfo" type="hostInfoType"/>
+      <xs:element name="Summary" type="summaryType"/>
+      <xs:element name="TestPackage" type="testPackageType" maxOccurs="unbounded" minOccurs="1"/>
+    </xs:sequence>
+    <xs:attribute name="starttime" type="xs:string"/>
+    <xs:attribute name="endtime" type="xs:string"/>
+    <xs:attribute name="testPlan" type="xs:string"/>
+    <xs:attribute name="version" type="xs:string"/>
+    <xs:attribute name="suite" type="xs:string"/>
+  </xs:complexType>
+</xs:element>
+
+<xs:complexType name="deviceInfoType">
+  <xs:sequence>
+    <xs:element name="Screen">
+      <xs:complexType>
+        <xs:attribute name="screen_size" type="xs:string"/>
+        <xs:attribute name="resolution" type="xs:string"/>
+        <xs:attribute name="screen_density" type="xs:decimal"/>
+        <xs:attribute name="screen_density_bucket" type="xs:string"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="PhoneSubInfo">
+      <xs:complexType>
+        <xs:attribute name="subscriberId" type="xs:string"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="BuildInfo">
+      <xs:complexType>
+        <xs:attribute name="Xdpi" type="xs:decimal"/>
+        <xs:attribute name="Ydpi" type="xs:decimal"/>
+        <xs:attribute name="androidPlatformVersion" type="xs:integer"/>
+        <xs:attribute name="buildID" type="xs:string"/>
+        <xs:attribute name="buildName" type="xs:string"/>
+        <xs:attribute name="buildVersion" type="xs:string"/>
+        <xs:attribute name="build_board" type="xs:string"/>
+        <xs:attribute name="build_manufacturer" type="xs:string"/>
+        <xs:attribute name="build_brand" type="xs:string"/>
+        <xs:attribute name="build_device" type="xs:string"/>
+        <xs:attribute name="build_fingerprint" type="xs:string"/>
+        <xs:attribute name="build_model" type="xs:string"/>
+        <xs:attribute name="build_type" type="xs:string"/>
+        <xs:attribute name="deviceID" type="xs:string"/>
+        <xs:attribute name="imei" type="xs:integer"/>
+        <xs:attribute name="imsi" type="xs:integer"/>
+        <xs:attribute name="keypad" type="xs:string"/>
+        <xs:attribute name="locales" type="xs:string"/>
+        <xs:attribute name="navigation" type="xs:string"/>
+        <xs:attribute name="network" type="xs:string"/>
+        <xs:attribute name="touch" type="xs:string"/>
+        <xs:attribute name="openGlEsVersion" type="xs:string"/>
+        <xs:attribute name="partitions" type="xs:string"/>
+        <xs:attribute name="build_abi" type="xs:string"/>
+        <xs:attribute name="build_abi2" type="xs:string"/>
+        <xs:attribute name="storage_devices" type="xs:string"/>
+        <xs:attribute name="multi_user" type="xs:string"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="FeatureInfo" type="featureInfoType"/>
+    <xs:element name="ProcessInfo" type="processInfoType"/>
+    <xs:element name="SystemLibrariesInfo" type="systemLibrariesInfoType"/>
+    <xs:element name="OpenGLCompressedTextureFormatsInfo" type="openGLCompressedTextureFormatsInfoType"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="hostInfoType">
+  <xs:sequence>
+    <xs:element name="Os">
+      <xs:complexType>
+        <xs:attribute name="arch" type="xs:string"/>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="version" type="xs:string"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="Java">
+      <xs:complexType>
+        <xs:attribute name="name" type="xs:string"/>
+        <xs:attribute name="version" type="xs:string"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="Cts">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="IntValue" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+              <xs:attribute name="name" type="xs:string"/>
+              <xs:attribute name="value" type="xs:integer"/>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+        <xs:attribute name="version" type="xs:string"/>
+      </xs:complexType>
+    </xs:element>
+  </xs:sequence>
+  <xs:attribute name="name" type="xs:string"/>
+</xs:complexType>
+
+<xs:complexType name="featureInfoType">
+    <xs:sequence>
+        <xs:element name="Feature" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:attribute name="name" type="xs:string" />
+                <xs:attribute name="type" type="xs:string" />
+                <xs:attribute name="available" type="xs:string" />
+            </xs:complexType>
+        </xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="processInfoType">
+    <xs:sequence>
+        <xs:element name="Process" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:attribute name="name" type="xs:string" />
+                <xs:attribute name="uid" type="xs:integer" />
+            </xs:complexType>
+        </xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="systemLibrariesInfoType">
+    <xs:sequence>
+        <xs:element name="Library" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:attribute name="name" type="xs:string" />
+            </xs:complexType>
+        </xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="openGLCompressedTextureFormatsInfoType">
+    <xs:sequence>
+        <xs:element name="TextureFormat" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+                <xs:attribute name="name" type="xs:string" />
+            </xs:complexType>
+        </xs:element>
+    </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="summaryType">
+  <xs:attribute name="failed" type="xs:integer"/>
+  <xs:attribute name="notExecuted" type="xs:integer"/>
+  <xs:attribute name="pass" type="xs:integer"/>
+  <xs:attribute name="timeout" type="xs:integer"/>
+  <xs:attribute name="omitted" type="xs:integer"/>
+</xs:complexType>
+
+<xs:complexType name="testPackageType">
+  <xs:sequence>
+    <xs:element name="TestSuite" type="testSuiteType" minOccurs="0" maxOccurs="unbounded" />
+  </xs:sequence>
+  <xs:attribute name="appPackageName" type="xs:string"/>
+  <xs:attribute name="digest" type="xs:hexBinary"/>
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:attribute name="signatureCheck" type="xs:boolean" />
+</xs:complexType>
+
+<xs:complexType name="testSuiteType">
+  <xs:sequence>
+    <xs:element name="TestCase" type="testCaseType" minOccurs="0" maxOccurs="unbounded"/>
+    <xs:element name="TestSuite" type="testSuiteType" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+  <xs:attribute name="name" type="xs:string" use="required"/>
+</xs:complexType>
+
+<xs:complexType name="testCaseType">
+  <xs:sequence>
+    <xs:element name="Test" type="testType" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:attribute name="priority" type="xs:string"/>
+</xs:complexType>
+
+<xs:simpleType name="unitType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="none"/>
+    <xs:enumeration value="ms"/>
+    <xs:enumeration value="fps"/>
+    <xs:enumeration value="ops"/>
+    <xs:enumeration value="kbps"/>
+    <xs:enumeration value="mbps"/>
+    <xs:enumeration value="byte"/>
+    <xs:enumeration value="count"/>
+    <xs:enumeration value="score"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="scoreTypeType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="higherBetter"/>
+    <xs:enumeration value="lowerBetter"/>
+    <xs:enumeration value="neutral"/>
+    <xs:enumeration value="warning"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:complexType name="testType">
+  <xs:sequence>
+    <xs:element name="FailedScene" minOccurs="0" maxOccurs="1">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="StackTrace" type="xs:string" minOccurs="0" maxOccurs="1"/>
+        </xs:sequence>
+        <xs:attribute name="message" type="xs:string"/>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="Summary" minOccurs="0" maxOccurs="1">
+      <xs:complexType>
+        <xs:simpleContent>
+          <xs:extension base="xs:decimal">
+            <xs:attribute name="message" type="xs:string" use="required" />
+            <xs:attribute name="scoreType" type="scoreTypeType" use="required" />
+            <xs:attribute name="unit" type="unitType" use="required" />
+            <xs:attribute name="target" type="xs:decimal" />
+          </xs:extension>
+        </xs:simpleContent>
+      </xs:complexType>
+    </xs:element>
+    <xs:element name="Details" minOccurs="0" maxOccurs="1">
+      <xs:complexType>
+        <xs:sequence>
+          <xs:element name="ValueArray" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Value" type="xs:decimal" minOccurs="0" maxOccurs="unbounded" />
+              </xs:sequence>
+              <xs:attribute name="source" type="xs:string" use="required" />
+              <xs:attribute name="message" type="xs:string" use="required" />
+              <xs:attribute name="scoreType" type="scoreTypeType" use="required" />
+              <xs:attribute name="unit" type="unitType" use="required" />
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:element>
+  </xs:sequence>
+  <xs:attribute name="name" type="xs:string" use="required"/>
+  <xs:attribute name="result" type="resultType" use="required"/>
+  <xs:attribute name="starttime" type="xs:string"/>
+  <xs:attribute name="endtime" type="xs:string"/>
+</xs:complexType>
+
+<xs:simpleType name="resultType">
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="pass"/>
+    <xs:enumeration value="fail"/>
+    <xs:enumeration value="timeout"/>
+    <xs:enumeration value="notExecuted"/>
+    <xs:enumeration value="omitted"/>
+  </xs:restriction>
+</xs:simpleType>
+</xs:schema>

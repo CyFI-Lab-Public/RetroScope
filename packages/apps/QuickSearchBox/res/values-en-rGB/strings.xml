@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" msgid="1504397077706378597">"Search"</string>
+    <string name="remove_from_history_failed" msgid="1200923379897420942">"Couldn\'t remove item from history."</string>
+    <string name="corpus_selection_heading" msgid="6673422146423301360">"Search"</string>
+    <string name="menu_settings" msgid="5600043319144155953">"Search Settings"</string>
+    <string name="system_search_category_title" msgid="1507902891285388819">"Phone"</string>
+    <string name="clear_shortcuts_summary" msgid="7407553488405249541">"Clear shortcuts to recently chosen search suggestions"</string>
+    <string name="menu_help" msgid="8466596486018760239">"Help"</string>
+    <string name="google_search_label" msgid="2312345472131797361">"Google"</string>
+    <string name="google_search_hint" msgid="8374014384681586649">"Google Search"</string>
+    <string name="google_search_description" msgid="659411505885375623">"Google Search suggestions"</string>
+    <string name="voice_search_hint_title" msgid="9160095960228453779">"Try saying:"</string>
+</resources>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+ * Copyright (C) 2011 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="android.deviceadmin.cts">
+    <application>
+
+        <uses-library android:name="android.test.runner"/>
+
+        <receiver android:name="android.deviceadmin.cts.CtsDeviceAdminReceiver"
+                android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin"
+                    android:resource="@xml/device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+        
+        <receiver android:name="android.deviceadmin.cts.CtsDeviceAdminReceiver2"
+                android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin"
+                    android:resource="@xml/device_admin_2" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Device Admin that needs to be in the deactivated state in order
+             for tests to pass. -->
+        <receiver android:name="android.deviceadmin.cts.CtsDeviceAdminDeactivatedReceiver"
+                android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin"
+                    android:resource="@xml/device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Helper Activity used by Device Admin activation tests -->
+        <activity android:name="android.deviceadmin.cts.CtsDeviceAdminActivationTestActivity"
+                android:label="Device Admin activation test" />
+
+        <!-- Broken device admin: meta-data missing -->
+        <receiver android:name="android.deviceadmin.cts.CtsDeviceAdminBrokenReceiver"
+                android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Broken device admin: filter doesn't match an Intent with action
+             android.app.action.DEVICE_ADMIN_ENABLED and nothing else (e.g.,
+             data) set -->
+        <receiver android:name="android.deviceadmin.cts.CtsDeviceAdminBrokenReceiver2"
+                android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin"
+                    android:resource="@xml/device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+                <data android:scheme="https" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Broken device admin: meta-data element doesn't point to valid
+             Device Admin configuration/description -->
+        <receiver android:name="android.deviceadmin.cts.CtsDeviceAdminBrokenReceiver3"
+                android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin"
+                    android:resource="@xml/broken_device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Broken device admin: filter doesn't match Intents with action
+             android.app.action.DEVICE_ADMIN_ENABLED -->
+        <receiver android:name="android.deviceadmin.cts.CtsDeviceAdminBrokenReceiver4"
+                android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin"
+                    android:resource="@xml/device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_DISABLED" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Broken device admin: no intent-filter -->
+        <receiver android:name="android.deviceadmin.cts.CtsDeviceAdminBrokenReceiver5"
+                android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin"
+                    android:resource="@xml/device_admin" />
+        </receiver>
+
+    </application>
+
+    <instrumentation android:name="android.test.InstrumentationTestRunner"
+            android:targetPackage="com.android.cts.admin"
+            android:label="Tests for the device admin APIs."/>
+</manifest>

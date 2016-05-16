@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestPlan version="1.0">
+  <Entry uri="android.aadb"/>
+  <Entry uri="android.acceleration"/>
+  <Entry uri="android.accessibility"/>
+  <Entry uri="android.accessibilityservice"/>
+  <Entry uri="android.accounts"/>
+  <Entry uri="android.admin"/>
+  <Entry uri="android.animation"/>
+  <Entry uri="android.app" exclude="android.app.cts.ActivityManagerTest#testIsRunningInTestHarness;android.app.cts.AlertDialogTest#testAlertDialogCancelable;android.app.cts.ExpandableListActivityTest#testCallback" />
+  <Entry uri="android.bionic"/>
+  <Entry uri="android.bluetooth"/>
+  <Entry uri="android.calendarcommon"/>
+  <Entry uri="android.content"/>
+  <Entry uri="android.core.tests.libcore.package.com"/>
+  <Entry uri="android.core.tests.libcore.package.conscrypt"/>
+  <Entry uri="android.core.tests.libcore.package.dalvik"/>
+  <Entry uri="android.core.tests.libcore.package.libcore"/>
+  <Entry uri="android.core.tests.libcore.package.org"/>
+  <Entry uri="android.core.tests.libcore.package.sun"/>
+  <Entry uri="android.core.tests.libcore.package.tests"/>
+  <Entry uri="android.core.vm-tests-tf"/>
+  <Entry uri="android.database"/>
+  <Entry uri="android.display"/>
+  <Entry uri="android.dpi"/>
+  <Entry uri="android.dpi2"/>
+  <Entry uri="android.dreams"/>
+  <Entry uri="android.drm"/>
+  <Entry uri="android.effect"/>
+  <Entry uri="android.example"/>
+  <Entry uri="android.gesture"/>
+  <Entry uri="android.graphics"/>
+  <Entry uri="android.graphics2"/>
+  <Entry uri="android.hardware" exclude="android.hardware.cts.SensorIntegrationTests#testAccelerometerDoesNotStopGyroscope;android.hardware.cts.SensorIntegrationTests#testsAccelerometerDoesnNotStopMagnetometer;android.hardware.cts.SensorIntegrationTests#testAndroidTestCaseSetupProperly;android.hardware.cts.SensorIntegrationTests#testBatchAndFlush;android.hardware.cts.SensorIntegrationTests#testGyroscopeDoesNotStopAccelerometer;android.hardware.cts.SensorIntegrationTests#testGyroscopeDoesNotStopMagnetometer;android.hardware.cts.SensorIntegrationTests#testMagnetometerDoesNotStopAccelerometer;android.hardware.cts.SensorIntegrationTests#testMagnetometerDoesNotStopGyroscope;android.hardware.cts.SensorMagneticFieldTest#testBatchingStoppingOtherClients;android.hardware.cts.SensorMagneticFieldTest#testBatchingStoppingOtherClientsBatching;android.hardware.cts.SensorMagneticFieldTest#testFrequencyAccuracy;android.hardware.cts.SensorMagneticFieldTest#testOneClientSeveralThreads;android.hardware.cts.SensorMagneticFieldTest#testOneClientSeveralThreadsBatching;android.hardware.cts.SensorMagneticFieldTest#testStandardDeviationWhileStatic;android.hardware.cts.SensorMagneticFieldTest#testStoppingOtherClients;android.hardware.cts.SensorMagneticFieldTest#testStoppingOtherClientsBatching;android.hardware.cts.SensorAccelerometerTest#testBatchingStoppingOtherClients;android.hardware.cts.SensorAccelerometerTest#testBatchingStoppingOtherClientsBatching;android.hardware.cts.SensorAccelerometerTest#testFrequencyAccuracy;android.hardware.cts.SensorAccelerometerTest#testOneClientSeveralThreads;android.hardware.cts.SensorAccelerometerTest#testOneClientSeveralThreadsBatching;android.hardware.cts.SensorGyroscopeTest#testBatchingStoppingOtherClients;android.hardware.cts.SensorGyroscopeTest#testBatchingStoppingOtherClientsBatching;android.hardware.cts.SensorGyroscopeTest#testFrequencyAccuracy;android.hardware.cts.SensorGyroscopeTest#testOneClientSeveralThreads;android.hardware.cts.SensorGyroscopeTest#testOneClientSeveralThreadsBatching;android.hardware.cts.SensorGyroscopeTest#testStandardDeviationWhilStatic;android.hardware.cts.SensorGyroscopeTest#testStoppingOtherClients;android.hardware.cts.SensorGyroscopeTest#testStoppingOtherClientsBatching;android.hardware.cts.SensorAccelerometerTest#testStandardDeviationWhileStatic;android.hardware.cts.SensorAccelerometerTest#testStoppingOtherClients;android.hardware.cts.SensorAccelerometerTest#testStoppingOtherClientsBatching;android.hardware.camera2.cts.CameraDeviceTest#testCameraDeviceRepeatingRequest;android.hardware.camera2.cts.ImageReaderTest#testImageReaderFromCameraJpeg;android.hardware.cts.CameraGLTest#testCameraToSurfaceTextureMetadata;android.hardware.cts.CameraTest#testImmediateZoom;android.hardware.cts.CameraTest#testPreviewCallback;android.hardware.cts.CameraTest#testSmoothZoom;android.hardware.cts.CameraTest#testVideoSnapshot;android.hardware.cts.CameraGLTest#testSetPreviewTextureBothCallbacks;android.hardware.cts.CameraGLTest#testSetPreviewTexturePreviewCallback" />
+  <Entry uri="android.holo"/>
+  <Entry uri="android.jni"/>
+  <Entry uri="android.keystore"/>
+  <Entry uri="android.location"/>
+  <Entry uri="android.media" exclude="android.media.cts.StreamingMediaPlayerTest#testHLS;android.media.cts.DecoderTest#testCodecResetsH264WithSurface" />
+  <Entry uri="android.mediastress" exclude="android.mediastress.cts.NativeMediaTest#test480pPlay" />
+  <Entry uri="android.nativemedia.sl"/>
+  <Entry uri="android.nativemedia.xa"/>
+  <Entry uri="android.nativeopengl"/>
+  <Entry uri="android.ndef"/>
+  <Entry uri="android.net" exclude="android.net.cts.ConnectivityManagerTest#testStartUsingNetworkFeature_enableHipri;android.net.wifi.cts.ScanResultTest#testScanResultTimeStamp;android.net.cts.DnsTest#testDnsWorks;android.net.cts.TrafficStatsTest#testTrafficStatsForLocalhost;android.net.wifi.cts.ScanResultTest#testAndroidTestCaseSetupProperly;android.net.wifi.cts.NsdManagerTest#testAndroidTestCaseSetupProperly;android.net.cts.SSLCertificateSocketFactoryTest#testCreateSocket;android.net.cts.SSLCertificateSocketFactoryTest#test_createSocket_bind;android.net.cts.SSLCertificateSocketFactoryTest#test_createSocket_simple;android.net.cts.SSLCertificateSocketFactoryTest#test_createSocket_wrapping" />
+  <Entry uri="android.opengl"/>
+  <Entry uri="android.openglperf"/>
+  <Entry uri="android.os"/>
+  <Entry uri="android.permission"/>
+  <Entry uri="android.permission2"/>
+  <Entry uri="android.preference"/>
+  <Entry uri="android.preference2"/>
+  <Entry uri="android.provider" exclude="android.provider.cts.CalendarTest#testRemindersAlarm" />
+  <Entry uri="android.renderscript"/>
+  <Entry uri="android.rscpp"/>
+  <Entry uri="android.rsg"/>
+  <Entry uri="android.sax"/>
+  <Entry uri="android.security" exclude="android.security.cts.ListeningPortsTest#testNoRemotelyAccessibleListeningUdp6Ports;android.security.cts.ListeningPortsTest#testNoRemotelyAccessibleListeningUdpPorts;android.security.cts.BannedFilesTest#testNoSu;android.security.cts.BannedFilesTest#testNoSuInPath;android.security.cts.PackageSignatureTest#testPackageSignatures" />
+  <Entry uri="android.speech"/>
+  <Entry uri="android.telephony"/>
+  <Entry uri="android.tests.appsecurity"/>
+  <Entry uri="android.tests.location"/>    
+  <Entry uri="android.tests.sigtest"/>
+  <Entry uri="android.text"/>
+  <Entry uri="android.textureview"/>
+  <Entry uri="android.theme"/>
+  <Entry uri="android.uiautomator"/>
+  <Entry uri="android.usb"/>
+  <Entry uri="android.util"/>
+  <Entry uri="android.view"/>
+  <Entry uri="android.webkit" exclude="android.webkit.cts.WebViewClientTest#testDoUpdateVisitedHistory;android.webkit.cts.WebViewClientTest#testLoadPage;android.webkit.cts.WebViewClientTest#testOnFormResubmission;android.webkit.cts.WebViewClientTest#testOnReceivedError;android.webkit.cts.WebViewClientTest#testOnReceivedHttpAuthRequest;android.webkit.cts.WebViewClientTest#testOnScaleChanged;android.webkit.cts.WebViewClientTest#testOnUnhandledKeyEvent;android.webkit.cts.WebViewTest#testSetInitialScale" />
+  <Entry uri="android.widget" exclude="android.widget.cts.GridViewTest#testSetNumColumns" />
+  <Entry uri="com.android.cts.bootup"/>
+  <Entry uri="com.android.cts.browserbench"/>
+  <Entry uri="com.android.cts.dram"/>
+  <Entry uri="com.android.cts.filesystemperf"/>
+  <Entry uri="com.android.cts.jank.opengl"/>
+  <Entry uri="com.android.cts.jank.ui"/>
+  <Entry uri="com.android.cts.opengl"/>
+  <Entry uri="com.android.cts.simplecpu"/>
+  <Entry uri="com.android.cts.ui"/>
+  <Entry uri="com.android.cts.uihost"/>
+  <Entry uri="com.android.cts.videoperf"/>
+  <Entry uri="zzz.android.monkey"/>
+</TestPlan>

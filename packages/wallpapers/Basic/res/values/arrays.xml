@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+* Copyright (C) 2008 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+-->
+
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+  <string-array name="polar_clock_palette_names" translatable="false">
+    <item>@string/palette_gray</item>
+    <item>@string/palette_white_c</item>
+    <item>@string/palette_black_c</item>
+    <item>@string/palette_matrix</item>
+    <item>@string/palette_halloween</item>
+    <item>@string/palette_violet</item>
+    <item>@string/palette_oceanic</item>
+    <item>@string/palette_zenburn</item>
+  </string-array>
+  <string-array name="polar_clock_palette_ids" translatable="false">
+    <item>palette_gray</item>
+    <item>palette_white_c</item>
+    <item>palette_black_c</item>
+    <item>palette_matrix</item>
+    <item>palette_halloween</item>
+    <item>palette_violet</item>
+    <item>palette_oceanic</item>
+    <item>palette_zenburn</item>
+  </string-array>
+</resources>

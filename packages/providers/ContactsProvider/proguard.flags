@@ -1,0 +1,16 @@
+-keep class com.android.providers.contacts.ContactsDatabaseHelper {
+  <init>(...);
+}
+
+-keep class com.android.vcard.VCardComposer {
+  boolean init();
+  int getCount();
+}
+
+# Any class or method annotated with NeededForTesting.
+-keep @com.android.providers.contacts.util.NeededForTesting class *
+-keepclassmembers class * {
+@com.android.providers.contacts.util.NeededForTesting *;
+}
+
+-verbose

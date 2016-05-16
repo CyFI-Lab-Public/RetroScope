@@ -1,0 +1,16 @@
+<resources>
+
+    <string name="app_name">Print Service 2</string>
+    <string name="description">This print serivice exposes one fake printer and
+         on print sends an email to svetoslavganov@google.com</string>
+    <string name="settings">This is an activitiy with some print service settings.</string>
+
+    <string name="resolution_200x200">200x200</string>
+    <string name="resolution_300x300">300x300</string>
+    <string name="resolution_600x600">600x600</string>
+    <string name="input_tray_first">First input tray</string>
+    <string name="input_tray_second">Second input tray</string>
+    <string name="output_tray_first">First output tray</string>
+    <string name="output_tray_second">Second output tray</string>
+
+</resources>

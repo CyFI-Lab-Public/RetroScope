@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	 android:id="@+id/ParentLayout"
+	android:orientation="vertical" android:background="@drawable/wallpaper_fmtx">
+
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:id="@+id/scrollview1"
+		android:layout_weight="1">
+
+		<LinearLayout android:id="@+id/widget224"
+			android:layout_width="fill_parent" android:orientation="vertical"
+			android:layout_height="fill_parent">
+			<LinearLayout android:id="@+id/widget224"
+				android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+				android:layout_width="fill_parent" android:layout_height="120dip">
+				<ImageView android:id="@+id/imgFTP" android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_marginLeft="30dip" android:src="@drawable/txradio_ics">
+				</ImageView>
+				<TextView android:id="@+id/lblFmRx" android:layout_width="fill_parent"
+					android:layout_height="30dip" android:layout_marginTop="15dip"
+					android:text="@string/app_tx" android:textSize="24sp"
+					android:textStyle="bold" android:layout_marginLeft="20dip"
+					android:layout_gravity="center" android:textColor="@android:color/white">
+				</TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/widget233"
+				android:layout_below="@+id/widget224" android:layout_width="fill_parent"
+				android:layout_alignParentLeft="false" android:layout_height="100dip">
+				<TextView android:id="@+id/lblFmApp" android:layout_width="wrap_content"
+					android:text="@string/app_tx" android:textSize="24sp"
+					android:textStyle="bold" android:layout_height="50dip"
+					android:layout_marginTop="20dip" android:paddingLeft="50dip"
+					android:textColor="@android:color/white">
+				</TextView>
+				<TextView android:id="@+id/txtplatform"
+					android:layout_width="wrap_content" android:text="@string/txtplatform"
+					android:paddingLeft="10dip" android:textSize="24sp"
+					android:layout_height="50dip" android:layout_marginTop="20dip"
+					android:textStyle="bold" android:textColor="@android:color/white">
+				</TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/widget243"
+				android:layout_below="@+id/widget233" android:layout_width="fill_parent"
+				android:layout_alignParentLeft="false" android:layout_height="50dip">
+				<TextView android:id="@+id/lblversion"
+					android:layout_width="wrap_content" android:text="@string/lblversion"
+					android:layout_height="40dip" android:textSize="24sp"
+					android:layout_marginLeft="30dip" android:paddingLeft="50dip"
+					android:textColor="@android:color/white">
+				</TextView>
+				<TextView android:id="@+id/txtversion"
+					android:layout_width="wrap_content" android:text="@string/txtversion"
+					android:paddingLeft="30dip" android:layout_height="40dip"
+					android:textSize="24sp" android:textColor="@android:color/white">
+				</TextView>
+			</LinearLayout>
+
+		</LinearLayout>
+</ScrollView>
+
+		<LinearLayout android:id="@+id/widget244"
+			android:layout_below="@+id/widget224"
+			android:layout_alignParentBottom="true" android:layout_width="fill_parent"
+			android:layout_height="wrap_content" android:gravity="right">
+
+			<Button android:id="@+id/btnBack" android:layout_width="150dip"
+				android:layout_height="50dip" android:text="@string/btnCancel"
+				android:layout_alignParentRight="true" android:layout_gravity="center">
+			</Button>
+		</LinearLayout>
+		</LinearLayout>
+
+
+

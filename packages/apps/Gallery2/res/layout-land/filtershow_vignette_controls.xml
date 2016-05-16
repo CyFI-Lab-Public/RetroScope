@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fadeScrollbars="false">
+
+        <GridLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:alignmentMode="alignBounds"
+                android:useDefaultMargins="true"
+                android:columnOrderPreserved="false"
+                android:columnCount="2">
+
+            <TextView
+                    android:layout_gravity="left|center_vertical"
+                    android:text="@string/vignette_exposure"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="8dp"
+                    android:visibility="gone"/>
+            <TextView
+                    android:layout_gravity="right|center_vertical"
+                    android:id="@+id/exposureValue"
+                    android:layout_marginRight="16dp"
+                    android:visibility="gone"/>
+            <SeekBar
+                    android:id="@+id/exposureSeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FilterShowSlider"
+                    android:layout_columnSpan="2"
+                    android:visibility="gone"/>
+
+            <TextView
+                    android:layout_gravity="left|center_vertical"
+                    android:text="@string/vignette_saturation"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="8dp"/>
+            <TextView
+                    android:layout_gravity="right|center_vertical"
+                    android:id="@+id/saturationValue"
+                    android:layout_marginRight="16dp"/>
+            <SeekBar
+                    android:id="@+id/saturationSeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FilterShowSlider"
+                    android:layout_columnSpan="2"/>
+
+            <TextView
+                    android:layout_gravity="left|center_vertical"
+                    android:text="@string/vignette_contrast"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="8dp"/>
+            <TextView
+                    android:layout_gravity="right|center_vertical"
+                    android:id="@+id/contrastValue"
+                    android:layout_marginRight="16dp"/>
+            <SeekBar
+                    android:id="@+id/contrastSeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FilterShowSlider"
+                    android:layout_columnSpan="2"/>
+
+            <TextView
+                    android:layout_gravity="left|center_vertical"
+                    android:text="@string/vignette_falloff"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="8dp"/>
+            <TextView
+                    android:layout_gravity="right|center_vertical"
+                    android:id="@+id/falloffValue"
+                    android:layout_marginRight="16dp"/>
+            <SeekBar
+                    android:id="@+id/falloffSeekBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/FilterShowSlider"
+                    android:layout_columnSpan="2"/>
+
+        </GridLayout>
+    </ScrollView>
+
+    <GridLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="128dp"
+            android:alignmentMode="alignBounds"
+            android:useDefaultMargins="true"
+            android:columnOrderPreserved="false"
+            android:layout_weight="1"
+            android:columnCount="2">
+
+        <TextView
+                android:layout_gravity="left|center_vertical"
+                android:text="@string/vignette_main"
+                android:layout_marginLeft="8dp"/>
+        <TextView
+                android:layout_gravity="right|center_vertical"
+                android:id="@+id/mainVignetteValue"
+                android:layout_marginRight="16dp"/>
+        <SeekBar
+                android:id="@+id/mainVignetteSeekbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/FilterShowSlider"
+                android:layout_columnSpan="2"/>
+    </GridLayout>
+
+</LinearLayout>

@@ -1,0 +1,5 @@
+type kickstart, domain;
+permissive kickstart;
+type kickstart_exec, file_type, exec_type;
+domain_auto_trans(init, kickstart_exec, kickstart)
+unconfined_domain(kickstart)

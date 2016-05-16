@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="res"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="var" path="CTS_SRC_ROOT/out/host/common/obj/JAVA_LIBRARIES/ctsdeviceinfolib_intermediates/javalib.jar"/>
+	<classpathentry exported="true" kind="var" path="CTS_SRC_ROOT/out/host/common/obj/JAVA_LIBRARIES/hosttestlib_intermediates/javalib.jar"/>
+	<classpathentry kind="var" path="CTS_SRC_ROOT/out/host/common/obj/JAVA_LIBRARIES/ddmlib-prebuilt_intermediates/ddmlib-prebuilt.jar" sourcepath="/SDK_SRC_ROOT"/>
+	<classpathentry kind="var" path="CTS_SRC_ROOT/out/host/common/obj/JAVA_LIBRARIES/tradefed-prebuilt_intermediates/tradefed-prebuilt.jar" sourcepath="/TRADEFED_ROOT/tools/tradefederation/src"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

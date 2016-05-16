@@ -1,0 +1,6 @@
+- User of CTS code needs to edit configuration files in
+  "src/android/drm/cts/configs/" according to the specification
+  of user's DRM plug-in.
+- If new plug-in is added, user should add corresponding configuration
+  file under "src/android/drm/cts/configs/" and update
+  "src/android/drm/cts/ConfigFactory.java".

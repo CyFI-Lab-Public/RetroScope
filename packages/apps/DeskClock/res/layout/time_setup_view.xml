@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.android.deskclock.timer.TimerView
+            android:id="@+id/timer_time_text"
+            android:layoutDirection="ltr"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/medium_font_padding"
+            android:paddingBottom="@dimen/medium_font_padding"
+            android:gravity="center_horizontal">
+
+        <include layout="@layout/timer_h_mm_ss_view"/>
+
+        <ImageButton
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/timer_setup_delete_start_margin"
+                android:padding="@dimen/timer_setup_delete_padding"
+                android:src="@drawable/ic_backspace"
+                android:background="@drawable/item_background"
+                android:contentDescription="@string/timer_delete"/>
+
+    </com.android.deskclock.timer.TimerView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:layout_marginBottom="8dip"
+        android:background="@color/dialog_gray" />
+    <include layout="@layout/three_keys_view"
+        android:id="@+id/first" />
+
+    <include layout="@layout/three_keys_view"
+        android:id="@+id/second"/>
+
+    <include layout="@layout/three_keys_view"
+        android:id="@+id/third"/>
+
+    <include layout="@layout/three_keys_view"
+        android:id="@+id/fourth" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="#28ffffff"/>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="0.5"
+            android:layout_height="0dip">
+
+        <Button
+                android:id="@+id/timer_cancel"
+                android:text="@string/timer_cancel"
+                android:layout_width="0dp"
+                style="@style/bold_button"
+                android:textSize="@dimen/timer_setup_button_size"
+                android:layout_weight="1"
+                android:background="@drawable/item_background"
+                android:layout_height="match_parent"/>
+
+        <View
+                android:id="@+id/timer_button_sep"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dip"
+                android:layout_marginBottom="8dip"
+                android:layout_width="1dip"
+                android:background="#28ffffff"/>
+
+        <Button
+                android:id="@+id/timer_start"
+                android:text="@string/timer_start"
+                android:layout_width="0dp"
+                style="@style/bold_button"
+                android:textSize="@dimen/timer_setup_button_size"
+                android:layout_weight="1"
+                android:background="@drawable/item_background"
+                android:layout_height="match_parent"/>
+
+    </LinearLayout>
+
+</LinearLayout>

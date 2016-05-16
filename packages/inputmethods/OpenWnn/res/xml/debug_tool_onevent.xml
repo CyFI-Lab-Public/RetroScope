@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<OpenWnn_Test>
+<!-- OpenWnn onEvent() Test -->
+<!-- OpenWnnEN_Test -->
+
+<!-- (Qwerty KeyBoard Shift On) -->
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase001_onEvent()_Q" displayValue = "Q" keyValue = "Q" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase002_onEvent()_W" displayValue = "W" keyValue = "W" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase003_onEvent()_E" displayValue = "E" keyValue = "E" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase004_onEvent()_R" displayValue = "R" keyValue = "R" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase005_onEvent()_T" displayValue = "T" keyValue = "T" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase006_onEvent()_Y" displayValue = "Y" keyValue = "Y" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase007_onEvent()_U" displayValue = "U" keyValue = "U" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase008_onEvent()_I" displayValue = "I" keyValue = "I" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase009_onEvent()_O" displayValue = "O" keyValue = "O" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase010_onEvent()_P" displayValue = "P" keyValue = "P" keyCode= ""/>
+
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase011_onEvent()_A" displayValue = "A" keyValue = "A" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase012_onEvent()_S" displayValue = "S" keyValue = "S" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase013_onEvent()_D" displayValue = "D" keyValue = "D" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase014_onEvent()_F" displayValue = "F" keyValue = "F" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase015_onEvent()_G" displayValue = "G" keyValue = "G" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase016_onEvent()_H" displayValue = "H" keyValue = "H" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase017_onEvent()_J" displayValue = "J" keyValue = "J" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase018_onEvent()_K" displayValue = "K" keyValue = "K" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase019_onEvent()_L" displayValue = "L" keyValue = "L" keyCode= ""/>
+
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase020_onEvent()_Shift" displayValue = "" keyValue = "" keyCode= "59"/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase021_onEvent()_Z" displayValue = "Z" keyValue = "Z" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase022_onEvent()_X" displayValue = "X" keyValue = "X" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase023_onEvent()_C" displayValue = "C" keyValue = "C" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase024_onEvent()_V" displayValue = "V" keyValue = "V" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase025_onEvent()_B" displayValue = "B" keyValue = "B" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase026_onEvent()_N" displayValue = "N" keyValue = "N" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase027_onEvent()_M" displayValue = "M" keyValue = "M" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase028_onEvent()_DEL" displayValue = "" keyValue = "" keyCode= "67"/>
+
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase029_onEvent()_切替" displayValue = "" keyValue = "" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase030_onEvent()_SYM" displayValue = "" keyValue = "" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase031_onEvent()_," displayValue = "," keyValue = "," keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase032_onEvent()_スペース" displayValue = " " keyValue = " " keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase033_onEvent()_." displayValue = "." keyValue = "." keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase034_onEvent()_?" displayValue = "\?" keyValue = "\?" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase035_onEvent()_改行" displayValue = "" keyValue = "" keyCode= "66"/>
+
+<!-- (Qwerty KeyBoard Shift Off) -->
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase036_onEvent()_q" displayValue = "q" keyValue = "q" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase037_onEvent()_w" displayValue = "w" keyValue = "w" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase038_onEvent()_e" displayValue = "e" keyValue = "e" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase039_onEvent()_r" displayValue = "r" keyValue = "r" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase040_onEvent()_t" displayValue = "t" keyValue = "t" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase041_onEvent()_y" displayValue = "y" keyValue = "y" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase042_onEvent()_u" displayValue = "u" keyValue = "u" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase043_onEvent()_I" displayValue = "I" keyValue = "I" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase044_onEvent()_o" displayValue = "o" keyValue = "o" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase045_onEvent()_p" displayValue = "p" keyValue = "p" keyCode= ""/>
+
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase046_onEvent()_a" displayValue = "a" keyValue = "a" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase047_onEvent()_s" displayValue = "s" keyValue = "s" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase048_onEvent()_d" displayValue = "d" keyValue = "d" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase049_onEvent()_f" displayValue = "f" keyValue = "f" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase050_onEvent()_g" displayValue = "g" keyValue = "g" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase051_onEvent()_h" displayValue = "h" keyValue = "h" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase052_onEvent()_j" displayValue = "j" keyValue = "j" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase053_onEvent()_k" displayValue = "k" keyValue = "k" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase054_onEvent()_l" displayValue = "l" keyValue = "l" keyCode= ""/>
+
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase055_onEvent()_Shift" displayValue = "" keyValue = "" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase056_onEvent()_z" displayValue = "z" keyValue = "z" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase057_onEvent()_x" displayValue = "x" keyValue = "x" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase058_onEvent()_c" displayValue = "c" keyValue = "c" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase059_onEvent()_v" displayValue = "v" keyValue = "v" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase060_onEvent()_b" displayValue = "b" keyValue = "b" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase061_onEvent()_n" displayValue = "n" keyValue = "n" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase062_onEvent()_m" displayValue = "m" keyValue = "m" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase063_onEvent()_DEL" displayValue = "" keyValue = "" keyCode= "67"/>
+
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase064_onEvent()_切替" displayValue = "" keyValue = "" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase065_onEvent()_SYM" displayValue = "" keyValue = "" keyCode= "63"/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase066_onEvent()_," displayValue = "," keyValue = "," keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase067_onEvent()_スペース" displayValue = "" keyValue = "" keyCode= "62"/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase068_onEvent()_." displayValue = "." keyValue = "." keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase069_onEvent()_?" displayValue = "\?" keyValue = "\?" keyCode= ""/>
+<key targetTest = "OpenWnnEN_Test"  testName = "EN_TestCase070_onEvent()_改行" displayValue = "" keyValue = "" keyCode= "66"/>
+
+<!-- OpenWnnJAJP_Test -->
+<key targetTest = "OpenWnnJAJP_Test"  testName = "JP_TestCase01_onEvent()_q"
+    displayValue = "q" keyValue = "q" keyCode= ""/>
+
+<key targetTest = "OpenWnnJAJP_Test"  testName = "JP_TestCase02_onEvent()_w"
+    displayValue = "w" keyValue = "w" keyCode= ""/>
+
+<key targetTest = "OpenWnnJAJP_Test"  testName = "JP_TestCase03_onEvent()_e"
+    displayValue = "e" keyValue = "e" keyCode= ""/>
+
+<!-- For OpenWnnEvent.INPUT_SOFT_KEY -->
+<key targetTest = "OpenWnnJAJP_Test"  testName = "JP_TestCaseXX_onEvent()_1"
+    displayValue = "1" keyValue = "" keyCode= "8"/>
+
+<!-- OpenWnnZHCN_Test -->
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase001_onEvent()_Q" displayValue = "Q" keyValue = "Q" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase002_onEvent()_W" displayValue = "W" keyValue = "W" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase003_onEvent()_E" displayValue = "E" keyValue = "E" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase004_onEvent()_R" displayValue = "R" keyValue = "R" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase005_onEvent()_T" displayValue = "T" keyValue = "T" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase006_onEvent()_Y" displayValue = "Y" keyValue = "Y" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase007_onEvent()_U" displayValue = "U" keyValue = "U" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase008_onEvent()_I" displayValue = "I" keyValue = "I" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase009_onEvent()_O" displayValue = "O" keyValue = "O" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase010_onEvent()_P" displayValue = "P" keyValue = "P" keyCode= ""/>
+
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase011_onEvent()_A" displayValue = "A" keyValue = "A" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase012_onEvent()_S" displayValue = "S" keyValue = "S" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase013_onEvent()_D" displayValue = "D" keyValue = "D" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase014_onEvent()_F" displayValue = "F" keyValue = "F" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase015_onEvent()_G" displayValue = "G" keyValue = "G" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase016_onEvent()_H" displayValue = "H" keyValue = "H" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase017_onEvent()_J" displayValue = "J" keyValue = "J" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase018_onEvent()_K" displayValue = "K" keyValue = "K" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase019_onEvent()_L" displayValue = "L" keyValue = "L" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase020_onEvent()_Shift" displayValue = "" keyValue = "" keyCode= "59"/>
+
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase021_onEvent()_Z" displayValue = "Z" keyValue = "Z" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase022_onEvent()_X" displayValue = "X" keyValue = "X" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase023_onEvent()_C" displayValue = "C" keyValue = "C" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase024_onEvent()_V" displayValue = "V" keyValue = "V" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase025_onEvent()_B" displayValue = "B" keyValue = "B" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase026_onEvent()_N" displayValue = "N" keyValue = "N" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase027_onEvent()_M" displayValue = "M" keyValue = "M" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase028_onEvent()_DEL" displayValue = "" keyValue = "" keyCode= "67"/>
+
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase029_onEvent()_ALT" displayValue = "" keyValue = "" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase030_onEvent()_SYM" displayValue = "" keyValue = "" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase031_onEvent()_," displayValue = "," keyValue = "," keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase032_onEvent()_SPACE" displayValue = "" keyValue = "" keyCode= "62"/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase033_onEvent()_." displayValue = "." keyValue = "." keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase034_onEvent()_!" displayValue = "!" keyValue = "!" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase035_onEvent()_RETURN" displayValue = "" keyValue = "" keyCode= "66"/>
+
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase036_onEvent()_q" displayValue = "q" keyValue = "q" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase037_onEvent()_w" displayValue = "w" keyValue = "w" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase038_onEvent()_e" displayValue = "e" keyValue = "e" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase039_onEvent()_r" displayValue = "r" keyValue = "r" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase040_onEvent()_t" displayValue = "t" keyValue = "t" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase041_onEvent()_y" displayValue = "y" keyValue = "y" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase042_onEvent()_u" displayValue = "u" keyValue = "u" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase043_onEvent()_i" displayValue = "i" keyValue = "i" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase044_onEvent()_o" displayValue = "o" keyValue = "o" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase045_onEvent()_p" displayValue = "p" keyValue = "p" keyCode= ""/>
+
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase046_onEvent()_a" displayValue = "a" keyValue = "a" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase047_onEvent()_s" displayValue = "s" keyValue = "s" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase048_onEvent()_d" displayValue = "d" keyValue = "d" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase049_onEvent()_f" displayValue = "f" keyValue = "f" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase050_onEvent()_g" displayValue = "g" keyValue = "g" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase051_onEvent()_h" displayValue = "h" keyValue = "h" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase052_onEvent()_j" displayValue = "j" keyValue = "j" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase053_onEvent()_k" displayValue = "k" keyValue = "k" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase054_onEvent()_l" displayValue = "l" keyValue = "l" keyCode= ""/>
+ 
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase055_onEvent()_Shift" displayValue = "" keyValue = "" keyCode= "59"/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase056_onEvent()_z" displayValue = "z" keyValue = "z" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase057_onEvent()_x" displayValue = "x" keyValue = "x" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase058_onEvent()_c" displayValue = "c" keyValue = "c" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase059_onEvent()_v" displayValue = "v" keyValue = "v" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase060_onEvent()_b" displayValue = "b" keyValue = "b" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase061_onEvent()_n" displayValue = "n" keyValue = "n" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase062_onEvent()_m" displayValue = "m" keyValue = "m" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase063_onEvent()_DEL" displayValue = "" keyValue = "" keyCode= "67"/>
+
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase064_onEvent()_ALT" displayValue = "" keyValue = "" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase065_onEvent()_SYM" displayValue = "" keyValue = "" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase066_onEvent()_," displayValue = "," keyValue = "," keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase067_onEvent()_SPACE" displayValue = "" keyValue = "" keyCode= "62"/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase068_onEvent()_." displayValue = "." keyValue = "." keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase069_onEvent()_\?" displayValue = "\?" keyValue = "\?" keyCode= ""/>
+    <key targetTest = "OpenWnnZHCN_Test"  testName = "ZHCN_TestCase070_onEvent()_RETURN" displayValue = "" keyValue = "" keyCode= "66"/>
+</OpenWnn_Test>

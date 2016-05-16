@@ -1,0 +1,5 @@
+allow rild diag_device:chr_file rw_file_perms;
+
+# Grant access to Qualcomm MSM Interface (QMI) radio sockets to RILD
+allow rild qmux_radio_socket:sock_file create_file_perms;
+allow rild qmux_radio_socket:dir rw_dir_perms;

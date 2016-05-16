@@ -1,0 +1,11 @@
+<resources>
+
+    <string name="app_name">Print</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="print">Print</string>
+    <string name="name">Name</string>
+    <string name="enter_name">Enter your name</string>
+    <string name="done">Done</string>
+
+</resources>

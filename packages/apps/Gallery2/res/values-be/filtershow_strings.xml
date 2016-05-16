@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="title_activity_filter_show" msgid="2036539130684382763">"Фотарэдактар"</string>
+    <string name="cannot_load_image" msgid="5023634941212959976">"Не атрымлiваецца загрузіць малюнак"</string>
+    <!-- no translation found for cannot_edit_original (5890293845882609388) -->
+    <skip />
+    <!-- no translation found for original_picture_text (3076213290079909698) -->
+    <skip />
+    <string name="setting_wallpaper" msgid="4679087092300036632">"Усталёўка шпалер..."</string>
+    <string name="download_failure" msgid="5923323939788582895">"Не атрымалася спампаваць фота. Сетка недаступная."</string>
+    <string name="original" msgid="3524493791230430897">"Арыгiнал"</string>
+    <string name="borders" msgid="2067345080568684614">"Межы"</string>
+    <!-- no translation found for custom_border (8679893731790931871) -->
+    <skip />
+    <string name="filtershow_undo" msgid="6781743189243585101">"Вярнуць"</string>
+    <string name="filtershow_redo" msgid="4219489910543059747">"Паўтарыць"</string>
+    <string name="show_imagestate_panel" msgid="281932769701043015">"Паказваць прымененыя эфекты"</string>
+    <string name="hide_imagestate_panel" msgid="7207643485811695257">"Хаваць прымененыя эфекты"</string>
+    <!-- no translation found for export_image (3202835713172222134) -->
+    <skip />
+    <!-- no translation found for print_image (1942989216591621413) -->
+    <skip />
+    <!-- no translation found for export_flattened (9046192331465915411) -->
+    <skip />
+    <!-- no translation found for select_output_settings (1268532018080310748) -->
+    <skip />
+    <!-- no translation found for quality (179292110309050529) -->
+    <skip />
+    <!-- no translation found for size (4639404642236356037) -->
+    <skip />
+    <!-- no translation found for x (6810256999024563662) -->
+    <skip />
+    <string name="menu_settings" msgid="6428291655769260831">"Налады"</string>
+    <string name="unsaved" msgid="8704442449002374375">"Існуюць незахаваныя змяненні ў гэтай выяве."</string>
+    <string name="save_before_exit" msgid="2680660633675916712">"Жадаеце захавацца перад выхадам?"</string>
+    <string name="save_and_exit" msgid="3628425023766687419">"Захаваць і выйсці"</string>
+    <!-- no translation found for save_and_processing (6371565035837463194) -->
+    <skip />
+    <string name="exit" msgid="242642957038770113">"Выйсці"</string>
+    <string name="history" msgid="455767361472692409">"Гісторыя"</string>
+    <string name="reset" msgid="9013181350779592937">"Скінуць"</string>
+    <!-- no translation found for history_original (150973253194312841) -->
+    <skip />
+    <string name="imageState" msgid="8632586742752891968">"Прымененыя эфекты"</string>
+    <string name="compare_original" msgid="8140838959007796977">"Параўнаць"</string>
+    <string name="apply_effect" msgid="1218288221200568947">"Паспрабаваць"</string>
+    <string name="reset_effect" msgid="7712605581024929564">"Скінуць"</string>
+    <string name="aspect" msgid="4025244950820813059">"Аспект"</string>
+    <string name="aspect1to1_effect" msgid="1159104543795779123">"1:1"</string>
+    <string name="aspect4to3_effect" msgid="7968067847241223578">"4:3"</string>
+    <string name="aspect3to4_effect" msgid="7078163990979248864">"3:4"</string>
+    <string name="aspect4to6_effect" msgid="1410129351686165654">"4:6"</string>
+    <string name="aspect5to7_effect" msgid="5122395569059384741">"5:7"</string>
+    <string name="aspect7to5_effect" msgid="5780001758108328143">"7:5"</string>
+    <string name="aspect9to16_effect" msgid="7740468012919660728">"16:9"</string>
+    <string name="aspectNone_effect" msgid="6263330561046574134">"Няма"</string>
+    <!-- no translation found for aspectOriginal_effect (5678516555493036594) -->
+    <skip />
+    <string name="Fixed" msgid="8017376448916924565">"Выпраўленыя"</string>
+    <string name="tinyplanet" msgid="2783694326474415761">"Маленькая планета"</string>
+    <string name="exposure" msgid="6526397045949374905">"Экспазіцыя"</string>
+    <string name="sharpness" msgid="6463103068318055412">"Выразнасць"</string>
+    <string name="contrast" msgid="2310908487756769019">"Кантраст"</string>
+    <string name="vibrance" msgid="3326744578577835915">"Вібрацыя"</string>
+    <string name="saturation" msgid="7026791551032438585">"Насычанасць"</string>
+    <string name="bwfilter" msgid="8927492494576933793">"Чорна-белы фiльтр"</string>
+    <string name="wbalance" msgid="6346581563387083613">"Aўтаколер"</string>
+    <string name="hue" msgid="6231252147971086030">"Тон"</string>
+    <string name="shadow_recovery" msgid="3928572915300287152">"Цені"</string>
+    <string name="highlight_recovery" msgid="8262208470735204243">"Блікі"</string>
+    <string name="curvesRGB" msgid="915010781090477550">"Пэндзаль"</string>
+    <string name="vignette" msgid="934721068851885390">"Віньетка"</string>
+    <!-- no translation found for vignette_main (6046495605390665423) -->
+    <skip />
+    <!-- no translation found for vignette_exposure (6862058227309534094) -->
+    <skip />
+    <!-- no translation found for vignette_saturation (1617055207565719771) -->
+    <skip />
+    <!-- no translation found for vignette_contrast (955732121756799897) -->
+    <skip />
+    <!-- no translation found for vignette_falloff (690918055030064199) -->
+    <skip />
+    <string name="redeye" msgid="4508883127049472069">"Чырвонае вока"</string>
+    <string name="imageDraw" msgid="6918552177844486656">"Намаляваць"</string>
+    <string name="straighten" msgid="26025591664983528">"Выраўнаваць"</string>
+    <string name="crop" msgid="5781263790107850771">"Абрэзаць"</string>
+    <string name="rotate" msgid="2796802553793795371">"Павярнуць"</string>
+    <string name="mirror" msgid="5482518108154883096">"Люстра"</string>
+    <string name="negative" msgid="6998313764388022201">"Негатыў"</string>
+    <string name="none" msgid="6633966646410296520">"Няма"</string>
+    <string name="edge" msgid="7036064886242147551">"Краi"</string>
+    <!-- no translation found for kmeans (2080952022674981541) -->
+    <skip />
+    <string name="downsample" msgid="3552938534146980104">"Паменшыць"</string>
+    <!-- no translation found for grad (546774853424848655) -->
+    <skip />
+    <!-- no translation found for editor_grad_brightness (5937316734380235741) -->
+    <skip />
+    <!-- no translation found for editor_grad_contrast (3454456673401803360) -->
+    <skip />
+    <!-- no translation found for editor_grad_saturation (3760247354109521726) -->
+    <skip />
+    <!-- no translation found for editor_chan_sat_main (4427652337797121940) -->
+    <skip />
+    <!-- no translation found for editor_chan_sat_red (1699222266490540696) -->
+    <skip />
+    <!-- no translation found for editor_chan_sat_yellow (1488997071882154179) -->
+    <skip />
+    <!-- no translation found for editor_chan_sat_green (1514055896212975167) -->
+    <skip />
+    <!-- no translation found for editor_chan_sat_cyan (1367634650172508288) -->
+    <skip />
+    <!-- no translation found for editor_chan_sat_blue (384409736863387895) -->
+    <skip />
+    <!-- no translation found for editor_chan_sat_magenta (6689215719351415546) -->
+    <skip />
+    <!-- no translation found for editor_grad_style (2168414479007745179) -->
+    <skip />
+    <!-- no translation found for editor_grad_new (4857265951369377379) -->
+    <skip />
+    <string name="curves_channel_rgb" msgid="7909209509638333690">"RGB"</string>
+    <string name="curves_channel_red" msgid="4199710104162111357">"Чырвоны"</string>
+    <string name="curves_channel_green" msgid="3733003466905031016">"Зялёны"</string>
+    <string name="curves_channel_blue" msgid="9129211507395079371">"Сiнi"</string>
+    <string name="draw_style" msgid="2036125061987325389">"Стыль"</string>
+    <string name="draw_size" msgid="4360005386104151209">"Памер"</string>
+    <!-- no translation found for draw_hue (4975135843189267133) -->
+    <skip />
+    <!-- no translation found for draw_saturation (5394395648014454882) -->
+    <skip />
+    <!-- no translation found for draw_value (6571604055161538273) -->
+    <skip />
+    <string name="draw_color" msgid="2119030386987211193">"Колер"</string>
+    <string name="draw_style_line" msgid="9216476853904429628">"Лiнii"</string>
+    <string name="draw_style_brush_spatter" msgid="7612691122932981554">"Маркёр"</string>
+    <string name="draw_style_brush_marker" msgid="8468302322165644292">"Пырскi"</string>
+    <string name="draw_clear" msgid="6728155515454921052">"Ачысціць"</string>
+    <!-- no translation found for color_border_size (1086895807615869290) -->
+    <skip />
+    <!-- no translation found for color_border_corner_size (7637235159438869979) -->
+    <skip />
+    <!-- no translation found for color_border_color (8765458414425980711) -->
+    <skip />
+    <!-- no translation found for color_border_clear (4418261191091091722) -->
+    <skip />
+    <string name="color_pick_select" msgid="734312818059057394">"Выбраць іншы колер"</string>
+    <string name="color_pick_title" msgid="6195567431995308876">"Выберыце колер"</string>
+    <string name="draw_size_title" msgid="3121649039610273977">"Выберыце памер"</string>
+    <string name="draw_size_accept" msgid="6781529716526190028">"OK"</string>
+    <string name="state_panel_original" msgid="9069584409934164419">"Арыгiнал"</string>
+    <string name="state_panel_result" msgid="318640531123298676">"Вынiк"</string>
+    <!-- no translation found for filtershow_notification_label (1653168445525855247) -->
+    <skip />
+    <!-- no translation found for filtershow_notification_message (2661871765484036286) -->
+    <skip />
+    <!-- no translation found for filtershow_save_preset (3933550455577927439) -->
+    <skip />
+    <!-- no translation found for filtershow_manage_preset (3872896753708921286) -->
+    <skip />
+    <!-- no translation found for filtershow_new_preset (8923930134923416617) -->
+    <skip />
+    <!-- no translation found for filtershow_preset_name (7015939727047649866) -->
+    <skip />
+    <!-- no translation found for filtershow_show_info_panel (5773036746043711115) -->
+    <skip />
+    <!-- no translation found for filtershow_show_info_panel_name (5908258517140549439) -->
+    <skip />
+    <!-- no translation found for filtershow_show_info_panel_size (1714666849204493017) -->
+    <skip />
+    <!-- no translation found for filtershow_show_info_panel_histogram (2669188469897955809) -->
+    <skip />
+    <!-- no translation found for filtershow_show_info_panel_exif (4965486882625125154) -->
+    <skip />
+    <!-- no translation found for filtershow_add_button_looks (8630823661416925426) -->
+    <skip />
+    <!-- no translation found for filtershow_add_button_versions (7620107266685809612) -->
+    <skip />
+    <!-- no translation found for filtershow_version_original (1413894292200912828) -->
+    <skip />
+    <!-- no translation found for filtershow_version_current (6609334422797468952) -->
+    <skip />
+    <!-- no translation found for filtershow_exif_model (3543206476046267466) -->
+    <skip />
+    <!-- no translation found for filtershow_exif_aperture (5076571522763604380) -->
+    <skip />
+    <!-- no translation found for filtershow_exif_focal_length (5925151469731623706) -->
+    <skip />
+    <!-- no translation found for filtershow_exif_iso (5822494416955625317) -->
+    <skip />
+    <!-- no translation found for filtershow_exif_subject_distance (4920632253433906646) -->
+    <skip />
+    <!-- no translation found for filtershow_exif_date (8882402253732028544) -->
+    <skip />
+    <!-- no translation found for filtershow_exif_f_stop (6081797865604483139) -->
+    <skip />
+    <!-- no translation found for filtershow_exif_exposure_time (4099067062781294115) -->
+    <skip />
+    <!-- no translation found for filtershow_exif_copyright (8801875918803737581) -->
+    <skip />
+</resources>

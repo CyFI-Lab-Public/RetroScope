@@ -1,0 +1,1 @@
+allow wpa devpts:chr_file rw_file_perms;

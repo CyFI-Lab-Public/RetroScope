@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <!-- Specify the screen orientation -->
+    <bool name="only_use_portrait">true</bool>
+
+    <!-- Text size for the state panel -->
+    <dimen name="state_panel_text_size">16dip</dimen>
+
+    <!-- Category Panel Height -->
+    <dimen name="category_panel_height">86dip</dimen>
+
+    <!-- Category Panel Icon Size -->
+    <dimen name="category_panel_icon_size">64dip</dimen>
+
+    <!-- Category Panel Text Size -->
+    <dimen name="category_panel_text_size">13dip</dimen>
+
+    <!-- Category Panel Text Size -->
+    <dimen name="category_panel_margin">4dip</dimen>
+
+    <!-- Grad filter dot size -->
+    <dimen name="gradcontrol_dot_size">20dip</dimen>
+
+    <!-- Grad filter minimum touch distance -->
+    <dimen name="gradcontrol_min_touch_dist">80dip</dimen>
+
+    <!-- Grad filter minimum touch distance -->
+    <dimen name="draw_rect_border">20dip</dimen>
+
+    <!-- Grad filter minimum touch distance -->
+    <dimen name="draw_rect_shadow">8dip</dimen>
+
+    <!-- Grad filter minimum touch distance -->
+    <dimen name="draw_rect_border_edge">2dip</dimen>
+
+    <!-- Grad filter minimum touch distance -->
+    <dimen name="draw_rect_round">10dip</dimen>
+
+    <!-- draw color icon size -->
+    <dimen name="draw_style_icon_dim">42dip</dimen>
+
+    <!-- draw color icon size -->
+    <dimen name="draw_color_icon_dim">42dip</dimen>
+
+    <!-- draw check UI size  -->
+    <dimen name="draw_color_check_dim">5dip</dimen>
+
+    <!-- draw check UI size  -->
+    <dimen name="draw_ui_width">192dip</dimen>
+
+    <!-- Glow effect size -->
+    <dimen name="edge_glow_size">50dip</dimen>
+</resources>

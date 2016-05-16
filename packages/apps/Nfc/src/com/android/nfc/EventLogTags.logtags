@@ -1,0 +1,12 @@
+# See system/core/logcat/event.logtags for a description of the format of this file.
+
+option java_package com.android.nfc
+
+# logged on the first P2P sharing event
+90000 nfc_first_share
+# logged when a P2P transaction succeeds
+90001 nfc_share (size|1|2),(tnf|1),(type|3),(aar_present|1),(duration|1|3)
+# logged when a P2P transaction fails
+90002 nfc_share_fail (size|1|2),(tnf|1),(type|3),(aar_present|1)
+# data is either the URL or MIME type
+90003 nfc_ndef_received (size|1|2),(tnf|1),(type|3),(aar_present|1)

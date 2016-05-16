@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.ti.server"
+      android:versionCode="1"
+      android:versionName="1.0.0">
+
+<!---Android FM Permissions defined -->
+    <permission android:name="ti.permission.FMRX"
+        android:label="@string/permlab_FmRx"
+        android:description="@string/permdesc_FmRxAdmin"
+        android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
+        android:protectionLevel="dangerous" />
+    <permission android:name="ti.permission.FMRX_ADMIN"
+        android:label="@string/permlab_FmRxAdmin"
+        android:description="@string/permdesc_FmRxAdmin"
+        android:permissionGroup="android.permission-group.HARDWARE_CONTROLS"
+        android:protectionLevel="dangerous" />
+<!---Android FM Permissions defined -->
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="ti.permission.FMRX" />
+    <uses-permission android:name="ti.permission.FMRX_ADMIN" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+
+    <application
+          android:label="FmService">
+
+        <uses-library android:name="fmradioif" />
+        <service android:name=".FmService"
+                 android:exported="true"
+                 android:enabled="true">
+            <intent-filter>
+                <action android:name="com.ti.server.FmService" />
+            </intent-filter>
+        </service>
+        <receiver android:name=".BootReceiver">
+            <intent-filter>
+                <action android:name ="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+    </application>
+    <uses-sdk android:minSdkVersion="4" />
+</manifest>
+

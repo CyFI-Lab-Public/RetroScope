@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" msgid="6441943862284988546">"사진 스크린세이버"</string>
+    <string name="table_screensaver_name" msgid="1150228032617397055">"사진 표"</string>
+    <string name="flipper_screensaver_name" msgid="6988572107391523141">"사진 프레임"</string>
+    <string name="posts_album_name" msgid="5628151551239729515">"소식에 있는 사진"</string>
+    <string name="unknown_album_name" msgid="2135521368192091267">"이름을 지정하지 않은 앨범"</string>
+    <string name="stock_photo_album_name" msgid="3150527596227525460">"스톡 사진"</string>
+    <string name="local_source_name" msgid="6487253091085518505">"기기에 저장된 사진"</string>
+    <string name="need_to_configure" msgid="1269102638159389032">"선택한 사진이 없습니다."</string>
+    <string name="photodream_select_all" msgid="6364858563337927827">"모두 선택"</string>
+    <string name="photodream_select_none" msgid="8816452124894525861">"모두 선택취소"</string>
+    <string name="no_photos" msgid="4262083523147564199">"기기에 사진이 없습니다."</string>
+</resources>

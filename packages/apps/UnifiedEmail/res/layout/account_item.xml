@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<com.android.mail.ui.AccountItemView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:minHeight="@dimen/account_item_minimum_height"
+    android:background="@drawable/account_item">
+
+    <ImageView
+        android:id="@+id/account_graphic"
+        style="@style/AccountItemIcon"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" />
+
+    <ImageView
+        android:id="@+id/account_radio_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/account_item_left_margin"
+        android:src="@drawable/account_radio_button"
+        android:layout_centerVertical="true"/>
+
+    <TextView
+        android:id="@+id/unread"
+        style="@style/UnreadCount"
+        android:layout_marginRight="@dimen/account_item_right_margin"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/account_item_text_color" />
+
+    <TextView
+        android:id="@+id/name"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_toRightOf="@id/account_radio_button"
+        android:layout_toLeftOf="@id/unread"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_marginLeft="@dimen/account_item_left_margin"
+        android:layout_marginRight="@dimen/account_item_right_margin"
+        android:layout_centerVertical="true"
+        android:includeFontPadding="false"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:textColor="@color/account_item_text_color"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+</com.android.mail.ui.AccountItemView>

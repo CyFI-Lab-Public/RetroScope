@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" msgid="1928079047368929634">"Matunzio"</string>
+    <string name="gadget_title" msgid="259405922673466798">"Fremu ya picha"</string>
+    <string name="details_ms" msgid="940634969189855292">"%1$02d:%2$02d"</string>
+    <string name="details_hms" msgid="3215779248094151255">"%1$d:%2$02d:%3$02d"</string>
+    <string name="movie_view_label" msgid="3526526872644898229">"Kicheza video"</string>
+    <string name="loading_video" msgid="4013492720121891585">"Inapakia video..."</string>
+    <string name="loading_image" msgid="1200894415793838191">"Inapakia picha…"</string>
+    <string name="loading_account" msgid="928195413034552034">"Inapakia akaunti..."</string>
+    <string name="resume_playing_title" msgid="8996677350649355013">"Endelea na video"</string>
+    <string name="resume_playing_message" msgid="5184414518126703481">"Endelea kucheza kutoka %s?"</string>
+    <string name="resume_playing_resume" msgid="3847915469173852416">"Endelea kucheza"</string>
+    <string name="loading" msgid="7038208555304563571">"Inapakia…"</string>
+    <string name="fail_to_load" msgid="8394392853646664505">"Imeshindwa kupakia."</string>
+    <string name="fail_to_load_image" msgid="6155388718549782425">"Haikuweza kupakia picha"</string>
+    <string name="no_thumbnail" msgid="284723185546429750">"Hakuna kijipicha"</string>
+    <string name="resume_playing_restart" msgid="5471008499835769292">"Anza tena"</string>
+    <string name="crop_save_text" msgid="152200178986698300">"Sawa"</string>
+    <string name="ok" msgid="5296833083983263293">"Sawa"</string>
+    <string name="multiface_crop_help" msgid="2554690102655855657">"Gusa sura ili kuanza."</string>
+    <string name="saving_image" msgid="7270334453636349407">"Inahifadhi picha…"</string>
+    <string name="filtershow_saving_image" msgid="6659463980581993016">"Inahifadhi picha kwenye <xliff:g id="ALBUM_NAME">%1$s</xliff:g> …"</string>
+    <string name="save_error" msgid="6857408774183654970">"Haiwezi kuhifadhi picha iliyopogolewa."</string>
+    <string name="crop_label" msgid="521114301871349328">"Kata picha"</string>
+    <string name="trim_label" msgid="274203231381209979">"Punguza video"</string>
+    <string name="select_image" msgid="7841406150484742140">"Chagua picha"</string>
+    <string name="select_video" msgid="4859510992798615076">"Chagua video"</string>
+    <string name="select_item" msgid="2816923896202086390">"Chagua kipengee"</string>
+    <string name="select_album" msgid="1557063764849434077">"Chagua albamu"</string>
+    <string name="select_group" msgid="6744208543323307114">"Chagua kikundi"</string>
+    <string name="set_image" msgid="2331476809308010401">"Weka picha kama"</string>
+    <string name="set_wallpaper" msgid="8491121226190175017">"Weka mandhari"</string>
+    <string name="wallpaper" msgid="140165383777262070">"Inaweka karatasi ya ukuta..."</string>
+    <string name="camera_setas_wallpaper" msgid="797463183863414289">"Mandhari"</string>
+    <string name="delete" msgid="2839695998251824487">"Futa"</string>
+  <plurals name="delete_selection">
+    <item quantity="one" msgid="6453379735401083732">"Kipengee kilichoteuliwa kifutwe?"</item>
+    <item quantity="other" msgid="5874316486520635333">"Vipengee vilivyoteuliwa vifutwe?"</item>
+  </plurals>
+    <string name="confirm" msgid="8646870096527848520">"Thibitisha"</string>
+    <string name="cancel" msgid="3637516880917356226">"Ghairi"</string>
+    <string name="share" msgid="3619042788254195341">"Shiriki"</string>
+    <string name="share_panorama" msgid="2569029972820978718">"Shiriki panorama"</string>
+    <string name="share_as_photo" msgid="8959225188897026149">"Shiriki kama picha"</string>
+    <string name="deleted" msgid="6795433049119073871">"Imefutwa"</string>
+    <string name="undo" msgid="2930873956446586313">"TENDUA"</string>
+    <string name="select_all" msgid="3403283025220282175">"Chagua zote"</string>
+    <string name="deselect_all" msgid="5758897506061723684">"Ghairi uteuzi kwa zote"</string>
+    <string name="slideshow" msgid="4355906903247112975">"Onyesho la slaidi"</string>
+    <string name="details" msgid="8415120088556445230">"Maelezo"</string>
+    <string name="details_title" msgid="2611396603977441273">"Vipengee %1$d kati ya %2$d:"</string>
+    <string name="close" msgid="5585646033158453043">"Funga"</string>
+    <string name="switch_to_camera" msgid="7280111806675169992">"Badili  kwa Kamera"</string>
+    <!-- String.format failed for translation -->
+    <!-- no translation found for number_of_items_selected:zero (2142579311530586258) -->
+    <!-- String.format failed for translation -->
+    <!-- no translation found for number_of_items_selected:one (2478365152745637768) -->
+    <!-- String.format failed for translation -->
+    <!-- no translation found for number_of_items_selected:other (754722656147810487) -->
+    <!-- String.format failed for translation -->
+    <!-- no translation found for number_of_albums_selected:zero (749292746814788132) -->
+    <!-- String.format failed for translation -->
+    <!-- no translation found for number_of_albums_selected:one (6184377003099987825) -->
+    <!-- String.format failed for translation -->
+    <!-- no translation found for number_of_albums_selected:other (53105607141906130) -->
+    <!-- String.format failed for translation -->
+    <!-- no translation found for number_of_groups_selected:zero (3466388370310869238) -->
+    <!-- String.format failed for translation -->
+    <!-- no translation found for number_of_groups_selected:one (5030162638216034260) -->
+    <!-- String.format failed for translation -->
+    <!-- no translation found for number_of_groups_selected:other (3512041363942842738) -->
+    <string name="show_on_map" msgid="6157544221201750980">"Onyesha kwenye ramani"</string>
+    <string name="rotate_left" msgid="5888273317282539839">"Zungusha kushoto"</string>
+    <string name="rotate_right" msgid="6776325835923384839">"Zungusha kulia"</string>
+    <string name="no_such_item" msgid="5315144556325243400">"Hakuweza kupata kipengee."</string>
+    <string name="edit" msgid="1502273844748580847">"Hariri"</string>
+    <string name="simple_edit" msgid="2792835918347498211">"Kuhariri Rahisi"</string>
+    <string name="process_caching_requests" msgid="8722939570307386071">"Maombi ya kuakibisha michakato"</string>
+    <string name="caching_label" msgid="4521059045896269095">"Inaakibisha..."</string>
+    <string name="crop_action" msgid="3427470284074377001">"Punguza"</string>
+    <string name="trim_action" msgid="703098114452883524">"Punguza"</string>
+    <string name="mute_action" msgid="5296241754753306251">"Zima sauti"</string>
+    <string name="set_as" msgid="3636764710790507868">"Weka kama"</string>
+    <string name="video_mute_err" msgid="6392457611270600908">"Imeshindwa kuzima sauti ya video."</string>
+    <string name="video_err" msgid="7003051631792271009">"Video haiwezi kuchezwa."</string>
+    <string name="group_by_location" msgid="316641628989023253">"Kwa mahali"</string>
+    <string name="group_by_time" msgid="9046168567717963573">"Kwa saa"</string>
+    <string name="group_by_tags" msgid="3568731317210676160">"Kwa lebo"</string>
+    <string name="group_by_faces" msgid="1566351636227274906">"Kwa watu"</string>
+    <string name="group_by_album" msgid="1532818636053818958">"Kwa albamu"</string>
+    <string name="group_by_size" msgid="153766174950394155">"Kwa ukubwa"</string>
+    <string name="untagged" msgid="7281481064509590402">"Ondoa lebo"</string>
+    <string name="no_location" msgid="4043624857489331676">"Hakuna Mahali"</string>
+    <string name="no_connectivity" msgid="7164037617297293668">"Baadhi ya maeneo haikuweza kutambuliwa kutokana na matatizo ya mtandao."</string>
+    <string name="sync_album_error" msgid="1020688062900977530">"Haikuwezi kupakua picha zilizo kwenye albamu hii. Jaribu tena baadaye."</string>
+    <string name="show_images_only" msgid="7263218480867672653">"Picha tu"</string>
+    <string name="show_videos_only" msgid="3850394623678871697">"Video tu"</string>
+    <string name="show_all" msgid="6963292714584735149">"Picha &amp; video"</string>
+    <string name="appwidget_title" msgid="6410561146863700411">"Matunzio ya picha"</string>
+    <string name="appwidget_empty_text" msgid="1228925628357366957">"Hakuna picha."</string>
+    <string name="crop_saved" msgid="1595985909779105158">"Picha iliyopunguzwa imehifadhiwa kwa <xliff:g id="FOLDER_NAME">%s</xliff:g>."</string>
+    <string name="no_albums_alert" msgid="4111744447491690896">"Hakuna albamu zinazopatikana."</string>
+    <string name="empty_album" msgid="4542880442593595494">"picha / video zilizopo 0."</string>
+    <string name="picasa_posts" msgid="1497721615718760613">"Zilizowekwa"</string>
+    <string name="make_available_offline" msgid="5157950985488297112">"Fanya ipatikane nje ya mtandao"</string>
+    <string name="sync_picasa_albums" msgid="8522572542111169872">"Onyesha upya"</string>
+    <string name="done" msgid="217672440064436595">"Nimemaliza"</string>
+    <string name="sequence_in_set" msgid="7235465319919457488">"Vipengee %1$d kati ya %2$d:"</string>
+    <string name="title" msgid="7622928349908052569">"Kichwa"</string>
+    <string name="description" msgid="3016729318096557520">"Maelezo"</string>
+    <string name="time" msgid="1367953006052876956">"Saa"</string>
+    <string name="location" msgid="3432705876921618314">"Mahali"</string>
+    <string name="path" msgid="4725740395885105824">"Njia"</string>
+    <string name="width" msgid="9215847239714321097">"Upana"</string>
+    <string name="height" msgid="3648885449443787772">"Urefu"</string>
+    <string name="orientation" msgid="4958327983165245513">"Uelekezo"</string>
+    <string name="duration" msgid="8160058911218541616">"Muda"</string>
+    <string name="mimetype" msgid="8024168704337990470">"Aina ya MIME"</string>
+    <string name="file_size" msgid="8486169301588318915">"Ukubwa wa faili"</string>
+    <string name="maker" msgid="7921835498034236197">"Mtengenezaji"</string>
+    <string name="model" msgid="8240207064064337366">"Mtindo"</string>
+    <string name="flash" msgid="2816779031261147723">"Mmweko"</string>
+    <string name="aperture" msgid="5920657630303915195">"Kitundu cha kamera"</string>
+    <string name="focal_length" msgid="1291383769749877010">"Urefu wa Lengo"</string>
+    <string name="white_balance" msgid="1582509289994216078">"Usawazishaji wa weupe"</string>
+    <string name="exposure_time" msgid="3990163680281058826">"Muda ambao kilango cha kamera kinakaa wazi"</string>
+    <string name="iso" msgid="5028296664327335940">"ISO"</string>
+    <string name="unit_mm" msgid="1125768433254329136">"mm"</string>
+    <string name="manual" msgid="6608905477477607865">"Mwongozo"</string>
+    <string name="auto" msgid="4296941368722892821">"Kiotomatiki"</string>
+    <string name="flash_on" msgid="7891556231891837284">"Mmweko umeanzishwa"</string>
+    <string name="flash_off" msgid="1445443413822680010">"Hakuna mmweko"</string>
+    <string name="unknown" msgid="3506693015896912952">"Usiojulikana"</string>
+    <string name="ffx_original" msgid="372686331501281474">"Asili"</string>
+    <string name="ffx_vintage" msgid="8348759951363844780">"Ukale"</string>
+    <string name="ffx_instant" msgid="726968618715691987">"Papo hapo"</string>
+    <string name="ffx_bleach" msgid="8946700451603478453">"Pausha"</string>
+    <string name="ffx_blue_crush" msgid="6034283412305561226">"Samawati"</string>
+    <string name="ffx_bw_contrast" msgid="517988490066217206">"Nyeusi na Nyeupe"</string>
+    <string name="ffx_punch" msgid="1343475517872562639">"Panchi"</string>
+    <string name="ffx_x_process" msgid="4779398678661811765">"Mchakato X"</string>
+    <string name="ffx_washout" msgid="4594160692176642735">"Lati"</string>
+    <string name="ffx_washout_color" msgid="8034075742195795219">"Litho"</string>
+  <plurals name="make_albums_available_offline">
+    <item quantity="one" msgid="2171596356101611086">"Albamu inafanywa ipatikane nje ya mtandao"</item>
+    <item quantity="other" msgid="4948604338155959389">"Albamu zinafanywa zipatikane nje ya mtandao"</item>
+  </plurals>
+    <string name="try_to_set_local_album_available_offline" msgid="2184754031896160755">"Imehifadhiwa kwenye kifaa hiki na inapatikana nje ya mtandao."</string>
+    <string name="set_label_all_albums" msgid="4581863582996336783">"Albamu zote"</string>
+    <string name="set_label_local_albums" msgid="6698133661656266702">"Albamu za kawaida"</string>
+    <string name="set_label_mtp_devices" msgid="1283513183744896368">"Vifa vya MTP"</string>
+    <string name="set_label_picasa_albums" msgid="5356258354953935895">"Albumu za Picasa"</string>
+    <string name="free_space_format" msgid="8766337315709161215">"<xliff:g id="BYTES">%s</xliff:g> hailipishwi"</string>
+    <string name="size_below" msgid="2074956730721942260">"<xliff:g id="SIZE">%1$s</xliff:g> au chini"</string>
+    <string name="size_above" msgid="5324398253474104087">"<xliff:g id="SIZE">%1$s</xliff:g> au juu"</string>
+    <string name="size_between" msgid="8779660840898917208">"<xliff:g id="MIN_SIZE">%1$s</xliff:g> kwa <xliff:g id="MAX_SIZE">%2$s</xliff:g>"</string>
+    <string name="Import" msgid="3985447518557474672">"Ingiza"</string>
+    <string name="import_complete" msgid="3875040287486199999">"Kuingiza Kumekamilika"</string>
+    <string name="import_fail" msgid="8497942380703298808">"Haijaweza kuingiza"</string>
+    <string name="camera_connected" msgid="916021826223448591">"Kamera imeunganishwa."</string>
+    <string name="camera_disconnected" msgid="2100559901676329496">"Kamera imetenganishwa."</string>
+    <string name="click_import" msgid="6407959065464291972">"Gusa hapa ili uingize"</string>
+    <string name="widget_type_album" msgid="6013045393140135468">"Chagua albamu"</string>
+    <string name="widget_type_shuffle" msgid="8594622705019763768">"Changanya picha zote"</string>
+    <string name="widget_type_photo" msgid="6267065337367795355">"Chagua picha"</string>
+    <string name="widget_type" msgid="1364653978966343448">"Chagua picha"</string>
+    <string name="slideshow_dream_name" msgid="6915963319933437083">"Onyesho la slaidi"</string>
+    <string name="albums" msgid="7320787705180057947">"Albamu"</string>
+    <string name="times" msgid="2023033894889499219">"Wakati"</string>
+    <string name="locations" msgid="6649297994083130305">"Mahali"</string>
+    <string name="people" msgid="4114003823747292747">"Watu"</string>
+    <string name="tags" msgid="5539648765482935955">"Lebo"</string>
+    <string name="group_by" msgid="4308299657902209357">"Panga kwa kikundi na"</string>
+    <string name="settings" msgid="1534847740615665736">"Mipangilio"</string>
+    <string name="add_account" msgid="4271217504968243974">"Ongeza akaunti"</string>
+    <string name="folder_camera" msgid="4714658994809533480">"Kamera"</string>
+    <string name="folder_download" msgid="7186215137642323932">"Pakua"</string>
+    <string name="folder_edited_online_photos" msgid="6278215510236800181">"Picha Zilizohaririwa Mtandaoni"</string>
+    <string name="folder_imported" msgid="2773581395524747099">"Zilizoletwa"</string>
+    <string name="folder_screenshot" msgid="7200396565864213450">"Picha ya skrini"</string>
+    <string name="help" msgid="7368960711153618354">"Usaidizi"</string>
+    <string name="no_external_storage_title" msgid="2408933644249734569">"Hakuna Hifadhi"</string>
+    <string name="no_external_storage" msgid="95726173164068417">"Hakuna hifadhi ya nje inayopatikana"</string>
+    <string name="switch_photo_filmstrip" msgid="8227883354281661548">"Mwonekano wa utepe wa filamu"</string>
+    <string name="switch_photo_grid" msgid="3681299459107925725">"Mwonekano wa gridi"</string>
+    <string name="switch_photo_fullscreen" msgid="8360489096099127071">"Mwonekano wa skrini nzima"</string>
+    <string name="trimming" msgid="9122385768369143997">"Inapunguza"</string>
+    <string name="muting" msgid="5094925919589915324">"Inanyamazisha"</string>
+    <string name="please_wait" msgid="7296066089146487366">"Tafadhali subiri"</string>
+    <string name="save_into" msgid="9155488424829609229">"Inahifadhi video kwenye <xliff:g id="ALBUM_NAME">%1$s</xliff:g> …"</string>
+    <string name="trim_too_short" msgid="751593965620665326">"Haiwezi kupunguza : video iliyolengwa ni fupi sana"</string>
+    <string name="pano_progress_text" msgid="1586851614586678464">"Inaonyesha panorama"</string>
+    <string name="save" msgid="613976532235060516">"Hifadhi"</string>
+    <string name="ingest_scanning" msgid="1062957108473988971">"Maudhui yanachanganuliwa..."</string>
+  <plurals name="ingest_number_of_items_scanned">
+    <item quantity="zero" msgid="2623289390474007396">"%1$d vipengee vimechanganuliwa"</item>
+    <item quantity="one" msgid="4340019444460561648">"%1$d kipengee kimechanganuliwa"</item>
+    <item quantity="other" msgid="3138021473860555499">"%1$d vipengee vimechanganuliwa"</item>
+  </plurals>
+    <string name="ingest_sorting" msgid="1028652103472581918">"Inapanga..."</string>
+    <string name="ingest_scanning_done" msgid="8911916277034483430">"Uchanganuzi umefanyika"</string>
+    <string name="ingest_importing" msgid="7456633398378527611">"Inaingiza..."</string>
+    <string name="ingest_empty_device" msgid="2010470482779872622">"Hakuna maudhui yanayopatikana kuingiza kwenye kifaa hiki."</string>
+    <string name="ingest_no_device" msgid="3054128223131382122">"Hakuna kifaa cha MTP kilichounganishwa"</string>
+    <string name="camera_error_title" msgid="6484667504938477337">"Hitilafu ya kamera"</string>
+    <string name="cannot_connect_camera" msgid="955440687597185163">"Haiwezi kuungana na kamera."</string>
+    <string name="camera_disabled" msgid="8923911090533439312">"Kamera imelemazwa kwa sababu ya sera za usalama."</string>
+    <string name="camera_label" msgid="6346560772074764302">"Kamera"</string>
+    <string name="wait" msgid="8600187532323801552">"Tafadhali subiri…"</string>
+    <string name="no_storage" product="nosdcard" msgid="7335975356349008814">"Pachika hifadhi ya USB kabla ya kutumia kamera."</string>
+    <string name="no_storage" product="default" msgid="5137703033746873624">"Chomeka kadi ya SD kabla ya kutumia kamera."</string>
+    <string name="preparing_sd" product="nosdcard" msgid="6104019983528341353">"Inaandaa hifadhi ya USB..."</string>
+    <string name="preparing_sd" product="default" msgid="2914969119574812666">"Inatayarisha kadi ya SD..."</string>
+    <string name="access_sd_fail" product="nosdcard" msgid="8147993984037859354">"Haikuweza kufikia hifadhi ya USB."</string>
+    <string name="access_sd_fail" product="default" msgid="1584968646870054352">"Haikuweza kufikia kadi ya SD."</string>
+    <string name="review_cancel" msgid="8188009385853399254">"GHAIRI"</string>
+    <string name="review_ok" msgid="1156261588693116433">"IMEFANYWA"</string>
+    <string name="time_lapse_title" msgid="4360632427760662691">"Rekodi ya kupita kwa muda"</string>
+    <string name="pref_camera_id_title" msgid="4040791582294635851">"Chagua kamera"</string>
+    <string name="pref_camera_id_entry_back" msgid="5142699735103692485">"Nyuma"</string>
+    <string name="pref_camera_id_entry_front" msgid="5668958706828733669">"Mbele"</string>
+    <string name="pref_camera_recordlocation_title" msgid="371208839215448917">"Rekodi mahali"</string>
+    <string name="pref_camera_location_label" msgid="2254270920298609161">"MAHALI"</string>
+    <string name="pref_camera_timer_title" msgid="3105232208281893389">"Kipima muda"</string>
+  <plurals name="pref_camera_timer_entry">
+    <item quantity="one" msgid="1654523400981245448">"Sekunde 1"</item>
+    <item quantity="other" msgid="6455381617076792481">"Sekunde %d"</item>
+  </plurals>
+    <!-- no translation found for pref_camera_timer_sound_default (7066624532144402253) -->
+    <skip />
+    <string name="pref_camera_timer_sound_title" msgid="2469008631966169105">"Toa mlio inapohesabu"</string>
+    <string name="setting_off" msgid="4480039384202951946">"Imezimwa"</string>
+    <string name="setting_on" msgid="8602246224465348901">"Imewashwa"</string>
+    <string name="pref_video_quality_title" msgid="8245379279801096922">"Ubora wa video"</string>
+    <string name="pref_video_quality_entry_high" msgid="8664038216234805914">"Juu"</string>
+    <string name="pref_video_quality_entry_low" msgid="7258507152393173784">"Chini"</string>
+    <string name="pref_video_time_lapse_frame_interval_title" msgid="6245716906744079302">"Kupita kwa muda"</string>
+    <string name="pref_camera_settings_category" msgid="2576236450859613120">"Mipangilio ya kamera"</string>
+    <string name="pref_camcorder_settings_category" msgid="460313486231965141">"Mipangilio ya kamkoda"</string>
+    <string name="pref_camera_picturesize_title" msgid="4333724936665883006">"Ukubwa wa picha"</string>
+    <string name="pref_camera_picturesize_entry_13mp" msgid="675309554194481780">"Pikseli 13M"</string>
+    <string name="pref_camera_picturesize_entry_8mp" msgid="259953780932849079">"Pikseli 8M"</string>
+    <string name="pref_camera_picturesize_entry_5mp" msgid="2882928212030661159">"Pikseli 5M"</string>
+    <string name="pref_camera_picturesize_entry_4mp" msgid="933242108272469142">"Pikseli za 4M"</string>
+    <string name="pref_camera_picturesize_entry_3mp" msgid="741415860337400696">"Pikseli 3M"</string>
+    <string name="pref_camera_picturesize_entry_2mp" msgid="1753709802245460393">"Pikseli 2M"</string>
+    <string name="pref_camera_picturesize_entry_2mp_wide" msgid="5359490802026616612">"Pikseli za 2M  (16:9)"</string>
+    <string name="pref_camera_picturesize_entry_1_3mp" msgid="829109608140747258">"Pikseli 1.3M"</string>
+    <string name="pref_camera_picturesize_entry_1mp" msgid="1669725616780375066">"Pikseli 1M"</string>
+    <string name="pref_camera_picturesize_entry_vga" msgid="806934254162981919">"VGA"</string>
+    <string name="pref_camera_picturesize_entry_qvga" msgid="8576186463069770133">"QVGA"</string>
+    <string name="pref_camera_focusmode_title" msgid="2877248921829329127">"Hali ya kulenga"</string>
+    <string name="pref_camera_focusmode_entry_auto" msgid="7374820710300362457">"Otomatiki"</string>
+    <string name="pref_camera_focusmode_entry_infinity" msgid="3413922419264967552">"Pasipo mwisho"</string>
+    <string name="pref_camera_focusmode_entry_macro" msgid="4424489110551866161">"Makro"</string>
+    <string name="pref_camera_focusmode_label_auto" msgid="8547956917516317183">"OTOMATIKI"</string>
+    <string name="pref_camera_focusmode_label_infinity" msgid="4272904160062531778">"PASIPO MWISHO"</string>
+    <string name="pref_camera_focusmode_label_macro" msgid="8749317592620908054">"MAKRO"</string>
+    <string name="pref_camera_flashmode_title" msgid="2287362477238791017">"Hali ya mmweko"</string>
+    <string name="pref_camera_flashmode_label" msgid="7546741624882856171">"HALI YA MWEKO"</string>
+    <string name="pref_camera_flashmode_entry_auto" msgid="7288383434237457709">"Otomatiki"</string>
+    <string name="pref_camera_flashmode_entry_on" msgid="5330043918845197616">"Washa"</string>
+    <string name="pref_camera_flashmode_entry_off" msgid="867242186958805761">"Zima"</string>
+    <string name="pref_camera_flashmode_label_auto" msgid="8854671890619026197">"MMWEKO OTOMATIKI"</string>
+    <string name="pref_camera_flashmode_label_on" msgid="7347504762794840140">"MMWEKO UMEWASHWA"</string>
+    <string name="pref_camera_flashmode_label_off" msgid="3541596735596053416">"MMWEKO UMEZIMWA"</string>
+    <string name="pref_camera_whitebalance_title" msgid="677420930596673340">"Usawazishaji wa weupe"</string>
+    <string name="pref_camera_whitebalance_label" msgid="7467403405883190920">"USAWAZISHAJI WA WEUPE"</string>
+    <string name="pref_camera_whitebalance_entry_auto" msgid="6580665476983469293">"Kioto"</string>
+    <string name="pref_camera_whitebalance_entry_incandescent" msgid="8856667786449549938">"King\'arishaji"</string>
+    <string name="pref_camera_whitebalance_entry_daylight" msgid="2534757270149561027">"Mwangaza wa mchana"</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="2435332872847454032">"Kiakisi mwanga"</string>
+    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3531996716997959326">"Mawingu"</string>
+    <string name="pref_camera_whitebalance_label_auto" msgid="1479694362310491429">"OTOMATIKI"</string>
+    <string name="pref_camera_whitebalance_label_incandescent" msgid="7427628260209908900">"KING\'ARISHAJI"</string>
+    <string name="pref_camera_whitebalance_label_daylight" msgid="1859710806141461399">"MCHANA"</string>
+    <string name="pref_camera_whitebalance_label_fluorescent" msgid="5173251749161337707">"KIAKISI MWANGA"</string>
+    <string name="pref_camera_whitebalance_label_cloudy" msgid="8230173517179285320">"MAWINGU"</string>
+    <string name="pref_camera_scenemode_title" msgid="1420535844292504016">"Hali ya mandhari"</string>
+    <string name="pref_camera_scenemode_entry_auto" msgid="7113995286836658648">"Otomatiki"</string>
+    <string name="pref_camera_scenemode_entry_hdr" msgid="2923388802899511784">"HDR"</string>
+    <string name="pref_camera_scenemode_entry_action" msgid="616748587566110484">"Kitendo"</string>
+    <string name="pref_camera_scenemode_entry_night" msgid="7606898503102476329">"Usiku"</string>
+    <string name="pref_camera_scenemode_entry_sunset" msgid="181661154611507212">"Machweo"</string>
+    <string name="pref_camera_scenemode_entry_party" msgid="907053529286788253">"Karamu"</string>
+    <string name="pref_camera_scenemode_label_auto" msgid="4475096836397300237">"HAKUNA"</string>
+    <string name="pref_camera_scenemode_label_action" msgid="964748409622151496">"KITENDO"</string>
+    <string name="pref_camera_scenemode_label_night" msgid="1269871886845854574">"USIKU"</string>
+    <string name="pref_camera_scenemode_label_sunset" msgid="2802732082948866877">"MACHWEO"</string>
+    <string name="pref_camera_scenemode_label_party" msgid="1409459091844374828">"SHEREHE"</string>
+    <string name="pref_camera_countdown_label" msgid="7592784692450586126">"KIPIMA MUDA"</string>
+    <string name="pref_camera_countdown_label_off" msgid="4987856883590176585">"KIPIMA WAKATI KIMEZIMWA"</string>
+    <string name="pref_camera_countdown_label_one" msgid="1101814103087928898">"SEKUNDE 1"</string>
+    <string name="pref_camera_countdown_label_three" msgid="1047399297342955649">"SEKUNDE 3"</string>
+    <string name="pref_camera_countdown_label_ten" msgid="6274681535347260279">"SEKUNDE 10"</string>
+    <string name="pref_camera_countdown_label_fifteen" msgid="4544824246687597089">"SEKUNDE 15"</string>
+    <string name="not_selectable_in_scene_mode" msgid="2970291701448555126">"Haiwezi kuchaguliwa ikiwa katika hali ya mandhari."</string>
+    <string name="pref_exposure_title" msgid="1229093066434614811">"Kiasi cha mwangaza"</string>
+    <string name="pref_exposure_label" msgid="552624394642497940">"KIASI CHA MWANGAZA"</string>
+    <!-- no translation found for pref_camera_hdr_default (1336869406134365882) -->
+    <skip />
+    <string name="pref_camera_hdr_label" msgid="7217211253357027510">"HDR"</string>
+    <string name="pref_camera_id_label_back" msgid="8745553500400332333">"KAMERA YA MBELE"</string>
+    <string name="pref_camera_id_label_front" msgid="8699439330056996709">"KAMERA YA NYUMA"</string>
+    <string name="dialog_ok" msgid="6263301364153382152">"SAWA"</string>
+    <string name="spaceIsLow_content" product="nosdcard" msgid="4401325203349203177">"Hifadhi yako ya USB inaishiwa na nafasi. Badilisha mipangilio ya ubora au futa baadhi ya picha au faili."</string>
+    <string name="spaceIsLow_content" product="default" msgid="1732882643101247179">"Nafasi ya kadi yako ya SD inaelekea kuisha. Badlisha mpangilio wa ubora au futa baadhi ya picha au faili zingine."</string>
+    <string name="video_reach_size_limit" msgid="6179877322015552390">"Upeo wa ukubwa umefikiwa."</string>
+    <string name="pano_too_fast_prompt" msgid="2823839093291374709">"Haraka mno"</string>
+    <string name="pano_dialog_prepare_preview" msgid="4788441554128083543">"Panorama inaandaliwa"</string>
+    <string name="pano_dialog_panorama_failed" msgid="2155692796549642116">"Imeshindwa kuhifadhi picha ya panorama."</string>
+    <string name="pano_dialog_title" msgid="5755531234434437697">"Panorama"</string>
+    <string name="pano_capture_indication" msgid="8248825828264374507">"Inapiga picha ya panorama"</string>
+    <string name="pano_dialog_waiting_previous" msgid="7800325815031423516">"Inasubiri picha ya awali ya panorama"</string>
+    <string name="pano_review_saving_indication_str" msgid="2054886016665130188">"Inahifadhi…"</string>
+    <string name="pano_review_rendering" msgid="2887552964129301902">"Inaonyesha panorama"</string>
+    <string name="tap_to_focus" msgid="8863427645591903760">"Gusa ili kulenga."</string>
+    <string name="pref_video_effect_title" msgid="8243182968457289488">"Athari"</string>
+    <string name="effect_none" msgid="3601545724573307541">"Hamna"</string>
+    <string name="effect_goofy_face_squeeze" msgid="1207235692524289171">"Finya"</string>
+    <string name="effect_goofy_face_big_eyes" msgid="3945182409691408412">"Macho makubwa"</string>
+    <string name="effect_goofy_face_big_mouth" msgid="7528748779754643144">"Mdomo mkubwa"</string>
+    <string name="effect_goofy_face_small_mouth" msgid="3848209817806932565">"Mdomo mdogo"</string>
+    <string name="effect_goofy_face_big_nose" msgid="5180533098740577137">"Pua kubwa"</string>
+    <string name="effect_goofy_face_small_eyes" msgid="1070355596290331271">"Macho Madogo"</string>
+    <string name="effect_backdropper_space" msgid="7935661090723068402">"Kwenya nafasi"</string>
+    <string name="effect_backdropper_sunset" msgid="45198943771777870">"Jua kutua"</string>
+    <string name="effect_backdropper_gallery" msgid="959158844620991906">"Video yako"</string>
+    <string name="bg_replacement_message" msgid="9184270738916564608">"Weka kifaa chako chini.\nToka nje ya muonekano kwa muda."</string>
+    <string name="video_snapshot_hint" msgid="18833576851372483">"Gusa ili upige picha wakati unarekodi."</string>
+    <string name="video_recording_started" msgid="4132915454417193503">"Kurekodi kwa video kumeanza."</string>
+    <string name="video_recording_stopped" msgid="5086919511555808580">"Kurekodi kwa video kumekomeshwa."</string>
+    <string name="disable_video_snapshot_hint" msgid="4957723267826476079">"Picha ya video imelemazwa wakati athari maalum imewashwa."</string>
+    <string name="clear_effects" msgid="5485339175014139481">"Athari Wazi"</string>
+    <string name="effect_silly_faces" msgid="8107732405347155777">"SURA PUMBAVU"</string>
+    <string name="effect_background" msgid="6579360207378171022">"USULI"</string>
+    <string name="accessibility_shutter_button" msgid="2664037763232556307">"Kitufe cha kilango cha kamera"</string>
+    <string name="accessibility_menu_button" msgid="7140794046259897328">"Kitufe cha menyu"</string>
+    <string name="accessibility_review_thumbnail" msgid="8961275263537513017">"Picha ya hivi karibuni"</string>
+    <string name="accessibility_camera_picker" msgid="8807945470215734566">"Swichi ya mbele na nyuma ya kamera"</string>
+    <string name="accessibility_mode_picker" msgid="3278002189966833100">"Kichagua kamera, video au Picha ya mandhari"</string>
+    <string name="accessibility_second_level_indicators" msgid="3855951632917627620">"Vidhibiti zaidi vya mpangilio"</string>
+    <string name="accessibility_back_to_first_level" msgid="5234411571109877131">"Funga vidhibiti mipangilio"</string>
+    <string name="accessibility_zoom_control" msgid="1339909363226825709">"Dhibiti kukuza"</string>
+    <string name="accessibility_decrement" msgid="1411194318538035666">"Punguza %1$s"</string>
+    <string name="accessibility_increment" msgid="8447850530444401135">"Ongeza %1$s"</string>
+    <!-- String.format failed for translation -->
+    <!-- no translation found for accessibility_check_box (7317447218256584181) -->
+    <skip />
+    <string name="accessibility_switch_to_camera" msgid="5951340774212969461">"Badilisha hadi kwa picha"</string>
+    <string name="accessibility_switch_to_video" msgid="4991396355234561505">"Badilisha hadi kwa video"</string>
+    <string name="accessibility_switch_to_panorama" msgid="604756878371875836">"Badilisha hadi panorama"</string>
+    <string name="accessibility_switch_to_new_panorama" msgid="8116783308051524188">"Badili hadi kwenye panorama mpya"</string>
+    <string name="accessibility_switch_to_refocus" msgid="4539294619557299903">"Badilisha ili Ulenge upya"</string>
+    <string name="accessibility_review_cancel" msgid="9070531914908644686">"Ukaguzi umeghairiwa"</string>
+    <string name="accessibility_review_ok" msgid="7793302834271343168">"Ukaguzi umekamilika"</string>
+    <string name="accessibility_review_retake" msgid="659300290054705484">"Kagua ukaguzi"</string>
+    <string name="accessibility_play_video" msgid="7596298365794810207">"Cheza video"</string>
+    <string name="accessibility_pause_video" msgid="6526344477133046653">"Sitisha video"</string>
+    <string name="accessibility_reload_video" msgid="3250335917598607232">"Pakia video upya"</string>
+    <string name="accessibility_time_bar" msgid="1414029843602604531">"Ubao wa muda wa kicheza video"</string>
+    <string name="capital_on" msgid="5491353494964003567">"IMEWASHWA"</string>
+    <string name="capital_off" msgid="7231052688467970897">"IMEZIMWA"</string>
+    <string name="pref_video_time_lapse_frame_interval_off" msgid="3490489191038309496">"Kimezimwa"</string>
+    <string name="pref_video_time_lapse_frame_interval_500" msgid="2949719376111679816">"Sekunde 0.5"</string>
+    <string name="pref_video_time_lapse_frame_interval_1000" msgid="1672458758823855874">"Sekunde 1"</string>
+    <string name="pref_video_time_lapse_frame_interval_1500" msgid="3415071702490624802">"Sekunde 1.5"</string>
+    <string name="pref_video_time_lapse_frame_interval_2000" msgid="827813989647794389">"Sekunde 2"</string>
+    <string name="pref_video_time_lapse_frame_interval_2500" msgid="5750464143606788153">"Sekunde 2.5"</string>
+    <string name="pref_video_time_lapse_frame_interval_3000" msgid="2664846627499751396">"Sekunde 3"</string>
+    <string name="pref_video_time_lapse_frame_interval_4000" msgid="7303255804306382651">"Sekunde 4"</string>
+    <string name="pref_video_time_lapse_frame_interval_5000" msgid="6800566761690741841">"Sekunde 5"</string>
+    <string name="pref_video_time_lapse_frame_interval_6000" msgid="8545447466540319539">"Sekunde 6"</string>
+    <string name="pref_video_time_lapse_frame_interval_10000" msgid="3105568489694909852">"Sekunde 10"</string>
+    <string name="pref_video_time_lapse_frame_interval_12000" msgid="6055574367392821047">"Sekunde 12"</string>
+    <string name="pref_video_time_lapse_frame_interval_15000" msgid="2656164845371833761">"Sekunde 15"</string>
+    <string name="pref_video_time_lapse_frame_interval_24000" msgid="2192628967233421512">"Sekunde 24"</string>
+    <string name="pref_video_time_lapse_frame_interval_30000" msgid="5923393773260634461">"Dakika 0.5"</string>
+    <string name="pref_video_time_lapse_frame_interval_60000" msgid="4678581247918524850">"Dakika 1"</string>
+    <string name="pref_video_time_lapse_frame_interval_90000" msgid="1187029705069674152">"Dakika 1.5"</string>
+    <string name="pref_video_time_lapse_frame_interval_120000" msgid="145301938098991278">"Dakika 2"</string>
+    <string name="pref_video_time_lapse_frame_interval_150000" msgid="793707078196731912">"Dakika 2.5"</string>
+    <string name="pref_video_time_lapse_frame_interval_180000" msgid="1785467676466542095">"Dakika 3"</string>
+    <string name="pref_video_time_lapse_frame_interval_240000" msgid="3734507766184666356">"Dakika 4"</string>
+    <string name="pref_video_time_lapse_frame_interval_300000" msgid="7442765761995328639">"Dakika 5"</string>
+    <string name="pref_video_time_lapse_frame_interval_360000" msgid="6724596937972563920">"Dakika 6"</string>
+    <string name="pref_video_time_lapse_frame_interval_600000" msgid="6563665954471001352">"Dakika 1"</string>
+    <string name="pref_video_time_lapse_frame_interval_720000" msgid="8969801372893266408">"Dakika 12"</string>
+    <string name="pref_video_time_lapse_frame_interval_900000" msgid="5803172407245902896">"Dakika 15"</string>
+    <string name="pref_video_time_lapse_frame_interval_1440000" msgid="6286246349698492186">"Dakika 24"</string>
+    <string name="pref_video_time_lapse_frame_interval_1800000" msgid="5042628461448570758">"Saa 0.5"</string>
+    <string name="pref_video_time_lapse_frame_interval_3600000" msgid="6366071632666482636">"Saa 1"</string>
+    <string name="pref_video_time_lapse_frame_interval_5400000" msgid="536117788694519019">"Saa 1.5"</string>
+    <string name="pref_video_time_lapse_frame_interval_7200000" msgid="6846617415182608533">"Saa 2"</string>
+    <string name="pref_video_time_lapse_frame_interval_9000000" msgid="4242839574025261419">"Saa 2.5"</string>
+    <string name="pref_video_time_lapse_frame_interval_10800000" msgid="2766886102170605302">"Saa 3"</string>
+    <string name="pref_video_time_lapse_frame_interval_14400000" msgid="7497934659667867582">"Saa 4"</string>
+    <string name="pref_video_time_lapse_frame_interval_18000000" msgid="8783643014853837140">"Saa 5"</string>
+    <string name="pref_video_time_lapse_frame_interval_21600000" msgid="5005078879234015432">"Saa 6"</string>
+    <string name="pref_video_time_lapse_frame_interval_36000000" msgid="69942198321578519">"Saa 10"</string>
+    <string name="pref_video_time_lapse_frame_interval_43200000" msgid="285992046818504906">"Saa 12"</string>
+    <string name="pref_video_time_lapse_frame_interval_54000000" msgid="5740227373848829515">"Saa 15"</string>
+    <string name="pref_video_time_lapse_frame_interval_86400000" msgid="9040201678470052298">"Saa 24"</string>
+    <string name="time_lapse_seconds" msgid="2105521458391118041">"sekunde"</string>
+    <string name="time_lapse_minutes" msgid="7738520349259013762">"dakika"</string>
+    <string name="time_lapse_hours" msgid="1776453661704997476">"saa"</string>
+    <string name="time_lapse_interval_set" msgid="2486386210951700943">"Nimemaliza"</string>
+    <string name="set_time_interval" msgid="2970567717633813771">"Weka Nafasi ya Muda"</string>
+    <string name="set_time_interval_help" msgid="6665849510484821483">"Kipengele cha muda kupita kimezimika. Kiwashe ili kuweka nafasi ya muda."</string>
+    <string name="set_timer_help" msgid="5007708849404589472">"Kipima muda kimezimwa. Kiwashe ili kihesabu kabla ya kupiga picha."</string>
+    <string name="set_duration" msgid="5578035312407161304">"Weka muda katika sekunde"</string>
+    <string name="count_down_title_text" msgid="4976386810910453266">"Inahesabu ili kupiga picha"</string>
+    <string name="remember_location_title" msgid="9060472929006917810">"Kumbuka maeneo ya picha?"</string>
+    <string name="remember_location_prompt" msgid="724592331305808098">"Tambulisha picha na video zako kwa maeneo ambapo zinachukuliwa.\n\nProgramu nyingine zinaweza kufikia maelezo haya kando na picha zako zilizohifadhiwa."</string>
+    <string name="remember_location_no" msgid="7541394381714894896">"La, asante"</string>
+    <string name="remember_location_yes" msgid="862884269285964180">"Ndiyo"</string>
+    <string name="menu_camera" msgid="3476709832879398998">"Kamera"</string>
+    <string name="menu_search" msgid="7580008232297437190">"Tafuta"</string>
+    <string name="tab_photos" msgid="9110813680630313419">"Picha"</string>
+    <string name="tab_albums" msgid="8079449907770685691">"Albamu"</string>
+    <string name="camera_menu_more_label" msgid="6868642182125198710">"CHAGUO ZAIDI"</string>
+    <string name="camera_menu_settings_label" msgid="875454962069404723">"MIPANGILIO"</string>
+  <plurals name="number_of_photos">
+    <item quantity="one" msgid="6949174783125614798">"Picha %1$d"</item>
+    <item quantity="other" msgid="3813306834113858135">"Picha %1$d"</item>
+  </plurals>
+</resources>

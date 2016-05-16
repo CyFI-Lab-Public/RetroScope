@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="true">
+
+  <TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Iteration count:"
+        />
+
+    <EditText android:id="@+id/iterations_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:numeric="integer"
+        android:singleLine="true"
+        android:text="100"
+        />
+  </TableRow>
+
+  <TableRow>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile filename:"
+        />
+
+    <EditText android:id="@+id/trace_edit"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        />
+  </TableRow>
+
+  <TableRow>
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/file_read_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Seek + read cached:"
+         />
+      <Button
+         android:id="@+id/file_read_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="File read"
+         />
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/file_write_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Open + write + close:"
+         />
+      <Button
+         android:id="@+id/file_write_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="File write"
+         />
+    </LinearLayout>
+  </TableRow>
+
+  <TableRow>
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/settings_read_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Settings read xproc:"
+         />
+      <Button
+         android:id="@+id/settings_read_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Settings read"
+         />
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/settings_sleep_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="... + post sleep:"
+         />
+      <Button
+         android:id="@+id/settings_sleep_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Sleep + Read"
+         />
+    </LinearLayout>
+  </TableRow>
+
+  <TableRow>
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/settings_write_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Settings write:" />
+      <Button
+         android:id="@+id/settings_write_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Settings write" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/settings_writedup_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Settings dup write:" />
+      <Button
+         android:id="@+id/settings_writedup_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Dup writes" />
+    </LinearLayout>
+  </TableRow>
+
+  <TableRow>
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/dummy_lookup_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Noop xproc Provider:" />
+      <Button
+         android:id="@+id/dummy_lookup_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Noop xproc query" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/dummy_local_lookup_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Noop inproc Provider:" />
+      <Button
+         android:id="@+id/dummy_local_lookup_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Noop inproc query" />
+    </LinearLayout>
+  </TableRow>
+
+  <TableRow>
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/localsocket_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="LocalSocket xproc:" />
+      <Button
+         android:id="@+id/localsocket_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="LocalSocket xproc" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/proc_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="/proc file read:" />
+      <Button
+         android:id="@+id/proc_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="/proc file reads" />
+    </LinearLayout>
+
+  </TableRow>
+
+  <TableRow>
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/service_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Service void xproc:" />
+      <Button
+         android:id="@+id/service_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Service; void" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/service2_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Service ret-string xproc:" />
+      <Button
+         android:id="@+id/service2_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Service; string" />
+    </LinearLayout>
+  </TableRow>
+
+  <TableRow>
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/ping_media_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Ping media player service:" />
+      <Button
+         android:id="@+id/ping_media_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Ping media" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/ping_activity_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Ping activity service:" />
+      <Button
+         android:id="@+id/ping_activity_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Ping activity" />
+    </LinearLayout>
+  </TableRow>
+
+  <TableRow>
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/call_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Call:" />
+      <Button
+         android:id="@+id/call_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="cp.Call()" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/call2_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Call non-exist:" />
+      <Button
+         android:id="@+id/call2_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="cp.Call() no exist" />
+    </LinearLayout>
+  </TableRow>
+
+  <TableRow>
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/obtain_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Obtain parcel:" />
+      <Button
+         android:id="@+id/obtain_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Parcel.obtain()" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/recycle_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Recycle parcel:" />
+      <Button
+         android:id="@+id/recycle_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Parcel.recycle()" />
+    </LinearLayout>
+  </TableRow>
+
+  <TableRow>
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/strictmode_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="StrictMode.set:" />
+      <Button
+         android:id="@+id/strictmode_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="StrictMode (both)" />
+    </LinearLayout>
+
+    <LinearLayout android:layout_height="wrap_content"
+                  android:layout_width="wrap_content"
+                  android:orientation="vertical">
+      <TextView  
+         android:id="@+id/binderstrict_text"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Binder.setStrictMode:" />
+      <Button
+         android:id="@+id/binderstrict_button"
+         android:layout_width="fill_parent" 
+         android:layout_height="wrap_content" 
+         android:text="Binder strictMode (JNI)" />
+    </LinearLayout>
+
+  </TableRow>
+
+</TableLayout>
+
+</ScrollView>

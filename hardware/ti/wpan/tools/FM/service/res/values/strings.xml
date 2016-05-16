@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!---Android FM Permissions description -->
+<resources>
+    <string name="permlab_FmRx">FM Radio</string>
+    <string name="permdesc_FmRx">FM Radio</string>
+    <string name="permlab_FmRxAdmin">FM Radio</string>
+    <string name="permdesc_FmRxAdmin">FM Radio</string>
+</resources>

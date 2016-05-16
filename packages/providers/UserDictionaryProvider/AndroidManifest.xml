@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.android.providers.userdictionary"
+        android:sharedUserId="android.uid.shared">
+
+    <application android:process="android.process.acore"
+        android:label="@string/app_label"
+        android:allowClearUserData="false"
+        android:backupAgent="DictionaryBackupAgent"
+        android:killAfterRestore="false"
+        >
+        <provider android:name="UserDictionaryProvider" android:authorities="user_dictionary"
+                android:syncable="false" android:multiprocess="false"
+                android:exported="true"
+                android:readPermission="android.permission.READ_USER_DICTIONARY" 
+                android:writePermission="android.permission.WRITE_USER_DICTIONARY" />
+    </application>
+</manifest>

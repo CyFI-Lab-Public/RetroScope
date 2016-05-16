@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2012 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<!-- Action bar items for the tablet when viewing a conversation in landscape mode. -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Since we show the conversation list in landscape mode, we show compose and search
+         even in the conversation view. -->
+    <item android:id="@+id/compose"
+        android:title="@string/menu_compose"
+        android:showAsAction="always"
+        android:icon="@drawable/ic_menu_compose_normal_holo_light"
+        android:alphabeticShortcut="@string/trigger_compose_char" />
+
+    <item android:id="@+id/search"
+        android:title="@string/menu_search"
+        android:showAsAction="always|collapseActionView"
+        android:icon="@drawable/ic_menu_search_holo_light"
+        android:actionLayout="@layout/mail_actionbar_searchview" />
+
+    <!-- Depends on AccountCapabilities.ARCHIVE and
+         FolderCapabilities.ARCHIVE. Only one of archive or
+         remove_folder are shown, and they have the same drawable, so
+         show the first one.
+    -->
+    <item
+        android:id="@+id/archive"
+        android:title="@string/archive"
+        android:showAsAction="never"
+        android:icon="@drawable/archive"
+        android:alphabeticShortcut="@string/trigger_y_char" />
+    <item
+        android:id="@+id/remove_folder"
+        android:title="@string/remove_folder"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_remove_label"
+        android:alphabeticShortcut="@string/trigger_y_char"
+        android:visible="false" />
+    <!-- Depends on FolderCapabilities.DELETE -->
+    <item
+        android:id="@+id/delete"
+        android:title="@string/delete"
+        android:showAsAction="never"
+        android:icon="@drawable/trash" />
+    <!-- Depends on the user viewing a draft label, and the above menu item not being shown -->
+    <item
+        android:id="@+id/discard_drafts"
+        android:title="@string/discard_drafts"
+        android:showAsAction="never"
+        android:icon="@drawable/trash"
+        android:visible="false" />
+
+    <item
+        android:id="@+id/inside_conversation_unread"
+        android:title="@string/mark_unread"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_menu_mark_unread_holo_light" />
+
+    <item
+        android:id="@+id/move_to"
+        android:title="@string/menu_move_to"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_menu_move_to_holo_light" />
+
+    <!-- Always available -->
+    <item
+        android:id="@+id/change_folders"
+        android:title="@string/menu_change_folders"
+        android:showAsAction="never"
+        android:icon="@drawable/ic_menu_folders_holo_light" />
+
+    <item
+        android:id="@+id/move_to_inbox"
+        android:showAsAction="never"
+        android:title="@string/menu_move_to_inbox" />
+
+    <item
+        android:id="@+id/mark_important"
+        android:showAsAction="never"
+        android:title="@string/mark_important" />
+
+    <item
+        android:id="@+id/mark_not_important"
+        android:title="@string/mark_not_important"
+        android:showAsAction="never" />
+
+    <item
+        android:id="@+id/mute"
+        android:title="@string/mute"
+        android:showAsAction="never" />
+    <item
+        android:id="@+id/show_original"
+        android:title="@string/menu_show_original"
+        android:showAsAction="never"/>
+
+    <item
+        android:id="@+id/report_spam"
+        android:title="@string/report_spam"
+        android:showAsAction="never"/>
+
+    <!-- Depends on AccountCapabilities.REPORT_SPAM -->
+    <item
+        android:id="@+id/mark_not_spam"
+        android:title="@string/mark_not_spam"
+        android:showAsAction="never"
+        android:visible="false" />
+
+    <!-- Depends on AccountCapabilities.REPORT_PHISHING -->
+    <item
+        android:id="@+id/report_phishing"
+        android:title="@string/report_phishing"
+        android:showAsAction="never"
+        android:visible="false" />
+
+    <item android:id="@+id/refresh"
+        android:title="@string/refresh"
+        android:showAsAction="never"
+        android:alphabeticShortcut="@string/trigger_refresh_char" />
+
+    <!-- Available for Folders with SUPPORTS_SETTINGS capability -->
+    <item android:id="@+id/folder_options"
+        android:title="@string/menu_folder_options"
+        android:showAsAction="never"  />
+
+    <item android:id="@+id/settings"
+        android:title="@string/menu_settings"
+        android:showAsAction="never" />
+
+    <item
+        android:id="@+id/feedback_menu_item"
+        android:title="@string/feedback"
+        android:showAsAction="never" />
+
+    <item
+        android:id="@+id/help_info_menu_item"
+        android:title="@string/help_and_info"
+        android:showAsAction="never" />
+
+</menu>

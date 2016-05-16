@@ -1,0 +1,22 @@
+The packages/experimental/ directory is for NON-SHIPPING code that is
+not included with any flavor of the device, the SDK, or any other kind
+of public release, but which might be useful for someone as a test
+harness, development tool, or general fun times.
+
+This directory, and all subdirectories, are public and published as
+part of the Android Open Source Project.
+
+>> Every package under this directory must have a README file <<
+
+Official SDK development samples should NOT go here, they should go in
+development/samples/ instead.
+
+Unlike the rest of the tree, code in experimental/ is NOT built by
+default, and may be arbitrarily broken.  Caveat user!  Individual
+packages must be built directly with "mmm" or equivalent:
+
+   mmm packages/experimental/BugReportSender
+
+Like a communal fridge, this directory will be cleaned periodically.
+Every major release, we intend to remove and archive any package that
+does not have an active owner and users.

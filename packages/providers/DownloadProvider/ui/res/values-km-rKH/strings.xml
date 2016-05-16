@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3070921713463294774">"ទាញ​យក"</string>
+    <string name="download_title_sorted_by_date" msgid="5898014492155434221">"ទាញ​យក-តម្រៀប​តាម​កាលបរិច្ឆេទ"</string>
+    <string name="download_title_sorted_by_size" msgid="1417193166677094813">"ទាញ​យក-តម្រៀប​តាម​ទំហំ"</string>
+    <string name="no_downloads" msgid="1029667411186146836">"មិន​មាន​ការ​ទាញ​យក"</string>
+    <string name="missing_title" msgid="830115697868833773">"&lt;មិន​ស្គាល់&gt;"</string>
+    <string name="button_sort_by_size" msgid="7331549713691146251">"តម្រៀប​តាម​ទំហំ"</string>
+    <string name="button_sort_by_date" msgid="8800842892684101528">"តម្រៀប​តាម​ថ្ងៃ"</string>
+    <string name="download_queued" msgid="104973307780629904">"​បាន​ដាក់​ជា​ជួរ"</string>
+    <string name="download_running" msgid="4656462962155580641">"កំពុង​ដំណើរការ"</string>
+    <string name="download_success" msgid="7006048006543495236">"រួចរាល់"</string>
+    <string name="download_error" msgid="8081329546008568251">"បរាជ័យ"</string>
+    <string name="dialog_title_not_available" msgid="5746317632356158515">"មិន​អាច​ទាញ​យក"</string>
+    <string name="dialog_failed_body" msgid="587545111677064427">"តើ​អ្នក​ចង់​ព្យាយាម​ទាញ​យក​ឯកសារ​ម្ដងទៀត​នៅ​ពេល​ក្រោយ ឬ​លុប​វា​ចេញពី​ជួរ?"</string>
+    <string name="dialog_title_queued_body" msgid="6760681913815015219">"ឯកសារ​ស្ថិត​ក្នុង​ជួរ"</string>
+    <string name="dialog_queued_body" msgid="708552801635572720">"ឯកសារ​គឺ​ស្ថិត​ក្នុង​ជួរ​សម្រាប់​ការ​ទាញ​យក​បន្ទាប់ ដូច្នេះ​វា​មិន​មាន​នៅឡើយ​ទេ។"</string>
+    <string name="dialog_file_missing_body" msgid="3223012612774276284">"រក​មិន​ឃើញ​ឯកសារ​ដែល​បាន​ទាញ​យក។"</string>
+    <string name="dialog_insufficient_space_on_external" msgid="8692452156251449195">"មិន​អាច​បញ្ចប់​ការ​ទាញ​យក។ មិន​មាន​ទំហំ​គ្រប់គ្រាន់​នៅ​លើ​ឧបករណ៍​ផ្ទុក​ការ​ទាញ​យក​ខាងក្រៅ។"</string>
+    <string name="dialog_insufficient_space_on_cache" msgid="6313630206163908994">"មិន​អាច​បញ្ចប់​ការ​ទាញ​យក។ មិន​មាន​ទំហំ​គ្រប់គ្រាន់​នៅ​លើ​ឧបករណ៍​ផ្ទុក​ការ​ទាញ​យក​ខាងក្នុង។"</string>
+    <string name="dialog_cannot_resume" msgid="8664509751358983543">"បាន​បង្អាក់​ការ​ទាញ​យក ហើយ​វា​មិន​អាច​បន្ត​ទៀត​បាន​ទេ។"</string>
+    <string name="dialog_file_already_exists" msgid="8308563940663449590">"មិន​អាច​ទាញ​យក, ឯកសារ​ទិសដៅ​មាន​រួចហើយ។"</string>
+    <string name="dialog_media_not_found" msgid="4468088418758018765">"មិន​អាច​បញ្ចប់​ការ​ទាញ​យក។ មិន​មាន​មេឌៀ​ខាងក្រៅ។"</string>
+    <string name="download_no_application_title" msgid="7024782176657362251">"មិន​អាច​បើក​ឯកសារ"</string>
+    <string name="remove_download" msgid="6372920256257247857">"លុប​ចេញ"</string>
+    <string name="delete_download" msgid="76629022653866471">"លុប"</string>
+    <string name="keep_queued_download" msgid="5144882786014818569">"បន្ត"</string>
+    <string name="cancel_running_download" msgid="5232704030969221112">"បោះ​បង់"</string>
+    <string name="retry_download" msgid="7617100787922717912">"សាកល្បង​ម្ដងទៀត"</string>
+    <string name="deselect_all" msgid="6348198946254776764">"មិន​ជ្រើស​ទាំងអស់"</string>
+    <string name="select_all" msgid="634074918366265804">"ជ្រើស​ទាំងអស់"</string>
+    <string name="selected_count" msgid="2101564570019753277">"បាន​ជ្រើស <xliff:g id="NUMBER">%1$d</xliff:g> ក្នុង​ចំណោម <xliff:g id="TOTAL">%2$d</xliff:g>"</string>
+    <string name="download_share_dialog" msgid="3355867339806448955">"ចែករំលែក​តាម"</string>
+</resources>

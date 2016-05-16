@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.cts.permissiondeclareapp">
+
+    <!--
+    An app that declares a permission that requires a matching signature to
+    access.
+    -->
+    <permission android:name="com.android.cts.permissionWithSignature"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.android.cts.permissionWithSignature" />
+
+    <!-- A permission this app will not hold. -->
+    <permission android:name="com.android.cts.permissionNotUsedWithSignature"
+        android:protectionLevel="signature" />
+
+    <permission android:name="com.android.cts.permissionNormal" />
+
+    <application>
+        <receiver android:name="GrantUriPermission" android:exported="true">
+        </receiver>
+        <receiver android:name="SetInstallerPackage" android:exported="true">
+        </receiver>
+
+        <!-- Need a way for another app to try to access the permission. So create a content
+        provider which is enforced by the permission -->
+        <provider android:name="PermissionContentProvider"
+                android:authorities="ctspermissionwithsignature"
+                android:readPermission="com.android.cts.permissionWithSignature"
+                android:writePermission="com.android.cts.permissionWithSignature"
+                android:exported="true">
+        </provider>
+
+        <!-- Need a way for another app to try to access the permission, but will
+             grant uri access. -->
+        <provider android:name="PermissionContentProviderGranting"
+                android:authorities="ctspermissionwithsignaturegranting"
+                android:readPermission="com.android.cts.permissionWithSignature"
+                android:writePermission="com.android.cts.permissionWithSignature"
+                android:exported="true">
+            <grant-uri-permission android:pathPattern="/foo.*" />
+            <grant-uri-permission android:pathPattern="/yes.*" />
+        </provider>
+
+        <!-- Nobody else should get access to this -->
+        <provider android:name="PrivateContentProvider"
+                android:authorities="ctsprivateprovider"
+                android:exported="false">
+        </provider>
+
+        <!-- Nobody else should get access to this, but we will grant uri access -->
+        <provider android:name="PrivateContentProviderGranting"
+                android:authorities="ctsprivateprovidergranting"
+                android:exported="false">
+            <grant-uri-permission android:pathPattern="/foo.*" />
+            <grant-uri-permission android:pathPattern="/yes.*" />
+        </provider>
+
+        <!-- An ambiguous content provider, where "exported" was not specified.
+             Nobody should get access to this. -->
+        <provider android:name="AmbiguousContentProvider"
+                android:authorities="ctsambiguousprovider">
+        </provider>
+
+        <!-- Target for tests about how path permissions interact with granting
+             URI permissions. -->
+        <provider android:name="PermissionContentProviderPath"
+                android:authorities="ctspermissionwithsignaturepath"
+                android:readPermission="com.android.cts.permissionNotUsedWithSignature"
+                android:writePermission="com.android.cts.permissionNotUsedWithSignature"
+                android:exported="true">
+            <path-permission
+                    android:pathPrefix="/foo"
+                    android:readPermission="com.android.cts.permissionWithSignature"
+                    android:writePermission="com.android.cts.permissionWithSignature" />
+            <path-permission
+                    android:pathPrefix="/yes"
+                    android:readPermission="com.android.cts.permissionWithSignature"
+                    android:writePermission="com.android.cts.permissionWithSignature" />
+            <grant-uri-permission android:pathPattern=".*" />
+        </provider>
+
+        <!-- Target for tests that verify path permissions can restrict access
+             when no default top-level permission. -->
+        <provider android:name="PermissionContentProviderPathRestricting"
+                android:authorities="ctspermissionwithsignaturepathrestricting"
+                android:exported="true">
+            <!-- Require signature permission to get into path. -->
+            <path-permission
+                    android:pathPrefix="/foo"
+                    android:readPermission="com.android.cts.permissionWithSignature"
+                    android:writePermission="com.android.cts.permissionWithSignature" />
+            <!-- Allow access to a specific path inside. -->
+            <path-permission
+                    android:pathPrefix="/foo/bar"
+                    android:readPermission="com.android.cts.permissionNormal"
+                    android:writePermission="com.android.cts.permissionNormal" />
+        </provider>
+
+    </application>
+</manifest>

@@ -1,0 +1,90 @@
+fullpage=true
+no_footer_links=true
+landing.page=true
+page.metaDescription=The official site for the Android Open Source Project.
+header.hide=1
+@jd:body
+
+<!--
+    Copyright 2010 The Android Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<div class="wrap">
+
+  <div class="landing-banner">
+      <h1 itemprop="name" style="margin-bottom:0;">Welcome to the Android Open Source Project!</h1>
+
+      <p>
+      Android is an open-source software stack for a wide range of mobile devices and a corresponding open-source project led by 
+      Google. Here you can find the information and source code you need to learn more about the Android platform. From there you can
+      create custom variants of the Android software stack, port devices and accessories to the Android platform,
+      and ensure your devices are compatible with the Android compatibility definition.
+      </p>
+
+  </div>
+
+</div>
+
+
+<div class="wrap">
+
+  <div class="landing-docs">
+    <div class="col-8">
+    <h3>Updates</h3>
+      <a href="{@docRoot}source/index.html">
+        <h4>Source Code Available for Android 4.3</h4>
+        <p>Android is an open-source software stack for a wide array of mobile devices with different form factors.
+<img border="0" src="images/Android_Robot_100.png" alt="Android Partner icon" style="display:inline;float:right;margin:5px 10px"> 
+        We created Android in response to our own experiences launching mobile apps. We wanted to make sure there was 
+        no central point of failure so no industry player can restrict or control the innovations of any other. That's 
+        why we created Android and made its source code open.</p>
+      </a>
+      <a href="{@docRoot}compatibility/index.html">
+        <h4>Compatibility Definition for Android 4.3</h4>
+        <p>Android's purpose is to establish an open platform for developers to build innovative apps. The Android 
+        Compatibility program defines the technical details of the Android platform and provides tools for device manufacturers to 
+        ensure developers' apps run on a variety of devices.</p>
+      </a>
+    </div>
+
+    <div class="col-8">
+      <h3>Getting Started</h3>
+      <a href="{@docRoot}source/index.html">
+        <h4>Explore the Source</h4>
+        <p>Get the complete Android platform and modify and build it to suit your needs. You can
+        also contribute to the Open Source Project to make your changes available to everyone else in
+        the Android ecosystem.</p>
+      </a>
+      <a href="{@docRoot}devices/index.html">
+        <h4>Port Android to Devices</h4>
+        <p>Port the latest Android platform and
+        create compelling devices that your customers want.</p>
+      </a>
+
+      <a href="{@docRoot}accessories/index.html">
+        <h4>Build Accessories</h4>
+        <p>Sometimes, a device can't do it all. Tap into Android's open accessory standard and build accessories to complement the wide variety of Android-powered devices.</p>
+      </a>
+
+      <a href="{@docRoot}compatibility/index.html">
+        <h4>Get Compatible</h4>
+        <p>Being Android-compatible lets you offer custom features but still give users and developers a consistent
+          and standard experience across all Android-powered devices. Android provides guidance
+          and a test suite to verify your Android compatibility.</p>
+      </a>
+    </div>
+
+  </div>
+
+</div>

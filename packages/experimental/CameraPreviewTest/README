@@ -1,0 +1,8 @@
+VideoChatCameraTestApp.apk:
+
+A small test app to exercise the camera in various modes in much the same way that GTalk video chat does.
+
+Allows for testing the camera without having to spin up all of video chat.
+
+Owner: Mike Dodd <mdodd@google.com>
+

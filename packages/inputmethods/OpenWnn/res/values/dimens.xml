@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<resources>
+    <!-- key_height x 4 = keyboard_height -->
+    <!-- key_height = symbol_keyboard_height -->
+    <dimen name="key_height">50dip</dimen>
+    <dimen name="key_height_4">50dip</dimen>
+    <dimen name="key_height_5">40dip</dimen>
+    <dimen name="key_height_5_bottom">60dip</dimen>
+    <dimen name="key_height_qwerty">44dip</dimen>
+    <dimen name="key_height_landscape">34dip</dimen>
+    <dimen name="key_height_adjustment">0dip</dimen>
+    <dimen name="key_height_4key">50dip</dimen>
+    <dimen name="candidate_delete_word_size">28dip</dimen>
+    <dimen name="key_label_text_size">12dip</dimen>
+    <dimen name="key_text_size">22dip</dimen>
+    <dimen name="cand_normal_text_size">18sp</dimen>
+    <dimen name="cand_category_text_size">18dip</dimen>
+    <dimen name="cand_minimum_width">52dip</dimen>
+    <dimen name="cand_minimum_height">37dip</dimen>
+    <dimen name="cand_space_width">20dip</dimen>
+    <dimen name="cand_space_width_emoji_symbol">4dip</dimen>
+    <dimen name="cand_category_minimum_height">25dip</dimen>
+    <dimen name="cand_left_align_threshold">80dip</dimen>
+    <dimen name="keyboard_height">200dip</dimen>
+    <dimen name="symbol_keyboard_height">50dip</dimen>
+    <dimen name="preview_offset_candidate">37dip</dimen>
+    <dimen name="preview_offset_symbol">148dip</dimen>
+    <dimen name="tab_text_size">18dip</dimen>
+    <dimen name="list_preference_span_string_gap">22dip</dimen>
+    <dimen name="list_preference_span_image_gap">11dip</dimen>
+    <dimen name="list_preference_span_right_gap">10dip</dimen>
+    <dimen name="candidate_layout_width">36dp</dimen>
+    <dimen name="candidate_layout_height">60dp</dimen>
+    <dimen name="bubble_pointer_offset">22dip</dimen>
+    <dimen name="candidate_longpress_dialog_button_word_size">12dip</dimen>
+    <dimen name="candidate_longpress_dialog_candidate_word_size">28dip</dimen>
+</resources>

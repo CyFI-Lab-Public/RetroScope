@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+    <style name="Theme.Dream"
+        parent="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+    </style>
+    <style name="Theme.Dream.Transparent"
+        parent="@android:style/Theme.Wallpaper.NoTitleBar.Fullscreen">
+    </style>
+</resources>

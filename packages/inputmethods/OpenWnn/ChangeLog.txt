@@ -1,0 +1,98 @@
+------------------------------------------------------------------------------
+                              [OpenWnn ChangeLog]
+
+     (C) Copyright OMRON SOFTWARE Co., Ltd. 2008-2012 All Rights Reserved.
+------------------------------------------------------------------------------
+
+[Version 1.3.6 release] Apr 12, 2012
+------------------------------------
+  Update features:
+   * Android 4.0 (ICS) support.
+   * Improving Large Qwerty.
+     - Display style of the candidates view is changed.
+   * Improving usability.
+     - Focus in the candidate list can move arround using keyboard operation.
+     - Layout of soft keyboard is changed.
+     - Layout of symbol list is changed.
+     - Layout of emoticon list is changed.
+     - Support for H/W12key
+     - Support for Bluetooth Keyboard
+
+  Bug fix:
+   * If the ICS, bug when displaying the user dictionary, Exception occurs.
+   * Corresponding vulnerability of DB files
+
+[Version 1.3.5 release] Dec 25, 2009
+------------------------------------
+  Update features:
+   * Importing some improvement from iWnn IME.
+
+  Bug fix:
+   * Bug of Romaji-to-Kana conversion on phonetic text field is fixed.
+   * Some minor bugs are fixed.
+
+[Version 1.3.4 release] Oct 29, 2009
+------------------------------------
+  Bug fix:
+   * User Dictionary's bug on WVGA is fixed.
+   * Hardware keyboard support on Android 2.0 (eclair)
+
+[Version 1.3.3 release] Sep 30, 2009
+------------------------------------
+  Update features:
+   * Android 2.0 (eclair) support.
+
+[Version 1.3.2 internal version] Sep 25, 2009
+---------------------------------------------
+  Update features:
+   * Android 1.6 (donut) support.
+   * Adding images for 240dpi display.
+   * Japanese input on E-mail address field is allowed.
+
+[Version 1.3.1 release] Jun 12, 2009
+------------------------------------
+  Update features:
+   * Emoji is disabled.
+   * Improving display size compatibility.
+
+[Version 1.3 release]   May 14, 2009
+------------------------------------
+  Update features:
+   * Improving usability.
+     - Layout of software keyboards are changed.
+     - Display style of the candidates view is changed.
+     - Simple tutorial is added.
+   * Improving speed of registering to the learning dictionary.
+
+  Bug fix:
+   * Some minor bugs are fixed.
+
+[Version 1.2 release]   Mar 27, 2009
+------------------------------------
+  The first release implemented following features:
+   * (Simplified) Chinese input method
+
+  Update features:
+   * Switcher of "Auto Capitalization" to the setting menu is added.
+   * Changer of the keyboard image to the setting menu is added.
+   * User dictionary manager's user interface is changed.
+   * Changes for improving usability.
+
+  Bug fix:
+   * Some minor bugs are fixed.
+
+------------------------------------------------------------------------------
+[Version 1.1 release]   Feb. 23, 2009
+-------------------------------------
+  The first release implemented following features:
+   * Japanese input method
+   * English input method
+
+------------------------------------------------------------------------------
+[Version 1.0 release]   Dec 04, 2008
+-------------------------------------
+  The first release implemented following features:
+   * Dictionary search library
+   * English dictionary
+
+------------------------------------------------------------------------------

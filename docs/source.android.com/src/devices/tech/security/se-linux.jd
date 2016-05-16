@@ -1,0 +1,315 @@
+page.title=Security-Enhanced Linux 
+@jd:body
+
+<!--
+    Copyright 2010 The Android Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<h2 id="introduction">Introduction</h2> <p>In Android 4.3,
+Android begins supporting Security-Enhanced Linux (SELinux), a tool for applying
+access control policies. SELinux enhances Android security, and contributions to
+it have been made by a number of companies and organizations; all Android code
+and contributors are publicly available for review on this same site <a
+href="http://source.android.com/">source.android.com</a>. With SELinux, Android
+can better control access to application data and system logs, reduce the
+effects of malicious software, and protect users from potential flaws in mobile
+code. </p>
+
+<p>In this release, Android includes SELinux in permissive mode and a
+corresponding security policy that works by default across the <a
+href="https://android.googlesource.com/">Android Open Source Project</a>. In
+permissive mode, no actions are prevented. Instead, all potential violations are
+logged by the kernel to <code>dmesg</code>. This allows Android and Android device
+manufacturers to gather information about errors so they may refine their
+software and SELinux policies before enforcing them.</p>
+
+<h2 id="background">Background</h2> <p>Used properly, SELinux greatly limits the
+potential damage of compromised machines and accounts. When you adopt SELinux,
+you instill a structure by which software runs at only the minimum privilege
+level. This mitigates the effects of attacks and reduces the likelihood of
+errant processes overwriting or even transmitting data.</p>
+
+<p>SELinux provides a mandatory access control (MAC) umbrella over traditional
+discretionary access control (DAC) environments. For instance, software must
+typically run as the root user account to write to raw block devices. In a
+traditional DAC-based Linux environment, if the root user becomes compromised
+that user can write to every raw block device. However, SELinux can be used to
+label these devices so the user role assigned the root privilege can write to
+only those specified in the associated policy. In this way, root cannot
+overwrite data and system settings outside of the specific raw block device.</p>
+
+<p>See the <em>Use Cases</em> section for more examples of threats and ways to
+address them with SELinux.</p>
+
+<h2 id="implementation">Implementation</h2> <p>Android&rsquo;s initial SELinux
+implementation is launching in permissive mode - rather than the non-functional
+disabled mode or the most stringent enforcing mode - to act as a reference and
+facilitate testing and development.</p>
+
+<p>SELinux is launching in permissive mode on Android to enable the first phase
+of policy development, and it is accompanied by everything you need to enable
+SELinux now.</p>
+
+<p>You merely need to integrate the <a
+href="https://android.googlesource.com/kernel/common/">latest Android kernel</a>
+and then incorporate the files found in the ~<a
+href="https://android.googlesource.com/platform/external/sepolicy/">platform/external/sepolicy</a>
+directory:<br>
+<a
+href="https://android.googlesource.com/kernel/common/">https://android.googlesource.com/kernel/common/</a>
+<br>
+<a
+href="https://android.googlesource.com/platform/external/sepolicy/">https://android.googlesource.com/platform/external/sepolicy/</a></p>
+
+<p>Those files when compiled comprise the SELinux kernel security policy and
+cover the upstream Android operating system. Place those files within the
+&lt;root&gt;/device/manufacturer/device-name/sepolicy directory.</p>
+
+<p>Then just update your <code>BoardConfig.mk</code> makefile - located in the
+&lt;device-name&gt; directory containing the sepolicy subdirectory - to
+reference the sepolicy subdirectory once created, like so:</p>
+
+<pre>
+BOARD_SEPOLICY_DIRS := \
+        &lt;root&gt;/device/manufacturer/device-name/sepolicy
+
+BOARD_SEPOLICY_UNION := \
+        genfs_contexts \ 
+        file_contexts \ 
+        sepolicy.te 
+</pre>
+
+<p>After rebuilding your device, it is enabled with SELinux. You can now either
+customize your SELinux policies to accommodate your own additions to the Android
+operating system as described in the <em>Customization</em> section or verify
+your existing setup as covered in the <em>Validation</em> section.</p>
+
+<h2 id="customization">Customization</h2> <p>Once you&rsquo;ve integrated this
+base level of functionality and thoroughly analyzed the results, you may add
+your own policy settings to cover your customizations to the Android operating
+system. Of course, these policies must still meet the <a
+href="{@docRoot}compatibility/index.html">Android Compatibility
+program</a> requirements and not remove the default SELinux settings.</p>
+
+<p>Manufacturers should not remove existing security settings. Otherwise, they
+risk breaking the Android SELinux implementation and the applications it
+governs. This includes third-party applications that will likely need to be
+improved to be compliant and operational. Applications must require no
+modification to continue functioning on SELinux-enabled devices.</p>
+
+<p>See section 9.7 of the Android 4.3 Compatibility Definition document for
+specific requirements:<br><a
+href="{@docRoot}compatibility/android-4.3-cdd.pdf">http://source.android.com/compatibility/android-4.3-cdd.pdf</a></p>
+
+<p>SELinux uses a whitelist approach, meaning it grants special privileges based
+upon role. Because the default policy provided by Android is so permissive, OEMs
+have great leeway in strengthening it. Here is how we recommend proceeding:</p>
+
+<ol>
+<li>
+<p>Use the <a
+href="https://android.googlesource.com/kernel/common/">latest Android
+kernel</a>.</p> </li>
+<li>
+<p>Adopt the <a
+href="http://en.wikipedia.org/wiki/Principle_of_least_privilege">principle of
+least privilege</a>.</p></li>
+<li>
+<p>Address only your own additions to
+Android. The default policy works with the <a
+href="https://android.googlesource.com/">Android Open Source Project</a>
+codebase automatically.</p></li>
+<li>
+<p>Compartmentalize software components
+into modules that conduct singular tasks.</p></li>
+<li>
+<p>Create SELinux
+policies that isolate those tasks from unrelated functions.</p></li>
+<li>
+<p>Put those policies in *.te files (the extension for SELinux policy source
+files) within the &lt;root&gt;/device/manufacturer/device-name/sepolicy
+directory.</p></li>
+<li>
+<p>Release your SELinux implementation in permissive
+mode first.</p></li>
+<li><p>Analyze results and refine policy settings.</p>
+</li>
+</ol>
+
+<p>Once integrated, OEM Android development should include a step to ensure
+SELinux compatibility going forward. In an ideal software development process,
+SELinux policy changes only when the software model changes and not the actual
+implementation.</p>
+
+<p>As device manufacturers begin to customize SELinux, they should first audit
+their additions to Android. If you&rsquo;ve added a component that conducts a
+new function, the manufacturer will need to ensure the component meets the
+security policy applied by Android, as well as any associated policy crafted by
+the OEM, before turning on enforcement.</p>
+
+<p>To prevent unnecessary issues, it is better to be overbroad and
+over-compatible than too restrictive and incompatible, which results in broken
+device functions. Conversely, if a manufacturer&rsquo;s changes will benefit
+others, it should supply the modifications to the default SELinux policy as a <a
+href="{@docRoot}source/submit-patches.html">patch</a>. If the
+patch is applied to the default security policy, the manufacturer will no longer
+need to make this change with each new Android release.</p>
+
+<h2 id="use-cases">Use Cases</h2> <p>Here are specific examples of exploits to
+consider when crafting your own software and associated SELinux policies:</p>
+
+<p><strong>Symlinks</strong> - Because symlinks appear as files, they are often read 
+just as that. This can lead to exploits. For instance, some privileged components such
+as init change the permissions of certain files, sometimes to be excessively
+open.</p>
+
+<p>Attackers might then replace those files with symlinks to code they control,
+allowing the attacker to overwrite arbitrary files. But if you know your application 
+will never traverse a symlink, you can prohibit it from doing so with SELinux.</p>
+
+<p><strong>System files</strong> - Consider the class of system files that should only be
+modified by the system server. Still, since <code>netd</code>, <code>init</code>, 
+and <code>vold</code> run as root, they can access those system files. So if 
+<code>netd</code> became compromised, it could compromise those files and 
+potentially the system server itself.</p>
+
+<p>With SELinux, you can identify those files as system server data files.
+Therefore, the only domain that has read/write access to them is system server.
+Even if <code>netd</code> became compromised, it could not switch domains to the 
+system server domain and access those system files although it runs as root.</p>
+
+<p><strong>App data</strong> - Another example is the class of functions that
+must run as root but should not get to access app data. This is incredibly useful as 
+wide-ranging assertions can be made, such as certain domains unrelated to application data
+being prohibited from accessing the internet.</p>
+
+<p><strong>setattr</strong> - For commands such as <code>chmod</code> and
+<code>chown</code>, you could identify the set of files where the associated domain 
+can conduct <code>setattr</code>. Anything outside of that could be prohibited from 
+these changes, even by root. So an application might run <code>chmod</code> and
+<code>chown</code> against those labeled app_data_files but not shell_data_files or 
+system_data_files.</p> <h2 id="related-files">Related
+Files</h2> <p>This section serves to guide you once you&rsquo;ve decided to
+customize the SELinux policy settings. See the <em>Customization</em> section
+for steps. We recommend device manufacturers start with the default Android
+SELinux policy and make the minimum possible set of changes to address their
+additions to Android. Existing Android SELinux policy files are found in the
+root of the ~<a
+href="https://android.googlesource.com/platform/external/sepolicy/">platform/external/sepolicy</a>
+directory.</p>
+
+<p>Android upgraded its SELinux policy version to allow the SELinux mode to be
+set to permissive on a per-domain basis. For example, if you run all of your
+applications on a single domain, you could set that domain to be permissive and
+then have all other functions and their domains set to enforcement. Domains are
+associated with applications by the key used to sign each application. This
+setting is made at the top of each SELinux policy source (*.te) file.</p>
+
+<p>Here are the files you must create or edit in order to customize SELinux:</p>
+<ul> 
+<li>
+<p><em>New SELinux policy source (*.te) files</em> - Located in the
+&lt;root&gt;/device/manufacturer/device-name/sepolicy directory These files
+define domains and their labels. The new policy files get concatenated with the
+existing policy files during compilation into a single SELinux kernel policy
+file.</p></li> 
+<li>
+<p><em>Updated <code>BoardConfig.mk</code> makefile</em> - Located in the
+&lt;device-name&gt; directory containing the sepolicy subdirectory. It must be
+updated to reference the sepolicy subdirectory once created if it wasn&rsquo;t
+in initial implementation.</p> </li> 
+<li>
+<p><em>Updated <code>file_contexts</code></em> - Located in
+the sepolicy subdirectory. It labels files and is managed in the userspace. As
+you create new policies, update this file to reference them. In order to apply
+new <code>file_contexts</code>, you must run <code>restorecon</code> on the file
+to be relabeled.</p>
+</li> </ul>
+
+<p>The remaining files in the sepolicy directory are either auto-generated or
+should remain static. The policy files come in the form: allow, domain, and
+context, for a set of actions:</p>
+
+<ul>
+<li>
+<p><em>Allow</em> - Gives the role permission to carry out the action described
+in the context within the specified domain.</p> </li>
+<li>
+<p><em>Domain</em> - Domain
+represents scope of the rule and gets converted to a security identifier (SID)
+in the kernel.</p> </li>
+<li>
+<p><em>Context</em> - An identifier for the rule, this is converted
+to an integer in the kernel.</p> </li> </ul>
+
+<p>And so the an example use of this would follow the structure:<br>
+<code>allow appdomain app_data_file:file rw_file_perms;</code></p>
+
+<p>This says an application is allowed to read and write files labeled
+app_data_file. During compilation, those overrides are concatenated to the
+existing SELinux settings and into a single security policy. These overrides add
+to the base security policy rather than subtract from existing settings.</p>
+
+<p>Once the new policy files and <code>BoardConfig.mk</code> updates are in place, the new
+policy settings get automatically uploaded to the device.</p>
+
+<h2 id="validation">Validation</h2> <p>Android strongly encourages OEMs to test
+their SELinux implementations thoroughly. As manufacturers implement SELinux,
+they should initially release their own policies in permissive mode. If
+possible, apply the new policy to devices of employees first as a test.</p>
+
+<p>Once applied, make sure SELinux is running in the correct mode on the device
+by issuing the command: <code>getenforce</code></p>
+
+<p>This will print the SELinux mode: either Disabled, Enforcing, or Permissive.
+If permissive, you are compliant. Enforcing is explicitly not compliant in
+Android 4.3. (Because of its risk, enforcing mode comes with a much heavier
+testing burden.)</p>
+
+<p>Then check for errors. Errors are routed as event logs to <code>dmesg</code> 
+and viewable locally on the device. Manufacturers should examine the SELinux output 
+to <code>dmesg</code> on these devices and refine settings prior to public release in 
+permissive mode.</p>
+
+<p>With this output, manufacturers can readily identify when system users or
+components are in violation of SELinux policy. Manufacturers can then repair
+this bad behavior, either by changes to the software, SELinux policy, or
+both.</p>
+
+<p>Specifically, these log messages indicate what roles and processes would fail
+under policy enforcement and why. Android is taking this information, analyzing
+it and refining its default security policy so that it works on a wide range of
+Android devices with little customization. With this policy, OEMs must only
+accommodate their own changes to the Android operating system.</p>
+
+<p>Then run the SELinux-enabled devices through the <a
+href="{@docRoot}compatibility/cts-intro.html">Android
+Compatibility Test Suite</a> (CTS).</p> <p>As said, any new policies must still
+meet the <a href="{@docRoot}compatibility/index.html">Android
+Compatibility program</a> requirements:<br><a
+href="{@docRoot}compatibility/android-4.3-cdd.pdf">http://source.android.com/compatibility/android-4.3-cdd.pdf</a></p>
+
+<p>If you run the devices through the CTS and find no errors in
+<code>dmesg</code>, you can consider your SELinux implementation compatible.</p>
+
+<p>Finally, if possible, turn on enforcement internally (on devices of
+employees) to raise the visibility of failures. Identify any user issues and
+resolve them.  </p> <h2 id="help">Help</h2> Device manufacturers are strongly
+encouraged to work with their Android account managers to analyze SELinux
+results and improve policy settings. Over time, Android intends to support
+common manufacturer additions in its default SELinux policy. For more
+information, contact <a
+href="mailto:security@android.com">security@android.com</a> or Geremy Condra (<a
+href="mailto:gcondra@google.com">gcondra@google.com</a>) directly.

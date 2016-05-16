@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3070921713463294774">"Aflaaisels"</string>
+    <string name="download_title_sorted_by_date" msgid="5898014492155434221">"Aflaaisels - gerangskik volgens datum"</string>
+    <string name="download_title_sorted_by_size" msgid="1417193166677094813">"Aflaaisels - gerangskik volgens grootte"</string>
+    <string name="no_downloads" msgid="1029667411186146836">"Geen aflaaisels nie."</string>
+    <string name="missing_title" msgid="830115697868833773">"&lt;Onbekend&gt;"</string>
+    <string name="button_sort_by_size" msgid="7331549713691146251">"Rangskik volgens grootte"</string>
+    <string name="button_sort_by_date" msgid="8800842892684101528">"Rangskik volgens datum"</string>
+    <string name="download_queued" msgid="104973307780629904">"In waglys"</string>
+    <string name="download_running" msgid="4656462962155580641">"Besig"</string>
+    <string name="download_success" msgid="7006048006543495236">"Voltooi"</string>
+    <string name="download_error" msgid="8081329546008568251">"Onsuksesvol"</string>
+    <string name="dialog_title_not_available" msgid="5746317632356158515">"Kon nie aflaai nie."</string>
+    <string name="dialog_failed_body" msgid="587545111677064427">"Wil jy later weer probeer om die lêer af te laai, of wil jy dit uit die waglys vee?"</string>
+    <string name="dialog_title_queued_body" msgid="6760681913815015219">"Lêer op waglys"</string>
+    <string name="dialog_queued_body" msgid="708552801635572720">"Hierdie lêer is op die waglys vir toekomstige aflaai en is dus nog nie beskikbaar nie."</string>
+    <string name="dialog_file_missing_body" msgid="3223012612774276284">"Kan nie die afgelaaide lêer kry nie."</string>
+    <string name="dialog_insufficient_space_on_external" msgid="8692452156251449195">"Kan nie klaar aflaai nie. Daar is nie genoeg plek op eksterne geheue nie."</string>
+    <string name="dialog_insufficient_space_on_cache" msgid="6313630206163908994">"Kan nie klaar aflaai nie. Daar is nie genoeg ruimte op die interne aflaaiberging nie."</string>
+    <string name="dialog_cannot_resume" msgid="8664509751358983543">"Aflaai was onderbreek en kan nie hervat word nie."</string>
+    <string name="dialog_file_already_exists" msgid="8308563940663449590">"Kan nie aflaai nie. Die bestemmingslêer bestaan reeds."</string>
+    <string name="dialog_media_not_found" msgid="4468088418758018765">"Kan nie aflaai nie. Die eksterne media is nie beskikbaar nie."</string>
+    <string name="download_no_application_title" msgid="7024782176657362251">"Kan nie lêer oopmaak nie"</string>
+    <string name="remove_download" msgid="6372920256257247857">"Verwyder"</string>
+    <string name="delete_download" msgid="76629022653866471">"Vee uit"</string>
+    <string name="keep_queued_download" msgid="5144882786014818569">"Behou"</string>
+    <string name="cancel_running_download" msgid="5232704030969221112">"Kanselleer"</string>
+    <string name="retry_download" msgid="7617100787922717912">"Probeer weer"</string>
+    <string name="deselect_all" msgid="6348198946254776764">"Ontkies almal"</string>
+    <string name="select_all" msgid="634074918366265804">"Kies almal"</string>
+    <string name="selected_count" msgid="2101564570019753277">"<xliff:g id="NUMBER">%1$d</xliff:g> gekies uit <xliff:g id="TOTAL">%2$d</xliff:g>"</string>
+    <string name="download_share_dialog" msgid="3355867339806448955">"Deel met"</string>
+</resources>

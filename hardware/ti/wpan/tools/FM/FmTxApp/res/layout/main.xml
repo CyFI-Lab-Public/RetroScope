@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent" android:layout_height="fill_parent"
+	android:id="@+id/ParentLayout" android:orientation="vertical"
+	android:background="@drawable/wallpaper_fmtx">
+
+	<ScrollView android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:id="@+id/scrollview1"
+		android:layout_weight="1">
+		<LinearLayout android:id="@+id/widget0"
+			android:orientation="vertical" android:layout_height="fill_parent"
+			android:layout_width="fill_parent">
+			<LinearLayout android:id="@+id/widget224"
+				android:layout_alignParentTop="false" android:layout_alignParentLeft="true"
+				android:layout_marginTop="15dip"
+				android:layout_width="fill_parent" android:layout_height="70dip">
+				<ImageView android:id="@+id/imgFTP" android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:layout_marginLeft="30dip" android:src="@drawable/txradio_ics">
+				</ImageView>
+				<TextView android:id="@+id/lblFmRx" android:layout_width="fill_parent"
+					android:layout_height="70dip" android:layout_marginTop="15dip"
+					android:text="@string/app_name" android:textSize="30sp"
+					android:textStyle="bold" android:layout_marginLeft="20dip"
+					android:layout_gravity="center">
+				</TextView>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/widget38"
+				android:orientation="vertical" android:layout_below="@+id/widget0"
+				android:layout_alignParentLeft="true" android:layout_width="fill_parent"
+				android:layout_marginTop="30dip" android:layout_height="100dip">
+
+				<CheckBox android:id="@+id/ChbTx" android:text="@string/startTx"
+					android:clickable="true" android:layout_height="60dip"
+					android:layout_gravity="center_horizontal" android:layout_width="180dip"
+					android:textSize="25sp">
+				</CheckBox>
+			</LinearLayout>
+			<LinearLayout android:id="@+id/widget49"
+				android:layout_width="fill_parent" android:layout_below="@+id/widget38"
+				android:layout_alignParentLeft="true" android:layout_height="100dip">
+				<TextView android:id="@+id/txtFreq" android:text="@string/freq"
+					android:layout_height="60dip" android:textSize="25sp"
+					android:layout_width="wrap_content" android:layout_marginLeft="10dip"
+					android:textColor="@android:color/white">
+				</TextView>
+				<EditText android:id="@+id/edtTxFreq"
+					android:layout_height="60dip" android:inputType="numberDecimal"
+					android:text="@string/empty" android:textSize="22sp"
+					android:layout_width="wrap_content" android:layout_weight="1" android:layout_marginLeft="20dip" android:layout_marginRight="20dip">
+				</EditText>
+				<TextView android:id="@+id/widget102" android:text="@string/KHz"
+					android:layout_height="60dip" android:textSize="22sp" android:textStyle="bold"
+					android:layout_width="wrap_content" android:textColor="@android:color/white" android:layout_marginRight="30dip">
+				</TextView>
+			</LinearLayout>
+
+			<!--
+				<LinearLayout android:id="@+id/widget100"
+				android:layout_width="fill_parent" android:orientation="horizontal"
+				android:layout_marginBottom="10dip" android:layout_height="50dip">
+
+				<SeekBar android:id="@+id/FreqBar" android:max="70"
+				android:progress="5" android:secondaryProgress="10"
+				android:scrollbarAlwaysDrawVerticalTrack="false"
+				android:layout_height="30dip" android:layout_gravity="center"
+				android:layout_marginLeft="30dip" android:layout_width="250dip"/>
+				</LinearLayout>
+			-->
+			<LinearLayout android:id="@+id/widget175"
+				android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+				android:layout_width="fill_parent" android:layout_height="70dip">
+
+
+				<CheckBox android:id="@+id/chbEnableRds" android:text="@string/EnableRds"
+					android:clickable="true" android:layout_height="60dip"
+					android:layout_gravity="center_horizontal"
+					android:layout_centerInParent="false" android:layout_marginLeft="25dip"
+					android:layout_width="200dip" android:textSize="25sp">
+				</CheckBox>
+				<CheckBox android:id="@+id/chbMute" android:text="@string/Mute"
+					android:clickable="true" android:layout_height="60dip"
+					android:layout_gravity="center_horizontal"
+					android:layout_centerInParent="false" android:layout_marginLeft="35dip"
+					android:layout_width="150dip" android:textSize="25sp">
+				</CheckBox>
+			</LinearLayout>
+			</LinearLayout>
+	</ScrollView>
+			<LinearLayout android:id="@+id/widget173"
+
+				android:layout_width="fill_parent"
+				android:layout_height="50dip" android:gravity="right">
+
+				<Button android:id="@+id/btnOk" android:text="@string/btnOk"
+					android:layout_height="fill_parent"
+					android:layout_width="120dip">
+				</Button>
+			</LinearLayout>
+
+</LinearLayout>

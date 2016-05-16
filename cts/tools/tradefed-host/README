@@ -1,0 +1,83 @@
+CTS Trade Federation
+---------------------
+
+CTS Trade Federation, cts-tradefed for short, is the next
+generation test harness for CTS.
+
+cts-tradefed is built on top of the Android Trade Federation test harness.
+
+It works in a similar manner to the prior CTS harness, but supports some
+advanced features such as:
+
+  - modular, flexible extensible design. cts-tradefed can be extended to
+support running CTS in a continuous test environment.
+  - supports sharding a CTS test run across multiple devices in parallel
+  - automatically continue a CTS test run on another device if connection
+is lost
+
+Configuring cts-tradefed
+------------------------
+
+1. Ensure 'adb' is in your current PATH. adb can be found in the
+Android SDK available from http://developer.android.com
+
+Example:
+  PATH=$PATH:/home/myuser/android-sdk-linux_x86/platform-tools
+
+2. Follow the 'Setting up your device' steps documented in the
+CTS User Manual. The CTS User Manual can be downloaded at
+http://source.android.com/compatibility/downloads.html
+
+3. Connect the device to the host machine.
+
+4. Ensure device is visible via 'adb devices'
+
+Using cts-tradefed
+-------------------
+
+To run a test plan on a single device:
+
+1. Make sure you have at least one device connected
+2. Launch the cts-tradefed console by running the 'cts-tradefed'. If you've
+downloaded and extracted the CTS zip, the script can be found at
+  android-cts/tools/cts-tradefed
+Or else if you are working from the Android source tree and have run make cts,
+the script can be found at
+  out/host/linux-x86/cts/android-cts/tools/cts-tradefed
+3. Type:
+'run cts --plan CTS' to run the default CTS plan
+
+Some other useful commands are
+
+To run a test package:
+'run cts --package <packagename>'
+
+To run a test class:
+'run cts --class <full test class name>'
+
+To shard a plan test run on multiple devices
+'run cts --plan CTS --shards <number of shards>
+note: all connected devices must be running the same build
+
+For more options:
+'run cts --help'
+
+CTS Tradefed Development
+------------------------
+See http://source.android.com for instructions on obtaining the Android
+platform source code and setting up a build environment.
+
+The source for the CTS extensions for tradefed can be found at
+<android source root>/cts/tools/tradefed-host
+
+The source for the tradefed framework can be found on the 'tradefed' branch.
+
+Perform these steps to build and run cts-tradefed from the development
+environment:
+cd <path to android source root>
+make cts
+cts-tradefed
+
+More documentation and details on using and extending trade federation will
+be forthcoming in the near future.
+

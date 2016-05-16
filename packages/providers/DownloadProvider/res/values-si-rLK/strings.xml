@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3658948994665187911">"බාගැනීමේ කළමනාකරු"</string>
+    <string name="permlab_downloadManager" msgid="7779544811202855500">"බාගැනීම් කළමනාකරු ප්‍රවේශ කරන්න."</string>
+    <string name="permdesc_downloadManager" msgid="4237406545998908947">"යෙදුම් හට මෙය භාවිතා කර බාගැනීම් කළමනාකරු ප්‍රවේශ කර ගොනු බාගැනීමට අවසර දෙන්න. කරදරකාරී යෙදුම් හට මෙය භාවිතා කර බාගැනීම් වලට බාධා පමුණුවා පෞද්ගලික තොරතුරු ප්‍රවේශ කිරීමට යොදාගත හැක."</string>
+    <string name="permlab_downloadManagerAdvanced" msgid="7103642833308809655">"උසස් බාගැනීම් කළමනාකරු විශේෂාංග."</string>
+    <string name="permdesc_downloadManagerAdvanced" msgid="2659546004160962761">"යෙදුම් හට මෙය භාවිතා කර බාගැනීම් කළමනාකරුගේ උසස් විශේෂාංග ප්‍රවේශ කර ගොනු බාගැනීමට අවසර දෙන්න. කරදරකාරී යෙදුම් හට මෙය භාවිතා කර බාගැනීම් වලට බාධා පමුණුවා පෞද්ගලික තොරතුරු ප්‍රවේශ කිරීමට යොදාගත හැක."</string>
+    <string name="permlab_downloadCompletedIntent" msgid="945913803765675685">"බාගැනීමේ දැනුම්දීම් යවන්න."</string>
+    <string name="permdesc_downloadCompletedIntent" msgid="2094706189855699533">"සම්පුර්ණ වූ බාගැනීම් පිලිබඳ දැනුම්දීම් යැවීමට යෙදුමට අවසර දෙන්න. කරදරකාරී යෙදුම් වලට මෙය යොදාගනිමින් ගොනු බාගත කරන වෙනත් යෙදුම් අමාරුවේ දැමිය හැක."</string>
+    <string name="permlab_seeAllExternal" product="nosdcard" msgid="4084575448409212628">"USB ආචයනය වෙත සියලු බාගැනීම් බලන්න"</string>
+    <string name="permlab_seeAllExternal" product="default" msgid="140058400609165726">"SD පත වෙත සියලු බාගැනීම් බලන්න"</string>
+    <string name="permdesc_seeAllExternal" msgid="1672759909065511233">"බාගත්තේ කුමන යෙදුමද යන්න සැලකිල්ලට නොගෙන, SD කාඩ්පත වෙත සියලු බාගැනීම් බැලීමට යෙදුමට අවසර දෙන්න."</string>
+    <string name="permlab_downloadCacheNonPurgeable" msgid="3069534308882047412">"බාගැනීම් හැඹිලියේ ඉඩ වෙන් කරගන්න"</string>
+    <string name="permdesc_downloadCacheNonPurgeable" msgid="2408760720334570420">"යෙදුමට ගොනු බාගැනීමේ හැඹිලියට බාගැනීමට අවසර දෙන්න, එය බාගැනීමේ කළමනාකරුට තවත් ඉඩ අවශ්‍ය වූ විට ස්වයංක්‍රීයව මැකිය නොහැක."</string>
+    <string name="permlab_downloadWithoutNotification" msgid="8837971946078327262">"දැනුම්දීමකින් තොරව ගොනු බාගන්න"</string>
+    <string name="permdesc_downloadWithoutNotification" msgid="8483135034298639727">"පරිශීලකයාට කිසිඳු දැනුම්දීමක් කිරීමකින් තොරව බාගැනීම් කළමනාකරු හරහා ගොනු බාගත කරගැනීමට යෙදුමට අවසර දෙන්න."</string>
+    <string name="permlab_accessAllDownloads" msgid="2436240495424393717">"සියලු පද්ධති බාගැනීම් ප්‍රවේශ කරන්න"</string>
+    <string name="permdesc_accessAllDownloads" msgid="1871832254578267128">"පද්ධතියේ ඕනෑම යෙදුමකින් ආරම්භ කරන ලද සියලු බාගැනීම් දර්ශනය කිරීමට සහ වෙනස් කිරීමට යෙදුමට අවසර දෙන්න."</string>
+    <string name="download_unknown_title" msgid="7015124071247271585">"&lt;නම් නොකළ&gt;"</string>
+    <string name="notification_download_complete" msgid="5443563299253103667">"බාගැනීම සම්පූර්ණයි."</string>
+    <string name="notification_download_failed" msgid="8612136111952014978">"බාගැනීම අසාර්ථකයි."</string>
+    <string name="notification_need_wifi_for_size" msgid="2556172885154833575">"බාගැනීමේ ප්‍රමාණයට Wi-Fi අවශ්‍යවේ."</string>
+    <string name="notification_paused_in_background" msgid="4328508073283591772">"පසුබිමේ නවතා ඇත."</string>
+    <string name="wifi_required_title" msgid="1995971416871498179">"ක්‍රියාකරු ජාලයට බාගැනීම විශාල වැඩිය"</string>
+    <string name="wifi_required_body" msgid="3067694630143784449">"මෙම <xliff:g id="SIZE">%s </xliff:g> බාගැනීම සිදු කිරීමට ඔබ Wi-Fi භාවිතා කළ යුතුය. \n\nඔබ මීළඟට WiFi ජාලයකට සම්බන්ධ වූ පසු බාගැනීම ආරම්භ කිරීමට පහත <xliff:g id="QUEUE_TEXT">%s </xliff:g> ස්පර්ශ කරන්න."</string>
+    <string name="wifi_recommended_title" msgid="7441589306734687400">"පසුව බාගැනීමට පෝලිමේ තබන්නද?"</string>
+    <string name="wifi_recommended_body" msgid="1314735166699936073">"මෙම <xliff:g id="SIZE">%s </xliff:g> බාගැනීම දැන් ආරම්භ කිරීමෙන් ඔබගේ බැටරි ආයු කාලය අඩුවේ සහ/හෝ ඔබගේ ජංගම දත්ත සම්බන්ධතාවය භාවිතය අධික වේ, එය ඔබගේ දත්ත සැලසුමට අනුව විශාල ගෙවීමක් සිදුවිය හැක.\n\n ඔබ මීළඟට WiFi ජාලයකට සම්බන්ධ වූ පසු බාගැනීම ආරම්භ කිරීමට පහත <xliff:g id="QUEUE_TEXT">%s</xliff:g> ස්පර්ශ කරන්න."</string>
+    <string name="button_queue_for_wifi" msgid="422576726189179221">"පෝලිම"</string>
+    <string name="button_cancel_download" msgid="2430166148737975604">"අවලංගු කරන්න"</string>
+    <string name="button_start_now" msgid="792123674007840864">"දැන් අරඹන්න"</string>
+    <string name="download_percent" msgid="6889426633242976698">"<xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+  <plurals name="notif_summary_active">
+    <item quantity="one" msgid="8475775855911967027">"ගොනු 1 ක් බාගත වෙමින්"</item>
+    <item quantity="other" msgid="9087228371320573153">"ගොනු <xliff:g id="NUMBER">%d</xliff:g> බාගත වෙමින්"</item>
+  </plurals>
+  <plurals name="notif_summary_waiting">
+    <item quantity="one" msgid="5537481763963544278">"ගොනු 1 රැඳී සිටිමින්"</item>
+    <item quantity="other" msgid="549229034166062887">"ගොනු <xliff:g id="NUMBER">%d</xliff:g> රැඳී සිටිමින්"</item>
+  </plurals>
+    <string name="download_remaining" msgid="3139295890887972718">"<xliff:g id="DURATION">%s</xliff:g> ඉතිරියි"</string>
+    <string name="download_no_application_title" msgid="7935659741162801699">"ගොනුව විවෘත කළ නොහැකි විය"</string>
+    <string name="root_downloads" msgid="4098414876292351487">"බාගැනීම්"</string>
+    <string name="download_queued" msgid="3302638231377947451">"පෙළ ගසන ලදි"</string>
+    <string name="download_running" msgid="3925050393361158266">"ක්‍රියාවේ පවතී"</string>
+    <string name="download_error" msgid="5144180777324573236">"අසාර්ථකයි"</string>
+    <string name="download_running_percent" msgid="4529799113107391817">"ක්‍රියාවේ පවතී, <xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+</resources>

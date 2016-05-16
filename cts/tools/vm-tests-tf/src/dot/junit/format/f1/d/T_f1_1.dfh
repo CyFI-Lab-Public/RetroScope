@@ -1,0 +1,50 @@
+// Processing 'out/classes_dasm/dot/junit/format/f1/d/T_f1_1.dex'...
+// Opened 'out/classes_dasm/dot/junit/format/f1/d/T_f1_1.dex', DEX version '035'
+// DEX file header:
+// parsed: offset 0, len 8: magic               : 'dex
+// 035'
+    64 65 78 0A 30 33 35 00 
+// parsed: offset 8, len 4: checksum            : ec6e3629
+    29 36 6E EC 
+// parsed: offset 12, len 20: signature           : 3861...369f
+    38 61 EF D2 97 82 DF F7 A7 77 7B 79 71 13 35 C5 6D 3E 36 9F 
+// parsed: offset 32, len 4: file_size           : 500
+    F4 01 00 00 
+// parsed: offset 36, len 4: header_size         : 112
+    70 00 00 00 
+// parsed: offset 40, len 4: endian_tag          : 0x12345678
+    78 56 34 12 
+// parsed: offset 44, len 4: link_size           : 0
+    00 00 00 00 
+// parsed: offset 48, len 4: link_off            : 0 (0x000000)
+    00 00 00 00 
+// parsed: offset 52, len 4: map_off             : 376 (0x000178)
+    78 01 00 00 
+// parsed: offset 56, len 4: string_ids_size     : 6
+    06 00 00 00 
+// parsed: offset 60, len 4: string_ids_off      : 112 (0x000070)
+    70 00 00 00 
+// parsed: offset 64, len 4: type_ids_size       : 3
+    03 00 00 00 
+// parsed: offset 68, len 4: type_ids_off        : 136 (0x000088)
+    88 00 00 00 
+// parsed: offset 72, len 4: proto_ids_size      : 1
+    01 00 00 00 
+// parsed: offset 76, len 4: proto_ids_off       : 148 (0x000094)
+    94 00 00 00 
+// parsed: offset 80, len 4: field_ids_size      : 0
+    00 00 00 00 
+// parsed: offset 84, len 4: field_ids_off       : 0 (0x000000)
+    00 00 00 00 
+// parsed: offset 88, len 4: method_ids_size     : 3
+    03 00 00 00 
+// parsed: offset 92, len 4: method_ids_off      : 160 (0x0000a0)
+    A0 00 00 00 
+// parsed: offset 96, len 4: class_defs_size     : 1
+    01 00 00 00 
+// parsed: offset 100, len 4: class_defs_off      : 184 (0x0000b8)
+    B8 00 00 00 
+// parsed: offset 104, len 4: data_size           : 284
+    1C 01 00 00 
+// parsed: offset 108, len 4: data_off            : 216 (0x0000d8)
+    D8 00 00 00 

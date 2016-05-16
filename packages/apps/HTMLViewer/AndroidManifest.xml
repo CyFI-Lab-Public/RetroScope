@@ -1,0 +1,49 @@
+<!--
+/* //device/apps/Browser/AndroidManifest.xml
+**
+** Copyright 2006, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" 
+        package="com.android.htmlviewer">
+
+    <original-package android:name="com.android.htmlviewer" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <application android:label="@string/app_label">
+        <activity android:name="HTMLViewerActivity" android:label="HTMLViewer"
+                  android:theme="@android:style/Theme.Holo" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW" />
+                <data android:scheme="file" />
+                <data android:scheme="content" /> 
+                <data android:mimeType="text/html"/>
+                <data android:mimeType="text/plain"/>
+                <data android:mimeType="application/xhtml+xml"/>
+                <data android:mimeType="application/vnd.wap.xhtml+xml"/>
+            </intent-filter>
+         </activity>
+         
+         <provider android:name="FileContentProvider"
+                 android:exported="false"
+                 android:authorities="com.android.htmlfileprovider"
+                 android:syncable="false" android:multiprocess="false"
+                 android:grantUriPermissions="true" /> 
+
+    </application>
+    
+</manifest>
+

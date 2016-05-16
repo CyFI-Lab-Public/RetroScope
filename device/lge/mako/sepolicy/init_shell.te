@@ -1,0 +1,6 @@
+allow init_shell diag_device:chr_file { read write };
+allow init_shell hci_exec:file rx_file_perms;
+allow init_shell bluetooth_prop:property_service set;
+allow init_shell smd_device:chr_file rw_file_perms;
+allow init_shell unlabeled:file r_file_perms;
+allow init_shell init:fifo_file r_file_perms;

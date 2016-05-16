@@ -1,0 +1,3 @@
+allow surfaceflinger knv_device:chr_file rw_file_perms;
+allow surfaceflinger { sysfs_devices_system_cpu sysfs_devices_tegradc }:file w_file_perms;
+allow surfaceflinger sysfs_devices_system_cpu:dir w_dir_perms;

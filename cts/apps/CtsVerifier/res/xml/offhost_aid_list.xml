@@ -1,0 +1,9 @@
+<offhost-apdu-service xmlns:android="http://schemas.android.com/apk/res/android"
+    android:description="@string/offhostService">
+    <aid-group>
+        <!-- OBTH card manager AID -->
+        <aid-filter android:name="A000000151000000"/>
+        <!-- NXP card manager AID -->
+        <aid-filter android:name="A000000003000000"/>
+    </aid-group>
+</offhost-apdu-service>

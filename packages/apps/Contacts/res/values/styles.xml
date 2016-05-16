@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+
+    <style name="DetailActivityTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/ContactsActionBarStyle</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_menu_back</item>
+        <item name="android:actionOverflowButtonStyle">@style/ContactsActionBarOverflow</item>
+        <item name="android:actionBarItemBackground">@drawable/action_bar_item_background</item>
+        <item name="android:actionBarWidgetTheme">@style/ContactsActionBarTheme</item>
+        <item name="android:textColorPrimary">@color/primary_text_color</item>
+        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+        <item name="android:listViewStyle">@style/ListViewStyle</item>
+    </style>
+
+    <style name="EditorActivityTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/ContactsActionBarStyle</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_menu_back</item>
+        <item name="android:actionOverflowButtonStyle">@style/ContactsActionBarOverflow</item>
+        <item name="android:actionBarItemBackground">@drawable/action_bar_item_background</item>
+        <item name="android:actionBarWidgetTheme">@style/ContactsActionBarTheme</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:textColorPrimary">@color/primary_text_color</item>
+        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+        <item name="android:listViewStyle">@style/ListViewStyle</item>
+    </style>
+
+    <style name="Theme">
+    </style>
+
+    <style name="Theme.QuickContact" parent="@android:style/Theme.Holo.Light">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:listViewStyle">@style/ListViewStyle</item>
+    </style>
+
+    <style name="PeopleTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/ContactsActionBarStyle</item>
+        <item name="android:homeAsUpIndicator">@drawable/ic_menu_back</item>
+        <item name="android:actionOverflowButtonStyle">@style/ContactsActionBarOverflow</item>
+        <item name="android:actionBarItemBackground">@drawable/action_bar_item_background</item>
+        <item name="android:actionBarWidgetTheme">@style/ContactsActionBarTheme</item>
+        <item name="android:actionBarTabStyle">@style/ContactsActionBarTabView</item>
+        <item name="android:actionDropDownStyle">@style/ContactsActionBarDropDownStyle</item>
+        <item name="android:textColorPrimary">@color/primary_text_color</item>
+        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+        <item name="android:listViewStyle">@style/ListViewStyle</item>
+        <item name="list_item_height">?android:attr/listPreferredItemHeight</item>
+        <item name="activated_background">@drawable/list_item_activated_background</item>
+        <item name="section_header_background">@drawable/list_title_holo</item>
+        <item name="list_section_header_height">24dip</item>
+        <item name="list_item_divider">?android:attr/listDivider</item>
+        <item name="list_item_padding_top">8dip</item>
+        <item name="list_item_padding_right">0dip</item>
+        <item name="list_item_padding_bottom">8dip</item>
+        <item name="list_item_padding_left">0dip</item>
+        <item name="list_item_gap_between_image_and_text">8dip</item>
+        <item name="list_item_gap_between_label_and_data">5dip</item>
+        <item name="list_item_presence_icon_margin">4dip</item>
+        <item name="list_item_presence_icon_size">16dip</item>
+        <item name="list_item_photo_size">@dimen/contact_browser_list_item_photo_size</item>
+        <item name="list_item_profile_photo_size">70dip</item>
+        <item name="list_item_prefix_highlight_color">@color/people_app_theme_color</item>
+        <item name="list_item_header_text_color">@color/people_app_theme_color</item>
+        <item name="list_item_header_text_size">14sp</item>
+        <item name="list_item_header_height">30dip</item>
+        <item name="list_item_header_underline_height">1dip</item>
+        <item name="list_item_header_underline_color">@color/secondary_header_separator_color</item>
+        <item name="list_item_data_width_weight">5</item>
+        <item name="list_item_label_width_weight">3</item>
+        <item name="list_item_contacts_count_text_color">@color/people_app_theme_color</item>
+        <item name="list_item_header_text_indent">8dip</item>
+        <item name="contact_browser_list_padding_left">16dip</item>
+        <item name="contact_browser_list_padding_right">0dip</item>
+        <item name="contact_browser_background">@android:color/transparent</item>
+        <item name="list_item_text_indent">@dimen/contact_browser_list_item_text_indent</item>
+        <item name="list_item_contacts_count_text_size">12sp</item>
+        <!-- Favorites -->
+        <item name="favorites_padding_bottom">0dip</item>
+    </style>
+
+    <style name="ContactsActionBarOverflow" parent="@android:style/Widget.Holo.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_overflow_menu</item>
+    </style>
+
+    <style name="ContactsActionBarStyle" parent="@android:Widget.Holo.Light.ActionBar">
+        <item name="android:background">@drawable/action_bar_tab</item>
+        <item name="android:backgroundSplit">@drawable/action_bar_tab</item>
+        <item name="android:backgroundStacked">@drawable/action_bar_tab</item>
+        <item name="android:displayOptions"></item>
+    </style>
+
+    <style name="ContactsActionBarDropDownStyle" parent="@android:style/Widget.Holo.Light.Spinner">
+        <item name="android:background">@drawable/ab_dropdown_navigation_item_background</item>
+    </style>
+
+    <style name="ContactsActionBarTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:textColorHint">#CCCCCC</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:popupMenuStyle">@android:style/Widget.Holo.Light.PopupMenu</item>
+        <item name="android:dropDownListViewStyle">@style/ListViewDropdownStyle</item>
+    </style>
+
+    <style name="ContactsActionBarTabView" parent="@android:style/Widget.Holo.ActionBar.TabView">
+        <item name="android:background">@drawable/action_bar_tab</item>
+    </style>
+
+    <style name="ListViewDropdownStyle" parent="@android:style/Widget.ListView.DropDown">
+        <item name="android:listSelector">?android:attr/listChoiceBackgroundIndicator</item>
+    </style>
+
+    <style name="ContactPickerTheme" parent="@style/PeopleTheme" />
+
+    <style name="ContactPickerLayout" parent="ContactPickerTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="JoinContactActivityTheme" parent="ContactPickerTheme" >
+    </style>
+
+    <style name="ContactsPreferencesTheme" parent="@android:Theme.Holo.Light">
+        <item name="android:listViewStyle">@style/ListViewStyle</item>
+    </style>
+
+    <style name="ContactListFilterTheme" parent="@android:Theme.Holo.Light">
+        <item name="android:listViewStyle">@style/ListViewStyle</item>
+    </style>
+
+    <style name="NonPhoneActivityTheme" parent="@android:Theme.Translucent.NoTitleBar">
+    </style>
+
+    <style name="NonPhoneDialogTheme" parent="@android:Theme.Holo.Light.Dialog">
+    </style>
+
+    <style name="ConfirmAddDetailDialogTheme" parent="@android:style/Theme.Holo.Light.Dialog.MinWidth">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+    </style>
+
+    <style name="ContactEditorAccountsChangedActivityTheme" parent="@android:style/Theme.Holo.Light.Dialog.NoActionBar.MinWidth">
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:textColorPrimary">@color/primary_text_color</item>
+        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+        <item name="android:listViewStyle">@style/ListViewStyle</item>
+    </style>
+
+    <style name="SectionDivider">
+        <item name="android:background">#7e7e87</item>
+        <item name="android:layout_height">1dip</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <style name="ContactDetailItemType">
+        <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:ellipsize">marquee</item>
+        <item name="android:layout_gravity">center_vertical</item>
+    </style>
+
+    <style name="ConfirmAddDetailViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ConfirmAddDetailHeaderViewStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">150dip</item>
+    </style>
+
+    <style name="QuickContactListItemStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">?android:attr/listPreferredItemHeight</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+    </style>
+
+    <style name="QuickContactListItemTextWrapperStyle">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingLeft">16dip</item>
+        <item name="android:paddingRight">16dip</item>
+        <item name="android:paddingStart">16dip</item>
+        <item name="android:paddingEnd">16dip</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="QuickContactListBottomStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">2dip</item>
+        <item name="android:background">@color/quickcontact_tab_indicator</item>
+    </style>
+
+    <style name="Theme.PhotoSelector" parent="@android:style/Theme.Holo.Light">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="GroupMembershipSizeTextAppearance" parent="@android:style/TextAppearance.Small"/>
+
+    <style name="PeopleNavigationDropDownTextAppearance">
+        <item name="android:textColor">@color/primary_text_color</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="PeopleNavigationDropDownHeaderTextAppearance">
+        <item name="android:textColor">@color/primary_text_color</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+</resources>

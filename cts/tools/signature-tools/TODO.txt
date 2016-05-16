@@ -1,0 +1,5 @@
+__Todo__
+
+Add more complex tests
+Add more spec
+Add "plugin system" to enable different loader / differ / report engines. This can be simple as register the class name of the available loaders in a property file

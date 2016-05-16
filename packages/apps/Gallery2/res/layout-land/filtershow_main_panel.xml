@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:baselineAligned="false"
+              android:orientation="vertical"
+              android:animateLayoutChanges="true"
+              android:visibility="visible" >
+
+    <FrameLayout android:id="@+id/category_panel_container"
+                 android:layout_width="match_parent"
+                 android:layout_height="0dip"
+                 android:layout_weight="1"/>
+
+    <View
+            android:background="@color/toolbar_separation_line"
+            android:layout_height="1dip"
+            android:layout_width="match_parent"/>
+
+    <com.android.gallery3d.filtershow.CenteredLinearLayout
+            xmlns:custom="http://schemas.android.com/apk/res/com.android.gallery3d"
+            android:layout_width="match_parent"
+            android:layout_height="48dip"
+            android:layout_gravity="center|bottom"
+            custom:max_width="400dip"
+            android:orientation="vertical">
+
+        <LinearLayout android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:background="@color/background_main_toolbar">
+
+            <ImageButton
+                    android:id="@+id/fxButton"
+                    android:layout_width="@dimen/thumbnail_size"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/filtershow_button_background"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_photoeditor_effects"/>
+
+            <ImageButton
+                    android:id="@+id/borderButton"
+                    android:layout_width="@dimen/thumbnail_size"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/filtershow_button_background"
+                    android:padding="2dip"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_photoeditor_border"/>
+
+            <ImageButton
+                    android:id="@+id/geometryButton"
+                    android:layout_width="@dimen/thumbnail_size"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/filtershow_button_background"
+                    android:padding="2dip"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_photoeditor_fix"/>
+
+            <ImageButton
+                    android:id="@+id/colorsButton"
+                    android:layout_width="@dimen/thumbnail_size"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/filtershow_button_background"
+                    android:padding="2dip"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_photoeditor_color"/>
+
+        </LinearLayout>
+
+    </com.android.gallery3d.filtershow.CenteredLinearLayout>
+
+    <View
+            android:background="@color/toolbar_separation_line"
+            android:layout_height="1dip"
+            android:layout_width="match_parent"/>
+
+</LinearLayout>

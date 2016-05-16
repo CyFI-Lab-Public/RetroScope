@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pj="http://schemas.android.com/apk/res/jp.co.omronsoft.openwnn"
+    android:keyWidth="7%p"
+    android:horizontalGap="0.9%p"
+    android:verticalGap="0.9%p"
+    android:keyHeight="@dimen/key_height"
+    >
+
+    <Row>
+        <Key android:codes="-106" android:keyLabel="記号" android:keyEdgeFlags="left" pj:isSecondKey="true" android:horizontalGap="0.1%p"/>
+        <Key android:codes="65339" android:keyLabel="[" />
+        <Key android:codes="65341" android:keyLabel="]" />
+        <Key android:codes="65371" android:keyLabel="{"/>
+        <Key android:codes="65373" android:keyLabel="}"/>
+        <Key android:codes="65283" android:keyLabel="\#"/>
+        <Key android:codes="65285" android:keyLabel="%"/>
+        <Key android:codes="65342" android:keyLabel="^"/>
+        <Key android:codes="65290" android:keyLabel="*"/>
+        <Key android:codes="65291" android:keyLabel="+"/>
+        <Key android:codes="65309" android:keyLabel="="/>
+        <Key android:codes="-100" android:keyIcon="@drawable/key_del" android:keyWidth="12%p"
+             android:keyEdgeFlags="right" android:isRepeatable="true" pj:isSecondKey="true"/>
+    </Row>
+ 
+    <Row>
+        <Key android:codes="-301" android:keyLabel="ABC" android:keyWidth="10%p"  android:keyEdgeFlags="left" pj:isSecondKey="true" android:horizontalGap="0.1%p"/>
+        <Key android:codes="65343" android:keyLabel="_" />
+        <Key android:codes="65509" android:keyLabel="￥"/>
+        <Key android:codes="65372" android:keyLabel="|"/>
+        <Key android:codes="65374" android:keyLabel="~"/>
+        <Key android:codes="65308" android:keyLabel="&lt;"/>
+        <Key android:codes="65310" android:keyLabel="&gt;"/>
+        <Key android:codes="65284" android:keyLabel="$"/>
+        <Key android:codes="8364" android:keyLabel="@string/key_qwerty_euro"/>
+        <Key android:codes="65505" android:keyLabel="￡"/>
+        <Key android:codes="-101" android:keyIcon="@drawable/key_qwerty_return"
+             android:keyEdgeFlags="right" android:keyWidth="17%p" pj:isSecondKey="true"/>
+    </Row>
+ 
+    <Row>
+        <Key android:codes="-1" android:keyIcon="@drawable/key_qwerty_shift_locked" android:keyWidth="12.2%p"
+             android:isModifier="true" android:isSticky="false" android:keyEdgeFlags="left" pj:isSecondKey="true" android:horizontalGap="0.1%"/>
+        <Key android:codes="65294" android:keyLabel="." />
+        <Key android:codes="65292" android:keyLabel="," />
+        <Key android:codes="65311" android:keyLabel="\?" />
+        <Key android:codes="65281" android:keyLabel="!" />
+        <Key android:codes="8217" android:keyLabel="@string/key_qwerty_full_right_single_quote" />
+        <Key android:codes="8221" android:keyLabel="@string/key_qwerty_full_double_quotation_sign" />
+        <Key android:codes="-218" android:keyIcon="@drawable/key_qwerty_left" android:horizontalGap="24.85%p" pj:isSecondKey="true" android:isRepeatable="true"/>
+        <Key android:codes="-217" android:keyIcon="@drawable/key_qwerty_right" android:keyEdgeFlags="right" pj:isSecondKey="true" android:isRepeatable="true"/>
+    </Row>
+
+    <Row android:rowEdgeFlags="bottom">
+        <Key android:codes="-308" android:keyIcon="@drawable/key_mode_full_num"
+         android:keyWidth="12%p" android:horizontalGap="15%p" pj:isSecondKey="true"/>
+        <Key android:codes="12288" android:keyLabel=" " android:keyWidth="50%p" android:isRepeatable="true"/>
+    </Row>
+
+</Keyboard>

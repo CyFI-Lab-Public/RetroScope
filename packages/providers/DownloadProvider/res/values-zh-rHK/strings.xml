@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3658948994665187911">"下載管理員"</string>
+    <string name="permlab_downloadManager" msgid="7779544811202855500">"存取下載管理員。"</string>
+    <string name="permdesc_downloadManager" msgid="4237406545998908947">"允許應用程式存取下載管理員，並用以下載檔案。惡意應用程式可藉此干擾檔案下載並存取私人資訊。"</string>
+    <string name="permlab_downloadManagerAdvanced" msgid="7103642833308809655">"進階下載管理員功能。"</string>
+    <string name="permdesc_downloadManagerAdvanced" msgid="2659546004160962761">"允許應用程式存取下載管理員的進階功能。惡意應用程式可藉此干擾檔案下載並存取私人資訊。"</string>
+    <string name="permlab_downloadCompletedIntent" msgid="945913803765675685">"傳送下載通知。"</string>
+    <string name="permdesc_downloadCompletedIntent" msgid="2094706189855699533">"允許應用程式在完成下載時送出通知。惡意應用程式可藉此擾亂其他下載檔案的應用程式。"</string>
+    <string name="permlab_seeAllExternal" product="nosdcard" msgid="4084575448409212628">"查看所有下載到 USB 儲存裝置的檔案"</string>
+    <string name="permlab_seeAllExternal" product="default" msgid="140058400609165726">"查看 SD 卡中的所有下載項目"</string>
+    <string name="permdesc_seeAllExternal" msgid="1672759909065511233">"允許應用程式查看 SD 記憶卡中所有下載項目，不論是透過何種應用程式下載。"</string>
+    <string name="permlab_downloadCacheNonPurgeable" msgid="3069534308882047412">"在下載快取預留空間"</string>
+    <string name="permdesc_downloadCacheNonPurgeable" msgid="2408760720334570420">"允許應用程式將檔案下載至下載快取空間，確保檔案不會因為下載管理員需要更多空間而自動遭到刪除。"</string>
+    <string name="permlab_downloadWithoutNotification" msgid="8837971946078327262">"不顯示通知，直接下載檔案"</string>
+    <string name="permdesc_downloadWithoutNotification" msgid="8483135034298639727">"允許應用程式不需通知用戶，即可透過下載管理員下載檔案。"</string>
+    <string name="permlab_accessAllDownloads" msgid="2436240495424393717">"存取所有系統下載檔案"</string>
+    <string name="permdesc_accessAllDownloads" msgid="1871832254578267128">"允許應用程式查看及修改系統上任何應用程式下載的所有內容。"</string>
+    <string name="download_unknown_title" msgid="7015124071247271585">"&lt;未命名&gt;"</string>
+    <string name="notification_download_complete" msgid="5443563299253103667">"下載完成。"</string>
+    <string name="notification_download_failed" msgid="8612136111952014978">"下載失敗。"</string>
+    <string name="notification_need_wifi_for_size" msgid="2556172885154833575">"這個檔案較大，需要 Wi-Fi 才能下載。"</string>
+    <string name="notification_paused_in_background" msgid="4328508073283591772">"已在背景中暫停。"</string>
+    <string name="wifi_required_title" msgid="1995971416871498179">"檔案過大，無法透過電訊公司的網絡下載"</string>
+    <string name="wifi_required_body" msgid="3067694630143784449">"您必須使用 Wi-Fi，才能完成下載這個 <xliff:g id="SIZE">%s </xliff:g> 的檔案。\n\n請在下次連接 Wi-Fi 網絡時，再輕觸 [<xliff:g id="QUEUE_TEXT">%s </xliff:g>] 開始下載。"</string>
+    <string name="wifi_recommended_title" msgid="7441589306734687400">"加入佇列供稍後下載？"</string>
+    <string name="wifi_recommended_body" msgid="1314735166699936073">"現在下載這個 <xliff:g id="SIZE">%s </xliff:g> 的檔案，可能會縮短電池的壽命，並 (或) 超出流動數據連線的用量上限，導致流動網絡供應商根據數據計劃向您收費。\n\n請在下次連接 Wi-Fi 網絡時，再輕觸 [<xliff:g id="QUEUE_TEXT">%s</xliff:g>] 開始下載。"</string>
+    <string name="button_queue_for_wifi" msgid="422576726189179221">"加入下載佇列"</string>
+    <string name="button_cancel_download" msgid="2430166148737975604">"取消"</string>
+    <string name="button_start_now" msgid="792123674007840864">"立即開始"</string>
+    <string name="download_percent" msgid="6889426633242976698">"<xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+  <plurals name="notif_summary_active">
+    <item quantity="one" msgid="8475775855911967027">"正在下載 1 個檔案"</item>
+    <item quantity="other" msgid="9087228371320573153">"正在下載 <xliff:g id="NUMBER">%d</xliff:g> 個檔案"</item>
+  </plurals>
+  <plurals name="notif_summary_waiting">
+    <item quantity="one" msgid="5537481763963544278">"正在等待下載 1 個檔案"</item>
+    <item quantity="other" msgid="549229034166062887">"正在等待下載 <xliff:g id="NUMBER">%d</xliff:g> 個檔案"</item>
+  </plurals>
+    <string name="download_remaining" msgid="3139295890887972718">"剩餘 <xliff:g id="DURATION">%s</xliff:g>"</string>
+    <string name="download_no_application_title" msgid="7935659741162801699">"無法開啟檔案"</string>
+    <string name="root_downloads" msgid="4098414876292351487">"下載內容"</string>
+    <string name="download_queued" msgid="3302638231377947451">"已加入序列"</string>
+    <string name="download_running" msgid="3925050393361158266">"進行中"</string>
+    <string name="download_error" msgid="5144180777324573236">"不成功"</string>
+    <string name="download_running_percent" msgid="4529799113107391817">"進行中，已完成 <xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+</resources>

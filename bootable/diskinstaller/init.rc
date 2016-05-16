@@ -1,0 +1,34 @@
+on early-init
+    start ueventd
+
+on init
+    export PATH /sbin:/system/sbin:/system/bin
+    export ANDROID_ROOT /system
+    export ANDROID_DATA /data
+
+    symlink /system/etc /etc
+    symlink /system/bin/ash /system/bin/sh
+
+    mkdir /data
+    mkdir /cache
+    mount /tmp /tmp tmpfs
+
+on boot
+    ifup lo
+    hostname localhost
+    domainname localdomain
+
+    class_start default
+
+service ueventd /sbin/ueventd
+    critical
+
+service installer /system/bin/installer -p /dev/block/sdb2
+    console
+    oneshot
+
+service logcat /system/bin/logcat
+    console
+
+service console /system/bin/sh
+    console

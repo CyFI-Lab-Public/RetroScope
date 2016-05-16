@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<case name="review_dut_recording_spectrum" version="1.0" description="Review">
+	<setup>
+		<sound id="sound_host_0" type="file:reports/2012_05_14_09_27_40/dut_recording_spectrum/host_in_0.r2m" />
+		<sound id="sound_dut_0" type="file:reports/2012_05_14_09_27_40/dut_recording_spectrum/dut_in_0.r2m" />
+		<sound id="sound_host_1" type="file:reports/2012_05_14_09_27_40/dut_recording_spectrum/host_in_1.r2m" />
+		<sound id="sound_dut_1" type="file:reports/2012_05_14_09_27_40/dut_recording_spectrum/dut_in_1.r2m" />
+		<sound id="sound_host_2" type="file:reports/2012_05_14_09_27_40/dut_recording_spectrum/host_in_2.r2m" />
+		<sound id="sound_dut_2" type="file:reports/2012_05_14_09_27_40/dut_recording_spectrum/dut_in_2.r2m" />
+		<sound id="sound_host_3" type="file:reports/2012_05_14_09_27_40/dut_recording_spectrum/host_in_3.r2m" />
+		<sound id="sound_dut_3" type="file:reports/2012_05_14_09_27_40/dut_recording_spectrum/dut_in_3.r2m" />
+		<sound id="sound_host_4" type="file:reports/2012_05_14_09_27_40/dut_recording_spectrum/host_in_4.r2m" />
+		<sound id="sound_dut_4" type="file:reports/2012_05_14_09_27_40/dut_recording_spectrum/dut_in_4.r2m" />
+	</setup>
+	<action>
+		<sequential repeat="5" index="k">
+			<!-- input: host record, device record, samping rate, low frequency in Hz, high frequency in Hz, allowed error for pass in smaller side, allowed error in bigger side%, output: min value in lower side calculated normalized to 1.0, max value in higher side, calculated TF in mannitude only between low f to high f -->
+			<process method="script:check_spectrum" input="id:sound_host_$k,id:sound_dut_$k,consti:44100,consti:200,consti:4000,constf:50.0,constf:100.0" output="val:min_val_$k,val:max_val_$k,id:tf_$k" />
+		</sequential>
+	</action>
+	<save report="min_val_.*,max_val_.*" />
+</case>

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" msgid="1928079047368929634">"វិចិត្រ​សាល"</string>
+    <string name="gadget_title" msgid="259405922673466798">"ស៊ុម​រូបភាព"</string>
+    <string name="details_ms" msgid="940634969189855292">"%1$02d:%2$02d"</string>
+    <string name="details_hms" msgid="3215779248094151255">"%1$d:%2$02d:%3$02d"</string>
+    <string name="movie_view_label" msgid="3526526872644898229">"កម្មវិធី​ចាក់​វីដេអូ"</string>
+    <string name="loading_video" msgid="4013492720121891585">"កំពុង​ផ្ទុក​វីដេអូ..."</string>
+    <string name="loading_image" msgid="1200894415793838191">"កំពុង​ផ្ទុក​រូបភាព..."</string>
+    <string name="loading_account" msgid="928195413034552034">"កំពុង​ផ្ទុក​គណនី..."</string>
+    <string name="resume_playing_title" msgid="8996677350649355013">"បន្ត​វីដេអូ"</string>
+    <string name="resume_playing_message" msgid="5184414518126703481">"បន្ត​ចាក់​ពី %s ?"</string>
+    <string name="resume_playing_resume" msgid="3847915469173852416">"បន្ត​ការ​ចាក់"</string>
+    <string name="loading" msgid="7038208555304563571">"កំពុង​ផ្ទុក..."</string>
+    <string name="fail_to_load" msgid="8394392853646664505">"មិន​អាច​ផ្ទុក"</string>
+    <string name="fail_to_load_image" msgid="6155388718549782425">"មិន​អាច​ផ្ទុក​រូបភាព"</string>
+    <string name="no_thumbnail" msgid="284723185546429750">"គ្មាន​រូបភាព​តូច"</string>
+    <string name="resume_playing_restart" msgid="5471008499835769292">"ចាប់ផ្ដើម"</string>
+    <string name="crop_save_text" msgid="152200178986698300">"យល់​ព្រម"</string>
+    <string name="ok" msgid="5296833083983263293">"យល់​ព្រម"</string>
+    <string name="multiface_crop_help" msgid="2554690102655855657">"ប៉ះ​មុខ​ ដើម្បី​ចាប់ផ្ដើម​​។"</string>
+    <string name="saving_image" msgid="7270334453636349407">"កំពុង​រក្សាទុក​រូបភាព..."</string>
+    <string name="filtershow_saving_image" msgid="6659463980581993016">"កំពុង​រក្សាទុក​រូបភាព​ក្នុង <xliff:g id="ALBUM_NAME">%1$s</xliff:g> …"</string>
+    <string name="save_error" msgid="6857408774183654970">"មិន​អាច​រក្សាទុក​រូបភាព​បាន​ច្រឹប។"</string>
+    <string name="crop_label" msgid="521114301871349328">"ច្រឹប​រូបភាព"</string>
+    <string name="trim_label" msgid="274203231381209979">"កាត់​តម្រឹម​វីដេអូ"</string>
+    <string name="select_image" msgid="7841406150484742140">"ជ្រើស​រូបថត"</string>
+    <string name="select_video" msgid="4859510992798615076">"ជ្រើស​វីដេអូ"</string>
+    <string name="select_item" msgid="2816923896202086390">"ជ្រើស​ធាតុ"</string>
+    <string name="select_album" msgid="1557063764849434077">"ជ្រើស​អាល់ប៊ុម"</string>
+    <string name="select_group" msgid="6744208543323307114">"ជ្រើស​ក្រុម"</string>
+    <string name="set_image" msgid="2331476809308010401">"កំណត់​រូបភាព​ជា"</string>
+    <string name="set_wallpaper" msgid="8491121226190175017">"កំណត់​ផ្ទាំង​រូបភាព"</string>
+    <string name="wallpaper" msgid="140165383777262070">"កំពុង​កំណត់​ផ្ទាំង​រូបភាព..."</string>
+    <string name="camera_setas_wallpaper" msgid="797463183863414289">"ផ្ទាំង​រូបភាព"</string>
+    <string name="delete" msgid="2839695998251824487">"លុប"</string>
+  <plurals name="delete_selection">
+    <item quantity="one" msgid="6453379735401083732">"លុប​ធាតុ​ដែល​បាន​ជ្រើស​?"</item>
+    <item quantity="other" msgid="5874316486520635333">"លុប​ធាតុ​ដែល​បាន​ជ្រើស​​​?"</item>
+  </plurals>
+    <string name="confirm" msgid="8646870096527848520">"បញ្ជាក់"</string>
+    <string name="cancel" msgid="3637516880917356226">"បោះ​បង់"</string>
+    <string name="share" msgid="3619042788254195341">"ចែក​រំលែក"</string>
+    <string name="share_panorama" msgid="2569029972820978718">"​ចែករំលែក​ទេសភាព"</string>
+    <string name="share_as_photo" msgid="8959225188897026149">"ចែករំលែក​ជា​រូបថត"</string>
+    <string name="deleted" msgid="6795433049119073871">"បាន​លុប"</string>
+    <string name="undo" msgid="2930873956446586313">"​មិន​​ធ្វើ​វិញ"</string>
+    <string name="select_all" msgid="3403283025220282175">"ជ្រើស​ទាំងអស់"</string>
+    <string name="deselect_all" msgid="5758897506061723684">"មិន​ជ្រើស​ទាំងអស់"</string>
+    <string name="slideshow" msgid="4355906903247112975">"បញ្ចាំង​ស្លាយ"</string>
+    <string name="details" msgid="8415120088556445230">"សេចក្ដី​លម្អិត"</string>
+    <string name="details_title" msgid="2611396603977441273">"ធាតុ %1$d នៃ %2$d ៖"</string>
+    <string name="close" msgid="5585646033158453043">"បិទ"</string>
+    <string name="switch_to_camera" msgid="7280111806675169992">"ប្ដូរ​ទៅ​ម៉ាស៊ីន​ថត"</string>
+  <plurals name="number_of_items_selected">
+    <item quantity="zero" msgid="2142579311530586258">"បាន​ជ្រើស %1$d"</item>
+    <item quantity="one" msgid="2478365152745637768">"បាន​ជ្រើស %1$d"</item>
+    <item quantity="other" msgid="754722656147810487">"បាន​ជ្រើស %1$d"</item>
+  </plurals>
+  <plurals name="number_of_albums_selected">
+    <item quantity="zero" msgid="749292746814788132">"បាន​ជ្រើស %1$d"</item>
+    <item quantity="one" msgid="6184377003099987825">"បាន​ជ្រើស %1$d"</item>
+    <item quantity="other" msgid="53105607141906130">"បាន​ជ្រើស %1$d"</item>
+  </plurals>
+  <plurals name="number_of_groups_selected">
+    <item quantity="zero" msgid="3466388370310869238">"បាន​ជ្រើស %1$d"</item>
+    <item quantity="one" msgid="5030162638216034260">"បាន​ជ្រើស %1$d"</item>
+    <item quantity="other" msgid="3512041363942842738">"បាន​ជ្រើស %1$d"</item>
+  </plurals>
+    <string name="show_on_map" msgid="6157544221201750980">"បង្ហាញ​​លើ​ផែនទី"</string>
+    <string name="rotate_left" msgid="5888273317282539839">"បង្វិល​ឆ្វេង"</string>
+    <string name="rotate_right" msgid="6776325835923384839">"បង្វិល​ស្ដាំ"</string>
+    <string name="no_such_item" msgid="5315144556325243400">"រក​មិន​ឃើញ​ធាតុ។"</string>
+    <string name="edit" msgid="1502273844748580847">"កែសម្រួល"</string>
+    <string name="simple_edit" msgid="2792835918347498211">"កែ​សម្រួល​ធម្មតា"</string>
+    <string name="process_caching_requests" msgid="8722939570307386071">"ដំណើរការ​សំណើ​ដាក់​ក្នុង​ឃ្លាំង"</string>
+    <string name="caching_label" msgid="4521059045896269095">"កំពុង​ដាក់​ក្នុង​ឃ្លាំង..."</string>
+    <string name="crop_action" msgid="3427470284074377001">"ច្រឹប"</string>
+    <string name="trim_action" msgid="703098114452883524">"កាត់​តម្រឹម"</string>
+    <string name="mute_action" msgid="5296241754753306251">"ស្ងាត់"</string>
+    <string name="set_as" msgid="3636764710790507868">"កំណត់​ជា"</string>
+    <string name="video_mute_err" msgid="6392457611270600908">"មិន​អាច​បិទ​សំឡេង​វីដេអូ"</string>
+    <string name="video_err" msgid="7003051631792271009">"មិន​អាច​ចាក់​វីដេអូ។"</string>
+    <string name="group_by_location" msgid="316641628989023253">"តាម​ទីតាំង"</string>
+    <string name="group_by_time" msgid="9046168567717963573">"តាម​ពេលវេលា"</string>
+    <string name="group_by_tags" msgid="3568731317210676160">"តាម​ស្លាក"</string>
+    <string name="group_by_faces" msgid="1566351636227274906">"តាម​​មនុស្ស"</string>
+    <string name="group_by_album" msgid="1532818636053818958">"តាម​អាល់ប៊ុម"</string>
+    <string name="group_by_size" msgid="153766174950394155">"តាម​​ទំហំ"</string>
+    <string name="untagged" msgid="7281481064509590402">"មិន​បាន​ដាក់​ស្លាក"</string>
+    <string name="no_location" msgid="4043624857489331676">"គ្មាន​ទីតាំង"</string>
+    <string name="no_connectivity" msgid="7164037617297293668">"មិន​អាច​កំណត់​ទីតាំង​មួយ​ចំនួន ដោយ​សារ​បញ្ហា​បណ្ដាញ"</string>
+    <string name="sync_album_error" msgid="1020688062900977530">"មិន​អាច​ទាញ​យក​រូបថត​ក្នុង​អាល់ប៊ុម​នេះ។ ព្យាយាម​ម្ដង​ទៀត​ពេលក្រោយ។"</string>
+    <string name="show_images_only" msgid="7263218480867672653">"តែ​រូបភាព"</string>
+    <string name="show_videos_only" msgid="3850394623678871697">"តែ​វីដេអូ"</string>
+    <string name="show_all" msgid="6963292714584735149">"រូបភាព &amp; វីដេអូ"</string>
+    <string name="appwidget_title" msgid="6410561146863700411">"វិចិត្រសាល​រូបភាព"</string>
+    <string name="appwidget_empty_text" msgid="1228925628357366957">"គ្មាន​រូបថត។"</string>
+    <string name="crop_saved" msgid="1595985909779105158">"បាន​រក្សាទុក​រូបភាព​បាន​ច្រឹប​ក្នុង <xliff:g id="FOLDER_NAME">%s</xliff:g> ។"</string>
+    <string name="no_albums_alert" msgid="4111744447491690896">"មិន​មាន​អាល់ប៊ុម"</string>
+    <string name="empty_album" msgid="4542880442593595494">"មាន​រូបភាព/វីដេអូ O"</string>
+    <string name="picasa_posts" msgid="1497721615718760613">"ប្រកាស"</string>
+    <string name="make_available_offline" msgid="5157950985488297112">"ធ្វើ​ឲ្យ​ប្រើ​បាន​ក្រៅ​បណ្ដាញ"</string>
+    <string name="sync_picasa_albums" msgid="8522572542111169872">"ផ្ទុក​ឡើង​វិញ"</string>
+    <string name="done" msgid="217672440064436595">"រួចរាល់"</string>
+    <string name="sequence_in_set" msgid="7235465319919457488">"ធាតុ %1$d នៃ %2$d ៖"</string>
+    <string name="title" msgid="7622928349908052569">"ចំណង​ជើង"</string>
+    <string name="description" msgid="3016729318096557520">"ការ​ពិពណ៌នា"</string>
+    <string name="time" msgid="1367953006052876956">"ពេលវេលា"</string>
+    <string name="location" msgid="3432705876921618314">"ទី​តាំង"</string>
+    <string name="path" msgid="4725740395885105824">"ផ្លូវ"</string>
+    <string name="width" msgid="9215847239714321097">"ទទឹង"</string>
+    <string name="height" msgid="3648885449443787772">"កម្ពស់"</string>
+    <string name="orientation" msgid="4958327983165245513">"ការណែនាំ"</string>
+    <string name="duration" msgid="8160058911218541616">"រយៈពេល"</string>
+    <string name="mimetype" msgid="8024168704337990470">"ប្រភេទ MIME"</string>
+    <string name="file_size" msgid="8486169301588318915">"ទំហំ​​ឯកសារ"</string>
+    <string name="maker" msgid="7921835498034236197">"ម៉ាក"</string>
+    <string name="model" msgid="8240207064064337366">"ម៉ូដែល"</string>
+    <string name="flash" msgid="2816779031261147723">"បាញ់​ពន្លឺ"</string>
+    <string name="aperture" msgid="5920657630303915195">"លំហ"</string>
+    <string name="focal_length" msgid="1291383769749877010">"ប្រវែង​ប្រសព្វ៖"</string>
+    <string name="white_balance" msgid="1582509289994216078">"តុល្យភាព​ពណ៌​ស"</string>
+    <string name="exposure_time" msgid="3990163680281058826">"ពេល​បង្ហាញ"</string>
+    <string name="iso" msgid="5028296664327335940">"ISO"</string>
+    <string name="unit_mm" msgid="1125768433254329136">"ម.ម."</string>
+    <string name="manual" msgid="6608905477477607865">"ដោយ​ដៃ"</string>
+    <string name="auto" msgid="4296941368722892821">"ស្វ័យប្រវត្តិ"</string>
+    <string name="flash_on" msgid="7891556231891837284">"បាញ់​ពន្លឺ"</string>
+    <string name="flash_off" msgid="1445443413822680010">"មិន​បាញ់​ពន្លឺ"</string>
+    <string name="unknown" msgid="3506693015896912952">"មិន​ស្គាល់"</string>
+    <string name="ffx_original" msgid="372686331501281474">"ដើម"</string>
+    <string name="ffx_vintage" msgid="8348759951363844780">"ត្នោត"</string>
+    <string name="ffx_instant" msgid="726968618715691987">"ភ្លឺ"</string>
+    <string name="ffx_bleach" msgid="8946700451603478453">"ដក​ពណ៌"</string>
+    <string name="ffx_blue_crush" msgid="6034283412305561226">"ខៀវ"</string>
+    <string name="ffx_bw_contrast" msgid="517988490066217206">"ស/ខ្មៅ"</string>
+    <string name="ffx_punch" msgid="1343475517872562639">"លឿង"</string>
+    <string name="ffx_x_process" msgid="4779398678661811765">"ដំណើរការ X"</string>
+    <string name="ffx_washout" msgid="4594160692176642735">"កាហ្វេ"</string>
+    <string name="ffx_washout_color" msgid="8034075742195795219">"ត្នោត​ស្រាល"</string>
+  <plurals name="make_albums_available_offline">
+    <item quantity="one" msgid="2171596356101611086">"ធ្វើ​ឲ្យ​អាល់ប៊ុម​អាច​ប្រើ​បាន​ក្រៅ​បណ្ដាញ។"</item>
+    <item quantity="other" msgid="4948604338155959389">"ធ្វើ​ឲ្យ​អាល់ប៊ុម​អាច​ប្រើ​បាន​ក្រៅ​បណ្ដាញ"</item>
+  </plurals>
+    <string name="try_to_set_local_album_available_offline" msgid="2184754031896160755">"បាន​រក្សាទុក​ធាតុ​នេះ​ក្នុង​មូលដ្ឋាន​ និង​អាច​​ប្រើ​ក្រៅ​បណ្ដាញ​បាន។"</string>
+    <string name="set_label_all_albums" msgid="4581863582996336783">"អាល់ប៊ុម​ទាំងអស់"</string>
+    <string name="set_label_local_albums" msgid="6698133661656266702">"អាល់ប៊ុម​មូលដ្ឋាន"</string>
+    <string name="set_label_mtp_devices" msgid="1283513183744896368">"ឧបករណ៍ MTP"</string>
+    <string name="set_label_picasa_albums" msgid="5356258354953935895">"អាល់ប៊ុម​ Picasa"</string>
+    <string name="free_space_format" msgid="8766337315709161215">"ទំនេរ <xliff:g id="BYTES">%s</xliff:g>"</string>
+    <string name="size_below" msgid="2074956730721942260">"<xliff:g id="SIZE">%1$s</xliff:g> ឬ​តូចជាង"</string>
+    <string name="size_above" msgid="5324398253474104087">"<xliff:g id="SIZE">%1$s</xliff:g> ឬ​ធំ​ជាង"</string>
+    <string name="size_between" msgid="8779660840898917208">"<xliff:g id="MIN_SIZE">%1$s</xliff:g> ដល់ <xliff:g id="MAX_SIZE">%2$s</xliff:g>"</string>
+    <string name="Import" msgid="3985447518557474672">"នាំចូល"</string>
+    <string name="import_complete" msgid="3875040287486199999">"ការ​នាំចូល​បាន​បញ្ចប់"</string>
+    <string name="import_fail" msgid="8497942380703298808">"នាំចូល​មិន​បាន​ជោគជ័យ"</string>
+    <string name="camera_connected" msgid="916021826223448591">"បាន​ភ្ជាប់​ម៉ាស៊ីន​ថត​។"</string>
+    <string name="camera_disconnected" msgid="2100559901676329496">"បាន​ផ្ដាច់​ម៉ាស៊ីន​ថត។"</string>
+    <string name="click_import" msgid="6407959065464291972">"ប៉ះ​នៅ​ទីនេះ​ ដើម្បី​នាំចូល"</string>
+    <string name="widget_type_album" msgid="6013045393140135468">"ជ្រើស​អាល់ប៊ុម"</string>
+    <string name="widget_type_shuffle" msgid="8594622705019763768">"ច្របល់​រូបភាព​ទាំងអស់"</string>
+    <string name="widget_type_photo" msgid="6267065337367795355">"ជ្រើស​រូបភាព"</string>
+    <string name="widget_type" msgid="1364653978966343448">"ជ្រើស​រូបភាព"</string>
+    <string name="slideshow_dream_name" msgid="6915963319933437083">"បញ្ចាំង​ស្លាយ"</string>
+    <string name="albums" msgid="7320787705180057947">"អាល់ប៊ុម"</string>
+    <string name="times" msgid="2023033894889499219">"ពេលវេលា"</string>
+    <string name="locations" msgid="6649297994083130305">"ទីតាំង"</string>
+    <string name="people" msgid="4114003823747292747">"មនុស្ស"</string>
+    <string name="tags" msgid="5539648765482935955">"ស្លាក"</string>
+    <string name="group_by" msgid="4308299657902209357">"ដាក់​ជា​ក្រុម"</string>
+    <string name="settings" msgid="1534847740615665736">"ការ​កំណត់"</string>
+    <string name="add_account" msgid="4271217504968243974">"បន្ថែម​គណនី"</string>
+    <string name="folder_camera" msgid="4714658994809533480">"ម៉ាស៊ីន​ថត"</string>
+    <string name="folder_download" msgid="7186215137642323932">"ទាញ​យក"</string>
+    <string name="folder_edited_online_photos" msgid="6278215510236800181">"បាន​កែ​រូបថត​លើ​បណ្ដាញ"</string>
+    <string name="folder_imported" msgid="2773581395524747099">"បាន​នាំចូល"</string>
+    <string name="folder_screenshot" msgid="7200396565864213450">"រូបថត​អេក្រង់"</string>
+    <string name="help" msgid="7368960711153618354">"ជំនួយ"</string>
+    <string name="no_external_storage_title" msgid="2408933644249734569">"គ្មាន​ឧបករណ៍​ផ្ទុក"</string>
+    <string name="no_external_storage" msgid="95726173164068417">"មិន​មាន​ឧបករណ៍​ផ្ទុក​ខាង​ក្រៅ"</string>
+    <string name="switch_photo_filmstrip" msgid="8227883354281661548">"ទិដ្ឋភាព​ហ្វីល"</string>
+    <string name="switch_photo_grid" msgid="3681299459107925725">"ទិដ្ឋភាព​ក្រឡា"</string>
+    <string name="switch_photo_fullscreen" msgid="8360489096099127071">"ទិដ្ឋភាព​ពេញ​អេក្រង់"</string>
+    <string name="trimming" msgid="9122385768369143997">"កាត់​តម្រឹម"</string>
+    <string name="muting" msgid="5094925919589915324">"ដក​ចេញ"</string>
+    <string name="please_wait" msgid="7296066089146487366">"សូម​រង់ចាំ"</string>
+    <string name="save_into" msgid="9155488424829609229">"កំពុង​រក្សាទុក​វីដេអូ​ក្នុង <xliff:g id="ALBUM_NAME">%1$s</xliff:g> …"</string>
+    <string name="trim_too_short" msgid="751593965620665326">"មិន​អាច​តម្រឹម៖ វីដេអូ​គោលដៅ​ខ្លី​ពេក"</string>
+    <string name="pano_progress_text" msgid="1586851614586678464">"បង្ហាញ​ទេសភាព"</string>
+    <string name="save" msgid="613976532235060516">"រក្សាទុក"</string>
+    <string name="ingest_scanning" msgid="1062957108473988971">"កំពុង​វិភាគ​រក​មាតិកា..."</string>
+  <plurals name="ingest_number_of_items_scanned">
+    <item quantity="zero" msgid="2623289390474007396">"បាន​វិភាគ​រក​ធាតុ %1$d"</item>
+    <item quantity="one" msgid="4340019444460561648">"បាន​វិភាគ​រក​ធាតុ %1$d"</item>
+    <item quantity="other" msgid="3138021473860555499">"បាន​វិភាគ​រក​ធាតុ %1$d"</item>
+  </plurals>
+    <string name="ingest_sorting" msgid="1028652103472581918">"កំពុង​តម្រៀប..."</string>
+    <string name="ingest_scanning_done" msgid="8911916277034483430">"ការ​វិភាគ​រក​រួចរាល់"</string>
+    <string name="ingest_importing" msgid="7456633398378527611">"កំពុង​នាំចូល..."</string>
+    <string name="ingest_empty_device" msgid="2010470482779872622">"មិន​មាន​មាតិកា​សម្រាប់​​នាំចូល​លើ​ឧបករណ៍​នេះ។"</string>
+    <string name="ingest_no_device" msgid="3054128223131382122">"មិន​មាន​ឧបករណ៍​ MTP បាន​តភ្ជាប់"</string>
+    <string name="camera_error_title" msgid="6484667504938477337">"កំហុស​ម៉ាស៊ីន​ថត"</string>
+    <string name="cannot_connect_camera" msgid="955440687597185163">"មិន​អាច​តភ្ជាប់​ម៉ាស៊ីន​ថត។"</string>
+    <string name="camera_disabled" msgid="8923911090533439312">"បាន​បិទ​ម៉ាស៊ីន​ថត ដោយ​សារ​តែ​គោលនយោបាយ​សុវត្ថិភាព។"</string>
+    <string name="camera_label" msgid="6346560772074764302">"ម៉ាស៊ីន​ថត"</string>
+    <string name="wait" msgid="8600187532323801552">"សូម​រង់ចាំ..."</string>
+    <string name="no_storage" product="nosdcard" msgid="7335975356349008814">"ភ្ជាប់​ឧបករណ៍​ផ្ទុក​យូអេសប៊ី​មុន​ពេល​ប្រើ​ម៉ាស៊ីន​ថត។"</string>
+    <string name="no_storage" product="default" msgid="5137703033746873624">"បញ្ចូល​កាត​អេសឌី​មុន​នឹង​ប្រើ​ម៉ាស៊ីន​ថត។"</string>
+    <string name="preparing_sd" product="nosdcard" msgid="6104019983528341353">"កំពុង​រៀបចំ​ឧបករណ៍​ផ្ទុក​យូអេសប៊ី..."</string>
+    <string name="preparing_sd" product="default" msgid="2914969119574812666">"កំពុង​រៀបចំ​កាត​អេសឌី..."</string>
+    <string name="access_sd_fail" product="nosdcard" msgid="8147993984037859354">"មិន​អាច​ចូល​ដំណើរការ​ឧបករណ៍​ផ្ទុក​យូអេសប៊ី។"</string>
+    <string name="access_sd_fail" product="default" msgid="1584968646870054352">"មិន​អាច​ចូល​ដំណើរការ​កាត​អេសឌី។"</string>
+    <string name="review_cancel" msgid="8188009385853399254">"បោះ​បង់"</string>
+    <string name="review_ok" msgid="1156261588693116433">"រួចរាល់"</string>
+    <string name="time_lapse_title" msgid="4360632427760662691">"ថត​សុពលភាព​រយៈពេល"</string>
+    <string name="pref_camera_id_title" msgid="4040791582294635851">"ជ្រើស​ម៉ាស៊ីន​ថត"</string>
+    <string name="pref_camera_id_entry_back" msgid="5142699735103692485">"ខាង​ក្រោយ"</string>
+    <string name="pref_camera_id_entry_front" msgid="5668958706828733669">"ខាង​មុខ"</string>
+    <string name="pref_camera_recordlocation_title" msgid="371208839215448917">"ទីតាំង​រក្សាទុក"</string>
+    <string name="pref_camera_location_label" msgid="2254270920298609161">"ទី​តាំង"</string>
+    <string name="pref_camera_timer_title" msgid="3105232208281893389">"កម្មវិធី​កំណត់​ពេលវេលា​រាប់​ថយក្រោយ"</string>
+  <plurals name="pref_camera_timer_entry">
+    <item quantity="one" msgid="1654523400981245448">"១ វិនាទី"</item>
+    <item quantity="other" msgid="6455381617076792481">"%d វិនាទី"</item>
+  </plurals>
+    <!-- no translation found for pref_camera_timer_sound_default (7066624532144402253) -->
+    <skip />
+    <string name="pref_camera_timer_sound_title" msgid="2469008631966169105">"សំឡេង​ប៊ីប​​អំឡុង​ពេល​រាប់"</string>
+    <string name="setting_off" msgid="4480039384202951946">"បិទ"</string>
+    <string name="setting_on" msgid="8602246224465348901">"បើក"</string>
+    <string name="pref_video_quality_title" msgid="8245379279801096922">"គុណភាព​វីដេអូ"</string>
+    <string name="pref_video_quality_entry_high" msgid="8664038216234805914">"ខ្ពស់"</string>
+    <string name="pref_video_quality_entry_low" msgid="7258507152393173784">"ទាប"</string>
+    <string name="pref_video_time_lapse_frame_interval_title" msgid="6245716906744079302">"សុពលភាព​ពេលវេលា"</string>
+    <string name="pref_camera_settings_category" msgid="2576236450859613120">"ការ​កំណត់​ម៉ាស៊ីន​ថត"</string>
+    <string name="pref_camcorder_settings_category" msgid="460313486231965141">"ការ​កំណត់​ម៉ាស៊ីន​ថត​វីដេអូ"</string>
+    <string name="pref_camera_picturesize_title" msgid="4333724936665883006">"ទំហំ​រូបភាព"</string>
+    <string name="pref_camera_picturesize_entry_13mp" msgid="675309554194481780">"១៣ មេហ្គាភីកសែល"</string>
+    <string name="pref_camera_picturesize_entry_8mp" msgid="259953780932849079">"៨ មេហ្គា​ភីកសែល"</string>
+    <string name="pref_camera_picturesize_entry_5mp" msgid="2882928212030661159">"៥ មេហ្គា​ភីកសែល"</string>
+    <string name="pref_camera_picturesize_entry_4mp" msgid="933242108272469142">"៤ មេហ្គា​​ភីក​សែល"</string>
+    <string name="pref_camera_picturesize_entry_3mp" msgid="741415860337400696">"៣ មេហ្គា​ភីកសែល"</string>
+    <string name="pref_camera_picturesize_entry_2mp" msgid="1753709802245460393">"២ មេហ្គា​ភីកសែល"</string>
+    <string name="pref_camera_picturesize_entry_2mp_wide" msgid="5359490802026616612">"២ មេហ្គាភីក​សែល (16:9)"</string>
+    <string name="pref_camera_picturesize_entry_1_3mp" msgid="829109608140747258">"១.៣ មេហ្គា​ភីកសែល"</string>
+    <string name="pref_camera_picturesize_entry_1mp" msgid="1669725616780375066">"១ មេហ្គា​ភីកសែល"</string>
+    <string name="pref_camera_picturesize_entry_vga" msgid="806934254162981919">"VGA"</string>
+    <string name="pref_camera_picturesize_entry_qvga" msgid="8576186463069770133">"QVGA"</string>
+    <string name="pref_camera_focusmode_title" msgid="2877248921829329127">"របៀប​ផ្ដោត"</string>
+    <string name="pref_camera_focusmode_entry_auto" msgid="7374820710300362457">"ស្វ័យប្រវត្តិ"</string>
+    <string name="pref_camera_focusmode_entry_infinity" msgid="3413922419264967552">"និរន្ត"</string>
+    <string name="pref_camera_focusmode_entry_macro" msgid="4424489110551866161">"ម៉ាក្រូ"</string>
+    <string name="pref_camera_focusmode_label_auto" msgid="8547956917516317183">"ស្វ័យប្រវត្តិ"</string>
+    <string name="pref_camera_focusmode_label_infinity" msgid="4272904160062531778">"និរន្ត"</string>
+    <string name="pref_camera_focusmode_label_macro" msgid="8749317592620908054">"ម៉ាក្រូ"</string>
+    <string name="pref_camera_flashmode_title" msgid="2287362477238791017">"របៀប​បាញ់​ពន្លឺ"</string>
+    <string name="pref_camera_flashmode_label" msgid="7546741624882856171">"របៀប​បាញ់​ពន្លឺ"</string>
+    <string name="pref_camera_flashmode_entry_auto" msgid="7288383434237457709">"ស្វ័យប្រវត្តិ"</string>
+    <string name="pref_camera_flashmode_entry_on" msgid="5330043918845197616">"បើក"</string>
+    <string name="pref_camera_flashmode_entry_off" msgid="867242186958805761">"បិទ"</string>
+    <string name="pref_camera_flashmode_label_auto" msgid="8854671890619026197">"បាញ់​ពន្លឺ​ស្វ័យ​ប្រវត្តិ"</string>
+    <string name="pref_camera_flashmode_label_on" msgid="7347504762794840140">"បើក​ការ​បាញ់​ពន្លឺ"</string>
+    <string name="pref_camera_flashmode_label_off" msgid="3541596735596053416">"បិទ​ការ​បាញ់​ពន្លឺ"</string>
+    <string name="pref_camera_whitebalance_title" msgid="677420930596673340">"តុល្យភាព​ពណ៌​ស"</string>
+    <string name="pref_camera_whitebalance_label" msgid="7467403405883190920">"តុល្យភាព​ពណ៌ស"</string>
+    <string name="pref_camera_whitebalance_entry_auto" msgid="6580665476983469293">"ស្វ័យប្រវត្តិ"</string>
+    <string name="pref_camera_whitebalance_entry_incandescent" msgid="8856667786449549938">"ពណ៌ស"</string>
+    <string name="pref_camera_whitebalance_entry_daylight" msgid="2534757270149561027">"ពន្លឺថ្ងៃ"</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="2435332872847454032">"រលើប"</string>
+    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3531996716997959326">"ពពក"</string>
+    <string name="pref_camera_whitebalance_label_auto" msgid="1479694362310491429">"ស្វ័យប្រវត្តិ"</string>
+    <string name="pref_camera_whitebalance_label_incandescent" msgid="7427628260209908900">"ពណ៌ស"</string>
+    <string name="pref_camera_whitebalance_label_daylight" msgid="1859710806141461399">"ពន្លឺថ្ងៃ"</string>
+    <string name="pref_camera_whitebalance_label_fluorescent" msgid="5173251749161337707">"រលើប"</string>
+    <string name="pref_camera_whitebalance_label_cloudy" msgid="8230173517179285320">"ពពក"</string>
+    <string name="pref_camera_scenemode_title" msgid="1420535844292504016">"របៀប​រូបភាព"</string>
+    <string name="pref_camera_scenemode_entry_auto" msgid="7113995286836658648">"ស្វ័យប្រវត្តិ"</string>
+    <string name="pref_camera_scenemode_entry_hdr" msgid="2923388802899511784">"HDR"</string>
+    <string name="pref_camera_scenemode_entry_action" msgid="616748587566110484">"សកម្មភាព"</string>
+    <string name="pref_camera_scenemode_entry_night" msgid="7606898503102476329">"ពេល​រាត្រី"</string>
+    <string name="pref_camera_scenemode_entry_sunset" msgid="181661154611507212">"ថ្ងៃលិច"</string>
+    <string name="pref_camera_scenemode_entry_party" msgid="907053529286788253">"ពន្លឺ​ខ្សោយ"</string>
+    <string name="pref_camera_scenemode_label_auto" msgid="4475096836397300237">"គ្មាន"</string>
+    <string name="pref_camera_scenemode_label_action" msgid="964748409622151496">"សកម្មភាព"</string>
+    <string name="pref_camera_scenemode_label_night" msgid="1269871886845854574">"ពេល​រាត្រី"</string>
+    <string name="pref_camera_scenemode_label_sunset" msgid="2802732082948866877">"ថ្ងៃលិច"</string>
+    <string name="pref_camera_scenemode_label_party" msgid="1409459091844374828">"ពន្លឺ​ខ្សោយ"</string>
+    <string name="pref_camera_countdown_label" msgid="7592784692450586126">"ឧបករណ៍​កំណត់​ពេល​វេលា​កា​រ​រាប់​ថយក្រោយ"</string>
+    <string name="pref_camera_countdown_label_off" msgid="4987856883590176585">"បិទ​កម្មវិធី​កំណត់ពេល"</string>
+    <string name="pref_camera_countdown_label_one" msgid="1101814103087928898">"១ វិនាទី"</string>
+    <string name="pref_camera_countdown_label_three" msgid="1047399297342955649">"៣ វិនាទី"</string>
+    <string name="pref_camera_countdown_label_ten" msgid="6274681535347260279">"១០ វិនាទី"</string>
+    <string name="pref_camera_countdown_label_fifteen" msgid="4544824246687597089">"១៥​ វិនាទី"</string>
+    <string name="not_selectable_in_scene_mode" msgid="2970291701448555126">"មិន​អាច​ជ្រើស​បាន​ក្នុង​របៀប​រូបភាព។"</string>
+    <string name="pref_exposure_title" msgid="1229093066434614811">"បង្ហាញ"</string>
+    <string name="pref_exposure_label" msgid="552624394642497940">"បង្ហាញ"</string>
+    <!-- no translation found for pref_camera_hdr_default (1336869406134365882) -->
+    <skip />
+    <string name="pref_camera_hdr_label" msgid="7217211253357027510">"HDR"</string>
+    <string name="pref_camera_id_label_back" msgid="8745553500400332333">"ម៉ាស៊ីន​ថត​មុខ"</string>
+    <string name="pref_camera_id_label_front" msgid="8699439330056996709">"ម៉ាស៊ីន​ថត​ខាង​ក្រោយ"</string>
+    <string name="dialog_ok" msgid="6263301364153382152">"យល់​ព្រម"</string>
+    <string name="spaceIsLow_content" product="nosdcard" msgid="4401325203349203177">"ឧបករណ៍​ផ្ទុក​យូអេសប៊ី​របស់​អ្នក​ពេញ​ហើយ។ ប្ដូរ​ការ​កំណត់​គុណភាព ឬ​លុប​​រូបភាព ឬ​ឯកសារ​មួយ​ចំនួន​ចេញ។"</string>
+    <string name="spaceIsLow_content" product="default" msgid="1732882643101247179">"កាត​អេសឌី​របស់​អ្នក​ពេញ​ហើយ។ ប្ដូរ​ការ​កំណត់​គុណភាព ឬ​លុប​រូបភាព​ ឬ​ឯកសារ​​មួយ​ចំនួន​ចេញ។"</string>
+    <string name="video_reach_size_limit" msgid="6179877322015552390">"បាន​ដល់​​ដែន​កំណត់​ទំហំ។"</string>
+    <string name="pano_too_fast_prompt" msgid="2823839093291374709">"លឿន​ពេក"</string>
+    <string name="pano_dialog_prepare_preview" msgid="4788441554128083543">"រៀបចំ​ទេសភាព"</string>
+    <string name="pano_dialog_panorama_failed" msgid="2155692796549642116">"មិន​អាច​រក្សា​ទុក​ទេសភាព​។"</string>
+    <string name="pano_dialog_title" msgid="5755531234434437697">"ទេសភាព"</string>
+    <string name="pano_capture_indication" msgid="8248825828264374507">"ចាប់​យក​ទេសភាព"</string>
+    <string name="pano_dialog_waiting_previous" msgid="7800325815031423516">"រង់ចាំ​ទេសភាព​មុន"</string>
+    <string name="pano_review_saving_indication_str" msgid="2054886016665130188">"កំពុង​រក្សាទុក..."</string>
+    <string name="pano_review_rendering" msgid="2887552964129301902">"បង្ហាញ​ទេសភាព"</string>
+    <string name="tap_to_focus" msgid="8863427645591903760">"ប៉ះ ដើម្បី​ផ្ដោត។"</string>
+    <string name="pref_video_effect_title" msgid="8243182968457289488">"បែបផែន"</string>
+    <string name="effect_none" msgid="3601545724573307541">"គ្មាន"</string>
+    <string name="effect_goofy_face_squeeze" msgid="1207235692524289171">"ច្របាច់​មុខ"</string>
+    <string name="effect_goofy_face_big_eyes" msgid="3945182409691408412">"ភ្នែក​ធំ"</string>
+    <string name="effect_goofy_face_big_mouth" msgid="7528748779754643144">"មាត់​ធំ"</string>
+    <string name="effect_goofy_face_small_mouth" msgid="3848209817806932565">"មាត់​​តូច"</string>
+    <string name="effect_goofy_face_big_nose" msgid="5180533098740577137">"ច្រមុះ​ធំ"</string>
+    <string name="effect_goofy_face_small_eyes" msgid="1070355596290331271">"ភ្នែក​​តូច"</string>
+    <string name="effect_backdropper_space" msgid="7935661090723068402">"ក្នុង​លំហ"</string>
+    <string name="effect_backdropper_sunset" msgid="45198943771777870">"ថ្ងៃលិច"</string>
+    <string name="effect_backdropper_gallery" msgid="959158844620991906">"វីដេអូ​របស់​អ្នក"</string>
+    <string name="bg_replacement_message" msgid="9184270738916564608">"ដាក់​ឧបករណ៍​របស់​អ្នក​ចុះក្រោម​បន្តិច។\n ដើរ​ចេញ​ពី​ទិដ្ឋភាព​មួយ​ភ្លែត។"</string>
+    <string name="video_snapshot_hint" msgid="18833576851372483">"ប៉ះ ដើម្បី​ថត​រូប​ខណៈ​ដែល​កំពុង​ថត​វីដេអូ។"</string>
+    <string name="video_recording_started" msgid="4132915454417193503">"ចាប់ផ្ដើម​ថត​វីដេអូ។"</string>
+    <string name="video_recording_stopped" msgid="5086919511555808580">"បញ្ឈប់​ការ​ថត​វីដេអូ។"</string>
+    <string name="disable_video_snapshot_hint" msgid="4957723267826476079">"បាន​បិទ​រូបថត​វីដេអូ ពេល​បាន​បើក​បែបផែន​ពិសេស។"</string>
+    <string name="clear_effects" msgid="5485339175014139481">"សម្អាត​បែបផែន"</string>
+    <string name="effect_silly_faces" msgid="8107732405347155777">"មុខ​ឆ្កួតៗ"</string>
+    <string name="effect_background" msgid="6579360207378171022">"ផ្ទៃ​ខាង​ក្រោយ"</string>
+    <string name="accessibility_shutter_button" msgid="2664037763232556307">"ប៊ូតុង​​ការពារ"</string>
+    <string name="accessibility_menu_button" msgid="7140794046259897328">"ប៊ូតុង​ម៉ឺនុយ"</string>
+    <string name="accessibility_review_thumbnail" msgid="8961275263537513017">"រូបថត​ថ្មី​បំផុត"</string>
+    <string name="accessibility_camera_picker" msgid="8807945470215734566">"ប្ដូរ​ម៉ាស៊ីន​ថត​មុខ និង​ក្រោយ"</string>
+    <string name="accessibility_mode_picker" msgid="3278002189966833100">"កម្មវិធី​ជ្រើស​ម៉ាស៊ីន​ថត វីដេអូ ឬ​ទេសភាព"</string>
+    <string name="accessibility_second_level_indicators" msgid="3855951632917627620">"ពិនិត្យ​ការ​កំណត់​ផ្សេង​ទៀត"</string>
+    <string name="accessibility_back_to_first_level" msgid="5234411571109877131">"បិទ​ការ​ពិនិត្យ​ការ​កំណត់"</string>
+    <string name="accessibility_zoom_control" msgid="1339909363226825709">"ត្រួត​ពិនិត្យ​ការ​ពង្រីក"</string>
+    <string name="accessibility_decrement" msgid="1411194318538035666">"បន្ថយ %1$s"</string>
+    <string name="accessibility_increment" msgid="8447850530444401135">"បង្កើន %1$s"</string>
+    <string name="accessibility_check_box" msgid="7317447218256584181">"ប្រអប់​ធីក %1$s"</string>
+    <string name="accessibility_switch_to_camera" msgid="5951340774212969461">"ប្ដូរ​ទៅ​រូបថត"</string>
+    <string name="accessibility_switch_to_video" msgid="4991396355234561505">"ប្ដូរ​ទៅ​វីដេអូ"</string>
+    <string name="accessibility_switch_to_panorama" msgid="604756878371875836">"ប្ដូរ​ទៅ​ទេសភាព"</string>
+    <string name="accessibility_switch_to_new_panorama" msgid="8116783308051524188">"ប្ដូរ​ទៅ​ទេសភាព​ថ្មី"</string>
+    <string name="accessibility_switch_to_refocus" msgid="4539294619557299903">"ប្ដូរ​ទៅ​ផ្ដោត​​ឡើងវិញ"</string>
+    <string name="accessibility_review_cancel" msgid="9070531914908644686">"បោះបង់​ការ​ពិនិត្យ​មើល"</string>
+    <string name="accessibility_review_ok" msgid="7793302834271343168">"បាន​ពិនិត្យ​រួចរាល់"</string>
+    <string name="accessibility_review_retake" msgid="659300290054705484">"ពិនិត្យ​មើល​ឡើងវិញ"</string>
+    <string name="accessibility_play_video" msgid="7596298365794810207">"ចាក់​វីដេអូ"</string>
+    <string name="accessibility_pause_video" msgid="6526344477133046653">"ផ្អាក​វីដេអូ"</string>
+    <string name="accessibility_reload_video" msgid="3250335917598607232">"ផ្ទុក​វីដេអូ​ឡើងវិញ"</string>
+    <string name="accessibility_time_bar" msgid="1414029843602604531">"របារ​ពេលវេលា​កម្មវិធី​ចាក់​វីដេអូ"</string>
+    <string name="capital_on" msgid="5491353494964003567">"បើក"</string>
+    <string name="capital_off" msgid="7231052688467970897">"បិទ"</string>
+    <string name="pref_video_time_lapse_frame_interval_off" msgid="3490489191038309496">"បិទ"</string>
+    <string name="pref_video_time_lapse_frame_interval_500" msgid="2949719376111679816">"០.៥ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_1000" msgid="1672458758823855874">"១ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_1500" msgid="3415071702490624802">"១.៥ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_2000" msgid="827813989647794389">"២ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_2500" msgid="5750464143606788153">"២.៥ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_3000" msgid="2664846627499751396">"៣ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_4000" msgid="7303255804306382651">"៤ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_5000" msgid="6800566761690741841">"៥ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_6000" msgid="8545447466540319539">"៦ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_10000" msgid="3105568489694909852">"១០ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_12000" msgid="6055574367392821047">"១២ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_15000" msgid="2656164845371833761">"១៥ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_24000" msgid="2192628967233421512">"២៤ វិនាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_30000" msgid="5923393773260634461">"០.៥ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_60000" msgid="4678581247918524850">"១ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_90000" msgid="1187029705069674152">"១.៥ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_120000" msgid="145301938098991278">"២ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_150000" msgid="793707078196731912">"២.៥ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_180000" msgid="1785467676466542095">"៣ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_240000" msgid="3734507766184666356">"៤ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_300000" msgid="7442765761995328639">"៥ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_360000" msgid="6724596937972563920">"៦ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_600000" msgid="6563665954471001352">"១០ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_720000" msgid="8969801372893266408">"១២ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_900000" msgid="5803172407245902896">"១៥ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_1440000" msgid="6286246349698492186">"២៤ នាទី"</string>
+    <string name="pref_video_time_lapse_frame_interval_1800000" msgid="5042628461448570758">"០.៥ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_3600000" msgid="6366071632666482636">"១ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_5400000" msgid="536117788694519019">"១.៥ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_7200000" msgid="6846617415182608533">"២ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_9000000" msgid="4242839574025261419">"២.៥ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_10800000" msgid="2766886102170605302">"៣ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_14400000" msgid="7497934659667867582">"៤ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_18000000" msgid="8783643014853837140">"៥ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_21600000" msgid="5005078879234015432">"៦ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_36000000" msgid="69942198321578519">"១០ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_43200000" msgid="285992046818504906">"១២ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_54000000" msgid="5740227373848829515">"១៥ ម៉ោង"</string>
+    <string name="pref_video_time_lapse_frame_interval_86400000" msgid="9040201678470052298">"២៤ ម៉ោង"</string>
+    <string name="time_lapse_seconds" msgid="2105521458391118041">"វិនាទី"</string>
+    <string name="time_lapse_minutes" msgid="7738520349259013762">"នាទី"</string>
+    <string name="time_lapse_hours" msgid="1776453661704997476">"ម៉ោង"</string>
+    <string name="time_lapse_interval_set" msgid="2486386210951700943">"រួចរាល់"</string>
+    <string name="set_time_interval" msgid="2970567717633813771">"កំណត់​ចន្លោះ​ពេល"</string>
+    <string name="set_time_interval_help" msgid="6665849510484821483">"បាន​បិទ​សុពលភាព​ពេលវេលា។ បើ​វា ដើម្បី​កំណត់​ចន្លោះ​ពេល។"</string>
+    <string name="set_timer_help" msgid="5007708849404589472">"បាន​បិទ​កម្មវិធី​កំណត់​ពេលវេលា​រាប់​​។ បើក​វា​ ដើម្បី​រាប់​មុន​ពេល​ថត​រូប។"</string>
+    <string name="set_duration" msgid="5578035312407161304">"កំណត់​រយៈពេល​គិត​ជា​វិនាទី"</string>
+    <string name="count_down_title_text" msgid="4976386810910453266">"កំពុង​រាប់​ ​ដើម្បី​ថត​រូប"</string>
+    <string name="remember_location_title" msgid="9060472929006917810">"ចងចាំ​ទីតាំង​រូបថត​?"</string>
+    <string name="remember_location_prompt" msgid="724592331305808098">"ដាក់​ស្លាក​រូបថត និង​វីដេអូ​​របស់​អ្នក​​ពី​ទីតាំង​ដែល​អ្នក​បាន​ថត។\n\nកម្មវិធី​ផ្សេង​អាច​ចូល​មើល​​ប្រើ​ព័ត៌មាន​នេះ​ជា​មួយ​នឹង​រូបភាព​បាន​រក្សាទុក​របស់​អ្នក។"</string>
+    <string name="remember_location_no" msgid="7541394381714894896">"ទេ អរគុណ"</string>
+    <string name="remember_location_yes" msgid="862884269285964180">"បាទ/ចាស"</string>
+    <string name="menu_camera" msgid="3476709832879398998">"ម៉ាស៊ីន​ថត"</string>
+    <string name="menu_search" msgid="7580008232297437190">"ស្វែងរក"</string>
+    <string name="tab_photos" msgid="9110813680630313419">"រូបថត"</string>
+    <string name="tab_albums" msgid="8079449907770685691">"អាល់ប៊ុម"</string>
+    <string name="camera_menu_more_label" msgid="6868642182125198710">"ជម្រើស​ច្រើន​ទៀត"</string>
+    <string name="camera_menu_settings_label" msgid="875454962069404723">"ការ​កំណត់"</string>
+  <plurals name="number_of_photos">
+    <item quantity="one" msgid="6949174783125614798">"រូបថត %1$d"</item>
+    <item quantity="other" msgid="3813306834113858135">"រូបថត %1$d"</item>
+  </plurals>
+</resources>

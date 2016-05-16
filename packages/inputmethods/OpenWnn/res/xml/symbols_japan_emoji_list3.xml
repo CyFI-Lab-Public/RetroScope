@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!--symbols -->
+<keystring>
+<!-- 4. Artifacts -->
+<!-- Buildings / Common Places -->
+<string value="\udbb9\udcb0"/>
+<string value="\udbb9\udcb1"/>
+<string value="\udbb9\udcb2"/>
+<string value="\udbb9\udcb3"/>
+<string value="\udbb9\udcb4"/>
+<string value="\udbb9\udcb5"/>
+<string value="\udbb9\udcb6"/>
+<string value="\udbb9\udcb7"/>
+<string value="\udbb9\udcb8"/>
+<string value="\udbb9\udcb9"/>
+<string value="\udbb9\udcba"/>
+<string value="\udbb9\udcbb"/>
+<string value="\udbb9\udcbc"/>
+<string value="\udbb9\udcbd"/>
+<string value="\udbb9\udcbe"/>
+<string value="\udbb9\udcbf"/>
+<string value="\udbb9\udcc0"/>
+<string value="\udbb9\udcc1"/>
+<string value="\udbb9\udcc2"/>
+<!-- Landmarks /Famous Places -->
+<string value="\udbb9\udcc3"/>
+<string value="\udbb9\udcc4"/>
+<string value="\udbb9\udcc5"/>
+<string value="\udbb9\udcc6"/>
+<string value="\udbb9\udcc7"/>
+<string value="\udbb9\udcc8"/>
+<!-- Tools -->
+<string value="\udbb9\udcc9"/>
+<string value="\udbb9\udcca"/>
+<string value="\udbb9\udccb"/>
+<!-- Clothing / Wearables -->
+<string value="\udbb9\udccc"/>
+<string value="\udbb9\udccd"/>
+<string value="\udbb9\udcce"/>
+<string value="\udbb9\udccf"/>
+<string value="\udbb9\udcd0"/>
+<string value="\udbb9\udcd1"/>
+<string value="\udbb9\udcd2"/>
+<string value="\udbb9\udcd3"/>
+<string value="\udbb9\udcd4"/>
+<string value="\udbb9\udcd5"/>
+<string value="\udbb9\udcd6"/>
+<string value="\udbb9\udcd7"/>
+<string value="\udbb9\udcd8"/>
+<string value="\udbb9\udcd9"/>
+<string value="\udbb9\udcda"/>
+<string value="\udbb9\udcdb"/>
+<!-- Money -->
+<string value="\udbb9\udcdc"/>
+<string value="\udbb9\udcdd"/>
+<string value="\udbb9\udcde"/>
+<string value="\udbb9\udcdf"/>
+<string value="\udbb9\udce0"/>
+<string value="\udbb9\udce1"/>
+<string value="\udbb9\udce2"/>
+<string value="\udbb9\udce3"/>
+<string value="\udbb9\udce4"/>
+<!-- Flags -->
+<string value="\udbb9\udce5"/>
+<string value="\udbb9\udce6"/>
+<string value="\udbb9\udce7"/>
+<string value="\udbb9\udce8"/>
+<string value="\udbb9\udce9"/>
+<string value="\udbb9\udcea"/>
+<string value="\udbb9\udceb"/>
+<string value="\udbb9\udcec"/>
+<string value="\udbb9\udced"/>
+<string value="\udbb9\udcee"/>
+<!-- Miscellaneous Things -->
+<string value="\udbb9\udcef"/>
+<string value="\udbb9\udcf0"/>
+<string value="\udbb9\udcf1"/>
+<string value="\udbb9\udcf2"/>
+<string value="\udbb9\udcf3"/>
+<string value="\udbb9\udcf4"/>
+<string value="\udbb9\udcf5"/>
+<string value="\udbb9\udcf6"/>
+<string value="\udbb9\udcf7"/>
+<string value="\udbb9\udcf8"/>
+<string value="\udbb9\udcf9"/>
+<string value="\udbb9\udcfa"/>
+<string value="\udbb9\udcfb"/>
+<string value="\udbb9\udcfc"/>
+<string value="\udbb9\udcfd"/>
+<string value="\udbb9\udcfe"/>
+<string value="\udbb9\udcff"/>
+<string value="\udbb9\udd00"/>
+<string value="\udbb9\udd01"/>
+<string value="\udbb9\udd02"/>
+<string value="\udbb9\udd03"/>
+<string value="\udbb9\udd04"/>
+<!-- Bath / Bathroom -->
+<string value="\udbb9\udd05"/>
+<string value="\udbb9\udd06"/>
+<string value="\udbb9\udd07"/>
+<string value="\udbb9\udd08"/>
+<!-- Medical -->
+<string value="\udbb9\udd09"/>
+<string value="\udbb9\udd0a"/>
+<string value="\udbb9\udd0b"/>
+<string value="\udbb9\udd0c"/>
+<string value="\udbb9\udd0d"/>
+<string value="\udbb9\udd0e"/>
+<!-- Celebration / Holidays -->
+<string value="\udbb9\udd0f"/>
+<string value="\udbb9\udd10"/>
+<string value="\udbb9\udd11"/>
+<string value="\udbb9\udd12"/>
+<string value="\udbb9\udd13"/>
+<string value="\udbb9\udd14"/>
+<string value="\udbb9\udd15"/>
+<string value="\udbb9\udd16"/>
+<string value="\udbb9\udd17"/>
+<string value="\udbb9\udd18"/>
+<string value="\udbb9\udd19"/>
+<string value="\udbb9\udd1a"/>
+<string value="\udbb9\udd1b"/>
+<string value="\udbb9\udd1c"/>
+<string value="\udbb9\udd1d"/>
+<string value="\udbb9\udd1e"/>
+<string value="\udbb9\udd1f"/>
+<string value="\udbb9\udd20"/>
+<string value="\udbb9\udd21"/>
+<!-- Communication -->
+<string value="\udbb9\udd22"/>
+<string value="\udbb9\udd23"/>
+<string value="\udbb9\udd24"/>
+<string value="\udbb9\udd25"/>
+<string value="\udbb9\udd26"/>
+<string value="\udbb9\udd27"/>
+<string value="\udbb9\udd28"/>
+<string value="\udbb9\udd29"/>
+<string value="\udbb9\udd2a"/>
+<string value="\udbb9\udd2b"/>
+<string value="\udbb9\udd2c"/>
+<string value="\udbb9\udd2d"/>
+<string value="\udbb9\udd2e"/>
+<string value="\udbb9\udd2f"/>
+<string value="\udbb9\udd30"/>
+<string value="\udbb9\udd31"/>
+<string value="\udbb9\udd32"/>
+<string value="\udbb9\udd33"/>
+<string value="\udbb9\udd34"/>
+<string value="\udbb9\udd35"/>
+<!-- Office -->
+<string value="\udbb9\udd36"/>
+<string value="\udbb9\udd37"/>
+<string value="\udbb9\udd38"/>
+<string value="\udbb9\udd39"/>
+<string value="\udbb9\udd3a"/>
+<string value="\udbb9\udd3b"/>
+<string value="\udbb9\udd3c"/>
+<string value="\udbb9\udd3d"/>
+<string value="\udbb9\udd3e"/>
+<string value="\udbb9\udd3f"/>
+<string value="\udbb9\udd40"/>
+<string value="\udbb9\udd41"/>
+<string value="\udbb9\udd42"/>
+<string value="\udbb9\udd43"/>
+<string value="\udbb9\udd44"/>
+<string value="\udbb9\udd45"/>
+<string value="\udbb9\udd46"/>
+<string value="\udbb9\udd47"/>
+<string value="\udbb9\udd48"/>
+<string value="\udbb9\udd49"/>
+<string value="\udbb9\udd4a"/>
+<string value="\udbb9\udd4b"/>
+<string value="\udbb9\udd4c"/>
+<string value="\udbb9\udd4d"/>
+<string value="\udbb9\udd4e"/>
+<string value="\udbb9\udd4f"/>
+<string value="\udbb9\udd50"/>
+<string value="\udbb9\udd51"/>
+<string value="\udbb9\udd52"/>
+<!-- Relic -->
+<string value="\udbb9\udd53"/>
+<!-- 5. Activities / Work / Entertainment -->
+<!-- Sports -->
+<string value="\udbb9\udfd0"/>
+<string value="\udbb9\udfd1"/>
+<string value="\udbb9\udfd2"/>
+<string value="\udbb9\udfd3"/>
+<string value="\udbb9\udfd4"/>
+<string value="\udbb9\udfd5"/>
+<string value="\udbb9\udfd6"/>
+<string value="\udbb9\udfd7"/>
+<string value="\udbb9\udfd8"/>
+<string value="\udbb9\udfd9"/>
+<string value="\udbb9\udfda"/>
+<string value="\udbb9\udfdb"/>
+<string value="\udbb9\udfdc"/>
+<string value="\udbb9\udfdd"/>
+<string value="\udbb9\udfde"/>
+<!-- Transportation -->
+<string value="\udbb9\udfdf"/>
+<string value="\udbb9\udfe0"/>
+<string value="\udbb9\udfe1"/>
+<string value="\udbb9\udfe2"/>
+<string value="\udbb9\udfe3"/>
+<string value="\udbb9\udfe4"/>
+<string value="\udbb9\udfe5"/>
+<string value="\udbb9\udfe6"/>
+<string value="\udbb9\udfe7"/>
+<string value="\udbb9\udfe8"/>
+<string value="\udbb9\udfe9"/>
+<string value="\udbb9\udfea"/>
+<string value="\udbb9\udfeb"/>
+<string value="\udbb9\udfec"/>
+<string value="\udbb9\udfed"/>
+<string value="\udbb9\udfee"/>
+<string value="\udbb9\udfef"/>
+<string value="\udbb9\udff0"/>
+<string value="\udbb9\udff1"/>
+<string value="\udbb9\udff2"/>
+<string value="\udbb9\udff3"/>
+<string value="\udbb9\udff4"/>
+<!-- Driving -->
+<string value="\udbb9\udff5"/>
+<string value="\udbb9\udff6"/>
+<string value="\udbb9\udff7"/>
+<string value="\udbb9\udff8"/>
+<string value="\udbb9\udff9"/>
+<!-- Recreation -->
+<string value="\udbb9\udffa"/>
+<string value="\udbb9\udffb"/>
+<string value="\udbb9\udffc"/>
+<string value="\udbb9\udffd"/>
+<string value="\udbb9\udffe"/>
+<string value="\udbb9\udfff"/>
+<!-- Entertainment -->
+<string value="\udbba\udc00"/>
+<string value="\udbba\udc01"/>
+<string value="\udbba\udc02"/>
+<string value="\udbba\udc03"/>
+<string value="\udbba\udc04"/>
+<string value="\udbba\udc05"/>
+<string value="\udbba\udc06"/>
+<string value="\udbba\udc07"/>
+<string value="\udbba\udc08"/>
+<string value="\udbba\udc09"/>
+<!-- Games -->
+<string value="\udbba\udc0a"/>
+<string value="\udbba\udc0b"/>
+<string value="\udbba\udc0c"/>
+<string value="\udbba\udc0d"/>
+<string value="\udbba\udc0e"/>
+<string value="\udbba\udc0f"/>
+<string value="\udbba\udc10"/>
+<string value="\udbba\udc11"/>
+<string value="\udbba\udc12"/>
+<!-- Music -->
+<string value="\udbba\udc13"/>
+<string value="\udbba\udc14"/>
+<string value="\udbba\udc15"/>
+<string value="\udbba\udc16"/>
+<string value="\udbba\udc17"/>
+<string value="\udbba\udc18"/>
+<string value="\udbba\udc19"/>
+<string value="\udbba\udc1a"/>
+<string value="\udbba\udc1b"/>
+<!-- Media -->
+<string value="\udbba\udc1c"/>
+<string value="\udbba\udc1d"/>
+<string value="\udbba\udc1e"/>
+<string value="\udbba\udc1f"/>
+<string value="\udbba\udc20"/>
+<string value="\udbba\udc21"/>
+<string value="\udbba\udc22"/>
+<!-- Romance -->
+<string value="\udbba\udc23"/>
+<string value="\udbba\udc24"/>
+<string value="\udbba\udc25"/>
+<string value="\udbba\udc26"/>
+<string value="\udbba\udc27"/>
+<string value="\udbba\udc28"/>
+<string value="\udbba\udc29"/>
+<string value="\udbba\udc2a"/>
+<!-- Phone Specific -->
+<string value="\udbba\udc2b"/>
+<string value="\udbba\udc2c"/>
+<string value="\udbba\udc2d"/>
+<string value="\udbba\udc2e"/>
+<string value="\udbba\udc2f"/>
+<string value="\udbba\udc30"/>
+<string value="\udbba\udc31"/>
+<string value="\udbba\udc32"/>
+<string value="\udbba\udc33"/>
+<string value="\udbba\udc34"/>
+<string value="\udbba\udc35"/>
+<string value="\udbba\udc36"/>
+<string value="\udbba\udc37"/>
+<string value="\udbba\udc38"/>
+<string value="\udbba\udc39"/>
+<string value="\udbba\udc3a"/>
+<string value="\udbba\udc3b"/>
+<string value="\udbba\udc3c"/>
+</keystring>

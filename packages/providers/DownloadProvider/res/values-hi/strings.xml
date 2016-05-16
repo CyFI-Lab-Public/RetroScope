@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3658948994665187911">"डाउनलोड प्रबंधक"</string>
+    <string name="permlab_downloadManager" msgid="7779544811202855500">"डाउनलोड प्रबंधक में पहुंच प्राप्त करें."</string>
+    <string name="permdesc_downloadManager" msgid="4237406545998908947">"ऐप्स  को डाउनलोड प्रबंधक तक पहुंचने देता और फ़ाइलें डाउनलोड करने के लिए इसका उपयोग करने देता है. दुर्भावनापूर्ण ऐप्स  इसका उपयोग डाउनलोड को बाधित करने और निजी जानकारी तक पहुंचने के लिए कर सकते हैं."</string>
+    <string name="permlab_downloadManagerAdvanced" msgid="7103642833308809655">"उन्‍नत डाउनलोड प्रबंधक प्रकार्य."</string>
+    <string name="permdesc_downloadManagerAdvanced" msgid="2659546004160962761">"ऐप्स  को डाउनलोड प्रबंधक के उन्नत फ़ंक्शन तक पहुंचने देता है. दुर्भावनापूर्ण ऐप्स  इसका उपयोग डाउनलोड को बाधित करने और निजी जानकारी तक पहुंचने के लिए कर सकते हैं."</string>
+    <string name="permlab_downloadCompletedIntent" msgid="945913803765675685">"डाउनलोड सूचनाएं भेजें."</string>
+    <string name="permdesc_downloadCompletedIntent" msgid="2094706189855699533">"पूर्ण किए गए डाउनलोड के बारे में ऐप्स  को सूचना भेजने देता है. दुर्भावनापूर्ण ऐप्स  इसका उपयोग फ़ाइलों को डाउनलोड करने वाले अन्य ऐप्स  को भ्रमित करने के लिए कर सकते हैं."</string>
+    <string name="permlab_seeAllExternal" product="nosdcard" msgid="4084575448409212628">"USB संग्रहण के सभी डाउनलोड देखें"</string>
+    <string name="permlab_seeAllExternal" product="default" msgid="140058400609165726">"SD कार्ड के लिए सभी डाउनलोड देखें"</string>
+    <string name="permdesc_seeAllExternal" msgid="1672759909065511233">"इस बात पर ध्यान दिए बिना कि किस ऐप्स  ने उन्हें डाउनलोड किया है, ऐप्स  को SD कार्ड पर किए गए सभी डाउनलोड देखने देता है."</string>
+    <string name="permlab_downloadCacheNonPurgeable" msgid="3069534308882047412">"डाउनलोड कैश में स्थान सुरक्षित रखें"</string>
+    <string name="permdesc_downloadCacheNonPurgeable" msgid="2408760720334570420">"ऐप्स  को डाउनलोड संचय पर फ़ाइलें डाउनलोड करने देता है, जिन्हें अपने आप तब हटाया नहीं जा सकता, जब डाउनलोड प्रबंधक को अधिक स्थान की आवश्‍यकता होती है."</string>
+    <string name="permlab_downloadWithoutNotification" msgid="8837971946078327262">"बिना सूचना के फ़ाइलें डाउनलोड करें"</string>
+    <string name="permdesc_downloadWithoutNotification" msgid="8483135034298639727">"उपयोगकर्ता को कोई भी सूचना दिखाए बिना ऐप्स को डाउनलोड प्रबंधक द्वारा फ़ाइलें डाउनलोड करने देता है."</string>
+    <string name="permlab_accessAllDownloads" msgid="2436240495424393717">"सभी सिस्‍टम डाउनलोड में पहुंच प्राप्त करें"</string>
+    <string name="permdesc_accessAllDownloads" msgid="1871832254578267128">"ऐप्स  को सिस्टम पर किसी भी ऐप्स  द्वारा शुरू किए गए सभी डाउनलोड देखने और संशोधित करने देता है."</string>
+    <string name="download_unknown_title" msgid="7015124071247271585">"&lt;शीर्षक-रहित&gt;"</string>
+    <string name="notification_download_complete" msgid="5443563299253103667">"डाउनलोड पूर्ण."</string>
+    <string name="notification_download_failed" msgid="8612136111952014978">"डाउनलोड विफल."</string>
+    <string name="notification_need_wifi_for_size" msgid="2556172885154833575">"डाउनलोड आकार हेतु Wi-Fi आवश्‍यक."</string>
+    <string name="notification_paused_in_background" msgid="4328508073283591772">"पृष्ठभूमि में रोका गया."</string>
+    <string name="wifi_required_title" msgid="1995971416871498179">"ऑपरेटर नेटवर्क के लिए डाउनलोड बहुत बड़ा है"</string>
+    <string name="wifi_required_body" msgid="3067694630143784449">"इस <xliff:g id="SIZE">%s </xliff:g> डाउनलोड को पूर्ण करने के लिए आपको Wi-Fi का उपयोग करना चाहिए.\n\nअगली बार जब आप Wi-Fi नेटवर्क से कनेक्ट हों, तो इस डाउनलोड को शुरू करने के लिए <xliff:g id="QUEUE_TEXT">%s </xliff:g> को स्पर्श करें."</string>
+    <string name="wifi_recommended_title" msgid="7441589306734687400">"बाद में डाउनलोड करने के लिए कतार में रखें?"</string>
+    <string name="wifi_recommended_body" msgid="1314735166699936073">"इस <xliff:g id="SIZE">%s </xliff:g> के डाउनलोड को शुरू करना बैटरी का जीवनकाल कम कर सकता है और/या मोबाइल डेटा कनेक्शन का अधिक उपयोग हो सकता है, जिससे आपका  मोबाइल डेटा ऑपरेटर आपसे आपकी डेटा योजना के आधार पर शुल्क ले सकता है.\n\n अगली बार जब आप Wi-Fi नेटवर्क से कनेक्ट हों, तो यह डाउनलोड शुरू करने के लिए <xliff:g id="QUEUE_TEXT">%s</xliff:g> को स्पर्श करें."</string>
+    <string name="button_queue_for_wifi" msgid="422576726189179221">"कतार"</string>
+    <string name="button_cancel_download" msgid="2430166148737975604">"रद्द करें"</string>
+    <string name="button_start_now" msgid="792123674007840864">"अब प्रारंभ करें"</string>
+    <string name="download_percent" msgid="6889426633242976698">"<xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+  <plurals name="notif_summary_active">
+    <item quantity="one" msgid="8475775855911967027">"1 फ़ाइल डाउनलोड हो रही है"</item>
+    <item quantity="other" msgid="9087228371320573153">"<xliff:g id="NUMBER">%d</xliff:g> फ़ाइलें डाउनलोड हो रही हैं"</item>
+  </plurals>
+  <plurals name="notif_summary_waiting">
+    <item quantity="one" msgid="5537481763963544278">"1 फ़ाइल प्रतीक्षा में है"</item>
+    <item quantity="other" msgid="549229034166062887">"<xliff:g id="NUMBER">%d</xliff:g> फ़ाइलें प्रतीक्षा में हैं"</item>
+  </plurals>
+    <string name="download_remaining" msgid="3139295890887972718">"<xliff:g id="DURATION">%s</xliff:g> शेष"</string>
+    <string name="download_no_application_title" msgid="7935659741162801699">"फ़ाइल नहीं खोली जा सकती"</string>
+    <string name="root_downloads" msgid="4098414876292351487">"डाउनलोड"</string>
+    <string name="download_queued" msgid="3302638231377947451">"कतारबद्ध"</string>
+    <string name="download_running" msgid="3925050393361158266">"जारी है"</string>
+    <string name="download_error" msgid="5144180777324573236">"असफल"</string>
+    <string name="download_running_percent" msgid="4529799113107391817">"प्रगति में, <xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+</resources>

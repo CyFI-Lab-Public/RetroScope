@@ -1,0 +1,6 @@
+BugReportSender.apk:
+
+A utility (currently hosted on Bazaar) to share bugreports from
+the /sdcard to any recipient (usually via Gmail).
+
+Owner: Dan Egnor <egnor@google.com>

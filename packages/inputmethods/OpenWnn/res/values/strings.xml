@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!--
+ Copyright (C) 2008-2011  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<resources>
+  <!-- common part -->
+    <!-- Preferences -->
+    <string name="preference_ime_setting_app">Setting</string>
+
+    <string name="preference_key_setting_menu">Software Keyboard</string>
+
+    <string name="preference_key_sound_title"> Sound on Key Press </string>
+    <string name="preference_key_sound_summary"> Enable key click sound. </string>
+
+    <string name="preference_key_vibration_title"> Vibrate on Key Press </string>
+    <string name="preference_key_vibration_summary"> Enable key click vibration. </string>
+
+    <string name="preference_preview_title"> Key Preview </string>
+    <string name="preference_preview_summary"> Enable key preview. </string>
+
+    <string name="preference_auto_caps_title"> Auto Capitalization </string>
+    <string name="preference_auto_caps_summary"> Automatically capitalize the 1st char of a sentence in alphabet mode. </string>
+
+    <string name="preference_keyboard_skin_title">Keyboard Image</string>
+    <string name="preference_keyboard_skin_summary">Change keyboard image.</string>
+
+    <string name="preference_keyboard_android_default">Standard</string>
+    <string name="preference_keyboard_simple">Simple</string>
+    <string name="preference_keyboard_metal">Metal</string>
+
+    <string name="preference_conversion_menu">Conversion</string>
+    <string name="preference_conversion_menu_ja">Japanese Conversion</string>
+    <string name="preference_conversion_menu_en">English Conversion</string>
+
+    <string name="preference_prediction_title">Word Prediction</string>
+    <string name="preference_prediction_title_ja">Japanese Word Prediction</string>
+    <string name="preference_prediction_title_en">English Word Prediction</string>
+    <string name="preference_prediction_summary">Display predicted words as conversion candidates.</string>
+
+    <string name="preference_correct_spell_title">Typing Error Correction</string>
+    <string name="preference_correct_spell_title_en">English Typing Error Correction</string>
+    <string name="preference_correct_spell_summary">Display predicted words for correcting typing error.</string>
+
+    <string name="preference_input_learning_title">Input Word Learning</string>
+    <string name="preference_input_learning_title_ja">Japanese Input Word Learning</string>
+    <string name="preference_input_learning_title_en">English Input Word Learning</string>
+    <string name="preference_input_learning_summary">Learn input words.</string>
+
+    <string name="preference_aboutime_menu"> About IME </string>
+
+    <string name="preference_dictionary_menu"> Dictionary </string>
+    <string name="preference_dictionary_menu_ja"> Japanese User Dictionary </string>
+    <string name="preference_dictionary_menu_en"> English User Dictionary </string>
+    <string name="preference_dictionary_menu_zhcn"> Chinese User Dictionary </string>   
+
+    <string name="preference_user_dictionary">User Dictionary</string>
+
+    <string name="preference_user_dictionary_edit_words_title">User Dictionary</string>
+    <string name="preference_user_dictionary_edit_words_summary">List/add/edit/delete words in user dictionary.</string>
+    <string name="preference_user_dictionary_edit_words_summary_ja">List/add/edit/delete words in Japanese user dictionary.</string>
+    <string name="preference_user_dictionary_edit_words_summary_en">List/add/edit/delete words in English user dictionary.</string>
+    <string name="preference_user_dictionary_edit_words_summary_zhcn">List/add/edit/delete words in Chinese user dictionary.</string>
+
+    <string name="preference_user_dictionary_clear_learning_title">Clear Learning Dictionary</string>
+    <string name="preference_user_dictionary_clear_learning_summary">Remove all words from learning dictionary.</string>
+
+    <string name="preference_user_dictionary_clear_user_title">Clear User Dictionary</string>
+    <string name="preference_user_dictionary_clear_user_summary">Remove all words from user dictionary.</string>
+
+    <!-- Dialog Messages -->
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">Cancel</string>
+    <string name="dialog_button_close">Close</string>
+
+    <string name="dialog_clear_user_dictionary_message">Clear user dictionary?</string>
+    <string name="dialog_clear_learning_dictionary_message">Clear learning dictionary?</string>
+    <string name="dialog_clear_user_dictionary_done">Cleared.</string>
+    <string name="dialog_clear_learning_dictionary_done">Cleared.</string>
+
+    <!-- user dictionary -->
+    <string name="user_dictionary_list_words">Registered words</string>
+    <string name="user_dictionary_list_words_en">@string/preference_dictionary_menu_en</string>
+    <string name="user_dictionary_list_words_ja">@string/preference_dictionary_menu_ja</string>
+    <string name="user_dictionary_list_words_zhcn">@string/preference_dictionary_menu_zhcn</string>
+    <string name="user_dictionary_edit_words">Edit</string>
+    <string name="user_dictionary_title_read">Reading</string>
+    <string name="user_dictionary_title_candidate">Word</string>
+    <string name="user_dictionary_add">Add</string>
+    <string name="user_dictionary_edit">Edit</string>
+    <string name="user_dictionary_delete">Delete</string>
+    <string name="user_dictionary_delete_confirm">Delete the selected word?</string>
+    <string name="user_dictionary_delete_complete">Deleted.</string>
+    <string name="user_dictionary_delete_fail">Fail to delete it</string>
+    <string name="user_dictionary_words_duplication_message">Already registered.</string>
+    <string name="user_dictionary_over_max_text_size_message">Length of the string exceeds the limit.</string>
+    <string name="user_dictionary_creating_wordlist">Loading</string>
+    <string name="user_dictionary_init">Initialize?</string>
+    <string name="user_dictionary_prev_button">　≪　</string>
+    <string name="user_dictionary_next_button">　≫　</string>
+
+  <!-- IME dependency -->
+    <!-- OpenWnn English -->
+    <string name="openwnn_english_copyright">Ver.1.3.6\nOMRON SOFTWARE Co.,Ltd.</string>
+    <string name="openwnn_english">OpenWnn English</string>
+    <string name="openwnn_english_system_dictionary">/data/data/jp.co.omronsoft.openwnn/lib/libWnnEngDic.so</string>
+    <string name="openwnn_english_writable_dictionary">/data/data/jp.co.omronsoft.openwnn/writableEN.dic</string>
+    <string name="en_word_separators">.,;:!?</string>
+
+    <!-- OpenWnn Japanese -->
+    <string name="openwnn_japanese_copyright">Ver.1.3.6\nOMRON SOFTWARE Co.,Ltd.</string>
+    <string name="openwnn_japanese">Japanese IME</string>
+    <string name="openwnn_japanese_system_dictionary">/data/data/jp.co.omronsoft.openwnn/lib/libWnnJpnDic.so</string>
+    <string name="openwnn_japanese_writable_dictionary">/data/data/jp.co.omronsoft.openwnn/writableJAJP.dic</string>
+
+    <!-- OpenWnn Chinese -->
+    <string name="openwnn_china_copyright">Ver.1.3.6\nOMRON SOFTWARE Co.,Ltd.</string>
+    <string name="openwnn_china">OpenWnn Chinese</string>
+    <string name="openwnn_china_system_dictionary">/data/data/jp.co.omronsoft.openwnn/lib/libWnnZHCNDic.so</string>
+    <!-- After Config Change -->
+    <string name="openwnn_china_writable_dictionary">/data/data/jp.co.omronsoft.openwnn/writableZHCN.dic</string>
+    <string name="cn_word_separators">.,;:!?</string>
+
+    <!-- Candidate Delete -->
+    <string name="button_candidate_select">Select</string>
+    <string name="button_candidate_delete">Delete learning?</string>
+
+    <!-- Candidate -->
+    <string name="cand_tab_symbol_txt">Symbol</string>
+    <string name="cand_tab_emoticon_txt">Emoticon</string>
+
+    <!-- Symbol -->
+    <string name="half_symbol_categories_txt">[Half Symbol Categories]</string>
+    <string name="full_symbol_categories_txt">[Full Symbol Categories]</string>
+    <string name="half_symbol_txt">Symbol(Half)</string>
+    <string name="full_symbol_txt">Symbol(Full)</string>
+
+    <!-- Symbol keyboard -->
+    <string name="key_symbol_mode">Cancel</string>
+
+    <!-- Key top -->
+    <string name="key_left_arrow">↤</string>
+    <string name="key_right_arrow">↦</string>
+    <string name="key_space">スペース</string>
+    <string name="key_space_conv">スペース/変換</string>
+    <string name="key_change_mode">文字</string>
+    <string name="key_convert">変換</string>
+    <string name="key_switch_keyboard">KBD</string>
+
+    <string name="key_12key_A">゛゜ 大小</string>
+    <string name="key_12key_kutoten">、。</string>
+    <string name="key_12key_eisuu_kana">英数カナ</string>
+
+    <string name="key_12key_alphabet_1">.＠ １</string>
+    <string name="key_12key_alphabet_2">ABC ２</string>
+    <string name="key_12key_alphabet_3">DEF ３</string>
+    <string name="key_12key_alphabet_4">GHI ４</string>
+    <string name="key_12key_alphabet_5">JKL ５</string>
+    <string name="key_12key_alphabet_6">MNO ６</string>
+    <string name="key_12key_alphabet_7">PQRS ７</string>
+    <string name="key_12key_alphabet_8">TUV ８</string>
+    <string name="key_12key_alphabet_9">WXYZ ９</string>
+    <string name="key_12key_alphabet_0">- ０</string>
+    <string name="key_12key_alphabet_A">A/a</string>
+
+    <string name="key_12key_katakana_1">ア</string>
+    <string name="key_12key_katakana_2">カ</string>
+    <string name="key_12key_katakana_3">サ</string>
+    <string name="key_12key_katakana_4">タ</string>
+    <string name="key_12key_katakana_5">ナ</string>
+    <string name="key_12key_katakana_6">ハ</string>
+    <string name="key_12key_katakana_7">マ</string>
+    <string name="key_12key_katakana_8">ヤ</string>
+    <string name="key_12key_katakana_9">ラ</string>
+    <string name="key_12key_katakana_0">ワ</string>
+
+    <string name="key_12key_1">あ 1.＠</string>
+    <string name="key_12key_2">か 2 ABC</string>
+    <string name="key_12key_3">さ 3 DEF</string>
+    <string name="key_12key_4">た 4 GHI</string>
+    <string name="key_12key_5">な 5 JKL</string>
+    <string name="key_12key_6">は 6 MNO</string>
+    <string name="key_12key_7">ま 7 PQRS</string>
+    <string name="key_12key_8">や 8 TUV</string>
+    <string name="key_12key_9">ら 9 WXYZ</string>
+    <string name="key_12key_0">わ 0 -</string>
+
+    <string name="key_qwerty_tyouon">ー</string>
+    <string name="key_qwerty_full_touten">、</string>
+    <string name="key_qwerty_full_kuten">。</string>
+    <string name="key_qwerty_full_question">？</string>
+    <string name="key_qwerty_full_comma">，</string>
+    <string name="key_qwerty_full_period">．</string>
+    <string name="key_qwerty_full_at_sign">＠</string>
+    <string name="key_qwerty_full_number_sign">＃</string>
+    <string name="key_qwerty_full_percent_sign">％</string>
+    <string name="key_qwerty_full_ampersand">＆</string>
+    <string name="key_qwerty_full_asterrisk">＊</string>
+    <string name="key_qwerty_full_plus_sign">＋</string>
+    <string name="key_qwerty_full_minus_sign">－</string>
+    <string name="key_qwerty_full_equal_sign">＝</string>
+    <string name="key_qwerty_kagi_kakko_left">「</string>
+    <string name="key_qwerty_kagi_kakko_right">」</string>
+    <string name="key_qwerty_full_exclamation_mark">！</string>
+    <string name="key_qwerty_full_left_parenthesis">（</string>
+    <string name="key_qwerty_full_right_parenthesis">）</string>
+    <string name="key_qwerty_full_colon">：</string>
+    <string name="key_qwerty_full_semicolon">；</string>
+    <string name="key_qwerty_full_middot">・</string>
+    <string name="key_qwerty_full_thilde">～</string>
+    <string name="key_qwerty_full_double_quotation_sign">”</string>
+    <string name="key_qwerty_full_plus_minus_sign">±</string>
+    <string name="key_qwerty_full_underscore">＿</string>
+    <string name="key_qwerty_full_left_curly_blacket">｛</string>
+    <string name="key_qwerty_full_right_curly_blacket">｝</string>
+    <string name="key_qwerty_full_vertical_bar">｜</string>
+    <string name="key_qwerty_full_less_than_sign">＜</string>
+    <string name="key_qwerty_full_greater_than_sign">＞</string>
+    <string name="key_qwerty_full_left_single_quote">‘</string>
+    <string name="key_qwerty_full_right_single_quote">’</string>
+    <string name="key_qwerty_full_back_slash">＼</string>
+    <string name="key_qwerty_full_dollar_sign">＄</string>
+    <string name="key_qwerty_full_yen_sign">￥</string>
+    <string name="key_qwerty_full_hat">＾</string>
+    <string name="key_qwerty_full_slash">／</string>
+    <string name="key_qwerty_euro">\u20AC</string>
+
+    <string name="key_12key_switch_full_hiragana">あ</string>
+    <string name="key_12key_switch_full_katakana">カ</string>
+    <string name="key_12key_switch_full_alphabet">Ａ</string>
+    <string name="key_12key_switch_full_number">１</string>
+    <string name="key_12key_switch_half_katakana">ｶﾅ</string>
+    <string name="key_12key_switch_half_alphabet">AB</string>
+    <string name="key_12key_switch_half_number">12</string>
+    <string name="key_12key_switch_pinyin">中</string>
+
+    <string name="key_qwerty_half_comma">､</string>
+    <string name="key_qwerty_half_period">｡</string>
+    <string name="key_qwerty_half_tyouon">ｰ</string>
+
+    <string name="key_12key_undo">Undo</string>
+
+    <string name="indicator_caps">CAPS</string>
+    <string name="indicator_alt">ALT</string>
+
+    <!-- Tutorial -->
+    <string name="touch_to_continue">Next »</string>
+    <string name="touch_to_try">Try it on the button below.</string>
+    <string name="touch_to_finish">Try typing and using the keyboard yourself!</string>
+    <string name="tip_to_step1"><b>Like a normal mobile keyboard, tapping ○ three times will result\nin *C*.</b></string>
+    <string name="tip_to_step2_a"><b>For example, let\'s type \"hi.\"\n- Tap ○ twice to get \"h\"</b></string>
+    <string name="tip_to_step2_b"><b>\n- Tap → to advance to the right</b></string>
+    <string name="tip_to_step2_c"><b>\n- Tap ○ three times to get \"i\"</b></string>
+    <string name="tip_to_step2_d"><b>\n- Use touch or ↓ to set the word.</b></string>
+    <string name="tip_to_step3_a"><b>The ■ key switches between Japanese, English, and number input.</b></string>
+    <string name="tip_to_step3_b"><b>We\'ve switched from English to numbers. Next is Japanese.</b></string>
+    <string name="tip_to_step3_c"><b>Let\'s return to English now.</b></string>
+    <string name="tip_to_step4"><b>For other input modes (like full width)\nor a PC style keyboard, hold ■\nfor 3 seconds to show the input menu.</b></string>
+    <string name="tip_to_step5"><b>When you\'re done typing, hit the \"back\" key (←) to close the keyboard.</b></string>
+    <string name="tip_to_step6"><b>This is the end of the tutorial.</b></string>
+
+    <string name="tip_en_to_open_keyboard"><b>The keyboard opens any time you touch a text field.</b></string>
+    <string name="tip_en_to_close_keyboard"><b>Press \"back\" (←) to close the keyboard.</b></string>
+    <string name="tip_en_end_of_tutorial"><b>This is the end of the tutorial.</b></string>
+
+    <!-- subtype String -->
+    <string name="label_subtype_generic">%s</string>
+
+    <string name="ti_input_mode_full_hirakana_title_txt">Hiragana-Kanji</string>
+    <string name="ti_input_mode_full_katakana_title_txt">Full-width Katakana</string>
+    <string name="ti_input_mode_half_katakana_title_txt">Half-width Katakana</string>
+    <string name="ti_input_mode_full_alphabet_title_txt">Full-width Alphabet</string>
+    <string name="ti_input_mode_half_alphabet_title_txt">Half-width Alphabet</string>
+    <string name="ti_input_mode_full_number_title_txt">Full-width Numeric</string>
+    <string name="ti_input_mode_half_number_title_txt">Half-width Numeric</string>
+
+    <string name="ti_long_press_dialog_input_mode_txt">Input Mode</string>
+
+</resources>
+

@@ -1,0 +1,1 @@
+allow domain init_tmpfs:file read;

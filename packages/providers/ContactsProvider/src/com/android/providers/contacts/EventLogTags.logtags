@@ -1,0 +1,5 @@
+# See system/core/logcat/event.logtags for a description of the format of this file.
+
+option java_package com.android.providers.contacts;
+
+4100 contacts_upgrade_receiver (time|2|3)

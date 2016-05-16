@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- NOTE: Be careful when setting title_container's marginEnd.
+     The value is updated in code. See uses of
+     MessageHeaderView.mCollapsedTitleContainerMarginEnd -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/title_container"
+    android:layout_width="0dip"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:layout_marginTop="12dp"
+    style="@style/MessageUpperHeaderTextStyle" >
+
+    <TextView
+        android:id="@+id/upper_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        android:lines="1"
+        style="@style/MessageHeaderUpperDateStyle" />
+    <ImageView
+        android:id="@+id/attachment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/upper_date"
+        android:layout_toLeftOf="@id/upper_date"
+        android:src="@drawable/ic_attachment_holo_light"
+        style="@style/AttachmentIconStyle" />
+    <TextView
+        android:id="@+id/sender_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toStartOf="@id/attachment"
+        android:layout_toLeftOf="@id/attachment"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        style="@style/MessageSenderNameStyle" />
+    <TextView
+        android:id="@+id/sender_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sender_name"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        style="@style/MessageHeaderSubtitleStyle" />
+    <TextView
+        android:id="@+id/send_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sender_email"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        style="@style/MessageHeaderSubtitleStyle" />
+    <TextView
+        android:id="@+id/email_snippet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sender_name"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        style="@style/MessageHeaderSnippetStyle" />
+</RelativeLayout>

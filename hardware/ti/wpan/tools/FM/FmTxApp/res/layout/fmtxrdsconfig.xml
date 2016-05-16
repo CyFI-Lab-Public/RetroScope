@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent" android:layout_height="fill_parent"
+        android:id="@+id/ParentLayout" android:orientation="vertical"
+        android:background="@drawable/wallpaper_fmtx">
+
+        <ScrollView android:layout_width="fill_parent"
+                android:layout_height="wrap_content" android:id="@+id/scrollview1"
+                android:layout_weight="1">
+                <TableLayout android:layout_width="fill_parent"
+                        android:id="@+id/widget0" android:orientation="vertical"
+                        android:layout_height="fill_parent" android:background="@drawable/wallpaper_fmtx">
+                        <!--  <TableRow android:id="@+id/widget28" android:layout_width="fill_parent"
+                                android:layout_below="@+id/widget0" android:layout_alignParentLeft="true"
+                                android:layout_height="50dip" android:layout_marginTop="10dip">
+                                <TextView android:id="@+id/txtDisplayMode" android:text="@string/dispalyMode"
+                                        android:layout_width="120dip" android:textSize="18sp"
+                                        android:textColor="@android:color/white" android:layout_weight="1"
+                                        android:layout_marginLeft="15dip" android:layout_marginTop="10dip"
+                                        android:layout_height="30dip">
+                                </TextView>
+                                <Spinner android:id="@+id/spnDisplayMode"
+                                        android:layout_height="45dip" android:layout_width="120dip"
+                                        android:layout_weight="1" android:layout_marginRight="15dip">
+                                </Spinner>
+                        </TableRow>
+                        <TableRow android:id="@+id/widget63" android:layout_width="fill_parent"
+                                android:layout_below="@+id/widget28" android:layout_alignParentLeft="true"
+                                android:layout_height="50dip">
+                                <TextView android:id="@+id/txtTxMode" android:text="@string/transmissionMode"
+                                        android:gravity="center_vertical" android:layout_width="120dip"
+                                        android:textSize="18sp" android:layout_height="45dip"
+                                        android:textColor="@android:color/white" android:layout_weight="1"
+                                        android:layout_marginLeft="15dip">
+                                </TextView>
+                                <Spinner android:id="@+id/spnTxMode" android:layout_width="120dip"
+                                        android:layout_height="45dip" android:layout_weight="1"
+                                        android:layout_marginRight="15dip">
+                                </Spinner>
+                        </TableRow>-->
+
+                                 <TableRow android:id="@+id/widget133" android:layout_width="fill_parent"
+                                android:layout_alignParentLeft="true" android:layout_below="@+id/widget165" android:layout_height="60dip">
+
+                                        <TextView android:id="@+id/txtTXConfig"
+                                        android:textSize="18sp" android:text="@string/txtTXConfig"
+                                        android:layout_width="80dip" android:textColor="@android:color/white"
+                                        android:layout_weight="1" android:layout_marginLeft="15dip" android:gravity="center_horizontal" android:layout_height="45dip" android:paddingTop="10dip" android:textStyle="bold">
+                                </TextView>
+                                </TableRow>
+
+                        <TableRow android:id="@+id/widget165" android:layout_width="fill_parent"
+                                android:layout_below="@+id/widget148"
+                                android:layout_alignParentLeft="true" android:layout_height="50dip">
+                                <TextView android:id="@+id/txtMonoStereo" android:text="@string/monoStereo"
+                                        android:textSize="18sp" android:layout_width="80dip"
+                                        android:textColor="@android:color/white" android:layout_weight="1"
+                                        android:layout_marginLeft="15dip" android:layout_height="30dip">
+                                </TextView>
+                                <Spinner android:id="@+id/spnMonoStereo"
+                                        android:layout_weight="1"
+                                        android:layout_width="80dip" android:layout_marginRight="15dip" android:layout_height="40dip">
+                                </Spinner>
+                        </TableRow>
+                        <TableRow android:id="@+id/widget186" android:layout_width="fill_parent"
+                                android:layout_below="@+id/widget130" android:layout_height="55dip">
+
+                                <TextView android:id="@+id/powerLev" android:layout_height="45dip"
+                                        android:textSize="18sp" android:text="@string/powerLevel"
+                                        android:layout_width="80dip" android:textColor="@android:color/white"
+                                        android:layout_weight="1" android:layout_marginLeft="15dip">
+                                </TextView>
+                                <EditText android:id="@+id/powLevel" android:textSize="18sp" android:gravity="left"
+                                        android:layout_width="80dip" android:layout_weight="1"
+                                        android:layout_marginRight="15dip" android:layout_height="40dip">
+                                </EditText>
+                        </TableRow>
+
+                        <TableRow android:id="@+id/widget130" android:layout_width="fill_parent"
+                                android:layout_alignParentLeft="true" android:layout_height="50dip"
+                                android:layout_below="@+id/widget186">
+
+                                <TextView android:id="@+id/txtRdsConfig"
+                                        android:textSize="18sp" android:text="@string/txtRdsConfig"
+                                        android:layout_width="80dip" android:textColor="@android:color/white"
+                                        android:layout_weight="1" android:layout_marginLeft="15dip" android:gravity="center_horizontal" android:layout_height="45dip" android:paddingTop="10dip" android:textStyle="bold">
+                                </TextView>
+                                </TableRow>
+
+                        <TableRow android:id="@+id/widget140" android:layout_width="fill_parent"
+                                android:layout_alignParentLeft="true" android:layout_below="@+id/widget130"
+                                android:layout_height="50dip">
+                                <TextView android:id="@+id/txtAfCode" android:textSize="18sp"
+                                        android:layout_width="80dip" android:layout_height="45dip"
+                                        android:text="@string/afCode" android:textColor="@android:color/white"
+                                        android:layout_weight="1" android:layout_marginLeft="15dip">
+                                </TextView>
+                                <EditText android:id="@+id/afCode" android:textSize="18sp"
+                                        android:layout_width="80dip" android:editable="true"
+                                        android:layout_height="45dip" android:layout_weight="1"
+                                        android:layout_marginRight="15dip">
+                                </EditText>
+                        </TableRow>
+
+                        <TableRow android:id="@+id/widget145" android:layout_width="fill_parent"
+                                android:layout_alignParentLeft="true" android:layout_below="@+id/widget140"
+                                android:layout_height="50dip">
+                                <TextView android:id="@+id/txtPiCode" android:textSize="18sp"
+                                        android:layout_width="80dip" android:text="@string/picode"
+                                        android:layout_height="45dip" android:textColor="@android:color/white"
+                                        android:layout_weight="1" android:layout_marginLeft="15dip">
+                                </TextView>
+                                <EditText android:id="@+id/piCode" android:textSize="18sp"
+                                        android:layout_width="80dip" android:editable="true"
+                                        android:layout_height="45dip" android:layout_weight="1"
+                                        android:layout_marginRight="15dip">
+                                </EditText>
+                        </TableRow>
+
+                                <TableRow android:id="@+id/widget140" android:layout_width="fill_parent"
+                                android:layout_alignParentLeft="true" android:layout_below="@+id/widget141" android:layout_height="55dip">
+
+                                        <TextView android:id="@+id/txtPty" android:text="@string/ptyCode"
+                                        android:textSize="18sp" android:layout_width="80dip"
+                                        android:textColor="@android:color/white" android:layout_weight="1"
+                                        android:layout_marginLeft="15dip" android:layout_marginTop="10dip"
+                                        android:layout_height="30dip">
+                                </TextView>
+                                <EditText android:id="@+id/EdtPty" android:textSize="18sp" android:gravity="left"
+                                        android:layout_width="80dip" android:layout_weight="1"
+                                        android:layout_marginRight="15dip" android:editable="true" android:layout_height="40dip">
+                                </EditText>
+                                                </TableRow>
+
+                                <TableRow android:id="@+id/widget141" android:layout_width="fill_parent"
+                                android:layout_alignParentLeft="true" android:layout_below="@+id/widget231" android:layout_height="55dip">
+
+                                <TextView android:id="@+id/txtgroupmask" android:text="@string/txgroupmask"
+                                        android:gravity="center_vertical" android:textSize="18sp" android:layout_height="45dip"
+                                        android:textColor="@android:color/white" android:layout_weight="1"
+                                        android:layout_marginLeft="15dip" android:layout_width="wrap_content">
+                                </TextView>
+                                <CheckBox android:id="@+id/rbtnPs" android:text="@string/PS"
+                                        android:layout_height="50dip" android:layout_weight="1" android:layout_width="wrap_content" android:paddingLeft="50dip" android:checked="false">
+                                </CheckBox>
+                                <CheckBox android:id="@+id/rbtnRt" android:text="@string/RT"
+                                        android:layout_height="50dip" android:layout_weight="1" android:layout_width="wrap_content" android:paddingLeft="50dip" android:checked="false">
+                                </CheckBox>
+                                </TableRow>
+
+                <!--          <TableRow android:id="@+id/widget130" android:layout_width="fill_parent"
+                                android:layout_alignParentLeft="true" android:layout_height="50dip"
+                                android:layout_below="@+id/widget186">
+                                <TextView android:id="@+id/txtRepertoire" android:text="@string/Repertoire"
+                                        android:gravity="center_vertical" android:layout_width="80dip"
+                                        android:textSize="18sp" android:layout_height="45dip"
+                                        android:textColor="@android:color/white" android:layout_weight="1"
+                                        android:layout_marginLeft="15dip">
+                                </TextView>
+                                <Spinner android:id="@+id/spnRepetoire"
+                                        android:layout_height="45dip" android:layout_weight="1"
+                                        android:layout_width="80dip" android:layout_marginRight="15dip">
+                                </Spinner>
+                        </TableRow>-->
+
+
+
+                        <TableRow android:id="@+id/widget231" android:layout_width="fill_parent" android:layout_height="55dip">
+                                <TextView android:id="@+id/txtPsData"
+                                        android:layout_height="45dip" android:textSize="18sp" android:text="@string/psString"
+                                        android:layout_width="80dip" android:textColor="@android:color/white"
+                                        android:layout_weight="1" android:layout_marginLeft="15dip">
+                                </TextView>
+                                <EditText android:id="@+id/EdtPSString"
+                                        android:textSize="18sp"
+                                        android:layout_width="80dip" android:editable="true"
+                                        android:layout_weight="1" android:layout_marginRight="15dip" android:layout_height="40dip">
+                                </EditText>
+                        </TableRow>
+
+                                                <TableRow android:id="@+id/widget232" android:layout_width="fill_parent" android:layout_height="55dip">
+                                <TextView android:id="@+id/txtRadioText"
+                                        android:layout_height="45dip" android:textSize="18sp" android:text="@string/radioText"
+                                        android:layout_width="80dip" android:textColor="@android:color/white"
+                                        android:layout_weight="1" android:layout_marginLeft="15dip">
+                                </TextView>
+                                <EditText android:id="@+id/EdtRadioText"
+                                        android:textSize="18sp"
+                                        android:layout_width="80dip" android:editable="true"
+                                        android:layout_weight="1" android:layout_marginRight="15dip" android:layout_height="40dip">
+                                </EditText>
+                        </TableRow>
+
+                        </TableLayout>
+                        </ScrollView>
+                        <LinearLayout android:id="@+id/widget173"
+                        android:layout_below="@+id/widget231" android:layout_width="fill_parent"
+                        android:layout_height="50dip">
+                        <Button android:id="@+id/btnOk" android:text="@string/btnOk"
+                        android:layout_width="wrap_content" android:layout_height="fill_parent"
+                        android:layout_weight="1">
+                        </Button>
+                        <Button android:id="@+id/btnCancel" android:text="@string/btnCancel"
+                        android:layout_alignTop="@+id/ok_button" android:layout_width="wrap_content"
+                        android:layout_height="fill_parent" android:layout_weight="1">
+                        </Button>
+                        </LinearLayout>
+
+                        </LinearLayout>

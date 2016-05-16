@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+* Copyright (C) 2008 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="wallpapers" msgid="7890805662847963863">"Fondos de pantalla animados Android"</string>
+    <string name="wallpaper_walkaround" msgid="5548084303782181478">"Ver a través"</string>
+    <string name="wallpaper_walkaround_author" msgid="7292960549371044078">"Google"</string>
+    <string name="wallpaper_walkaround_desc" msgid="1714824320382778730">"Observa a través del dispositivo y camina sin correr el riesgo de sufrir accidentes."</string>
+    <string name="wallpaper_grass" msgid="4753389782988032116">"Pasto"</string>
+    <string name="wallpaper_grass_author" msgid="9197652780831360471">"Google"</string>
+    <string name="wallpaper_grass_desc" msgid="7808225799564607409">"Hojas de pasto serpentean suavemente frente a un cielo diurno o nocturno."</string>
+    <string name="wallpaper_galaxy" msgid="4698294375306738428">"Galaxia"</string>
+    <string name="wallpaper_galaxy_author" msgid="5455561260819111338">"Google"</string>
+    <string name="wallpaper_galaxy_desc" msgid="6816969378845338629">"Una galaxia compuesta por estrellas que giran lentamente."</string>
+    <string name="wallpaper_fall" msgid="1500920940722360941">"Agua"</string>
+    <string name="wallpaper_fall_author" msgid="8860429843949521342">"Google"</string>
+    <string name="wallpaper_fall_desc" msgid="595888373487204297">"Las hojas secas caen&lt;br&gt; Al lago que se mueve debajo:&lt;br&gt; Fondo líquido Zen"</string>
+    <string name="wallpaper_clock" msgid="6555051461698958610">"Reloj polar"</string>
+    <string name="wallpaper_clock_author" msgid="8779094427834551330">"Google"</string>
+    <string name="wallpaper_clock_desc" msgid="6767980298898740026">"Muestra la fecha y la hora como arcos en dirección horaria: mes, día, hora, minuto y segundo."</string>
+    <string name="wallpaper_nexus" msgid="3789061608411260304">"Nexos"</string>
+    <string name="wallpaper_nexus_author" msgid="8492858637541249441">"Google"</string>
+    <string name="wallpaper_nexus_desc" msgid="5562598238151885905">"Un vistazo a la red neural."</string>
+    <string name="clock_settings" msgid="7837858747417927288">"Parámetros de configuración del reloj polar"</string>
+    <string name="show_seconds" msgid="8525899907567218168">"Mostrar segundos"</string>
+    <string name="variable_line_width" msgid="8487094734462263605">"Cambiar la circunferencia del anillo"</string>
+    <string name="palette" msgid="1636154448241520718">"Paleta de colores"</string>
+    <string name="palette_gray" msgid="4575370050214496017">"Hierro"</string>
+    <string name="palette_violet" msgid="6124851215872884048">"Medianoche"</string>
+    <string name="palette_matrix" msgid="2755109999115087511">"Pantalla verde"</string>
+    <string name="palette_white_c" msgid="3846812107437715188">"Oso polar (dinámico)"</string>
+    <string name="palette_black_c" msgid="1521258571661038231">"Agujero negro (dynamic)"</string>
+    <string name="palette_halloween" msgid="1502590278217616811">"Pastel de calabaza"</string>
+    <string name="palette_zenburn" msgid="5537306782860767365">"Ensalada de frutas alienígena"</string>
+    <string name="palette_oceanic" msgid="7336134088073550028">"Láser azul"</string>
+</resources>

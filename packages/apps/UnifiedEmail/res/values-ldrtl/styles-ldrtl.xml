@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <style name="DismissButtonStyle">
+        <item name="android:paddingStart">@dimen/dismiss_button_padding_start</item>
+        <item name="android:paddingEnd">@dimen/dismiss_button_padding_end</item>
+    </style>
+
+    <style name="MessageDetailsHeaderStyle">
+        <item name="android:paddingStart">@dimen/message_details_header_padding_start_collapsed
+        </item>
+        <item name="android:paddingEnd">@dimen/message_details_header_padding_end</item>
+    </style>
+
+    <style name="MessageAttachmentsHeaderStyle" parent="AbstractMessageAttachmentsHeaderStyle">
+        <item name="android:paddingStart">@dimen/message_details_header_padding_start</item>
+    </style>
+
+    <style name="MessageHeaderShowPicsStyle" parent="AbstractMessageHeaderShowPicsStyle">
+        <item name="android:paddingStart">@dimen/message_details_header_padding_start_collapsed
+        </item>
+        <item name="android:paddingEnd">@dimen/message_show_pics_header_padding_end</item>
+        <item name="android:drawableStart">@drawable/ic_show_images_holo_light</item>
+    </style>
+
+    <style name="MessageUpperHeaderTextStyle">
+        <item name="android:paddingStart">@dimen/message_header_inner_side_padding</item>
+    </style>
+
+    <style name="ConversationSubjectStyle" parent="AbstractConversationSubjectStyle">
+        <item name="android:paddingStart">@dimen/conversation_header_side_padding</item>
+        <item name="android:paddingEnd">@dimen/conversation_header_side_padding</item>
+    </style>
+
+    <style name="ConversationHeaderFolderStyle">
+        <item name="android:paddingStart">@dimen/conversation_header_side_padding</item>
+    </style>
+
+    <style name="CheckedTextStyle">
+        <item name="android:paddingStart">@dimen/checked_text_padding</item>
+        <item name="android:paddingEnd">@dimen/checked_text_padding</item>
+    </style>
+
+    <style name="SendMailStyle">
+        <item name="android:paddingEnd">@dimen/send_mail_as_padding</item>
+    </style>
+
+    <style name="UndoTextStyle" parent="AbstractUndoTextStyle">
+        <item name="android:paddingEnd">@dimen/undo_text_padding</item>
+    </style>
+
+    <style name="ConversationViewSideMarginStyle">
+        <item name="android:layout_marginStart">@dimen/conversation_view_margin_side</item>
+        <item name="android:layout_marginEnd">@dimen/conversation_view_margin_side</item>
+    </style>
+
+    <style name="NewMessageButtonStyle" parent="AbstractNewMessageButtonStyle">
+        <item name="android:layout_marginStart">@dimen/conversation_view_margin_side</item>
+        <item name="android:layout_marginEnd">@dimen/conversation_view_margin_side</item>
+    </style>
+
+    <style name="ConversationViewSideMarginMinusGradientStyle">
+        <item name="android:layout_marginStart">@dimen/conversation_view_margin_side_minus_gradient
+        </item>
+        <item name="android:layout_marginEnd">@dimen/conversation_view_margin_side_minus_gradient
+        </item>
+    </style>
+
+    <style name="FolderListItemStartStyle">
+        <item name="android:layout_marginStart">@dimen/folder_list_item_start_margin</item>
+    </style>
+
+    <style name="DismissSeparatorStyle">
+        <item name="android:layout_marginStart">@dimen/dismiss_separator_padding</item>
+    </style>
+
+    <style name="TeaserTextStyle">
+        <item name="android:layout_marginStart">@dimen/teaser_text_padding</item>
+    </style>
+
+    <style name="DetailsExpanderStyle">
+        <item name="android:layout_marginStart">@dimen/message_header_inner_side_padding</item>
+    </style>
+
+    <style name="MessageHeaderDetailsHeadingStyle" parent="MessageHeaderSmallStyle">
+        <item name="android:layout_marginEnd">@dimen/message_header_inner_side_padding</item>
+    </style>
+
+    <style name="AttachmentMarginStyle">
+        <item name="android:layout_marginStart">@dimen/attachment_margin_side</item>
+        <item name="android:layout_marginEnd">@dimen/attachment_margin_side</item>
+    </style>
+
+    <style name="MessageHeaderContactImageStyle">
+        <item name="android:layout_marginStart">@dimen/message_header_padding_start</item>
+    </style>
+
+    <style name="AttachmentIconStyle">
+        <item name="android:layout_marginStart">@dimen/attachment_icon_padding</item>
+    </style>
+
+    <style name="ConversationHeaderSideMarginStyle">
+        <item name="android:layout_marginStart">@dimen/conversation_header_margin_side</item>
+        <item name="android:layout_marginEnd">@dimen/conversation_header_margin_side</item>
+    </style>
+
+    <style name="UndoNotificationStyle">
+        <item name="android:layout_marginStart">@android:dimen/notification_large_icon_width</item>
+    </style>
+
+    <style name="UnreadCountWithMarginEndStyle" parent="UnreadCount">
+        <item name="android:layout_marginEnd">@dimen/folder_list_item_end_margin</item>
+    </style>
+
+    <style name="UnseenCountWithMarginEndStyle" parent="UnseenCount">
+        <item name="android:layout_marginEnd">@dimen/folder_list_item_end_margin</item>
+    </style>
+
+    <style name="RecipientSummaryStyle" parent="MessageHeaderSmallStyle">
+        <item name="android:layout_marginEnd">@dimen/recipient_summary_margin</item>
+    </style>
+</resources>

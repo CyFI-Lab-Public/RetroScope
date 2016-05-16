@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3658948994665187911">"Ներբեռնման կառավարիչ"</string>
+    <string name="permlab_downloadManager" msgid="7779544811202855500">"Գործարկել ներբեռնման կառավարիչը:"</string>
+    <string name="permdesc_downloadManager" msgid="4237406545998908947">"Թույլատրում է հավելվածին օգտագործել ներբեռնման կառավարիչը և կիրառել ֆայլերի ներբեռնման համար: Վնասակար ծրագրերը կարող են օգտագործել սա՝ ներբեռնումները վնասելու և անձնական տեղեկություններն օգտագործելու համար:"</string>
+    <string name="permlab_downloadManagerAdvanced" msgid="7103642833308809655">"Ընդլայնված ներբեռնման կառավարչի գործառույթներ:"</string>
+    <string name="permdesc_downloadManagerAdvanced" msgid="2659546004160962761">"Թույլատրում է հավելվածին օգտագործել ներբեռնման կառավարչի ընդլայնված գործառույթները: Վնասակար ծրագրերը կարող են օգտագործել սա՝ ներբեռնումները վնասելու և անձնական տեղեկություններն օգտագործելու համար:"</string>
+    <string name="permlab_downloadCompletedIntent" msgid="945913803765675685">"Ուղարկել ներբեռնման ծանուցումներ:"</string>
+    <string name="permdesc_downloadCompletedIntent" msgid="2094706189855699533">"Թույլատրում է հավելվածին ուղարկել ավարտված ներբեռնումների մասին ծանուցումներ: Վնասակար ծրագրերը կարող են օգտագործել սա՝ այլ ֆայլեր ներբեռնող ծրագրերը վնասելու համար:"</string>
+    <string name="permlab_seeAllExternal" product="nosdcard" msgid="4084575448409212628">"Տեսնել USB կրիչի բոլոր ներբեռնումները"</string>
+    <string name="permlab_seeAllExternal" product="default" msgid="140058400609165726">"Տեսնել SD քարտի բոլոր ներբեռնումները"</string>
+    <string name="permdesc_seeAllExternal" msgid="1672759909065511233">"Թույլատրում է հավելվածին տեսնել SD քարտի բոլոր ներբեռնումները` անտեսելով, թե որ հավելվածն է ներբեռնել դրանք:"</string>
+    <string name="permlab_downloadCacheNonPurgeable" msgid="3069534308882047412">"Խնայել ներբեռնման շտեմի տարածությունը"</string>
+    <string name="permdesc_downloadCacheNonPurgeable" msgid="2408760720334570420">"Թույլատրում է հավելվածին ներբեռնել ֆայլերը ներբեռնման շտեմ, որոնք հնարավոր չէ ավտոմատ ջնջել, երբ ներբեռնման կառավարիչը հավելյալ ծավալի կարիք ունի:"</string>
+    <string name="permlab_downloadWithoutNotification" msgid="8837971946078327262">"ներբեռնել ֆայլերը՝ առանց ծանուցման"</string>
+    <string name="permdesc_downloadWithoutNotification" msgid="8483135034298639727">"Թույլատրում է հավելվածին ներբեռնել ֆայլեր ներբեռնման կառավարչի միջոցով՝ առանց օգտագործողին որևէ ծանուցում ցուցադրելու:"</string>
+    <string name="permlab_accessAllDownloads" msgid="2436240495424393717">"Օգտագործել բոլոր համակարգային ներբեռնումները"</string>
+    <string name="permdesc_accessAllDownloads" msgid="1871832254578267128">"Թույլատրում է հավելվածին դիտել և փոփոխել բոլոր ներբեռնումները` կապված համակարգի ցանկացած ծրագրի հետ:"</string>
+    <string name="download_unknown_title" msgid="7015124071247271585">"&lt;Անվերնագիր&gt;"</string>
+    <string name="notification_download_complete" msgid="5443563299253103667">"Ներբեռնումն ավարտված է:"</string>
+    <string name="notification_download_failed" msgid="8612136111952014978">"Ներբեռնումը ձախողվել է:"</string>
+    <string name="notification_need_wifi_for_size" msgid="2556172885154833575">"Ներբեռնման ծավալը պահանջում է Wi-Fi:"</string>
+    <string name="notification_paused_in_background" msgid="4328508073283591772">"Ընդմիջված է հետնաշերտում:"</string>
+    <string name="wifi_required_title" msgid="1995971416871498179">"Ներբեռնումը չափազանց մեծ է օպերատորի ցանցի համար"</string>
+    <string name="wifi_required_body" msgid="3067694630143784449">"Դուք պետք է օգտագործեք Wi-Fi՝ այս <xliff:g id="SIZE">%s </xliff:g> ներբեռնումն ավարտելու համար: \n\nՀպեք <xliff:g id="QUEUE_TEXT">%s </xliff:g>՝ սկսելու այս ներբեռնումը հաջորդ անգամ, երբ միացած կլինեք որևէ Wi-Fi ցանցի:"</string>
+    <string name="wifi_recommended_title" msgid="7441589306734687400">"Հերթագրե՞լ ավելի ուշ ներբեռնելու համար:"</string>
+    <string name="wifi_recommended_body" msgid="1314735166699936073">"Այս <xliff:g id="SIZE">%s </xliff:g> ներբեռնումը հիմա սկսելը կարող է կարճեցնել ձեր մարտկոցի կյանքը և/կամ բերել ձեր բբջային տվյալների կապի ավելորդ օգտագործման, որը կարող է ուղեկցվել ծախսերով ձեր բջջային օպերատորի կողմից՝ կախված ձեր տվյալների փաթեթից:\n\n Հպեք <xliff:g id="QUEUE_TEXT">%s</xliff:g> ստորև` այս ներբեռնումը սկսելու հաջորդ անգամ, երբ միացած կլինեք որևէ Wi-Fi ցանցի:"</string>
+    <string name="button_queue_for_wifi" msgid="422576726189179221">"Հերթականություն"</string>
+    <string name="button_cancel_download" msgid="2430166148737975604">"Չեղարկել"</string>
+    <string name="button_start_now" msgid="792123674007840864">"Մեկնարկել հիմա"</string>
+    <string name="download_percent" msgid="6889426633242976698">"<xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+  <plurals name="notif_summary_active">
+    <item quantity="one" msgid="8475775855911967027">"1 ֆայլ ներբեռնվում է"</item>
+    <item quantity="other" msgid="9087228371320573153">"<xliff:g id="NUMBER">%d</xliff:g> ֆայլ ներբեռնվում է"</item>
+  </plurals>
+  <plurals name="notif_summary_waiting">
+    <item quantity="one" msgid="5537481763963544278">"1 ֆայլ սպասում է"</item>
+    <item quantity="other" msgid="549229034166062887">"<xliff:g id="NUMBER">%d</xliff:g> ֆայլ սպասում է"</item>
+  </plurals>
+    <string name="download_remaining" msgid="3139295890887972718">"մինչ ավարտը՝ <xliff:g id="DURATION">%s</xliff:g>"</string>
+    <string name="download_no_application_title" msgid="7935659741162801699">"Հնարավոր չէ բացել ֆայլը"</string>
+    <string name="root_downloads" msgid="4098414876292351487">"Ներբեռնումներ"</string>
+    <string name="download_queued" msgid="3302638231377947451">"Հերթագրված է"</string>
+    <string name="download_running" msgid="3925050393361158266">"Ընթացքի մեջ է"</string>
+    <string name="download_error" msgid="5144180777324573236">"Չի կատարվել"</string>
+</resources>

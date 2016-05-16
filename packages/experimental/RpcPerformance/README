@@ -1,0 +1,7 @@
+RpcPerformance.apk:
+
+A small test utility to run certain low-level microbenchmarks
+(particularly related to IPC and RPC performance, such as
+no-op Binder calls and certain file I/O operations).
+
+Owner: Brad Fitzpatrick <bradfitz@google.com>

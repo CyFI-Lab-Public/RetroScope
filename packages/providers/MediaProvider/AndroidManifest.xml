@@ -1,0 +1,94 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.android.providers.media"
+        android:sharedUserId="android.media"
+        android:sharedUserLabel="@string/uid_label"
+        android:versionCode="700">
+        
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_MTP" />
+    <uses-permission android:name="android.permission.MANAGE_USERS" />
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS" />
+
+    <application android:process="android.process.media"
+                 android:label="@string/app_label"
+                 android:supportsRtl="true">
+        <provider android:name="MediaProvider" android:authorities="media"
+                android:multiprocess="false" android:exported="true">
+            <grant-uri-permission android:pathPrefix="/external/" />
+            <path-permission
+                    android:pathPrefix="/external/"
+                    android:readPermission="android.permission.READ_EXTERNAL_STORAGE"
+                    android:writePermission="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </provider>
+
+        <provider
+            android:name="MediaDocumentsProvider"
+            android:authorities="com.android.providers.media.documents"
+            android:grantUriPermissions="true"
+            android:exported="true"
+            android:permission="android.permission.MANAGE_DOCUMENTS">
+            <intent-filter>
+                <action android:name="android.content.action.DOCUMENTS_PROVIDER" />
+            </intent-filter>
+        </provider>
+
+        <!-- Handles database upgrades after OTAs, then disables itself -->
+        <receiver android:name="MediaUpgradeReceiver">
+            <!-- This broadcast is sent after the core system has finished
+                 booting, before the home app is launched or BOOT_COMPLETED
+                 is sent. -->
+            <intent-filter>
+                <action android:name="android.intent.action.PRE_BOOT_COMPLETED"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="MediaScannerReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_MOUNTED" />
+                <data android:scheme="file" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_UNMOUNTED" />
+                <data android:scheme="file" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_SCANNER_SCAN_FILE" />
+                <data android:scheme="file" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="MediaScannerService" android:exported="true">
+            <intent-filter>
+                <action android:name="android.media.IMediaScannerService" />
+            </intent-filter>
+        </service>
+
+        <receiver android:name=".MtpReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_STATE" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="MtpService" />
+
+        <activity android:name="RingtonePickerActivity"
+                android:theme="@*android:style/Theme.Holo.Dialog.Alert"
+                android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.RINGTONE_PICKER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

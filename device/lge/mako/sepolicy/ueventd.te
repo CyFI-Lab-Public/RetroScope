@@ -1,0 +1,4 @@
+allow ueventd sdcard_external:dir search;
+allow ueventd sdcard_external:file r_file_perms;
+allow ueventd wifi_data_file:dir search;
+allow ueventd wifi_data_file:file r_file_perms;

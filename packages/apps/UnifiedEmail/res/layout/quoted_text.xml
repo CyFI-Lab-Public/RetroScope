@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2012 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/quoted_text_area"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:background="#babebe"
+        android:id="@+id/upper_quotedtext_divider_bar"
+        android:visibility="gone" />
+
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="48dip"
+        android:id="@+id/quoted_text_button_bar"
+        android:layout_below="@id/upper_quotedtext_divider_bar"
+        android:layout_alignWithParentIfMissing="true"
+        android:layout_alignParentTop="true">
+
+        <RelativeLayout android:layout_width="0dip"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:id="@+id/quoted_text_row">
+
+            <CheckBox android:id="@+id/hide_quoted_text"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:gravity="center_vertical"
+                android:contentDescription="@string/quoted_text"/>
+
+            <TextView
+                android:id="@+id/hide_quoted_text_label"
+                android:text="@string/quoted_text_label"
+                android:textAllCaps="true"
+                android:layout_height="match_parent"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="8dip"
+                style="@style/QuotedTextHeaderStyle"
+                android:layout_toRightOf="@+id/hide_quoted_text"
+                android:gravity="center_vertical|left"
+                android:ellipsize="end"
+                android:clickable="true" />
+        </RelativeLayout>
+
+        <View android:layout_height="match_parent"
+            android:layout_width="2dip"
+            android:layout_marginRight="16dip"
+            android:background="#babebe"
+            android:layout_marginTop="12dip"
+            android:layout_marginBottom="12dip"
+            android:layout_gravity="center_vertical"/>
+
+        <!--  Respond Inline -->
+        <Button android:id="@+id/respond_inline_button"
+            style="@style/RespondInlineButtonStyle"
+            android:text="@string/respond_inline"
+            android:textAllCaps="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dip"
+        android:background="#babebe"
+        android:layout_below="@id/quoted_text_button_bar"
+        android:id="@+id/divider_bar" />
+
+    <WebView android:id="@+id/quoted_text_web_view"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_below="@id/divider_bar"
+        android:focusableInTouchMode="false"
+        android:focusable="false" />
+
+</RelativeLayout>

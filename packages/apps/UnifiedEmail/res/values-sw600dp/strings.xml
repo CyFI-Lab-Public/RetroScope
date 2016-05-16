@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2012 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Compose screen, button: add Cc/Bcc fields [CHAR LIMIT=20]-->
+    <string name="add_cc_label">+ Cc/Bcc</string>
+    <!-- Compose screen, button: add bcc fields [CHAR LIMIT=20]-->
+    <string name="add_bcc_label">+ Bcc</string>
+    <!-- Menu item: manages the folders for this account. [CHAR LIMIT = 30] -->
+    <string name="menu_manage_folders">Manage folders</string>
+    <!--  Settings screen, Reply to all default setting summary [CHAR LIMIT=70] -->
+    <string name="preferences_default_reply_all_summary">Use as default for replies to message notifications</string>
+</resources>

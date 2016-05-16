@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2013 Google Inc.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/banner_sms_promo"
+    android:orientation="horizontal"
+    android:paddingLeft="8dip"
+    android:paddingRight="8dip"
+    android:paddingTop="16dip"
+    android:paddingBottom="16dip"
+    android:layout_width="match_parent"
+    android:layout_gravity="center_vertical"
+    android:layout_height="wrap_content"
+    android:background="@drawable/class_zero_background" >
+    <ImageView
+        android:id="@+id/banner_sms_default_app_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/ic_launcher_smsmms"
+        android:gravity="center_vertical"
+        android:importantForAccessibility="no" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="8dip"
+        android:gravity="center_vertical" >
+        <TextView
+            android:id="@+id/banner_sms_promo_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:paddingBottom="@dimen/banner_s_space"
+            android:singleLine="true"
+            android:text="@string/banner_sms_promo_title_initial"
+            style="@style/BannerTitleText" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:singleLine="false"
+            android:text="@string/banner_sms_promo_message"
+            style="@style/BannerContentText" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,147 @@
+page.title=External Storage Technical Information
+@jd:body
+
+<!--
+    Copyright 2010 The Android Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<p>Android supports devices with external storage, which is defined to be a
+case-insensitive and permissionless filesystem.  External storage can be
+provided by physical media (such as an SD card), or by an emulation layer backed
+by internal storage.  Devices may contain multiple instances of external
+storage, but currently only the primary external storage is exposed to
+developers through API.</p>
+<h2 id="device-specific-configuration">Device specific configuration</h2>
+<p>External storage is managed by a combination of the <code>vold</code> init service and
+<code>MountService</code> system service.</p>
+<p>Mounting of physical external storage volumes is handled by <code>vold</code>, which
+performs staging operations to prepare the media before exposing it to apps.</p>
+
+<p>For Android 4.2.2 and earlier, the device-specific <code>vold.fstab</code>
+configuration file defines mappings from sysfs
+devices to filesystem mount points, and each line follows this format:</p>
+<pre><code>dev_mount &lt;label&gt; &lt;mount_point&gt; &lt;partition&gt; &lt;sysfs_path&gt; [flags]
+</code></pre>
+<ul>
+<li><code>label</code>: Label for the volume.</li>
+<li><code>mount_point</code>: Filesystem path where the volume should be mounted.</li>
+<li><code>partition</code>: Partition number (1 based), or 'auto' for first usable partition.</li>
+<li><code>sysfs_path</code>: One or more sysfs paths to devices that can provide this mount
+point.  Separated by spaces, and each must start with <code>/</code>.</li>
+<li><code>flags</code>: Optional comma separated list of flags, must not contain <code>/</code>.
+Possible values include <code>nonremovable</code> and <code>encryptable</code>.</li>
+</ul>
+<p>For Android releases 4.3 and later, the various fstab files used by init, vold and
+recovery were unified in the <code>/fstab.&lt;device&gt;</code> file.  For external
+storage volumes that are managed by <code>vold</code>, the entries should have the
+following format:</p>
+<pre><code>&lt;src&gt; &lt;mnt_point&gt; &lt;type&gt; &lt;mnt_flags&gt; &lt;fs_mgr_flags&gt;
+</code></pre>
+<ul>
+<li><code>src</code>: A path under sysfs (usually mounted at /sys) to the device that
+can provide the mount point.  The path must start with <code>/</code>.</li> <li><code>mount_point</code>: Filesystem path where the volume should be mounted.</li>
+<li><code>type</code>: The type of the filesystem on the volume.  For external cards,
+this is usually <code>vfat</code>.</li>
+<li><code>mnt_flags</code>: <code>Vold</code> ignores this field and it should be set
+to <code>defaults</code></li>
+<li><code>fs_mgr_flags</code>: <code>Vold</code> ignores any lines in the unified fstab
+that do not include the <code>voldmanaged=</code> flag in this field.  This flag must
+be followed by a label describing the card, and a partition number or the word
+<code>auto</code>.  Here is an example: <code>voldmanaged=sdcard:auto</code>.
+Other possible flags are <code>nonremovable</code> and <code>encryptable=sdcard</code>.
+</ul>
+<p>External storage interactions at and above the framework level are handled
+through <code>MountService</code>.  The device-specific <code>storage_list.xml</code> configuration
+file, typically provided through a <code>frameworks/base</code> overlay, defines the
+attributes and constraints of storage devices.  The <code>&lt;StorageList&gt;</code> element
+contains one or more <code>&lt;storage&gt;</code> elements, exactly one of which should be marked
+primary.  <code>&lt;storage&gt;</code> attributes include:</p>
+<ul>
+<li><code>mountPoint</code>: filesystem path of this mount.</li>
+<li><code>storageDescription</code>: string resource that describes this mount.</li>
+<li><code>primary</code>: true if this mount is the primary external storage.</li>
+<li><code>removable</code>: true if this mount has removable media, such as a physical SD
+card.</li>
+<li><code>emulated</code>: true if this mount is emulated and is backed by internal storage,
+possibly using a FUSE daemon.</li>
+<li><code>mtp-reserve</code>: number of MB of storage that MTP should reserve for free
+storage.  Only used when mount is marked as emulated.</li>
+<li><code>allowMassStorage</code>: true if this mount can be shared via USB mass storage.</li>
+<li><code>maxFileSize</code>: maximum file size in MB.</li>
+</ul>
+<p>Devices may provide external storage by emulating a case-insensitive,
+permissionless filesystem backed by internal storage.  One possible
+implementation is provided by the FUSE daemon in <code>system/core/sdcard</code>, which can
+be added as a device-specific <code>init.rc</code> service:</p>
+<pre><code># virtual sdcard daemon running as media_rw (1023)
+service sdcard /system/bin/sdcard &lt;source_path&gt; &lt;dest_path&gt; 1023 1023
+    class late_start
+</code></pre>
+<p>Where <code>source_path</code> is the backing internal storage and <code>dest_path</code> is the
+target mount point.</p>
+<p>When configuring a device-specific <code>init.rc</code> script, the <code>EXTERNAL_STORAGE</code>
+environment variable must be defined as the path to the primary external
+storage.  The <code>/sdcard</code> path must also resolve to the same location, possibly
+through a symlink.  If a device adjusts the location of external storage between
+platform updates, symlinks should be created so that old paths continue working.</p>
+<p>As an example for Android 4.2.2 and earlier, here's the storage configuration for Xoom,
+which uses a FUSE daemon to provide primary external storage, and includes a physical SD card as
+secondary external storage:</p>
+<ul>
+<li><a href="https://android.googlesource.com/device/moto/wingray/+/master/vold.fstab">vold.fstab</a></li>
+<li><a href="https://android.googlesource.com/device/moto/wingray/+/master/overlay/frameworks/base/core/res/res/xml/storage_list.xml">storage_list.xml</a></li>
+</ul>
+<p>As an example for Android 4.3 and later devices, here's the <code>fstab.goldfish</code> file
+for the Android emulator, which emulates an external SD card as primary external storage:</p>
+<ul>
+<li><a href="https://android.googlesource.com/device/generic/goldfish/+/master/fstab.goldfish">fstab.goldfish</a></li>
+</ul>
+<p>Access to external storage is protected by various Android permissions.
+Starting in Android 1.0, write access is protected with the
+<code>WRITE_EXTERNAL_STORAGE</code> permission, implemented using the <code>sdcard_rw</code> GID.
+Starting in Android 4.1, read access is protected with the new
+<code>READ_EXTERNAL_STORAGE</code> permission, implemented using the <code>sdcard_r</code> GID.  To
+implement the read permission, a new top-level <code>/storage</code> directory was created
+such that processes must hold the <code>sdcard_r</code> GID to traverse into it.</p>
+<p>Since external storage offers no support for traditional POSIX filesystem
+permissions, system code should not store sensitive data on external storage.
+Specifically, configuration and log files should only be stored on internal
+storage where they can be effectively protected.</p>
+<h2 id="multi-user-external-storage">Multi-user external storage</h2>
+<p>Starting in Android 4.2, devices can support multiple users, and external
+storage must meet the following constraints:</p>
+<ul>
+<li>Each user must have their own isolated primary external storage, and must not
+have access to the primary external storage of other users.</li>
+<li>The <code>/sdcard</code> path must resolve to the correct user-specific primary external
+storage based on the user a process is running as.</li>
+<li>Storage for large OBB files in the <code>Android/obb</code> directory may be shared
+between multiple users as an optimization.</li>
+<li>Secondary external storage must not be writable by apps.</li>
+</ul>
+<p>The default platform implementation of this feature leverages Linux kernel
+namespaces to create isolated mount tables for each Zygote-forked process, and
+then uses bind mounts to offer the correct user-specific primary external
+storage into that private namespace.</p>
+<p>At boot, the system mounts a single emulated external storage FUSE daemon at
+<code>EMULATED_STORAGE_SOURCE</code>, which is hidden from apps.  After the Zygote forks,
+it bind mounts the appropriate user-specific subdirectory from under the FUSE
+daemon to <code>EMULATED_STORAGE_TARGET</code> so that external storage paths resolve
+correctly for the app.  Because an app lacks accessible mount points for other
+users' storage, they can only access storage for the user it was started as.</p>
+<p>This implementation also uses the shared subtree kernel feature to propagate
+mount events from the default root namespace into app namespaces, which ensures
+that features like ASEC containers and OBB mounting continue working correctly.
+It does this by mounting the rootfs as shared, and then remounting it as slave
+after each Zygote namespace is created.</p>

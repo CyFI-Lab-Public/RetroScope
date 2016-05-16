@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="2102435118079140813">"Testes de transmissão por celular"</string>
+    <string name="button_etws_normal_type" msgid="3852703138521119537">"Enviar transmissão normal do ETWS"</string>
+    <string name="button_etws_cancel_type" msgid="7194264116649371175">"Enviar transmissão de cancelamento ETWS"</string>
+    <string name="button_etws_test_type" msgid="6353906188028139901">"Enviar transmissão de teste ETWS"</string>
+    <string name="button_cmas_pres_alert" msgid="5905111586384766558">"Enviar Alerta presidencial CMAS"</string>
+    <string name="button_cmas_extreme_alert" msgid="6111658124447111920">"Enviar Alerta extremo CMAS"</string>
+    <string name="button_cmas_severe_alert" msgid="9051731172452500819">"Enviar Alerta grave CMAS"</string>
+    <string name="button_cmas_amber_alert" msgid="4217147800913845288">"Enviar Alerta CMAS AMBER"</string>
+    <string name="button_cmas_monthly_test" msgid="1609320625517248393">"Enviar Alerta de teste mensal CMAS"</string>
+    <string name="button_gsm_7bit_type" msgid="4757698592787955850">"Enviar transmissão de teste GSM 7 bit"</string>
+    <string name="button_gsm_7bit_umts_type" msgid="4377077702628367387">"Enviar transmissão de teste UMTS 7 bit"</string>
+    <string name="button_gsm_7bit_nopadding_type" msgid="5289528095948674862">"Enviar transmissão completa GSM 7 bit"</string>
+    <string name="button_gsm_7bit_nopadding_umts_type" msgid="7953047238483884846">"Enviar transmissão completa UMTS 7 bit"</string>
+    <string name="button_gsm_7bit_multipage_type" msgid="8516540964071070491">"Enviar transmissão de várias páginas GSM 7 bit"</string>
+    <string name="button_gsm_7bit_multipage_umts_type" msgid="474883728254547100">"Enviar transmissão de várias páginas UMTS 7 bit"</string>
+    <string name="button_gsm_7bit_with_language_type" msgid="7414138913180046493">"Enviar GSM 7 bit com idioma"</string>
+    <string name="button_gsm_7bit_with_language_body_gsm_type" msgid="7365993929355114874">"Enviar GSM 7 bit com idioma"</string>
+    <string name="button_gsm_7bit_with_language_body_umts_type" msgid="1201329758881885921">"Enviar UMTS 7 bit com idioma"</string>
+    <string name="button_gsm_ucs2_type" msgid="6652864601384080678">"Enviar transmissão de teste GSM UCS-2"</string>
+    <string name="button_gsm_ucs2_umts_type" msgid="2985879481785569626">"Enviar transmissão de teste UMTS UCS-2"</string>
+    <string name="button_gsm_ucs2_multipage_umts_type" msgid="4557772309524939206">"Enviar transmissão de várias páginas UMTS UCS-2"</string>
+    <string name="button_gsm_ucs2_with_language_type" msgid="8992961254390480388">"Enviar GSM UCS-2 com idioma"</string>
+    <string name="button_gsm_ucs2_with_language_umts_type" msgid="1080788762601688380">"Enviar UMTS UCS-2 com idioma"</string>
+    <string name="button_delay_broadcast" msgid="5138650276363839541">"Demorar cinco segundos antes de enviar"</string>
+    <string name="message_id_label" msgid="4365322663037110887">"ID da mensagem:"</string>
+    <string name="category_id_label" msgid="8472814003810180738">"Categoria:"</string>
+</resources>

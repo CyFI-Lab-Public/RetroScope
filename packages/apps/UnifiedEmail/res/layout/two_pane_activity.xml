@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/drawer_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- DrawerLayout current only supports one content view (b/8752191) -->
+    <com.android.mail.ui.TwoPaneLayout
+        android:id="@+id/two_pane_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:id="@+id/content_pane"
+            android:layout_width="0dp"
+            android:layout_height="match_parent">
+            <fragment class="com.android.mail.ui.DrawerFragment"
+                android:id="@+id/drawer_pullout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <FrameLayout android:id="@+id/folders_pane_edge"
+                android:layout_width="8dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="right"
+                android:background="@drawable/shadow_right">
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="right"
+                    android:background="@color/light_gray" />
+
+            </FrameLayout>
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/conversation_list_pane"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <com.android.mail.ui.ConversationListCopy
+            android:id="@+id/conversation_list_copy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <include layout="@layout/conversation_pager"
+            android:id="@+id/conversation_pane"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <FrameLayout
+            android:id="@+id/miscellaneous_pane"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <com.android.mail.ui.ActionableToastBar
+            android:id="@+id/toast_bar"
+            style="@style/ToastBarStyle" />
+
+    </com.android.mail.ui.TwoPaneLayout>
+
+</android.support.v4.widget.DrawerLayout>

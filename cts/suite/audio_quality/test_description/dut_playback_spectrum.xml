@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright (C) 2012 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<case name="dut_playback_spectrum" version="1.0" description="Check frequency spectrum for playback">
+	<setup>
+		<!-- input: peak amplitude, duration in msec, sampling rate, high frequency, output: generated sound-->
+		<process method="script:gen_random" input="consti:10000,consti:4000,consti:44100,consti:20000" output="id:sound1" />
+		<download id="sound1" />
+	</setup>
+	<action>
+		<sequential repeat="1" index="i">
+			<input device="host" id="host_in_$i" gain="100" time="5000" sync="start" />
+			<output device="DUT" id="sound1" gain="100" mode="voice" sync="start" waitforcompletion="1" />
+		</sequential>
+		<sequential repeat="1" index="k">
+			<!-- input: host record, device record, samping rate, low frequency in Hz, high frequency in Hz, allowed error for pass in smaller side, allowed error in bigger side%, output: min value in lower side calculated normalized to 1.0, max value in higher side, calculated amplitude ratio in mannitude only between low f to high f -->
+			<process method="script:check_spectrum" input="id:sound1,id:host_in_$k,consti:44100,consti:500,consti:8000,constf:97.0,constf:200.0" output="val:min_val_$k,val:max_val_$k,id:spectrum_$k" />
+		</sequential>
+	</action>
+	<save file="sound1,host_in_.*,spectrum_.*" report="min_val_.*,max_val_.*" />
+</case>

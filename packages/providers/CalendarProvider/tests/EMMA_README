@@ -1,0 +1,93 @@
+# This defines a shell function called run_emma_calp() that rebuilds
+# the Calendar provider with EMMA coverage, executes the Calendar CTS
+# tests, and generates results into ~/emmaReport/.  The previous emmaReport
+# directory, if any, will be removed.
+#
+# This expects that ". build/envsetup.sh" and an appropriate "lunch"
+# command have already been issued.
+#
+# Also, since we're doing this "the hard way", it's necessary to have
+# /system/framework/emma.jar in BOOTCLASSPATH.  Basic steps:
+# - edit system/core/rootdir/init.rc
+# - insert "/system/framework/emma.jar" right before framework.jar
+# - mmm -j8 external/emma
+# - make -j8
+# - adb reboot-bootloader
+# - fastboot flashall
+#
+# This also defines a no_emma_calp() function that rebuilds the provider
+# without emma.
+#
+# NOTE: interrupting execution may leave you in a different directory
+
+function run_emma_calp()
+{
+    # rebuild provider with emma coverage
+    _build_install_calp true
+    if [ $? -ne 0 ]; then
+        echo Build failed.
+        return 1
+    fi
+
+    # run the CTS tests; note we can't get success/failure result in $?
+    adb shell am instrument -w -e coverage true \
+        -e class android.provider.cts.CalendarTest \
+        -w 'com.android.cts.provider/android.provider.cts.CalendarTest\$CalendarEmmaTestRunner'
+
+    # this path is hard-coded into the CalendarEmmaTestRunner
+    output=/sdcard/calendar-provider.ec
+
+    # extract and generate the report
+    rm -rf ~/emmaReport
+    mkdir ~/emmaReport
+    pushd ~/emmaReport
+    adb pull $output coverage.ec
+    adb shell rm $output
+    java -cp ${ANDROID_BUILD_TOP}/external/emma/lib/emma.jar \
+        emma report -r html -in coverage.ec \
+        -sp ${ANDROID_BUILD_TOP}/packages/providers/CalendarProvider/src \
+        -in ${ANDROID_BUILD_TOP}/out/target/common/obj/APPS/CalendarProvider_intermediates/coverage.em
+    popd
+
+    echo "Report is in $HOME/emmaReport"
+
+    return 0
+}
+
+function no_emma_calp()
+{
+    # rebuild provider without emma coverage
+    _build_install_calp false
+}
+
+function _build_install_calp()
+{
+    emma=$1
+
+    # switch to root on userdebug builds - this may take a second to finish
+    adb root
+
+    pushd $ANDROID_BUILD_TOP
+
+    # force rebuild
+    rm -rf out/target/common/obj/APPS/CalendarProvider_intermediates
+    ##rm -rf out/target/common/obj/APPS/CalendarProviderTests_intermediates
+    rm -rf out/target/common/obj/APPS/CtsProviderTestCases_intermediates
+    EMMA_INSTRUMENT=$emma mmm -j4 packages/providers/CalendarProvider \
+        && EMMA_INSTRUMENT=$emma mmm -j4 cts/tests/tests/provider
+    if [ $? -ne 0 ]; then
+        popd
+        return 1
+    fi
+
+    # copy the instrumented APKs to the device
+    adb remount
+    adb push ${ANDROID_PRODUCT_OUT}/system/app/CalendarProvider.apk /system/app/
+    ##adb push ${ANDROID_PRODUCT_OUT}/data/app/CalendarProviderTests.apk /data/app/
+    adb push ${ANDROID_PRODUCT_OUT}/data/app/CtsProviderTestCases.apk /data/app/
+    popd
+
+    # give the device a couple of seconds to install the packages
+    sleep 2
+}
+

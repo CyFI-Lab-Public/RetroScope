@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <dimen name="account_selector_popup_width">400dip</dimen>
+
+    <!-- Top position of quick contact. If this is -1, the vertical position is determined
+    based on the source of the request -->
+    <dimen name="quick_contact_top_position">48dip</dimen>
+
+    <!-- Top padding of the entire contact editor  -->
+    <dimen name="editor_padding_top">0dip</dimen>
+
+    <!-- Padding of the rounded plus/minus/expand/collapse buttons in the editor  -->
+    <dimen name="editor_round_button_padding_left">8dip</dimen>
+    <dimen name="editor_round_button_padding_right">8dip</dimen>
+    <dimen name="editor_round_button_padding_top">8dip</dimen>
+    <dimen name="editor_round_button_padding_bottom">8dip</dimen>
+
+    <!-- Minimum height of a row in the Editor -->
+    <dimen name="editor_min_line_item_height">48dip</dimen>
+
+    <!-- Right padding of a field in the Editor -->
+    <dimen name="editor_field_right_padding">4dip</dimen>
+
+    <!-- Left padding of a field in the Editor -->
+    <dimen name="editor_field_left_padding">4dip</dimen>
+
+    <!-- Width of the Type-Label in the Editor -->
+    <dimen name="editor_type_label_width">100dip</dimen>
+
+    <!-- Left padding of the label in the add field button for the contact editor -->
+    <dimen name="editor_add_field_label_left_padding">16dip</dimen>
+
+    <!-- Height of the shadow asset under the photo on the contact detail page -->
+    <dimen name="detail_contact_photo_shadow_height">10dip</dimen>
+
+    <!-- Height of the tab text label in the tab carousel on the contact detail page -->
+    <dimen name="detail_tab_carousel_tab_label_height">45dip</dimen>
+
+    <!-- Height of the tab text label in the tab carousel on the contact detail page -->
+    <dimen name="detail_tab_carousel_tab_label_indent">24dip</dimen>
+
+    <!-- Left and right padding of the text within the update tab in the tab carousel -->
+    <dimen name="detail_update_tab_side_padding">24dip</dimen>
+
+    <!-- Left and right padding of the update section in the contact detail card -->
+    <dimen name="detail_update_section_side_padding">16dip</dimen>
+
+    <!-- Vertical padding above and below individual stream items -->
+    <dimen name="detail_update_section_item_vertical_padding">16dip</dimen>
+
+    <!-- Vertical padding between text and images in a single stream item -->
+    <dimen name="detail_update_section_between_items_vertical_padding">8dip</dimen>
+
+    <!-- Horizontal padding for individual stream items -->
+    <dimen name="detail_update_section_item_horizontal_padding">8dip</dimen>
+
+    <!-- Padding between images in a single stream item -->
+    <dimen name="detail_update_section_between_items_padding">1dip</dimen>
+
+    <!-- Horizontal padding between attribution and comments -->
+    <dimen name="detail_update_section_attribution_comments_padding">4dip</dimen>
+
+    <!-- Margin around the contact's photo on the contact card -->
+    <dimen name="detail_contact_photo_margin">8dip</dimen>
+
+    <!-- Width and height of the contact photo on the contact detail page -->
+    <dimen name="detail_contact_photo_size">128dip</dimen>
+
+    <!-- Width and height of the expanded contact photo on the contact detail page -->
+    <dimen name="detail_contact_photo_expanded_size">400dip</dimen>
+
+    <!-- This is the minimum amount of space to leave underneath an expanded contact detail
+         photo -->
+    <dimen name="expanded_photo_height_offset">100dip</dimen>
+
+    <!-- Minimum width for the photo action popup options -->
+    <dimen name="photo_action_popup_min_width">300dip</dimen>
+
+    <!-- Left and right padding for a contact detail item -->
+    <dimen name="detail_item_icon_margin">8dip</dimen>
+
+    <!-- Top and bottom padding for a contact detail item -->
+    <dimen name="detail_item_vertical_margin">8dip</dimen>
+
+    <!-- Minimum height of a row in the contact detail -->
+    <dimen name="detail_min_line_item_height">48dip</dimen>
+
+    <!-- Font size for the display name in header of the contact detail page -->
+    <dimen name="detail_header_name_text_size">36sp</dimen>
+
+    <!-- Vertical margin for vertical dividers existing between primary data
+         (phone number, email, etc.) and a secondary action button -->
+    <dimen name="detail_vertical_divider_vertical_margin">16dip</dimen>
+
+    <!-- Font size used for the contact name in the widget -->
+    <dimen name="widget_text_size_name">14sp</dimen>
+
+    <!-- Font size used for the social status in the widget -->
+    <dimen name="widget_text_size_snippet">13sp</dimen>
+
+    <!-- Height of list sections (A, B, C) that show the first character of the contacts -->
+    <dimen name="list_section_height">25dip</dimen>
+
+    <!-- Account title left padding -->
+    <dimen name="account_container_left_padding">16dip</dimen>
+
+    <!-- Left padding for a group member list item -->
+    <dimen name="group_member_item_left_padding">4dip</dimen>
+
+    <!-- Left and right padding for the group editor view -->
+    <dimen name="group_editor_side_padding">16dip</dimen>
+
+    <!-- Left margin for the group member list to match the built in margin in the autocomplete asset -->
+    <dimen name="group_editor_member_list_left_margin">4dip</dimen>
+
+    <!-- Right margin for the group member list to match the built in margin in the autocomplete asset -->
+    <dimen name="group_editor_member_list_right_margin">4dip</dimen>
+
+    <!-- Left padding of the auto complete field to line hint text up with member list -->
+    <dimen name="group_editor_autocomplete_left_padding">8dip</dimen>
+
+    <!-- Border padding for the group detail fragment -->
+    <dimen name="group_detail_border_padding">0dip</dimen>
+
+    <!-- Height of the quick contact photo container (for screens that are too large to use the screen width/height as a constraint)-->
+    <dimen name="quick_contact_photo_container_height">180dip</dimen>
+
+    <!-- Width of search view in action bar.  Use 0dip for MATCH_PARENT -->
+    <dimen name="search_view_width">0dip</dimen>
+
+    <!-- For join screen. Mainly for tablet. -->
+    <dimen name="join_header_left_margin">@dimen/contact_browser_list_header_left_margin</dimen>
+    <dimen name="join_header_right_margin">@dimen/contact_browser_list_header_right_margin</dimen>
+    <dimen name="join_header_top_margin">16dip</dimen>
+    <dimen name="join_header_bottom_margin">0dip</dimen>
+
+    <dimen name="no_accounts_message_margin">20dip</dimen>
+
+    <dimen name="contact_filter_header_min_height">24dip</dimen>
+
+    <!--  Width of the lead margin on the left of a block quote inside a stream item -->
+    <dimen name="stream_item_stripe_width">8dip</dimen>
+
+    <!-- Max width of the SearchView when the contact picker is a dialog (on wide
+         screen devices). -->
+    <dimen name="contact_picker_search_view_max_width">550dip</dimen>
+
+    <!-- Min height of the list of contacts when the contact picker is a dialog (on
+        wide screen devices). -->
+    <dimen name="contact_picker_contact_list_min_height">550dip</dimen>
+
+</resources>

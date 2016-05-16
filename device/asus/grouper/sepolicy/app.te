@@ -1,0 +1,1 @@
+allow appdomain sysfs_devices_system_cpu:dir r_dir_perms;

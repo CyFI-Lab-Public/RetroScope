@@ -1,0 +1,2 @@
+# GPU (used by most UI apps)
+type gpu_device, dev_type;

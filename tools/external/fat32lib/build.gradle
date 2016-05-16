@@ -1,0 +1,5 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+
+group = "com.android.tools.build"
+archivesBaseName = 'fat32lib'

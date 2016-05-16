@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+**
+** Copyright 2008, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+-->
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.musicvis">
+
+    <original-package android:name="com.android.musicvis" />
+
+    <uses-feature android:name="android.software.live_wallpaper" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <application
+        android:label="@string/wallpapers"
+        android:icon="@drawable/ic_launcher_wallpaper">
+
+        <!-- Visualizer Wallpaper -->
+        <!-- this wallpaper isn't very good, so disable it (using android:enabled=false doesn't work here for some reason)
+        <service
+            android:label="@string/wallpaper_vis1"
+            android:name=".vis1.Visualization1"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:enabled="@bool/config_enable_vis1"
+            >
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data android:name="android.service.wallpaper" android:resource="@xml/cube" />
+        </service>
+        -->
+
+        <!-- Waveform Wallpaper -->
+        <service
+            android:label="@string/wallpaper_vis2"
+            android:name=".vis2.Visualization2"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:enabled="@bool/config_enable_vis2"
+            >
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data android:name="android.service.wallpaper" android:resource="@xml/vis2" />
+        </service>
+
+        <!-- Spectrum Wallpaper -->
+        <service
+            android:label="@string/wallpaper_vis3"
+            android:name=".vis3.Visualization3"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:enabled="@bool/config_enable_vis3"
+            >
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data android:name="android.service.wallpaper" android:resource="@xml/vis3" />
+        </service>
+
+        <!-- VU Meter Wallpaper -->
+        <service
+            android:label="@string/wallpaper_vis4"
+            android:name=".vis4.Visualization4"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:enabled="@bool/config_enable_vis4"
+            >
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data android:name="android.service.wallpaper" android:resource="@xml/vis4" />
+        </service>
+
+        <!-- Many Wallpaper -->
+        <service
+            android:label="@string/wallpaper_vis5"
+            android:name=".vis5.Visualization5"
+            android:permission="android.permission.BIND_WALLPAPER"
+            android:enabled="@bool/config_enable_vis5"
+            >
+            <intent-filter>
+                <action android:name="android.service.wallpaper.WallpaperService" />
+            </intent-filter>
+            <meta-data android:name="android.service.wallpaper" android:resource="@xml/vis5" />
+        </service>
+
+    </application>
+
+</manifest>

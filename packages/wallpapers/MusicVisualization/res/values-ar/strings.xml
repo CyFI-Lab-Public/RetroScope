@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+* Copyright (C) 2008 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="wallpapers" msgid="7646602778647576267">"خلفيات المرئيات الموسيقية"</string>
+    <string name="author" msgid="6199067265817633685">"Google"</string>
+    <string name="vis2_desc" msgid="192540837551311681">"لرسم الموجات الصوتية لأية مقاطع صوتية يتم تشغيلها حاليًا."</string>
+    <string name="vis3_desc" msgid="3878566533630652215">"إظهار أطياف التردد لأي مقطع موسيقي جاري تشغيله حاليًا."</string>
+    <string name="vis4_desc" msgid="2752246332053894804">"لمحاكاة مقياس صوتي مماثل."</string>
+    <string name="vis5_desc" msgid="4777817231155032917">"جميع مرئيات الموسيقى معًا، متعاقبة ببطء في مشهد ثلاثي الأبعاد."</string>
+</resources>

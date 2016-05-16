@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_label" msgid="3658948994665187911">"កម្មវិធី​ទាញ​យក"</string>
+    <string name="permlab_downloadManager" msgid="7779544811202855500">"ប្រើ​កម្មវិធី​គ្រប់គ្រង​ការ​ទាញ​យក។"</string>
+    <string name="permdesc_downloadManager" msgid="4237406545998908947">"អនុញ្ញាត​ឲ្យ​កម្មវិធី​ប្រើ​កម្មវិធី​ទាញ​យក ដើម្បី​ទាញ​យក​ឯកសារ។ កម្មវិធី​មិន​ល្អ​ផ្សេងទៀត​អាច​ប្រើ​ដើម្បី​បង្អាក់​ការ​ទាញ​យក និង​ការ​ប្រើ​ព័ត៌មាន​ឯកជន។"</string>
+    <string name="permlab_downloadManagerAdvanced" msgid="7103642833308809655">"មុខងារ​កម្មវិធី​គ្រប់គ្រង​ការ​ទាញ​យក​កម្រិត​ខ្ពស់។"</string>
+    <string name="permdesc_downloadManagerAdvanced" msgid="2659546004160962761">"អនុញ្ញាត​ឲ្យ​កម្មវិធី​ប្រើ​មុខងារ​កម្រិត​ខ្ពស់​របស់​កម្មវិធី​ទាញ​យក​ការ​គ្រប់គ្រង។ កម្មវិធី​មិន​ល្អ​អាច​ប្រើ​វា​ដើម្បី​បង្អាក់​ការ​ទាញ​យក និង​ការ​ប្រើ​ព័ត៌មាន​ឯកជន។"</string>
+    <string name="permlab_downloadCompletedIntent" msgid="945913803765675685">"ផ្ញើ​ព័ត៌មាន​ការ​ទាញ​យក។"</string>
+    <string name="permdesc_downloadCompletedIntent" msgid="2094706189855699533">"អនុញ្ញាត​ឲ្យ​កម្មវិធី​ផ្ញើ​ការ​ជូនដំណឹង​អំពី​ការ​បញ្ចប់​ការ​ទាញ​យក។ កម្មវិធី​មិន​ល្អ​អាច​ប្រើ​វា​ដើម្បី​រារាំង​កម្មវិធី​ទាញ​យក​ឯកសារ​ផ្សេងទៀត។"</string>
+    <string name="permlab_seeAllExternal" product="nosdcard" msgid="4084575448409212628">"មើល​ការ​ទាញ​យក​ទាំងអស់​ទៅកាន់​ឧបករណ៍​ផ្ទុក​យូអេសប៊ី"</string>
+    <string name="permlab_seeAllExternal" product="default" msgid="140058400609165726">"មើល​ការ​ទាញ​យក​ទាំងអស់​ទៅកាន់​កាត​អេសឌី"</string>
+    <string name="permdesc_seeAllExternal" msgid="1672759909065511233">"អនុញ្ញាត​ឲ្យ​កម្មវិធី​​មើល​ការ​ទាញ​យក​ទាំងអស់​ទៅកាន់​ការ​អេសឌី ប្រសិនបើ​គ្មាន​កម្មវិធី​ទាញ​យក​វា។"</string>
+    <string name="permlab_downloadCacheNonPurgeable" msgid="3069534308882047412">"បម្រុងទុក​ទំហំ​នៅ​ក្នុង​ឃ្លាំង​ទាញ​យក"</string>
+    <string name="permdesc_downloadCacheNonPurgeable" msgid="2408760720334570420">"អនុញ្ញាត​ឲ្យ​កម្មវិធី​ទាញ​យក​ឯកសារ​ទៅកាន់​ឃ្លាំង​ទាញ​យក ដែល​មិន​អាច​លុប​ដោយ​ស្វ័យប្រវត្តិ ពេល​កម្មវិធី​ទាញ​យក​ត្រូវការ​ទំហំ​ច្រើន។"</string>
+    <string name="permlab_downloadWithoutNotification" msgid="8837971946078327262">"ទាញ​យក​ឯកសារ​ដោយ​មិន​បាច់​ជូនដំណឹង"</string>
+    <string name="permdesc_downloadWithoutNotification" msgid="8483135034298639727">"អនុញ្ញាត​ឲ្យ​កម្មវិធី​ទាញ​យក​ឯកសារ​តាម​កម្មវិធី​ទាញ​យក​ការ​គ្រប់គ្រង​​ដោយ​មិន​បាច់​មាន​ការ​ជូន​ដំណឹង​ទៅ​អ្នកប្រើ។"</string>
+    <string name="permlab_accessAllDownloads" msgid="2436240495424393717">"ដំណើរការ​ទាញ​យក​​ប្រព័ន្ធ​ទាំងអស់"</string>
+    <string name="permdesc_accessAllDownloads" msgid="1871832254578267128">"អនុញ្ញាត​ឲ្យ​កម្មវិធី​មើល និង​កែ​ការ​ទាញ​យក​ទាំងអស់​ដែល​បាន​ចាប់ផ្ដើម​ដោយ​កម្មវិធី​ណាមួយ​នៅ​លើ​ប្រព័ន្ធ។"</string>
+    <string name="download_unknown_title" msgid="7015124071247271585">"&lt;Untitled&gt;"</string>
+    <string name="notification_download_complete" msgid="5443563299253103667">"បាន​បញ្ចប់​ការ​ទាញ​យក។"</string>
+    <string name="notification_download_failed" msgid="8612136111952014978">"ការ​ទាញ​យក​បាន​បរាជ័យ។"</string>
+    <string name="notification_need_wifi_for_size" msgid="2556172885154833575">"ទំហំ​ការ​ទាញ​យក​ត្រូវការ​វ៉ាយហ្វាយ។"</string>
+    <string name="notification_paused_in_background" msgid="4328508073283591772">"បាន​ផ្អាក​នៅ​ផ្ទៃ​ខាងក្រោយ។"</string>
+    <string name="wifi_required_title" msgid="1995971416871498179">"ការ​ទាញ​យក​គឺ​ធំ​ពេក​សម្រាប់​បណ្ដាញ​ប្រតិបត្តិករ"</string>
+    <string name="wifi_required_body" msgid="3067694630143784449">"អ្នក​ត្រូវតែ​ប្រើ​វ៉ាយហ្វាយ​ដើម្បី​បញ្ចប់​ការ​ទាញ​យក <xliff:g id="SIZE">%s </xliff:g> ។ \n\nប៉ះ <xliff:g id="QUEUE_TEXT">%s </xliff:g> ដើម្បី​ចាប់ផ្ដើម​ការ​ទាញ​យក​នេះ​នៅ​ពេល​អ្នក​បាន​តភ្ជាប់​បណ្ដាញ​វ៉ាយហ្វាយ។"</string>
+    <string name="wifi_recommended_title" msgid="7441589306734687400">"ដាក់​ជា​ជួរ​ដើម្បី​ទាញ​យក​បន្ទាប់?"</string>
+    <string name="wifi_recommended_body" msgid="1314735166699936073">"ចាប់ផ្ដើម​ការ​ទាញ​យក <xliff:g id="SIZE">%s </xliff:g> ឥឡូវ​អាច​បណ្ដាលឲ្យ​ថ្ម​របស់​អ្នក​មាន​អាយុ​ខ្លី និង/ឬ​បង្ហាញ​ថា​លើស​ការ​ប្រើ​នៃ​តំណ​ភ្ជាប់​ទិន្នន័យ​ទូរស័ព្ទ​របស់​អ្នក ដែល​អាច​គិត​ប្រាក់​ដោយ​ប្រតិបត្តិករ​ទូរស័ព្ទ​អាស្រ័យ​តាម​គម្រោង​ទិន្នន័យ​របស់​អ្នក។\n\n ប៉ះ <xliff:g id="QUEUE_TEXT">%s</xliff:g> ខាងក្រោម​ដើម្បី​ចាប់ផ្ដើម​ការ​ទាញ​យក​នេះ​នៅ​ពេល​អ្នក​បាន​តភ្ជាប់​បណ្ដាញ​វ៉ាយហ្វាយ។"</string>
+    <string name="button_queue_for_wifi" msgid="422576726189179221">"ជួរ"</string>
+    <string name="button_cancel_download" msgid="2430166148737975604">"បោះ​បង់"</string>
+    <string name="button_start_now" msgid="792123674007840864">"ចាប់ផ្ដើម​ឥឡូវ"</string>
+    <string name="download_percent" msgid="6889426633242976698">"<xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+  <plurals name="notif_summary_active">
+    <item quantity="one" msgid="8475775855911967027">"កំពុង​ទាញ​យក​ឯកសារ ១"</item>
+    <item quantity="other" msgid="9087228371320573153">"កំពុង​ទាញ​យក​ឯកសារ <xliff:g id="NUMBER">%d</xliff:g>"</item>
+  </plurals>
+  <plurals name="notif_summary_waiting">
+    <item quantity="one" msgid="5537481763963544278">"កំពុង​រង់ចាំ​ឯកសារ ១"</item>
+    <item quantity="other" msgid="549229034166062887">"កំពុង​រង់ចាំ​ឯកសារ <xliff:g id="NUMBER">%d</xliff:g>"</item>
+  </plurals>
+    <string name="download_remaining" msgid="3139295890887972718">"នៅសល់ <xliff:g id="DURATION">%s</xliff:g>"</string>
+    <string name="download_no_application_title" msgid="7935659741162801699">"មិន​អាច​បើក​ឯកសារ"</string>
+    <string name="root_downloads" msgid="4098414876292351487">"ទាញ​យក"</string>
+    <string name="download_queued" msgid="3302638231377947451">"​បាន​ដាក់​ក្នុង​ជួរ"</string>
+    <string name="download_running" msgid="3925050393361158266">"កំពុង​ដំណើរការ"</string>
+    <string name="download_error" msgid="5144180777324573236">"បាន​បរាជ័យ"</string>
+    <string name="download_running_percent" msgid="4529799113107391817">"កំពុង​ដំណើរការ​, <xliff:g id="NUMBER">%d</xliff:g> <xliff:g id="PERCENT">%%</xliff:g>"</string>
+</resources>

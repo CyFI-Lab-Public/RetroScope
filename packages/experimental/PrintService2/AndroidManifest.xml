@@ -1,0 +1,35 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="foo.bar.printservice2"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="KeyLimePie"
+        android:targetSdkVersion="KeyLimePie" />
+
+    <application
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:allowBackup="false" >
+        <service
+            android:name=".MyPrintService"
+            android:permission="android.permission.BIND_PRINT_SERVICE">
+          <intent-filter>
+              <action android:name="android.printservice.PrintService" />
+          </intent-filter>
+          <meta-data
+              android:name="android.printservice"
+              android:resource="@xml/printservice">
+          </meta-data>
+        </service>
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/app_name"
+            android:permission="android.permission.BIND_PRINT_SERVICE">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

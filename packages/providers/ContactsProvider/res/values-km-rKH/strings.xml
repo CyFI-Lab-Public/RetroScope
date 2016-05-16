@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="sharedUserLabel" msgid="8024311725474286801">"កម្មវិធី​​សំខាន់ៗ​របស់ Android"</string>
+    <string name="app_label" msgid="3389954322874982620">"ឧបករណ៍​ផ្ទុក​ទំនាក់ទំនង"</string>
+    <string name="provider_label" msgid="6012150850819899907">"ទំនាក់ទំនង"</string>
+    <string name="upgrade_msg" msgid="8640807392794309950">"ធ្វើ​បច្ចុប្បន្នភាព​មូលដ្ឋាន​ទិន្នន័យ​ទំនាក់ទំនង។"</string>
+    <string name="upgrade_out_of_memory_notification_ticker" msgid="7638747231223520477">"ការ​ធ្វើ​បច្ចុប្បន្នភាព​ទំនាក់ទំនង​ត្រូវការ​អង្គ​ចងចាំ​ច្រើន"</string>
+    <string name="upgrade_out_of_memory_notification_title" msgid="8888171924684998531">"ធ្វើ​បច្ចុប្បន្នភាព​ឧបករណ៍​ផ្ទុក​ទំនាក់ទំនង"</string>
+    <string name="upgrade_out_of_memory_notification_text" msgid="8438179450336437626">"ប៉ះ​ដើម្បី​បញ្ចប់​ការ​ធ្វើ​បច្ចុប្បន្នភាព។"</string>
+    <string name="default_directory" msgid="93961630309570294">"ទំនាក់ទំនង"</string>
+    <string name="local_invisible_directory" msgid="705244318477396120">"ផ្សេងៗ"</string>
+    <string name="read_write_all_voicemail_label" msgid="4557216100818257560">"ដំណើរ​ការ​សារ​ជា​សំឡេង​ទាំងអស់"</string>
+    <string name="read_write_all_voicemail_description" msgid="8029809937805761356">"ឱ្យ​កម្មវិធី​ទុក និង​ទៅ​យក​សារ​ជា​សំឡេង​ទាំងអស់​ដែល​ឧបករណ៍​នេះ​អាច​ដំណើរ​ការ​បាន។"</string>
+    <string name="voicemail_from_column" msgid="435732568832121444">"សារ​ជា​សំឡេង​ពី "</string>
+    <string name="debug_dump_title" msgid="4916885724165570279">"ចម្លង​មូលដ្ឋាន​ទិន្នន័យ​ទំនាក់ទំនង"</string>
+    <string name="debug_dump_database_message" msgid="406438635002392290">"អ្នក​ហៀបនឹង ១) ចម្លង​មូលដ្ឋាន​ទិន្នន័យ​របស់​អ្នក​ដែល​រួម​មាន​ព័ត៌មាន​ទំនាក់ទំនង និង​កំណត់ហេតុ​ហៅ​ទាំងអស់​ទៅកាន់​ឧបករណ៍​ផ្ទុក​ខាងក្នុង ២) ផ្ញើ​អ៊ី​ម៉ែ​ល​វា​។ ចងចាំ​ថា​អ្នក​ត្រូវ​លុប​ច្បាប់​ចម្លង​ភ្លាមៗ បន្ទាប់ពី​បាន​ចម្លង​ចេញពី​ឧបករណ៍ ឬ​បាន​ទទួល​អ៊ីមែល។"</string>
+    <string name="debug_dump_delete_button" msgid="7832879421132026435">"លុប​ឥឡូវ"</string>
+    <string name="debug_dump_start_button" msgid="2837506913757600001">"ចាប់ផ្ដើម"</string>
+    <string name="debug_dump_email_sender_picker" msgid="3534420908672176460">"ជ្រើស​កម្មវិធី​ដើម្បី​ផ្ញើ​ឯកសារ​របស់​អ្នក"</string>
+    <string name="debug_dump_email_subject" msgid="108188398416385976">"បាន​ភ្ជាប់​មូលដ្ឋាន​ទិន្នន័យ​ទំនាក់ទំនង"</string>
+    <string name="debug_dump_email_body" msgid="4577749800871444318">"ឯកសារ​ភ្ជាប់​គឺជា​មូលដ្ឋាន​ទិន្នន័យ​ទំនាក់ទំនង​ព្រមទាំង​ព័ត៌មាន​ទំនាក់ទំនង​ទាំង​អស់​របស់​ខ្ញុំ។ ប្រើ​វា​ដោយ​ប្រុងប្រយ័ត្ន។"</string>
+</resources>

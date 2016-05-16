@@ -1,0 +1,838 @@
+/*
+ * parser.cup - Java CUP file containing LALR(1) grammar for DASM
+ */
+
+package dasm;
+
+import java_cup.runtime.*;
+
+import dasm.tokens.number_token;
+import dasm.tokens.relative_number_token;
+import dasm.tokens.variant_token;
+
+action code {:
+    int access_val;
+    public DAsm dAsm;
+    public Scanner scanner;
+    public boolean isInterface;
+:};
+
+parser code {:
+
+    public boolean isInterface;
+    public Scanner scanner;
+    public DAsm dAsm;
+
+    public void report_error(String message, Object info) {
+            if(info != null)
+                dAsm.report_error("Warning: " + message + "(" + info.toString() + ")");
+            else
+                dAsm.report_error("Warning: " + message);
+    }
+
+    public void report_fatal_error(String message, Object info)  {
+            if(info != null)
+                dAsm.report_error("Error: " + message + "(" + info.toString() + ")");
+            else
+                dAsm.report_error("Error: " + message); 
+    }
+
+    parser(DAsm dAsm, Scanner scanner) {
+        super();
+
+        this.scanner = scanner;
+        this.dAsm = dAsm;
+    }
+:};
+
+init with {:
+    action_obj.scanner = scanner;
+    action_obj.dAsm = dAsm;
+:};
+
+scan with {:
+    return scanner.next_token();
+:};
+
+
+
+/* Terminals (tokens returned by the scanner). */
+terminal token
+    // Directives (words beginning with a '.')
+    DCATCH, DCLASS, DEND, DFIELD, DLIMIT, DLINE, DMETHOD, DSET, DSUPER,
+    DSOURCE, DTHROWS, DVAR, DIMPLEMENTS, DINTERFACE, DBYTECODE, DDEBUG,
+    DENCLOSING, DSIGNATURE, DATTRIBUTE, DDEPRECATED, DINNER,
+    DANNOTATION,
+
+    // keywords for directives
+    USING, IS, FROM, METHOD, SIGNATURE, REGS, FIELD, CLASS,
+    TO, INNER, OUTER, VISIBLE, INVISIBLE, VISIBLEPARAM, INVISIBLEPARAM, 
+
+    // access types
+    ABSTRACT, FINAL, INTERFACE, NATIVE, PRIVATE, PROTECTED, PUBLIC, STATIC,
+    SYNCHRONIZED, DECLARED_SYNCHRONIZED, TRANSIENT, VOLATILE,
+    // added these for java 1.5 compliance :
+    ANNOTATION, ENUM, BRIDGE, VARARGS, STRICT, SYNTHETIC,
+    // complex instructions
+    FILL_ARRAY_DATA, FILL_ARRAY_DATA_END, 
+    PACKED_SWITCH, PACKED_SWITCH_END, 
+    SPARSE_SWITCH, SPARSE_SWITCH_END, 
+    DEFAULT,
+
+    // special symbols
+    EQ, SEP, COLON
+ ;
+
+terminal str_token Str, Word, Insn;
+terminal int_token Int;
+terminal number_token Num;
+terminal relative_number_token Relative;
+
+non terminal str_token classname, inner_name, inner_inner, inner_outer, optional_signature;
+non terminal variant_token optional_default, item, any_item;
+
+/* Non terminals */
+non terminal symbol
+       access_item, access_items, access_list, catch_expr, class_spec,
+       complex_instruction, defmethod, directive, endmethod, field_list,
+       field_spec, fields, instruction, implements, implements_list, implements_spec,
+       dasm_file, dasm_file_classes, dasm_file_class, label, limit_expr,
+       method_list,
+       method_spec, methods, set_expr, simple_instruction, source_spec,
+       statement, statements, stmnt, super_spec, line_expr,
+       throws_expr, var_expr, dex_version_spec,
+       enclosing_spec, signature_spec, signature_expr, dasm_header,
+       deprecated_spec, deprecated_expr,
+       generic_attributes, generic_list, generic_spec, generic_expr,
+       field_start, endfield, field_exts, field_ext_list, field_ext_expr,
+       inners, inner_list, inner_spec,
+       fa_data, fa_data_args, fa_data_list, fa_data_entry, fa_data_end,
+       ps_table, ps_table_args, ps_table_list, ps_table_entry, ps_table_end,
+       ss_table, ss_table_args, ss_table_list, ss_table_entry, ss_table_end,
+
+   // used for Annotation attributes :
+       annotations, ann_cls_list, ann_cls_spec, endannotation, ann_cls_expr,
+       ann_clf_expr, ann_met_expr, ann_arglist, ann_arg_list, ann_arg_spec,
+       ann_def_spec, ann_def_val, ann_value_items, ann_value, ann_def_expr,
+       ann_arg_expr, ann_nest, endannotationsep, ann_ann_value, ann_ann_list,
+       ann_value_list
+
+;
+
+non terminal int_token access;
+
+/* The grammar */
+
+dasm_file ::= dasm_file_classes;
+
+dasm_file_classes ::= dasm_file_classes dasm_file_class | dasm_file_class;
+
+dasm_file_class ::= 
+        dasm_header
+        inners
+        fields
+        methods
+;
+
+dasm_header ::=
+    dex_version_spec
+    source_spec
+    class_spec
+    super_spec
+    implements
+    signature_spec
+    enclosing_spec
+    deprecated_spec
+    annotations
+    generic_attributes
+  {: dAsm.endHeader(); :}
+;
+
+/* ========== Dex version specification ========== */
+
+dex_version_spec ::=
+    DBYTECODE Num:n SEP
+        {: dAsm.setVersion(n.number_val); :}
+    |
+    /* nothing */
+;
+
+/* ========== Source specification ========== */
+
+source_spec ::=
+    DSOURCE Str:s SEP
+        {: dAsm.setSource(s.str_val); :}
+    |
+    DSOURCE Word:w SEP
+        {: dAsm.setSource(w.str_val); :}
+    |
+    /* nothing */
+;
+
+
+/* ========== Class specification ========== */
+
+class_spec ::=
+    DCLASS access:a classname:name SEP
+        {: isInterface = false;
+           dAsm.setClass(name.str_val,
+                (a.int_val)); :}
+    |
+    DINTERFACE access:a classname:name SEP
+        {: isInterface = true;
+           dAsm.setClass(name.str_val,
+                (a.int_val |
+                        com.android.dx.rop.code.AccessFlags.ACC_INTERFACE)); :}
+;
+
+classname ::= Word:w
+        {: RESULT.str_val = Utils.convertDotsToSlashes(w.str_val); :}
+;
+
+access ::=
+    {: access_val = 0; :}
+        access_list
+    {: RESULT.int_val = access_val; :}
+;
+
+
+access_list ::= access_items | ;
+access_items ::= access_items access_item | access_item ;
+
+access_item ::=
+    PUBLIC       {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_PUBLIC; :}
+    |
+    PRIVATE      {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_PRIVATE; :}
+    |
+    PROTECTED    {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_PROTECTED; :}
+    |
+    STATIC       {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_STATIC; :}
+    |
+    FINAL        {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_FINAL; :}
+    |
+    SYNCHRONIZED {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_SYNCHRONIZED; :}
+    |
+    VOLATILE     {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_VOLATILE; :}
+    |
+    TRANSIENT    {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_TRANSIENT; :}
+    |
+    NATIVE       {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_NATIVE; :}
+    |
+    INTERFACE    {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_INTERFACE; :}
+    |
+    ABSTRACT     {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_ABSTRACT; :}
+    |
+    ANNOTATION   {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_ANNOTATION; :}
+    |
+    ENUM         {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_ENUM; :}
+    |
+    BRIDGE       {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_BRIDGE; :}
+    |
+    VARARGS      {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_VARARGS; :}
+    |
+    STRICT       {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_STRICT; :}
+    |
+    SYNTHETIC    {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_SYNTHETIC; :}
+    |
+    DECLARED_SYNCHRONIZED {: access_val |= com.android.dx.rop.code.AccessFlags.ACC_DECLARED_SYNCHRONIZED; :}
+;
+
+/* ========== Superclass specification ========== */
+
+super_spec ::=
+    DSUPER classname:name SEP
+        {: dAsm.setSuperClass(name.str_val); :} 
+        |
+        /* nothing */
+        {: if(isInterface == false) 
+               dAsm.setSuperClass("java/lang/Object"); 
+           else 
+           // Dalvik requires interfaces to have superclass
+               dAsm.setSuperClass("java/lang/Object"); :}
+;
+
+/* ========== Implements specification ========== */
+
+implements ::= implements_list | /* empty */ ;
+
+implements_list ::= implements_list implements_spec | implements_spec ;
+
+implements_spec ::= DIMPLEMENTS classname:name SEP
+    {: dAsm.addInterface(name.str_val); :}
+;
+
+/* ========== Signature specification  ========== */
+
+signature_spec ::=
+    DSIGNATURE signature_expr SEP
+    |
+    /* nothing */
+;
+
+signature_expr ::= Str:sig
+        {: dAsm.setSignature(sig.str_val); :}
+;
+
+/* ========== EnclosingMethod attribute specification ========== */
+
+enclosing_spec ::=
+    DENCLOSING METHOD Word:w SEP
+        {: dAsm.setEnclosingMethod(w.str_val); :}
+    |
+    /* nothing */
+;
+
+
+
+/* ========== Deprecated attribute ========== */
+
+deprecated_spec ::=
+    DDEPRECATED deprecated_expr SEP
+    |
+    /* nothing */
+;
+
+deprecated_expr ::=
+    {: /*dAsm.setDeprecated();*/dAsm.report_error("WARNING: @deprecated is not supported"); :}
+;
+
+
+/* ========== Annotation specification ========== */
+annotations ::= ann_cls_list | 
+    // empty  
+    ;
+
+ann_cls_list ::= ann_cls_list ann_cls_spec | ann_cls_spec ;
+
+ann_cls_spec ::= ann_cls_expr ann_arglist endannotationsep ;
+
+endannotationsep ::= endannotation SEP ;
+
+endannotation ::= DEND ANNOTATION
+    {: //TODO: NOT SUPPORTED dAsm.endAnnotation(); 
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+;
+
+ann_cls_expr ::= DANNOTATION ann_clf_expr ;
+
+ann_clf_expr ::=
+    VISIBLE classname:name SEP
+        {: //TODO: NOT SUPPORTED dAsm.addAnnotation(true, name.str_val);
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+    |
+    INVISIBLE classname:name SEP
+        {: //TODO: NOT SUPPORTED dAsm.addAnnotation(false, name.str_val);
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+;
+ann_met_expr ::=
+    VISIBLE classname:name SEP
+        {: //TODO: NOT SUPPORTED dAsm.addAnnotation(true, name.str_val);
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+    |
+    INVISIBLE classname:name SEP
+        {: //TODO: NOT SUPPORTED dAsm.addAnnotation(false, name.str_val);
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+    |
+    VISIBLEPARAM Int:n classname:name SEP
+        {: //TODO: NOT SUPPORTED dAsm.addAnnotation(true, name.str_val, n.int_val);
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+    |
+    INVISIBLEPARAM Int:n classname:name SEP
+        {: //TODO: NOT SUPPORTED dAsm.addAnnotation(false, name.str_val, n.int_val);
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+;
+
+ann_arglist ::= ann_arg_list | 
+                // empty 
+;
+
+ann_arg_list ::= ann_arg_list ann_arg_spec | ann_arg_spec ;
+
+ann_arg_spec ::= ann_arg_expr EQ ann_value_list ;
+
+ann_arg_expr ::=
+    Word:n Word:dsc
+    {: //TODO: NOT SUPPORTED dAsm.addAnnotationField(n.str_val, dsc.str_val, null);
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+    |
+    Word:n Word:dsc Word:sub
+    {: //TODO: NOT SUPPORTED dAsm.addAnnotationField(n.str_val, dsc.str_val, sub.str_val);
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+;
+
+ann_def_spec ::= DEFAULT SEP
+    {: //TODO: NOT SUPPORTED dAsm.addAnnotation();
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+;
+
+ann_value_list ::= ann_value_items SEP | ann_ann_list ;
+
+ann_value_items ::= ann_value_items ann_value | ann_value ;
+
+ann_value ::= any_item:v
+    {: //TODO: NOT SUPPORTED dAsm.addAnnotationValue(v.variant_val);
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+;
+ann_ann_list ::= ann_ann_list ann_ann_value | ann_ann_value ;
+
+ann_ann_value ::= DANNOTATION ann_nest ann_arglist endannotationsep ;
+
+ann_nest ::= SEP
+    {: //TODO: NOT SUPPORTED dAsm.nestAnnotation();
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+;
+
+ann_def_val ::= ann_def_expr EQ ann_value_list ;
+
+ann_def_expr ::=
+    Word:dsc
+    {: //TODO: NOT SUPPORTED dAsm.addAnnotationField(null, dsc.str_val, null);
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+    |
+    Word:dsc Word:sub
+    {: //TODO: NOT SUPPORTED dAsm.addAnnotationField(null, dsc.str_val, sub.str_val);
+            dAsm.report_error("WARNING: Annotations are not supported"); :}
+;
+
+
+
+/* ========== Generic attributes specification ========== */
+
+generic_attributes ::= generic_list | /* empty */ ;
+
+generic_list ::= generic_list generic_spec | generic_spec ;
+
+generic_spec ::= DATTRIBUTE generic_expr SEP ;
+
+generic_expr ::= Word:name Str:file
+        {: dAsm.addGenericAttr(name.str_val, file.str_val); :}
+;
+
+
+/* ========== Fields ========== */
+
+fields ::= field_list | /* empty */ ;
+
+field_list ::= field_list field_spec | field_spec ;
+
+field_spec ::=
+    DFIELD access:a Word:name Word:desc SIGNATURE Str:sig optional_default:v SEP
+        {: dAsm.addField((short)a.int_val, name.str_val, desc.str_val,
+                              sig.str_val, v.variant_val); :}
+    |
+    DFIELD access:a Word:name Word:desc optional_default:v SEP
+        {: dAsm.addField((short)a.int_val, name.str_val, desc.str_val,
+                               null, v.variant_val); :}
+    |
+    DFIELD field_start field_exts endfield
+;
+
+// default value for a field
+optional_default ::=
+     EQ item:v
+        {: RESULT.variant_val = v.variant_val; :}
+     |
+     /* empty */
+        {: RESULT.variant_val = null; :}
+;
+
+// multiline form of field description
+field_start ::= access:a Word:name Word:desc optional_default:v SEP
+      {: dAsm.beginField((short)a.int_val, name.str_val,
+                              desc.str_val, v.variant_val); :}
+;
+
+endfield ::= DEND FIELD SEP
+      {: dAsm.endField(); :}
+;
+
+field_exts ::= field_ext_list | /* empty */ ;
+
+field_ext_list ::= field_ext_list field_ext_expr | field_ext_expr ;
+
+field_ext_expr ::=
+   DSIGNATURE signature_expr SEP
+   |
+   DATTRIBUTE generic_expr SEP
+   |
+   DDEPRECATED deprecated_expr SEP
+   |
+   DANNOTATION ann_clf_expr ann_arglist endannotationsep
+;
+
+
+// an item is an integer, a float/double/long, or a quoted string
+item ::=
+    Int:i       {: RESULT.variant_val = new Integer(i.int_val); :}
+    |
+    Num:n       {: RESULT.variant_val = n.number_val; :}
+    |
+    Str:s       {: RESULT.variant_val = s.str_val; :}
+;
+// an item is any possible type
+any_item ::=
+    Word:w      {: RESULT.variant_val = w.str_val; :}       // for enum
+    |
+    item:v      {: RESULT.variant_val = v.variant_val; :}
+;
+
+/* ========== Inner classes ========== */
+inners ::= inner_list | 
+    // empty 
+;
+
+inner_list ::= inner_list inner_spec | inner_spec ;
+
+inner_spec ::=
+    DINNER CLASS access:a inner_name:n inner_inner:i inner_outer:o SEP
+        {: dAsm.addInner((short)a.int_val,
+                              n.str_val, i.str_val, o.str_val); :}
+    |
+    DINNER INTERFACE access:a inner_name:n inner_inner:i inner_outer:o SEP
+        {: dAsm.addInner((short)(a.int_val |
+                              com.android.dx.rop.code.AccessFlags.ACC_INTERFACE),
+                                n.str_val, i.str_val, o.str_val); :}
+;
+
+inner_name ::=
+    Word:w
+        {: RESULT.str_val = w.str_val; :}
+    |
+    // empty 
+        {: RESULT.str_val = null; :}
+;
+
+inner_inner ::=
+    INNER classname:w
+        {: RESULT.str_val = w.str_val; :}
+    |
+    // empty
+        {: RESULT.str_val = null; :}
+;
+
+inner_outer ::=
+    OUTER classname:w
+        {: RESULT.str_val = w.str_val; :}
+    |
+    // empty
+        {: RESULT.str_val = null; :}
+;
+
+
+/* ========== Methods ========== */
+
+methods ::= method_list | /* empty */;
+
+method_list ::= method_list method_spec | method_spec ;
+
+method_spec ::=
+    defmethod
+    statements
+    endmethod
+    |
+    defmethod endmethod
+ ;
+
+defmethod ::=
+    DMETHOD access:i Word:name SEP
+        {: String split[] = Utils.getMethodSignatureFromString(name.str_val);
+           dAsm.newMethod(split[0], split[1], i.int_val); :}
+;
+
+endmethod ::=
+    DEND METHOD SEP
+        {: dAsm.endMethod(); :}
+;
+
+
+/* ========== Statements in a method ========== */
+
+statements ::= statements statement | statement ;
+
+statement ::=
+        {: dAsm.setLine(scanner.token_line_num); :}
+    stmnt SEP
+;
+
+stmnt ::=
+    instruction
+    |
+    directive
+    |
+    error
+    |
+    label
+    |
+    /* empty */
+;
+
+
+// label:
+label ::=
+    Word:label COLON
+        {: dAsm.plantLabel(label.str_val); :}
+    |
+    Int:label COLON instruction
+        {: dAsm.plantLabel(String.valueOf(label.int_val)); :}
+;
+
+// Directives (.catch, .set, .limit, etc.)
+
+directive ::=
+    DVAR var_expr
+    |
+    DLIMIT limit_expr
+    |
+    DLINE line_expr
+    |
+    DTHROWS throws_expr
+    |
+    DCATCH catch_expr
+    |
+    DSET set_expr
+    |
+    DSIGNATURE signature_expr
+    |
+    DATTRIBUTE generic_expr
+    |
+    DDEPRECATED deprecated_expr
+    |
+    DANNOTATION ann_met_expr ann_arglist endannotation
+    |
+    DANNOTATION ann_def_spec ann_def_val endannotation
+;
+
+
+//
+// .var <num> is <name> <desc> from StartLab to EndLab
+// .var <num> is <name> <desc> signature <sign> from StartLab to EndLab
+//
+var_expr ::=
+    Int:reg IS Word:name Word:desc optional_signature:sign FROM Word:slab TO Word:elab
+        {: dAsm.addVar(slab.str_val, elab.str_val, name.str_val,
+                            desc.str_val, sign.str_val, reg.int_val); :}
+    |
+    Int:reg IS Word:name Word:desc optional_signature:sign
+        {: dAsm.addVar(null, null, name.str_val, desc.str_val,
+                            sign.str_val,  reg.int_val); :}
+    |
+    Int:reg IS Word:name Word:desc optional_signature:sign FROM Int:soff TO Int:eoff
+        {: dAsm.addVar(soff.int_val, eoff.int_val, name.str_val,
+                            desc.str_val, sign.str_val, reg.int_val); :}
+;
+
+// optional signature specification for a .var
+optional_signature ::=
+     SIGNATURE Str:s
+        {: RESULT.str_val = s.str_val; :}
+     |
+     /* empty */
+        {: RESULT.str_val = null; :}
+;
+
+
+// .limit regs <val>
+limit_expr ::=
+    REGS Int:v        // .limit regs
+      {: dAsm.setRegsSize(v.int_val); :}
+   |
+   Word:w Int:v
+      {: dAsm.report_error(".limit expected \"regs\" , but got "
+                                + w.str_val); :}
+;
+
+// .line <num>
+line_expr ::= Int:v
+      {: dAsm.addLine(v.int_val); :}
+;
+
+// .throws <class>
+throws_expr ::= classname:s
+      {: dAsm.addThrow(s.str_val); :}
+;
+
+// .catch <class> from <label1> to <label2> using <branchlab>
+catch_expr ::=
+    classname:aclass FROM Word:fromlab TO Word:tolab USING Word:branchlab
+        {: dAsm.addCatch(aclass.str_val,
+                              fromlab.str_val,
+                              tolab.str_val,
+                              branchlab.str_val); :}
+    |
+    classname:aclass FROM Int:fromoff TO Int:tooff USING Int:branchoff
+        {: dAsm.addCatch(aclass.str_val,
+                              fromoff.int_val,
+                              tooff.int_val,
+                              branchoff.int_val); :}
+;
+
+// .set <var> = <val>
+set_expr ::=
+    Word:name any_item:v
+        {: scanner.dict.put(name.str_val, v); :}
+;
+
+instruction ::=
+    simple_instruction
+    |    
+    complex_instruction
+;
+
+// Various patterns of instruction:
+//      instruction [<pattern>]
+simple_instruction ::=
+    /* Format: 10x */
+    Insn:i
+        {: dAsm.addOpcode(i.str_val); :}
+    |
+    /* Format: 11x, 10t, 20t, 30t */
+    Insn:i Word:n
+        {: dAsm.addOpcode(i.str_val, n.str_val); :}
+    |
+    /* Format: relative 10t, 20t, 30t */
+    Insn:i Relative:n
+        {: dAsm.addRelativeGoto(i.str_val, n.int_val); :}
+    |
+    /* Format: 11n, 21s, 31i, 21h, 51l */
+    Insn:i Word:n1 Num:n2
+        {: dAsm.addOpcode(i.str_val, n1.str_val, n2.number_val); :}
+    |
+    /* Format: same as above. Handles the case when last argument is integer */
+    Insn:i Word:n1 Int:n2
+        {: dAsm.addOpcode(i.str_val, n1.str_val, new Integer(n2.int_val)); :}
+    |
+    /* Format: 12x, 22x, 32x, 21t, 21c (string@, type@), 31c, 35c, 3rc */
+    Insn:i Word:n1 Word:n2
+        {: dAsm.addOpcode(i.str_val, n1.str_val, n2.str_val); :}
+    |
+    /* Format: relative 21t */
+    Insn:i Word:n1 Relative:n2
+        {: dAsm.addRelativeGoto(i.str_val, n1.str_val, n2.int_val); :}
+    |
+    /* Format: 23x, 22t, 21c (field@), 22c */
+    Insn:i Word:n1 Word:n2 Word:n3
+        {: dAsm.addOpcode(i.str_val, n1.str_val, n2.str_val, n3.str_val); :}
+    |
+    /* Format: relative 22t */
+    Insn:i Word:n1 Word:n2 Relative:n3
+        {: dAsm.addRelativeGoto(i.str_val, n1.str_val, n2.str_val, n3.int_val); :}
+    |
+    /* Format: 22b, 22s */
+    Insn:i Word:n1 Word:n2 Int:n3
+        {: dAsm.addOpcode(i.str_val, n1.str_val, n2.str_val, n3.int_val); :}
+    |
+    /* Format: 21c (string@) */
+    Insn:i Word:n1 Str:n2
+        {: dAsm.addOpcode(i.str_val, n1.str_val, n2.str_val); :}
+    |
+    /* Format: 22c (field@)*/
+    Insn:i Word:n1 Word:n2 Word:n3 Word:n4
+        {: dAsm.addOpcode(i.str_val, n1.str_val, n2.str_val, n3.str_val, n4.str_val); :}
+  ;
+
+// complex (multiline) instructions
+//      fill-array-data <data>
+//      packed-switch  <table>
+//      sparse-switch <table>
+
+complex_instruction ::=
+    FILL_ARRAY_DATA fa_data
+    |
+    PACKED_SWITCH ps_table
+    |
+    SPARSE_SWITCH ss_table
+;
+
+// fill-array-data register type
+//      <value1>
+//      ...
+//      <valueN>
+// fill-array-data-end
+fa_data ::=
+   fa_data_args
+   fa_data_list
+   fa_data_end
+;
+
+fa_data_args ::=
+    Word:r Word:t SEP     // <register> <type>  
+        {: dAsm.newFillArrayData(r.str_val, t.str_val); :}
+;
+
+fa_data_list ::= fa_data_list fa_data_entry | fa_data_entry ;
+
+fa_data_entry ::=
+    Num:data SEP
+        {: dAsm.addFillArrayData(data.number_val); :} 
+    |
+    Int:data SEP
+        {: dAsm.addFillArrayData(new Integer(data.int_val)); :}
+;
+
+fa_data_end ::=
+    FILL_ARRAY_DATA_END 
+        {: dAsm.endFillArrayData(); :}
+;
+
+
+// packed-switch register first_key
+//      <target1>
+//      ...
+//      <targetN>
+// packed-switch-end
+ps_table ::=
+   ps_table_args
+   ps_table_list
+   ps_table_end
+;
+
+ps_table_args ::=
+    Word:r Int:k SEP     // <register> <first_key>  
+        {: dAsm.newPackedSwitch(r.str_val, k.int_val); :}
+;
+
+ps_table_list ::= ps_table_list ps_table_entry | ps_table_entry ;
+
+ps_table_entry ::=
+    Word:target SEP
+        {: dAsm.addPackedSwitchData(target.str_val); :} 
+    |
+    Relative:target SEP
+        {: dAsm.addPackedSwitchData(target.int_val); :}
+;
+
+ps_table_end ::=
+    PACKED_SWITCH_END 
+        {: dAsm.endSwitch(); :}
+;
+
+// sparse-switch register
+//     <value> : <label>
+//     <value> : <label>
+//     ...
+//     sparse-switch-end
+ss_table ::=
+    ss_table_args
+    ss_table_list
+    ss_table_end
+;
+
+ss_table_args ::= 
+    Word:r SEP     // <register>
+        {: dAsm.newSparseSwitch(r.str_val); :}
+;
+
+ss_table_list ::= ss_table_list ss_table_entry | ss_table_entry ;
+
+ss_table_entry ::=
+    Int:i COLON Word:w SEP
+        {: dAsm.addSparseSwitchData(i.int_val, w.str_val); :}
+    |
+    Int:i COLON Relative:off SEP
+        {: dAsm.addSparseSwitchData(i.int_val, off.int_val); :}
+;
+
+ss_table_end ::=
+    SPARSE_SWITCH_END 
+        {: dAsm.endSwitch(); :}
+;

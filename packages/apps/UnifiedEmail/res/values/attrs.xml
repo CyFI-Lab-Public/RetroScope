@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2011 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+    <add-resource name="RecipientEditTextViewStyle" type="style" />
+    <add-resource name="ComposeEditTextView" type="style" />
+    <add-resource name="LargeComposeAreaBody" type="style" />
+    <add-resource name="RecipientComposeFieldSpacer" type="style" />
+    <add-resource name="ComposeHeading" type="style" />
+    <add-resource name="RecipientComposeHeading" type="style" />
+    <add-resource name="ComposeFieldLayout" type="style" />
+    <add-resource name="RecipientComposeFieldLayout" type="style" />
+    <add-resource name="ComposeSubjectStyle" type="style" />
+    <declare-styleable name="FolderItemViewDrawableState">
+        <attr name="state_drag_mode" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="ButteryProgressBar">
+        <attr name="barColor" format="color" />
+        <attr name="barHeight" format="dimension" />
+        <attr name="detentWidth" format="dimension" />
+    </declare-styleable>
+</resources>

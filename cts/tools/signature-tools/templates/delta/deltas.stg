@@ -1,0 +1,149 @@
+group deltas;
+
+
+ADDED(delta)  ::= "Added $ElementType(element=delta.to)$"
+
+
+REMOVED(delta) ::= "Removed $ElementType(element=delta.from)$"
+
+
+CHANGED(delta) ::= "$DeltaType(delta)$"
+
+
+DeltaType(delta) ::= "$({$delta.class.simpleName$})(delta)$"
+
+
+DeltaTypeSwitch(delta) ::= "$delta:({$delta.type$})(delta)$"
+
+
+MultiSubDelta(desc, deltas) ::= <<
+$if(deltas)$
+$if(!deltas.empty)$
+$desc$
+<ul>
+$deltas:{<li>$DeltaTypeSwitch(delta=it)$</li>}$
+</ul>
+$endif$
+$endif$ 
+>>
+
+
+SigAnnotationDelta(delta) ::= <<
+$MultiSubDelta(desc="Annotation Elements changed:", deltas=delta.annotationElementDeltas)$
+>>
+
+
+
+SigAnnotationElementDelta(delta) ::= <<
+$SingleSubDelta(desc="Value changed:", delta=delta.valueDelta)$
+>>
+
+
+SigArrayTypeDelta(delta) ::= <<
+$SingleSubDelta(desc="Component Type of array changed:", delta=delta.componentTypeDelta)$
+>>
+
+
+SigClassReferenceDelta(delta) ::= "from $SigClass(element=delta.from)$ to $SigClass(element=delta.to)$"
+
+
+SigConstructorDelta(delta) ::= "$SigExecutableMemberDelta(delta=delta)$"
+
+SigMethodDelta(delta) ::= <<
+$SigExecutableMemberDelta(delta=delta)$
+$if(delta.returnTypeDelta)$
+$SingleSubDelta(desc="Return Type changed:", delta=delta.returnTypeDelta)$
+$endif$
+>>
+
+
+SigExecutableMemberDelta(delta) ::= <<
+$if(delta.annotationDeltas)$
+$MultiSubDelta(desc="Annotations changed:", deltas=delta.annotationDeltas)$
+$endif$
+
+$if(delta.modifierDeltas)$
+$MultiSubDelta(desc="Modifiers changed:", deltas=delta.modifierDeltas)$
+$endif$
+
+$if(delta.typeVariableDeltas)$
+$MultiSubDelta(desc="Type Variables changed:", deltas=delta.typeVariableDeltas)$
+$endif$
+
+$if(delta.exceptionDeltas)$
+$MultiSubDelta(desc="Exceptions changed:", deltas=delta.exceptionDeltas)$
+$endif$
+
+$if(delta.parameterDeltas)$
+$MultiSubDelta(desc="Parameters changed:", deltas=delta.parameterDeltas)$
+$endif$
+>>
+
+SigFieldDelta(delta) ::= <<
+$SingleSubDelta(desc="Type changed:", delta=delta.typeDelta)$
+$MultiSubDelta(desc="Modifiers changed:", deltas=delta.modifierDeltas)$
+$MultiSubDelta(desc="Annotations changed:", deltas=delta.annotationDeltas)$
+>>
+
+SigGenericDelclarationDelta(delta) ::= "GenericDelclarationDelta $delta$"
+
+SigModifierDelta(delta) ::= "SigModifierDelta.st: Please file a bug if you see this message"
+
+
+SigParameterDelta(delta) ::= <<
+$if(delta.annotationDeltas)$
+$MultiSubDelta(desc="Annotations changed:", deltas=delta.annotationDeltas)$
+$endif$
+
+$if(delta.typeDelta)$
+$SingleSubDelta(desc="Type changed:", delta=delta.typeDelta)$
+$endif$
+>>
+
+
+SigParameterizedTypeDelta(delta) ::= <<
+$SingleSubDelta(desc="Owner Type changed:", delta=delta.ownerTypeDelta)$
+$SingleSubDelta(desc="Raw Type changed:", delta=delta.rawTypeDelta)$
+$MultiSubDelta(desc="Type Arguments changed:", deltas=delta.argumentTypeDeltas)$
+>>
+
+
+SigPrimitiveTypeDelta(delta) ::= "from $delta.from$ to $delta.to$"
+
+SigTypeDelta(delta) ::= "from $ElementType(element=delta.from)$ to $ElementType(element=delta.to)$"
+
+SigTypeVariableReferenceDelta(delta) ::= <<
+SigTypeVariableReferenceDelta:
+$delta$
+>>
+
+SigTypeVariableDefinitionDelta(delta) ::= <<
+$SingleSubDelta(desc="Upper Bound changed:", delta=delta.upperBoundsDelta)$
+$SingleSubDelta(desc="Declaration changed:", delta=delta.genericDeclarationDelta)$
+>>
+
+SigUpperBoundsDelta(delta) ::= <<
+$SingleSubDelta(desc="First Upper Bound changed:", delta=delta.firstUpperBoundDelta)$
+$MultiSubDelta(desc="Upper Bounds changed:", deltas=delta.remainingUpperBoundDeltas)$
+>>
+
+SigWildcardTypeDelta(delta) ::= <<
+$SingleSubDelta(desc="Lower Bound changed:", delta=delta.lowerBoundDelta)$
+$SingleSubDelta(desc="Upper Bounds changed:", delta=delta.upperBoundDelta)$
+>>
+
+SigAnnotationFieldDelta(delta) ::= <<
+$SigFieldDelta(delta = delta)$
+$SingleSubDelta(desc="Default value changed:", delta=delta.defaultValueDelta)$
+>>
+
+SingleSubDelta(desc, delta) ::= <<
+$if(delta)$
+$desc$
+<ul>
+  <li>$DeltaTypeSwitch(delta=delta)$</li>
+</ul>
+$endif$
+>>
+
+

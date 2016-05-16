@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+           xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- Label for this app's shared user ID (and thus for all other
+         apps sharing the uid). -->
+    <string name="sharedUserLabel">Android Core Apps</string>
+
+    <!-- This is the label for the application that stores contacts data -->
+    <string name="app_label">Contacts Storage</string>
+
+    <!-- What to show in messaging that refers to this provider, e.g. AccountSyncSettings -->
+    <string name="provider_label">Contacts</string>
+
+    <!-- [CHAR LIMIT=NONE] Boot message while upgrading contacts. -->
+    <string name="upgrade_msg">Upgrading contacts database.</string>
+
+    <!-- Ticker for the notification shown when updating contacts fails because of memory shortage -->
+    <string name="upgrade_out_of_memory_notification_ticker">Contacts upgrade needs more memory.</string>
+
+    <!-- Title for the notification shown when updating contacts fails because of memory shortage -->
+    <string name="upgrade_out_of_memory_notification_title">Upgrading storage for contacts</string>
+
+    <!-- Text for the notification shown when updating contacts fails because of memory shortage -->
+    <string name="upgrade_out_of_memory_notification_text">Touch to complete the upgrade.</string>
+
+    <!-- The name of the default contact directory -->
+    <string name="default_directory">Contacts</string>
+
+    <!-- The name of the invisible local contact directory -->
+    <string name="local_invisible_directory">Other</string>
+
+    <!-- Title of an application permission, listed so the user can choose whether they want to
+     allow the application to do this.  [CHAR LIMIT=NONE] -->
+    <string name="read_write_all_voicemail_label">Access all voicemails</string>
+    <!-- Description of an application permission, listed so the user can choose whether
+         they want to allow the application to do this. [CHAR LIMIT=NONE] -->
+    <string name="read_write_all_voicemail_description">Allows the app to store and retrieve
+        all voicemails that this device can access.</string>
+
+    <!-- The prefix string before the number used for the display name for the voicemail table.
+         Because of the way this is combined in SQL we can't allow a generic format string.
+         The resulting string will be this string with the number appended to the end.
+         Note that the trailing space is important, and that to achieve it we have to wrap the
+         string in double quotes. -->
+    <string name="voicemail_from_column">"Voicemail from "</string>
+
+    <!-- Debug tool - title of the dialog which copies the contact database into the external storage. [CHAR LIMIT=NONE] -->
+    <string name="debug_dump_title">Copy contacts database</string>
+
+    <!-- Debug tool - message shown to the user on the dialog which sends a copy of  the contact database via email or other apps. [CHAR LIMIT=NONE] -->
+    <string name="debug_dump_database_message">You are about to 1) make a copy of your database which includes all contacts related information and all call log to the internal storage, and 2) email it.  Remember to delete the copy as soon as you have successfully copied it off the device or the email is received.</string>
+
+    <!-- Debug tool - dialog button- delete file now [CHAR LIMIT=NONE] -->
+    <string name="debug_dump_delete_button">Delete now</string>
+
+    <!-- Debug tool - dialog button - start copying [CHAR LIMIT=NONE] -->
+    <string name="debug_dump_start_button">Start</string>
+
+    <!-- Debug tool - email subject [CHAR LIMIT=NONE] -->
+    <string name="debug_dump_email_sender_picker">Choose a program to send your file</string>
+
+    <!-- Debug tool - email subject [CHAR LIMIT=NONE] -->
+    <string name="debug_dump_email_subject">Contacts Db attached</string>
+
+    <!-- Debug tool - email body [CHAR LIMIT=NONE] -->
+    <string name="debug_dump_email_body">Attached is my contacts database with all my contacts information.  Handle with care.</string>
+
+</resources>

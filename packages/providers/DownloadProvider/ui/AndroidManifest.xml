@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.android.providers.downloads.ui"
+        android:sharedUserId="android.media">
+
+    <uses-permission android:name="android.permission.SEND_DOWNLOAD_COMPLETED_INTENTS" />
+    <uses-permission android:name="android.permission.ACCESS_ALL_DOWNLOADS" />
+
+    <application android:process="android.process.media"
+                 android:label="@string/app_label"
+                 android:icon="@mipmap/ic_launcher_download"
+                 android:hardwareAccelerated="true"
+                 android:supportsRtl="true"
+                 android:requiredForAllUsers="true">
+
+        <activity
+            android:name=".DownloadList"
+            android:theme="@android:style/Theme.NoDisplay">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW_DOWNLOADS" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".TrampolineActivity"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:permission="android.permission.MANAGE_DOCUMENTS">
+            <intent-filter>
+                <action android:name="android.provider.action.MANAGE_DOCUMENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data
+                    android:scheme="content"
+                    android:host="com.android.providers.downloads.documents"
+                    android:mimeType="*/*" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

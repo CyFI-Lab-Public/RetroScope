@@ -1,0 +1,198 @@
+# Copyright 2013 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+Android Camera Imaging Test Suite (ITS)
+=======================================
+
+1. Introduction
+---------------
+
+The ITS is a framework for running tests on the images produced by an Android
+camera. The general goal of each test is to configure the camera in a desired
+manner and capture one or more shots, and then examine the shots to see if
+they contain the expected image data. Many of the tests will require that the
+camera is pointed at a specific target chart or be illuminated at a specific
+intensity.
+
+2. Setup
+--------
+
+There are two components to the ITS:
+1. The Android device running ItsService.apk.
+2. A host machine connected to the Android device that runs Python tests.
+
+2.1. Device setup
+-----------------
+
+Build and install ItsService.apk for your device. After setting up your
+shell for Android builds, from the pdk/apps/CameraITS directory run the
+following commands:
+
+    cd service
+    mm
+    adb install -r <YOUR_OUTPUT_PATH>/ItsService.apk
+
+using whatever path is appropriate to your output ItsService.apk file.
+
+2.2. Host PC setup
+------------------
+
+The first pre-requisite is the Android SDK, as adb is used to communicate with
+the device.
+
+The test framework is based on Python on the host machine. It requires
+Python 2.7 and the scipy/numpy stack, including the Python Imaging Library.
+
+(For Ubuntu users)
+
+    sudo apt-get install python-numpy python-scipy python-matplotlib
+
+(For other users)
+
+All of these pieces can be installed on your host machine separately,
+however it is highly recommended to install a bundled distribution of
+Python that comes with these modules. Some different bundles are listed
+here:
+
+    http://www.scipy.org/install.html
+
+Of these, Anaconda has been verified to work with these scripts, and it is
+available on Mac, Linux, and Windows from here:
+
+    http://continuum.io/downloads
+
+Note that the Anaconda python executable's directory must be at the front of
+your PATH environment variable, assuming that you are using this Python
+distribution. The Anaconda installer may set this up for you automatically.
+
+Once your Python installation is ready, set up the test environment.
+
+2.2.1. Linux + Mac OS X
+-----------------------
+
+On Linux or Mac OS X, run the following command (in a terminal) from the
+pdk/apps/CameraITS directory, from a bash shell:
+
+    source build/envsetup.sh
+
+This will do some basic sanity checks on your Python installation, and set up
+the PYTHONPATH environment variable.
+
+2.2.2. Windows
+--------------
+
+On Windows, the bash script won't run (unless you have cygwin (which has not
+been tested)), but all you need to do is set your PYTHONPATH environment
+variable in your shell to point to the pdk/apps/CameraITS/pymodules directory,
+giving an absolute path. Without this, you'll get "import" errors when running
+the test scripts.
+
+3. Python framework overview
+----------------------------
+
+The Python modules are under the pymodules directory, in the "its" package.
+
+* its.device: encapsulates communication with ItsService.apk service running
+  on the device
+* its.objects: contains a collection of functions for creating Python objects
+  corresponding to the Java objects which ItsService.apk uses
+* its.image: contains a collection of functions (built on numpy arrays) for
+  processing captured images
+* its.error: the exception/error class used in this framework
+
+All of these module have associated unit tests; to run the unit tests, execute
+the modules (rather than importing them).
+
+3.1. Device control
+-------------------
+
+The its.device.ItsSession class encapsulates a session with a connected device
+under test (which is running ItsService.apk).
+
+As an overview, the ItsSession.do_capture() function takes a Python dictionary
+object as an argument, converts that object to JSON, and sends it to the
+device over adb which then deserializes from the JSON object representation to
+Camera2 Java objects (CaptureRequests) which are used to specify one or more
+captures. Once the captures are complete, the resultant images are copied back
+to the host machine (using adb pull), along with JSON representations of the
+CaptureResult and other objects that describe the shot that was actually taken.
+
+The Python capture request object(s) can contain key/value entries corresponding
+to any of the Java CaptureRequest object fields.
+
+The output surface's width, height, and format can also be specified. Currently
+supported formats are "jpg" and "yuv", where "yuv" is YUV420 fully planar. The
+default output surface is a full sensor YUV420 frame.
+
+The metadata that is returned along with the captured images is also in JSON
+format, serialized from the CaptureRequest and CaptureResult objects that were
+passed to the capture listener, as well as the CameraProperties object.
+
+3.2. Image processing and analysis
+----------------------------------
+
+The its.image module is a collection of Python functions, built on top of numpy
+arrays, for manipulating captured images. Some functions of note include:
+
+    load_yuv420_to_rgb_image
+    apply_lut_to_image
+    apply_matrix_to_image
+    write_image
+
+The scripts in the tests directory make use of these modules.
+
+Note that it's important to do heavy image processing using the efficient numpy
+ndarray operations, rather than writing complex loops in standard Python to
+process pixels. Refer to online docs and examples of numpy for information on
+this.
+
+3.3. Tests
+----------
+
+The tests directory contains a number of self-contained test scripts. All
+tests should pass if the tree is in a good state.
+
+Most of the tests save various files in the current directory. To have all the
+output files put into a separate directory, run the script from that directory,
+for example:
+
+    mkdir out
+    cd out
+    python ../tests/test_linearity.py
+
+Any test can be specified to reboot the camera prior to capturing any shots, by
+adding a "reboot" or "reboot=N" command line argument, where N is the number of
+seconds to wait after rebooting the device before sending any commands; the
+default is 30 seconds.
+
+    python tests/test_linearity.py reboot
+    python tests/test_linearity.py reboot=20
+
+3.4. Docs
+---------
+
+The pydoc tool can generate HTML docs for the ITS Python modules, using the
+following command (run after PYTHONPATH has been set up as described above):
+
+    pydoc -w its its.device its.image its.error its.objects
+
+4. Known issues
+---------------
+
+The Python test scripts don't work if multiple devices are connected to the
+host machine; currently, the its.device module uses a simplistic "adb -d"
+approach to communicating with the device, assuming that there is only one
+device connected. Fixing this is a TODO.
+

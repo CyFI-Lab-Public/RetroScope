@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (C) 2008 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+<screenplay>
+     <paint id="paint" antiAlias="true">
+         <color id="col" color="gray"/>
+     </paint>
+     <event kind="onLoad">
+         <add id="addPaint" use="paint"/>
+         <text y="15" text="hello"/>
+     </event>
+     <event kind="keyPress" code="up">
+         <apply scope="addPaint">
+             <set target="paint" field="linearText" to="true"/>
+             <set target="col" field="color" to="black"/>
+             <animate target="paint" id="grow" field="textSize" from="12" to="15" dur=".25"/>
+         </apply>
+     </event>
+     <event kind="onEnd" target="grow">
+         <apply scope="addPaint">
+             <set target="paint" field="linearText" to="false"/>
+         </apply>
+     </event>
+     <event kind="keyPress" code="down">
+         <apply scope="addPaint">
+             <set target="col" field="color" to="gray"/>
+             <animate target="paint" id="shrink" field="textSize" from="15" to="12" dur=".25"/>
+         </apply>
+     </event>
+     <event kind="onEnd" target="shrink">
+         <apply scope="addPaint">
+             <set target="paint" field="linearText" to="false"/>
+         </apply>
+     </event>
+ </screenplay>

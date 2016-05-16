@@ -1,0 +1,47 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:id="@+id/menu_share"
+        android:actionProviderClass="android.widget.ShareActionProvider"
+        android:showAsAction="never"
+        android:enabled="false"
+        android:visible="false"
+        android:title="@string/share"/>
+    <item
+        android:id="@+id/undoButton"
+        android:icon="@drawable/filtershow_button_undo"
+        android:showAsAction="always"
+        android:title="@string/filtershow_undo"/>
+    <item
+        android:id="@+id/redoButton"
+        android:icon="@drawable/filtershow_button_redo"
+        android:showAsAction="always"
+        android:title="@string/filtershow_redo"/>
+    <item
+        android:id="@+id/resetHistoryButton"
+        android:title="@string/reset"/>
+    <item
+        android:id="@+id/showInfoPanel"
+        android:showAsAction="never"
+        android:visible="true"
+        android:title="@string/filtershow_show_info_panel" />
+    <item
+        android:id="@+id/showImageStateButton"
+        android:showAsAction="never"
+        android:visible="true"
+        android:title="@string/show_imagestate_panel" />
+    <item
+        android:id="@+id/manageUserPresets"
+        android:showAsAction="never"
+        android:visible="false"
+        android:title="@string/filtershow_manage_preset" />
+    <item
+        android:id="@+id/exportFlattenButton"
+        android:showAsAction="never"
+        android:visible="true"
+        android:title="@string/export_image" />
+    <item
+        android:id="@+id/printButton"
+        android:showAsAction="never"
+        android:visible="true"
+        android:title="@string/print_image"/>
+</menu>

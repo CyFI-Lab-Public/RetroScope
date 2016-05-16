@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- non-xlarge -->
+
+<resources>
+    <dimen name="button_minWidth">100sp</dimen>
+
+    <!-- Account settings fragments -->
+    <dimen name="settings_fragment_padding_top">16dip</dimen>
+    <dimen name="settings_fragment_padding_left">16dip</dimen>
+    <dimen name="settings_fragment_padding_right">16dip</dimen>
+
+    <!-- Account setup fragments -->
+    <dimen name="setup_fragment_padding_top">16dip</dimen>
+    <dimen name="setup_fragment_padding_left">16dip</dimen>
+    <dimen name="setup_fragment_padding_right">16dip</dimen>
+
+    <!-- inset distance for settings buttons -->
+    <dimen name="settings_buttons_padding_top">48dip</dimen>
+    <dimen name="settings_buttons_padding_bottom">48dip</dimen>
+
+    <!-- In setup screens, the inset for all items below the headline+hairline -->
+    <dimen name="setup_item_inset_left">0dip</dimen>
+    <dimen name="setup_item_inset_right">0dip</dimen>
+
+    <!-- Username/password entry -->
+    <dimen name="setup_credentials_input_width">340dip</dimen>
+
+    <!-- Notification dialog -->
+    <dimen name="dialog_text_size">10sp</dimen>
+    <dimen name="dialog_padding_left">10sp</dimen>
+    <dimen name="dialog_padding_other">4sp</dimen>
+</resources>

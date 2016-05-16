@@ -1,0 +1,216 @@
+1 0 {
+2    _id=1
+3    account_name=non_syncable
+4    account_type=com.google
+5    deleted=0
+6    dirty=1
+7    sourceid=null
+8    version=1
+9    sync1=null
+10    sync2=null
+11    sync3=null
+12    sync4=null
+13    display_name_source=40
+14    display_name=Lemmy Test
+15    display_name_alt=Test, Lemmy
+16    sort_key=Lemmy Test
+17    sort_key_alt=Test, Lemmy
+18 }
+19 1 {
+20    _id=2
+21    account_name=lemmytest@gmail.com
+22    account_type=com.google
+23    deleted=0
+24    dirty=0
+25    sourceid=561d08a30def1f46
+26    version=1
+27    sync1=1268764045346000
+28    sync2=null
+29    sync3=null
+30    sync4=null
+31    display_name_source=20
+32    display_name=698-147-02
+33    display_name_alt=698-147-02
+34    sort_key=698-147-02
+35    sort_key_alt=698-147-02
+36 }
+37 2 {
+38    _id=3
+39    account_name=lemmytest@gmail.com
+40    account_type=com.google
+41    deleted=0
+42    dirty=0
+43    sourceid=506b6479896c635d
+44    version=1
+45    sync1=1268764047603000
+46    sync2=null
+47    sync3=null
+48    sync4=null
+49    display_name_source=40
+50    display_name=Mail
+51    display_name_alt=Mail
+52    sort_key=Mail
+53    sort_key_alt=Mail
+54 }
+55 3 {
+56    _id=4
+57    account_name=lemmytest@gmail.com
+58    account_type=com.google
+59    deleted=0
+60    dirty=0
+61    sourceid=192ec38f0de81866
+62    version=1
+63    sync1=1268764074839000
+64    sync2=null
+65    sync3=null
+66    sync4=null
+67    display_name_source=10
+68    display_name=mail@dom.com
+69    display_name_alt=mail@dom.com
+70    sort_key=mail@dom.com
+71    sort_key_alt=mail@dom.com
+72 }
+73 4 {
+74    _id=5
+75    account_name=lemmytest@gmail.com
+76    account_type=com.google
+77    deleted=0
+78    dirty=0
+79    sourceid=3e879d80b2673fc
+80    version=1
+81    sync1=1268764126701000
+82    sync2=null
+83    sync3=null
+84    sync4=null
+85    display_name_source=40
+86    display_name=Number
+87    display_name_alt=Number
+88    sort_key=Number
+89    sort_key_alt=Number
+90 }
+91 5 {
+92    _id=6
+93    account_name=lemmytest@gmail.com
+94    account_type=com.google
+95    deleted=0
+96    dirty=0
+97    sourceid=4413217a0a1f5437
+98    version=1
+99    sync1=1268764154975000
+100    sync2=null
+101    sync3=null
+102    sync4=null
+103    display_name_source=40
+104    display_name=Number And Mail
+105    display_name_alt=Mail, Number And
+106    sort_key=Number And Mail
+107    sort_key_alt=Mail, Number And
+108 }
+109 6 {
+110    _id=7
+111    account_name=lemmytest@gmail.com
+112    account_type=com.google
+113    deleted=0
+114    dirty=1
+115    sourceid=null
+116    version=1
+117    sync1=null
+118    sync2=null
+119    sync3=null
+120    sync4=null
+121    display_name_source=40
+122    display_name=Not Synced Number
+123    display_name_alt=Number, Not Synced
+124    sort_key=Not Synced Number
+125    sort_key_alt=Number, Not Synced
+126 }
+127 7 {
+128    _id=8
+129    account_name=lemmytest@gmail.com
+130    account_type=com.google
+131    deleted=0
+132    dirty=1
+133    sourceid=null
+134    version=1
+135    sync1=null
+136    sync2=null
+137    sync3=null
+138    sync4=null
+139    display_name_source=40
+140    display_name=Not Synced NumberMail
+141    display_name_alt=NumberMail, Not Synced
+142    sort_key=Not Synced NumberMail
+143    sort_key_alt=NumberMail, Not Synced
+144 }
+145 8 {
+146    _id=9
+147    account_name=lemmytest@gmail.com
+148    account_type=com.google
+149    deleted=0
+150    dirty=1
+151    sourceid=null
+152    version=1
+153    sync1=null
+154    sync2=null
+155    sync3=null
+156    sync4=null
+157    display_name_source=40
+158    display_name=Not Synced Mail
+159    display_name_alt=Mail, Not Synced
+160    sort_key=Not Synced Mail
+161    sort_key_alt=Mail, Not Synced
+162 }
+163 9 {
+164    _id=10
+165    account_name=lemmytest@gmail.com
+166    account_type=com.google
+167    deleted=0
+168    dirty=1
+169    sourceid=null
+170    version=1
+171    sync1=null
+172    sync2=null
+173    sync3=null
+174    sync4=null
+175    display_name_source=40
+176    display_name=Not Synced
+177    display_name_alt=Synced, Not
+178    sort_key=Not Synced
+179    sort_key_alt=Synced, Not
+180 }
+181 10 {
+182    _id=11
+183    account_name=lemmytest@gmail.com
+184    account_type=com.google
+185    deleted=0
+186    dirty=1
+187    sourceid=null
+188    version=1
+189    sync1=null
+190    sync2=null
+191    sync3=null
+192    sync4=null
+193    display_name_source=20
+194    display_name=1111111111
+195    display_name_alt=1111111111
+196    sort_key=1111111111
+197    sort_key_alt=1111111111
+198 }
+199 11 {
+200    _id=12
+201    account_name=lemmytest@gmail.com
+202    account_type=com.google
+203    deleted=0
+204    dirty=1
+205    sourceid=null
+206    version=1
+207    sync1=null
+208    sync2=null
+209    sync3=null
+210    sync4=null
+211    display_name_source=10
+212    display_name=notsynced@gmail.com
+213    display_name_alt=notsynced@gmail.com
+214    sort_key=notsynced@gmail.com
+215    sort_key_alt=notsynced@gmail.com
+216 }

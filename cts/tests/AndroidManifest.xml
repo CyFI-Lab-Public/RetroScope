@@ -1,0 +1,1028 @@
+<!--
+ * Copyright (C) 2008 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.android.cts.stub">
+
+    <permission android:name="android.app.cts.permission.TEST_GRANTED"
+        android:protectionLevel="normal"
+            android:label="@string/permlab_testGranted"
+            android:description="@string/permdesc_testGranted">
+        <meta-data android:name="android.app.cts.string" android:value="foo" />
+        <meta-data android:name="android.app.cts.boolean" android:value="true" />
+        <meta-data android:name="android.app.cts.integer" android:value="100" />
+        <meta-data android:name="android.app.cts.color" android:value="#ff000000" />
+        <meta-data android:name="android.app.cts.float" android:value="100.1" />
+        <meta-data android:name="android.app.cts.reference" android:resource="@xml/metadata" />
+    </permission>
+
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.SET_TIME_ZONE" />
+    <uses-permission android:name="android.permission.WRITE_CALL_LOG" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_SOCIAL_STREAM" />
+    <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_SOCIAL_STREAM" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.DEVICE_POWER" />
+    <uses-permission android:name="android.permission.STATUS_BAR" />
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.PERSISTENT_ACTIVITY" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_OWNER_DATA" />
+    <uses-permission android:name="android.permission.READ_OWNER_DATA" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.DELETE_CACHE_FILES" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.ADD_SYSTEM_SERVICE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.app.cts.permission.TEST_GRANTED" />
+    <uses-permission android:name="android.permission.INJECT_EVENTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.DUMP" />
+    <uses-permission android:name="android.permission.NFC" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER_HINTS" />
+    <uses-permission android:name="com.android.voicemail.permission.ADD_VOICEMAIL" />
+
+    <!-- Used for PackageManager test, don't delete this INTERNET permission -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.SET_PREFERRED_APPLICATIONS" />
+    <uses-permission android:name="android.permission.INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
+    <uses-permission android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS" />
+    <uses-permission android:name="android.permission.WRITE_USER_DICTIONARY" />
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+
+    <!-- telephony provider tests -->
+    <uses-permission android:name="android.permission.READ_SMS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
+
+    <!-- content sync tests -->
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+
+    <!-- Used for ClonedSecureRandomTest -->
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
+
+    <!-- Used for Transmit IR Test -->
+    <uses-permission android:name="android.permission.TRANSMIT_IR" />
+
+    <!-- Used for PackageManager test, don't delete this permission-tree -->
+    <permission-tree android:name="com.android.cts.stub.permission.TEST_DYNAMIC"
+                    android:label="Test Tree"/>
+
+    <!-- Used for PackageManager test, don't delete this permission-group -->
+    <permission-group android:name="android.permission-group.COST_MONEY"/>
+    <!-- Used for PackageManager test, don't delete! -->
+    <uses-configuration/>
+
+    <application android:label="Android TestCase"
+                android:icon="@drawable/size_48x48"
+                android:name="android.app.cts.MockApplication"
+                android:supportsRtl="true">
+
+        <activity android:name="android.app.cts.ActionBarActivity" />
+        <activity android:name="android.widget.cts.TwoLineListItemStubActivity"
+            android:label="TwoLineListItemStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.view.cts.ViewStubStubActivity"
+            android:label="ViewStubStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.ViewFlipperStubActivity"
+            android:label="ViewFlipperStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.app.cts.DialogStubActivity"
+            android:label="DialogStubActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.HorizontalScrollViewStubActivity"
+            android:label="HorizontalScrollViewStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.SlidingDrawerStubActivity"
+            android:label="SlidingDrawerStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.view.cts.UsingViewsStubActivity"
+            android:label="Using Views Test">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+        <activity android:name="android.view.cts.FocusHandlingStubActivity"
+            android:label="Focus Handling Test">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+        <activity android:name="android.app.cts.MockActivity" android:label="MockActivity">
+            <meta-data android:name="android.app.alias"
+                android:resource="@xml/alias" />
+            <meta-data android:name="android.app.intent.filter"
+                android:resource="@xml/intentfilter" />
+            <meta-data android:name="android.widget.layout"
+                android:resource="@xml/layout" />
+            <meta-data android:name="android.view.merge"
+                android:resource="@xml/merge" />
+        </activity>
+
+        <activity android:name="android.widget.cts.DigitalClockStubActivity"
+            android:label="DigitalClockStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.ImageViewStubActivity"
+            android:label="ImageViewStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.SeekBarStubActivity"
+            android:label="SeekBarStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.ScrollViewStubActivity"
+            android:label="ScrollViewStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.FrameLayoutStubActivity"
+            android:label="FrameLayoutStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.LinearLayoutStubActivity"
+            android:label="LinearLayoutStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.GridLayoutStubActivity"
+            android:label="GridLayoutStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.LayoutDirectionStubActivity"
+            android:label="LayoutDirectionStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.ProgressBarStubActivity"
+            android:label="ProgressBarStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.ChronometerStubActivity"
+            android:label="ChronometerStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.MediaControllerStubActivity"
+            android:label="MediaControllerStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.RatingBarStubActivity"
+            android:label="RatingBarStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.RemoteViewsStubActivity"
+            android:label="RemoteViewsStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.view.cts.ViewGroupStubActivity" android:label="ViewGroupStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+        <activity android:name="android.view.cts.ViewTestStubActivity"
+            android:label="ViewTestStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+        <activity android:name="android.view.cts.ViewLayoutPositionTestStubActivity"
+            android:label="ViewTestStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.view.cts.WindowStubActivity"
+            android:theme="@android:style/Theme.Holo.NoActionBar"
+            android:label="WindowStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.ViewGroupStubActivity"
+            android:label="WidgetViewGroupStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.VideoViewStubActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+            android:label="VideoViewStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.AutoCompleteStubActivity"
+            android:label="AutoCompleteStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.ViewAnimatorStubActivity" android:label="ViewAnimatorStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.GridViewStubActivity"
+            android:label="GridViewStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.RelativeLayoutStubActivity"
+            android:label="RelativeLayoutStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.FrameLayoutStubActivity"
+            android:label="FrameLayoutStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <service android:name="android.content.cts.MockContextWrapperService" />
+        <activity android:name=".content.ContextWrapperStubActivity"
+            android:label="ContextWrapperStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="android.content.cts.MockReceiverFirst">
+            <intent-filter android:priority="3">
+                <action android:name="android.content.cts.BroadcastReceiverTest.BROADCAST_TESTABORT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="android.content.cts.MockReceiverAbort">
+            <intent-filter android:priority="2">
+                <action android:name="android.content.cts.BroadcastReceiverTest.BROADCAST_TESTABORT" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name="android.content.cts.MockReceiver">
+            <intent-filter android:priority="1">
+                <action android:name="android.content.cts.BroadcastReceiverTest.BROADCAST_MOCKTEST" />
+                <action android:name="android.content.cts.BroadcastReceiverTest.BROADCAST_TESTABORT" />
+                <action android:name="android.content.cts.ContextWrapperTest.BROADCAST_TESTORDER" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name="android.provider.cts.BrowserStubActivity"
+            android:label="BrowserStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.content.cts.AvailableIntentsActivity"
+            android:label="AvailableIntentsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.text.cts.EmojiStubActivity"
+            android:label="AvailableIntentsActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.TableStubActivity"
+            android:label="TableStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.TabHostStubActivity"
+            android:label="TabHostStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.view.animation.cts.AnimationTestStubActivity"
+            android:label="AnimationTestStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.view.animation.cts.GridLayoutAnimStubActivity"
+            android:label="GridLayoutAnimStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.view.animation.cts.LayoutAnimStubActivity"
+            android:label="LayoutAnimStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.webkit.cts.CookieSyncManagerStubActivity"
+            android:label="CookieSyncManagerStubActivity"
+            android:screenOrientation="nosensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.ExpandableListSimple"
+            android:label="ExpandableListSimple">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.StubActivity"
+            android:label="StubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.ExpandableListWithHeaders"
+            android:label="ExpandableListWithHeaders">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.GalleryStubActivity"
+            android:label="GalleryStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.MockPopupWindowStubActivity"
+            android:label="MockPopupWindowStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.ListViewStubActivity"
+            android:label="ListViewStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.TextViewStubActivity"
+            android:label="TextViewStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.DialerFilterStubActivity"
+            android:label="DialerFilterStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+        <activity android:name="android.widget.cts.MultiAutoCompleteTextViewStubActivity"
+            android:label="MultiAutoCompleteTextView Test Activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.AdapterViewStubActivity"
+            android:label="AdapterViewStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.CheckedTextViewStubActivity"
+            android:label="CheckedTextViewStubActivity"/>
+
+        <activity android:name="android.hardware.cts.CameraStubActivity"
+            android:label="CameraStubActivity"
+            android:screenOrientation="landscape"
+            android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
+
+        <activity android:name="android.view.inputmethod.cts.InputMethodStubActivity"
+            android:label="InputMethodStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+        <service android:name="android.view.inputmethod.cts.InputMethodInfoStub"
+            android:label="InputMethodInfoStub">
+            <intent-filter>
+                <action android:name="android.view.InputMethod" />
+            </intent-filter>
+            <meta-data android:name="android.view.im"
+                android:resource="@xml/method" />
+        </service>
+
+        <activity android:name="android.view.cts.MenuInflaterStubActivity"
+                                        android:label="MenuInflaterStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.text.method.cts.KeyListenerStubActivity"
+            android:label="KeyListenerStubActivity"/>
+
+        <activity android:name="android.text.method.cts.StubActivity"
+            android:label="StubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.text.style.cts.URLSpanStubActivity"
+            android:label="URLSpanStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.text.style.cts.MockURLSpanTestActivity"
+            android:label="MockURLSpanTestActivity"
+            android:launchMode="singleTask"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="orientation|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+                <data android:scheme="ctstest" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.widget.cts.ZoomButtonStubActivity"
+            android:label="ZoomButtonStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.view.cts.SurfaceViewStubActivity"
+            android:label="SurfaceViewStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.app.cts.MockApplicationActivity"
+            android:label="MockApplicationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.app.cts.InstrumentationTestActivity"
+            android:label="InstrumentationTestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.dir/person" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.app.cts.AliasActivityStub">
+            <meta-data android:name="android.app.alias"
+                android:resource="@xml/alias" />
+        </activity>
+
+        <activity android:name="android.webkit.cts.WebViewStubActivity"
+            android:label="WebViewStubActivity"
+            android:screenOrientation="nosensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.webkit.cts.WebViewStartupStubActivity"
+            android:label="WebViewStartupStubActivity"
+            android:screenOrientation="nosensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.app.cts.ChildActivity"
+                        android:label="ChildActivity" />
+
+        <receiver android:name="android.app.cts.MockReceiver">
+            <intent-filter>
+                <action android:name="android.app.cts.PendingIntentTest.TEST_RECEIVER" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="android.app.cts.MockService" />
+
+        <activity android:name="android.app.cts.SearchManagerStubActivity"
+                android:label="SearchManagerStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <meta-data android:name="android.app.searchable" android:resource="@xml/searchable" />
+        </activity>
+
+        <service android:name="android.app.cts.LocalService">
+            <intent-filter>
+                <action android:name="android.app.cts.activity.SERVICE_LOCAL" />
+            </intent-filter>
+            <meta-data android:name="android.app.cts.string" android:value="foo" />
+            <meta-data android:name="android.app.cts.boolean" android:value="true" />
+            <meta-data android:name="android.app.cts.integer" android:value="100" />
+            <meta-data android:name="android.app.cts.color" android:value="#ff000000" />
+            <meta-data android:name="android.app.cts.float" android:value="100.1" />
+            <meta-data android:name="android.app.cts.reference" android:resource="@xml/metadata" />
+        </service>
+
+        <service android:name="android.app.cts.LocalGrantedService"
+             android:permission="android.app.cts.permission.TEST_GRANTED">
+            <intent-filter>
+                <action android:name="android.app.cts.activity.SERVICE_LOCAL_GRANTED" />
+            </intent-filter>
+        </service>
+
+        <service android:name="android.app.cts.LocalDeniedService"
+               android:permission="android.app.cts.permission.TEST_DENIED">
+            <intent-filter>
+                <action android:name="android.app.cts.activity.SERVICE_LOCAL_DENIED" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="android.app.cts.TestedScreen"
+                android:process=":remoteScreen">
+        </activity>
+        <activity android:name="android.app.cts.LocalScreen" android:multiprocess="true">
+        </activity>
+        <activity android:name="android.app.cts.ClearTop" android:multiprocess="true"
+               android:launchMode="singleTop">
+        </activity>
+        <activity android:name="android.app.cts.LocalDialog" android:multiprocess="true"
+               android:theme="@android:style/Theme.Dialog">
+        </activity>
+
+        <activity android:name="android.app.cts.PendingIntentStubActivity"
+             android:label="PendingIntentStubActivity"/>
+
+        <activity android:name="android.app.cts.LocalActivityManagerStubActivity"
+                        android:label="LocalActivityManagerStubActivity" />
+
+        <activity android:name="android.app.cts.LocalActivityManagerTestHelper"
+            android:label="LocalActivityManagerTestHelper" />
+
+        <activity android:name="android.app.cts.LaunchpadTabActivity" android:multiprocess="true">
+        </activity>
+
+        <activity android:name="android.app.cts.LocalActivity" android:multiprocess="true">
+            <meta-data android:name="android.app.cts.string" android:value="foo" />
+            <meta-data android:name="android.app.cts.boolean" android:value="true" />
+            <meta-data android:name="android.app.cts.integer" android:value="100" />
+            <meta-data android:name="android.app.cts.color" android:value="#ff000000" />
+            <meta-data android:name="android.app.cts.float" android:value="100.1" />
+            <meta-data android:name="android.app.cts.reference" android:resource="@xml/metadata" />
+        </activity>
+
+        <activity android:name="android.app.cts.TestedActivity"
+                android:process=":remoteActivity">
+        </activity>
+
+        <activity android:name="android.app.cts.ExpandableListTestActivity"
+            android:label="ExpandableListTestActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.view.cts.FocusFinderStubActivity"
+            android:label="FocusFinderStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.view.cts.GestureDetectorStubActivity"
+            android:label="GestureDetectorStubActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
+
+        <!--Test for PackageManager-->
+        <activity android:name="android.content.pm.cts.TestPmActivity"
+                android:icon="@drawable/start">
+            <intent-filter>
+                <action android:name="android.intent.action.PMTEST" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+            <meta-data android:name="android.content.pm.cts.xmltest" android:resource="@xml/pm_test" />
+        </activity>
+        <activity android:name="android.content.pm.cts.TestPmCompare">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.INFO" />
+            </intent-filter>
+        </activity>
+        <!--Test for PackageManager-->
+        <service android:name="android.content.pm.cts.TestPmService">
+            <intent-filter>
+                <action android:name="android.content.pm.cts.activity.PMTEST_SERVICE" />
+            </intent-filter>
+        </service>
+        <!--Test for PackageManager-->
+        <receiver android:name="android.content.pm.cts.PmTestReceiver">
+            <intent-filter>
+                <action android:name="android.content.pm.cts.PackageManagerTest.PMTEST_RECEIVER" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Used for PackageManager test, don't delete this MockContentProvider provider -->
+        <provider android:name="android.content.cts.MockContentProvider" android:authorities="ctstest"
+            android:multiprocess="false" />
+        <provider android:name="android.content.cts.DummyProvider"
+            android:authorities="android.content.cts.dummyprovider"
+            android:multiprocess="true" />
+        <provider android:name="android.content.cts.MockRemoteContentProvider"
+            android:authorities="remotectstest"
+            android:process=":remoteprovider" android:multiprocess="false" />
+
+        <activity android:name="android.app.cts.ChildTabActivity" android:label="ChildTabActivity" />
+
+        <activity android:name="android.app.cts.LauncherActivityStub"
+                  android:label="LauncherActivityStub" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.app.cts.MockTabActivity" android:label="MockTabActivity" />
+
+        <activity android:name="android.app.cts.AppStubActivity" android:label="AppStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.app.cts.DialogStubActivity"
+            android:label="DialogStubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.app.cts.ActivityManagerStubFooActivity"
+            android:label="ActivityManagerStubFooActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.app.cts.ActivityManagerRecentOneActivity"
+            android:label="ActivityManagerRecentOneActivity"
+            android:allowTaskReparenting="true"
+            android:taskAffinity="android.app.cts.recentOne">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.app.cts.ActivityManagerRecentTwoActivity"
+            android:label="ActivityManagerRecentTwoActivity"
+            android:allowTaskReparenting="true"
+            android:taskAffinity="android.app.cts.recentTwo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.app.cts.ActivityManagerStubCrashActivity"
+            android:label="ActivityManagerStubCrashActivity"
+            android:multiprocess="true"
+            android:process=":ActivityManagerStubCrashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.text.method.cts.StubActivity"
+            android:label="StubActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <service android:name="android.app.cts.StubRemoteService"
+            android:process=":remote">
+            <intent-filter>
+                <action
+                    android:name="android.app.cts.ISecondary" />
+                <action
+                    android:name="android.app.REMOTESERVICE" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="android.app.ActivityGroup"
+            android:label="ActivityGroup" />
+
+        <activity android:name="android.app.cts.KeyguardManagerActivity"
+            android:label="KeyguardManagerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.os.cts.CountDownTimerTestStub"
+            android:label="CountDownTimerTestStub">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <service android:name="android.os.cts.EmptyService"
+            android:process=":remote">
+            <intent-filter>
+                <action
+                    android:name="android.os.cts.IEmptyService" />
+                <action
+                    android:name="android.os.REMOTESERVICE" />
+            </intent-filter>
+        </service>
+
+        <service android:name="android.os.cts.MessengerService"
+                android:process=":messengerService">
+        </service>
+        <service android:name="android.app.cts.IntentServiceStub"/>
+
+        <activity android:name="android.app.cts.LaunchpadActivity"
+                  android:configChanges="keyboardHidden|orientation|screenSize"
+                  android:multiprocess="true">
+        </activity>
+
+        <service android:name="android.content.cts.MockSyncAdapterService" android:exported="true">
+            <intent-filter>
+                <action android:name="android.content.SyncAdapter" />
+            </intent-filter>
+
+            <meta-data android:name="android.content.SyncAdapter"
+                       android:resource="@xml/syncadapter" />
+        </service>
+
+        <service android:name="android.content.cts.MockAccountService" android:exported="true"
+                 >
+            <intent-filter>
+                <action android:name="android.accounts.AccountAuthenticator" />
+            </intent-filter>
+
+            <meta-data android:name="android.accounts.AccountAuthenticator"
+                       android:resource="@xml/authenticator" />
+        </service>
+
+        <activity android:name="android.opengl.cts.GLSurfaceViewStubActivity"
+                  android:label="GLSurfaceViewStub"/>
+
+        <activity android:name="android.opengl.cts.OpenGlEsVersionStubActivity"/>
+
+        <activity android:name="android.opengl.cts.EglConfigStubActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize|uiMode" />
+
+        <activity android:name="android.opengl.cts.CompressedTextureStubActivity"
+            android:label="CompressedTextureStubActivity"
+            android:screenOrientation="nosensor">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.FRAMEWORK_INSTRUMENTATION_TEST" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="android.preference.cts.PreferenceStubActivity">
+            <meta-data android:name="android.preference"
+                    android:resource="@xml/preferences_from_intent" />
+        </activity>
+
+        <activity android:name="android.content.cts.ClipboardManagerListenerActivity"/>
+
+        <activity android:name="android.app.cts.ActivityManagerMemoryClassLaunchActivity" />
+
+        <activity android:name="android.app.cts.ActivityManagerMemoryClassTestActivity"
+                android:process=":memoryclass" />
+
+        <service android:name="android.speech.tts.cts.StubTextToSpeechService">
+            <intent-filter>
+                <action android:name="android.intent.action.TTS_SERVICE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </service>
+
+        <activity android:name="android.renderscriptgraphics.cts.RenderscriptGLStubActivity"
+                  android:label="RenderscriptGLStub"/>
+
+        <service android:name="android.security.cts.activity.SecureRandomService"
+                 android:process=":secureRandom"/>
+    </application>
+
+
+    <!--Test for PackageManager, please put this at the very beginning-->
+    <instrumentation android:name="android.content.pm.cts.TestPmInstrumentation"
+        android:targetPackage="android"
+        android:label="PackageManager Instrumentation Test" />
+
+</manifest>
+

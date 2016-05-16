@@ -1,0 +1,9 @@
+This is a temporary directory that is being used to enable email and Gmail content to be shown
+in the UnifiedEmail application
+
+This code should only be used for development.  For shipping, this code (or something similar)
+should go in the Gmail/Email overlay of UnifiedEmail.  But for now, this allows us to use a single
+application to test multiple content sources
+
+This code is just a shim to register existing accounts (Gmail and Email) from the device with the
+AccountCacheProvider.  All subsequent uris will actually be handled by the appropriate application.

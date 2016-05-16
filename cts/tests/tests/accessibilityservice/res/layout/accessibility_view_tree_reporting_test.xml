@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLinearLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    android:importantForAccessibility="yes"
+    android:contentDescription="@string/rootLinearLayout">
+
+    <FrameLayout
+        android:id="@+id/firstFrameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="auto"
+        android:clickable="true"
+        android:contentDescription="@string/firstFrameLayout">
+
+      <LinearLayout
+          android:id="@+id/firstLinearLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:layoutDirection="ltr"
+          android:importantForAccessibility="no"
+          android:contentDescription="@string/firstLinearLayout" >
+
+          <TextView
+              android:id="@+id/firstTextView"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/firstTextView" />
+
+          <EditText
+              android:id="@+id/firstEditText"
+              android:layout_width="200dip"
+              android:layout_height="wrap_content"
+              android:contentDescription="@string/firstEditText" />
+
+          <Button
+              android:id="@+id/firstButton"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/firstButton" />
+
+      </LinearLayout>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/secondFrameLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:importantForAccessibility="no"
+        android:contentDescription="@string/secondFrameLayout" >
+
+      <LinearLayout
+          android:id="@+id/secondLinearLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal"
+          android:layoutDirection="rtl"
+          android:contentDescription="@string/secondLinearLayout"
+          android:clickable="true"
+          android:importantForAccessibility="no" >
+
+          <TextView
+              android:id="@+id/secondTextView"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/secondTextView" />
+
+          <EditText
+              android:id="@+id/secondEditText"
+              android:layout_width="200dip"
+              android:layout_height="wrap_content"
+              android:contentDescription="@string/secondEditText" />
+
+          <Button
+              android:id="@+id/secondButton"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="@string/secondButton" />
+
+      </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>

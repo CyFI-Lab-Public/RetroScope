@@ -1,0 +1,31 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetermineFovActivity" >
+
+    <SurfaceView
+        android:id="@+id/camera_fov_photo_surface"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
+    </SurfaceView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+        <SeekBar
+            android:id="@+id/camera_fov_seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true" />
+        <Button
+            android:id="@+id/camera_fov_fov_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/camera_fov_calibration_done"
+            android:layout_above="@id/camera_fov_seekBar"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+</FrameLayout>

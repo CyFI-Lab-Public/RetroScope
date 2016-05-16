@@ -1,0 +1,143 @@
+#
+# Copyright (C) 2010 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+##############################################################################
+# Tools Component
+##############################################################################
+
+#
+# These are the files that comprise the tools component of the SDK.
+#
+
+prebuilts/devtools/tools/lib                        tools/lib
+# manual copy of lombok-ast for now
+prebuilts/tools/common/lombok-ast/lombok-ast-0.2.1.jar tools/lib/lombok-ast-0.2.1.jar
+prebuilts/tools/common/lombok-ast/LICENSE.txt       tools/lib/lombok-ast-NOTICE.txt
+
+prebuilts/devtools/tools/android                    tools/android
+prebuilts/devtools/tools/draw9patch                 tools/draw9patch
+prebuilts/devtools/tools/ddms                       tools/ddms
+prebuilts/devtools/tools/hierarchyviewer            tools/hierarchyviewer
+prebuilts/devtools/tools/jobb                       tools/jobb
+prebuilts/devtools/tools/lint                       tools/lint
+prebuilts/devtools/tools/monkeyrunner               tools/monkeyrunner
+prebuilts/devtools/tools/traceview                  tools/traceview
+prebuilts/devtools/tools/uiautomatorviewer          tools/uiautomatorviewer
+
+prebuilts/devtools/notices/NOTICE.txt               tools/NOTICE.txt
+
+
+# version files for the SDK updater, from sdk.git
+sdk/files/tools_source.properties                   tools/source.properties
+
+# copy plugin.prop from sdk.git
+sdk/files/plugin.prop                               tools/lib/plugin.prop
+
+# readme regarding adb move to platform-tools
+sdk/files/adb_has_moved.txt                         tools/adb_has_moved.txt
+
+# native host tools from out/host/$(HOST_OS)-$(HOST_ARCH)/
+bin/sqlite3                                   strip tools/sqlite3
+bin/dmtracedump                               strip tools/dmtracedump
+bin/etc1tool                                  strip tools/etc1tool
+bin/hprof-conv                                strip tools/hprof-conv
+bin/mksdcard                                  strip tools/mksdcard
+bin/zipalign                                  strip tools/zipalign
+
+# emulator
+bin/emulator                                  strip tools/emulator
+bin/emulator-x86                              strip tools/emulator-x86
+bin/emulator-arm                              strip tools/emulator-arm
+bin/emulator-mips                             strip tools/emulator-mips
+bin/emulator64-x86                            strip tools/emulator64-x86
+bin/emulator64-arm                            strip tools/emulator64-arm
+bin/emulator64-mips                           strip tools/emulator64-mips
+sdk/emulator/snapshot/snapshots.img                 tools/lib/emulator/snapshots.img
+usr/share/pc-bios/bios.bin                          tools/lib/pc-bios/bios.bin
+usr/share/pc-bios/vgabios-cirrus.bin                tools/lib/pc-bios/vgabios-cirrus.bin
+sdk/emulator/skins/dynamic                          tools/lib/emulator/skins/dynamic
+
+# OpenGLES emulation libraries
+lib/libOpenglRender${DLL_EXTENSION}           strip tools/lib/libOpenglRender${DLL_EXTENSION}
+lib/libGLES_CM_translator${DLL_EXTENSION}     strip tools/lib/libGLES_CM_translator${DLL_EXTENSION}
+lib/libGLES_V2_translator${DLL_EXTENSION}     strip tools/lib/libGLES_V2_translator${DLL_EXTENSION}
+lib/libEGL_translator${DLL_EXTENSION}         strip tools/lib/libEGL_translator${DLL_EXTENSION}
+lib/lib64OpenglRender${DLL_EXTENSION}         strip tools/lib/lib64OpenglRender${DLL_EXTENSION}
+lib/lib64GLES_CM_translator${DLL_EXTENSION}   strip tools/lib/lib64GLES_CM_translator${DLL_EXTENSION}
+lib/lib64GLES_V2_translator${DLL_EXTENSION}   strip tools/lib/lib64GLES_V2_translator${DLL_EXTENSION}
+lib/lib64EGL_translator${DLL_EXTENSION}       strip tools/lib/lib64EGL_translator${DLL_EXTENSION}
+
+
+# sdk.git Ant and gradle templates for project build files
+sdk/templates/build.template                        tools/lib/build.template
+sdk/templates/uibuild.template                      tools/lib/uibuild.template
+sdk/templates/build_gradle.template                 tools/lib/build_gradle.template
+sdk/files/proguard-project.txt                      tools/lib/proguard-project.txt
+sdk/files/proguard-android.txt                      tools/proguard/proguard-android.txt
+sdk/files/proguard-android-optimize.txt             tools/proguard/proguard-android-optimize.txt
+
+# Ant Build Rules
+sdk/files/ant                                       tools/ant
+sdk/files/sdk_files_NOTICE.txt                      tools/ant/NOTICE.txt
+
+# layout device definition
+sdk/files/devices.xml                               tools/lib/devices.xml
+
+# AVD Hardware property list
+external/qemu/android/avd/hardware-properties.ini   tools/lib/hardware-properties.ini
+
+# emacs support from sdk.git
+sdk/files/android.el tools/lib/android.el
+
+# 3rd Party java libraries
+framework/emmalib.jar                                                               tools/lib/emma_device.jar
+external/emma/lib/emma.jar                                                          tools/lib/emma.jar
+external/emma/lib/emma_ant.jar                                                      tools/lib/emma_ant.jar
+
+# Proguard
+# We're skipping the build and src/ trees (except for src/proguard/ant/task.properties)
+# and copying in a license.html file
+prebuilts/tools/common/proguard/license.html                   tools/proguard/license.html
+prebuilts/tools/common/proguard/proguard4.7/README             tools/proguard/README
+prebuilts/tools/common/proguard/proguard4.7/docs               tools/proguard/docs
+prebuilts/tools/common/proguard/proguard4.7/examples           tools/proguard/examples
+prebuilts/tools/common/proguard/proguard4.7/lib                tools/proguard/lib
+prebuilts/tools/common/proguard/proguard4.7/bin/proguard.sh    tools/proguard/bin/proguard.sh
+prebuilts/tools/common/proguard/proguard4.7/bin/proguardgui.sh tools/proguard/bin/proguardgui.sh
+prebuilts/tools/common/proguard/proguard4.7/bin/retrace.sh     tools/proguard/bin/retrace.sh
+prebuilts/tools/common/proguard/proguard4.7/src/proguard/ant/task.properties  tools/proguard/ant/task.properties
+
+# Templates
+tools/base/templates/projects                  tools/templates/projects
+tools/base/templates/activities                tools/templates/activities
+tools/base/templates/gradle                    tools/templates/gradle
+tools/base/templates/other                     tools/templates/other
+
+# SDK Controller
+sdk/apps/SdkController                  tools/apps/SdkController
+
+# tools specific support jar
+framework/annotations.jar               tools/support/annotations.jar
+
+# Misspelling databases for lint
+sdk/files/typos                         tools/support
+
+##############################################################################
+# Tests Component
+##############################################################################
+
+sdk/testapps                            tests/testapps
+

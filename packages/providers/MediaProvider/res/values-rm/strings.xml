@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2009 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="uid_label" msgid="999888504096344278">"Multimedia"</string>
+    <string name="app_label" msgid="581696352855930028">"Memoria multimedia"</string>
+    <!-- no translation found for upgrade_msg (4093462661265175619) -->
+    <skip />
+    <string name="artist_label" msgid="1181678850424271227">"Artist"</string>
+    <!-- no translation found for ringtone_default (3332469542084549546) -->
+    <skip />
+    <!-- no translation found for notification_sound_default (5309766396223094324) -->
+    <skip />
+    <!-- no translation found for alarm_sound_default (6854264112790616066) -->
+    <skip />
+    <!-- no translation found for root_images (7098113056247445324) -->
+    <skip />
+    <!-- no translation found for root_videos (3304457332406057833) -->
+    <skip />
+    <!-- no translation found for root_audio (7177565505195715659) -->
+    <skip />
+</resources>

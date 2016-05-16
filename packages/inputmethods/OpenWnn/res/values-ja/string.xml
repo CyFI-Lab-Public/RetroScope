@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2008-2012  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<!--
+ Copyright (C) 2008-2011  OMRON SOFTWARE Co., Ltd.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<resources>
+  <!-- common part -->
+    <!-- Preferences -->
+    <string name="preference_ime_setting_app">設定</string>
+
+    <string name="preference_key_setting_menu">キーボード設定</string>
+
+    <string name="preference_key_sound_title">キー操作音</string>
+    <string name="preference_key_sound_summary">キーを押した時に音を鳴らす</string>
+
+    <string name="preference_key_vibration_title">キー操作バイブ</string>
+    <string name="preference_key_vibration_summary">キーを押した時に振動で知らせる</string>
+
+    <string name="preference_preview_title">キーポップアップ</string>
+    <string name="preference_preview_summary">入力時に選択したキーを拡大表示する</string>
+
+    <string name="preference_auto_caps_title">自動大文字変換</string>
+    <string name="preference_auto_caps_summary">英字入力で文頭文字を大文字にする</string>
+
+    <string name="preference_keyboard_skin_title">キーボードのデザイン</string>
+    <string name="preference_keyboard_skin_summary">キーボードのデザインを切り替える</string>
+
+    <string name="preference_keyboard_android_default">標準</string>
+    <string name="preference_keyboard_simple">シンプル</string>
+    <string name="preference_keyboard_metal">メタリック</string>
+
+    <string name="preference_conversion_menu_ja">日本語変換設定</string>
+    <string name="preference_conversion_menu_en">英語変換設定</string>
+
+    <string name="preference_prediction_title_ja">日本語予測変換</string>
+    <string name="preference_prediction_title_en">英語予測変換</string>
+    <string name="preference_prediction_summary">文字を入力すると変換候補を表示する</string>
+
+    <string name="preference_correct_spell_title_en">英語入力ミス補正</string>
+    <string name="preference_correct_spell_summary">入力間違いの修正候補を表示する</string>
+
+    <string name="preference_input_learning_title_ja">日本語候補学習</string>
+    <string name="preference_input_learning_title_en">英語候補学習</string>
+    <string name="preference_input_learning_summary">変換で確定した語句を学習する</string>
+
+    <string name="preference_aboutime_menu">IMEについて</string>
+    
+    <string name="preference_dictionary_menu">辞書</string>
+    <string name="preference_dictionary_menu_ja">日本語ユーザー辞書</string>
+    <string name="preference_dictionary_menu_en">英語ユーザー辞書</string>
+    <string name="preference_dictionary_menu_zhcn">中国語ユーザー辞書</string>
+
+    <string name="preference_user_dictionary">ユーザー辞書</string>
+
+    <string name="preference_user_dictionary_edit_words_title">単語登録/編集/削除</string>
+    <string name="preference_user_dictionary_edit_words_summary">ユーザー辞書の単語を編集する</string>
+    <string name="preference_user_dictionary_edit_words_summary_ja">日本語ユーザー辞書の単語を編集する</string>
+    <string name="preference_user_dictionary_edit_words_summary_en">英語ユーザー辞書の単語を編集する</string>
+    <string name="preference_user_dictionary_edit_words_summary_zhcn">中国語ユーザー辞書の単語を編集する</string>
+    
+    <string name="preference_user_dictionary_clear_learning_title">学習辞書リセット</string>
+    <string name="preference_user_dictionary_clear_learning_summary">学習辞書の内容をすべて消去する</string>
+
+    <string name="preference_user_dictionary_clear_user_title">ユーザー辞書全消去</string>
+    <string name="preference_user_dictionary_clear_user_summary">ユーザー辞書の内容をすべて消去する</string>
+
+    <!-- Dialog Messages -->
+    <string name="dialog_button_ok">OK</string>
+    <string name="dialog_button_cancel">キャンセル</string>
+    <string name="dialog_button_close">閉じる</string>
+
+    <string name="dialog_clear_user_dictionary_message">ユーザー辞書の内容をすべて消去しますか？</string>
+    <string name="dialog_clear_learning_dictionary_message">学習辞書の内容をすべて消去しますか？</string>
+    <string name="dialog_clear_user_dictionary_done">ユーザー辞書の内容をすべて消去しました。</string>
+    <string name="dialog_clear_learning_dictionary_done">学習辞書の内容をすべて消去しました。</string>
+
+    <!-- user dictionary -->
+    <string name="user_dictionary_list_words">単語一覧</string>
+    <string name="user_dictionary_edit_words">単語編集</string>
+    <string name="user_dictionary_title_read">読み</string>
+    <string name="user_dictionary_title_candidate">表記</string>
+    <string name="user_dictionary_add">登録</string>
+    <string name="user_dictionary_edit">編集</string>
+    <string name="user_dictionary_delete">削除</string>
+    <string name="user_dictionary_delete_confirm">選択した単語を削除しますか？</string>
+    <string name="user_dictionary_delete_complete">削除しました。</string>
+    <string name="user_dictionary_delete_fail">削除に失敗しました。</string>
+    <string name="user_dictionary_words_duplication_message">すでに登録されています。</string>
+    <string name="user_dictionary_over_max_text_size_message">登録できる最大文字数を超えています。</string>
+    <string name="user_dictionary_creating_wordlist">生成中</string>
+    <string name="user_dictionary_init">ユーザー辞書全消去</string>
+
+  <!-- IME dependency -->
+    <!-- OpenWnn English -->
+    <string name="openwnn_english_copyright">Ver.1.3.6\nオムロン ソフトウェア(株)</string>
+
+    <!-- OpenWnn Japanese -->
+    <string name="openwnn_japanese_copyright">Ver.1.3.6\nオムロン ソフトウェア(株)</string>
+
+    <!-- OpenWnn Chinese -->
+    <string name="openwnn_china_copyright">Ver.1.3.6\nオムロン ソフトウェア(株)</string>
+
+    <!-- Candidate Delete -->
+    <string name="button_candidate_select">選　択</string>
+    <string name="button_candidate_delete">学習削除</string>
+
+    <!-- Candidate -->
+    <string name="cand_tab_symbol_txt">記号</string>
+    <string name="cand_tab_emoticon_txt">顔文字</string>
+
+    <!-- Symbol -->
+    <string name="half_symbol_txt">記号(半角)</string>
+    <string name="full_symbol_txt">記号(全角)</string>
+
+    <!-- Symbol keyboard -->
+    <string name="key_symbol_mode">戻る</string>
+
+    <!-- Tutorial -->
+    <string name="touch_to_continue">次へ &gt;&gt;</string>
+    <string name="touch_to_try">下のボタンで試してみてください。</string>
+    <string name="touch_to_finish">実際に色々入力を試してみてください。</string>
+    <string name="tip_to_step1"><b>普通の携帯のキーボードのように、○キーを３回押すと「う」\nが入力できます。</b></string>
+    <string name="tip_to_step2_a"><b>例えば「寿司」と入力する場合…\n・○キーを３回押して「す」を入力し、</b></string>
+    <string name="tip_to_step2_b"><b>\n・→キーで右に進み、</b></string>
+    <string name="tip_to_step2_c"><b>\n・○キーを２回押して「し」を入力し、</b></string>
+    <string name="tip_to_step2_d"><b>\n・自動的に表示される候補の中から\n　「寿司」を選ぶか、■キーで変換して\n　表示される「寿司」を↓キーで確定\n　します。</b></string>
+    <string name="tip_to_step3_a"><b>■キーで日本語、英語、数字モードに\n切り替わります。</b></string>
+    <string name="tip_to_step3_b"><b>日本語から英語にかわりました。\n次は数字です。</b></string>
+    <string name="tip_to_step3_c"><b>数字からまた日本語に戻りましょう。</b></string>
+    <string name="tip_to_step4"><b>ほかのモード（カタカナ・全角など)\nやＰＣ風のキーボードが使いたい場合、\n■キーを３秒押すと入力メニューが\n表示されます。</b></string>
+    <string name="tip_to_step5"><b>入力が完了したら、携帯の\n「戻る」キー（←）を押して\nキーボードを閉じます。</b></string>
+    <string name="tip_to_step6"><b>これでチュートリアルは終わりです。</b></string>
+
+    <string name="ti_input_mode_full_hirakana_title_txt">ひらがな漢字</string>
+    <string name="ti_input_mode_full_katakana_title_txt">全角カタカナ</string>
+    <string name="ti_input_mode_half_katakana_title_txt">半角カタカナ</string>
+    <string name="ti_input_mode_full_alphabet_title_txt">全角英字</string>
+    <string name="ti_input_mode_half_alphabet_title_txt">半角英字</string>
+    <string name="ti_input_mode_full_number_title_txt">全角数字</string>
+    <string name="ti_input_mode_half_number_title_txt">半角数字</string>
+
+    <string name="ti_long_press_dialog_input_mode_txt">入力モード切替</string>
+
+</resources>
+

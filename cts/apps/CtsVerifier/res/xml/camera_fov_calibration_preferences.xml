@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orderingFromXml="true"
+    android:title="@string/camera_fov_label_options" >
+
+    <PreferenceCategory android:title="@string/camera_fov_general_settings" >
+        <EditTextPreference
+            android:defaultValue="36.8"
+            android:key="markerDistance"
+            android:numeric="decimal"
+            android:summary="@string/camera_fov_marker_distance_description"
+            android:title="@string/camera_fov_marker_distance" />
+        <EditTextPreference
+            android:defaultValue="99.7"
+            android:key="targetDistanceCm"
+            android:numeric="decimal"
+            android:summary="@string/camera_fov_target_distance_description"
+            android:title="@string/camera_fov_target_distance" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="app_name" msgid="1928079047368929634">"ギャラリー"</string>
+    <string name="gadget_title" msgid="259405922673466798">"写真フレーム"</string>
+    <string name="details_ms" msgid="940634969189855292">"%1$02d:%2$02d"</string>
+    <string name="details_hms" msgid="3215779248094151255">"%1$d:%2$02d:%3$02d"</string>
+    <string name="movie_view_label" msgid="3526526872644898229">"動画プレーヤー"</string>
+    <string name="loading_video" msgid="4013492720121891585">"動画を読み込み中..."</string>
+    <string name="loading_image" msgid="1200894415793838191">"画像を読み込み中..."</string>
+    <string name="loading_account" msgid="928195413034552034">"アカウントを読み込み中..."</string>
+    <string name="resume_playing_title" msgid="8996677350649355013">"動画の再開"</string>
+    <string name="resume_playing_message" msgid="5184414518126703481">"再生を%sから再開しますか？"</string>
+    <string name="resume_playing_resume" msgid="3847915469173852416">"再生を再開"</string>
+    <string name="loading" msgid="7038208555304563571">"読み込み中..."</string>
+    <string name="fail_to_load" msgid="8394392853646664505">"読み込めませんでした"</string>
+    <string name="fail_to_load_image" msgid="6155388718549782425">"画像を読み込めませんでした"</string>
+    <string name="no_thumbnail" msgid="284723185546429750">"サムネイルなし"</string>
+    <string name="resume_playing_restart" msgid="5471008499835769292">"最初から再生"</string>
+    <string name="crop_save_text" msgid="152200178986698300">"OK"</string>
+    <string name="ok" msgid="5296833083983263293">"OK"</string>
+    <string name="multiface_crop_help" msgid="2554690102655855657">"始めるには顔をタップします。"</string>
+    <string name="saving_image" msgid="7270334453636349407">"写真を保存中…"</string>
+    <string name="filtershow_saving_image" msgid="6659463980581993016">"画像を<xliff:g id="ALBUM_NAME">%1$s</xliff:g>に保存中…"</string>
+    <string name="save_error" msgid="6857408774183654970">"トリミングした画像を保存できません。"</string>
+    <string name="crop_label" msgid="521114301871349328">"トリミング"</string>
+    <string name="trim_label" msgid="274203231381209979">"動画をトリミング"</string>
+    <string name="select_image" msgid="7841406150484742140">"写真を選択"</string>
+    <string name="select_video" msgid="4859510992798615076">"動画を選択"</string>
+    <string name="select_item" msgid="2816923896202086390">"項目を選択"</string>
+    <string name="select_album" msgid="1557063764849434077">"アルバムを選択"</string>
+    <string name="select_group" msgid="6744208543323307114">"グループの選択"</string>
+    <string name="set_image" msgid="2331476809308010401">"登録"</string>
+    <string name="set_wallpaper" msgid="8491121226190175017">"壁紙を設定"</string>
+    <string name="wallpaper" msgid="140165383777262070">"壁紙を設定しています..."</string>
+    <string name="camera_setas_wallpaper" msgid="797463183863414289">"壁紙"</string>
+    <string name="delete" msgid="2839695998251824487">"削除"</string>
+  <plurals name="delete_selection">
+    <item quantity="one" msgid="6453379735401083732">"アイテムを削除しますか？"</item>
+    <item quantity="other" msgid="5874316486520635333">"アイテムを削除しますか？"</item>
+  </plurals>
+    <string name="confirm" msgid="8646870096527848520">"確認"</string>
+    <string name="cancel" msgid="3637516880917356226">"キャンセル"</string>
+    <string name="share" msgid="3619042788254195341">"共有"</string>
+    <string name="share_panorama" msgid="2569029972820978718">"パノラマ写真を共有"</string>
+    <string name="share_as_photo" msgid="8959225188897026149">"写真として共有"</string>
+    <string name="deleted" msgid="6795433049119073871">"削除済み"</string>
+    <string name="undo" msgid="2930873956446586313">"元に戻す"</string>
+    <string name="select_all" msgid="3403283025220282175">"すべて選択"</string>
+    <string name="deselect_all" msgid="5758897506061723684">"選択をすべて解除"</string>
+    <string name="slideshow" msgid="4355906903247112975">"スライドショー"</string>
+    <string name="details" msgid="8415120088556445230">"詳細情報"</string>
+    <string name="details_title" msgid="2611396603977441273">"%1$d/%2$d件のアイテム:"</string>
+    <string name="close" msgid="5585646033158453043">"閉じる"</string>
+    <string name="switch_to_camera" msgid="7280111806675169992">"カメラに切り替え"</string>
+  <plurals name="number_of_items_selected">
+    <item quantity="zero" msgid="2142579311530586258">"%1$d件選択済み"</item>
+    <item quantity="one" msgid="2478365152745637768">"%1$d件選択済み"</item>
+    <item quantity="other" msgid="754722656147810487">"%1$d件選択済み"</item>
+  </plurals>
+  <plurals name="number_of_albums_selected">
+    <item quantity="zero" msgid="749292746814788132">"%1$d件選択済み"</item>
+    <item quantity="one" msgid="6184377003099987825">"%1$d件選択済み"</item>
+    <item quantity="other" msgid="53105607141906130">"%1$d件選択済み"</item>
+  </plurals>
+  <plurals name="number_of_groups_selected">
+    <item quantity="zero" msgid="3466388370310869238">"%1$d件選択済み"</item>
+    <item quantity="one" msgid="5030162638216034260">"%1$d件選択済み"</item>
+    <item quantity="other" msgid="3512041363942842738">"%1$d件選択済み"</item>
+  </plurals>
+    <string name="show_on_map" msgid="6157544221201750980">"地図に表示"</string>
+    <string name="rotate_left" msgid="5888273317282539839">"左に回転"</string>
+    <string name="rotate_right" msgid="6776325835923384839">"右に回転"</string>
+    <string name="no_such_item" msgid="5315144556325243400">"アイテムが見つかりませんでした。"</string>
+    <string name="edit" msgid="1502273844748580847">"編集"</string>
+    <string name="simple_edit" msgid="2792835918347498211">"シンプルな編集"</string>
+    <string name="process_caching_requests" msgid="8722939570307386071">"キャッシュリクエストを処理しています"</string>
+    <string name="caching_label" msgid="4521059045896269095">"キャッシュ中..."</string>
+    <string name="crop_action" msgid="3427470284074377001">"トリミング"</string>
+    <string name="trim_action" msgid="703098114452883524">"トリミング"</string>
+    <string name="mute_action" msgid="5296241754753306251">"ミュート"</string>
+    <string name="set_as" msgid="3636764710790507868">"登録"</string>
+    <string name="video_mute_err" msgid="6392457611270600908">"動画をミュートできません。"</string>
+    <string name="video_err" msgid="7003051631792271009">"動画を再生できません。"</string>
+    <string name="group_by_location" msgid="316641628989023253">"地域別"</string>
+    <string name="group_by_time" msgid="9046168567717963573">"時間別"</string>
+    <string name="group_by_tags" msgid="3568731317210676160">"タグ別"</string>
+    <string name="group_by_faces" msgid="1566351636227274906">"人物別"</string>
+    <string name="group_by_album" msgid="1532818636053818958">"アルバム別"</string>
+    <string name="group_by_size" msgid="153766174950394155">"サイズ別"</string>
+    <string name="untagged" msgid="7281481064509590402">"タグなし"</string>
+    <string name="no_location" msgid="4043624857489331676">"位置情報なし"</string>
+    <string name="no_connectivity" msgid="7164037617297293668">"ネットワークの問題により一部の位置情報を特定できませんでした。"</string>
+    <string name="sync_album_error" msgid="1020688062900977530">"このアルバムの画像をダウンロードできませんでした。しばらくしてからもう一度お試しください。"</string>
+    <string name="show_images_only" msgid="7263218480867672653">"画像のみ"</string>
+    <string name="show_videos_only" msgid="3850394623678871697">"動画のみ"</string>
+    <string name="show_all" msgid="6963292714584735149">"画像と動画"</string>
+    <string name="appwidget_title" msgid="6410561146863700411">"フォトギャラリー"</string>
+    <string name="appwidget_empty_text" msgid="1228925628357366957">"画像がありません。"</string>
+    <string name="crop_saved" msgid="1595985909779105158">"トリミングした画像を<xliff:g id="FOLDER_NAME">%s</xliff:g>に保存しました。"</string>
+    <string name="no_albums_alert" msgid="4111744447491690896">"使用できるアルバムはありません。"</string>
+    <string name="empty_album" msgid="4542880442593595494">"使用できる画像/動画: 0件"</string>
+    <string name="picasa_posts" msgid="1497721615718760613">"投稿"</string>
+    <string name="make_available_offline" msgid="5157950985488297112">"オフラインで使用する"</string>
+    <string name="sync_picasa_albums" msgid="8522572542111169872">"更新"</string>
+    <string name="done" msgid="217672440064436595">"完了"</string>
+    <string name="sequence_in_set" msgid="7235465319919457488">"%1$d/%2$d件:"</string>
+    <string name="title" msgid="7622928349908052569">"タイトル"</string>
+    <string name="description" msgid="3016729318096557520">"説明"</string>
+    <string name="time" msgid="1367953006052876956">"時刻"</string>
+    <string name="location" msgid="3432705876921618314">"場所"</string>
+    <string name="path" msgid="4725740395885105824">"パス"</string>
+    <string name="width" msgid="9215847239714321097">"幅"</string>
+    <string name="height" msgid="3648885449443787772">"高さ"</string>
+    <string name="orientation" msgid="4958327983165245513">"画面の向き"</string>
+    <string name="duration" msgid="8160058911218541616">"長さ"</string>
+    <string name="mimetype" msgid="8024168704337990470">"MIMEタイプ"</string>
+    <string name="file_size" msgid="8486169301588318915">"ファイルサイズ"</string>
+    <string name="maker" msgid="7921835498034236197">"メーカー"</string>
+    <string name="model" msgid="8240207064064337366">"モデル"</string>
+    <string name="flash" msgid="2816779031261147723">"フラッシュ"</string>
+    <string name="aperture" msgid="5920657630303915195">"絞り"</string>
+    <string name="focal_length" msgid="1291383769749877010">"レンズ焦点距離"</string>
+    <string name="white_balance" msgid="1582509289994216078">"ホワイトバランス"</string>
+    <string name="exposure_time" msgid="3990163680281058826">"露出時間"</string>
+    <string name="iso" msgid="5028296664327335940">"ISO"</string>
+    <string name="unit_mm" msgid="1125768433254329136">"mm"</string>
+    <string name="manual" msgid="6608905477477607865">"マニュアル"</string>
+    <string name="auto" msgid="4296941368722892821">"オート"</string>
+    <string name="flash_on" msgid="7891556231891837284">"フラッシュON"</string>
+    <string name="flash_off" msgid="1445443413822680010">"フラッシュOFF"</string>
+    <string name="unknown" msgid="3506693015896912952">"不明"</string>
+    <string name="ffx_original" msgid="372686331501281474">"オリジナル"</string>
+    <string name="ffx_vintage" msgid="8348759951363844780">"ヴィンテージ"</string>
+    <string name="ffx_instant" msgid="726968618715691987">"インスタント"</string>
+    <string name="ffx_bleach" msgid="8946700451603478453">"ブリーチ"</string>
+    <string name="ffx_blue_crush" msgid="6034283412305561226">"青"</string>
+    <string name="ffx_bw_contrast" msgid="517988490066217206">"モノクロ"</string>
+    <string name="ffx_punch" msgid="1343475517872562639">"パンチ"</string>
+    <string name="ffx_x_process" msgid="4779398678661811765">"Xプロセス"</string>
+    <string name="ffx_washout" msgid="4594160692176642735">"ラテ"</string>
+    <string name="ffx_washout_color" msgid="8034075742195795219">"リトグラフ"</string>
+  <plurals name="make_albums_available_offline">
+    <item quantity="one" msgid="2171596356101611086">"アルバムをオフラインで利用できるようにしています。"</item>
+    <item quantity="other" msgid="4948604338155959389">"アルバムをオフラインで利用できるようにしています。"</item>
+  </plurals>
+    <string name="try_to_set_local_album_available_offline" msgid="2184754031896160755">"このアイテムは端末に保存され、オフラインで利用できます。"</string>
+    <string name="set_label_all_albums" msgid="4581863582996336783">"すべてのアルバム"</string>
+    <string name="set_label_local_albums" msgid="6698133661656266702">"ローカルアルバム"</string>
+    <string name="set_label_mtp_devices" msgid="1283513183744896368">"MTPデバイス"</string>
+    <string name="set_label_picasa_albums" msgid="5356258354953935895">"Picasaのアルバム"</string>
+    <string name="free_space_format" msgid="8766337315709161215">"<xliff:g id="BYTES">%s</xliff:g>空き"</string>
+    <string name="size_below" msgid="2074956730721942260">"<xliff:g id="SIZE">%1$s</xliff:g>以下"</string>
+    <string name="size_above" msgid="5324398253474104087">"<xliff:g id="SIZE">%1$s</xliff:g>以上"</string>
+    <string name="size_between" msgid="8779660840898917208">"<xliff:g id="MIN_SIZE">%1$s</xliff:g>～<xliff:g id="MAX_SIZE">%2$s</xliff:g>"</string>
+    <string name="Import" msgid="3985447518557474672">"インポート"</string>
+    <string name="import_complete" msgid="3875040287486199999">"インポート完了"</string>
+    <string name="import_fail" msgid="8497942380703298808">"インポートできません"</string>
+    <string name="camera_connected" msgid="916021826223448591">"カメラが接続されました。"</string>
+    <string name="camera_disconnected" msgid="2100559901676329496">"カメラの接続が解除されました。"</string>
+    <string name="click_import" msgid="6407959065464291972">"インポートするにはここをタップします"</string>
+    <string name="widget_type_album" msgid="6013045393140135468">"アルバムを選択"</string>
+    <string name="widget_type_shuffle" msgid="8594622705019763768">"すべての画像をシャッフル"</string>
+    <string name="widget_type_photo" msgid="6267065337367795355">"画像を選択"</string>
+    <string name="widget_type" msgid="1364653978966343448">"画像の選択"</string>
+    <string name="slideshow_dream_name" msgid="6915963319933437083">"スライドショー"</string>
+    <string name="albums" msgid="7320787705180057947">"アルバム"</string>
+    <string name="times" msgid="2023033894889499219">"時間"</string>
+    <string name="locations" msgid="6649297994083130305">"ロケーション"</string>
+    <string name="people" msgid="4114003823747292747">"人物"</string>
+    <string name="tags" msgid="5539648765482935955">"タグ"</string>
+    <string name="group_by" msgid="4308299657902209357">"グループ化"</string>
+    <string name="settings" msgid="1534847740615665736">"設定"</string>
+    <string name="add_account" msgid="4271217504968243974">"アカウントを追加"</string>
+    <string name="folder_camera" msgid="4714658994809533480">"カメラ"</string>
+    <string name="folder_download" msgid="7186215137642323932">"ダウンロード"</string>
+    <string name="folder_edited_online_photos" msgid="6278215510236800181">"編集済みのオンライン画像"</string>
+    <string name="folder_imported" msgid="2773581395524747099">"インポート済み"</string>
+    <string name="folder_screenshot" msgid="7200396565864213450">"スクリーンショット"</string>
+    <string name="help" msgid="7368960711153618354">"ヘルプ"</string>
+    <string name="no_external_storage_title" msgid="2408933644249734569">"ストレージがありません"</string>
+    <string name="no_external_storage" msgid="95726173164068417">"利用できる外部ストレージがありません"</string>
+    <string name="switch_photo_filmstrip" msgid="8227883354281661548">"フィルムストリップ表示"</string>
+    <string name="switch_photo_grid" msgid="3681299459107925725">"グリッド表示"</string>
+    <string name="switch_photo_fullscreen" msgid="8360489096099127071">"全画面表示"</string>
+    <string name="trimming" msgid="9122385768369143997">"トリミング"</string>
+    <string name="muting" msgid="5094925919589915324">"ミュートしています"</string>
+    <string name="please_wait" msgid="7296066089146487366">"お待ちください"</string>
+    <string name="save_into" msgid="9155488424829609229">"動画を<xliff:g id="ALBUM_NAME">%1$s</xliff:g>に保存しています…"</string>
+    <string name="trim_too_short" msgid="751593965620665326">"トリミングできません: 動画が短すぎます"</string>
+    <string name="pano_progress_text" msgid="1586851614586678464">"パノラマをレンダリング中"</string>
+    <string name="save" msgid="613976532235060516">"保存"</string>
+    <string name="ingest_scanning" msgid="1062957108473988971">"コンテンツをスキャンしています..."</string>
+  <plurals name="ingest_number_of_items_scanned">
+    <item quantity="zero" msgid="2623289390474007396">"%1$d件のアイテムをスキャン済み"</item>
+    <item quantity="one" msgid="4340019444460561648">"%1$d件のアイテムをスキャン済み"</item>
+    <item quantity="other" msgid="3138021473860555499">"%1$d件のアイテムをスキャン済み"</item>
+  </plurals>
+    <string name="ingest_sorting" msgid="1028652103472581918">"並べ替えています..."</string>
+    <string name="ingest_scanning_done" msgid="8911916277034483430">"スキャンが終了しました"</string>
+    <string name="ingest_importing" msgid="7456633398378527611">"インポートしています..."</string>
+    <string name="ingest_empty_device" msgid="2010470482779872622">"この端末にインポートできるコンテンツがありません。"</string>
+    <string name="ingest_no_device" msgid="3054128223131382122">"接続されているMTPデバイスがありません"</string>
+    <string name="camera_error_title" msgid="6484667504938477337">"カメラエラー"</string>
+    <string name="cannot_connect_camera" msgid="955440687597185163">"カメラに接続できません。"</string>
+    <string name="camera_disabled" msgid="8923911090533439312">"カメラはセキュリティポリシーにより無効になっています。"</string>
+    <string name="camera_label" msgid="6346560772074764302">"カメラ"</string>
+    <string name="wait" msgid="8600187532323801552">"お待ちください..."</string>
+    <string name="no_storage" product="nosdcard" msgid="7335975356349008814">"カメラを使用する前にUSBストレージをマウントしてください。"</string>
+    <string name="no_storage" product="default" msgid="5137703033746873624">"カメラを使用する前にSDカードを挿入してください。"</string>
+    <string name="preparing_sd" product="nosdcard" msgid="6104019983528341353">"USBストレージの準備中..."</string>
+    <string name="preparing_sd" product="default" msgid="2914969119574812666">"SDカードの準備中..."</string>
+    <string name="access_sd_fail" product="nosdcard" msgid="8147993984037859354">"USBストレージにアクセスできませんでした。"</string>
+    <string name="access_sd_fail" product="default" msgid="1584968646870054352">"SDカードにアクセスできませんでした。"</string>
+    <string name="review_cancel" msgid="8188009385853399254">"キャンセル"</string>
+    <string name="review_ok" msgid="1156261588693116433">"完了"</string>
+    <string name="time_lapse_title" msgid="4360632427760662691">"低速度撮影"</string>
+    <string name="pref_camera_id_title" msgid="4040791582294635851">"カメラを選択"</string>
+    <string name="pref_camera_id_entry_back" msgid="5142699735103692485">"背面"</string>
+    <string name="pref_camera_id_entry_front" msgid="5668958706828733669">"前面"</string>
+    <string name="pref_camera_recordlocation_title" msgid="371208839215448917">"位置情報を記録する"</string>
+    <string name="pref_camera_location_label" msgid="2254270920298609161">"現在地"</string>
+    <string name="pref_camera_timer_title" msgid="3105232208281893389">"カウントダウンタイマー"</string>
+  <plurals name="pref_camera_timer_entry">
+    <item quantity="one" msgid="1654523400981245448">"1秒"</item>
+    <item quantity="other" msgid="6455381617076792481">"%d秒"</item>
+  </plurals>
+    <!-- no translation found for pref_camera_timer_sound_default (7066624532144402253) -->
+    <skip />
+    <string name="pref_camera_timer_sound_title" msgid="2469008631966169105">"タイマー時にビープ音"</string>
+    <string name="setting_off" msgid="4480039384202951946">"OFF"</string>
+    <string name="setting_on" msgid="8602246224465348901">"ON"</string>
+    <string name="pref_video_quality_title" msgid="8245379279801096922">"動画の画質"</string>
+    <string name="pref_video_quality_entry_high" msgid="8664038216234805914">"高"</string>
+    <string name="pref_video_quality_entry_low" msgid="7258507152393173784">"低"</string>
+    <string name="pref_video_time_lapse_frame_interval_title" msgid="6245716906744079302">"低速度撮影"</string>
+    <string name="pref_camera_settings_category" msgid="2576236450859613120">"カメラ設定"</string>
+    <string name="pref_camcorder_settings_category" msgid="460313486231965141">"ビデオ録画設定"</string>
+    <string name="pref_camera_picturesize_title" msgid="4333724936665883006">"画像サイズ"</string>
+    <string name="pref_camera_picturesize_entry_13mp" msgid="675309554194481780">"13Mピクセル"</string>
+    <string name="pref_camera_picturesize_entry_8mp" msgid="259953780932849079">"8Mピクセル"</string>
+    <string name="pref_camera_picturesize_entry_5mp" msgid="2882928212030661159">"5メガピクセル"</string>
+    <string name="pref_camera_picturesize_entry_4mp" msgid="933242108272469142">"4Mピクセル"</string>
+    <string name="pref_camera_picturesize_entry_3mp" msgid="741415860337400696">"3メガピクセル"</string>
+    <string name="pref_camera_picturesize_entry_2mp" msgid="1753709802245460393">"2メガピクセル"</string>
+    <string name="pref_camera_picturesize_entry_2mp_wide" msgid="5359490802026616612">"2Mピクセル（16:9）"</string>
+    <string name="pref_camera_picturesize_entry_1_3mp" msgid="829109608140747258">"1.3メガピクセル"</string>
+    <string name="pref_camera_picturesize_entry_1mp" msgid="1669725616780375066">"1メガピクセル"</string>
+    <string name="pref_camera_picturesize_entry_vga" msgid="806934254162981919">"VGA"</string>
+    <string name="pref_camera_picturesize_entry_qvga" msgid="8576186463069770133">"QVGA"</string>
+    <string name="pref_camera_focusmode_title" msgid="2877248921829329127">"フォーカスモード"</string>
+    <string name="pref_camera_focusmode_entry_auto" msgid="7374820710300362457">"オート"</string>
+    <string name="pref_camera_focusmode_entry_infinity" msgid="3413922419264967552">"無限遠"</string>
+    <string name="pref_camera_focusmode_entry_macro" msgid="4424489110551866161">"マクロ"</string>
+    <string name="pref_camera_focusmode_label_auto" msgid="8547956917516317183">"オート"</string>
+    <string name="pref_camera_focusmode_label_infinity" msgid="4272904160062531778">"無限遠"</string>
+    <string name="pref_camera_focusmode_label_macro" msgid="8749317592620908054">"マクロ"</string>
+    <string name="pref_camera_flashmode_title" msgid="2287362477238791017">"フラッシュモード"</string>
+    <string name="pref_camera_flashmode_label" msgid="7546741624882856171">"フラッシュモード"</string>
+    <string name="pref_camera_flashmode_entry_auto" msgid="7288383434237457709">"オート"</string>
+    <string name="pref_camera_flashmode_entry_on" msgid="5330043918845197616">"ON"</string>
+    <string name="pref_camera_flashmode_entry_off" msgid="867242186958805761">"OFF"</string>
+    <string name="pref_camera_flashmode_label_auto" msgid="8854671890619026197">"フラッシュオート"</string>
+    <string name="pref_camera_flashmode_label_on" msgid="7347504762794840140">"フラッシュON"</string>
+    <string name="pref_camera_flashmode_label_off" msgid="3541596735596053416">"フラッシュOFF"</string>
+    <string name="pref_camera_whitebalance_title" msgid="677420930596673340">"ホワイトバランス"</string>
+    <string name="pref_camera_whitebalance_label" msgid="7467403405883190920">"ホワイトバランス"</string>
+    <string name="pref_camera_whitebalance_entry_auto" msgid="6580665476983469293">"オート"</string>
+    <string name="pref_camera_whitebalance_entry_incandescent" msgid="8856667786449549938">"白熱灯"</string>
+    <string name="pref_camera_whitebalance_entry_daylight" msgid="2534757270149561027">"昼光"</string>
+    <string name="pref_camera_whitebalance_entry_fluorescent" msgid="2435332872847454032">"蛍光灯"</string>
+    <string name="pref_camera_whitebalance_entry_cloudy" msgid="3531996716997959326">"曇り"</string>
+    <string name="pref_camera_whitebalance_label_auto" msgid="1479694362310491429">"オート"</string>
+    <string name="pref_camera_whitebalance_label_incandescent" msgid="7427628260209908900">"白熱灯"</string>
+    <string name="pref_camera_whitebalance_label_daylight" msgid="1859710806141461399">"昼光"</string>
+    <string name="pref_camera_whitebalance_label_fluorescent" msgid="5173251749161337707">"蛍光灯"</string>
+    <string name="pref_camera_whitebalance_label_cloudy" msgid="8230173517179285320">"曇り"</string>
+    <string name="pref_camera_scenemode_title" msgid="1420535844292504016">"撮影モード"</string>
+    <string name="pref_camera_scenemode_entry_auto" msgid="7113995286836658648">"オート"</string>
+    <string name="pref_camera_scenemode_entry_hdr" msgid="2923388802899511784">"HDR"</string>
+    <string name="pref_camera_scenemode_entry_action" msgid="616748587566110484">"スポーツ"</string>
+    <string name="pref_camera_scenemode_entry_night" msgid="7606898503102476329">"夜景"</string>
+    <string name="pref_camera_scenemode_entry_sunset" msgid="181661154611507212">"夕焼け"</string>
+    <string name="pref_camera_scenemode_entry_party" msgid="907053529286788253">"パーティー"</string>
+    <string name="pref_camera_scenemode_label_auto" msgid="4475096836397300237">"なし"</string>
+    <string name="pref_camera_scenemode_label_action" msgid="964748409622151496">"スポーツ"</string>
+    <string name="pref_camera_scenemode_label_night" msgid="1269871886845854574">"夜景"</string>
+    <string name="pref_camera_scenemode_label_sunset" msgid="2802732082948866877">"夕焼け"</string>
+    <string name="pref_camera_scenemode_label_party" msgid="1409459091844374828">"パーティー"</string>
+    <string name="pref_camera_countdown_label" msgid="7592784692450586126">"カウントダウンタイマー"</string>
+    <string name="pref_camera_countdown_label_off" msgid="4987856883590176585">"タイマーOFF"</string>
+    <string name="pref_camera_countdown_label_one" msgid="1101814103087928898">"1秒"</string>
+    <string name="pref_camera_countdown_label_three" msgid="1047399297342955649">"3秒"</string>
+    <string name="pref_camera_countdown_label_ten" msgid="6274681535347260279">"10秒"</string>
+    <string name="pref_camera_countdown_label_fifteen" msgid="4544824246687597089">"15秒"</string>
+    <string name="not_selectable_in_scene_mode" msgid="2970291701448555126">"撮影モードでは選択できません。"</string>
+    <string name="pref_exposure_title" msgid="1229093066434614811">"露出"</string>
+    <string name="pref_exposure_label" msgid="552624394642497940">"露出"</string>
+    <!-- no translation found for pref_camera_hdr_default (1336869406134365882) -->
+    <skip />
+    <string name="pref_camera_hdr_label" msgid="7217211253357027510">"HDR"</string>
+    <string name="pref_camera_id_label_back" msgid="8745553500400332333">"前面カメラ"</string>
+    <string name="pref_camera_id_label_front" msgid="8699439330056996709">"背面カメラ"</string>
+    <string name="dialog_ok" msgid="6263301364153382152">"OK"</string>
+    <string name="spaceIsLow_content" product="nosdcard" msgid="4401325203349203177">"USBストレージの空き領域が少なくなっています。画質設定を変更するか、画像など一部のファイルを削除してください。"</string>
+    <string name="spaceIsLow_content" product="default" msgid="1732882643101247179">"SDカードの空き領域が少なくなっています。画質設定を変更するか、画像などのファイルを一部削除してください。"</string>
+    <string name="video_reach_size_limit" msgid="6179877322015552390">"サイズ制限に達しました。"</string>
+    <string name="pano_too_fast_prompt" msgid="2823839093291374709">"速すぎます"</string>
+    <string name="pano_dialog_prepare_preview" msgid="4788441554128083543">"パノラマを準備しています"</string>
+    <string name="pano_dialog_panorama_failed" msgid="2155692796549642116">"パノラマを保存できませんでした。"</string>
+    <string name="pano_dialog_title" msgid="5755531234434437697">"パノラマ"</string>
+    <string name="pano_capture_indication" msgid="8248825828264374507">"パノラマを撮影中"</string>
+    <string name="pano_dialog_waiting_previous" msgid="7800325815031423516">"前のパノラマを待機中"</string>
+    <string name="pano_review_saving_indication_str" msgid="2054886016665130188">"保存中..."</string>
+    <string name="pano_review_rendering" msgid="2887552964129301902">"パノラマをレンダリング中"</string>
+    <string name="tap_to_focus" msgid="8863427645591903760">"タップしてフォーカスします。"</string>
+    <string name="pref_video_effect_title" msgid="8243182968457289488">"効果"</string>
+    <string name="effect_none" msgid="3601545724573307541">"なし"</string>
+    <string name="effect_goofy_face_squeeze" msgid="1207235692524289171">"スクイーズ"</string>
+    <string name="effect_goofy_face_big_eyes" msgid="3945182409691408412">"大きな目"</string>
+    <string name="effect_goofy_face_big_mouth" msgid="7528748779754643144">"大きな口"</string>
+    <string name="effect_goofy_face_small_mouth" msgid="3848209817806932565">"小さな口"</string>
+    <string name="effect_goofy_face_big_nose" msgid="5180533098740577137">"大きな鼻"</string>
+    <string name="effect_goofy_face_small_eyes" msgid="1070355596290331271">"小さな目"</string>
+    <string name="effect_backdropper_space" msgid="7935661090723068402">"宇宙空間"</string>
+    <string name="effect_backdropper_sunset" msgid="45198943771777870">"夕焼け"</string>
+    <string name="effect_backdropper_gallery" msgid="959158844620991906">"あなたの動画"</string>
+    <string name="bg_replacement_message" msgid="9184270738916564608">"端末をセッティングします。\n少しの間フレームの外に出ます。"</string>
+    <string name="video_snapshot_hint" msgid="18833576851372483">"録画中にタップして静止画を撮影できます。"</string>
+    <string name="video_recording_started" msgid="4132915454417193503">"録画を開始しました。"</string>
+    <string name="video_recording_stopped" msgid="5086919511555808580">"録画を停止しました。"</string>
+    <string name="disable_video_snapshot_hint" msgid="4957723267826476079">"動画スナップショットは特殊効果がONのときは無効です。"</string>
+    <string name="clear_effects" msgid="5485339175014139481">"効果設定をクリア"</string>
+    <string name="effect_silly_faces" msgid="8107732405347155777">"変な顔"</string>
+    <string name="effect_background" msgid="6579360207378171022">"背景"</string>
+    <string name="accessibility_shutter_button" msgid="2664037763232556307">"シャッターボタン"</string>
+    <string name="accessibility_menu_button" msgid="7140794046259897328">"メニューボタン"</string>
+    <string name="accessibility_review_thumbnail" msgid="8961275263537513017">"最近の写真"</string>
+    <string name="accessibility_camera_picker" msgid="8807945470215734566">"前後カメラの切り替え"</string>
+    <string name="accessibility_mode_picker" msgid="3278002189966833100">"カメラ、ビデオ、パノラマの切り替え"</string>
+    <string name="accessibility_second_level_indicators" msgid="3855951632917627620">"その他の設定コントロール"</string>
+    <string name="accessibility_back_to_first_level" msgid="5234411571109877131">"設定コントロールを閉じる"</string>
+    <string name="accessibility_zoom_control" msgid="1339909363226825709">"ズームコントロール"</string>
+    <string name="accessibility_decrement" msgid="1411194318538035666">"-%1$s"</string>
+    <string name="accessibility_increment" msgid="8447850530444401135">"+%1$s"</string>
+    <string name="accessibility_check_box" msgid="7317447218256584181">"%1$sチェックボックス"</string>
+    <string name="accessibility_switch_to_camera" msgid="5951340774212969461">"カメラに切り替え"</string>
+    <string name="accessibility_switch_to_video" msgid="4991396355234561505">"動画に切り替え"</string>
+    <string name="accessibility_switch_to_panorama" msgid="604756878371875836">"パノラマに切り替え"</string>
+    <string name="accessibility_switch_to_new_panorama" msgid="8116783308051524188">"新しいパノラマに切り替える"</string>
+    <string name="accessibility_switch_to_refocus" msgid="4539294619557299903">"リフォーカスに切り替える"</string>
+    <string name="accessibility_review_cancel" msgid="9070531914908644686">"レビュー - キャンセル"</string>
+    <string name="accessibility_review_ok" msgid="7793302834271343168">"レビュー - 完了"</string>
+    <string name="accessibility_review_retake" msgid="659300290054705484">"撮り直しを確認"</string>
+    <string name="accessibility_play_video" msgid="7596298365794810207">"動画を再生"</string>
+    <string name="accessibility_pause_video" msgid="6526344477133046653">"動画を一時停止"</string>
+    <string name="accessibility_reload_video" msgid="3250335917598607232">"動画を再読み込み"</string>
+    <string name="accessibility_time_bar" msgid="1414029843602604531">"動画プレーヤーのタイムバー"</string>
+    <string name="capital_on" msgid="5491353494964003567">"ON"</string>
+    <string name="capital_off" msgid="7231052688467970897">"OFF"</string>
+    <string name="pref_video_time_lapse_frame_interval_off" msgid="3490489191038309496">"OFF"</string>
+    <string name="pref_video_time_lapse_frame_interval_500" msgid="2949719376111679816">"0.5秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_1000" msgid="1672458758823855874">"1秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_1500" msgid="3415071702490624802">"1.5秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_2000" msgid="827813989647794389">"2秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_2500" msgid="5750464143606788153">"2.5秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_3000" msgid="2664846627499751396">"3秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_4000" msgid="7303255804306382651">"4秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_5000" msgid="6800566761690741841">"5秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_6000" msgid="8545447466540319539">"6秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_10000" msgid="3105568489694909852">"10秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_12000" msgid="6055574367392821047">"12秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_15000" msgid="2656164845371833761">"15秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_24000" msgid="2192628967233421512">"24秒"</string>
+    <string name="pref_video_time_lapse_frame_interval_30000" msgid="5923393773260634461">"0.5分"</string>
+    <string name="pref_video_time_lapse_frame_interval_60000" msgid="4678581247918524850">"1分"</string>
+    <string name="pref_video_time_lapse_frame_interval_90000" msgid="1187029705069674152">"1.5分"</string>
+    <string name="pref_video_time_lapse_frame_interval_120000" msgid="145301938098991278">"2分"</string>
+    <string name="pref_video_time_lapse_frame_interval_150000" msgid="793707078196731912">"2.5分"</string>
+    <string name="pref_video_time_lapse_frame_interval_180000" msgid="1785467676466542095">"3分"</string>
+    <string name="pref_video_time_lapse_frame_interval_240000" msgid="3734507766184666356">"4分"</string>
+    <string name="pref_video_time_lapse_frame_interval_300000" msgid="7442765761995328639">"5分"</string>
+    <string name="pref_video_time_lapse_frame_interval_360000" msgid="6724596937972563920">"6分"</string>
+    <string name="pref_video_time_lapse_frame_interval_600000" msgid="6563665954471001352">"10分"</string>
+    <string name="pref_video_time_lapse_frame_interval_720000" msgid="8969801372893266408">"12分"</string>
+    <string name="pref_video_time_lapse_frame_interval_900000" msgid="5803172407245902896">"15分"</string>
+    <string name="pref_video_time_lapse_frame_interval_1440000" msgid="6286246349698492186">"24分"</string>
+    <string name="pref_video_time_lapse_frame_interval_1800000" msgid="5042628461448570758">"0.5時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_3600000" msgid="6366071632666482636">"1時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_5400000" msgid="536117788694519019">"1.5時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_7200000" msgid="6846617415182608533">"2時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_9000000" msgid="4242839574025261419">"2.5時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_10800000" msgid="2766886102170605302">"3時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_14400000" msgid="7497934659667867582">"4時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_18000000" msgid="8783643014853837140">"5時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_21600000" msgid="5005078879234015432">"6時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_36000000" msgid="69942198321578519">"10時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_43200000" msgid="285992046818504906">"12時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_54000000" msgid="5740227373848829515">"15時間"</string>
+    <string name="pref_video_time_lapse_frame_interval_86400000" msgid="9040201678470052298">"24時間"</string>
+    <string name="time_lapse_seconds" msgid="2105521458391118041">"秒"</string>
+    <string name="time_lapse_minutes" msgid="7738520349259013762">"分"</string>
+    <string name="time_lapse_hours" msgid="1776453661704997476">"時間"</string>
+    <string name="time_lapse_interval_set" msgid="2486386210951700943">"完了"</string>
+    <string name="set_time_interval" msgid="2970567717633813771">"間隔を設定"</string>
+    <string name="set_time_interval_help" msgid="6665849510484821483">"低速度撮影機能がOFFになっています。間隔を設定するにはONにしてください。"</string>
+    <string name="set_timer_help" msgid="5007708849404589472">"カウントダウンタイマーがオフです。画像を撮影するまでカウントダウンするには、このタイマーをオンにしてください。"</string>
+    <string name="set_duration" msgid="5578035312407161304">"設定時間（秒数）"</string>
+    <string name="count_down_title_text" msgid="4976386810910453266">"画像を撮影するまでカウントダウンします"</string>
+    <string name="remember_location_title" msgid="9060472929006917810">"撮影場所を記録しますか？"</string>
+    <string name="remember_location_prompt" msgid="724592331305808098">"画像や動画に撮影場所のタグを付けることができます。\n\n他のアプリから、保存された画像とともに撮影場所の情報にもアクセスできるようになります。"</string>
+    <string name="remember_location_no" msgid="7541394381714894896">"いいえ"</string>
+    <string name="remember_location_yes" msgid="862884269285964180">"はい"</string>
+    <string name="menu_camera" msgid="3476709832879398998">"カメラ"</string>
+    <string name="menu_search" msgid="7580008232297437190">"検索"</string>
+    <string name="tab_photos" msgid="9110813680630313419">"写真"</string>
+    <string name="tab_albums" msgid="8079449907770685691">"アルバム"</string>
+    <string name="camera_menu_more_label" msgid="6868642182125198710">"その他のオプション"</string>
+    <string name="camera_menu_settings_label" msgid="875454962069404723">"設定"</string>
+  <plurals name="number_of_photos">
+    <item quantity="one" msgid="6949174783125614798">"%1$d枚の画像"</item>
+    <item quantity="other" msgid="3813306834113858135">"%1$d枚の画像"</item>
+  </plurals>
+</resources>

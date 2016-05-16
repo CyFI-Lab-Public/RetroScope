@@ -1,0 +1,1 @@
+allow nfc bcm2079x_device:chr_file rw_file_perms;

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+         http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relative_sublayout_attrs"
+        android:background="@drawable/blue"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- view1, centered within its parent. -->
+        <TextView
+            android:id="@+id/relative_view1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/relative_view1"/>
+
+        <!-- view2, below view1 and has same left position with view1. -->
+        <TextView
+            android:id="@+id/relative_view2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative_view1"
+            android:layout_alignLeft="@id/relative_view1"
+            android:text="@string/relative_view2"/>
+
+        <!-- view3, has same top position with view1 and same bottom position with view2,
+             and on the right of view1. -->
+        <TextView
+            android:id="@+id/relative_view3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/relative_view1"
+            android:layout_alignBottom="@id/relative_view2"
+            android:layout_toRightOf="@id/relative_view1"
+            android:text="@string/relative_view3"/>
+
+        <!-- view4, has same right position with view3 and above view3. -->
+        <TextView
+            android:id="@+id/relative_view4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/relative_view3"
+            android:layout_above="@id/relative_view3"
+            android:text="@string/relative_view4"/>
+
+        <!-- view5 goes on the left-bottom -->
+        <TextView
+            android:id="@+id/relative_view5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="@string/relative_view5"/>
+
+        <!-- view6 goes on the top-right -->
+        <TextView
+            android:id="@+id/relative_view6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/relative_view6"/>
+
+        <!-- view7, has same baseline with view6 and centered horizontally within its parent. -->
+        <TextView
+            android:id="@+id/relative_view7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/relative_view6"
+            android:layout_centerHorizontal="true"
+            android:text="@string/relative_view7"/>
+
+        <!-- view8, centered vertically within its parent and on the left of view1. -->
+        <TextView
+            android:id="@+id/relative_view8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/relative_view1"
+            android:layout_centerVertical="true"
+            android:text="@string/relative_view8"/>
+
+        <!-- view9, has same top and bottom position with view3 and same left position
+             with its parent. -->
+        <TextView
+            android:id="@+id/relative_view9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/gravity_bottom"
+            android:layout_alignTop="@id/relative_view3"
+            android:layout_alignBottom="@id/relative_view3"
+            android:layout_alignWithParentIfMissing="true"
+            android:text="@string/relative_view9"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_sublayout_gravity"
+        android:background="@drawable/yellow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- view10 -->
+        <TextView
+            android:id="@+id/relative_view10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relative_view10"/>
+
+        <!-- view11 -->
+        <TextView
+            android:id="@+id/relative_view11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/relative_view10"
+            android:text="@string/relative_view11"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/relative_sublayout_ignore_gravity"
+        android:background="@drawable/red"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:ignoreGravity="@+id/relative_view12"
+        android:gravity="right">
+
+        <!-- view12 -->
+        <TextView
+            android:id="@id/relative_view12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relative_view12"/>
+
+        <!-- view13 -->
+        <TextView
+            android:id="@+id/relative_view13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relative_view13"/>
+    </RelativeLayout>
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:prompt="@string/text_view_hello"/>
+
+    <RelativeLayout
+            android:id="@+id/relative_sublayout_attrs_2"
+            android:background="@drawable/blue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <!-- view21, centered within its parent. -->
+        <TextView
+                android:id="@+id/relative_view21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/relative_view1"/>
+
+        <!-- view22, below view1 and has same start position with view21. -->
+        <TextView
+                android:id="@+id/relative_view22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/relative_view21"
+                android:layout_alignStart="@id/relative_view21"
+                android:text="@string/relative_view2"/>
+
+        <!-- view23, has same top position with view21 and same bottom position with view22,
+             and on the end of view1. -->
+        <TextView
+                android:id="@+id/relative_view23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/relative_view21"
+                android:layout_alignBottom="@id/relative_view22"
+                android:layout_toEndOf="@id/relative_view21"
+                android:text="@string/relative_view3"/>
+
+        <!-- view24, has same end position with view23 and above view23. -->
+        <TextView
+                android:id="@+id/relative_view24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@id/relative_view23"
+                android:layout_above="@id/relative_view23"
+                android:text="@string/relative_view4"/>
+
+        <!-- view25 goes on the start-bottom -->
+        <TextView
+                android:id="@+id/relative_view25"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:text="@string/relative_view5"/>
+
+        <!-- view26 goes on the top-end -->
+        <TextView
+                android:id="@+id/relative_view26"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:text="@string/relative_view6"/>
+
+        <!-- view27, has same baseline with view26 and centered horizontally within its parent. -->
+        <TextView
+                android:id="@+id/relative_view27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@id/relative_view26"
+                android:layout_centerHorizontal="true"
+                android:text="@string/relative_view7"/>
+
+        <!-- view28, centered vertically within its parent and on the start of view21. -->
+        <TextView
+                android:id="@+id/relative_view28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/relative_view21"
+                android:layout_centerVertical="true"
+                android:text="@string/relative_view8"/>
+
+        <!-- view29, has same top and bottom position with view23 and same start position
+             with its parent. -->
+        <TextView
+                android:id="@+id/relative_view29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/gravity_bottom"
+                android:layout_alignTop="@id/relative_view23"
+                android:layout_alignBottom="@id/relative_view23"
+                android:layout_alignWithParentIfMissing="true"
+                android:text="@string/relative_view9"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2012 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License
+  -->
+<resources>
+    <style name="DialtactsTheme"
+           parent="android:Theme.Holo.Light">
+        <item name="android:textColorPrimary">@color/dialtacts_primary_text_color</item>
+        <item name="android:textColorSecondary">@color/dialtacts_secondary_text_color</item>
+        <item name="android:windowActionBarOverlay">false</item>
+        <item name="android:actionBarStyle">@style/DialtactsActionBarStyle</item>
+        <item name="android:actionBarTabStyle">@style/DialtactsActionBarTabStyle</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!--  Searchbox Style -->
+        <item name="android:editTextStyle">@style/DialtactsSearchboxStyle</item>
+        <item name="android:listViewStyle">@style/ListViewStyle</item>
+        <item name="activated_background">@drawable/list_item_activated_background</item>
+        <item name="section_header_background">@drawable/list_title_holo</item>
+        <item name="list_section_header_height">32dip</item>
+        <item name="list_item_divider">?android:attr/listDivider</item>
+        <item name="list_item_padding_top">8dip</item>
+        <item name="list_item_padding_right">0dip</item>
+        <item name="list_item_padding_bottom">8dip</item>
+        <item name="list_item_padding_left">0dip</item>
+        <item name="list_item_gap_between_image_and_text">8dip</item>
+        <item name="list_item_gap_between_label_and_data">5dip</item>
+        <item name="list_item_presence_icon_margin">4dip</item>
+        <item name="list_item_presence_icon_size">16dip</item>
+        <item name="list_item_photo_size">@dimen/contact_browser_list_item_photo_size</item>
+        <item name="list_item_profile_photo_size">70dip</item>
+        <item name="list_item_prefix_highlight_color">@color/people_app_theme_color</item>
+        <item name="list_item_header_text_indent">8dip</item>
+        <item name="list_item_header_text_color">@color/people_app_theme_color</item>
+        <item name="list_item_header_text_size">14sp</item>
+        <item name="list_item_header_height">30dip</item>
+        <item name="list_item_header_underline_height">1dip</item>
+        <item name="list_item_header_underline_color">@color/favorite_contacts_separator_color</item>
+        <item name="list_item_data_width_weight">5</item>
+        <item name="list_item_label_width_weight">3</item>
+        <item name="contact_browser_list_padding_left">8dip</item>
+        <item name="contact_browser_list_padding_right">0dip</item>
+        <item name="contact_browser_background">@android:color/transparent</item>
+        <item name="list_item_text_indent">@dimen/contact_browser_list_item_text_indent</item>
+        <!-- CallLog -->
+        <item name="call_log_primary_text_color">#000000</item>
+        <item name="call_log_primary_background_color">#000000</item>
+        <item name="call_log_secondary_text_color">@color/dialtacts_secondary_text_color</item>
+        <item name="call_log_secondary_background_color">#333333</item>
+        <item name="call_log_header_color">#33b5e5</item>
+        <!-- VoicemailStatus -->
+        <item name="call_log_voicemail_status_height">48dip</item>
+        <item name="call_log_voicemail_status_background_color">#262626</item>
+        <item name="call_log_voicemail_status_text_color">#888888</item>
+        <item name="call_log_voicemail_status_action_text_color">#33b5e5</item>
+            <!-- Favorites -->
+        <item name="favorites_padding_bottom">?android:attr/actionBarSize</item>
+    </style>
+
+    <style name="DialpadTheme" parent="DialtactsTheme">
+        <item name="android:textColorPrimary">#FFFFFF</item>
+    </style>
+
+    <style name="DialtactsThemeWithActionBarOverlay" parent="DialtactsTheme">
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
+    <style name="CallDetailActivityTheme" parent="android:Theme.Holo.Light">
+        <item name="android:windowBackground">@color/background_dialer_list_items</item>
+        <item name="android:gravity">top</item>
+        <item name="android:listViewStyle">@style/ListViewStyle</item>
+        <!-- CallLog -->
+        <item name="call_log_primary_text_color">#333333</item>
+        <item name="call_log_primary_background_color">#FFFFFF</item>
+        <item name="call_log_secondary_text_color">#333333</item>
+        <item name="call_log_secondary_background_color">#FFFFFF</item>
+        <item name="call_log_header_color">#FFFFFF</item>
+        <!-- VoicemailStatus -->
+        <item name="call_log_voicemail_status_height">48dip</item>
+        <item name="call_log_voicemail_status_background_color">#262626</item>
+        <item name="call_log_voicemail_status_text_color">#888888</item>
+        <item name="call_log_voicemail_status_action_text_color">#33b5e5</item>
+    </style>
+
+    <style name="Theme">
+    </style>
+
+    <style name="DialtactsDigitsTextAppearance">
+        <item name="android:maxLines">1</item>
+        <item name="android:scrollHorizontally">true</item>
+        <item name="android:textSize">@dimen/dialpad_digits_text_size</item>
+        <item name="android:freezesText">true</item>
+        <item name="android:focusableInTouchMode">true</item>
+        <item name="android:editable">true</item>
+        <item name="android:cursorVisible">false</item>
+        <item name="android:layout_weight">0</item>
+    </style>
+
+    <style name="DialtactsDialpadButtonStyle">
+        <item name="android:layout_width">0dip</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:soundEffectsEnabled">false</item>
+    </style>
+
+    <style name="DialpadHorizontalSeparator">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dialpad_vertical_margin</item>
+        <item name="android:background">#66000000</item>
+    </style>
+
+    <style name="DialtactsActionBarStyle" parent="android:Widget.Holo.ActionBar">
+        <item name="android:background">@drawable/call_history_actionbar_background</item>
+        <item name="android:backgroundStacked">@color/actionbar_background_color</item>
+        <!-- Empty icon -->
+        <item name="android:icon">@android:color/transparent</item>
+        <item name="android:displayOptions"></item>
+    </style>
+
+    <style name="DialtactsActionBarTabStyle" parent="@android:style/Widget.Holo.ActionBar.TabView">
+        <item name="android:background">@drawable/action_bar_tab</item>
+    </style>
+
+    <style name="ListViewStyle" parent="@android:style/Widget.Holo.Light.ListView">
+        <item name="android:overScrollMode">always</item>
+    </style>
+
+    <style name="FragmentActionBarPadding">
+        <item name="android:paddingBottom">?android:attr/actionBarSize</item>
+    </style>
+
+    <style name="DialtactsSearchboxStyle" parent="@android:style/Widget.EditText">
+        <item name="android:background">@null</item>
+        <item name="android:textColorHint">@color/searchbox_text_color</item>
+    </style>
+
+    <style name="DismissButtonStyle">
+        <item name="android:paddingLeft">@dimen/dismiss_button_padding_start</item>
+        <item name="android:paddingRight">@dimen/dismiss_button_padding_end</item>
+    </style>
+</resources>

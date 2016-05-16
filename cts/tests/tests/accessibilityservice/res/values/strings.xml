@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Copyright (C) 2010 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources>
+
+    <!-- AccessibilityEndToEndTest -->
+
+    <!-- String title of the accessibility end-to-end test activity -->
+    <string name="accessibility_end_to_end_test_activity">End-to-end test</string>
+
+    <!-- String value of used as text input -->
+    <string name="text_input_blah">Blah</string>
+
+    <!-- String value of used as text input -->
+    <string name="text_input_blah_blah">Blah blah</string>
+
+    <!-- String title of the button -->
+    <string name="button_title">Click me</string>
+
+    <!-- String value of the first list item -->
+    <string name="first_list_item">First list item</string>
+
+    <!-- String value of the second list item -->
+    <string name="second_list_item">Second list item</string>
+
+    <!-- String alert title -->
+    <string name="alert_title">Alert title</string>
+
+    <!-- String alert message -->
+    <string name="alert_message">Alert message</string>
+
+    <!-- String notification message -->
+    <string name="notification_message">Notification message</string>
+
+    <!-- AccessibilityWindowQueryTest -->
+
+    <!-- String title of the accessibility query window test activity -->
+    <string name="accessibility_query_window_test_activity">Query window test</string>
+
+    <!-- String Button1 text -->
+    <string name="button1">Button1</string>
+
+    <!-- String Button2 text -->
+    <string name="button2">Button2</string>
+
+    <!-- String Button3 text -->
+    <string name="button3">Button3</string>
+
+    <!-- String Button4 text -->
+    <string name="button4">Button4</string>
+
+    <!-- String Button5 text -->
+    <string name="button5">Button5</string>
+
+    <!-- String Button6 text -->
+    <string name="button6">Button6</string>
+
+    <!-- String with content description for Button6 -->
+    <string name="contentDescription">contentDescription</string>
+
+    <!-- String Button7 text -->
+    <string name="button7">Button7</string>
+
+    <!-- String Button8 text -->
+    <string name="button8">Button8</string>
+
+    <!-- String Button9 text -->
+    <string name="button9">Button9</string>
+
+    <!-- AccessibilityFocusTest -->
+
+    <!-- String title of the accessibility hierarchical focus test activity -->
+    <string name="accessibility_view_tree_reporting_test_activity">Accessibility view three reporting test</string>
+
+    <!-- String root LinearLayout text -->
+    <string name="rootLinearLayout">rootLinearLayout</string>
+
+    <!-- String first FrameLayout text -->
+    <string name="firstFrameLayout">firstFrameLayout</string>
+
+    <!-- String first LinearLayout text -->
+    <string name="firstLinearLayout">firstLinearLayout</string>
+
+    <!-- String first TextView text -->
+    <string name="firstTextView">firstTextView</string>
+
+    <!-- String first EditText text -->
+    <string name="firstEditText">firstEditText</string>
+
+    <!-- String first Button text -->
+    <string name="firstButton">firstButton</string>
+
+    <!-- String second FrameLayout text -->
+    <string name="secondFrameLayout">secondFrameLayout</string>
+
+    <!-- String second LinearLayout text -->
+    <string name="secondLinearLayout">secondLinearLayout</string>
+
+    <!-- String second TextView text -->
+    <string name="secondTextView">secondTextView</string>
+
+    <!-- String second EditText text -->
+    <string name="secondEditText">secondEditText</string>
+
+    <!-- String second Button text -->
+    <string name="secondButton">secondButton</string>
+
+    <!-- String title of the accessibility focus and input focus sync test activity -->
+    <string name="accessibility_focus_and_input_focus_sync_test_activity">Accessibility focus and input focus sync test</string>
+
+    <!-- String title of the accessibility text traversal test activity. -->
+    <string name="accessibility_text_traversal_test_activity">Accessibility text traversal test</string>
+
+    <string name="android_wiki_short">
+        Android is a Linux-based operating system for mobile devices</string>
+
+    <string name="android_wiki">
+        Android is a Linux-based operating system for mobile devices such as smartphones and tablet
+        computers. It is developed by the Open Handset Alliance, led by Google, and other companies.
+        Google purchased the initial developer of the software, Android Inc., in 2005. The
+        unveiling of the Android distribution in 2007 was announced with the founding of the Open
+        Handset Alliance, a consortium of 86 hardware, software, and telecommunication </string>
+
+    <string name="a_b">A B</string>
+
+    <string name="android_wiki_search">Android is a Linux-based</string>
+
+    <string name="foo_bar_baz">Foo bar baz.</string>
+
+    <string name="android_wiki_paragraphs">
+        \n\nAndroid is a Linux-based operating system for mobile devices such as smartphones and tablet
+        computers.\n\n It is developed by the Open Handset Alliance, led by Google, and other companies.
+        Google purchased the initial developer of the software, Android Inc., in 2005.\n The
+        unveiling of the Android distribution in 2007 was announced with the founding of the Open
+        Handset Alliance, a consortium of 86 hardware, software, and telecommunication companies
+        devoted to advancing open standards for mobile devices. Google releases the
+        Android code as open-source, under the Apache License.\n\n</string>
+
+</resources>

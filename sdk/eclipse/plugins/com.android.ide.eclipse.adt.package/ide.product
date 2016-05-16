@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="Android Developer Tools" uid="com.android.ide.eclipse.adt.package.product" id="com.android.ide.eclipse.adt.package.product" application="org.eclipse.ui.ide.workbench" version="22.0.0.qualifier" useFeatures="true" includeLaunchers="true">
+
+   <configIni use="default">
+   </configIni>
+
+   <launcherArgs>
+      <programArgs>-product com.android.ide.eclipse.adt.package.product</programArgs>
+      <programArgsWin>--launcher.XXMaxPermSize 256M</programArgsWin>
+      <vmArgs>-Dosgi.requiredJavaVersion=1.6 -Xms40m -Xmx768m</vmArgs>
+      <vmArgsLin>-XX:MaxPermSize=256m</vmArgsLin>
+      <vmArgsMac>-XstartOnFirstThread -Dorg.eclipse.swt.internal.carbon.smallFonts</vmArgsMac>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <splash
+      location="com.android.ide.eclipse.adt.package" />
+   <launcher>
+      <solaris/>
+      <win useIco="true">
+         <ico path="/plugin-adt-package/icons/adt.ico"/>
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+      <linux include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</linux>
+      <macos include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</macos>
+      <windows include="false">org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6</windows>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="com.android.ide.eclipse.adt.package"/>
+   </features>
+
+   <configurations>
+      <property name="eclipse.product" value="com.android.ide.eclipse.adt.package.product" />
+   </configurations>
+
+</product>

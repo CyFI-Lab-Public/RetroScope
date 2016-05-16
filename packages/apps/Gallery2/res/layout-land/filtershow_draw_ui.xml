@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/top"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:visibility="visible">
+
+    <FrameLayout
+            android:id="@+id/editorContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="6"
+            android:layout_gravity="bottom">
+
+        <LinearLayout
+                android:id="@+id/controls"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+            <Button
+                    android:id="@+id/clearButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="@string/draw_clear"
+                    android:visibility="gone"/>
+
+            <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:columnCount="2"
+                    android:layout_marginBottom="3dp"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:id="@+id/controlName1"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="8dip"
+                        android:text="@string/draw_size"/>
+
+                <TextView
+                        android:id="@+id/drawSizeValue"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="8dip"
+                        android:textStyle="bold"/>
+
+                <SeekBar
+                        android:id="@+id/drawSizeSeekBar"
+                        android:layout_width="match_parent"
+                        android:layout_column="0"
+                        android:progress="20"
+                        android:layout_columnSpan="2"
+                        android:layout_gravity="fill_horizontal"
+                        style="@style/FilterShowSlider"/>
+            </GridLayout>
+
+            <HorizontalScrollView
+                    android:id="@+id/scrollList"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:scrollbars="none">
+
+                <LinearLayout
+                        android:id="@+id/listStyles"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+                android:id="@+id/colorPicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/draw_color"
+                    android:layout_marginLeft="8dip"
+                    android:id="@+id/textView"
+                    android:visibility="gone"/>
+
+            <com.android.gallery3d.filtershow.colorpicker.ColorCompareView
+                    android:id="@+id/btnSelect"
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp"
+                    android:layout_marginLeft="18dp"
+                    android:layout_marginRight="18dp"
+                    android:layout_marginTop="0dp"
+                    android:layout_marginBottom="0dp"
+                    />
+
+            <com.android.gallery3d.filtershow.colorpicker.ColorSVRectView
+                    android:id="@+id/colorRectView"
+                    android:layout_width="@dimen/draw_ui_width"
+                    android:layout_height="@dimen/draw_ui_width"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginRight="1dp"/>
+
+            <com.android.gallery3d.filtershow.colorpicker.ColorHueView
+                    android:id="@+id/ColorHueView"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="0dp"
+                    android:layout_height="32dp" />
+
+            <com.android.gallery3d.filtershow.colorpicker.ColorOpacityView
+                    android:id="@+id/colorOpacityView"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="24dp"
+                    android:layout_height="32dp" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp">
+
+
+            <LinearLayout
+                    android:id="@+id/listColors"
+                    android:layout_weight="5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                <Button
+                        android:id="@+id/draw_color_button01"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/filtershow_color_picker_circle"
+                        android:layout_marginRight="4dp"/>
+
+                <Button
+                        android:id="@+id/draw_color_button02"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/filtershow_color_picker_circle"
+                        android:layout_marginRight="4dp"/>
+
+                <Button
+                        android:id="@+id/draw_color_button03"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/filtershow_color_picker_circle"
+                        android:layout_marginRight="4dp"/>
+
+                <Button
+                        android:id="@+id/draw_color_button04"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/filtershow_color_picker_circle"
+                        android:layout_marginRight="4dp"/>
+
+                <Button
+                        android:id="@+id/draw_color_button05"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/filtershow_color_picker_circle"
+                        android:layout_marginRight="4dp"/>
+
+            </LinearLayout>
+
+        <FrameLayout
+                android:background="@color/background_main_toolbar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+            <Button
+                    android:id="@+id/draw_color_popupbutton"
+                    android:layout_width="48dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_action_overflow"
+                    />
+        </FrameLayout>
+        <!--@drawable/ic_action_overflow
+        @android:drawable/ic_menu_more-->
+    </LinearLayout>
+</LinearLayout>

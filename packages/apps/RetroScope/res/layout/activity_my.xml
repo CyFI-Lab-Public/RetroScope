@@ -1,0 +1,47 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".MyActivity"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:weightSum="1.0">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+	android:background="#FFFFFF" 
+        android:orientation="vertical" 
+        android:id="@+id/topLayout">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="500px"
+            android:id="@+id/retroscope"
+            android:src="@drawable/retroscope"
+            android:layout_marginTop="0px"
+            android:layout_marginBottom="50px" />
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="100px"
+            android:id="@+id/Dialog"
+            android:textSize="22sp"
+            android:text="@string/Text"
+            android:layout_below="@id/retroscope" />
+    </LinearLayout>
+
+
+
+    <com.forensix.retroscope.DebugView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:id="@+id/buffer"
+        android:layout_weight="0.8"
+        android:layout_below="@id/topLayout">
+    </com.forensix.retroscope.DebugView>
+
+</LinearLayout>

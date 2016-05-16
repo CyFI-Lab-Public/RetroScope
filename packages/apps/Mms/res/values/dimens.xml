@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2011 Google Inc.
+All Rights Reserved. -->
+<resources>
+    <dimen name="message_item_avatar_on_right_text_indent">50dip</dimen>
+    <dimen name="message_item_text_padding_left_right">12dip</dimen>
+    <dimen name="message_item_text_padding_top">5dip</dimen>
+
+    <dimen name="avatar_width_height">64dip</dimen>
+
+    <dimen name="input_text_height">48dip</dimen>
+    <dimen name="input_text_height_adjusted">8dip</dimen>
+
+    <dimen name="mms_inline_attachment_size">178dip</dimen>
+
+    <dimen name="widget_margin_top">0dip</dimen>
+    <dimen name="widget_margin_left">0dip</dimen>
+    <dimen name="widget_margin_right">0dip</dimen>
+    <dimen name="widget_margin_bottom">0dip</dimen>
+
+    <!-- Bammer item spacing -->
+    <dimen name="banner_s_space">4dip</dimen>
+    <dimen name="banner_m_space">8dip</dimen>
+</resources>

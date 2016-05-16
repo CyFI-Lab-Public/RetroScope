@@ -1,0 +1,4 @@
+-keepclassmembers class com.android.wallpaper.livepicker.LiveWallpaperPreview {
+  public void setLiveWallpaper(android.view.View);
+  public void configureLiveWallpaper(android.view.View);
+}

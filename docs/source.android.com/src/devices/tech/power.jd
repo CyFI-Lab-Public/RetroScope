@@ -1,0 +1,608 @@
+page.title=Power Profiles for Android
+@jd:body
+
+<!--
+    Copyright 2010 The Android Open Source Project
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<div id="qv-wrapper">
+  <div id="qv">
+    <h2>In this document</h2>
+    <ol id="auto-toc"></ol>
+  </div>
+</div>
+
+<p>
+Battery usage information is derived from battery usage statistics and power profile
+values.
+</p>
+
+<h2>
+Battery Usage Statistics
+</h2>
+
+<p>
+Battery usage statistics are tracked by the framework. This involves keeping track of time
+spent by different device components in different states. This includes components such as
+WiFi chipset, Cellular Radio, Bluetooth, GPS, Display and CPU. When these components change
+state from off to on, or from idle to full power, low brightness to high brightness, etc.,
+their controlling service reports to the framework’s BatteryStats service, which collects
+such information over time and persists to storage so that it is available across reboots.
+</p>
+
+<p>
+The service isn’t keeping track of battery current draw information directly. It’s collecting
+mostly timing information so that it can be used to approximate battery consumption by
+different components.
+</p>
+
+<p>
+Consumption of these resources is also (where possible) attributed to the applications using
+the resources, sometimes sharing the blame across multiple applications using a resource
+simultaneously. For instance, multiple apps could be holding wakelocks, keeping the system
+from going into suspend state. Blame is shared across these apps (not necessarily equally).
+</p>
+
+<p>
+Statistics are persisted to flash periodically (approximately every half hour or so) to avoid
+losing the information on a shutdown (such as due to battery reaching zero remaining
+capacity, which may indicate a battery power consumption problem).
+</p>
+
+<p>
+Statistics gathering can happen in two ways - push or pull. When services are aware of
+changes happening to a component, they will push state changes to the BatteryStats service.
+With components such as the CPU usage by apps, we pull the data periodically (at certain
+transition points such as starting or stopping an activity, etc) to take a snapshot.
+</p>
+
+<p>
+All of the above is automatically done by the framework, and OEMs don’t need to do anything
+in addition to that.
+</p>
+
+<h2>
+Power Profile Values
+</h2>
+
+<p>
+The power profile is where the device manufacturer needs to provide current consumption
+values for various components and their states in order to approximate the actual battery
+drain caused by these components over time. The power consumption of a component is specified
+in units of milliamps (mA) of current draw (at a nominal voltage) in the power profile, and
+can be a fractional value specifying microamps. The value specified should be the mA consumed
+at the battery (and not a value applicable to a power rail that does not correspond to
+current consumed from the battery).
+</p>
+
+<p>
+For instance, to attribute the cost of keeping the display on for a duration of time, the
+framework gathers brightness levels and times spent at each level (quantized to some number
+of bins). The power profile values specify how many milliamps of current are required to keep
+the display on at minimum brightness and at maximum brightness. The time spent at each
+brightness level can then be multiplied by an interpolated display brightness cost to compute
+an approximation of how much battery was drained by the display component.
+</p>
+
+<p>
+Similarly, CPU time for each application is multiplied by the mA to keep the CPU running at a
+certain speed to get a comparative ranking of how much battery each app is consuming due to
+executing CPU code (time as the foreground app and total time including background activity
+are reported separately).
+</p>
+
+<h2>
+Computing power consumption for individual components
+</h2>
+
+<p class="note">
+<strong>Note:</strong> manufacturers usually supply information about how much current an
+individual component consumes. It may be possible to use these values if they are an accurate
+representation of the the current drawn from the device’s battery in practice. However, we
+encourage you validate manufacturer-provided values before entering them in your device’s
+power profile.
+</p>
+
+<p>
+Current consumption for an individual component is calculated by:
+</p>
+
+<ul>
+<li>
+Measuring the current drawn by the device when the component is in the desired state (e.g.,
+on, active, or scanning)
+</li>
+<li>
+Measuring the current drawn by the device when the component is
+off
+</li>
+<li>subtracting (2) from (1).</li>
+
+
+<img></img><p class="img-caption"></p>
+<p>
+We recommend that you measure the current (usually the average instantaneous current) drawn
+on the device at a nominal voltage. This can be accomplished using a bench power supply or
+using specialized battery-monitoring tools (such as Monsoon Solution Inc.’s Power Monitor and
+Power Tool software).
+</p>
+<p>
+Take the measurements with no external charger connected to the device, including no USB
+connection to a host (as used for connecting to development hosts via the adb Android Debug
+Bridge), which may draw current from the host and lower the measurements at the battery. If
+the device supports USB On The Go (OTG) then having an OTG device connected may draw
+additional power from the device being measured, so disconnect any such OTG device.
+</p>
+<p>
+While taking measurements, you’ll want to try to keep the rest of the system other than the
+component being measured running at a constant level of power consumption, to avoid
+introducing inaccuracies in the measurements due to changes in other components. System
+activities that may introduce unwanted changes to power measurements include:
+</p>
+<ul>
+<li>
+Cellular, Wi-Fi, and Bluetooth receive, transmit, or scanning activity. You may want to put
+the device into airplane mode when not measuring cell radio power, and individually enable
+Wi-Fi or Bluetooth when appropriate.
+</li>
+<li>
+Screen/backlight on or off. The colors displayed while screen is on can also affect power
+draw on certain screen technologies. Measurements for components other than the screen on
+values should be made with screen turned off. But see the next item for an important
+consideration when the screen is off.
+</p>
+<li>
+System suspended/resumed state. When the screen is off the system may enter a suspend state
+where much of the device may be powered off or placed in a low-power state, probably
+affecting power consumption of the component being measured and possibly introducing large
+variances in power readings as the system periodically resumes to service alarms and such.
+See Controlling and Measuring System Suspend State for more instructions.
+</li>
+<li>
+CPUs changing speed and entering/exiting low-power scheduler idle state. The system may make
+frequent adjustments to the speeds of CPUs, how many CPU cores are online, and other system
+core state such as memory bus speed and voltages of power rails associated with CPUs and
+memory. If these are changing during your measurements then you may want to prevent CPU speed
+scaling operations, which may also reduce the amount of clock and voltage scaling of memory
+busses and other system core components. Scheduling activity may also affect what percentage
+of the time the CPUs spend in low-power idle states. See Controlling and Measuring CPU Speeds
+for more instructions.
+</li>
+</ul>
+<p>
+For instance, to compute the value for <code>screen.on</code>, you would run the device in a stable state,
+with CPU speed held constant, device in airplane mode, with a partial wakelock held to
+prevent system suspend. The current readings in this state should be stable. Take the reading
+- say 200mA. Now turn on the screen at minimum brightness. If the power monitor shows 300mA,
+then <code>screen.on</code> = (300 - 200) = 100mA.
+</p>
+<p>
+For components that don’t have a flat waveform of current consumption when active (such as
+the cellular radio or wifi), you may need to measure an average current over a period of
+time. Your power monitoring tool may be able to compute this average for you.
+</p>
+<p>
+Replacing the battery with an external power source may require working around problems that
+can occur due to not connecting battery thermistor or integrated fuel gauge pins. For
+example, the system might take an invalid battery temperature reading or remaining battery
+capacity reading that could cause the kernel or Android system to shut down. Sometimes these
+problems are avoided through the use of “fake batteries” that replace normal batteries for
+power measurement purposes, constructed to match the dimensions and electrical properties of
+the batteries for the product being measured. Fake batteries can provide signals on
+thermistor or fuel gauge pins that mimic temperature and state of charge readings for a
+normally running system, and may also provide convenient leads for connecting to external
+power supplies. In other cases it may be easier to modify the system to ignore the invalid
+data from the missing battery.
+</p>
+<h3>
+Controlling and Measuring System Suspend State
+</h3>
+<p>
+As mentioned above, system suspend can introduce unwanted variance in power measurements and
+place system components in low power states not appropriate for measuring active power use.
+But at some point you’ll also need to measure the power draw of system suspend state. This
+section describes how to avoid system suspend state when you don’t want it to interfere with
+other measurements, and how to measure the power draw of system suspend state when you do
+want to measure it.
+</p>
+<p>
+To avoid system suspend you can temporarily connect the device to a development host and
+issue the following command to hold a “partial wakelock”:
+</p>
+<pre>
+$ adb shell "echo temporary &gt; /sys/power/wake_lock"
+</pre>
+<p>
+which will prevent the system from suspending while the screen is off. Disconnect the USB
+cable before making measurements.
+</p>
+<p>
+You can undo the effect of this later with:
+</p>
+<pre>
+$ adb shell "echo temporary &gt; /sys/power/wake_unlock"
+</pre>
+<p>
+The power consumption of the system suspend state is measured for the value of cpu.idle in
+the power profile. For this measurement it may be best to place the device in airplane mode
+to avoid any concurrent activity by the cellular radio, which may run on a processor separate
+from the portions of the SoC controlled by the system suspend. To ensure the measurement is
+made while the system is in the correct state, it may be necessary to first confirm the
+current readings settle to a steady value within the expected range for the consumption of
+the suspend state of the SoC entered plus the consumption of additional system components
+that remain powered (such as the USB PHY). A system console or other external indication of
+system status (such as turning off an LED when not in suspend) may also be observed during
+the measurement.
+</p>
+<h3>
+Controlling and Measuring CPU Speeds
+</h3>
+<p>
+While active, CPUs can be brought online or put offline, change clock speeds and associated
+voltages (possibly also affecting memory bus speeds and other system core power state), and
+can enter lower power idle states while in the kernel idle loop. Not only are these different
+CPU power states measured for the power profile, it may be necessary to avoid the power draw
+variance when measuring other parameters.
+</p>
+<p>
+The power profile currently assumes all CPUs have the same available speeds and power
+characteristics.
+</p>
+<p>
+While measuring CPU power, or holding CPU power constant in order to make other measurements,
+it may be best to hold the number of CPUs brought online constant, such as to have one CPU
+online and the rest offline / hotplugged out. Keeping all CPUs but one in scheduling idle may
+deliver acceptable results. Stopping the Android framework with adb shell stop can help
+reduce system scheduling activity.
+</p>
+<p>
+You’ll specify the available CPU speeds for your device in the power profile cpu.speeds
+entry. You can get a list of these using
+</p>
+<pre>
+adb shell cat /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state
+</pre>
+<p>
+These speeds are matched with their corresponding power measurements in value <code>cpu.active</code>.
+</p>
+<p>
+If your platform’s power consumption is significantly affected by how many cores are brought
+online then you may need to modify the cpufreq driver or governor for your platform to
+control this. For many platforms, the easiest way to control CPU speed is to use the
+“userspace” cpufreq governor and use sysfs interfaces to set the speed. The exact commands
+differ depending on your platform’s cpufreq implementation. The following commands from the
+system console or adb shell could be used to set a speed for 200MHz on a system with only 1
+CPU, or all CPUs sharing a common cpufreq policy:
+</p>
+<pre>
+echo userspace &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo 200000 &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+echo 200000 &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq
+echo 200000 &gt; /sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed
+cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq
+</pre>
+<p>
+which makes sure the new speed is not outside the allowed bounds, sets the new speed, and
+then prints which speed the CPU is actually running at for verification. (If the current
+minimum speed prior to executing the above is above 200000, you may have to reverse the order
+of the first two lines, or execute the first line again, to drop the minimum speed prior to
+setting the maximum speed.)
+</p>
+<p>
+To measure current consumed by a CPU while running at various speeds, you may need to place a
+CPU in a CPU-bound loop such as:
+</p>
+<pre>
+# while true; do true; done
+</pre>
+<p>
+on the system console and take the measurement while the above runs.
+</p>
+<p>
+If your device may limit maximum CPU speed while thermal throttling due to a high temperature
+measurement, possibly as a result of running CPUs at high speeds for sustained periods, then
+watch out for this while taking measurements. You may need to watch system console output, or
+check the kernel log after measuring.
+</p>
+<p>
+For the <code>cpu.active</code> value you can measure the power consumed when the system is not in suspend
+but not executing tasks. The CPU should be in a low-power scheduler “idle loop”, possibly
+executing an ARM Wait For Event instruction or in an SoC-specific low power state with a fast
+exit latency suitable for idle use. There may be more than one idle state in use on your
+platform with differing levels of power consumption; choose a representative idle state for
+longer periods of scheduler idle (several milliseconds). You may need to examine the power
+graph on your measurement equipment and choose samples where the CPU is at its lowest
+consumption, discarding higher samples where the CPU exited idle.
+</p>
+<h3>
+Measuring Screen Power
+</h3>
+<p>
+Screen on power is typically measured with all other devices that are turned on with the
+screen also enabled. For example, the touchscreen and any display backlight would normally
+also be turned on during the measurement, to get a more realistic example of screen on power
+usage.
+</p>
+<p>
+Some display technologies vary in power consumption according to the colors displayed, and so
+power measurements may vary considerably depending on what is on the screen at the time. It’s
+best to choose to display something that has power characteristics of a realistic screen,
+somewhere between the extremes of an all-black screen (which consumes the lowest power for
+some technologies) and an all-white screen. A common choice is a view of a schedule in the
+calendar app, which has a mix of white background and non-white elements.
+</p>
+<p>
+The cost of having the screen on is measured at two points: at minimum display/backlight
+brightness, and at maximum brightness. Setting the display brightness to minimum using the
+Settings app Display Brightness slider might not produce accurate results. The Android UI
+will typically only allow you to set the brightness to a minimum of about 10-20% of the
+possible panel/backlight brightness -- it doesn't allow the user to set brightness so low
+that the screen might not be visible without great effort. If you have a sysfs file that
+controls panel brightness all the way down to the minimum brightness supported by the
+hardware then that's even better.
+</p>
+<p>
+If your platform provides sysfs files that turns the LCD panel, backlight, and touchscreen on
+and off then that’s a good way to take measurements with the screen on and off. Otherwise,
+holding a partial wakelock so the system doesn't go to suspend, and turning on and off the
+screen with the power button, should be fine.
+</p>
+<h3>
+Measuring Wi-Fi Power
+</h3>
+<p>
+It’s recommended to perform Wi-Fi measurements on a relatively quiet network, without
+introducing a lot of additional work processing high volumes of broadcast traffic unrelated
+to the activity being measured.
+</p>
+<p>
+The <code>wifi.on</code> value measures the power consumed when Wi-Fi is enabled but not actively
+transmitting or receiving. This is often measured as the delta between the current draw in
+system suspend (sleep) state with Wi-Fi enabled vs. disabled.
+</p>
+<p>
+The <code>wifi.scan</code> value measures the power consumed during a Wi-Fi scan for access points. Wi-Fi
+scans can be triggered by an app using the WifiManager class <code>startScan()</code> API, which is
+documented at http://developer.android.com/reference/android/net/wifi/WifiManager.html . You
+can also open Settings &gt; Wi-Fi, which will perform scans for access points every few
+seconds with an apparent jump in power consumption, but the screen power must be subtracted
+from these measurements.
+</p>
+<p>
+Network receive and transmit traffic can be generated using controlled setup such as 
+<a href="http://en.wikipedia.org/wiki/Iperf">iperf</a> if desired.
+</p>
+<h2>
+List of values and their meaning
+</h2>
+<table>
+<tr>
+  <th>Name</th>
+  <th>Meaning</th>
+  <th>Example value</th>
+  <th>Notes</th>
+</tr>
+<tr>
+  <td>none</td>
+  <td>Nothing</td>
+  <td>0</td>
+  <td></td>
+</tr>
+
+<tr>
+  <td>screen.on</td>
+  <td>Additional power used when screen is turned on at minimum brightness </td>
+  <td>200mA</td>
+  <td>Includes touch controller and display backlight. At 0 brightness, not the Android minimum which tends to be 10 or 20%.</td>
+</tr>
+
+<tr>
+  <td>screen.full</td>
+  <td>Additional power used when screen is at maximum brightness, compared to screen at minimum brightness</td>
+  <td>100- 300mA</td>
+  <td>A fraction of this value (based on screen brightness) is added to the screen.on value to compute the power usage of the screen.</td>
+</tr>
+
+<tr>
+  <td>bluetooth.active </td>
+  <td>Additional power used when playing audio through bluetooth A2DP</td>
+  <td>14mA</td>
+  <td></td>
+</tr>
+
+<tr>
+  <td>bluetooth.on</td>
+  <td> Additional power used when bluetooth
+is turned on but idle </td>
+  <td>1.4mA</td>
+  <td></td>
+</tr>
+
+<tr>
+  <td>wifi.on </td>
+  <td>Additional power used when wifi is turned on but not
+receiving, transmitting, or scanning</td>
+  <td> 2mA </td>
+  <td></td>
+</tr>
+
+<tr>
+  <td>wifi.active  </td>
+  <td>Additional power used when transmitting
+or receiving over Wifi </td>
+  <td>31mA</td>
+  <td></td>
+</tr>
+
+<tr>
+  <td>wifi.scan </td>
+  <td>Additional power used when wifi is scanning for access
+points  </td>
+  <td>100mA</td>
+  <td></td>
+</tr>
+
+<tr>
+  <td>dsp.audio </td>
+  <td>Additional power used when audio decoding/encoding via DSP  </td>
+  <td>14.1mA </td>
+  <td>Not
+currently used</td>
+</tr>
+
+
+<tr>
+  <td>dsp.video </td>
+  <td>Additional power used when video decoding via DSP</td>
+  <td> 54mA</td>
+  <td> Not currently
+used </td>
+</tr>
+
+<tr>
+  <td>gps.on </td>
+  <td>Additional power used when GPS is acquiring a signal  </td>
+  <td>50mA</td>
+  <td></td>
+</tr>
+
+<tr>
+  <td>radio.active </td>
+  <td>Additional
+power used when cellular radio is transmitting/receiving </td>
+  <td>100- 300mA </td>
+  <td></td>
+</tr>
+
+<tr>
+  <td>radio.scanning </td>
+  <td>Additional
+power used when cellular radio is paging the tower  </td>
+  <td>1.2mA</td>
+  <td></td>
+</tr>
+
+<tr>
+  <td>radio.on Additional power used when
+the cellular radio is on. </td>
+  <td>This is a multi-value entry, one per signal strength (no signal,
+weak, moderate, strong)  </td>
+  <td>1.2mA </td>
+  <td>Some radios boost up their power when there’s no signal and
+they’re trying to find a cell tower. So these numbers could all be the same or decreasing
+with increasing signal strength. If you provide only one value, the same value will be used
+for all strengths. If you provide 2 values, the first will be for no-signal and the second
+for all other strengths, and so on.</td>
+</tr>
+
+<tr>
+  <td>cpu.speeds </td>
+  <td>Multi-value entry that lists each possible CPU
+speed in KHz </td>
+  <td>125000, 250000, 500000, 1000000, 1500000 </td>
+  <td>The number and order of entries need to
+correspond to the mA entries in cpu.active </td>
+</tr>
+
+<tr>
+  <td>cpu.idle  </td>
+  <td>Total power drawn by the system when CPUs
+(and the SoC) are in system suspend state </td>
+  <td>3mA</td>
+  <td></td>
+</tr>
+
+<tr>
+  <td>cpu.awake 
+</td>
+  <td>Additional power used when CPUs are
+in scheduling idle state (kernel idle loop); system is not in system suspend state </td>
+  <td>50mA</td>
+  <td></td>
+</tr>
+
+<tr>
+  <td>cpu.active  </td>
+  <td>Additional power used by CPUs when running at different speeds </td>
+  <td>100, 120, 140, 160,
+200</td>
+  <td>Set the max speed in the kernel to each of the allowed speeds and peg the CPU at that
+speed. The number of entries here correspond to the number of entries in cpu.speeds, in the
+same order. </td>
+</tr>
+
+<tr>
+  <td>battery.capacity  </td>
+  <td>The total battery capacity in mAh</td>
+  <td>3000mAh</td>
+  <td></td>
+</tr>
+
+</table>
+ 
+<p>
+The power_profile.xml file is placed in an overlay in
+device///frameworks/base/core/res/res/xml/power_profile.xml
+</p>
+<h3>
+Sample file
+</h3>
+<pre>
+&lt;!-- Most values are the incremental current used by a feature, in mA (measured at
+nominal voltage). OEM's must measure and provide actual values before shipping a device.
+Example real-world values are given, but they are totally dependent on the platform
+and can vary significantly, so should be measured on the shipping platform with a power meter.
+--&gt;
+0
+200
+160
+10
+&lt;!-- Bluetooth stereo audio playback 10.0 mA --&gt;
+1.3
+0.5
+30
+100
+12
+50
+50
+75
+1.1
+&lt;!-- Strength 0 to BINS-1 (4) --&gt;
+1.1
+
+&lt;!-- Different CPU speeds as reported in
+/sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state --&gt;
+
+250000  <!-- 250 MHz -->
+500000  <!-- 500 MHz -->
+750000  <!-- 750 MHz -->
+1000000 <!-- 1   GHz -->
+1200000 <!-- 1.2 GHz -->
+
+&lt;!-- Power consumption when CPU is idle --&gt;
+3.0
+50.1
+&lt;!-- Power consumption at different speeds --&gt;
+
+100 &lt;!-- 250 MHz --&gt;
+120 &lt;!-- 500 MHz --&gt;
+140 &lt;!-- 750 MHz --&gt;
+155 &lt;!-- 1   GHz --&gt;
+175 &lt;!-- 1.2 GHz --&gt;
+
+&lt;!-- This is the battery capacity in mAh --&gt;
+3000
+&lt;!-- Battery capacity is 3000 mAH (at 3.6 Volts) --&gt;
+
+</pre>

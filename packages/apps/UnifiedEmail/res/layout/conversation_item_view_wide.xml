@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<!-- This layout is used as a template to create custom view CanvasConversationHeaderView
+    in normal mode. To be able to get the correct measurements, every source field should
+    be populated with data here. E.g:
+    - Text View should set text to a random long string (android:text="@string/long_string")
+    - Image View should set source to a specific asset -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="1dp"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="32dp">
+
+        <!-- minHeight here is to ensure more consistent item heights across gadget choices -->
+        <!-- and between 'normal' vs. 'wide' layouts (which is important during 2-pane -->
+        <!-- transitions)  -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:minHeight="66dp"
+            android:gravity="center_vertical">
+
+            <View
+                android:id="@+id/contact_image"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:baselineAligned="false"
+                android:gravity="top"
+                android:orientation="horizontal">
+
+                <!-- for Email -->
+                <!-- cancel out the asset's 2dp built-in padding -->
+                <ImageView
+                    android:id="@+id/reply_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-2dp"
+                    android:layout_marginRight="8dp"
+                    android:src="@drawable/ic_badge_reply_holo_light" />
+
+                <TextView
+                    android:id="@+id/senders"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="18sp"
+                    android:lines="1"
+                    android:includeFontPadding="false"
+                    android:text="@string/long_string" />
+
+                <FrameLayout
+                    android:layout_width="54dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical">
+
+                    <!-- for Gmail -->
+                    <ImageView
+                        android:id="@+id/personal_indicator"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="8dp"
+                        android:layout_gravity="right"
+                        android:src="@drawable/ic_email_caret_single" />
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/subject"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:lines="2"
+                    android:textSize="14sp"
+                    android:includeFontPadding="false"
+                    android:text="@string/long_string" />
+
+                <!-- cancel out the asset's 8dp built-in top padding -->
+                <!-- left padding should be 8dp, but the asset has 2dp built-in padding -->
+                <ImageView
+                    android:id="@+id/paperclip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-8dp"
+                    android:paddingLeft="6dp"
+                    android:src="@drawable/ic_attachment_holo_light" />
+
+                <!-- The date should never appear truncated. -->
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="8dp"
+                    android:textSize="12sp"
+                    android:lines="1"
+                    android:includeFontPadding="false"
+                    android:text="@string/date" />
+
+                <ImageView
+                    android:id="@+id/info_icon"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginTop="-3dp"
+                    android:layout_marginLeft="4dp" />
+
+                <!-- align to bottom of subject text -->
+                <ImageView
+                    android:id="@+id/star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginLeft="32dp"
+                    android:src="@drawable/ic_btn_star_off" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- for Email -->
+        <!-- aligned to be above the date (32dp(star asset) + 32dp(star left margin) = 64dp) -->
+        <View android:id="@+id/color_block"
+            android:layout_width="@dimen/color_block_width"
+            android:layout_height="@dimen/color_block_height"
+            android:layout_marginRight="64dp"
+            android:layout_gravity="top|right" />
+
+    </FrameLayout>
+    <!-- There are 10dp bottom margins here for when there are no folders -->
+
+    <include
+            layout="@layout/conversation_attachment_previews"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/attachment_preview_margin_top_wide"/>
+
+    <!-- Margin between attachment previews and folders. 10dp bottom margins match above -->
+    <View
+        android:id="@+id/attachment_previews_bottom_margin"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/attachment_preview_margin_bottom_wide"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone" />
+
+    <!-- Folders should be 0dp below the subject, so we cancel out the 10dp bottom margin above -->
+    <TextView
+        android:id="@+id/folders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-10dp"
+        android:fontFamily="sans-serif-light"
+        android:includeFontPadding="false"
+        android:text="@string/long_string"
+        android:textSize="12sp"
+        android:lines="1"
+        android:minHeight="16dp" />
+
+</LinearLayout>

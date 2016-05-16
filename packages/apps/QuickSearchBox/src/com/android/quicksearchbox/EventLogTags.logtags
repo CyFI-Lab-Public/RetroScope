@@ -1,0 +1,63 @@
+# See system/core/logcat/event.logtags for a description of the format of this file.
+
+option java_package com.android.quicksearchbox
+
+# QSB started
+# @param name Package name of the QSB app.
+# @param version QSB app versionCode value.
+# @param start_method
+#   TODO: Define values for start_method:
+#     - home screen widget
+#     - through source selector
+#     - by touching text field
+#     - search hard key on home screen
+#     - menu -> search on home screen
+#     - source selector in in-app search dialog
+#     - search hardkey in in-app search dialog
+#     - search hardkey in non-searchable app
+#     - app called SearchManager.startSearch()
+# @param latency start-up latency as seen by QSB
+# @param search_source name of the initially selected search source
+# @param enabled_sources A pipe-separated list of source names, ordered by source ranking.
+# @param on_create_latency time spend inside onCreate
+#                TODO: Which are promoted?
+71001 qsb_start (name|3),(version|1),(start_method|3),(latency|1|3),(search_source|3),(enabled_sources|3),(on_create_latency|1|3)
+
+# User clicked on a suggestion
+# @param id Suggestion ID; a 0-based index of the clicked suggestion if the suggestion list is flat;
+#  otherwise, it's (group position << 32) | (position within group)
+# @param A pipe-separated list of suggestion log names.
+#   TODO: define format of suggestion log names
+# @param queried_sources A pipe-separated list of the sources that were queried to produce
+#        the list of suggestions shown.
+# @param num_chars Number of characters in the query typed by the user
+# @param click_type
+#     SUGGESTION_CLICK_TYPE_LAUNCH = 0
+#     SUGGESTION_CLICK_TYPE_REFINE = 1
+#     SUGGESTION_CLICK_TYPE_QUICK_CONTACT = 2
+#
+# TODO: latency?
+71002 qsb_click (id|2),(suggestions|3),(queried_sources|3),(num_chars|1),(click_type|1)
+
+# User launched a typed search
+# @param search_source Name of the selected search source
+# @param method
+#     SEARCH_METHOD_BUTTON = 0
+#     SEARCH_METHOD_KEYBOARD = 1
+# @param num_chars The number of characters in the search query
+71003 qsb_search (search_source|3),(method|1),(num_chars|1)
+
+# User launched a Voice Search
+# @param search_source Name of the selected search source
+71004 qsb_voice_search (search_source|3)
+
+# User left QSB without clicking / searching
+# @param suggestions The suggestions shown when the user left QSB. See qsb_click above.
+# @param num_chars The number of characters in the query text field when the user left
+71005 qsb_exit (suggestions|3),(num_chars|1)
+
+# The latency of a suggestion query to a specific corpus.
+# @param corpus The corpus that was queried.
+# @param latency Query latency.
+# @param numChars Number of characters in the query.
+71006 qsb_latency (corpus|3),(latency|1|3),(num_chars|1)

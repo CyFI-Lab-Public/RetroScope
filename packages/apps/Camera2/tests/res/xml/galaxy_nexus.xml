@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exif>
+    <tag ifd="IFD0" id="0x0100" name="ImageWidth">2560</tag>
+    <tag ifd="IFD0" id="0x0101" name="ImageHeight">1920</tag>
+    <tag ifd="IFD0" id="0x010f" name="Make">google</tag>
+    <tag ifd="IFD0" id="0x0110" name="Model">Nexus S</tag>
+    <tag ifd="IFD0" id="0x0112" name="Orientation">1</tag>
+    <tag ifd="IFD0" id="0x0131" name="Software">MASTER</tag>
+    <tag ifd="IFD0" id="0x0132" name="ModifyDate">2012:07:30 16:28:42</tag>
+    <tag ifd="IFD0" id="0x0213" name="YCbCrPositioning">1</tag>
+    <tag ifd="IFD0" id="0x8769" name="ExifOffset">NO_VALUE</tag>
+    <tag ifd="ExifIFD" id="0x829a" name="ExposureTime">1/40</tag>
+    <tag ifd="ExifIFD" id="0x829d" name="FNumber">26/10</tag>
+    <tag ifd="ExifIFD" id="0x8822" name="ExposureProgram">3</tag>
+    <tag ifd="ExifIFD" id="0x8827" name="ISO">100</tag>
+    <tag ifd="ExifIFD" id="0x9000" name="ExifVersion">0220</tag>
+    <tag ifd="ExifIFD" id="0x9003" name="DateTimeOriginal">2012:07:30 16:28:42</tag>
+    <tag ifd="ExifIFD" id="0x9004" name="CreateDate">2012:07:30 16:28:42</tag>
+    <tag ifd="ExifIFD" id="0x9201" name="ShutterSpeedValue">50/10</tag>
+    <tag ifd="ExifIFD" id="0x9202" name="ApertureValue">30/10</tag>
+    <tag ifd="ExifIFD" id="0x9203" name="BrightnessValue">30/10</tag>
+    <tag ifd="ExifIFD" id="0x9204" name="ExposureCompensation">0/0</tag>
+    <tag ifd="ExifIFD" id="0x9205" name="MaxApertureValue">30/10</tag>
+    <tag ifd="ExifIFD" id="0x9207" name="MeteringMode">2</tag>
+    <tag ifd="ExifIFD" id="0x9209" name="Flash">0</tag>
+    <tag ifd="ExifIFD" id="0x920a" name="FocalLength">343/100</tag>
+    <tag ifd="ExifIFD" id="0x9286" name="UserComment">IICSAUser comments</tag>
+    <tag ifd="ExifIFD" id="0xa001" name="ColorSpace">1</tag>
+    <tag ifd="ExifIFD" id="0xa002" name="ExifImageWidth">2560</tag>
+    <tag ifd="ExifIFD" id="0xa003" name="ExifImageHeight">1920</tag>
+    <tag ifd="ExifIFD" id="0xa402" name="ExposureMode">0</tag>
+    <tag ifd="ExifIFD" id="0xa403" name="WhiteBalance">0</tag>
+    <tag ifd="ExifIFD" id="0xa406" name="SceneCaptureType">0</tag>
+    <tag ifd="IFD1" id="0x0100" name="ImageWidth">320</tag>
+    <tag ifd="IFD1" id="0x0101" name="ImageHeight">240</tag>
+    <tag ifd="IFD1" id="0x0103" name="Compression">6</tag>
+    <tag ifd="IFD1" id="0x0112" name="Orientation">1</tag>
+    <tag ifd="IFD1" id="0x011a" name="XResolution">72/1</tag>
+    <tag ifd="IFD1" id="0x011b" name="YResolution">72/1</tag>
+    <tag ifd="IFD1" id="0x0128" name="ResolutionUnit">2</tag>
+    <tag ifd="IFD1" id="0x0201" name="ThumbnailOffset">690</tag>
+    <tag ifd="IFD1" id="0x0202" name="ThumbnailLength">10447</tag>
+</exif>

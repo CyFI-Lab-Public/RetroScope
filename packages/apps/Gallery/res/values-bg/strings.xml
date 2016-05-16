@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (C) 2007 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="all_images" msgid="1195501551939178807">"Всички снимки"</string>
+    <string name="all_videos" msgid="3380966619230896013">"Всички видеоклипове"</string>
+    <string name="camera_label" msgid="6346560772074764302">"Камера"</string>
+    <string name="gallery_picker_label" msgid="3080425245006492787">"Галерия"</string>
+    <string name="gallery_label" msgid="7119609703856708011">"Галерия"</string>
+    <string name="gallery_camera_bucket_name" msgid="2924618424339240831">"Снимки от камера"</string>
+    <string name="gallery_camera_videos_bucket_name" msgid="3369151581398551623">"Видеоклипове от камера"</string>
+    <string name="gallery_camera_media_bucket_name" msgid="5560926838411387511">"Видеоклипове от камера"</string>
+    <string name="crop_label" msgid="521114301871349328">"Подрязване на снимка"</string>
+    <string name="view_label" msgid="4450531507947335704">"Преглед на снимка"</string>
+    <string name="preferences_label" msgid="5955678162525051163">"Настройки на камера"</string>
+    <string name="wait" msgid="8600187532323801552">"Моля, изчакайте…"</string>
+    <string name="no_storage" product="nosdcard" msgid="4006727786803418058">"Трябва да свържете споделеното хранилище, преди да използвате камерата."</string>
+    <string name="no_storage" product="default" msgid="6680362958795677723">"Трябва да поставите SD карта, преди да използвате камерата."</string>
+    <string name="not_enough_space" product="nosdcard" msgid="7966388882416357252">"Споделеното ви хранилище е пълно."</string>
+    <string name="not_enough_space" product="default" msgid="6655334407957844653">"SD картата ви е пълна."</string>
+    <string name="preparing_sd" product="nosdcard" msgid="183917364005592061">"Споделеното хранилище се подготвя..."</string>
+    <string name="preparing_sd" product="default" msgid="2914969119574812666">"SD картата се подготвя..."</string>
+    <string name="wallpaper" msgid="140165383777262070">"Тапетът се задава..."</string>
+    <string name="savingImage" msgid="3051745378545909260">"Снимката се запазва..."</string>
+    <string name="runningFaceDetection" msgid="2293932204708167704">"Моля, изчакайте…"</string>
+    <string name="view" msgid="6277795271119411881">"Преглед"</string>
+    <string name="details" msgid="8415120088556445230">"Подробности"</string>
+    <string name="show_on_map" msgid="441725587731006228">"Показване в Карти"</string>
+    <string name="rotate" msgid="460017689320955494">"Завъртане"</string>
+    <string name="rotate_left" msgid="5888273317282539839">"Завъртане наляво"</string>
+    <string name="rotate_right" msgid="6776325835923384839">"Завъртане надясно"</string>
+    <string name="slide_show" msgid="1965192737233824143">"Слайдшоу"</string>
+    <string name="multiselect" msgid="4761682939945434146">"Групов избор"</string>
+    <string name="capture_picture" msgid="4114265595549284643">"Снимане"</string>
+    <string name="capture_video" msgid="4047046282358697155">"Заснемане на видеоклип"</string>
+    <string name="crop_save_text" msgid="8140440041190264400">"Запазване"</string>
+    <string name="crop_discard_text" msgid="5303657888280340603">"Отхвърляне"</string>
+    <string name="confirm_delete_title" msgid="263478358046514887">"Изтриване"</string>
+    <string name="confirm_delete_message" msgid="2141726810668595858">"Да се изтрие ли тази снимка?"</string>
+    <string name="confirm_delete_video_message" msgid="800016540763376529">"Да се изтрие ли този видеоклип?"</string>
+    <string name="confirm_delete_multiple_message" msgid="5184550162588396436">"Да се изтрият ли тези медийни файлове?"</string>
+    <string name="camera_toss" msgid="3781186798552460833">"Изтриване"</string>
+    <string name="camera_share" msgid="8207701858325694182">"Споделяне"</string>
+    <string name="camera_set" msgid="3422192914806971182">"Задаване като"</string>
+    <string name="camera_play" msgid="8248000517869959980">"Старт"</string>
+    <string name="camera_attach" msgid="4048659554893435232">"Прикачване"</string>
+    <string name="camera_cancel" msgid="8203341746672085747">"Отказ"</string>
+    <string name="camera_crop" msgid="5584000454518174632">"Подрязване"</string>
+    <string name="no_way_to_share_image" msgid="7980215622010396797">"Няма налично приложение за споделяне на снимката."</string>
+    <string name="no_way_to_share_video" msgid="4506167265329982928">"Няма налично приложение за споделяне на видеоклипа."</string>
+    <string name="no_way_to_share" msgid="5276805314940059662">"Няма налично приложение за споделяне на медийния файл или съответно файлове."</string>
+    <string name="video_play" msgid="5287787282508002895">"Старт"</string>
+    <string name="camera_pick_wallpaper" msgid="7026385960511811641">"Снимки"</string>
+    <string name="camera_setas_wallpaper" msgid="797463183863414289">"Тапет"</string>
+    <string name="pref_gallery_category" msgid="5826488887237959433">"Общи настройки"</string>
+    <string name="pref_slideshow_category" msgid="9097962086335681667">"Настройки на слайдшоу"</string>
+    <string name="pref_gallery_size_title" msgid="1363406603879434418">"Екранен размер"</string>
+    <string name="pref_gallery_size_summary" msgid="7365675768755956361">"Избор на екранния размер на снимки и видеоклипове"</string>
+    <string name="pref_gallery_size_dialogtitle" msgid="757380558320647503">"Размер на снимка"</string>
+  <string-array name="pref_gallery_size_choices">
+    <item msgid="7157691836846678936">"Голям"</item>
+    <item msgid="1033164600689216410">"Малък"</item>
+  </string-array>
+    <string name="pref_gallery_sort_title" msgid="7447949250045443386">"Подреждане"</string>
+    <string name="pref_gallery_sort_summary" msgid="4406174975925645225">"Избор на ред за показване на снимки и видеоклипове"</string>
+    <string name="pref_gallery_sort_dialogtitle" msgid="5787417105532562739">"Сортиране на снимки"</string>
+  <string-array name="pref_gallery_sort_choices">
+    <item msgid="5546009539334018063">"Най-новите първи"</item>
+    <item msgid="7931283047572866748">"Най-новите последни"</item>
+  </string-array>
+    <string name="pref_gallery_slideshow_interval_title" msgid="6534904787962619832">"Интервал в слайдшоу"</string>
+    <string name="pref_gallery_slideshow_interval_summary" msgid="25973922639324614">"Избор на колко дълго да се показва всеки слайд"</string>
+    <string name="pref_gallery_slideshow_interval_dialogtitle" msgid="6775543119826248900">"Интервал на слайдшоу"</string>
+  <string-array name="pref_gallery_slideshow_interval_choices">
+    <item msgid="3089037742117543119">"2 секунди"</item>
+    <item msgid="738579316565625730">"3 секунди"</item>
+    <item msgid="5670078787463530498">"4 секунди"</item>
+  </string-array>
+    <string name="pref_gallery_slideshow_transition_title" msgid="3235158556228218846">"Преход в слайдшоу"</string>
+    <string name="pref_gallery_slideshow_transition_summary" msgid="8294295294239125591">"Избор на ефект за преминаване между снимки"</string>
+    <string name="pref_gallery_slideshow_transition_dialogtitle" msgid="5483406447721500371">"Преход в слайдшоу"</string>
+  <string-array name="pref_gallery_slideshow_transition_choices">
+    <item msgid="2825716730899894863">"Плавно преливане"</item>
+    <item msgid="403116336404005687">"Хоризонтално плъзгане"</item>
+    <item msgid="4901733079450971731">"Вертикално плъзгане"</item>
+    <item msgid="9006732482485375438">"Случаен избор"</item>
+  </string-array>
+    <string name="pref_gallery_slideshow_repeat_title" msgid="6512135022461429738">"Повтаряне на слайдшоуто"</string>
+    <string name="pref_gallery_slideshow_repeat_summary" msgid="8289230397431855268">"Повторно показване на слайдшоуто"</string>
+    <string name="pref_gallery_slideshow_shuffle_title" msgid="3677508579783015598">"Разбъркване на снимките"</string>
+    <string name="pref_gallery_slideshow_shuffle_summary" msgid="8566948749149325715">"Снимките се показват в случаен ред"</string>
+    <string name="camerasettings" msgid="2433519618178453928">"Настройки"</string>
+    <string name="image_gallery_NoImageView_text" msgid="409595259802877447">"Не са намерени медийни файлове."</string>
+    <string name="pref_gallery_confirm_delete_title" msgid="642429032687845907">"Потвърждение на изтривания"</string>
+    <string name="pref_gallery_confirm_delete_summary" msgid="5253456492765525245">"Показване на потвърждение преди изтриване на снимка или видеоклип"</string>
+    <string name="no_location_image" msgid="8907867717568887559">"Няма съхранена информация за местоположението в това изображение."</string>
+    <string name="details_panel_title" msgid="4753347516759338122">"Подробности"</string>
+    <string name="details_file_size" msgid="2468878774843246797">"Размер на файла:"</string>
+    <string name="details_image_resolution" msgid="8773315928100529437">"Разделителна способност:"</string>
+    <string name="details_image_make" msgid="2888477930210903540">"Производител:"</string>
+    <string name="details_image_model" msgid="3608007849933924336">"Модел:"</string>
+    <string name="details_image_whitebalance" msgid="4412514247882436065">"Баланс на бялото:"</string>
+    <string name="details_image_latitude" msgid="58222150203989546">"Географска ширина от GPS:"</string>
+    <string name="details_image_longitude" msgid="3792725587390654278">"Географска дължина от GPS:"</string>
+    <string name="details_image_location" msgid="6460201074393148978">"Местоположение:"</string>
+    <string name="details_duration" msgid="1028116471387901402">"Времетраене:"</string>
+    <string name="details_date_taken" msgid="348356840586463178">"Дата на заснемане:"</string>
+    <string name="details_frame_rate" msgid="122397836963498191">"Кдр/сек:"</string>
+    <string name="details_bit_rate" msgid="5632311789455402186">"Бит/сек:"</string>
+    <string name="details_codec" msgid="5580300450432398126">"Кодер декодер:"</string>
+    <string name="details_format" msgid="3700860266600796363">"Формат:"</string>
+    <string name="details_dimension_x" msgid="4923037334136168978">"<xliff:g id="WIDTH">%1$d</xliff:g> x <xliff:g id="HEIGHT">%2$d</xliff:g>"</string>
+    <string name="details_ms" msgid="7574063760642857397">"<xliff:g id="MINUTES">%1$02d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g>"</string>
+    <string name="details_hms" msgid="772340067838331166">"<xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g>"</string>
+    <string name="details_fps" msgid="5450871169477340537">"<xliff:g id="FRAMES">%1$d</xliff:g> кдр/сек"</string>
+    <string name="details_kbps" msgid="1515369011744784592">"<xliff:g id="SPEED">%1$d</xliff:g> Кб/с"</string>
+    <string name="details_mbps" msgid="3291428849607323284">"<xliff:g id="SPEED">%1$g</xliff:g> Мб/с"</string>
+    <string name="details_ok" msgid="6848594369924424312">"OK"</string>
+    <string name="context_menu_header" msgid="1185348426222302182">"Опции за снимки"</string>
+    <string name="video_context_menu_header" msgid="7318971116949475029">"Опции за видеоклип"</string>
+    <string name="multiface_crop_help" msgid="2554690102655855657">"Докоснете лице за начало."</string>
+    <string name="photos_gallery_title" msgid="6914406246471015448">"Галерия"</string>
+    <string name="pick_photos_gallery_title" msgid="8356086704733473321">"Избор на снимка"</string>
+    <string name="videos_gallery_title" msgid="6150354029982749479">"Галерия"</string>
+    <string name="pick_videos_gallery_title" msgid="568436323607491495">"Избор на видеоклип"</string>
+    <string name="sendImage" msgid="7279510542799399570">"Споделяне на снимки чрез"</string>
+    <string name="setImage" msgid="7246975856983303047">"Задаване на снимката като"</string>
+    <string name="sendVideo" msgid="3598567735831863073">"Споделяне на видеоклипове чрез"</string>
+    <string name="send_media_files" msgid="8201083279723850611">"Споделяне на медийни файлове чрез"</string>
+    <string name="movieviewlabel" msgid="7363495772706775465">"Филми"</string>
+    <string name="loading_video" msgid="4013492720121891585">"Видеоклипът се зарежда..."</string>
+    <string name="resume_playing_title" msgid="8996677350649355013">"Възобновяване на видеоклип"</string>
+    <string name="resume_playing_message" msgid="8480340146814638566">"Да продължи ли възпроизвеждането на видеоклипа от <xliff:g id="DURATION">%s</xliff:g>?"</string>
+    <string name="resume_playing_resume" msgid="3847915469173852416">"Продължаване"</string>
+    <string name="resume_playing_restart" msgid="5471008499835769292">"Стартиране отначало"</string>
+    <string name="gadget_title" msgid="259405922673466798">"Рамка на снимка"</string>
+    <string name="file_info_title" msgid="1628963357466012538">"Информация за файла:"</string>
+    <string name="video_exceed_mms_limit" msgid="3835075281230780010">"Заснетият видеоклип е твърде голям за MMS. Опитайте да заснемете по-къс."</string>
+    <string name="multiselect_share" msgid="5261644537749253581">"Споделяне"</string>
+    <string name="multiselect_delete" msgid="9113461994546744603">"Изтриване"</string>
+    <string name="multiselect_cancel" msgid="5969428692864002165">"Отказ"</string>
+    <string name="delete_images_message" msgid="2332683687700452577">"Изображенията се изтриват..."</string>
+</resources>

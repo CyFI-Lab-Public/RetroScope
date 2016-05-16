@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     Copyright (C) 2013 Google Inc.
+     Licensed to The Android Open Source Project.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<com.android.mail.ui.NestedFolderTeaserView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" >
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/conversation_unread_selector"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/nested_folder_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:divider="?android:dividerHorizontal"
+            android:showDividers="middle|end" >
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/show_more_folders_row"
+            android:background="@drawable/folder_teaser_item_background"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="12dp"
+            android:paddingTop="12dp" >
+
+            <TextView
+                android:id="@+id/show_more_folders_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:duplicateParentState="true"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:singleLine="true"
+                android:textColor="@color/teaser_main_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/show_more_folders_count_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="24sp"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center"
+                android:minWidth="@dimen/folder_teaser_count_textview_minwidth"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textColor="@color/folder_teaser_count_text"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <include layout="@layout/teaser_right_edge" />
+
+</com.android.mail.ui.NestedFolderTeaserView>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+<resources>
+    <string name="holo_test_utilities">Holo Test Utilities</string>
+    <string name="task_view_display_info">View Display Info</string>
+    <string name="task_view_tests">View Tests</string>
+    <string name="task_generate_one_bitmap">Generate Single Test Bitmaps</string>
+    <string name="task_generate_all_bitmaps">Generate All Test Bitmaps</string>
+    <string name="task_clear_reference_bitmaps">Clear Reference Bitmaps</string>
+    <string name="task_clear_failure_bitmaps">Clear Failure Bitmaps</string>
+    <string name="task_clear_diff_bitmaps">Clear Diff Bitmaps</string>
+
+    <string name="display_info">Display Info</string>
+    <string name="display_info_text">Density DPI: %1$d\nDensity Bucket: %2$s\nWidth DP: %3$d\nHeight DP: %4$d</string>
+
+    <string name="pick_theme">Pick Theme</string>
+    <string name="pick_layout">Pick Layout</string>
+
+    <string name="deleting_bitmaps">Deleting bitmaps...</string>
+    <string name="deleting_bitmaps_finished">Successfully deleted bitmaps!</string>
+    <string name="deleting_bitmaps_error">Failed to delete bitmaps. Is external storage mounted?</string>
+    <string name="generate_bitmap_success">Saved bitmap to %s</string>
+    <string name="generate_bitmap_failure">Failed to save bitmap to %s</string>
+    <string name="comparison_success">Bitmap matches the reference bitmap!</string>
+    <string name="comparison_failure">Bitmap does not match reference bitmap. 
+            Saved failed image to %1$s and diff analysis to %2$s.</string>
+
+    <string name="button">Button</string>
+    <string name="button_pressed">Button Pressed</string>
+    <string name="calendarview_jan">CalendarView (January)</string>
+    <string name="calendarview_feb">CalendarView (February)</string>
+    <string name="checkbox">CheckBox</string>
+    <string name="checkbox_checked">CheckBox Checked</string>
+    <string name="chronometer">Chronometer</string>
+    <string name="datepicker">DatePicker</string>
+    <string name="edittext">EditText</string>
+    <string name="progressbar">ProgressBar</string>
+    <string name="progressbar_small">ProgressBar Small</string>
+    <string name="progressbar_large">ProgressBar Large</string>
+    <string name="progressbar_horizontal_0">ProgressBar Horizontal 0%</string>
+    <string name="progressbar_horizontal_50">ProgressBar Horizontal 50%</string>
+    <string name="progressbar_horizontal_100">ProgressBar Horizontal 100%</string>
+    <string name="radiobutton">RadioButton</string>
+    <string name="radiobutton_checked">RadioButton Checked</string>
+    <string name="radiogroup_horizontal">RadioGroup Horizontal</string>
+    <string name="radiogroup_vertical">RadioGroup Vertical</string>
+    <string name="ratingbar_0">RatingBar 0 Stars</string>
+    <string name="ratingbar_2point5">RatingBar 2.5 Stars</string>
+    <string name="ratingbar_5">RatingBar 5 Stars</string>
+    <string name="ratingbar_0_pressed">RatingBar 0 Stars Pressed</string>
+    <string name="ratingbar_2point5_pressed">RatingBar 2.5 Stars Pressed</string>
+    <string name="ratingbar_5_pressed">RatingBar 5 Stars Pressed</string>
+    <string name="searchview">SearchView</string>
+    <string name="searchview_query">SearchView Query</string>
+    <string name="searchview_query_hint">SearchView Query Hint</string>
+    <string name="seekbar_0">SeekBar 0%</string>
+    <string name="seekbar_50">SeekBar 50%</string>
+    <string name="seekbar_100">SeekBar 100%</string>
+    <string name="spinner">Spinner</string>
+    <string name="switch_button">Switch</string>
+    <string name="switch_button_checked">Switch Checked</string>
+    <string name="tabhost">TabHost</string>
+    <string name="textview">TextView</string>
+    <string name="timepicker">TimePicker</string>    
+    <string name="togglebutton">ToggleButton</string>
+    <string name="togglebutton_checked">ToggleButton Checked</string>
+    <string name="zoomcontrols">ZoomControls</string>
+
+    <string name="alertdialog_onebutton">AlertDialog One Button</string>
+    <string name="alertdialog_twobuttons">AlertDialog Two Buttons</string>
+    <string name="alertdialog_threebuttons">AlertDialog Three Buttons</string>
+    <string name="alertdialog_list">AlertDialog List</string>
+    <string name="alertdialog_singlechoice">AlertDialog Single Choice</string>
+    <string name="alertdialog_multichoice">AlertDialog Multiple Choice</string>
+    <string name="progressdialog_spinner">ProgressDialog Spinner</string>
+    <string name="progressdialog_horizontal">ProgressDialog Horizontal</string>
+
+    <string name="color_blue_bright">Bright Blue Color</string>
+    <string name="color_blue_dark">Dark Blue Color</string>
+    <string name="color_blue_light">Light Blue Color</string>
+    <string name="color_green_dark">Dark Green Color</string>
+    <string name="color_green_light">Light Green Color</string>
+    <string name="color_orange_dark">Dark Orange Color</string>
+    <string name="color_orange_light">Light Orange Color</string>
+    <string name="color_purple">Purple Color</string>
+    <string name="color_red_dark">Dark Red Color</string>
+    <string name="color_red_light">Light Red Color</string>
+    
+    <string name="spinner_prompt">Spinner Prompt</string>
+    <string name="radiobutton_1">Radio Button 1</string>
+    <string name="radiobutton_2">Radio Button 2</string>
+    <string name="loading">Loading...</string>
+
+</resources>
