@@ -1,0 +1,48 @@
+# pa6t does not have an mmcra. mmcr0 has all the enables and config
+# bits. mmcr1 contains the event selectors for the four programmable
+# events
+
+# Group Default
+event:0x1 mmcr0:0x000000000005b81b mmcr1:0x0000000000949f00 mmcra:0x0
+event:0x3 mmcr0:0x000000000005b81b mmcr1:0x0000000000949f00 mmcra:0x0
+event:0x4 mmcr0:0x000000000005b81b mmcr1:0x0000000000949f00 mmcra:0x0
+
+# Group 1, Load/Store
+event:0x10 mmcr0:0x000000000007f83f mmcr1:0x00000000a8c0cab1 mmcra:0x0
+event:0x11 mmcr0:0x000000000007f83f mmcr1:0x00000000a8c0cab1 mmcra:0x0
+event:0x12 mmcr0:0x000000000007f83f mmcr1:0x00000000a8c0cab1 mmcra:0x0
+event:0x13 mmcr0:0x000000000007f83f mmcr1:0x00000000a8c0cab1 mmcra:0x0
+event:0x14 mmcr0:0x000000000007f83f mmcr1:0x00000000a8c0cab1 mmcra:0x0
+event:0x15 mmcr0:0x000000000007f83f mmcr1:0x00000000a8c0cab1 mmcra:0x0
+
+# Group 2, Frontend
+event:0x20 mmcr0:0x000000000007f83f mmcr1:0x0000000002058401 mmcra:0x0
+event:0x21 mmcr0:0x000000000007f83f mmcr1:0x0000000002058401 mmcra:0x0
+event:0x22 mmcr0:0x000000000007f83f mmcr1:0x0000000002058401 mmcra:0x0
+event:0x23 mmcr0:0x000000000007f83f mmcr1:0x0000000002058401 mmcra:0x0
+event:0x24 mmcr0:0x000000000007f83f mmcr1:0x0000000002058401 mmcra:0x0
+event:0x25 mmcr0:0x000000000007f83f mmcr1:0x0000000002058401 mmcra:0x0
+
+# Group 3, Branches
+event:0x30 mmcr0:0x000000000007f83f mmcr1:0x000000008d8b8988 mmcra:0x0
+event:0x31 mmcr0:0x000000000007f83f mmcr1:0x000000008d8b8988 mmcra:0x0
+event:0x32 mmcr0:0x000000000007f83f mmcr1:0x000000008d8b8988 mmcra:0x0
+event:0x33 mmcr0:0x000000000007f83f mmcr1:0x000000008d8b8988 mmcra:0x0
+event:0x34 mmcr0:0x000000000007f83f mmcr1:0x000000008d8b8988 mmcra:0x0
+event:0x35 mmcr0:0x000000000007f83f mmcr1:0x000000008d8b8988 mmcra:0x0
+
+# Group 4, Translation
+event:0x40 mmcr0:0x000000000007f83f mmcr1:0x0000000086baa7a8 mmcra:0x0
+event:0x41 mmcr0:0x000000000007f83f mmcr1:0x0000000086baa7a8 mmcra:0x0
+event:0x42 mmcr0:0x000000000007f83f mmcr1:0x0000000086baa7a8 mmcra:0x0
+event:0x43 mmcr0:0x000000000007f83f mmcr1:0x0000000086baa7a8 mmcra:0x0
+event:0x44 mmcr0:0x000000000007f83f mmcr1:0x0000000086baa7a8 mmcra:0x0
+event:0x45 mmcr0:0x000000000007f83f mmcr1:0x0000000086baa7a8 mmcra:0x0
+
+# Group 5, Memory
+event:0x50 mmcr0:0x000000000007f83f mmcr1:0x00000000c030cab1 mmcra:0x0
+event:0x51 mmcr0:0x000000000007f83f mmcr1:0x00000000c030cab1 mmcra:0x0
+event:0x52 mmcr0:0x000000000007f83f mmcr1:0x00000000c030cab1 mmcra:0x0
+event:0x53 mmcr0:0x000000000007f83f mmcr1:0x00000000c030cab1 mmcra:0x0
+event:0x54 mmcr0:0x000000000007f83f mmcr1:0x00000000c030cab1 mmcra:0x0
+event:0x55 mmcr0:0x000000000007f83f mmcr1:0x00000000c030cab1 mmcra:0x0

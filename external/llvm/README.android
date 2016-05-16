@@ -1,0 +1,87 @@
+/*
+ * README.android describes in high-level the LLVM changes that we cannot push
+ * upstream to the llvm.org repository:
+ *  - Changes due to Android's build system.
+ *  - Changes due to Android's toolchain.
+ *  - Changes due to the limitations in Android-based consumer electronics.
+ *
+ * Some of them are to-dos. If and when they are done, there will no longer be
+ * merge conflicts with upstream on those parts.
+ *
+ * The file contains useful hints when we try to resolve future 3-way merge
+ * conflicts.
+ */
+
+* For Honeycomb: Synced to upstream r112344
+* For Honeycomb MR1: Synced to upstream r119309
+* For Honeycomb MR2: Synced to upstream r119309
+* For Ice Cream Sandwich: Synced to upstream r135569
+* For Ice Cream Sandwich MR1: Synced to upstream r142530
+* For Ice Cream Sandwich MR2: Synced to upstream r146714
+* For Jellybean: Synced to upstream r155090
+* For Jellybean MR1: Synced to upstream r162314
+* For Jellybean MR2: Synced to upstream r177342
+* For Key Lime Pie: Synced to upstream r187913
+
+* Recent downstreaming on 2013/8/8: Synced to r187913 (Contact srhines for merge questions.)
+* Recent downstreaming on 2013/6/13: Synced to r183849 (Contact srhines for merge questions.)
+* Recent downstreaming on 2013/5/3: Synced to r180947 (Contact srhines for merge questions.)
+* Recent downstreaming on 2013/3/18: Synced to r177342 (Contact srhines for merge questions.)
+* Recent downstreaming on 2013/3/5: Synced to r176139 (Contact srhines for merge questions.)
+* Recent downstreaming on 2013/1/8: Synced to r171905 (Contact srhines for merge questions.)
+* Recent downstreaming on 2012/8/23: Synced to r162314 (Contact srhines for merge questions.)
+* Recent downstreaming on 2012/8/3: Synced to r160668 (Contact sliao for merge questions.)
+* Cherry-pick on 2012/05/23: https://llvm.org/svn/llvm-project/llvm/trunk@157317 (Contact srhines for merge questions.)
+* Recent downstreaming on 2012/4/24: Synced to r155090 (Contact sliao for merge questions.)
+* Recent downstreaming on 2012/3/24: Synced to r153224 (Contact sliao & srhines for merge questions.)
+* Recent downstreaming on 2012/3/5: Synced to r152063 (Contact srhines & sliao for merge questions.)
+* Recent downstreaming on 2011/12/17: Synced to r146714 (Contact loganchien & sliao for merge questions.)
+* Recent downstreaming on 2011/11/26: Synced to r145126 (Contact loganchien & sliao for merge questions.)
+* Recent downstreaming on 2011/11/17: Synced to r144606 (Contact loganchien & sliao for merge questions.)
+* Recent downstreaming on 2011/11/14: Synced to r144354 (Contact srhines for merge questions.)
+* Recent downstreaming on 2011/10/22: Synced to r142530 (Contact sliao & loganchien for merge questions.)
+* Recent downstreaming on 2011/7/21:  Synced to r135569 (Contact sliao & loganchien for merge questions.)
+* Recent downstreaming on 2011/7/19:  Synced to r135360 (Contact sliao for merge questions.)
+* Recent downstreaming on 2011/7/2:   Synced to r134306 (Contact sliao for merge questions.)
+* Recent downstreaming on 2011/6/30:  Synced to r133718 (Contact sliao for merge questions.)
+  * This downstreaming could have broken bitcode compatibility
+    * Upstream was migrating from 2.7 bitcode to 3.0 bitcode.
+    * See the 4 commits on 2011/6/17:
+    ==> * 4f6bab9 - Drop the "2" suffix on some enums. (13 days ago) <Chris Lattner>
+    ==> * 96a74c5 - remove support for a bunch of obsolete instruction encodings and other backward compatibility hacks. (13 days ago) <Chris Lattner>
+        * 738f05a - Remove a useless copy of MCELFStreamer. Patch by Logan Chien! (13 days ago) <Benjamin Kramer>
+        * 981d826 - getSuccWeight returns now default 0 if Weights vector is empty. (13 days ago) <Jakub Staszak>
+        * 799a58a55 - missed a file. (13 days ago) <Chris Lattner>
+    ==> * 9d61dd9 - Remove some "2" suffixes from the metadata enums now that "1" is gone. (13 days ago) <Chris Lattner>
+    ==> * 020a5a4 - remove bitcode reader support for LLVM 2.7 metadata encoding. (13 days ago) <Chris Lattner>
+  * We maintain compatibility because Honeycomb SDK is out there.
+    * Our bitcode reader can read both 2.7 and 3.0 versions. Writer is tracking upstream.
+* Recent downstreaming on 2011/6/22:  Synced to r133240 (Contact sliao@ for merge questions.)
+* Recent downstreaming on 2011/4/8:   Synced to r129128 (Contact sliao@ for merge questions.)
+* Recent downstreaming on 2011/3/11:  Synced from r119309 to r127116 (Contact sliao@ for merge questions.)
+
+* We add 40+ Android's *.mk files that are specific to Android's build system.
+
+* All the configuration files because we don't have configure/make/make-install
+
+* Changes for enabling both host and device builds.
+
+* All the tblgen work to enable Android to build a generator-generator binary
+  and then run it in the middle of Android build process.
+
+* Explicitly include <cctype> header since is*() are not builtin functions in
+Android toolchain.
+
+* Code changes to make Android's toolchain stop outputting warnings. (This part
+  should be pushed upstream eventually.)
+
+* lib/Target/{X86,ARM}/AsmPrinter/{X86,ARM}AsmPrinter.cpp
+   Move from lib/Target/{X86,ARM}/{X86,ARM}AsmPrinter.cpp.
+   AsmPrinter is only needed in Android when disassembly functionality
+      is desired to be included.
+
+* Our ARM code generation fixes that upstream hasn't accepted yet. (This
+  conflict will be resolved eventually, but there will always be time lag.)
+
+* Assorted size optimizations because Android-based consumer electronics
+  need them.

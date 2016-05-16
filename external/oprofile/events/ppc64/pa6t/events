@@ -1,0 +1,52 @@
+# ppc64 pa6t events
+#
+# Unlike the IBM ppc64 chips, any of pa6t's events can be programmed into any
+# of the counters (pmc2-5). The notion of groups on pa6t is thus
+# artificial. That said, we can still define useful aggregations to guide the
+# user in his choice of group for a profiling session.
+
+# Group Default
+event:0x1 counters:0 um:zero minimum:10000 name:CYCLES : Processor Cycles
+event:0x3 counters:3 um:zero minimum:10000 name:ISS_CYCLES : Processor Cycles with instructions issued
+event:0x4 counters:4 um:zero minimum:10000 name:RET_UOP : Retired Micro-operatioins
+
+# Group 1, Load/Store
+event:0x10 counters:0 um:zero minimum:10000 name:GRP1_CYCLES : Processor Cycles
+event:0x11 counters:1 um:zero minimum:10000 name:GRP1_INST_RETIRED : Instructions retired
+event:0x12 counters:2 um:zero minimum:1000 name:GRP1_DCACHE_RD_MISS__NS : Dcache read misses NS
+event:0x13 counters:3 um:zero minimum:500 name:GRP1_MRB_LD_MISS_L2__NS : Load misses filling from memory
+event:0x14 counters:4 um:zero minimum:500 name:GRP1_MRB_ST_MISS_ALLOC__NS : Store misses in L1D and allocates an MRB entry
+event:0x15 counters:5 um:zero minimum:500 name:GRP1_TLB_MISS_D__NS : TLB misses NS (D- only)
+
+# Group 2, Frontend
+event:0x20 counters:0 um:zero minimum:10000 name:GRP2_CYCLES : Processor Cycles
+event:0x21 counters:1 um:zero minimum:10000 name:GRP2_INST_RETIRED : Instructions retired
+event:0x22 counters:2 um:zero minimum:2000 name:GRP2_FETCH_REQ : Demand fetch requests made to the Icache
+event:0x23 counters:3 um:zero minimum:500 name:GRP2_ICACHE_MISS_DEM__NS : Demand fetch requests missing in the Icache
+event:0x24 counters:4 um:zero minimum:500 name:GRP2_ICACHE_MISS_ALL : Demand and spec fetch requests missing in the Icache
+event:0x25 counters:5 um:zero minimum:2000 name:GRP2_ICACHE_ACC : Icache accesses
+
+# Group 3, Branches
+event:0x30 counters:0 um:zero minimum:10000 name:GRP3_CYCLES : Processor Cycles
+event:0x31 counters:1 um:zero minimum:10000 name:GRP3_INST_RETIRED : Instructions retired
+event:0x32 counters:2 um:zero minimum:500 name:GRP3_NXT_LINE_MISPRED__NS : Next fetch address mispredict
+event:0x33 counters:3 um:zero minimum:500 name:GRP3_DIRN_MISPRED__NS : Branch direction mispredict
+event:0x34 counters:4 um:zero minimum:500 name:GRP3_TGT_ADDR_MISPRED__NS : Branch target address mispredict
+event:0x35 counters:5 um:zero minimum:2000 name:GRP3_BRA_TAKEN__NS : Taken branches
+
+# Group 4, Translation
+event:0x40 counters:0 um:zero minimum:10000 name:GRP4_CYCLES : Processor Cycles
+event:0x41 counters:1 um:zero minimum:10000 name:GRP4_INST_RETIRED : Instructions retired
+event:0x42 counters:2 um:zero minimum:500 name:GRP4_TLB_MISS_D__NS : TLB Misses (D-)
+event:0x43 counters:3 um:zero minimum:500 name:GRP4_TLB_MISS_I__NS : TLB MIsses (I-)
+event:0x44 counters:4 um:zero minimum:500 name:GRP4_DERAT_MISS__NS : DERAT Misses
+event:0x45 counters:5 um:zero minimum:500 name:GRP4_IERAT_MISS__NS : IERAT Misses
+
+# Group 5, Memory
+event:0x50 counters:0 um:zero minimum:10000 name:GRP5_CYCLES : Processor Cycles
+event:0x51 counters:1 um:zero minimum:10000 name:GRP5_INST_RETIRED : Instructions retired
+event:0x52 counters:2 um:zero minimum:500 name:GRP5_DCACHE_RD_MISS__NS : Dcache read misses NS
+event:0x53 counters:3 um:zero minimum:500 name:GRP5_MRB_LD_MISS_L2__NS : Load misses filling from memory
+event:0x54 counters:4 um:zero minimum:500 name:GRP5_DCACHE_VIC : Dcache line evicted (snoops not included)
+event:0x55 counters:5 um:zero minimum:500 name:GRP5_MRB_ST_MISS_ALLOC__NS : Store misses in L1D and allocates an MRB entry
+

@@ -1,0 +1,14 @@
+OPAGENT_1.0 {
+	global:
+		op_open_agent;
+		op_close_agent;
+		op_write_native_code;
+		op_write_debug_line_info;
+		op_unload_native_code;
+		op_major_version;
+		op_minor_version;
+
+	local:
+		*;
+};
+

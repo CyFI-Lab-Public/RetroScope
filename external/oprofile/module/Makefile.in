@@ -1,0 +1,22 @@
+OPROFILE_DIR=@OPROFILE_DIR@
+VERSION=@VERSION@
+KVERS=@KVERS@
+KSRC=@KSRC@
+
+EXTRA_CFLAGS=@EXTRA_CFLAGS_MODULE@ -D__NO_VERSION__ \
+	-I$(OPROFILE_DIR)/module/@OPROFILE_MODULE_ARCH@ -I$(OPROFILE_DIR) -I$(OPROFILE_DIR)/libutil -I$(OPROFILE_DIR)/libop
+
+# NB: do not add a file here without adding it to EXTRA_DIST in ../Makefile.am
+
+O_TARGET := oprofile-module.o
+ 
+obj-y := compat.o op_init.o op_util.o op_dname.o oprofile.o @OPROFILE_MODULE_ARCH@/arch.o $(OPROFILE_DIR)/libop/libop.a
+obj-m := $(O_TARGET)
+O_OBJS := $(obj-y)
+M_OBJS := $(O_TARGET)
+
+TOPDIR := $(KSRC)
+CONFIG_SHELL := TOPDIR=$(KSRC) /bin/bash
+include $(KSRC)/Rules.make
+
+# FIXME: deps

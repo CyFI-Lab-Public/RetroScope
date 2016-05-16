@@ -1,0 +1,6 @@
+#
+# Intel Core i7 "Bloomfield" / Xeon EP 75xx events
+# right now this is only the shared events included for the Nehalem core,
+# but later we'll add here the uncore events specific to this chip
+#
+include:i386/nehalem

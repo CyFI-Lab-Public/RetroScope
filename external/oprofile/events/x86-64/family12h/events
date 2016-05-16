@@ -1,0 +1,23 @@
+# AMD Generic performance events
+#
+# Copyright OProfile authors
+# Copyright (c) 2006-2010 Advanced Micro Devices
+# Contributed by Ray Bryant <raybry at amd.com>,
+#		Jason Yeh <jason.yeh at amd.com>
+#		Suravee Suthikulpanit <suravee.suthikulpanit at amd.com>
+#
+# Revision: 1.0
+#
+# ChangeLog: 
+#	1.0: 30 August 2010.
+#	- Initial revision
+#
+event:0x40 counters:0,1,2,3 um:zero minimum:500 name:DATA_CACHE_ACCESSES : Data cache accesses
+event:0x41 counters:0,1,2,3 um:zero minimum:500 name:DATA_CACHE_MISSES : Data cache misses
+event:0x42 counters:0,1,2,3 um:moess minimum:500 name:DATA_CACHE_REFILLS_FROM_L2_OR_NORTHBRIDGE : Data cache refills from L2 or Northbridge
+event:0x43 counters:0,1,2,3 um:moesi minimum:500 name:DATA_CACHE_REFILLS_FROM_NORTHBRIDGE : Data cache refills from Northbridge
+event:0x76 counters:0,1,2,3 um:zero minimum:50000 name:CPU_CLK_UNHALTED : Cycles outside of halt state
+event:0xc0 counters:0,1,2,3 um:zero minimum:50000 name:RETIRED_INSTRUCTIONS : Retired instructions (includes exceptions, interrupts, re-syncs)
+event:0xc1 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_UOPS : Retired micro-ops
+event:0xc2 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_BRANCH_INSTRUCTIONS : Retired branches (conditional, unconditional, exceptions, interrupts)
+event:0xc3 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_MISPREDICTED_BRANCH_INSTRUCTIONS : Retired mispredicted branch instructions

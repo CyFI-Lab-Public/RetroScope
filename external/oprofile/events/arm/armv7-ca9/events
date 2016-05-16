@@ -1,0 +1,50 @@
+# ARM Cortex A9 events
+# From Cortex A9 TRM
+#
+include:arm/armv7-common
+event:0x40 counters:1,2,3,4,5,6 um:zero minimum:500 name:JAVA_BC_EXEC : Number of Java bytecodes decoded, including speculative ones
+event:0x41 counters:1,2,3,4,5,6 um:zero minimum:500 name:JAVA_SFTBC_EXEC : Number of software Java bytecodes decoded, including speculative ones
+event:0x42 counters:1,2,3,4,5,6 um:zero minimum:500 name:JAVA_BB_EXEC : Number of Jazelle taken branches executed, including those flushed due to a previous load/store which aborts late
+
+event:0x50 counters:1,2,3,4,5,6 um:zero minimum:500 name:CO_LF_MISS : Number of coherent linefill requests which miss in all other CPUs, meaning that the request is sent to external memory
+event:0x51 counters:1,2,3,4,5,6 um:zero minimum:500 name:CO_LF_HIT : Number of coherent linefill requests which hit in another CPU, meaning that the linefill data is fetched directly from the relevant cache
+
+event:0x60 counters:1,2,3,4,5,6 um:zero minimum:500 name:IC_DEP_STALL : Number of cycles where CPU is ready to accept new instructions but does not receive any because of the instruction side not being able to provide any and the instruction cache is currently performing at least one linefill
+event:0x61 counters:1,2,3,4,5,6 um:zero minimum:500 name:DC_DEP_STALL : Number of cycles where CPU has some instructions that it cannot issue to any pipeline and the LSU has at least one pending linefill request but no pending TLB requests
+event:0x63 counters:1,2,3,4,5,6 um:zero minimum:500 name:STREX_PASS : Number of STREX instructions architecturally executed and passed
+event:0x64 counters:1,2,3,4,5,6 um:zero minimum:500 name:STREX_FAILS : Number of STREX instructions architecturally executed and failed
+event:0x65 counters:1,2,3,4,5,6 um:zero minimum:500 name:DATA_EVICT : Number of eviction requests due to a linefill in the data cache
+event:0x66 counters:1,2,3,4,5,6 um:zero minimum:500 name:ISS_NO_DISP : Number of cycles where the issue stage does not dispatch any instruction
+event:0x67 counters:1,2,3,4,5,6 um:zero minimum:500 name:ISS_EMPTY : Number of cycles where the issue stage is empty
+event:0x68 counters:1,2,3,4,5,6 um:zero minimum:500 name:INS_RENAME : Number of instructions going through the Register Renaming stage
+
+event:0x6E counters:1,2,3,4,5,6 um:zero minimum:500 name:PRD_FN_RET : Number of procedure returns whose condition codes do not fail, excluding all exception returns
+
+event:0x70 counters:1,2,3,4,5,6 um:zero minimum:500 name:INS_MAIN_EXEC : Number of instructions being executed in main execution pipeline of the CPU, the multiply pipeline and the ALU pipeline
+event:0x71 counters:1,2,3,4,5,6 um:zero minimum:500 name:INS_SND_EXEC : Number of instructions being executed in the second execution pipeline (ALU) of the CPU
+event:0x72 counters:1,2,3,4,5,6 um:zero minimum:500 name:INS_LSU : Number of instructions being executed in the Load/Store unit
+event:0x73 counters:1,2,3,4,5,6 um:zero minimum:500 name:INS_FP_RR : Number of floating-point instructions going through the Register Rename stage
+event:0x74 counters:1,2,3,4,5,6 um:zero minimum:500 name:INS_NEON_RR : Number of NEON instructions going through the Register Rename stage
+
+event:0x80 counters:1,2,3,4,5,6 um:zero minimum:500 name:STALL_PLD : Number of cycles where CPU is stalled because PLD slots are all full
+event:0x81 counters:1,2,3,4,5,6 um:zero minimum:500 name:STALL_WRITE : Number of cycles where CPU is stalled because data side is full and executing writes to external memory
+event:0x82 counters:1,2,3,4,5,6 um:zero minimum:500 name:STALL_INS_TLB : Number of cycles where CPU is stalled because of main TLB misses on requests issued by the instruction side
+event:0x83 counters:1,2,3,4,5,6 um:zero minimum:500 name:STALL_DATA_TLB : Number of cycles where CPU is stalled because of main TLB misses on requests issued by the data side
+event:0x84 counters:1,2,3,4,5,6 um:zero minimum:500 name:STALL_INS_UTLB : Number of cycles where CPU is stalled because of micro TLB misses on the instruction side
+event:0x85 counters:1,2,3,4,5,6 um:zero minimum:500 name:STALL_DATA_ULTB : Number of cycles where CPU is stalled because of micro TLB misses on the data side
+event:0x86 counters:1,2,3,4,5,6 um:zero minimum:500 name:STALL_DMB : Number of cycles where CPU is stalled due to executed of a DMB memory barrier
+
+event:0x8A counters:1,2,3,4,5,6 um:zero minimum:500 name:CLK_INT_EN : Number of cycles during which the integer core clock is enabled
+event:0x8B counters:1,2,3,4,5,6 um:zero minimum:500 name:CLK_DE_EN : Number of cycles during which the Data Engine clock is enabled
+
+event:0x90 counters:1,2,3,4,5,6 um:zero minimum:500 name:INS_ISB : Number of ISB instructions architecturally executed
+event:0x91 counters:1,2,3,4,5,6 um:zero minimum:500 name:INS_DSB : Number of DSB instructions architecturally executed
+event:0x92 counters:1,2,3,4,5,6 um:zero minimum:500 name:INS_DMB : Number of DMB instructions speculatively executed
+event:0x93 counters:1,2,3,4,5,6 um:zero minimum:500 name:EXT_IRQ : Number of external interrupts executed by the processor
+
+event:0xA0 counters:1,2,3,4,5,6 um:zero minimum:500 name:PLE_CL_REQ_CMP : PLE cache line request completed
+event:0xA1 counters:1,2,3,4,5,6 um:zero minimum:500 name:PLE_CL_REQ_SKP : PLE cache line request skipped
+event:0xA2 counters:1,2,3,4,5,6 um:zero minimum:500 name:PLE_FIFO_FLSH : PLE FIFO flush
+event:0xA3 counters:1,2,3,4,5,6 um:zero minimum:500 name:PLE_REQ_COMP : PLE request completed
+event:0xA4 counters:1,2,3,4,5,6 um:zero minimum:500 name:PLE_FIFO_OF : PLE FIFO overflow
+event:0xA5 counters:1,2,3,4,5,6 um:zero minimum:500 name:PLE_REQ_PRG : PLE request programmed

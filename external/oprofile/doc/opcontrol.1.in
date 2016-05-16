@@ -1,0 +1,181 @@
+.TH OPCONTROL 1 "@DATE@" "oprofile @VERSION@"
+.UC 4
+.SH NAME
+opcontrol \- control OProfile profiling
+.SH SYNOPSIS
+.br
+.B opcontrol
+[
+.I options
+]
+.SH DESCRIPTION
+.B opcontrol
+can be used to start profiling, end a profiling session,
+dump profile data, and set up the profiling parameters.
+
+.SH OPTIONS
+.TP
+.BI "--help"
+Show help message.
+.br
+.TP
+.BI "--version"
+Show version.
+.br
+.TP
+.BI "--list-events"
+Shows the monitorable events.
+.br
+.TP
+.BI "--init"
+Load the OProfile module if required and make the OProfile driver
+interface available.
+.br
+.TP
+.BI "--setup"
+Followed by list options for profiling setup. Store setup 
+in ~root/.oprofile/daemonrc. Optional.
+.br
+.TP
+.BI "--status"
+Show configuration information.
+.br
+.TP
+.BI "--start-daemon"
+Start the oprofile daemon without starting profiling. Not available
+in 2.2/2.4 kernels.
+.br
+.TP
+.BI "--start"
+Start data collection with either arguments provided by --setup
+or with information saved in ~root/.oprofile/daemonrc.
+.br
+.TP
+.BI "--dump"
+Force a flush of the collected profiling data to the daemon.
+.br
+.TP
+.BI "--stop"
+Stop data collection. Not available in 2.2/2.4 kernels.
+.br
+.TP
+.BI "--shutdown"
+Stop data collection and kill the daemon.
+.br
+.TP
+.BI "--reset"
+Clear out data from current session, but leaves saved sessions.
+.br
+.TP
+.BI "--save="sessionname
+Save data from current session to sessionname.
+.br
+.TP
+.BI "--deinit"
+Shut down daemon. Unload the oprofile module and oprofilefs.
+.br
+.TP
+.BI "--session-dir="dir_path
+Use sample database out of directory dir_path instead of the default location (/var/lib/oprofile).
+.br
+.TP
+.BI "--buffer-size="num
+Set kernel buffer to num samples. When using a 2.6 kernel, buffer watershed needs
+to be tweaked when changing this value.
+Rules:  A non-zero value goes into effect after a '--shutdown/start' sequence.
+A value of zero sets this parameter back to default value, but does not go into
+effect until after '--deinit/init' sequence.
+.br
+.TP
+.BI "--buffer-watershed="num
+Set kernel buffer watershed to num samples (2.6 only). When
+buffer-size - buffer-watershed free entries remain in the kernel buffer, data will be
+flushed to the daemon.  Most useful values are in the range [0.25 - 0.5] * buffer-size.
+Same rules as defined for buffer-size.
+.br
+.TP
+.BI "--cpu-buffer-size="num
+Set kernel per cpu buffer to num samples (2.6 only). If you profile at high
+rate it can help to increase this if the log file show excessive count of
+sample lost cpu buffer overflow. Same rules as defined for buffer-size.
+.br
+.TP
+.BI "--event="[event|"default"]
+Specify an event to measure for the hardware performance counters,
+or "default" for the default event. The event is of the form
+"CPU_CLK_UNHALTED:30000:0:1:1" where the numeric values are
+count, unit mask, kernel-space counting, user-space counting,
+respectively.  Note that this over-rides all previous events selected;
+if you want two or more counters used simultaneously, you must specify
+them on the same opcontrol invocation.
+.br
+.TP
+.BI "--separate="[none,lib,kernel,thread,cpu,all]
+Separate samples based on the given separator. 'lib' separates
+dynamically linked library samples per application. 'kernel' separates
+kernel and kernel module samples per application; 'kernel'
+implies 'library'. 'thread' gives separation for each thread and
+task.  'cpu' separates for each CPU. 'all' implies all of the above
+options and 'none' turns off separation.
+.br
+.TP
+.BI "--callgraph=#depth"
+Enable callgraph sample collection with a maximum depth. Use 0 to disable
+callgraph profiling. This option is available on x86 using a
+2.6+ kernel with callgraph support enabled.  It is also available on PowerPC using a 2.6.17+ kernel.
+.br
+.TP
+.BI "--image="[name,name...|"all"]
+Only profile the given absolute paths to binaries, or "all" to profile
+everything (the default).
+.br
+.TP
+.BI "--vmlinux="file
+vmlinux kernel image.
+.br
+.TP
+.BI "--no-vmlinux"
+Use this when you don't have a kernel vmlinux file, and you don't want to
+profile the kernel.
+.br
+.TP
+.BI "--verbose"
+Be verbose in the daemon log. This has a high overhead.
+.br
+.TP
+.BI "--kernel-range="start,end
+Set kernel range vma address in hexadecimal.
+
+.SH OPTIONS (specific to Xen)
+.TP
+.BI "--xen="file
+Xen image
+.br
+.TP
+.BI "--active-domains="<list>
+List of domain ids participating in a multi-domain profiling session. If 
+more than one domain is specified in <list> they should be separated using 
+commas. This option can only be used in domain 0 which is the only domain 
+that can coordinate a multi-domain profiling session. Including domain 0 in 
+the list of active domains is optional. (e.g. --active-domains=2,5,6 and 
+--active-domains=0,2,5,6 are equivalent)
+.br
+
+.SH ENVIRONMENT
+No special environment variables are recognised by opcontrol.
+
+.SH FILES
+.TP
+.I /root/.oprofile/daemonrc
+Configuration file for opcontrol
+.TP
+.I /var/lib/oprofile/samples/
+The location of the generated sample files.
+
+.SH VERSION
+.TP
+This man page is current for @PACKAGE@-@VERSION@.
+
+.SH SEE ALSO
+.BR @OP_DOCDIR@,
+.BR oprofile(1)

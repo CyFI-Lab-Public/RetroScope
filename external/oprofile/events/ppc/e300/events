@@ -1,0 +1,40 @@
+# e300 Events
+#
+event:0x1 counters:0,1,2,3 um:zero minimum:3000 name:CPU_CLK : Cycles
+event:0x2 counters:0,1,2,3 um:zero minimum:3000 name:COMPLETED_INSNS : Completed Instructions (0, 1, or 2 per cycle)
+event:0x4 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_FETCHES : Instruction fetches
+event:0x6 counters:0,1,2,3 um:zero minimum:500 name:PM_EVENT_TRANS : 0 to 1 translations on the pm_event input
+event:0x7 counters:0,1,2,3 um:zero minimum:500 name:PM_EVENT_CYCLES : processor bus cycle
+event:0x8 counters:0,1,2,3 um:zero minimum:500 name:COMPLETED_BRANCHES : Branch Instructions completed
+event:0x9 counters:0,1,2,3 um:zero minimum:500 name:COMPLETED_LOAD_OPS : Load micro-ops completed
+event:0xa counters:0,1,2,3 um:zero minimum:500 name:COMPLETED_STORE_OPS : Store micro-ops completed
+event:0xc counters:0,1,2,3 um:zero minimum:500 name:BRANCHES_FINISHED : Branches finished
+event:0xd counters:0,1,2,3 um:zero minimum:500 name:TAKEN_BRANCHES_FINISHED : Taken branches finished
+event:0xf counters:0,1,2,3 um:zero minimum:500 name:BRANCHES_MISPREDICTED : Branch instructions mispredicted due to direction, target, or IAB prediction
+event:0x12 counters:0,1,2,3 um:zero minimum:500 name:DECODE_STALLED : Cycles the instruction buffer was not empty, but 0 instructions decoded
+event:0x13 counters:0,1,2,3 um:zero minimum:500 name:ISSUE_STALLED : Cycles the issue buffer is not empty but 0 instructions issued 
+event:0x1f counters:0,1,2,3 um:zero minimum:500 name:CACHEINHIBITED_ACCESSES_TRANSLATED : Number of cache inhibited accesses translated 
+event:0x3d counters:0,1,2,3 um:zero minimum:500 name:FETCHES : Counts the number of fetches that write at least one instruction to the instruction buffer. (With instruction fetched, can used to compute instructions-per-fetch) 
+event:0x3e counters:0,1,2,3 um:zero minimum:500 name:MMU_MISSES : Counts instruction TLB miss exceptions 
+event:0x43 counters:0,1,2,3 um:zero minimum:500 name:BIU_MASTER_REQUESTS : Number of master transactions. (Number of master TSs.) 
+event:0x44 counters:0,1,2,3 um:zero minimum:500 name:BIU_MASTER_I_REQUESTS : Number of master I-Side transactions. (Number of master I-Side TSs.) 
+event:0x45 counters:0,1,2,3 um:zero minimum:500 name:BIU_MASTER_D_REQUESTS : Number of master D-Side transactions. (Number of master D-Side TSs.) 
+event:0x47 counters:0,1,2,3 um:zero minimum:500 name:BIU_MASTER_RETRIES : Number of transactions which were initiated by this processor which were retried on the BIU interface. (Number of master ARTRYs.) 
+event:0x4a counters:0,1,2,3 um:zero minimum:500 name:SNOOP_PUSHES : Number of snoop pushes from all D-side resources. (Counts snoop ARTRY/WOPs.) 
+event:0x52 counters:0,1,2,3 um:zero minimum:500 name:PMC0_OVERFLOW : Counts the number of times PMC0[32] transitioned from 1 to 0. 
+event:0x53 counters:0,1,2,3 um:zero minimum:500 name:PMC1_OVERFLOW : Counts the number of times PMC1[32] transitioned from 1 to 0. 
+event:0x54 counters:0,1,2,3 um:zero minimum:500 name:PMC2_OVERFLOW : Counts the number of times PMC2[32] transitioned from 1 to 0. 
+event:0x55 counters:0,1,2,3 um:zero minimum:500 name:PMC3_OVERFLOW : Counts the number of times PMC3[32] transitioned from 1 to 0.
+event:0x56 counters:0,1,2,3 um:zero minimum:500 name:INTERRUPTS : Number of interrupts taken
+event:0x57 counters:0,1,2,3 um:zero minimum:500 name:EXTERNAL_INTERRUPTS : Number of external input interrupts taken
+event:0x58 counters:0,1,2,3 um:zero minimum:500 name:CRITICAL_INTERRUPTS : Number of critical input interrupts taken
+event:0x59 counters:0,1,2,3 um:zero minimum:500 name:SC_TRAP_INTERRUPTS : Number of system call and trap interrupts
+event:0x5a counters:0,1,2,3 um:zero minimum:500 name:TRANS_TBL : Counts transitions of the TBL bit selected by PMGC0[TBSEL]
+event:0x60 counters:0,1,2,3 um:zero minimum:500 name:I_CACHE_HIT : Number if fetches that hit in i-cache 
+event:0x61 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTIONS_FOLDED : Number of instructions folded
+event:0x64 counters:0,1,2,3 um:zero minimum:500 name:STALLS_COM_BUFFER : Cycles issue stalled due to full completion buffer
+event:0x68 counters:0,1,2,3 um:zero minimum:500 name:STALLED_COMPLETION : Cycles that completion is stalled
+event:0x69 counters:0,1,2,3 um:zero minimum:500 name:STALLED_LOAD : Cycles that completion is stalled due to load
+event:0x6a counters:0,1,2,3 um:zero minimum:500 name:STALLED_FLOAT : Cycles that completion is stalled due to fp instruction
+event:0x6c counters:0,1,2,3 um:zero minimum:500 name:L_S_SPACE : Number of loads and stores to cacheable space in D cache
+event:0x6d counters:0,1,2,3 um:zero minimum:500 name:L_S_HIT : Number of loads and stores that hit in the D cache

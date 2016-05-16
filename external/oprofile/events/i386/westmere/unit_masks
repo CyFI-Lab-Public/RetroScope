@@ -1,0 +1,307 @@
+#
+# Unit masks for the Intel "Westmere" micro architecture
+#
+# See http://ark.intel.com/ for help in identifying Westmere based CPUs
+#
+include:i386/arch_perfmon
+
+name:x01 type:mandatory default:0x01
+	0x01 No unit mask
+name:x02 type:mandatory default:0x02
+	0x02 No unit mask
+name:x07 type:mandatory default:0x07
+	0x07 No unit mask
+name:x10 type:mandatory default:0x10
+	0x10 No unit mask
+name:x20 type:mandatory default:0x20
+	0x20 No unit mask
+name:arith type:bitmask default:0x01
+	0x01 cycles_div_busy Cycles the divider is busy
+	0x02 mul Multiply operations executed
+name:baclear type:bitmask default:0x01
+	0x01 clear BACLEAR asserted, regardless of cause 
+	0x02 bad_target BACLEAR asserted with bad target address
+name:bpu_clears type:bitmask default:0x01
+	0x01 early Early Branch Prediction Unit clears
+	0x02 late Late Branch Prediction Unit clears
+name:br_inst_exec type:bitmask default:0x7f
+	0x01 cond Conditional branch instructions executed
+	0x02 direct Unconditional branches executed
+	0x04 indirect_non_call Indirect non call branches executed
+	0x07 non_calls All non call branches executed
+	0x08 return_near Indirect return branches executed
+	0x10 direct_near_call Unconditional call branches executed
+	0x20 indirect_near_call Indirect call branches executed
+	0x30 near_calls Call branches executed
+	0x40 taken Taken branches executed
+	0x7f any Branch instructions executed
+name:br_inst_retired type:bitmask default:0x04
+	0x01 conditional Retired conditional branch instructions (Precise Event)
+	0x02 near_call Retired near call instructions (Precise Event)
+	0x04 all_branches Retired branch instructions (Precise Event)
+name:br_misp_exec type:bitmask default:0x7f
+	0x01 cond Mispredicted conditional branches executed
+	0x02 direct Mispredicted unconditional branches executed
+	0x04 indirect_non_call Mispredicted indirect non call branches executed
+	0x07 non_calls Mispredicted non call branches executed
+	0x08 return_near Mispredicted return branches executed
+	0x10 direct_near_call Mispredicted non call branches executed
+	0x20 indirect_near_call Mispredicted indirect call branches executed
+	0x30 near_calls Mispredicted call branches executed
+	0x40 taken Mispredicted taken branches executed
+	0x7f any Mispredicted branches executed
+name:br_misp_retired type:bitmask default:0x04
+	0x01 conditional Mispredicted conditional retired branches (Precise Event)
+	0x02 near_call Mispredicted near retired calls (Precise Event)
+	0x04 all_branches Mispredicted retired branch instructions (Precise Event)
+name:cache_lock_cycles type:bitmask default:0x01
+	0x01 l1d_l2 Cycles L1D and L2 locked
+	0x02 l1d Cycles L1D locked
+name:cpu_clk_unhalted type:bitmask default:0x00
+	0x00 thread_p Cycles when thread is not halted (programmable counter)
+	0x01 ref_p Reference base clock (133 Mhz) cycles when thread is not halted (programmable counter)
+name:dtlb_load_misses type:bitmask default:0x01
+	0x01 any DTLB load misses
+	0x02 walk_completed DTLB load miss page walks complete
+	0x04 walk_cycles DTLB load miss page walk cycles
+	0x10 stlb_hit DTLB second level hit
+	0x20 pde_miss DTLB load miss caused by low part of address
+	0x80 large_walk_completed DTLB load miss large page walks
+name:dtlb_misses type:bitmask default:0x01
+	0x01 any DTLB misses
+	0x02 walk_completed DTLB miss page walks
+	0x04 walk_cycles DTLB miss page walk cycles
+	0x10 stlb_hit DTLB first level misses but second level hit
+	0x20 pde_miss DTLB misses casued by low part of address
+	0x80 large_walk_completed DTLB miss large page walks
+name:fp_assist type:bitmask default:0x01
+	0x01 all X87 Floating point assists (Precise Event)
+	0x02 output X87 Floating point assists for invalid output value (Precise Event)
+	0x04 input X87 Floating poiint assists for invalid input value (Precise Event)
+name:fp_comp_ops_exe type:bitmask default:0x01
+	0x01 x87 Computational floating-point operations executed
+	0x02 mmx MMX Uops
+	0x04 sse_fp SSE and SSE2 FP Uops
+	0x08 sse2_integer SSE2 integer Uops
+	0x10 sse_fp_packed SSE FP packed Uops
+	0x20 sse_fp_scalar SSE FP scalar Uops
+	0x40 sse_single_precision SSE* FP single precision Uops
+	0x80 sse_double_precision SSE* FP double precision Uops
+name:fp_mmx_trans type:bitmask default:0x03
+	0x01 to_fp Transitions from MMX to Floating Point instructions
+	0x02 to_mmx Transitions from Floating Point to MMX instructions
+	0x03 any All Floating Point to and from MMX transitions
+name:ild_stall type:bitmask default:0x0f
+	0x01 lcp Length Change Prefix stall cycles
+	0x02 mru Stall cycles due to BPU MRU bypass
+	0x04 iq_full Instruction Queue full stall cycles
+	0x08 regen Regen stall cycles
+	0x0f any Any Instruction Length Decoder stall cycles
+name:inst_retired type:bitmask default:0x01
+	0x01 any_p Instructions retired (Programmable counter and Precise Event)
+	0x02 x87 Retired floating-point operations (Precise Event)
+	0x04 mmx Retired MMX instructions (Precise Event)
+name:itlb_misses type:bitmask default:0x01
+	0x01 any ITLB miss
+	0x02 walk_completed ITLB miss page walks
+	0x04 walk_cycles ITLB miss page walk cycles
+	0x80 large_walk_completed ITLB miss large page walks
+name:l1d type:bitmask default:0x01
+	0x01 repl L1 data cache lines allocated
+	0x02 m_repl L1D cache lines allocated in the M state
+	0x04 m_evict L1D cache lines replaced in M state 
+	0x08 m_snoop_evict L1D snoop eviction of cache lines in M state
+name:l1d_prefetch type:bitmask default:0x01
+	0x01 requests L1D hardware prefetch requests
+	0x02 miss L1D hardware prefetch misses
+	0x04 triggers L1D hardware prefetch requests triggered
+name:l1d_wb_l2 type:bitmask default:0x0f
+	0x01 i_state L1 writebacks to L2 in I state (misses)
+	0x02 s_state L1 writebacks to L2 in S state
+	0x04 e_state L1 writebacks to L2 in E state
+	0x08 m_state L1 writebacks to L2 in M state
+	0x0f mesi All L1 writebacks to L2
+name:l1i type:bitmask default:0x01
+	0x01 hits L1I instruction fetch hits
+	0x02 misses L1I instruction fetch misses
+	0x03 reads L1I Instruction fetches
+	0x04 cycles_stalled L1I instruction fetch stall cycles
+name:l2_data_rqsts type:bitmask default:0xff
+	0x01 demand_i_state L2 data demand loads in I state (misses)
+	0x02 demand_s_state L2 data demand loads in S state
+	0x04 demand_e_state L2 data demand loads in E state
+	0x08 demand_m_state L2 data demand loads in M state
+	0x0f demand_mesi L2 data demand requests
+	0x10 prefetch_i_state L2 data prefetches in the I state (misses)
+	0x20 prefetch_s_state L2 data prefetches in the S state
+	0x40 prefetch_e_state L2 data prefetches in E state
+	0x80 prefetch_m_state L2 data prefetches in M state
+	0xf0 prefetch_mesi All L2 data prefetches
+	0xff any All L2 data requests
+name:l2_lines_in type:bitmask default:0x07
+	0x02 s_state L2 lines allocated in the S state
+	0x04 e_state L2 lines allocated in the E state
+	0x07 any L2 lines alloacated
+name:l2_lines_out type:bitmask default:0x0f
+	0x01 demand_clean L2 lines evicted by a demand request
+	0x02 demand_dirty L2 modified lines evicted by a demand request
+	0x04 prefetch_clean L2 lines evicted by a prefetch request
+	0x08 prefetch_dirty L2 modified lines evicted by a prefetch request
+	0x0f any L2 lines evicted
+name:l2_rqsts type:bitmask default:0x01
+	0x01 ld_hit L2 load hits
+	0x02 ld_miss L2 load misses
+	0x03 loads L2 requests
+	0x04 rfo_hit L2 RFO hits
+	0x08 rfo_miss L2 RFO misses
+	0x0c rfos L2 RFO requests
+	0x10 ifetch_hit L2 instruction fetch hits
+	0x20 ifetch_miss L2 instruction fetch misses
+	0x30 ifetches L2 instruction fetches
+	0x40 prefetch_hit L2 prefetch hits
+	0x80 prefetch_miss L2 prefetch misses
+	0xaa miss All L2 misses
+	0xc0 prefetches All L2 prefetches
+	0xff references All L2 requests
+name:l2_transactions type:bitmask default:0x80
+	0x01 load L2 Load transactions
+	0x02 rfo L2 RFO transactions
+	0x04 ifetch L2 instruction fetch transactions
+	0x08 prefetch L2 prefetch transactions
+	0x10 l1d_wb L1D writeback to L2 transactions
+	0x20 fill L2 fill transactions
+	0x40 wb L2 writeback to LLC transactions
+	0x80 any All L2 transactions
+name:l2_write type:bitmask default:0x01
+	0x01 rfo_i_state L2 demand store RFOs in I state (misses)
+	0x02 rfo_s_state L2 demand store RFOs in S state
+	0x08 rfo_m_state L2 demand store RFOs in M state
+	0x0e rfo_hit All L2 demand store RFOs that hit the cache
+	0x0f rfo_mesi All L2 demand store RFOs
+	0x10 lock_i_state L2 demand lock RFOs in I state (misses)
+	0x20 lock_s_state L2 demand lock RFOs in S state
+	0x40 lock_e_state L2 demand lock RFOs in E state
+	0x80 lock_m_state L2 demand lock RFOs in M state
+	0xe0 lock_hit All demand L2 lock RFOs that hit the cache
+	0xf0 lock_mesi All demand L2 lock RFOs
+name:load_dispatch type:bitmask default:0x07
+	0x01 rs Loads dispatched that bypass the MOB
+	0x02 rs_delayed Loads dispatched from stage 305
+	0x04 mob Loads dispatched from the MOB
+	0x07 any All loads dispatched
+name:longest_lat_cache type:bitmask default:0x01
+	0x01 miss Longest latency cache miss
+	0x02 reference Longest latency cache reference
+name:machine_clears type:bitmask default:0x01
+	0x01 cycles Cycles machine clear asserted
+	0x02 mem_order Execution pipeline restart due to Memory ordering conflicts 
+	0x04 smc Self-Modifying Code detected
+name:mem_inst_retired type:bitmask default:0x01
+	0x01 loads Instructions retired which contains a load (Precise Event)
+	0x02 stores Instructions retired which contains a store (Precise Event)
+	0x10 latency_above_threshold_0 Memory instructions retired above 0 clocks (Precise Event) (MSR_INDEX: 0x03F6 MSR_VALUE: 0x0000)
+name:mem_load_retired type:bitmask default:0x01
+	0x01 l1d_hit Retired loads that hit the L1 data cache (Precise Event)
+	0x02 l2_hit Retired loads that hit the L2 cache (Precise Event)
+	0x04 llc_unshared_hit Retired loads that hit valid versions in the LLC cache (Precise Event)
+	0x08 other_core_l2_hit_hitm Retired loads that hit sibling core's L2 in modified or unmodified states (Precise Event)
+	0x10 llc_miss Retired loads that miss the LLC cache (Precise Event)
+	0x40 hit_lfb Retired loads that miss L1D and hit an previously allocated LFB (Precise Event)
+	0x80 dtlb_miss Retired loads that miss the DTLB (Precise Event)
+name:mem_uncore_retired type:bitmask default:0x02
+	0x02 local_hitm Load instructions retired that HIT modified data in sibling core (Precise Event)
+	0x04 remote_hitm Retired loads that hit remote socket in modified state (Precise Event)
+	0x08 local_dram_and_remote_cache_hit Load instructions retired local dram and remote cache HIT data sources (Precise Event)
+	0x10 remote_dram Load instructions retired remote DRAM and remote home-remote cache HITM (Precise Event)
+	0x80 uncacheable Load instructions retired IO (Precise Event)
+name:offcore_requests type:bitmask default:0x80
+	0x01 demand_read_data Offcore demand data read requests
+	0x02 demand_read_code Offcore demand code read requests
+	0x04 demand_rfo Offcore demand RFO requests
+	0x08 any_read Offcore read requests
+	0x10 any_rfo Offcore RFO requests
+	0x40 l1d_writeback Offcore L1 data cache writebacks
+	0x80 any All offcore requests
+name:offcore_requests_outstanding type:bitmask default:0x08
+	0x01 demand_read_data Outstanding offcore demand data reads
+	0x02 demand_read_code Outstanding offcore demand code reads
+	0x04 demand_rfo Outstanding offcore demand RFOs
+	0x08 any_read Outstanding offcore reads
+name:rat_stalls type:bitmask default:0x0f
+	0x01 flags Flag stall cycles
+	0x02 registers Partial register stall cycles
+	0x04 rob_read_port ROB read port stalls cycles
+	0x08 scoreboard Scoreboard stall cycles
+	0x0f any All RAT stall cycles
+name:resource_stalls type:bitmask default:0x01
+	0x01 any Resource related stall cycles
+	0x02 load Load buffer stall cycles
+	0x04 rs_full Reservation Station full stall cycles
+	0x08 store Store buffer stall cycles
+	0x10 rob_full ROB full stall cycles
+	0x20 fpcw FPU control word write stall cycles
+	0x40 mxcsr MXCSR rename stall cycles
+	0x80 other Other Resource related stall cycles
+name:simd_int_128 type:bitmask default:0x01
+	0x01 packed_mpy 128 bit SIMD integer multiply operations
+	0x02 packed_shift 128 bit SIMD integer shift operations
+	0x04 pack 128 bit SIMD integer pack operations
+	0x08 unpack 128 bit SIMD integer unpack operations
+	0x10 packed_logical 128 bit SIMD integer logical operations
+	0x20 packed_arith 128 bit SIMD integer arithmetic operations
+	0x40 shuffle_move 128 bit SIMD integer shuffle/move operations
+name:simd_int_64 type:bitmask default:0x01
+	0x01 packed_mpy SIMD integer 64 bit packed multiply operations
+	0x02 packed_shift SIMD integer 64 bit shift operations
+	0x04 pack SIMD integer 64 bit pack operations
+	0x08 unpack SIMD integer 64 bit unpack operations
+	0x10 packed_logical SIMD integer 64 bit logical operations
+	0x20 packed_arith SIMD integer 64 bit arithmetic operations
+	0x40 shuffle_move SIMD integer 64 bit shuffle/move operations
+name:snoopq_requests type:bitmask default:0x01
+	0x01 data Snoop data requests
+	0x02 invalidate Snoop invalidate requests
+	0x04 code Snoop code requests
+name:snoopq_requests_outstanding type:bitmask default:0x01
+	0x01 data Outstanding snoop data requests
+	0x02 invalidate Outstanding snoop invalidate requests
+	0x04 code Outstanding snoop code requests
+name:snoop_response type:bitmask default:0x01
+	0x01 hit Thread responded HIT to snoop
+	0x02 hite Thread responded HITE to snoop
+	0x04 hitm Thread responded HITM to snoop
+name:sq_misc type:bitmask default:0x04
+	0x04 lru_hints Super Queue LRU hints sent to LLC
+	0x10 split_lock Super Queue lock splits across a cache line
+name:ssex_uops_retired type:bitmask default:0x01
+	0x01 packed_single SIMD Packed-Single Uops retired (Precise Event)
+	0x02 scalar_single SIMD Scalar-Single Uops retired (Precise Event)
+	0x04 packed_double SIMD Packed-Double Uops retired (Precise Event)
+	0x08 scalar_double SIMD Scalar-Double Uops retired (Precise Event)
+	0x10 vector_integer SIMD Vector Integer Uops retired (Precise Event)
+name:store_blocks type:bitmask default:0x04
+	0x04 at_ret Loads delayed with at-Retirement block code
+	0x08 l1d_block Cacheable loads delayed with L1D block code
+name:uops_decoded type:bitmask default:0x01
+	0x01 stall_cycles Cycles no Uops are decoded
+	0x02 ms_cycles_active Uops decoded by Microcode Sequencer
+	0x04 esp_folding Stack pointer instructions decoded
+	0x08 esp_sync Stack pointer sync operations
+name:uops_executed type:bitmask default:0x3f
+	0x01 port0 Uops executed on port 0
+	0x02 port1 Uops executed on port 1
+	0x04 port2_core Uops executed on port 2 (core count)
+	0x08 port3_core Uops executed on port 3 (core count)
+	0x10 port4_core Uops executed on port 4 (core count)
+	0x1f core_active_cycles_no_port5 Cycles Uops executed on ports 0-4 (core count)
+	0x20 port5 Uops executed on port 5
+	0x3f core_active_cycles Cycles Uops executed on any port (core count)
+	0x40 port015 Uops issued on ports 0, 1 or 5
+	0x80 port234_core Uops issued on ports 2, 3 or 4
+name:uops_issued type:bitmask default:0x01
+	0x01 any Uops issued
+	0x02 fused Fused Uops issued
+name:uops_retired type:bitmask default:0x01
+	0x01 active_cycles Cycles Uops are being retired
+	0x02 retire_slots Retirement slots used (Precise Event)
+	0x04 macro_fused Macro-fused Uops retired (Precise Event)

@@ -1,0 +1,296 @@
+2006-12-14  Maynard Johnson <maynardj@us.ibm.com>
+
+	* doc/oprofile.xml:
+	* events/Makefile.am:
+	* events/ppc64/cell-be/events:
+	* events/ppc64/cell-be/unit_masks:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/opcontrol:
+	* utils/ophelp.c Add support for Cell Broadband Engine
+
+2006-12-14  Dave Nomura <dcnltc@us.ibm.com>
+
+	* daemon/init.c: move open_opd_files call to initialization phase
+
+2006-12-11  Maynard Johnson <maynardj@us.ibm.com>
+
+	* m4/kerneloption.m4:
+	* m4/kernelversion.m4: eliminate/replace usage of obsolete kernel
+	  header linux/config.h
+
+
+2006-12-06  Daniel Jacobowitz  <dan@debian.org>
+
+	* libopt++/popt_options.cpp: complete fix for static
+	  initialisation ordering bug on ARM
+
+2006-11-24  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml:
+	* doc/oprofile.1.in: warn about braces parsing in differential
+	  mode.
+
+	* doc/opreport.1.in:
+	* doc/oparchive.1.in:
+	* doc/opannotate.1.in:
+	* doc/opgprof.1.in: point explicitly to oprofile(1)
+
+	* pp/opreport_options.cpp: --xml is incompatible with
+	  differential profiles.
+
+2006-11-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_alloc_counter.c: reapply 2006-8-03  Jeremiah Lott patch
+	  which was accidentally reverted, as a sideeffect this patch change
+	  counter allocation order. It can't hurt since our storage don't
+	  take care about counter number.
+	* libop/tests/alloc_counter_tests.c: add a test case for this patch.
+	  Take care about counter allocation order change.
+
+2006-11-19  Maynard Johnson <maynardj@us.ibm.com>
+
+	* doc/oprofile.xml:  Document platforms where callgraph is supported
+
+2006-11-17  Dave Nomura  <dcnltc@us.ibm.com>
+
+	* doc/Makefile.am:
+	* doc/opreport.1.in:
+	* doc/opreport.xsd:
+	* doc/oprofile.xml:
+	* libop/op_alloc_counter.c:
+	* libpp/Makefile.am:
+	* libpp/arrange_profiles.cpp:
+	* libpp/format_output.cpp:
+	* libpp/format_output.h:
+	* libpp/op_header.cpp:
+	* libpp/profile_container.cpp:
+	* libpp/symbol.cpp:
+	* libpp/symbol.h:
+	* libpp/xml_utils.cpp:
+	* libpp/xml_utils.h:
+	* libutil++/Makefile.am:
+	* libutil++/bfd_support.cpp:
+	* libutil++/cverb.cpp:
+	* libutil++/cverb.h:
+	* libutil++/op_bfd.cpp:
+	* libutil++/op_bfd.h:
+	* libutil++/xml_output.cpp:
+	* libutil++/xml_output.h:
+	* pp/common_option.cpp:
+	* pp/common_option.h:
+	* pp/oparchive_options.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport.cpp:
+	* pp/opreport_options.cpp:
+	* pp/opreport_options.h: XML output support.
+
+2006-8-03  Jeremiah Lott  <jeremiah.lott@timesys.com>
+
+	* libop/op_alloc_counter.c: allocate_counter(...) was returning
+	  prior to considering all possible allocation strategies.
+
+2006-11-15  Adam Bordelon  <me@cs.rice.edu>
+
+	* doc/internals.xml:
+	* doc/opannotate.1.in:
+	* doc/oparchive.1.in:
+	* doc/opcontrol.1.in:
+	* doc/opgprof.1.in:
+	* doc/opreport.1.in:
+	* doc/oprofile.xml: Documented --session-dir option.
+ 
+ 	* daemon/init.c:
+	* daemon/liblegacy/init.c:
+	* daemon/oprofiled.c:
+	* libop/Makefile.am:
+	* libop/op_config.c:
+	* libop/op_config.h:
+	* libop/op_config_24.h:
+	* libop/op_mangle.c:
+	* libpp/profile_spec.c:
+	* pp/common_option.cpp:
+	* utils/opcontrol: Added --session-dir option, to place sample database in dir instead of default location (/var/lib/oprofile), and program can be run as normal user.
+
+2006-11-15  John Levon  <levon@movementarian.org>
+
+	* events/x86-64/hammer/events: fix event names with '/' in them
+	  (bug 1597054)
+
+	* libop/op_events.c: check for '/' and fail if so
+
+2006-11-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/opreport.1.in: 
+	* doc/oprofile.xml: --long-filenames : -f is the short opt, not -l
+
+2006-10-16  Richard Purdie <rpurdie@openedhand.com>
+
+	* libutil++/bfd_support.cpp: Ignore uninteresting arm mapping symbols
+
+2006-10-16  Richard Purdie <rpurdie@openedhand.com>
+
+	* utils/opcontrol: Remove a bashism in validate_separate_args()
+
+2006-10-13  Maynard Johnson <maynardj@us.ibm.com>
+
+        * doc/opcontrol.1.in: Document callgraph support for PowerPC
+
+2006-09-25  Jon Callan  <Jon.Callan@arm.com>
+
+	* libopt++/popt_options.cpp: fix static init order problem, seen
+	  on ARM.
+
+2006-09-21  Dean Gaudet  <dgaudet@users.sourceforge.net>
+
+	* events/i386/core_2/events: rename some events
+	* events/i386/core_2/unit_masks: various fixes for
+	  double-counting events
+
+2006-09-21  Mark A. Greer  <mgreer@mvista.com>
+
+	* events/ppc/7450/events:
+	* events/ppc/7450/unit_masks:
+	* utils/ophelp.c: ppc 745x event improvements.
+
+2006-09-15  Will Cohen  <wcohen@redhat.com>
+
+	* Makefile.am: Add ChangeLog-2004 and ChangeLog-2005 to distro.
+	
+2006-09-15  Will Cohen  <wcohen@redhat.com>
+
+	* configure.in: Bump to 0.9.3cvs.
+
+2006-09-15  Will Cohen  <wcohen@redhat.com>
+
+	* configure.in: Bump to 0.9.2.
+
+2006-09-11  Will Cohen  <wcohen@redhat.com>
+
+	* configure.in: Bump to 0.9.2.1rc1.
+
+2006-09-11  Will Cohen  <wcohen@redhat.com>
+
+	* events/i386/core_2/unit_masks:
+	* events/i386/core_2/events: Correct names and masks.
+	
+2006-09-07  Benjamin LaHaise  <bcrl@kvack.org>
+	
+	* events/i386/core_2/events: Correct some event names.
+
+2006-09-05  Will Cohen  <wcohen@redhat.com>
+
+	* configure.in: bump to 0.9.2
+
+2006-09-05  Will Cohen  <wcohen@redhat.com>
+
+	* libpp/symbol_container.cpp: Explicit casting.
+
+2006-08-27  Ray Bryant  <raybry@amd.com>
+
+	* events/x86-64/hammer/events:
+	* events/x86-64/hammer/unit_masks:
+	* libop/op_events.h: make names match the BKDG names from AMD
+
+2006-08-22  Benjamin LaHaise  <bcrl@kvack.org>
+
+	* events/Makefile.am:
+	* events/i386/core_2/events:
+	* events/i386/core_2/unit_masks:
+	* libop/op_cpu_type.h:
+	* libop/op_cpu_type.c:
+	* libop/op_events.c:
+	* utils/ophelp.c: support Intel Core 2 events
+
+2006-07-15  Luca Barbato  <lu_zero@gentoo.org>
+
+	* events/Makefile.am:
+	* events/ppc/7450/events:
+	* events/ppc/7450/unit_masks:
+	* libop/op_cpu_type.h:
+	* libop/op_cpu_type.c:
+	* libop/op_events.c:
+	* utils/ophelp.c: support PowerPC G4 events
+ 
+2006-06-21  Ralf Baechle  <ralf@linux-mips.org>
+
+	* libop/op_cpu_type.h:
+	* utils/ophelp.c:
+	* libop/op_cpu_type.c:
+	* libop/op_events.c:
+	* events/Makefile.am:
+	* events/mips/5K:
+	* events/mips/20K:
+	* events/mips/25K:
+	* events/mips/34K: add new MIPS support.
+
+2006-05-13  Benjamin LaHaise  <bcrl@kvack.org>
+
+	* events/Makefile.am:
+	* events/i386/core/events:
+	* events/i386/core/unit_masks:
+	* libop/op_cpu_type.h:
+	* libop/op_cpu_type.c:
+	* libop/op_events.c:
+	* module/x86/cpu_type.c:
+	* utils/ophelp.c: support Intel Core Duo events
+
+2006-03-01  Andreas Krebbel  <krebbel1@de.ibm.com>
+
+	* utils/opcontrol: (do_save_setup): Save KERNEL_RANGE and XEN_RANGE 
+	values into setup file.
+	(do_load_setup): Print KERNEL_RANGE, XENIMAGE and XEN_RANGE values in
+	verbose mode.
+
+2006-03-19  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_anon.c: bump LRU size to avoid significant maps
+	  parsing overhead.
+
+2006-03-19  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_anon.c:
+	* daemon/opd_sfile.h:
+	* daemon/opd_sfile.c: make sure we protect trans->last
+	  if it's an anon sf, and we need to do cleanup. Speed
+	  cleanup somewhat.
+
+2006-02-17  Maynard Johnson <maynardj@us.ibm.com>
+
+	* doc/oprofile.xml:
+	* events/ppc64/power5+/events:
+	* events/ppc64/power5+/event_mappings:
+	* events/ppc64/unit_masks:
+	* events/Makefile.am:
+	* libop/op_events.c:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* utils/opcontrol:
+	* utils/ophelp.c:  Add support for Power5+
+
+2006-02-10  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: Use full paths for which and dirname.
+
+2006-01-22  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: mention 2.4 + power management
+
+2006-01-16  Mike Carlson  <corfe83dev@gmail.com>
+
+	* doc/opcontrol.1.in: fix typo
+
+2006-01-16  Jose Renato Santos  <jsantos@hpl.hp.com>
+
+	* daemon/init.c:
+	* daemon/opd_interface.h:
+	* daemon/opd_kernel.h:
+	* daemon/opd_kernel.c:
+	* daemon/opd_trans.c:
+	* daemon/oprofiled.h:
+	* daemon/oprofiled.c:
+	* doc/opcontrol.1.in:
+	* utils/opcontrol: Added support for Xen
+
+See ChangeLog-2005 for earlier changelogs.

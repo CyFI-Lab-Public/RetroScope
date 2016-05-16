@@ -1,0 +1,67 @@
+.TH OPGPROF 1 "@DATE@" "oprofile @VERSION@"
+.UC 4
+.SH NAME
+opgprof \- produce gprof-format profile data
+.SH SYNOPSIS
+.br
+.B opgprof
+[
+.I options
+]
+[profile specification]
+.SH DESCRIPTION
+
+.B opgprof
+outputs gprof-format profile data for a given binary image,
+from an OProfile session. See oprofile(1) for how to write profile specifications.
+
+.SH OPTIONS
+.TP
+.BI "--help / -? / --usage"
+Show help message.
+.br
+.TP
+.BI "--version / -v"
+Show version.
+.br
+.TP
+.BI "--verbose / -V [options]"
+Give verbose debugging output.
+.br
+.TP
+.BI "--session-dir="dir_path
+Use sample database out of directory dir_path instead of the default location (/var/lib/oprofile).
+.br
+.TP
+.BI "--image-path / -p [paths]"
+Comma-separated list of additional paths to search for binaries.
+This is needed to find modules in kernels 2.6 and upwards.
+.br
+.TP
+.BI "--root / -R [path]"
+A path to a filesystem to search for additional binaries.
+.br
+.TP
+.BI "--threshold / -t [percentage]"
+Only output data for symbols that have more than the given percentage
+of total samples.
+.br
+.TP
+.BI "--output-filename / -o [file]"
+Output to the given file instead of the default, gmon.out
+
+.SH ENVIRONMENT
+No special environment variables are recognised by opgprof.
+
+.SH FILES
+.TP
+.I /var/lib/oprofile/samples/
+The location of the generated sample files.
+
+.SH VERSION
+.TP
+This man page is current for @PACKAGE@-@VERSION@.
+
+.SH SEE ALSO
+.BR @OP_DOCDIR@,
+.BR oprofile(1)

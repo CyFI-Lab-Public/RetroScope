@@ -1,0 +1,173 @@
+#
+# MIPS 1004K
+#
+
+# The 1004K CPUs have two performance counters.
+#
+# Even/odd counters are distinguished by setting bit 10 in the event
+# mask. The kernel masks this bit out before writing the control
+# register.
+
+#
+# Events specific to both counters
+#
+event:0x0 counters:0,1 um:zero minimum:500 name:CYCLES : 0-0 Cycles
+event:0x1 counters:0,1 um:zero minimum:500 name:INSTRUCTIONS : 1-0 Instructions completed
+event:0xb counters:0,1 um:zero minimum:500 name:DCACHE_MISSES : 11-0 Data cache misses
+
+#
+# Events specific to counter 0
+#
+event:0x2 counters:0 um:zero minimum:500 name:BRANCH_INSNS : 2-0 Branch instructions (whether completed or mispredicted)
+event:0x3 counters:0 um:zero minimum:500 name:JR_31_INSNS : 3-0 JR $31 (return) instructions executed
+event:0x4 counters:0 um:zero minimum:500 name:JR_NON_31_INSNS : 4-0 JR $xx (not $31) instructions executed (at same cost as a mispredict)
+event:0x5 counters:0 um:zero minimum:500 name:ITLB_ACCESSES : 5-0 Instruction micro-TLB accesses
+event:0x6 counters:0 um:zero minimum:500 name:DTLB_ACCESSES : 6-0 Data micro-TLB accesses
+event:0x7 counters:0 um:zero minimum:500 name:JTLB_INSN_ACCESSES : 7-0 Joint TLB instruction accesses
+event:0x8 counters:0 um:zero minimum:500 name:JTLB_DATA_ACCESSES : 8-0 Joint TLB data (non-instruction) accesses
+event:0x9 counters:0 um:zero minimum:500 name:ICACHE_ACCESSES : 9-0 Instruction cache accesses
+event:0xa counters:0 um:zero minimum:500 name:DCACHE_ACCESSES : 10-0 Data cache accesses
+
+event:0xd counters:0 um:zero minimum:500 name:STORE_MISS_INSNS : 13-0 Cacheable stores that miss in the cache
+event:0xe counters:0 um:zero minimum:500 name:INTEGER_INSNS : 14-0 Integer instructions completed
+event:0xf counters:0 um:zero minimum:500 name:LOAD_INSNS : 15-0 Load instructions completed (including FP)
+event:0x10 counters:0 um:zero minimum:500 name:J_JAL_INSNS : 16-0 J/JAL instructions completed
+event:0x11 counters:0 um:zero minimum:500 name:NO_OPS_INSNS : 17-0 no-ops completed, ie instructions writing $0
+event:0x12 counters:0 um:zero minimum:500 name:ALL_STALLS : 18-0 Stall cycles, including ALU and IFU
+event:0x13 counters:0 um:zero minimum:500 name:SC_INSNS : 19-0 SC instructions completed
+event:0x14 counters:0 um:zero minimum:500 name:PREFETCH_INSNS : 20-0 PREFETCH instructions completed
+event:0x15 counters:0 um:zero minimum:500 name:L2_CACHE_WRITEBACKS : 21-0 L2 cache lines written back to memory
+event:0x16 counters:0 um:zero minimum:500 name:L2_CACHE_MISSES : 22-0 L2 cache accesses that missed in the cache
+event:0x17 counters:0 um:zero minimum:500 name:EXCEPTIONS_TAKEN : 23-0 Exceptions taken
+event:0x18 counters:0 um:zero minimum:500 name:CACHE_FIXUP_CYCLES : 24-0 Cache fixup cycles (specific to the 34K family microarchitecture)
+event:0x19 counters:0 um:zero minimum:500 name:IFU_STALLS : 25-0 IFU stall cycles
+event:0x1a counters:0 um:zero minimum:500 name:DSP_INSNS : 26-0 DSP instructions completed
+
+event:0x1c counters:0 um:zero minimum:500 name:POLICY_EVENTS : 28-0 Implementation specific policy manager events
+event:0x1d counters:0 um:zero minimum:500 name:ISPRAM_EVENTS : 29-0 Implementation specific ISPRAM events
+event:0x1e counters:0 um:zero minimum:500 name:COREEXTEND_EVENTS : 30-0 Implementation specific CorExtend events
+event:0x1f counters:0 um:zero minimum:500 name:YIELD_EVENTS : 31-0 Implementation specific yield events
+
+event:0x20 counters:0 um:zero minimum:500 name:ITC_LOADS : 32-0 ITC Loads
+event:0x21 counters:0 um:zero minimum:500 name:UNCACHED_LOAD_INSNS : 33-0 Uncached load instructions
+event:0x22 counters:0 um:zero minimum:500 name:FORK_INSNS : 34-0 Fork instructions completed
+event:0x23 counters:0 um:zero minimum:500 name:CP2_ARITH_INSNS : 35-0 CP2 arithmetic instructions completed
+event:0x24 counters:0 um:zero minimum:500 name:INTERVENTION_STALLS : 36-0 Cache coherence intervention processing stall cycles
+
+#
+#  Count number of cycles (most often ``stall cycles'', ie time lost), not just number of events.
+#
+event:0x25 counters:0 um:zero minimum:500 name:ICACHE_MISS_STALLS : 37-0 Stall cycles due to an instruction cache miss
+
+event:0x27 counters:0 um:zero minimum:500 name:DCACHE_MISS_CYCLES : 39-0 Cycles a data cache miss is outstanding, but not necessarily stalling the pipeline
+event:0x28 counters:0 um:zero minimum:500 name:UNCACHED_STALLS : 40-0 Uncached stall cycles
+event:0x29 counters:0 um:zero minimum:500 name:MDU_STALLS : 41-0 MDU stall cycles
+event:0x2a counters:0 um:zero minimum:500 name:CP2_STALLS : 42-0 CP2 stall cycles
+event:0x2b counters:0 um:zero minimum:500 name:ISPRAM_STALLS : 43-0 ISPRAM stall cycles
+event:0x2c counters:0 um:zero minimum:500 name:CACHE_INSN_STALLS : 44-0 Stall cycless due to CACHE instructions
+event:0x2d counters:0 um:zero minimum:500 name:LOAD_USE_STALLS : 45-0 Load to use stall cycles
+event:0x2e counters:0 um:zero minimum:500 name:INTERLOCK_STALLS : 46-0 Stall cycles due to return data from MFC0, RDHWR, and MFTR instructions
+event:0x2f counters:0 um:zero minimum:500 name:RELAX_STALLS : 47-0 Low power stall cycles (operations) as requested by the policy manager
+
+event:0x30 counters:0 um:zero minimum:500 name:IFU_FB_FULL_REFETCHES : 48-0 Refetches due to cache misses while both fill buffers already allocated
+event:0x31 counters:0 um:zero minimum:500 name:EJTAG_INSN_TRIGGERS : 49-0 EJTAG instruction triggerpoints
+
+#
+#
+#  Monitor the state of various FIFO queues in the load/store unit: 
+#  FSB (``fill/store buffer'')
+#  LDQ (``load queue'')
+#  WBB (``write-back buffer'')
+#  Some count events, others count stall cycles.
+#
+event:0x32 counters:0 um:zero minimum:500 name:FSB_LESS_25_FULL : 50-0 FSB < 25% full
+event:0x33 counters:0 um:zero minimum:500 name:FSB_OVER_50_FULL : 51-0 FSB > 50% full
+event:0x34 counters:0 um:zero minimum:500 name:LDQ_LESS_25_FULL : 52-0 LDQ < 25% full
+event:0x35 counters:0 um:zero minimum:500 name:LDQ_OVER_50_FULL : 53-0 LDQ > 50% full
+event:0x36 counters:0 um:zero minimum:500 name:WBB_LESS_25_FULL : 54-0 WBB < 25% full
+event:0x37 counters:0 um:zero minimum:500 name:WBB_OVER_50_FULL : 55-0 WBB > 50% full
+
+event:0x38 counters:0 um:zero minimum:500 name:INTERVENTION_HIT_COUNT : 56-0 External interventions that hit in the cache 
+event:0x39 counters:0 um:zero minimum:500 name:INVALIDATE_INTERVENTION_COUNT : 57-0 External invalidate (i.e. leaving a cache line in the invalid state) interventions
+event:0x3a counters:0 um:zero minimum:500 name:EVICTION_COUNT : 58-0   Cache lines written back due to cache replacement or non-coherent cache operation
+event:0x3b counters:0 um:zero minimum:500 name:MESI_INVAL_COUNT : 59-0 MESI protocol transitions into invalid state
+event:0x3c counters:0 um:zero minimum:500 name:MESI_MODIFIED_COUNT : 60-0 MESI protocol transitions into modified state
+event:0x3d counters:0 um:zero minimum:500 name:SELF_INTERVENTION_LATENCY : 61-0 Latency from miss detection to self intervention
+event:0x3e counters:0 um:zero minimum:500 name:READ_RESPONSE_LATENCY : 62-0 Read latency from miss detection until critical dword of response is returned
+
+#
+# Events specific to counter 1
+#
+event:0x402 counters:1 um:zero minimum:500 name:MISPREDICTED_BRANCH_INSNS : 2-1 Branch mispredictions
+event:0x403 counters:1 um:zero minimum:500 name:JR_31_MISPREDICTIONS : 3-1 JR $31 mispredictions
+event:0x404 counters:1 um:zero minimum:500 name:JR_31_NO_PREDICTIONS : 4-1 JR $31 not predicted (stack mismatch).
+event:0x405 counters:1 um:zero minimum:500 name:ITLB_MISSES : 5-1 Instruction micro-TLB misses
+event:0x406 counters:1 um:zero minimum:500 name:DTLB_MISSES : 6-1 Data micro-TLB misses
+event:0x407 counters:1 um:zero minimum:500 name:JTLB_INSN_MISSES : 7-1 Joint TLB instruction misses
+event:0x408 counters:1 um:zero minimum:500 name:JTLB_DATA_MISSES : 8-1 Joint TLB data (non-instruction) misses
+event:0x409 counters:1 um:zero minimum:500 name:ICACHE_MISSES : 9-1 Instruction cache misses
+event:0x40a counters:1 um:zero minimum:500 name:DCACHE_WRITEBACKS : 10-1 Data cache lines written back to memory
+
+event:0x40d counters:1 um:zero minimum:500 name:LOAD_MISS_INSNS : 13-1 Cacheable load instructions that miss in the cache
+event:0x40e counters:1 um:zero minimum:500 name:FPU_INSNS : 14-1 FPU instructions completed (not including loads/stores)
+event:0x40f counters:1 um:zero minimum:500 name:STORE_INSNS : 15-1 Stores completed (including FP)
+event:0x410 counters:1 um:zero minimum:500 name:MIPS16_INSNS : 16-1 MIPS16 instructions completed
+event:0x411 counters:1 um:zero minimum:500 name:INT_MUL_DIV_INSNS : 17-1 Integer multiply/divide instructions completed
+event:0x412 counters:1 um:zero minimum:500 name:REPLAYED_INSNS : 18-1 Replayed instructions
+event:0x413 counters:1 um:zero minimum:500 name:SC_INSNS_FAILED : 19-1 SC instructions completed, but store failed (because the link bit had been cleared)
+event:0x414 counters:1 um:zero minimum:500 name:CACHE_HIT_PREFETCH_INSNS : 20-1 PREFETCH instructions completed with cache hit
+event:0x415 counters:1 um:zero minimum:500 name:L2_CACHE_ACCESSES : 21-1 Accesses to the L2 cache
+event:0x416 counters:1 um:zero minimum:500 name:L2_CACHE_SINGLE_BIT_ERRORS : 22-1 Single bit errors corrected in L2
+event:0x417 counters:1 um:zero minimum:500 name:SINGLE_THREADED_CYCLES : 23-1 Cycles while one and only one TC is eligible for scheduling
+event:0x418 counters:1 um:zero minimum:500 name:REFETCHED_INSNS : 24-1 Replayed instructions sent back to IFU to be refetched
+event:0x419 counters:1 um:zero minimum:500 name:ALU_STALLS : 25-1 ALU stall cycles
+event:0x41a counters:1 um:zero minimum:500 name:ALU_DSP_SATURATION_INSNS : 26-1 ALU-DSP saturation instructions
+event:0x41b counters:1 um:zero minimum:500 name:MDU_DSP_SATURATION_INSNS : 27-1 MDU-DSP saturation instructions
+
+event:0x41c counters:1 um:zero minimum:500 name:CP2_EVENTS : 28-1 Implementation specific CP2 events
+event:0x41d counters:1 um:zero minimum:500 name:DSPRAM_EVENTS : 29-1 Implementation specific DSPRAM events
+
+event:0x41f counters:1 um:zero minimum:500 name:ITC_EVENT : 31-1 Implementation specific yield event
+
+event:0x421 counters:1 um:zero minimum:500 name:UNCACHED_STORE_INSNS : 33-1 Uncached store instructions
+event:0x423 counters:1 um:zero minimum:500 name:CP2_TO_FROM_INSNS : 35-1 CP2 to/from instructions (moves, control, loads, stores)
+event:0x424 counters:1 um:zero minimum:500 name:INTERVENTION_MISS_STALLS : 36-1 Cache coherence intervention processing stall cycles due to an earlier miss
+
+#
+#  Count number of cycles (most often ``stall cycles'', ie time lost), not just number of events.
+#
+event:0x425 counters:1 um:zero minimum:500 name:DCACHE_MISS_STALLS : 37-1 Stall cycles due to a data cache miss
+event:0x426 counters:1 um:zero minimum:500 name:FSB_INDEX_CONFLICT_STALLS : 38-1 FSB (fill/store buffer) index conflict stall cycles
+event:0x427 counters:1 um:zero minimum:500 name:L2_CACHE_MISS_CYCLES : 39-1 Cycles a L2 miss is outstanding, but not necessarily stalling the pipeline
+event:0x428 counters:1 um:zero minimum:500 name:ITC_STALLS : 40-1 ITC stall cycles
+event:0x429 counters:1 um:zero minimum:500 name:FPU_STALLS : 41-1 FPU stall cycles
+event:0x42a counters:1 um:zero minimum:500 name:COREEXTEND_STALLS : 42-1 CorExtend stall cycles
+event:0x42b counters:1 um:zero minimum:500 name:DSPRAM_STALLS : 43-1 DSPRAM stall cycles
+
+event:0x42d counters:1 um:zero minimum:500 name:ALU_TO_AGEN_STALLS : 45-1 ALU to AGEN stall cycles
+event:0x42e counters:1 um:zero minimum:500 name:MISPREDICTION_STALLS : 46-1 Branch mispredict stall cycles
+
+event:0x430 counters:1 um:zero minimum:500 name:FB_ENTRY_ALLOCATED_CYCLES : 48-1 Cycles while at least one IFU fill buffer is allocated
+event:0x431 counters:1 um:zero minimum:500 name:EJTAG_DATA_TRIGGERS : 49-1 EJTAG Data triggerpoints
+
+#
+#  Monitor the state of various FIFO queues in the load/store unit: 
+#  FSB (``fill/store buffer'')
+#  LDQ (``load queue'')
+#  WBB (``write-back buffer'')
+#  Some count events, others count stall cycles.
+#
+event:0x432 counters:1 um:zero minimum:500 name:FSB_25_50_FULL : 50-1 FSB 25-50% full
+event:0x433 counters:1 um:zero minimum:500 name:FSB_FULL_STALLS : 51-1 FSB full pipeline stall cycles
+event:0x434 counters:1 um:zero minimum:500 name:LDQ_25_50_FULL : 52-1 LDQ 25-50% full
+event:0x435 counters:1 um:zero minimum:500 name:LDQ_FULL_STALLS : 53-1 LDQ full pipeline stall cycles
+event:0x436 counters:1 um:zero minimum:500 name:WBB_25_50_FULL : 54-1 WBB 25-50% full
+event:0x437 counters:1 um:zero minimum:500 name:WBB_FULL_STALLS : 55-1 WBB full pipeline stall cycles
+
+event:0x438 counters:1 um:zero minimum:500 name:INTERVENTION_COUNT : 56-1 External interventions
+event:0x439 counters:1 um:zero minimum:500 name:INVALIDATE_INTERVENTION_HIT_COUNT : 57-1 External invalidate interventions that hit in the cache
+event:0x43a counters:1 um:zero minimum:500 name:WRITEBACK_COUNT : 58-1 Cache lines written back due to cache replacement or any cache operation (non-coherent, self, or external coherent)
+event:0x43b counters:1 um:zero minimum:500 name:MESI_EXCLUSIVE_COUNT : 59-1 MESI protocol transitions into exclusive state
+event:0x43c counters:1 um:zero minimum:500 name:MESI_SHARED_COUNT : 60-1 MESI protocol transitions into shared state
+event:0x43d counters:1 um:zero minimum:500 name:SELF_INTERVENTION_COUNT : 61-1 Self intervention requests on miss detection
+event:0x43e counters:1 um:zero minimum:500 name:READ_RESPONSE_COUNT : 62-1 Read requests on miss detection

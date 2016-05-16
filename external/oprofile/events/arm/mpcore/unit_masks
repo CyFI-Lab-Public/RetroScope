@@ -1,0 +1,4 @@
+# MPCore possible unit masks
+#
+name:zero type:mandatory default:0x00
+	0x00 No unit mask

@@ -1,0 +1,8 @@
+Mockito is a mocking framework with a clean and simple API.
+See https://code.google.com/p/mockito/ for more information.
+
+For Android, we need to combine Mockito with a MockMaker provided by the
+Dexmaker module.
+
+The source can be updated using the update_source.sh script.
+

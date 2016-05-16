@@ -1,0 +1,34 @@
+#
+# RM7000 events
+#
+event:0x00 counters:0,1 um:zero minimum:500 name:CYCLES : Clock cycles
+event:0x01 counters:0,1 um:zero minimum:500 name:INSTRUCTIONS_ISSUED : Total instructions issued
+event:0x02 counters:0,1 um:zero minimum:500 name:FP_INSTRUCTIONS_ISSUED : Floating-point instructions issued
+event:0x03 counters:0,1 um:zero minimum:500 name:INTEGER_INSTRUCTIONS_ISSUED : Integer instructions issued
+event:0x04 counters:0,1 um:zero minimum:500 name:LOAD_INSTRUCTIONS_ISSUED : Load instructions issued
+event:0x05 counters:0,1 um:zero minimum:500 name:STORE_INSTRUCTIONS_ISSUED : Store instructions issued
+event:0x06 counters:0,1 um:zero minimum:500 name:DUAL_ISSUED_PAIRS : Dual issued pairs
+event:0x07 counters:0,1 um:zero minimum:500 name:BRANCH_PREFETCHES : Branch prefetches
+event:0x08 counters:0,1 um:zero minimum:500 name:EXTERNAL_CACHE_MISSES : External Cache Misses
+event:0x09 counters:0,1 um:zero minimum:500 name:STALL_CYCLES : Stall cycles
+event:0x0a counters:0,1 um:zero minimum:500 name:SCACHE_MISSES : Secondary cache misses
+event:0x0b counters:0,1 um:zero minimum:500 name:ICACHE_MISSES : Instruction cache misses
+event:0x0c counters:0,1 um:zero minimum:500 name:DCACHE_MISSES : Data cache misses
+event:0x0d counters:0,1 um:zero minimum:500 name:DTLB_MISSES : Data TLB misses
+event:0x0e counters:0,1 um:zero minimum:500 name:ITLB_MISSES : Instruction TLB misses
+event:0x0f counters:0,1 um:zero minimum:500 name:JTLB_INSTRUCTION_MISSES : Joint TLB instruction misses
+event:0x10 counters:0,1 um:zero minimum:500 name:JTLB_DATA_MISSES : Joint TLB data misses
+event:0x11 counters:0,1 um:zero minimum:500 name:BRANCHES_TAKEN : Branches taken
+event:0x12 counters:0,1 um:zero minimum:500 name:BRANCHES_ISSUED : Branches issued
+event:0x13 counters:0,1 um:zero minimum:500 name:SCACHE_WRITEBACKS : Secondary cache writebacks
+event:0x14 counters:0,1 um:zero minimum:500 name:PCACHE_WRITEBACKS : Primary cache writebacks
+event:0x15 counters:0,1 um:zero minimum:500 name:DCACHE_MISS_STALL_CYCLES : Dcache miss stall cycles (cycles where both cache miss tokens taken and a third try is requested)
+event:0x16 counters:0,1 um:zero minimum:500 name:CACHE_MISSES : Cache misses
+event:0x17 counters:0,1 um:zero minimum:500 name:FP_EXCEPTION_STALL_CYCLES : FP possible exception cycles
+event:0x18 counters:0,1 um:zero minimum:500 name:SLIP_CYCLES_DUE_MULTIPLIER_BUSY : Slip Cycles due to multiplier busy
+event:0x19 counters:0,1 um:zero minimum:500 name:COP0_SLIP_CYCLES : Coprocessor 0 slip cycles
+event:0x1a counters:0,1 um:zero minimum:500 name:SLIP_CYCLES_PENDING_NON_BLKING_LOAD : Slip cycles due to pending non-blocking loads
+event:0x1c counters:0,1 um:zero minimum:500 name:WRITE_BUFFER_FULL_STALL_CYCLES : Write buffer full stall cycles
+event:0x1d counters:0,1 um:zero minimum:500 name:CACHE_INSTRUCTION_STALL_CYCLES : Cache instruction stall cycles
+event:0x1e counters:0,1 um:zero minimum:500 name:MULTIPLIER_STALL_CYCLES : Multiplier stall cycles
+event:0x1f counters:0,1 um:zero minimum:500 name:STALL_CYCLES_PENDING_NON_BLKING_LOAD : Stall cycles due to pending non-blocking loads - stall start of exception

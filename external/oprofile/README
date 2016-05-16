@@ -1,0 +1,46 @@
+This is an alpha release version of oprofile, a transparent
+low-overhead system-wide profiler.
+
+You can find some documentation in the doc/ directory.
+
+Please visit the oprofile website at : http://oprofile.sf.net/
+
+oprofile was written by John Levon <levon@movementarian.org>
+and Philippe Elie <phil.el@wanadoo.fr>.
+
+Maynard Johnson <maynardj@us.ibm.com> is the current maintainer.
+
+Dave Jones <davej@suse.de> provided bug fixes and support for
+the AMD Athlon, and AMD Hammer families of CPUs.
+
+Bob Montgomery <bobm@fc.hp.com> provided bug fixes, the initial RTC
+driver and the initial ia64 driver.
+
+Will Cohen <wcohen@redhat.com> integrated the ia64 driver into the
+oprofile release, and contributed bug fixes and several cleanups.
+
+Graydon Hoare <graydon@redhat.com> provided P4 port, bug fixes and cleanups.
+
+Ralf Baechle <ralf@linux-mips.org> provided the MIPS port.
+
+Other contributors are listed in the ChangeLog.
+
+Building
+--------
+
+Please read the installation instructions in doc/oprofile.html or
+http://oprofile.sourceforge.net/doc/install.html.
+
+Quick start :
+
+(If using CVS: ./autogen.sh first. You need automake 1.5 or higher. You
+can specify a different version, e.g.
+ACLOCAL=aclocal-1.5 AUTOMAKE=automake-1.5 AUTOCONF=autoconf-2.13 AUTOHEADER=autoheader-2.13 ./autogen.sh)
+
+2.4 kernels
+
+	./configure --with-linux=/path/to/kernel/source
+
+2.6 kernels
+
+	./configure --with-kernel-support

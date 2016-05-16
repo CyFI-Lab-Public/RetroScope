@@ -1,0 +1,517 @@
+#ppc64 Cell Broadband Engine events
+#
+# Copyright OProfile authors
+#
+#(C) COPYRIGHT International Business Machines Corp. 2006
+# Contributed by Maynard Johnson <maynardj@us.ibm.com>
+#
+#
+#  As many as 4 signals may be specified when they are from the same group.
+#  In some instances, signals from other groups in the same island or one
+#  other island may also be specified.
+#
+#  Each signal is assigned to a unique counter.  There are 4 32-bit hardware
+#  counters.  The signals are defined in the Cell Broadband Engine
+#  Performance manual.
+#
+#  Each event is given a unique event number.  The event number is used by the
+#  Oprofile code to resolve event names for the postprocessing.  This is done
+#  to preserve compatibility with the rest of the Oprofile code.  The event
+#  number format group_num followed by the counter number for the event within
+#  the group.
+
+# Signal Default
+event:0x1 counters:0,1,2,3 um:zero minimum:100000 name:CYCLES : Processor Cycles
+event:0x2 counters:0,1,2,3 um:zero minimum:60000 name:SPU_CYCLES : SPU Processor Cycles
+
+
+# Cell BE Island 2 - PowerPC Processing Unit (PPU)
+
+# CBE Signal Group 21 - PPU Instruction Unit - Group 1 (NClk)
+event:0x834 counters:0,1,2,3 um:PPU_01_edges           minimum:10000 	name:Branch_Commit		: Branch instruction committed. 
+event:0x835 counters:0,1,2,3 um:PPU_01_edges           minimum:10000	name:Branch_Flush		: Branch instruction that caused a misprediction flush is committed. Branch misprediction includes: (1) misprediction of taken or not-taken on conditional branch, (2) misprediction of branch target address on bclr[1] and bcctr[1]. 
+event:0x836 counters:0,1,2,3 um:PPU_01_cycles          minimum:10000	name:Ibuf_Empty		: Instruction buffer empty. 
+event:0x837 counters:0,1,2,3 um:PPU_01_edges           minimum:10000	name:IERAT_Miss		: Instruction effective-address-to-real-address translation (I-ERAT) miss. 
+event:0x838 counters:0,1,2,3 um:PPU_01_cycles_or_edges minimum:10000	name:IL1_Miss_Cycles	: L1 Instruction cache miss cycles. Counts the cycles from the miss event until the returned instruction is dispatched or cancelled due to branch misprediction, completion restart, or exceptions (see Note 1). 
+event:0x83a counters:0,1,2,3 um:PPU_01_cycles          minimum:10000	name:Dispatch_Blocked	: Valid instruction available for dispatch, but dispatch is blocked.
+event:0x83d counters:0,1,2,3 um:PPU_01_edges           minimum:10000	name:Instr_Flushed		: Instruction in pipeline stage EX7 causes a flush. 
+event:0x83f counters:0,1,2,3 um:PPU_01_edges           minimum:10000	name:PPC_Commit		: Two PowerPC instructions committed. For microcode sequences, only the last microcode operation is counted. Committed instructions are counted two at a time. If only one instruction has committed for a given cycle, this event will not be raised until another instruction has been committed in a future cycle. 
+
+
+# CBE Signal Group 22 - PPU Execution Unit (NClk)
+event:0x89a counters:0,1,2,3 um:PPU_01_cycles          minimum:10000	name:DERAT_Miss		: Data effective-address-to-real-address translation (D-ERAT) miss. Not speculative. 
+event:0x89b counters:0,1,2,3 um:PPU_01_cycles          minimum:10000	name:Store_Request		: Store request counted at the L2 interface. Counts microcoded PPE sequences more than once (see Note 1 for exceptions). (Thread 0 and 1)
+event:0x89c counters:0,1,2,3 um:PPU_01_cycles          minimum:10000	name:Load_Valid		: Load valid at a particular pipe stage. Speculative, since flushed operations are counted as well. Counts microcoded PPE sequences more than once. Misaligned flushes might be counted the first time as well. Load operations include all loads that read data from the cache, dcbt and dcbtst. Does not include load Vector/SIMD multimedia extension pattern instructions. 
+event:0x89d counters:0,1,2,3 um:PPU_01_cycles          minimum:10000	name:DL1_Miss		: L1 D-cache load miss. Pulsed when there is a miss request that has a tag miss but not an ERAT miss. Speculative, since flushed operations are counted as well. 
+
+
+# Cell BE Island 3 - PowerPC Storage Subsystem (PPSS)
+
+# CBE Signal Group 31 - PPSS Bus Interface Unit (NClk/2)
+event:0xc1c counters:0,1,2,3 um:PPU_2_edges           minimum:10000	name:rcv_mmio_rd_ev	: Load from MFC memory-mapped I/O (MMIO) space.
+event:0xc1d counters:0,1,2,3 um:PPU_2_edges           minimum:10000	name:rcv_mmio_wr_ev	: Stores to MFC MMIO space.
+event:0xc22 counters:0,1,2,3 um:PPU_2_edges           minimum:10000	name:even_token_req_ev	: Request token for even memory bank numbers 0-14.
+event:0xc2b counters:0,1,2,3 um:PPU_2_edges           minimum:10000	name:rcv_data_ev		: Receive 8-beat data from the Element Interconnect Bus (EIB).
+event:0xc2c counters:0,1,2,3 um:PPU_2_edges           minimum:10000	name:send_data_ev		: Send 8-beat data to the EIB.
+event:0xc2d counters:0,1,2,3 um:PPU_2_edges           minimum:10000	name:send_cmd_ev		: Send a command to the EIB; includes retried commands.
+event:0xc2e counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:dgnt_dly_cy		: Cycles between data request and data grant.
+event:0xc33 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:nc_wr_not_emp_cy	: The five-entry Non-Cacheable Unit (NCU) Store Command queue not empty.
+
+
+# CBE Signal Group 32 - PPSS L2 Cache Controller - Group 1 (NClk/2)
+event:0xc80 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:cache_hit		: Cache hit for core interface unit (CIU) loads and stores.
+event:0xc81 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:cache_miss		: Cache miss for CIU loads and stores.
+event:0xc84 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:load_miss		: CIU load miss.
+event:0xc85 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:store_miss		: CIU store to Invalid state (miss).
+event:0xc87 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:larx_miss_th1		: Load word and reserve indexed (lwarx/ldarx) for Thread 0 hits Invalid cache state
+event:0xc8e counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:stcx_miss_th1		: Store word conditional indexed (stwcx/stdcx) for Thread 0 hits Invalid cache state when reservation is set.
+event:0xc99 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:all_snp_busy		: All four snoop state machines busy.
+
+# CBE Signal Group 33 - PPSS L2 Cache Controller - Group 2 (NClk/2)
+event:0xce8 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:dclaim_srt		: Data line claim (dclaim) that received good combined response; includes store/stcx/dcbz to Shared (S), Shared Last (SL),or Tagged (T) cache state; does not include dcbz to Invalid (I) cache state (see Note 1).
+event:0xcef counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:dclaim_to_rwitm	: Dclaim converted into rwitm; may still not get to the bus if stcx is aborted (see Note 2).
+event:0xcf0 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:store_mxe		: Store to modified (M), modified unsolicited (MU), or exclusive (E) cache state.
+event:0xcf1 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:stq_full		: 8-entry store queue (STQ) full.
+event:0xcf2 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:store_rc_ack		: Store dispatched to RC machine is acknowledged.
+event:0xcf3 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:gather_store		: Gatherable store (type = 00000) received from CIU.
+event:0xcf6 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:snp_push		: Snoop push.
+event:0xcf7 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:intv_snode_er		: Send intervention from (SL | E) cache state to a destination within the same CBE chip.
+event:0xcf8 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:intv_snode_mx		: Send intervention from (M | MU) cache state to a destination within the same CBE chip.
+event:0xcfd counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:snp_retry		: Respond with Retry to a snooped request due to one of the following conflicts: read-and-claim state machine (RC) full address, castout (CO) congruence class, snoop (SNP) machine full address, all snoop machines busy, directory lockout, or parity error.
+event:0xcfe counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:snp_busy_retry	: Respond with Retry to a snooped request because all snoop machines are busy.
+event:0xcff counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:snp_mx_to_est		: Snooped response causes a cache state transition from (M | MU) to (E | S | T).
+event:0xd00 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:snp_e_to_s		: Snooped response causes a cache state transition from E to S.
+event:0xd01 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:snp_esrt_to_i		: Snooped response causes a cache state transition from (E | SL | S | T) to Invalid (I).
+event:0xd02 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:snp_mx_to_i		: Snooped response causes a cache state transition from (M | MU) to I.
+
+# CBE Signal Group 34 - PPSS L2 Cache Controller - Group 3 (NClk/2)
+event:0xd54 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:larx_miss		: Load and reserve indexed (lwarx/ldarx) for Thread 1 hits Invalid cache state.
+event:0xd5b counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:stcx_miss_th2		: Store conditional indexed (stwcx/stdcx) for Thread 1 hits Invalid cache state.
+
+# CBE Signal Group 35 - PPSS Non-Cacheable Unit (NClk/2)
+event:0xdac counters:0,1,2,3 um:PPU_0_edges           minimum:10000	name:st_req_any		: Non-cacheable store request received from CIU; includes all synchronization operations such as sync and eieio.
+event:0xdad counters:0,1,2,3 um:PPU_0_edges           minimum:10000	name:st_req_sync		: sync received from CIU.
+event:0xdb0 counters:0,1,2,3 um:PPU_0_edges           minimum:10000	name:st_req_store		: Non-cacheable store request received from CIU; includes only stores.
+event:0xdb2 counters:0,1,2,3 um:PPU_0_edges           minimum:10000	name:st_req_eieio		: eieio received from CIU.
+event:0xdb3 counters:0,1,2,3 um:PPU_0_edges           minimum:10000	name:st_req_tlbie		: tlbie received from CIU.
+event:0xdb4 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:stq_bot_sync		: sync at the bottom of the store queue, while waiting on st_done signal from the Bus Interface Unit (BIU) and sync_done signal from L2.
+event:0xdb5 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:stq_bot_lsync		: lwsync at the bottom of the store queue, while waiting for a sync_done signal from the L2.
+event:0xdb6 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:stq_bot_eieio		: eieio at the bottom of the store queue, while waiting for a st_done signal from the BIU and a sync_done signal from the L2.
+event:0xdb7 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:stq_bot_tlbieg	: tlbie at the bottom of the store queue, while waiting for a st_done signal from the BIU.
+event:0xdb8 counters:0,1,2,3 um:PPU_0_edges           minimum:10000	name:st_combined		: Non-cacheable store combined with the previous non-cacheable store with a contiguous address.
+event:0xdb9 counters:0,1,2,3 um:PPU_0_edges           minimum:10000	name:ld_cancel		: Load request canceled by CIU due to late detection of load-hit-store condition (128B boundary).
+event:0xdba counters:0,1,2,3 um:PPU_0_edges           minimum:10000	name:ld_hit_st		: NCU detects a load hitting a previous store to an overlapping address (32B boundary).
+event:0xdbb counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:stb_full		: All four store-gather buffers full.
+event:0xdbc counters:0,1,2,3 um:PPU_0_edges           minimum:10000	name:ld_req		: Non-cacheable load request received from CIU; includes instruction and data fetches.
+event:0xdbd counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:stq_not_empty		: The four-deep store queue not empty.
+event:0xdbe counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:stq_full		: The four-deep store queue full.
+event:0xdbf counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:stb_not_empty		: At least one store gather buffer not empty.
+
+# Cell BE Island 4 - Synergistic Processor Unit (SPU)
+#
+# OPROFILE FOR CELL ONLY SUPPORTS PROFILING ON ONE SPU EVENT AT A TIME
+#
+# CBE Signal Group 41 - SPU (NClk)
+event:0x1004 counters:0 um:SPU_02_cycles          minimum:10000	name:dual_instrctn_commit	: Dual instruction committed.
+event:0x1005 counters:0 um:SPU_02_cycles          minimum:10000	name:sngl_instrctn_commit	: Single instruction committed.
+event:0x1006 counters:0 um:SPU_02_cycles          minimum:10000	name:ppln0_instrctn_commit	: Pipeline 0 instruction committed.
+event:0x1007 counters:0 um:SPU_02_cycles          minimum:10000	name:ppln1_instrctn_commit	: Pipeline 1 instruction committed.
+event:0x1008 counters:0 um:SPU_02_cycles_or_edges minimum:10000	name:instrctn_ftch_stll	: Instruction fetch stall.
+event:0x1009 counters:0 um:SPU_02_cycles_or_edges minimum:10000	name:lcl_strg_bsy		: Local storage busy.
+event:0x100A counters:0 um:SPU_02_cycles          minimum:10000	name:dma_cnflct_ld_st	: DMA may conflict with load or store.
+event:0x100B counters:0 um:SPU_02_cycles          minimum:10000	name:str_to_lcl_strg	: Store instruction to local storage issued.
+event:0x100C counters:0 um:SPU_02_cycles          minimum:10000	name:ld_frm_lcl_strg	: Load intruction from local storage issued.
+event:0x100D counters:0 um:SPU_02_cycles          minimum:10000	name:fpu_exctn		: Floating-Point Unit (FPU) exception.
+event:0x100E counters:0 um:SPU_02_cycles          minimum:10000	name:brnch_instrctn_commit	: Branch instruction committed.
+event:0x100F counters:0 um:SPU_02_cycles          minimum:10000	name:change_of_flow	: Non-sequential change of the SPU program counter, which can be caused by branch, asynchronous interrupt, stalled wait on channel, error correction code (ECC) error, and so forth.
+event:0x1010 counters:0 um:SPU_02_cycles          minimum:10000	name:brnch_not_tkn		: Branch not taken.
+event:0x1011 counters:0 um:SPU_02_cycles          minimum:10000	name:brnch_mss_prdctn	: Branch miss prediction; not exact. Certain other code sequences can cause additional pulses on this signal (see Note 2).
+event:0x1012 counters:0 um:SPU_02_cycles          minimum:10000	name:brnch_hnt_mss_prdctn	: Branch hint miss prediction; not exact. Certain other code sequences can cause additional pulses on this signal (see Note 2).
+event:0x1013 counters:0 um:SPU_02_cycles          minimum:10000	name:instrctn_seqnc_err	: Instruction sequence error.
+event:0x1015 counters:0 um:SPU_02_cycles_or_edges minimum:10000	name:stlld_wait_on_chnl_wrt	: Stalled waiting on any blocking channel write (see Note 3).
+event:0x1016 counters:0 um:SPU_02_cycles_or_edges minimum:10000	name:stlld_wait_on_chnl0	: Stalled waiting on External Event Status (Channel 0) (see Note 3).
+event:0x1017 counters:0 um:SPU_02_cycles_or_edges minimum:10000	name:stlld_wait_on_chnl3	: Stalled waiting on Signal Notification 1 (Channel 3) (see Note 3).
+event:0x1018 counters:0 um:SPU_02_cycles_or_edges minimum:10000	name:stlld_wait_on_chnl4	: Stalled waiting on Signal Notification 2 (Channel 4) (see Note 3).
+event:0x1019 counters:0 um:SPU_02_cycles_or_edges minimum:10000	name:stlld_wait_on_chnl21	: Stalled waiting on DMA Command Opcode or ClassID Register (Channel 21) (see Note 3).
+event:0x101A counters:0 um:SPU_02_cycles_or_edges minimum:10000	name:stlld_wait_on_chnl24	: Stalled waiting on Tag Group Status (Channel 24) (see Note 3).
+event:0x101B counters:0 um:SPU_02_cycles_or_edges minimum:10000	name:stlld_wait_on_chnl25	: Stalled waiting on List Stall-and-Notify Tag Status (Channel 25) (see Note 3).
+event:0x101C counters:0 um:SPU_02_cycles_or_edges minimum:10000	name:stlld_wait_on_chnl28	: Stalled waiting on PPU Mailbox (Channel 28) (see Note 3).
+event:0x1022 counters:0 um:SPU_02_cycles_or_edges minimum:10000	name:stlld_wait_on_chnl29	: Stalled waiting on SPU Mailbox (Channel 29) (see Note 3).
+
+
+# CBE Signal Group 42 - SPU Trigger (NClk)
+event:0x10A1 counters:0 um:SPU_Trigger_cycles_or_edges minimum:10000	name:stld_wait_chnl_op	: Stalled waiting on channel operation (See Note 2).
+
+# CBE Signal Group 43 - SPU Event (NClk)
+event:0x1107 counters:0 um:SPU_Event_cycles_or_edges minimum:10000	name:instrctn_ftch_stll	: Instruction fetch stall.
+
+# Cell BE Island 6 - Element Interconnect Bus (EIB)
+
+# CBE Signal Group 61 - EIB Address Concentrator 0 (NClk/2)
+event:0x17d4 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_ICMD_PERF(0)	: Number of read and rwitm commands (including atomic) AC1 to AC0. (Group 1)
+event:0x17d5 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_ICMD_PERF(1)	: Number of dclaim commands (including atomic) AC1 to AC0. (Group 1)
+event:0x17d6 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_ICMD_PERF(2)	: Number of wwk, wwc, and wwf commands from AC1 to AC0. (Group 1)
+event:0x17d7 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_ICMD_PERF(3)	: Number of sync, tlbsync, and eieio commands from AC1 to AC0. (Group 1)
+event:0x17d8 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_ICMD_PERF(4)	: Number of tlbie commands from AC1 to AC0. (Group 1)
+event:0x17df counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_CAM_PERF(1)	: Previous adjacent address match (PAAM) Content Addressable Memory (CAM) hit. (Group 1)
+event:0x17e0 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_CAM_PERF(2)	: PAAM CAM miss. (Group 1)
+event:0x17e2 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_CAM_CMD_REFLECTED	: Command reflected. (Group 1)
+event:0x17e4 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_ICMD_PERF(0)	: Number of read and rwitm commands (including atomic) AC1 to AC0. (Group 2)
+event:0x17e5 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_ICMD_PERF(1)	: Number of dclaim commands (including atomic) AC1 to AC0. (Group 2)
+event:0x17e6 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_ICMD_PERF(2)	: Number of wwk, wwc, and wwf commands from AC1 to AC0. (Group 2)
+event:0x17e7 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_ICMD_PERF(3)	: Number of sync, tlbsync, and eieio commands from AC1 to AC0. (Group 2)
+event:0x17e8 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_ICMD_PERF(4)	: Number of tlbie commands from AC1 to AC0. (Group 2)
+event:0x17ef counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_CAM_PERF(1)	: PAAM CAM hit. (Group 2)
+event:0x17f0 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_CAM_PERF(2)	: PAAM CAM miss. (Group 2)
+event:0x17f2 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC0_W_CAM_CMD_REFLECTED	: Command reflected. (Group 2)
+
+# CBE Signal Group 62 - EIB Address Concentrator 1 (NClk/2)
+event:0x1839 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(1) : Local command from SPE 6.
+event:0x183a counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(2) : Local command from SPE 4.
+event:0x183b counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(3) : Local command from SPE 2.
+event:0x183c counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(4) : Local command from SPE 0.
+event:0x183d counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(5) : Local command from PPE.
+event:0x183e counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(6) : Local command from SPE 1.
+event:0x183f counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(7) : Local command from SPE 3.
+event:0x1840 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(8) : Local command from SPE 5.
+event:0x1841 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(9) : Local command from SPE 7.
+event:0x1844 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(12) : AC1-to-AC0 global command from SPE 6.
+event:0x1845 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(13) : AC1-to-AC0 global command from SPE 4.
+event:0x1846 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(14) : AC1-to-AC0 global command from SPE 2.
+event:0x1847 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(15) : AC1-to-AC0 global command from SPE 0.
+event:0x1848 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(16) : AC1-to-AC0 global command from PPE.
+event:0x1849 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(17) : AC1-to-AC0 global command from SPE 1.
+event:0x184a counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(18) : AC1-to-AC0 global command from SPE 3.
+event:0x184b counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(19) : AC1-to-AC0 global command from SPE 5.
+event:0x184c counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(20) : AC1-to-AC0 global command from SPE 7.
+event:0x184f counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(23) : AC1 sends a global command to AC0.
+event:0x1850 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(24) : AC0 reflects a global command back to AC1.
+event:0x1851 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WAC1_WAC1_TRCMUX_W_TRCGRP_ACPERF(25) : AC1 reflects a command back to the bus masters.
+
+# CBE Signal Group 63 - EIB Data Ring Arbitrator - Group 1 (NClk/2)
+event:0x189c counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(0)	: Grant on data ring 0.
+event:0x189d counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(1)	: Grant on data ring 1.
+event:0x189e counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(2)	: Grant on data ring 2.
+event:0x189f counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(3)	: Grant on data ring 3.
+event:0x18a0 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPE(4)	: Data ring 0 is in use.
+event:0x18a1 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPE(5)	: Data ring 1 is in use.
+event:0x18a2 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPE(6)	: Data ring 2 is in use.
+event:0x18a3 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPE(7)	: Data ring 3 is in use.
+event:0x18a4 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPE(8)	: All data rings are idle.
+event:0x18a5 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPE(9)	: One data ring is busy.
+event:0x18a6 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPE(10)	: Two or three data rings are busy.
+event:0x18a7 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPE(11)	: All data rings are busy.
+event:0x18a8 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(12)	: BIC data request pending.
+event:0x18a9 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(13)	: SPE 6 data request pending.
+event:0x18aa counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(14)	: SPE 4 data request pending.
+event:0x18ab counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(15)	: SPE 2 data request pending.
+event:0x18ac counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(16)	: SPE 0 data request pending.
+event:0x18ad counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(17)	: MIC data request pending.
+event:0x18ae counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(18)	: PPE data request pending.
+event:0x18af counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(19)	: SPE 1 data request pending.
+event:0x18b0 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(20)	: SPE 3 data request pending.
+event:0x18b1 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(21)	: SPE 5 data request pending.
+event:0x18b2 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(22)	: SPE 7 data request pending.
+event:0x18b3 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPE(23)	: IOC data request pending.
+event:0x18b4 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(24)	: BIC is data destination.
+event:0x18b5 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(25)	: SPE 6 is data destination.
+event:0x18b6 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(26)	: SPE 4 is data destination.
+event:0x18b7 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(27)	: SPE 2 is data destination.
+event:0x18b8 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(28)	: SPE 0 is data destination.
+event:0x18b9 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(29)	: MIC is data destination.
+event:0x18ba counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(30)	: PPE is data destination.
+event:0x18bb counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPE(31)	: SPE 1 is data destination.
+
+# CBE Signal Group 64 - EIB Data Ring Arbitrator - Group 2 (NClk/2)
+event:0x1900 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(0)	: BIC data request pending.
+event:0x1901 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(1)	: SPE 6 data request pending.
+event:0x1902 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(2)	: SPE 4 data request pending.
+event:0x1903 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(3)	: SPE 2 data request pending.
+event:0x1904 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(4)	: SPE 0 data request pending.
+event:0x1905 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(5)	: MIC data request pending.
+event:0x1906 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(6)	: PPE data request pending.
+event:0x1907 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(7)	: SPE 1 data request pending.
+event:0x1908 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(8)	: SPE 3 data request pending.
+event:0x1909 counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(9)	: SPE 5 data request pending.
+event:0x190a counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(10)	: SPE 7 data request pending.
+event:0x190b counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:WDA_DTRC_TRCGRPF(11)	: IOC data request pending.
+event:0x190c counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(12)	: BIC is data destination.
+event:0x190d counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(13)	: SPE 6 is data destination.
+event:0x190e counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(14)	: SPE 4 is data destination.
+event:0x190f counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(15)	: SPE 2 is data destination.
+event:0x1910 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(16)	: SPE 0 is data destination.
+event:0x1911 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(17)	: MIC is data destination.
+event:0x1912 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(18)	: PPE is data destination.
+event:0x1913 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(19)	: SPE 1 is data destination.
+event:0x1914 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(20)	: SPE 3 is data destination.
+event:0x1915 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(21)	: SPE 5 is data destination.
+event:0x1916 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(22)	: SPE 7 is data destination.
+event:0x1917 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(23)	: IOC is data destination.
+event:0x1918 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(24)	: Grant on data ring 0.
+event:0x1919 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(25)	: Grant on data ring 1.
+event:0x191a counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(26)	: Grant on data ring 2.
+event:0x191b counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:WDA_DTRC_TRCGRPF(27)	: Grant on data ring 3.
+event:0x191c counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPF(28)	: All data rings are idle.
+event:0x191d counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPF(29)	: One data ring is busy.
+event:0x191e counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPF(30)	: Two or three data rings are busy.
+event:0x191f counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:WDA_DTRC_TRCGRPF(31)	: All four data rings are busy.
+
+# CBE Signal Group 651 - EIB Token Manager - Group A0/B0 (NClk/2)
+event:0xfe4c counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_xio_e_unused	: Even XIO token unused by RAG 0.
+event:0xfe4d counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_xio_o_unused	: Odd XIO token unused by RAG 0.
+event:0xfe4e counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_bank_e_unused	: Even bank token unused by RAG 0.
+event:0xfe4f counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_bank_o_unused	: Odd bank token unused by RAG 0.
+event:0xfe54 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:token_granted_spc0	: Token granted for SPE 0.
+event:0xfe55 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:token_granted_spc1	: Token granted for SPE 1.
+event:0xfe56 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:token_granted_spc2	: Token granted for SPE 2.
+event:0xfe57 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:token_granted_spc3	: Token granted for SPE 3.
+event:0xfe58 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:token_granted_spc4	: Token granted for SPE 4.
+event:0xfe59 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:token_granted_spc5	: Token granted for SPE 5.
+event:0xfe5a counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:token_granted_spc6	: Token granted for SPE 6.
+event:0xfe5b counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:token_granted_spc7	: Token granted for SPE 7.
+
+
+# CBE Signal Group 652 - EIB Token Manager - Group A1/B1 (NClk/2)
+event:0xfeb0 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_xio_e_wasted	: Even XIO token wasted by RAG 0; valid only when Unused Enable (UE) = 1 in TKM_CR register.
+event:0xfeb1 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_xio_o_wasted	: Odd XIO token wasted by RAG 0; valid only when Unused Enable (UE) = 1 in TKM_CR register.
+event:0xfeb2 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_bank_e_wasted	: Even bank token wasted by RAG 0; valid only when Unused Enable (UE) = 1 in TKM_CR register.
+event:0xfeb3 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_bank_o_wasted	: Odd bank token wasted by RAG 0; valid only when Unused Enable (UE) = 1 in TKM_CR register.
+event:0xfebc counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:ragu_xio_e_wasted	: Even XIO token wasted by RAG U.
+event:0xfebd counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:ragu_xio_o_wasted	: Odd XIO token wasted by RAG U.
+event:0xfebe counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:ragu_bank_e_wasted	: Even bank token wasted by RAG U.
+event:0xfebf counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:ragu_bank_o_wasted	: Odd bank token wasted by RAG U.
+
+# CBE Signal Group 653 - EIB Token Manager - Group A2/B2 (NClk/2)
+event:0xff14 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_xio_e_shared_to_rag1	: Even XIO token from RAG 0 shared with RAG 1
+event:0xff15 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_xio_e_shared_to_rag2	: Even XIO token from RAG 0 shared with RAG 2
+event:0xff16 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_xio_e_shared_to_rag3	: Even XIO token from RAG 0 shared with RAG 3
+event:0xff17 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_xio_o_shared_to_rag1	: Odd XIO token from RAG 0 shared with RAG 1
+event:0xff18 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_xio_o_shared_to_rag2	: Odd XIO token from RAG 0 shared with RAG 2
+event:0xff19 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_xio_o_shared_to_rag3	: Odd XIO token from RAG 0 shared with RAG 3
+event:0xff1a counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_bank_e_shared_to_rag1	: Even bank token from RAG 0 shared with RAG 1
+event:0xff1b counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_bank_e_shared_to_rag2	: Even bank token from RAG 0 shared with RAG 2
+event:0xff1c counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_bank_e_shared_to_rag3	: Even bank token from RAG 0 shared with RAG 3
+event:0xff1d counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_bank_o_shared_to_rag1	: Odd bank token from RAG 0 shared with RAG 1
+event:0xff1e counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_bank_o_shared_to_rag2	: Odd bank token from RAG 0 shared with RAG 2
+event:0xff1f counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag0_bank_o_shared_to_rag3	: Odd bank token from RAG 0 shared with RAG 3
+
+
+# CBE Signal Group 654 - EIB Token Manager - Group A0/B0 (NClk/2)
+# Repeat of the 65400, 65401, 65402, 65403, 65416, 65417, 65418, 65419 events
+
+
+# CBE Signal Group 655 - EIB Token Manager - Group A1/B1 (NClk/2)
+#repeat of the 65200 events
+
+
+# CBE Signal Group 656 - EIB Token Manager - Group A2/B2 (NClk/2)
+event:0x1004f counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:ragu_bank_o_shared_to_rag0	: Odd bank token from RAG U shared with RAG 0
+event:0x10050 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_xio_e_shared_to_rag0	: Even XIO token from RAG 1 shared with RAG 0
+event:0x10051 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_xio_e_shared_to_rag2	: Even XIO token from RAG 1 shared with RAG 2
+event:0x10052 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_xio_e_shared_to_rag3	: Even XIO token from RAG 1 shared with RAG 3
+event:0x10053 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_xio_o_shared_to_rag0	: Odd XIO token from RAG 1 shared with RAG 0
+event:0x10054 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_xio_o_shared_to_rag2	: Odd XIO token from RAG 1 shared with RAG 2
+event:0x10055 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_xio_o_shared_to_rag3	: Odd XIO token from RAG 1 shared with RAG 3
+event:0x10056 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_bank_e_shared_to_rag0	: Even bank token from RAG 1 shared with RAG 0
+event:0x10057 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_bank_e_shared_to_rag2	: Even bank token from RAG 1 shared with RAG 2
+event:0x10058 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_bank_e_shared_to_rag3	: Even bank token from RAG 1 shared with RAG 3
+event:0x10059 counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_bank_o_shared_to_rag0	: Odd bank token from RAG 1 shared with RAG 0
+event:0x1005a counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_bank_o_shared_to_rag2	: Odd bank token from RAG 1 shared with RAG 2
+event:0x1005b counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:rag1_bank_o_shared_to_rag3	: Odd bank token from RAG 1 shared with RAG 3
+event:0x1005c counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:ragu_xio_e_shared_to_rag1	: Even XIO token from RAG U shared with RAG 1
+event:0x1005d counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:ragu_xio_o_shared_to_rag1	: Odd XIO token from RAG U shared with RAG 1
+event:0x1005e counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:ragu_bank_e_shared_to_rag1	: Even bank token from RAG U shared with RAG 1
+event:0x1005f counters:0,1,2,3 um:PPU_0_cycles          minimum:10000	name:ragu_bank_o_shared_to_rag1	: Odd bank token from RAG U shared with RAG 1
+
+# CBE Signal Group 657 - EIB Token Manager - Group C0/D0 (NClk/2)
+event:0x100e4 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_xio_e_unused	: Even XIO token unused by RAG 2
+event:0x100e5 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_xio_o_unused	: Odd XIO token unused by RAG 2
+event:0x100e6 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_bank_e_unused	: Even bank token unused by RAG 2
+event:0x100e7 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_bank_o_unused	: Odd bank token unused by RAG 2
+event:0x100e8 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag0_ioif0_in_unused	: IOIF0 In token unused by RAG 0
+event:0x100e9 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag0_ioif0_out_unused	: IOIF0 Out token unused by RAG 0
+event:0x100ea counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag0_ioif1_in_unused	: IOIF1 In token unused by RAG 0
+event:0x100eb counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag0_ioif1_out_unused	: IOIF1 Out token unused by RAG 0
+
+
+# CBE Signal Group 658 - EIB Token Manager - Group C1/D1 (NClk/2)
+event:0x10148 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_xio_e_wasted	: Even XIO token wasted by RAG 2
+event:0x10149 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_xio_o_wasted	: Odd XIO token wasted by RAG 2
+event:0x1014a counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_bank_e_wasted	: Even bank token wasted by RAG 2
+event:0x1014b counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_bank_o_wasted	: Odd bank token wasted by RAG 2
+
+
+# CBE Signal Group 659 - EIB Token Manager - Group C2/D2 (NClk/2)
+event:0x101ac counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_xio_e_shared_to_rag0	: Even XIO token from RAG 2 shared with RAG 0
+event:0x101ad counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_xio_e_shared_to_rag1	: Even XIO token from RAG 2 shared with RAG 1
+event:0x101ae counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_xio_e_shared_to_rag3	: Even XIO token from RAG 2 shared with RAG 3
+event:0x101af counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_xio_o_shared_to_rag0	: Odd XIO token from RAG 2 shared with RAG 0
+event:0x101b0 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_xio_o_shared_to_rag1	: Odd XIO token from RAG 2 shared with RAG 1
+event:0x101b1 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_xio_o_shared_to_rag3	: Odd XIO token from RAG 2 shared with RAG 3
+event:0x101b2 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_bank_e_shared_to_rag0	: Even bank token from RAG 2 shared with RAG 0
+event:0x101b3 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_bank_e_shared_to_rag1	: Even bank token from RAG 2 shared with RAG 1
+event:0x101b4 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_bank_e_shared_to_rag3	: Even bank token from RAG 2 shared with RAG 3
+event:0x101b5 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_bank_o_shared_to_rag0	: Odd bank token from RAG 2 shared with RAG 0
+event:0x101b6 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_bank_o_shared_to_rag1	: Odd bank token from RAG 2 shared with RAG 1
+event:0x101b7 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag2_bank_o_shared_to_rag3	: Odd bank token from RAG 2 shared with RAG 3
+
+
+# CBE Signal Group 6510 - EIB Token Manager - Group C3 (NClk/2)
+event:0x9ef38 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag0_ioif0_in_wasted	: IOIF0 In token wasted by RAG 0
+event:0x9ef39 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag0_ioif0_out_wasted	: IOIF0 Out token wasted by RAG 0
+event:0x9ef3a counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag0_ioif1_in_wasted	: IOIF1 In token wasted by RAG 0
+event:0x9ef3b counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag0_ioif1_out_wasted	: IOIF1 Out token wasted by RAG 0
+
+
+# CBE Signal Group 6511 - EIB Token Manager - Group C0/D0 (NClk/2)
+# repeat of the events 65764 - 65771
+
+# CBE Signal Group 6512 - EIB Token Manager - Group C1/D1 (NClk/2)
+event:0x9f010 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_xio_e_wasted	: Even XIO token wasted by RAG 3
+event:0x9f011 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_xio_o_wasted	: Odd XIO token wasted by RAG 3
+event:0x9f012 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_bank_e_wasted	: Even bank token wasted by RAG 3
+event:0x9f013 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_bank_o_wasted	: Odd bank token wasted by RAG 3
+
+# CBE Signal Group 6513 - EIB Token Manager - Group C2/D2 (NClk/2)
+event:0x9f074 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_xio_e_shared_to_rag0	: Even XIO token from RAG 3 shared with RAG 0
+event:0x9f075 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_xio_e_shared_to_rag1	: Even XIO token from RAG 3 shared with RAG 1
+event:0x9f076 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_xio_e_shared_to_rag2	: Even XIO token from RAG 3 shared with RAG 2
+event:0x9f077 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_xio_o_shared_to_rag0	: Odd XIO token from RAG 3 shared with RAG 0
+event:0x9f078 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_xio_o_shared_to_rag1	: Odd XIO token from RAG 3 shared with RAG 1
+event:0x9f079 counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_xio_o_shared_to_rag2	: Odd XIO token from RAG 3 shared with RAG 2
+event:0x9f07a counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_bank_e_shared_to_rag0	: Even bank token from RAG 3 shared with RAG 0
+event:0x9f07b counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_bank_e_shared_to_rag1	: Even bank token from RAG 3 shared with RAG 1
+event:0x9f07c counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_bank_e_shared_to_rag2	: Even bank token from RAG 3 shared with RAG 2
+event:0x9f07d counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_bank_o_shared_to_rag0	: Odd bank token from RAG 3 shared with RAG 0
+event:0x9f07e counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_bank_o_shared_to_rag1	: Odd bank token from RAG 3 shared with RAG 1
+event:0x9f07f counters:0,1,2,3 um:PPU_2_cycles          minimum:10000	name:rag3_bank_o_shared_to_rag2	: Odd bank token from RAG 3 shared with RAG 2
+
+
+# Cell BE Island 7 - Memory Interface Controller (MIC)
+
+# CBE Signal Group 71 - MIC Group 1 (NClk/2)
+event:0x1bc5 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM1(1)	: XIO1 - Read command queue is empty.
+event:0x1bc6 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM1(2)	: XIO1 - Write command queue is empty.
+event:0x1bc8 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM1(4)	: XIO1 - Read command queue is full.
+event:0x1bc9 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM1(5)	: XIO1 - MIC responds with a Retry for a read command because the read command queue is full.
+event:0x1bca counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM1(6)	: XIO1 - Write command queue is full.
+event:0x1bcb counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM1(7)	: XIO1 - MIC responds with a Retry for a write command because the write command queue is full.
+event:0x1bde counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL1_YMM_CCS_PERFORM(2)	: XIO1 - Read command dispatched; includes high-priority and fast-path reads (see Note 1).
+event:0x1bdf counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL1_YMM_CCS_PERFORM(3)	: XIO1 - Write command dispatched (see Note 1).
+event:0x1be0 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL1_YMM_CCS_PERFORM(4)	: XIO1 - Read-Modify-Write command (data size < 16 bytes) dispatched (see Note 1).
+event:0x1be1 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL1_YMM_CCS_PERFORM(5)	: XIO1 - Refresh dispatched (see Note 1).
+event:0x1be3 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL1_YMM_CCS_PERFORM(7)	: XIO1 - Byte-masking write command (data size >= 16 bytes) dispatched (see Note 1).
+event:0x1be5 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL1_YMM_CRW_PERFORM(1)	: XIO1 - Write command dispatched after a read command was previously dispatched (see Note 1).
+event:0x1be6 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL1_YMM_CRW_PERFORM(2)	: XIO1 - Read command dispatched after a write command was previously dispatched (see Note 1).
+
+
+# CBE Signal Group 72 - MIC Group 2 (NClk/2)
+event:0x1c29 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM2(1)	: XIO0 - Read command queue is empty.
+event:0x1c2a counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM2(2)	: XIO0 - Write command queue is empty.
+event:0x1c2c counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM2(4)	: XIO0 - Read command queue is full.
+event:0x1c2d counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM2(5)	: XIO0 - MIC responds with a Retry for a read command because the read command queue is full.
+event:0x1c2e counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM2(6)	: XIO0 - Write command queue is full.
+event:0x1c2f counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_COMMON_YMB_CSR_PERFORM2(7)	: XIO0 - MIC responds with a Retry for a write command because the write command queue is full.
+event:0x1c42 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL0_YMM_CCS_PERFORM(2)	: XIO0 - Read command dispatched; includes high-priority and fast-path reads (see Note 1).
+event:0x1c43 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL0_YMM_CCS_PERFORM(3)	: XIO0 - Write command dispatched (see Note 1).
+event:0x1c44 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL0_YMM_CCS_PERFORM(4)	: XIO0 - Read-Modify-Write command (data size < 16 bytes) dispatched (see Note 1).
+event:0x1c45 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL0_YMM_CCS_PERFORM(5)	: XIO0 - Refresh dispatched (see Note 1).
+event:0x1c49 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL0_YMM_CRW_PERFORM(1)	: XIO0 - Write command dispatched after a read command was previously dispatched (see Note 1).
+event:0x1c4a counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL0_YMM_CRW_PERFORM(2)	: XIO0 - Read command dispatched after a write command was previously dispatched (see Note 1).
+
+# CBE Signal Group 73 - MIC Group 3 (NClk/2)
+event:0x1ca7 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL0_YMM_CCS_PERFORM(3)	: XIO0 - Write command dispatched (see Note 1).
+event:0x1ca8 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL0_YMM_CCS_PERFORM(4)	: XIO0 - Read-Modify-Write command (data size < 16 bytes) dispatched (see Note 1).
+event:0x1ca9 counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL0_YMM_CCS_PERFORM(5)	: XIO0 - Refresh dispatched (see Note 1).
+event:0x1cab counters:0,1,2,3 um:PPU_0123_cycles          minimum:10000	name:YM_CTL0_YMM_CCS_PERFORM(7)	: XIO0 - Byte-masking write command (data size >= 16 bytes) dispatched (see Note 1).
+
+
+# Cell BE Island 8 - Broadband Engine Interface (BEI)
+
+# CBE Signal Group 81 - BIF Controller - IOIF0 Word 0 (NClk/2)
+event:0x1fb0 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:B2F_Type_A_Data	: Type A data physical layer group (PLG). Does not include header-only or credit-only data PLGs. In IOIF mode, counts I/O device read data; in BIF mode, counts all outbound data.
+event:0x1fb1 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:B2F_Type_B_Data	: Type B data PLG. In IOIF mode, counts I/O device read data; in BIF mode, counts all outbound data.
+event:0x1fb2 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:IOC_Type_A_Data	: Type A data PLG. Does not include header-only or credit-only PLGs. In IOIF mode, counts CBE store data to I/O device. Does not apply in BIF mode.
+event:0x1fb3 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:IOC_Type_B_Data	: Type B data PLG. In IOIF mode, counts CBE store data to an I/O device. Does not apply in BIF mode.
+event:0x1fb4 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Data_PLG		: Data PLG. Does not include header-only or credit-only PLGs.
+event:0x1fb5 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Command_PLG		: Command PLG (no credit-only PLG). In IOIF mode, counts I/O command or reply PLGs. In BIF mode, counts command/ reflected command or snoop/combined responses.
+event:0x1fb6 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Type_A_Transfer	: Type A data transfer regardless of length. Can also be used to count Type A data header PLGs (but not credit-only PLGs).
+event:0x1fb7 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Type_B_Transfer	: Type B data transfer.
+event:0x1fb8 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Cmd_Credit_Only_PLG	: Command-credit-only command PLG in either IOIF or BIF mode.
+event:0x1fb9 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Data_Credit_Only_PLG	: Data-credit-only data PLG sent in either IOIF or BIF mode.
+event:0x1fba counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Non-Null_Envelopes	: Non-null envelope sent (does not include long envelopes).
+event:0x1fbc counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:null_env_sent		: Null envelope sent (see Note 1).
+event:0x1fbd counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:no_valid_data		: No valid data sent this cycle (see Note 1).
+event:0x1fbe counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:norm_env_sent		: Normal envelope sent (see Note 1).
+event:0x1fbf counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:lnog_env_sent		: Long envelope sent (see Note 1).
+event:0x1fc0 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:per_mon_null_sent	: A Null PLG inserted in an outgoing envelope.
+event:0x1fc1 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:per_mon_array_full	: Outbound envelope array is full.
+
+# CBE Signal Group 82 - BIF Controller - IOIF1 Word 0 (NClk/2)
+event:0x201b counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Type_B_Transfer	: Type B data transfer.
+
+
+# CBE Signal Group 83 - BIF Controller - IOIF0 Word 2 (NClk/2)
+event:0x206d counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:null_env_rcvd		: Null envelope received (see Note 1).
+event:0x207a counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Command_PLG		: Command PLG, but not credit-only PLG. In IOIF mode, counts I/O command or reply PLGs. In BIF mode, counts command/reflected command or snoop/combined responses.
+event:0x207b counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Command_Credit_Only_PLG	: Command-credit-only command PLG.
+event:0x2080 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:norm_env_rcvd_good	: Normal envelope received is good (see Note 1).
+event:0x2081 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:long_env_rcvd_good	: Long envelope received is good (see Note 1).
+event:0x2082 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:cmd_credit_only_PLG	: Data-credit-only data PLG in either IOIF or BIF mode; will count a maximum of one per envelope (see Note 1).
+event:0x2083 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:non-null_envelope	: Non-null envelope; does not include long envelopes; includes retried envelopes (see Note 1).
+event:0x2084 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:data_grnt_rcvd	: Data grant received.
+event:0x2088 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Data_PLG		: Data PLG. Does not include header-only or credit-only PLGs.
+event:0x2089 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Type_A_transfer	: Type A data transfer regardless of length. Can also be used to count Type A data header PLGs, but not credit-only PLGs.
+event:0x208a counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Type_B_transfer	: Type B data transfer.
+
+# CBE Signal Group 84 - BIF Controller - IOIF1 Word 2 (NClk/2)
+event:0x20d1 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:null_env_rcvd		: Null envelope received (see Note 1).
+event:0x20de counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Command_PLG		: Command PLG (no credit-only PLG). Counts I/O command or reply PLGs.
+event:0x20df counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Command_Credit_Only_PLG	: Command-credit-only command PLG.
+event:0x20e4 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:norm_env_rcvd_good	: Normal envelope received is good (see Note 1).
+event:0x20e5 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:long_env_rcvd_good	: Long envelope received is good (see Note 1).
+event:0x20e6 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:cmd_credit_only_PLG	: Data-credit-only data PLG received; will count a maximum of one per envelope (see Note 1).
+event:0x20e7 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:non-null_envelope	: Non-Null envelope received; does not include long envelopes; includes retried envelopes (see Note 1).
+event:0x20e8 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:data_grnt_rcvd	: Data grant received.
+event:0x20ec counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Data_PLG		: Data PLG received. Does not include header-only or credit-only PLGs.
+event:0x20ed counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Type_A_transfer	: Type I A data transfer regardless of length. Can also be used to count Type A data header PLGs (but not credit-only PLGs).
+event:0x20ee counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:Type_B_transfer	: Type B data transfer received.
+
+# CBE Signal Group 85 - I/O Controller Word 0 - Group 1 (NClk/2)
+event:0x213c counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:mmio_rd_to_ioif1	: Received MMIO read targeted to IOIF1.
+event:0x213d counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:mmio_wrt_to_ioif1	: Received MMIO write targeted to IOIF1.
+event:0x213e counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:mmio_rd_to_ioif0	: Received MMIO read targeted to IOIF0.
+event:0x213f counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:mmio_wrt_to_ioif0	: Received MMIO write targeted to IOIF0.
+event:0x2140 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:cmd_to_slice0		: Sent command to IOIF0.
+event:0x2141 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:cmd_to_slice1		: Sent command to IOIF1.
+
+# CBE Signal Group 86 - I/O Controller Word 2 - Group 2 (NClk/2)
+event:0x219d counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:re_dep_dm3		: IOIF0 Dependency Matrix 3 is occupied by a dependent command (see Note 1).
+event:0x219e counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:re_dep_dm4		: IOIF0 Dependency Matrix 4 is occupied by a dependent command (see Note 1).
+event:0x219f counters:0,1,2,3 um:PPU_02_cycles_or_edges minimum:10000	name:re_dep_dm5		: IOIF0 Dependency Matrix 5 is occupied by a dependent command (see Note 1).
+event:0x21a2 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:slice0_ld_rqst	: Received read request from IOIF0.
+event:0x21a3 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:slice0_str_rqst	: Received write request from IOIF0.
+event:0x21a6 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:intrpt_from_realizer	: Received interrupt from the IOIF0.
+
+# CBE Signal Group 87 - I/O Controller - Group 3 (NClk/2)
+event:0x220c counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:slice0_rqst_tkn_even	: IOIF0 request for token for even memory banks 0-14 (see Note 1).
+event:0x220d counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:slice0_rqst_tkn_odd	: IOIF0 request for token for odd memory banks 1-15 (see Note 1).
+event:0x220e counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:slice0_rqst_tkn1_3_5_7	: IOIF0 request for token type 1, 3, 5, or 7 (see Note 1).
+event:0x220f counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:slice0_rqst_tkn9_11_13_15	: IOIF0 request for token type 9, 11, 13, or 15 (see Note 1).
+event:0x2214 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:slice0_rqst_tkn16	: IOIF0 request for token type 16 (see Note 1).
+event:0x2215 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:slice0_rqst_tkn17	: IOIF0 request for token type 17 (see Note 1).
+event:0x2216 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:slice0_rqst_tkn18	: IOIF0 request for token type 18 (see Note 1).
+event:0x2217 counters:0,1,2,3 um:PPU_02_cycles          minimum:10000	name:slice0_rqst_tkn19	: IOIF0 request for token type 19 (see Note 1).
+
+
+# CBE Signal Group 88 - I/O Controller Word 0 - Group 4 (NClk/2)
+event:0x2260 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:io_pt_hit		: I/O page table cache hit for commands from IOIF.
+event:0x2261 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:io_pt_miss		: I/O page table cache miss for commands from IOIF.
+event:0x2263 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:io_seg_tbl_hit	: I/O segment table cache hit.
+event:0x2264 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:io_seg_tbl_miss	: I/O segment table cache miss.
+event:0x2278 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:intrrpt_frm_spu	: Interrupt received from any SPU (reflected cmd when IIC has sent ACK response).
+event:0x2279 counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:iic_intrrpt_to_pu_thrd0	: Internal interrupt controller (IIC) generated interrupt to PPU thread 0.
+event:0x227a counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:iic_intrrpt_to_pu_thrd1	: IIC generated interrupt to PPU thread 1.
+event:0x227b counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:pu_intrrpt_to_pu_thrd0	: Received external interrupt (using MMIO) from PPU to PPU thread 0.
+event:0x227c counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:pu_intrrpt_to_pu_thrd1	: Received external interrupt (using MMIO) from PPU to PPU thread 1.
+event:0x227c counters:0,1,2,3 um:PPU_02_edges           minimum:10000	name:pu_intrrpt_to_pu_thrd1	: Received external interrupt (using MMIO) from PPU to PPU thread 1.

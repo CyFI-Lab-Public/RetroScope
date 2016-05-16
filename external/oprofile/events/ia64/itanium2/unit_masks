@@ -1,0 +1,465 @@
+# IA-64 Itanium 2 possible unit masks
+#
+# The information for the following entries for the Itanium 2
+# came from Intel Itanium 2 Processor Reference Manual For
+# Software Development and Optimization, June 2002, Document
+# number 251110-001.
+
+name:zero type:mandatory default:0x0
+	0x0 No unit mask
+
+# CPU_IA64_2 Table 11-37, 11-72
+name:alat_capacity_miss type:bitmask default:0x03
+	0x1 INT
+	0x2 FP
+	0x3 ALL
+
+# CPU_IA64_2 Table 11-38
+name:back_end_bubble type:exclusive default:0x00
+	0x0 ALL
+	0x1 FE
+	0x2 L1D_FPU_RSE
+
+# CPU_IA64_2 Table 11-39
+name:be_br_mispredict_detail type:exclusive default:0x00
+	0x0 ANY
+	0x1 STG
+	0x2 ROT
+	0x3 PFS
+
+# CPU_IA64_2 Table 11-40
+name:be_exe_bubble type:exclusive default:0x00
+	0x0 ALL
+	0x1 GRALL
+	0x2 FRALL
+	0x3 PR
+	0x4 ARCR
+	0x5 GRCR
+	0x6 CANCEL
+	0x7 BANK_SWITCH
+	0x8 ARCR_PR_CANCEL_BANK
+
+# CPU_IA64_2 Table 11-41
+name:be_flush_bubble type:exclusive default:0x00
+	0x0 ALL
+	0x1 BRU
+	0x2 XPN
+
+# CPU_IA64_2 Table 11-42
+name:be_l1d_fpu_bubble type:exclusive default:0x00
+	0x0 ALL
+	0x1 FPU
+	0x2 L1D
+	0x3 L1D_FULLSTBUF
+	0x4 L1D_DCURECIR
+	0x5 L1D_HPW
+	0x7 L1D_FILLCONF
+	0x8 L1D_DCS
+	0x9 L1D_L2BPRESS
+	0xa L1D_TLB
+	0xb L1D_LDCONF
+	0xc L1D_LDCHK
+	0xd L1D_NAT
+	0xe L1D_STBUFRECIR
+	0xf L1D_NATCONF
+
+# CPU_IA64_2 Table 11-43
+# FIXME: events using this is commented out in events
+#name:be_lost_bw_due_to_fe type:exclusive default:0x00
+#	0x0 ALL
+#	0x1 FEFLUSH
+#	0x4 UNREACHED
+#	0x5 IBFULL
+#	0x6 IMISS
+#	0x7 TLBMISS
+#	0x8 FILL_RECIRC
+#	0x9 BI
+#	0xa BRQ
+#	0xb PLP
+#	0xc BR_ILOCK
+#	0xd BUBBLE
+
+# CPU_IA64_2 Table 11-44
+name:be_rse_bubble type:exclusive default:0x00
+	0x0 ALL
+	0x1 BANK_SWITCH
+	0x2 AR_DEP
+	0x3 OVERFLOW
+	0x4 UNDERFLOW
+	0x5 LOADRS
+
+# CPU_IA64_2 Table 11-45
+name:br_mispred_detail type:exclusive default:0x00
+	0x0 ALL.ALL_PRED
+	0x1 ALL.CORRECT_PRED
+	0x2 ALL.WRONG_PATH
+	0x3 ALL.WRONG_TARGET
+	0x4 IPREL.ALL_PRED
+	0x5 IPREL.CORRECT_PRED
+	0x6 IPREL.WRONG_PATH
+	0x7 IPREL.WRONG_TARGET
+	0x8 RETURN.ALL_PRED
+	0x9 RETURN.CORRECT_PRED
+	0xa RETURN.WRONG_PATH
+	0xb RETURN.WRONG_TARGET
+	0xc NRETIND.ALL_PRED
+	0xd NRETIND.CORRECT_PRED
+	0xe NRETIND.WRONG_PATH
+	0xf NRETIND.WRONG_TARGET
+
+# CPU_IA64_2 Table 11-46
+name:br_mispredict_detail2 type:exclusive default:0x00
+	0x0 ALL.ALL_UNKNOWN_PRED
+	0x1 ALL.UKNOWN_PATH_CORRECT_PRED
+	0x2 ALL.UKNOWN_PATH_WRONG_PATH
+	0x4 IPREL.ALL_UNKNOWN_PRED
+	0x5 IPREL.UNKNOWN_PATH_CORRECT_PRED
+	0x6 IPREL.UNKNOWN_PATH_WRONG_PATH
+	0x8 RETURN.ALL_UNKNOWN_PRED
+	0x9 RETURN.UNKNOWN_PATH_CORRECT_PRED
+	0xa RETURN.UNKNOWN_PATH_WRONG_PATH
+	0xc NRETIND.ALL_UNKNOWN_PRED
+	0xd NRETIND.UNKNOWN_PATH_CORRECT_PRED
+	0xe NRETIND.UNKNOWN_PATH_WRONG_PATH
+
+# CPU_IA64_2 Table 11-47
+name:br_path_pred type:exclusive default:0x00
+	0x0 ALL.MISPRED_NOTTAKEN
+	0x1 ALL.MISPRED_TAKEN
+	0x2 ALL.OKPRED_NOTTAKEN
+	0x3 ALL.OKPRED_TAKEN
+	0x4 IPREL.MISPRED_NOTTAKEN
+	0x5 IPREL.MISPRED_TAKEN
+	0x6 IPREL.OKPRED_NOTTAKEN
+	0x7 IPREL.OKPRED_TAKEN
+	0x8 RETURN.MISPRED_NOTTAKEN
+	0x9 RETURN.MISPRED_TAKEN
+	0xa RETURN.OKPRED_NOTTAKEN
+	0xb RETURN.OKPRED_TAKEN
+	0xc NRETIND.MISPRED_NOTTAKEN
+	0xd NRETIND.MISPRED_TAKEN
+	0xe NRETIND.OKPRED_NOTTAKEN
+	0xf NRETIND.OKPRED_TAKEN
+
+# CPU_IA64_2 Table 11-48
+name:br_path_pred2 type:exclusive default:0x00
+	0x0 ALL.UNKNOWNPRED_NOTTAKEN
+	0x1 ALL.UNKNOWNPRED_TAKEN
+	0x4 IPREL.UNKNOWNPRED_NOTTAKEN
+	0x5 IPREL.UNKNOWNPRED__TAKEN
+	0x8 RETURN.UNKNOWNPRED_NOTTAKEN
+	0x9 RETURN.UNKNOWNPRED_TAKEN
+	0xc NRETIND.UNKNOWNPRED_NOTTAKEN
+	0xd NRETIND.UNKNOWNPRED_TAKEN
+
+# CPU_IA64_2 Table 11-49, 11-51, 11-55, 11-56, 11-57, 11-58
+name:bus type:exclusive default:0x03
+	0x1 IO
+	0x2 SELF
+	0x3 ANY
+
+# CPU_IA64_2 Table 11-50  b0001
+name:bus_backsnp_req type:mandatory default:0x01
+	0x1 0x0
+
+# CPU_IA64_2 Table 11-52
+name:bus_lock type:exclusive default:0x03
+	0x2 SELF
+	0x3 ANY
+
+# CPU_IA64_2 Table 11-53
+name:bus_memory type:exclusive default:0x0f
+	0x5 EQ_128BYTEIO
+	0x6 EQ_128BYTE_SELF
+	0x7 EQ_128BYTE_ANY
+	0x9 LT_128BYTEIO
+	0xa LT_128BYTE_SELF
+	0xb LT_128BYTE_ANY
+	0xd ALL IO
+	0xe ALL SELF
+	0xf ALL ANY
+
+# CPU_IA64_2 Table 11-54
+name:bus_mem_read type:exclusive default:0x0f
+	0x1 BIL IO
+	0x2 BIL SELF
+	0x3 BIL ANY
+	0x5 BRL IO
+	0x6 BRL SELF
+	0x7 BRL_ANY
+	0x9 BRIL IO
+	0xa BRIL SELF
+	0xb BRIL ANY
+	0xd ALL IO
+	0xe ALL SELF
+	0xf ALL ANY
+
+# CPU_IA64_2 Table 11-59, 11-60
+name:bus_snoop type:exclusive default:0x03
+	0x2 SELF
+	0x3 ANY
+
+# CPU_IA64_2 Table 11-61
+name:bus_wr_wb type:exclusive default:0x0f
+	0x5 EQ_128BYTE IO
+	0x6 EQ_128BYTE SELF
+	0x7 EQ_128BYTE ANY
+	0xa CCASTOUT SELF
+	0xb CCASTOUT ANY
+	0xd ALL IO
+	0xe ALL SELF
+	0xf ALL ANY
+
+# CPU_IA64_2 Table 11-62
+name:encbr_mispred_detail type:exclusive default:0x0
+	0x0 ALL.ALL_PRED
+	0x1 ALL.CORRECT_PRED
+	0x2 ALL.WRONG_PATH
+	0x3 ALL.WRONG_TARGET
+	0x8 OVERSUB.ALL_PRED
+	0x9 OVERSUB.CORRECT_PRED
+	0xa OVERSUB.CORRECT_PRED
+	0xb OVERSUB.WRONGPATH
+	0xc ALL2.ALL_PRED
+	0xd ALL2.CORRECT_PRED
+	0xe ALL2.WRONG_PATH
+	0xf ALL2.WRONG_TARGET
+
+# CPU_IA64_2 Table 11-63
+name:extern_dp_pins_0_to_3 type:bitmask default:0xf
+	0x1 PIN0
+	0x2 PIN1
+	0x4 PIN2
+	0x8 PIN3
+	0xf ALL
+
+# CPU_IA64_2 Table 11-64
+name:extern_dp_pins_4_to_5 type:bitmask default:0x03
+	0x1 PIN4
+	0x2 PIN5
+	0xf ALL
+
+# CPU_IA64_2 Table 11-65
+name:fe_bubble type:exclusive default:0x0
+	0x0 ALL
+	0x1 FEFLUSH
+	0x3 GROUP1
+	0x4 GROUP2
+	0x5 IBFULL
+	0x6 IMISS
+	0x7 TLBMISS
+	0x8 FILL_RECIRC
+	0x9 BRANCH
+	0xa GROUP3
+	0xb ALLBUT_FEFLUSH_BUBBLE
+	0xc ALLBUT_IBFULL
+	0xd BUBBLE
+
+# CPU_IA64_2 Table 11-66, 11-69*/
+name:fe_lost type:exclusive default:0x0
+	0x0 ALL
+	0x1 FEFLUSH
+	0x4 UNREACHED
+	0x5 IBFULL
+	0x6 IMISS
+	0x7 TLBMISS
+	0x8 FILL_RECIRC
+	0x9 BI
+	0xa BRQ
+	0xb PLP
+	0xc BR_ILOCK
+	0xd BUBBLE
+
+# CPU_IA64_2 Table 11-67, 11-79, 11-86, 11-90, 11-92 b0000 
+# FIXME: events using this is commented out in events
+#name:this type:exclusive default:0x0 
+#	0x0 THIS
+
+# CPU_IA64_2 Table 11-68
+name:tagged_inst_retired type:exclusive default:0x0 
+	0x0 IBRP0_PMB8
+	0x1 IBRP1_PMB9
+	0x2 IBRP2_PMC8
+	0x3 IBRP3_PMC9
+
+# CPU_IA64_2 Table 11-73
+name:itlb_misses_fetch type:exclusive default:0x3
+	0x1 L1ITLB
+	0x2 L2ITLB
+	0x3 ALL
+
+# CPU_IA64_2 Table 11-74
+name:l1d_read_misses type:exclusive default:0x0
+	0x0 ALL
+	0x1 RSE_FILL
+
+# CPU_IA64_2 Table 11-75
+name:l1i_prefetch_stall type:exclusive default:0x3
+	0x2 FLOW
+	0x3 ALL
+
+# CPU_IA64_2 Table 11-76, 11-91 b0000
+# FIXME: events using this is commented out in events
+#name:l2_lines type:exclusive default:0x0
+#	0x0 ANY
+
+# CPU_IA64_2 Table 11-77
+name:l2_bypass type:exclusive default:0x0
+	0x0 L2_DATA1
+	0x1 L2_DATA2
+	0x2 L3_DATA1
+	0x4 L2_INST1
+	0x5 L2_INST2
+	0x6 L3_INST1
+
+# CPU_IA64_2 Table 11-78
+# FIXME: events using this is commented out in events
+#name:l2_data_references type:bitmask default:0x3
+#	0x1 L2_DATA_READS
+#	0x2 L2_DATA_WRITES
+#	0x3 L2_ALL
+
+# CPU_IA64_2 Table 11-80
+name:l2_force_recirc type:exclusive default:0x0
+	0x0 ANY
+	0x1 SMC_HIT
+	0x2 L1W
+	0x4 TAG_NOTOK
+	0x5 TRAN_PREF
+	0x6 SNP_OR_L3 
+	0x8 VIC_PEND
+	0x9 FILL_HIT
+	0xa IPF_MISS
+	0xb VIC_BUF_FULL
+	0xc OZQ_MISS
+	0xd SAME_INDEX
+	0xe FRC_RECIRC
+
+# CPU_IA64_2 Table 11-81, 11-83 b1000
+name:recirc_ifetch type:mandatory default:0x8
+	0x8 default:0x0} } };
+
+# CPU_IA64_2 Table 11-82
+name:l2_ifet_cancels type:exclusive default:0x0
+	0x0 ANY
+	0x2 BYPASS
+	0x4 DIDNT_RECIR
+	0x5 RECIRC_OVER_SUB
+	0x6 ST_FILL_WB
+	0x7 DATA_RD
+	0x8 PREEMPT
+	0xc CHG_PRIO
+	0xd IFETCH_BYP
+
+# CPU_IA64_2 Table 11-84
+name:l2_l3_access_cancel type:exclusive default:0x9
+	0x1 SPEC_L3_BYP
+	0x2 FILLD_FULL
+	0x5 UC_BLOCKED
+	0x6 INV_L3_BYP
+	0x8 EBL_REJECT
+	0x9 ANY
+	0xa DFETCH
+	0xb IFETCH
+
+# CPU_IA64_2 Table 11-85
+name:l2_ops_issued type:exclusive default:0x8
+	0x8 INT_LOAD
+	0x9 FP_LOAD
+	0xa RMW
+	0xb STORE
+	0xc NST_NLD
+
+# CPU_IA64_2 Table 11-87
+name:l2_ozq_cancels0 type:exclusive default:0x0
+	0x0 ANY
+	0x1 LATE_SPEC_BYP
+	0x2 LATE_RELEASE
+	0x3 LATE_ACQUIRE
+	0x4 LATE_BYP_EFFRELEASE
+
+# CPU_IA64_2 Table 11-88
+name:l2_ozq_cancels1 type:exclusive default:0x1
+	0x0 REL
+	0x1 BANK_CONF
+	0x2 L2D_ST_MAT
+	0x4 SYNC
+	0x5 HPW_IFETCH_CONF
+	0x6 CANC_L2M_ST
+	0x7 L1_FILL_CONF
+	0x8 ST_FILL_CONF
+	0x9 CCV
+	0xa SEM
+	0xb L2M_ST_MAT
+	0xc MFA
+	0xd L2A_ST_MAT
+	0xe L1DF_L2M
+	0xf ECC
+
+# CPU_IA64_2 Table 11-89
+name:l2_ozq_cancels2 type:exclusive default:0x0
+	0x0 RECIRC_OVER_SUB
+	0x1 CANC_L2C_ST
+	0x2 L2C_ST_MAT
+	0x3 SCRUB
+	0x4 ACQ
+	0x5 READ_WB_CONF
+	0x6 OZ_DATA_CONF
+	0x8 L2FILL_ST_CONF
+	0x9 DIDNT_RECIRC
+	0xa WEIRD
+	0xc OVER_SUB
+	0xd CANC_L2D_ST
+	0xf D_IFET
+
+# CPU_IA64_2 Table 11-93
+name:l3_reads type:exclusive default:0x3
+	0x1 DINST_FETCH.HIT
+	0x2 DINST_FETCH.MISS
+	0x3 DINST_FETCH.ALL
+	0x5 INST_FETCH.HIT
+	0x6 INST_FETCH.MISS
+	0x7 INST_FETCH.ALL
+	0x9 DATA_READ.HIT
+	0xa DATA_READ.MISS
+	0xb DATA_READ.ALL
+	0xd ALL.HIT
+	0xe ALL.MISS
+	0xf ALL.ALL
+
+# CPU_IA64_2 Table 11-94
+name:l3_writes type:exclusive default:0x7
+	0x5 DATA_WRITE.HIT
+	0x6 DATA_WRITE.MISS
+	0x7 DATA_WRITE.ALL
+	0x9 L2_WB.HIT
+	0xa L2_WB.MISS
+	0xb L2_WB.ALL
+	0xd ALL.HIT
+	0xe ALL.MISS
+	0xf ALL.ALL
+
+# CPU_IA64_2 Table 11-95
+name:mem_read_current type:exclusive default:0x3
+	0x1 IO
+	0x3 ANY
+
+# CPU_IA64_2 Table 11-96
+name:rse_references_retired type:bitmask default:0x3
+	0x1 LOAD
+	0x2 STORE
+	0x3 ALL
+
+# CPU_IA64_2 Table 11-97 bitmask
+name:syll_not_dispersed type:bitmask default:0xf
+	0x1 EXPL
+	0x2 IMPL
+	0x4 FE
+	0x8 MLI
+	0xf ALL
+
+# CPU_IA64_2 Table 11-98
+name:syll_overcount type:exclusive default:0x3
+	0x1 EXPL
+	0x2 IMPL
+	0x3 ALL

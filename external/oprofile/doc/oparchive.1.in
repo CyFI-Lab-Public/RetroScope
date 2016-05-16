@@ -1,0 +1,76 @@
+.TH OPARCHIVE 1 "@DATE@" "oprofile @VERSION@"
+.UC 4
+.SH NAME
+oparchive \- produce archive of oprofile data for offline analysis
+.SH SYNOPSIS
+.br
+.B oparchive
+[
+.I options
+]
+[profile specification]
+.B -o
+[directory]
+.SH DESCRIPTION
+
+.B oparchive
+generates a directory populated with executable, debug, and oprofile sample
+files. This directory can be move to another machine via tar and analyzed
+without further use of the data collection machine. See oprofile(1) for how
+to write profile specifications.
+
+.SH OPTIONS
+.TP
+.BI "--help / -? / --usage"
+Show help message.
+.br
+.TP
+.BI "--version / -v"
+Show version.
+.br
+.TP
+.BI "--verbose / -V [options]"
+Give verbose debugging output.
+.br
+.TP
+.BI "--session-dir="dir_path
+Use sample database out of directory dir_path instead of the default location (/var/lib/oprofile).
+.br
+.TP
+.BI "--image-path / -p [paths]"
+Comma-separated list of additional paths to search for binaries.
+This is needed to find modules in kernels 2.6 and upwards.
+.br
+.TP
+.BI "--root / -R [path]"
+A path to a filesystem to search for additional binaries.
+.br
+.TP
+.BI "--output-directory / -o [directory]"
+Output to the given directory. There is no default. This must be specified.
+.br
+.TP
+.BI "--exclude-dependent / -x"
+Do not include application-specific images for libraries, kernel modules
+and the kernel. This option only makes sense if the profile session
+used --separate.
+.br
+.TP
+.BI "--list-files / -l"
+Only list the files that would be archived, don't copy them.
+
+.SH ENVIRONMENT
+No special environment variables are recognised by oparchive.
+
+.SH FILES
+.TP
+.I /var/lib/oprofile/samples/
+The location of the generated sample files.
+
+.SH VERSION
+.TP
+This man page is current for @PACKAGE@-@VERSION@.
+
+.SH SEE ALSO
+.BR @OP_DOCDIR@,
+.BR oprofile(1)

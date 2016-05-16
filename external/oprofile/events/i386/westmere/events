@@ -1,0 +1,88 @@
+#
+# Intel "Westmere" microarchitecture core events.
+#
+# See http://ark.intel.com/ for help in identifying Westmere based CPUs
+#
+# Note the minimum counts are not discovered experimentally and could be likely
+# lowered in many cases without ill effect.
+#
+include:i386/arch_perfmon
+event:0x03 counters:0,1,2,3 um:x02 minimum:200000 name:LOAD_BLOCK : Loads that partially overlap an earlier store
+event:0x04 counters:0,1,2,3 um:x07 minimum:200000 name:SB_DRAIN : All Store buffer stall cycles
+event:0x05 counters:0,1,2,3 um:x02 minimum:200000 name:MISALIGN_MEM_REF : Misaligned store references
+event:0x06 counters:0,1,2,3 um:store_blocks minimum:200000 name:STORE_BLOCKS : Loads delayed with at-Retirement block code
+event:0x07 counters:0,1,2,3 um:x01 minimum:200000 name:PARTIAL_ADDRESS_ALIAS : False dependencies due to partial address aliasing
+event:0x08 counters:0,1,2,3 um:dtlb_load_misses minimum:200000 name:DTLB_LOAD_MISSES : DTLB load misses
+event:0x0b counters:0,1,2,3 um:mem_inst_retired minimum:2000000 name:MEM_INST_RETIRED : Memory instructions retired above 0 clocks (Precise Event)
+event:0x0c counters:0,1,2,3 um:x01 minimum:200000 name:MEM_STORE_RETIRED : Retired stores that miss the DTLB (Precise Event)
+event:0x0e counters:0,1,2,3 um:uops_issued minimum:2000000 name:UOPS_ISSUED : Uops issued
+event:0x0f counters:0,1,2,3 um:mem_uncore_retired minimum:40000 name:MEM_UNCORE_RETIRED : Load instructions retired that HIT modified data in sibling core (Precise Event)
+event:0x10 counters:0,1,2,3 um:fp_comp_ops_exe minimum:2000000 name:FP_COMP_OPS_EXE : MMX Uops
+event:0x12 counters:0,1,2,3 um:simd_int_128 minimum:200000 name:SIMD_INT_128 : 128 bit SIMD integer pack operations
+event:0x13 counters:0,1,2,3 um:load_dispatch minimum:2000000 name:LOAD_DISPATCH : All loads dispatched
+event:0x14 counters:0,1,2,3 um:arith minimum:2000000 name:ARITH : Cycles the divider is busy
+event:0x17 counters:0,1,2,3 um:x01 minimum:2000000 name:INST_QUEUE_WRITES : Instructions written to instruction queue.
+event:0x18 counters:0,1,2,3 um:x01 minimum:2000000 name:INST_DECODED : Instructions that must be decoded by decoder 0
+event:0x19 counters:0,1,2,3 um:x01 minimum:2000000 name:TWO_UOP_INSTS_DECODED : Two Uop instructions decoded
+event:0x1e counters:0,1,2,3 um:x01 minimum:2000000 name:INST_QUEUE_WRITE_CYCLES : Cycles instructions are written to the instruction queue
+event:0x20 counters:0,1,2,3 um:x01 minimum:2000000 name:LSD_OVERFLOW : Loops that can't stream from the instruction queue
+event:0x24 counters:0,1,2,3 um:l2_rqsts minimum:200000 name:L2_RQSTS : L2 instruction fetch hits
+event:0x26 counters:0,1,2,3 um:l2_data_rqsts minimum:200000 name:L2_DATA_RQSTS : All L2 data requests
+event:0x27 counters:0,1,2,3 um:l2_write minimum:100000 name:L2_WRITE : L2 demand lock RFOs in E state
+event:0x28 counters:0,1,2,3 um:l1d_wb_l2 minimum:100000 name:L1D_WB_L2 : L1 writebacks to L2 in E state
+event:0x2e counters:0,1,2,3 um:longest_lat_cache minimum:100000 name:LONGEST_LAT_CACHE : Longest latency cache miss
+event:0x3c counters:0,1,2,3 um:cpu_clk_unhalted minimum:100000 name:CPU_CLK_UNHALTED : Reference base clock (133 Mhz) cycles when thread is not halted (programmable counter)
+event:0x49 counters:0,1,2,3 um:dtlb_misses minimum:200000 name:DTLB_MISSES : DTLB misses
+event:0x4c counters:0,1 um:x01 minimum:200000 name:LOAD_HIT_PRE : Load operations conflicting with software prefetches
+event:0x4e counters:0,1 um:l1d_prefetch minimum:200000 name:L1D_PREFETCH : L1D hardware prefetch misses
+event:0x4f counters:0,1,2,3 um:x10 minimum:2000000 name:EPT : Extended Page Table walk cycles
+event:0x51 counters:0,1 um:l1d minimum:2000000 name:L1D : L1D cache lines replaced in M state 
+event:0x52 counters:0,1 um:x01 minimum:2000000 name:L1D_CACHE_PREFETCH_LOCK_FB_HIT : L1D prefetch load lock accepted in fill buffer
+event:0x60 counters:0 um:offcore_requests_outstanding minimum:2000000 name:OFFCORE_REQUESTS_OUTSTANDING : Outstanding offcore reads
+event:0x63 counters:0,1 um:cache_lock_cycles minimum:2000000 name:CACHE_LOCK_CYCLES : Cycles L1D locked
+event:0x6c counters:0,1,2,3 um:x01 minimum:2000000 name:IO_TRANSACTIONS : I/O transactions
+event:0x80 counters:0,1,2,3 um:l1i minimum:2000000 name:L1I : L1I instruction fetch stall cycles
+event:0x82 counters:0,1,2,3 um:x01 minimum:200000 name:LARGE_ITLB : Large ITLB hit
+event:0x85 counters:0,1,2,3 um:itlb_misses minimum:200000 name:ITLB_MISSES : ITLB miss
+event:0x87 counters:0,1,2,3 um:ild_stall minimum:2000000 name:ILD_STALL : Any Instruction Length Decoder stall cycles
+event:0x88 counters:0,1,2,3 um:br_inst_exec minimum:200000 name:BR_INST_EXEC : Branch instructions executed
+event:0x89 counters:0,1,2,3 um:br_misp_exec minimum:20000 name:BR_MISP_EXEC : Mispredicted branches executed
+event:0xa2 counters:0,1,2,3 um:resource_stalls minimum:2000000 name:RESOURCE_STALLS : Resource related stall cycles
+event:0xa6 counters:0,1,2,3 um:x01 minimum:2000000 name:MACRO_INSTS : Macro-fused instructions decoded
+event:0xa7 counters:0,1,2,3 um:x01 minimum:2000000 name:BACLEAR_FORCE_IQ : Instruction queue forced BACLEAR
+event:0xa8 counters:0,1,2,3 um:x01 minimum:2000000 name:LSD : Cycles when uops were delivered by the LSD
+event:0xae counters:0,1,2,3 um:x01 minimum:2000000 name:ITLB_FLUSH : ITLB flushes
+event:0xb0 counters:0,1,2,3 um:offcore_requests minimum:100000 name:OFFCORE_REQUESTS : All offcore requests
+event:0xb1 counters:0,1,2,3 um:uops_executed minimum:2000000 name:UOPS_EXECUTED : Cycles Uops executed on any port (core count)
+event:0xb2 counters:0,1,2,3 um:x01 minimum:100000 name:OFFCORE_REQUESTS_SQ_FULL : Offcore requests blocked due to Super Queue full
+event:0xb3 counters:0 um:snoopq_requests_outstanding minimum:2000000 name:SNOOPQ_REQUESTS_OUTSTANDING : Outstanding snoop code requests
+event:0xb4 counters:0,1,2,3 um:snoopq_requests minimum:100000 name:SNOOPQ_REQUESTS : Snoop code requests
+event:0xb7 counters:2 um:x01 minimum:100000 name:OFFCORE_RESPONSE_ANY_DATA : REQUEST = ANY_DATA read and RESPONSE = ANY_CACHE_DRAM
+event:0xb8 counters:0,1,2,3 um:snoop_response minimum:100000 name:SNOOP_RESPONSE : Thread responded HIT to snoop
+event:0xbb counters:1 um:x01 minimum:100000 name:OFFCORE_RESPONSE_ANY_DATA : REQUEST = ANY_DATA read and RESPONSE = ANY_CACHE_DRAM
+event:0xc0 counters:0,1,2,3 um:inst_retired minimum:2000000 name:INST_RETIRED : Instructions retired (Programmable counter and Precise Event)
+event:0xc2 counters:0,1,2,3 um:uops_retired minimum:2000000 name:UOPS_RETIRED : Cycles Uops are being retired
+event:0xc3 counters:0,1,2,3 um:machine_clears minimum:20000 name:MACHINE_CLEARS : Cycles machine clear asserted
+event:0xc4 counters:0,1,2,3 um:br_inst_retired minimum:200000 name:BR_INST_RETIRED : Retired branch instructions (Precise Event)
+event:0xc5 counters:0,1,2,3 um:br_misp_retired minimum:20000 name:BR_MISP_RETIRED : Mispredicted retired branch instructions (Precise Event)
+event:0xc7 counters:0,1,2,3 um:ssex_uops_retired minimum:200000 name:SSEX_UOPS_RETIRED : SIMD Packed-Double Uops retired (Precise Event)
+event:0xc8 counters:0,1,2,3 um:x20 minimum:200000 name:ITLB_MISS_RETIRED : Retired instructions that missed the ITLB (Precise Event)
+event:0xcb counters:0,1,2,3 um:mem_load_retired minimum:200000 name:MEM_LOAD_RETIRED : Retired loads that miss the DTLB (Precise Event)
+event:0xcc counters:0,1,2,3 um:fp_mmx_trans minimum:2000000 name:FP_MMX_TRANS : All Floating Point to and from MMX transitions
+event:0xd0 counters:0,1,2,3 um:x01 minimum:2000000 name:MACRO_INSTS : Instructions decoded
+event:0xd1 counters:0,1,2,3 um:uops_decoded minimum:2000000 name:UOPS_DECODED : Stack pointer instructions decoded
+event:0xd2 counters:0,1,2,3 um:rat_stalls minimum:2000000 name:RAT_STALLS : All RAT stall cycles
+event:0xd4 counters:0,1,2,3 um:x01 minimum:2000000 name:SEG_RENAME_STALLS : Segment rename stall cycles
+event:0xd5 counters:0,1,2,3 um:x01 minimum:2000000 name:ES_REG_RENAMES : ES segment renames
+event:0xdb counters:0,1,2,3 um:x01 minimum:2000000 name:UOP_UNFUSION : Uop unfusions due to FP exceptions
+event:0xe0 counters:0,1,2,3 um:x01 minimum:2000000 name:BR_INST_DECODED : Branch instructions decoded
+event:0xe5 counters:0,1,2,3 um:x01 minimum:2000000 name:BPU_MISSED_CALL_RET : Branch prediction unit missed call or return
+event:0xe6 counters:0,1,2,3 um:baclear minimum:2000000 name:BACLEAR : BACLEAR asserted with bad target address
+event:0xe8 counters:0,1,2,3 um:bpu_clears minimum:2000000 name:BPU_CLEARS : Early Branch Prediction Unit clears
+event:0xf0 counters:0,1,2,3 um:l2_transactions minimum:200000 name:L2_TRANSACTIONS : All L2 transactions
+event:0xf1 counters:0,1,2,3 um:l2_lines_in minimum:100000 name:L2_LINES_IN : L2 lines alloacated
+event:0xf2 counters:0,1,2,3 um:l2_lines_out minimum:100000 name:L2_LINES_OUT : L2 lines evicted
+event:0xf4 counters:0,1,2,3 um:sq_misc minimum:2000000 name:SQ_MISC : Super Queue LRU hints sent to LLC
+event:0xf6 counters:0,1,2,3 um:x01 minimum:2000000 name:SQ_FULL_STALL_CYCLES : Super Queue full stall cycles
+event:0xf7 counters:0,1,2,3 um:fp_assist minimum:20000 name:FP_ASSIST : X87 Floating point assists (Precise Event)
+event:0xfd counters:0,1,2,3 um:simd_int_64 minimum:200000 name:SIMD_INT_64 : SIMD integer 64 bit pack operations

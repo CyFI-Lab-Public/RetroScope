@@ -1,0 +1,4 @@
+# AVR32 performance counters possible unit masks
+#
+name:zero type:mandatory default:0x00
+	0x00 No unit mask

@@ -1,0 +1,743 @@
+2009-08-13  tag ipsec-tools-0_7_3
+
+2009-08-13  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* NEWS, configure.ac: 0.7.3 release
+
+	* src/racoon/oakley.c: fixed a potential DoS in
+	  oakley_do_decrypt(), reported by Orange Labs
+
+2009-08-06  Timo Teras <timo.teras@iki.fi>
+
+	* src/setkey/setkey.c: From Paul Wenau: Check fgets return value in
+	  setkey to make gcc happy.
+
+2009-06-19  Timo Teras <timo.teras@iki.fi>
+
+	* src/racoon/ipsec_doi.c: Backport S.P.Zeidler's fix to IPv6
+	  address related stack smashing in ipsecdoi_id2str() from CVS HEAD.
+
+2009-05-18  Timo Teras <timo.teras@iki.fi>
+
+	* src/racoon/isakmp_inf.c: From Tomas Mraz: Remove variable that is
+	  not really used; only referenced while uninitialized causing
+	  valgrind error.
+
+	* src/racoon/nattraversal.c: From Tomas Mraz: Fix natt_flags check.
+
+2009-04-29  Timo Teras <timo.teras@iki.fi>
+
+	* src/racoon/crypto_openssl.c: From Ross Meng: Fix a memory leak in
+	  X509 certificate validation.
+
+2009-04-22  tag ipsec-tools-0_7_2
+
+2009-04-22  Timo Teras <timo.teras@iki.fi>
+
+	* NEWS, configure.ac: Updates for 0.7.2 release
+
+	* src/racoon/isakmp_frag.c: From Neil Kettle: Fix a possible null
+	  pointer dereference in fragmentation code.
+
+2009-04-20  Timo Teras <timo.teras@iki.fi>
+
+	* src/racoon/: isakmp_inf.c, isakmp_xauth.c, plog.c: Orignally from
+	  Bin Li: Fix possible memory corruption in binsanitize().
+
+	* src/racoon/crypto_openssl.c: From Stephen Bevan: Fix a x509
+	  signature verification memory leak.
+
+	* src/racoon/: admin.c, racoonctl.c: Originally from Bin Li: Fix a
+	  crash with racoonctl logout user.
+
+	* src/racoon/nattraversal.c: Fix a memory leak in nat-t keepalive
+	  code.
+
+	* src/racoon/handler.c: From Paul Moore: Phase2 message id's should
+	  be unique wrt phase1, not globally.
+
+2009-02-16  Timo Teras <timo.teras@iki.fi>
+
+	* src/libipsec/policy_parse.y: From Paul Moore: Fix a heap
+	  corruption bug (yacc return non-null terminated buffer and sprintf
+	  writes over bounds).
+
+2009-01-20  Timo Teras <timo.teras@iki.fi>
+
+	* configure.ac: Fix a CPPLAGS typo to CPPFLAGS which was intended
+
+	* misc/cvs2cl.pl, misc/cvsusermap, Makefile.am: Autogenerate
+	  ChangeLog from NetBSD CVS. Put sourceforge.net changes to
+	  ChangeLog.old.
+
+	* misc/cvs2cl.pl: file cvs2cl.pl was added on branch
+	  ipsec-tools-0_7-branch on 2009-01-20 14:36:32 +0000
+
+	* misc/cvsusermap: file cvsusermap was added on branch
+	  ipsec-tools-0_7-branch on 2009-01-20 14:36:32 +0000
+
+2008-11-27  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/main.c: Set up a default value for Mode Config Pool
+	  size if pool address specified but pool size not specified
+
+	* src/racoon/isakmp_cfg.c: Fixed pool resizing
+
+2008-09-25  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp.c: Fixed resending mechanism to have non-ESP
+	  marker for retransmitted packets
+
+2008-09-17  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp_inf.c: Fixed port match in purge_ipsec_spi()
+	  when NAT-T enabled and trying to purge non NAT-T SAs
+
+2008-08-12  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp.c: From Krzysztof Oledzki: Remove ph1handler if
+	  we received an invalid first exchange from initiator.
+
+2008-07-23  tag ipsec-tools-0_7_1
+
+2008-07-23  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* NEWS: NEWS for 0.7.1 release
+
+2008-07-23  Timo Teras <timo.teras@iki.fi>
+
+	* src/racoon/Makefile.am: Do not use GNU make specific extension.
+
+	* src/: libipsec/Makefile.am, racoon/Makefile.am,
+	  setkey/Makefile.am: Do flex/bison invocation in a more standard
+	  way, and keep the generated files in the dist tarball.
+
+2008-07-22  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* configure.ac: 0.7.1 coming !
+
+	* src/racoon/proposal.c: From Kohki Ohhira: fix some memory leaks,
+	  when malloc fails or when peer sends invalid proposal.
+
+2008-07-21  Timo Teras <timo.teras@iki.fi>
+
+	* src/racoon/cfparse.y: Correct typo to fix the build.
+
+	* src/racoon/cfparse.y: Do not set default gss id if xauth is used.
+
+2008-07-15  Matthew Grooms <mgrooms@shrew.net>
+
+	* src/racoon/isakmp_cfg.c: Fix an a typo that prevented racoon from
+	  building with hybrid enabled.
+
+	* src/racoon/: crypto_openssl.c, eaytest.c, misc.c, misc.h,
+	  racoonctl.c: Fix a conflict with the FreeBSD 8 system hexdump
+	  function.
+
+2008-07-11  Timo Teras <timo.teras@iki.fi>
+
+	* src/racoon/: isakmp.c, isakmp_inf.c: Original patch from Atis
+	  Elsts: Fix a double memory free and a memory corruption
+	  (LIST_REMOVE() on an uninserted node) in some error handling paths.
+
+2008-07-09  Timo Teras <timo.teras@iki.fi>
+
+	* src/racoon/cfparse.y: From Chong Peng: fix a file descriptor and
+	  memory leak on configuration file reread
+
+2008-07-02  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp_inf.c: From Timo Teras: fixed some %d to %zu
+	  (size_t values).
+
+2008-06-18  Matthew Grooms <mgrooms@shrew.net>
+
+	* src/racoon/: grabmyaddr.c, admin.c, ipsec_doi.c, isakmp.c,
+	  isakmp_cfg.c, isakmp_inf.c, remoteconf.c: Use utility functions
+	  to evaluate and manipulate network port values. No functional
+	  changes. Submitted by Timo Teras.
+
+2008-04-25  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp_inf.c: From Timo Teras: extract port numbers
+	  from SADB_X_EXT_NAT_T[SD]PORT if present in purge_ipsec_spi().
+
+2008-03-06  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/oakley.c: Generates a log if cert validation has been
+	  disabled by configuration
+
+2008-03-05  Matthew Grooms <mgrooms@shrew.net>
+
+	* src/racoon/cfparse.y: Properly initialize the unity network
+	  struct to prevent erroneous protocol and port info from being
+	  transmitted.
+
+	* src/racoon/pfkey.c: Provide better handling for pfkey socket read
+	  errors. Submitted by Timo Teras.
+
+2008-02-25  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/ipsec_doi.c: From Brian Haley <brian.haley@hp.com>:
+	  There's a cut/paste error in cmp_aproppair_i(), it's supposed to be
+	  checking spi_size but it's not.  I'm not sure this patch is correct,
+	  but what's there isn't either.
+
+	  Add fogotten entry in ChangeLog
+
+2008-02-22  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/isakmp.c: Fix bad address length computation, from
+	  Brian Haley.
+
+2008-01-11  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp_inf.c: From Timo Teras: reset iph1->dpd_r_u in
+	  the scheduler's callback, to avoid access to freed memory.
+
+	* src/racoon/crypto_openssl.c: From Krzysztof Oledzki: Fix
+	  compilation with IDEA and recent gcc.
+
+	* src/racoon/isakmp_inf.c: From Krzysztof Oledzki: added some
+	  details to some logs (also reported new getph1byaddr() arg).
+
+	* src/racoon/isakmp.c: From Krzysztof Oledzki: Only search for
+	  established ph1 handles in DPD (also reported new getph1byaddr()
+	  arg).
+
+	* src/racoon/: handler.c, handler.h: added an 'established' arg to
+	  getph1byaddr()
+
+2007-11-29  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/Makefile.am: From Natanael Copa: fixed a race
+	  condition when building yacc stuff.
+
+2007-11-06  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/crypto_openssl.c: From Scott Lamb: include plog.h to
+	  work with the new plog macro.
+
+	* src/racoon/kmpstat.c: From Scott Lamb: plog changed to _plog to
+	  work with new plog macro
+
+	* src/racoon/: plog.c, plog.h: From Scott Lamb: new plog macro.
+
+2007-10-15  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/libipsec/pfkey.c: Try to increase the buffer size of the
+	  pfkey socket, this may help things when we have a huge SPD
+
+2007-09-19  Matthew Grooms <mgrooms@shrew.net>
+
+	* configure.ac: Fix autoconf check for selinux support. Submitted
+	  by Joy Latten.
+
+2007-09-03  Matthew Grooms <mgrooms@shrew.net>
+
+	* src/racoon/: cftoken.l, racoon.conf.5: Correct the syntax for
+	  wins4 in the man page and add nbns4 as an alias. Pointed out by
+	  Claas Langbehn.
+
+2007-08-09  tag ipsec-tools-0_7
+
+2007-08-09  Matthew Grooms <mgrooms@shrew.net>
+
+	* NEWS, configure.ac: Prepare for 0.7 release tag.
+
+2007-08-07  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/isakmp_xauth.c: Don't mix up RADIUS authentication and
+	  authorization ports. Allow interoperability with freeradius
+
+2007-08-01  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* configure.ac, src/libipsec/ipsec_dump_policy.c,
+	  src/libipsec/ipsec_get_policylen.c,
+	  src/libipsec/ipsec_strerror.c, src/libipsec/key_debug.c,
+	  src/libipsec/libpfkey.h, src/libipsec/pfkey.c,
+	  src/libipsec/pfkey_dump.c, src/libipsec/policy_parse.y,
+	  src/libipsec/policy_token.l, src/libipsec/test-policy-priority.c,
+	  src/racoon/admin.c, src/racoon/backupsa.c, src/racoon/cfparse.y,
+	  src/racoon/cftoken.l, src/racoon/ipsec_doi.c,
+	  src/racoon/isakmp.c, src/racoon/isakmp_inf.c,
+	  src/racoon/isakmp_quick.c, src/racoon/pfkey.c,
+	  src/racoon/policy.c, src/racoon/proposal.c,
+	  src/racoon/remoteconf.c, src/racoon/sainfo.c,
+	  src/racoon/session.c, src/racoon/sockmisc.c,
+	  src/racoon/strnames.c, src/setkey/parse.y, src/setkey/setkey.c,
+	  src/setkey/token.l: use a single PATH_IPSEC_H to fix some
+	  path_to_ipsec.h issues
+
+2007-07-24  Matthew Grooms <mgrooms@shrew.net>
+
+	* NEWS: Update NEWS file with additional 0.7 improvements.
+
+2007-07-18  Matthew Grooms <mgrooms@shrew.net>
+
+	* src/racoon/racoon.conf.5: Various racoon configuration manpage
+	  updates.
+
+2007-07-16  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/grabmyaddr.c: fixed a socket leak
+
+2007-06-12  tag ipsec-tools-0_7-RC1
+
+2007-06-12  tag ipsec-tools-0_7-rc1
+
+2007-06-12  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* configure.ac: ipsec-tools used to use tags in lower case
+
+2007-06-12  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* configure.ac: 0.7-RC1
+
+2007-06-07  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/: main.c, policy.h, security.c: From Joy Latten
+	  <latten@austin.ibm.com> Fix file descriptor shortage when using
+	  labeled IPsec.
+
+	* src/racoon/isakmp_cfg.c: From Paul Winder
+	  <Paul.Winder@tadpole.com> Fix ignored INTERNAL_DNS4_LIST
+
+2007-06-06  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/: eaytest.c, var.h: From Rong-En Fan: fix compilation
+	  with gcc 4.2
+
+2007-06-06  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/kmpstat.c: From Jianli Liu <jlliu@nortel.com>: Use the
+	  specified socket path instead of the default location
+
+2007-06-06  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/session.c: From Jianli Liu: speed up interfaces update
+	  when they change.
+
+	* src/racoon/handler.c: ignore obsolete lifebyte when validating
+	  reloaded configuration
+
+2007-05-04  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/handler.c: search a ph1 by address if iph2->ph1 is
+	  NULL when validating the new config
+
+	* src/racoon/handler.c: added some debug in getph1byaddr() to track
+	  some port matching problems with NAT-T
+
+	* src/racoon/isakmp.c: added some debug in isakmp_chkph1there() to
+	  track some port matching problems with NAT-T
+
+	* src/racoon/isakmp_inf.c: added some debug for DELETE_SA process
+
+	* src/racoon/pfkey.c: Force the update of ph2 in pk_recvupdate() if
+	  NAT_T support, to solve some port match problems with the first
+	  IPSec SAs negociated as initiator
+
+2007-04-04  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/ipsec_doi.c: checks proto_id in ipsecdoi_chkcmpids()
+
+	* src/racoon/oakley.c: dumps peer's ID and peer's certificate
+	  subject /subjectaltname if they don't match
+
+2007-03-29  tag ipsec-tools-0_7-beta3
+
+2007-03-29  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* configure.ac: Bump to 0.7beta3
+
+2007-03-26  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp_inf.c: Store the DPD main scheduler in ph1
+	  handler, to be able to cancel it when removing the handler, and some
+	  minor cleanups in DPD code
+
+2007-03-23  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/: ipsec_doi.c, security.c: From Joy Latten: fix a
+	  segfault when using security labels between 32bit and 64bit host.
+
+	* src/racoon/handler.c: expire zombie handlers in getph2byid(), to
+	  avoid situations where we'll never negociate a phase2 again
+
+	* src/racoon/: oakley.c, racoon.conf.5: From Cyrus Rahman: give
+	  more details about what is checked when using certificates to
+	  authenticate
+
+2007-03-22  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/: cfparse.y, ipsec_doi.c: fixed subnet check to
+	  generate IPV4_ADDRESS when needed in sockaddr2id()
+
+2007-03-21  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/: handler.c, isakmp.c, isakmp_inf.c, pfkey.c: NULL
+	  sched check is now done in SCHED_KILL
+
+	* src/racoon/schedule.h: checks if arg is NULL in SCHED_KILL
+
+2007-03-15  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/grabmyaddr.c: From Yves-Alexis Perez: enable
+	  monitoring of ipv6 address changes on Linux.
+
+	* src/racoon/isakmp.c: Consider a negociation timeout when
+	  retry_counter is <=0 instead of < 0
+
+2007-03-06  tag ipsec-tools-0_7-beta2
+
+2007-03-06  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* configure.ac: Bump to 0.7beta2
+
+2007-03-01  Matthew Grooms <mgrooms@shrew.net>
+
+	* src/racoon/ipsec_doi.c: Add logic to allow ip address ids to be
+	  matched to ip subnet ids when appropriate.
+
+2007-02-21  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/ipsec_doi.c: block variable declaration before code in
+	  ipsecdoi_id2str()
+
+2007-02-20  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp_inf.c: Removed a debug printf....
+
+	* src/racoon/isakmp.c: Only delete a generated SPD if it's creation
+	  date matches the creation date of the SA we are currently deleting
+
+	* src/racoon/: handler.c, isakmp_var.h: updated delete_spd() calls
+
+	* src/racoon/: isakmp_inf.c, pfkey.c: fills creation date of
+	  generated SPDs
+
+	* src/racoon/policy.h: added 'created' var
+
+2007-02-19  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp.c: Removed a debug printf....
+
+2007-02-16  tag ipsec-tools-0_7-beta1
+
+2007-02-16  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* configure.ac: Bump to 0.7beta1
+
+2007-02-16  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/ipsec_doi.c: From Olivier Warin: Fix a %zu in a
+	  printf.
+
+2007-02-15  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/security.c: Missing file for SELinux
+
+	* configure.ac: Missing stuff for SELinux
+
+2007-02-15  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp_inf.c: From "Uncle Pedro" on sf.net: Just
+	  expire a ph1 handle when receiving a DELETE-SA instead of calling
+	  purge_remote().
+
+	* src/racoon/isakmp.c: Fixed the way phase1/2 messages are
+	  sent/resent, to avoid zombie handles and acces to freed memory
+
+2007-02-02  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/cfparse.y: Fixed a check of NAT-T support in libipsec
+
+2007-02-01  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp_inf.c: From "Uncle Pedro" on sf.net: When
+	  receiving an ISAKMP DELETE_SA, get the cookie of the SA to be
+	  deleted from payload instead of just deleting the ISAKMP SA used to
+	  protect the informational exchange.
+
+2006-12-18  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/crypto_openssl.c: From Joy Latten: fix a memory leak
+
+2006-12-10  tag ipsec-tools-0_7-base
+
+2006-12-10  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/: libipsec/Makefile.am, libipsec/libpfkey.h,
+	  libipsec/pfkey.c, racoon/backupsa.c, racoon/cfparse.y,
+	  racoon/pfkey.c: Bring back API and ABI backward compatibility
+	  with previous libipsec before recent interface change. Bump libipsec
+	  minor version. Remove ifdefs in struct pfkey_send_sa_args to avoid
+	  ABI compatibility lossage.  Add a capability flags to detect missing
+	  optional feature in libipsec
+
+	* src/racoon/: Makefile.am, doc/README.plainrsa: From Joy Latten:
+	  README.plainrsa documenting plain RSA auth
+
+2006-12-09  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* configure.ac, src/libipsec/libpfkey.h, src/libipsec/pfkey.c,
+	  src/racoon/Makefile.am, src/racoon/backupsa.c,
+	  src/racoon/backupsa.h, src/racoon/cftoken.l,
+	  src/racoon/ipsec_doi.c, src/racoon/ipsec_doi.h,
+	  src/racoon/isakmp_inf.c, src/racoon/isakmp_quick.c,
+	  src/racoon/pfkey.c, src/racoon/policy.c, src/racoon/policy.h,
+	  src/racoon/proposal.c, src/racoon/proposal.h,
+	  src/racoon/remoteconf.c: From Joy Latten: Add support for SELinux
+	  security contexts. Also cleanup the libipsec interface for adding
+	  and updating security associations.
+
+	* src/racoon/racoon.conf.5: From Simon Chang: More hints about
+	  plain RSA authentication
+
+2006-12-05  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/: proposal.c, proposal.h, racoon.conf.5: Check keys
+	  length regarding proposal_check level
+
+2006-11-16  Matthew Grooms <mgrooms@shrew.net>
+
+	* src/racoon/sainfo.c: Correct issues associated with anonymous
+	  sainfo selection in racoon.
+
+2006-11-09  Christos Zoulas <christos@netbsd.org>
+
+	* src/racoon/crypto_openssl.c: eliminate the only variable stack
+	  array allocation.
+
+2006-10-31  Christian Biere <cbiere@netbsd.org>
+
+	* src/racoon/sockmisc.c: Don't define the deprecated
+	  IPV6_RECVDSTADDR if the "advanced IPv6 API" is used because
+	  IPV6_RECVPKTINFO and IPV6_PKTINFO are used to prevent potential bugs
+	  in the future just in case that the numeric value of the socket
+	  option is ever recycled.
+
+2006-10-22  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/: backupsa.c, cfparse.y: From Michal Ruzicka: fix
+	  typos
+
+2006-10-19  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/sainfo.c: From Matthew Grooms: use
+	  ipsecdoi_chkcmpids() and changed src/dst to loc/rmt in getsainfo().
+
+	* src/racoon/: ipsec_doi.c, ipsec_doi.h: From Matthew Grooms: Added
+	  ipsecdoi_chkcmpids() function.
+
+2006-10-09  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/proposal.c: Fix memory leak (Coverity 3438 and 3437)
+
+	* src/racoon/isakmp_unity.c: Correctly check read() return value:
+	  it's signed (Coverity 1251)
+
+2006-10-06  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* configure.ac, src/libipsec/pfkey_dump.c, src/racoon/algorithm.c,
+	  src/racoon/algorithm.h, src/racoon/cftoken.l,
+	  src/racoon/crypto_openssl.c, src/racoon/crypto_openssl.h,
+	  src/racoon/eaytest.c, src/racoon/ipsec_doi.c,
+	  src/racoon/ipsec_doi.h, src/racoon/oakley.h, src/racoon/pfkey.c,
+	  src/racoon/racoon.conf.5, src/racoon/strnames.c,
+	  src/setkey/setkey.8, src/setkey/test-pfkey.c, src/setkey/token.l:
+	  Camelia cipher support as in RFC 4312, from Tomoyuki Okazaki
+	  <okazaki@kick.gr.jp>
+
+2006-10-03  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/admin.c: fix endianness issue introduced yesterday
+
+2006-10-03  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/racoon.conf.5: Added remoteid/ph1id syntax
+
+	* src/racoon/: cfparse.y, cftoken.l: Parses remoteid/ph1id values
+
+	* src/racoon/: handler.c, isakmp_quick.c, pfkey.c, sainfo.c: Uses
+	  remoteid/ph1id values
+
+	* src/racoon/: remoteconf.h, sainfo.h: Added remoteid/ph1id values
+
+2006-10-02  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/isakmp_base.c:
+	   avoid reusing free'd pointer (Coverity 2613)
+
+	* src/racoon/isakmp_inf.c: Check for NULL pointer (COverity 4175)
+
+	* src/racoon/isakmp_ident.c: Remove dead code (Coverity 3451)
+
+	* src/racoon/algorithm.c: Fix array overrun (Coverity 4172)
+
+	* src/racoon/admin.c: Fix memory leak (Coverity 2002)
+
+	* src/racoon/: admin.c, isakmp.c, sockmisc.c: Fix memory leak
+	  (Coverity 2001), refactor the code to use port get/set functions
+
+	* src/racoon/admin.c: Avoid reusing free'd pointer (Coverity 4200)
+
+	* src/racoon/oakley.c: Don't use NULL pointer (Coverity 3443),
+	  reformat to 80 char/line
+
+2006-10-02  Tom Spindler <dogcow@netbsd.org>
+
+	* src/racoon/ipsec_doi.c: If you're going to initialize a pointer,
+	  you have to init it with a pointer type, not an int.
+
+2006-10-02  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/isakmp.c: Don't use NULL pointer (coverity 3439)
+
+	* src/racoon/ipsec_doi.c: Don't use NULL pointer (Coverity 1334)
+
+	* src/racoon/pfkey.c: Don't use NULL pointer (Coverity 944)
+
+	* src/racoon/proposal.c: Don't use NULL pointer (Coverity 941)
+
+	* src/racoon/racoonctl.c: Don't use NULL pointer (Coverity 942)
+
+	* src/racoon/sockmisc.c: Don't use null pointer (Coverity 863)
+
+2006-10-01  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/ipsec_doi.c: FIx memory leak (Coverity 4181)
+
+	* src/racoon/isakmp.c: Check that iph1->remote is not NULL before
+	  using it (Coverity 3436)
+
+2006-09-30  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/isakmp_agg.c: emove dead code (Coverity 4165)
+
+	* src/racoon/isakmp_cfg.c: Fix memory leak (Coverity 4179)
+
+	* src/racoon/samples/roadwarrior/client/: phase1-down.sh,
+	  phase1-up.sh: update the scripts for wrorking around routing
+	  problems on NetBSD
+
+	* src/racoon/session.c: Reuse existing code for closing IKE
+	  sockets, and avoid screwing things by setting p->sock = -1, which is
+	  not expected (Coverity 4173).
+
+	* src/racoon/admin.c: Do not free id and key, as they are used
+	  later
+
+2006-09-29  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/racoonctl.c: Fix the fix: handle_recv closes the
+	  socket, so we must call com_init before sending any data.
+
+2006-09-28  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/isakmp_xauth.c: Fix unchecked mallocs (Coverity 4176,
+	  4174)
+
+	* src/racoon/racoonctl.c: Fix access after free (Coverity 4178)
+
+2006-09-26  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/cfparse.y: Fix memory leak (Coverity)
+
+	* src/racoon/backupsa.c: Fix memory leak (Coverity)
+
+	* src/racoon/admin.c: Remove dead code (Coverity)
+
+	* src/racoon/admin.c: Fix memory leak (Coverity)
+
+	* src/racoon/admin.c: One more memory leak
+
+	* src/racoon/admin.c: Fix memory leak in racoonctl (coverity)
+
+	* src/racoon/ipsec_doi.c: Fix buffer overflow Also fix credits: SA
+	  bundle fix was contributed by Jeff Bailey, not Matthew Grooms.
+	  Matthew updated the patch for current code, though.
+
+	* src/racoon/: pfkey.c, proposal.c: fix SA bundle (e.g.: for
+	  negotiating ESP+IPcomp)
+
+2006-09-25  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/isakmp.c: From Yves-Alexis Perez: struct ip -> struct
+	  iphdr for Linux
+
+2006-09-25  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/isakmp.c: style (mostly for testing
+	  ipsec-tools-commits@netbsd.org)
+
+	* src/racoon/ipsec_doi.c: Fix double free, from Matthew Grooms
+
+2006-09-21  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/libipsec/pfkey.c: use sysdep_sa_len to make it compile on
+	  Linux
+
+2006-09-19  Thomas Klausner <wiz@netbsd.org>
+
+	* src/racoon/racoon.conf.5: Bump date for ike_frag force.
+
+	* src/racoon/: plainrsa-gen.8, racoon.conf.5: New sentence, new
+	  line.
+
+	* src/racoon/: racoon.conf.5, plainrsa-gen.8: Remove trailing
+	  whitespace.
+
+2006-09-19  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* src/racoon/proposal.c: From Yves-Alexis Perez: fixes default
+	  value for encmodesv in set_proposal_from_policy()
+
+	* src/racoon/isakmp.c: always include some headers, as they are
+	  required even without NAT-T
+
+	* src/: libipsec/pfkey_dump.c, setkey/token.l: From Larry Baird:
+	  define SADB_X_EALG_AESCBC as SADB_X_EALG_AES if needed
+
+	* src/racoon/crypto_openssl.c: From Larry Baird: some printf() ->
+	  plog()
+
+2006-09-18  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/: cfparse.y, cftoken.l, isakmp.c, isakmp_frag.h,
+	  isakmp_inf.c, racoon.conf.5, remoteconf.c: From Matthew Grooms:
+	  ike_frag force option to force the use of IKE on first packet
+	  exchange (prior to peer consent)
+
+2006-09-18  Yvan Vanhullebus <vanhu@netasq.com>
+
+	* rpm/suse/ipsec-tools.spec, src/racoon/prsa_tok.c: removed
+	  generated files from the CVS
+
+	* src/racoon/prsa_par.c: removed generated files from the CVS
+
+	* src/racoon/: cfparse.c, cftoken.c: removed generated files from
+	  the CVS
+
+2006-09-18  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/isakmp.c: From Matthew Grooms: handle IKE frag used in
+	  the first packet. That should not normally happen, as the initiator
+	  does not know yet if the responder can handle IKE frag.  However, in
+	  some setups, the first packet is too big to get through, and
+	  assuming the peer supports IKE frag is the only way to go.
+
+	  racoon should have a setting in the remote section to do taht
+	  (something like ike_frag force)
+
+2006-09-16  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/ipsec_doi.c: Trivial bugfix in RFC2407 4.6.2
+	  conformance, from Matthew Grooms
+
+2006-09-15  Emmanuel Dreyfus <manu@netbsd.org>
+
+	* src/racoon/ipsec_doi.c: Fix build on Linux
+
+For older changes see ChangeLog.old

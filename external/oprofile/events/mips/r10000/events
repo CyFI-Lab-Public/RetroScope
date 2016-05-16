@@ -1,0 +1,36 @@
+#
+# R10000 events
+#
+# The same event numbers mean different things on the two counters
+#
+event:0x00 counters:0,1 um:zero minimum:500 name:CYCLES : Cycles
+event:0x01 counters:0 um:zero minimum:500 name:INSTRUCTIONS_ISSUED : Instructions issued
+event:0x01 counters:1 um:zero minimum:500 name:INSTRUCTIONS_GRADUATED : Instructions graduated
+event:0x02 counters:0 um:zero minimum:500 name:LOAD_PREFETC_SYNC_CACHEOP_ISSUED : Load / prefetch / sync / CacheOp issued
+event:0x02 counters:1 um:zero minimum:500 name:LOAD_PREFETC_SYNC_CACHEOP_GRADUATED : Load / prefetch / sync / CacheOp graduated
+event:0x03 counters:0 um:zero minimum:500 name:STORES_ISSUED : Stores issued
+event:0x03 counters:1 um:zero minimum:500 name:STORES_GRADUATED : Stores graduated
+event:0x04 counters:0 um:zero minimum:500 name:STORE_COND_ISSUED : Store conditional issued
+event:0x04 counters:1 um:zero minimum:500 name:STORE_COND_GRADUATED : Store conditional graduated
+event:0x05 counters:0 um:zero minimum:500 name:FAILED_STORE_CONDITIONAL : Failed store conditional
+event:0x05 counters:1 um:zero minimum:500 name:FP_INSTRUCTON_GRADUATED : Floating-point instructions graduated
+event:0x06 counters:0 um:zero minimum:500 name:BRANCHES_RESOLVED : Branches resolved
+event:0x06 counters:1 um:zero minimum:500 name:QUADWORDS_WB_FROM_PRIMARY_DCACHE : Quadwords written back from primary data cache
+event:0x07 counters:0 um:zero minimum:500 name:QUADWORDS_WB_FROM_SCACHE : Quadwords written back from secondary cache
+event:0x07 counters:1 um:zero minimum:500 name:TLB_REFILL_EXCEPTIONS : TLB refill exceptions
+event:0x08 counters:0 um:zero minimum:500 name:CORRECTABLE_ECC_ERRORS_SCACHE : Correctable ECC errors on secondary cache data
+event:0x08 counters:1 um:zero minimum:500 name:BRANCHES_MISPREDICTED : Branches mispredicted
+event:0x09 counters:0 um:zero minimum:500 name:INSTRUCTION_CACHE_MISSES : Instruction cache misses
+event:0x09 counters:1 um:zero minimum:500 name:SCACHE_LOAD_STORE_CACHEOP_OPERATIONS : Secondary cache load / store and cache-ops operations
+event:0x0a counters:0 um:zero minimum:500 name:SCACHE_MISSES_INSTRUCTION : Secondary cache misses (instruction)
+event:0x0a counters:1 um:zero minimum:500 name:SCACHE_MISSES_DATA : Secondary cache misses (data)
+event:0x0b counters:0 um:zero minimum:500 name:SCACHE_WAY_MISPREDICTED_INSN : Secondary cache way mispredicted (instruction)
+event:0x0b counters:1 um:zero minimum:500 name:SCACHE_WAY_MISPREDICTED_DATA : Secondary cache way mispredicted (data)
+event:0x0c counters:0 um:zero minimum:500 name:EXTERNAL_INTERVENTION_RQ : External intervention requests
+event:0x0c counters:1 um:zero minimum:500 name:EXTERNAL_INTERVENTION_RQ_HITS_SCACHE : External intervention request is determined to have hit in secondary cache
+event:0x0d counters:0 um:zero minimum:500 name:EXTERNAL_INVALIDATE_RQ : External invalidate requests
+event:0x0d counters:1 um:zero minimum:500 name:EXTERNAL_INVALIDATE_RQ_HITS_SCACHE : External invalidate request is determined to have hit in secondary cache
+event:0x0e counters:0 um:zero minimum:500 name:FUNCTIONAL_UNIT_COMPLETION_CYCLES : Functional unit completion cycles
+event:0x0e counters:1 um:zero minimum:500 name:STORES_OR_STORE_PREF_TO_CLEANEXCLUSIVE_SCACHE_BLOCKS : Stores or prefetches with store hint to CleanExclusive secondary cache blocks
+event:0x0f counters:0 um:zero minimum:500 name:INSTRUCTION_GRADUATED : Instructions graduated
+event:0x0f counters:1 um:zero minimum:500 name:STORES_OR_STORE_PREF_TO_SHD_SCACHE_BLOCKS : Stores or prefetches with store hint to Shared secondary cache blocks

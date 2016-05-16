@@ -1,0 +1,4416 @@
+2002-12-21  John Levon  <levon@movementarian.org>
+
+	* Makefile.am: list module files explicitly, needed
+	  for make dist from separate objdir
+
+	* configure.in: make both x86/ and ia64/ changelogs
+
+2002-12-21  John Levon  <levon@movementarian.org>
+
+	* module/Makefile.am:
+	* configure.in: remove the ln -s arch in favour of
+	  using -I and AC_SUBST
+
+	* module/ia64/arch.h:
+	* module/x86/arch.h: rename to op_arch.h
+
+	* utils/Makefile.am: fix make uninstall
+
+2002-12-21  John Levon  <levon@movementarian.org>
+
+	* utils/Makefile.am: fix back-compat scripts install
+	  for 2.5 kernel
+
+2002-12-19  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: Revise kernel range computation.
+	
+2002-12-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_time.cpp: minor formating fix
+	* pp/oprofpp.cpp: fix #656123 corner case with --separate-sample
+
+2002-12-17  John Levon  <levon@movementarian.org>
+
+	* configure.in: remove oprof_report - breaks make dist
+
+2002-12-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/*.c *.h:
+	* libutil/op_fileio.c:
+	* dae/opd_proc.c: doxygen comment fix
+
+2002-12-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/ia64/op_syscalls.c:
+	* module/x86/hammer_op_syscalls.c:
+	* module/x86/op_syscalls.c: u16 pid to u32, tested/compiled only with
+	  32 bits x86
+
+2002-12-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/string_manip.cpp: minor fix
+	* pp/derive_files.cpp: comment
+
+2002-12-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/format_output.cpp:
+	* pp/format_output.h:
+	* pp/outsymbflag.h:
+	* pp/opp_symbol.h: add an app_name field in file_location and
+	  formater options for this field.
+
+	* pp/profile_container.cpp:
+	* pp/profile_container.h: add_samples() add app_name parameter
+
+	* pp/oprofpp.cpp:
+	* pp/op_to_source.cpp:
+	* pp/op_time.cpp:
+	* pp/op_time_options.cpp:
+	* pp/op_time_options.h: honor app_name parameter. No user visible
+	  change except for op_time -l when profiling with --separate-samples
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: update doc
+
+2002-12-13  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: lots of fixes. Remove sysctl documentation
+	  as its really an internal feature and was cluttering up
+	  the user manual.
+ 
+2002-12-13  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: some clarifications on timer interrupt 
+ 
+2002-12-12  John Levon  <levon@movementarian.org>
+
+	* opcontrol: set one_enabled if timer interrupt. No
+	  behaviour change, but "safer"
+ 
+2002-12-11  John Levon  <levon@movementarian.org>
+
+	* pp/derive_files.h:
+	* pp/op_time.cpp:
+	* pp/op_time_options.cpp:
+	* pp/op_to_source.cpp:
+	* pp/opp_symbol.h:
+	* pp/profile.h:
+	* pp/profile_container.h:
+	* utils/Makefile.am: small pedantries
+ 
+2002-12-10  Will Cohen  <wcohen@redhat.com>
+
+	* utils/op_dump_25: 
+	* utils/opcontrol (do_dump): Correct TMPFILE.
+
+2002-12-10  Will Cohen  <wcohen@redhat.com>
+
+	* daemon/opd_image.c (complete_dump): New.
+	* libop/op_config.h (OP_DUMP_STATUS): New.
+	* utils/op_dump_25: New file.
+	* utils/Makefile.am: Add op_dump_25.
+	* utils/opcontrol (do_dump): Revise how dump performed.
+
+2002-12-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/profile.cpp : oprofpp reported incorrectly counter setting when
+	  using multiple counter. Fix #651183
+
+2002-12-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_time.cpp: honor --excude-symbols. Fix #651165
+
+2002-12-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: stupid segfault when filtering included symbols
+
+2002-12-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: replace a 0(N²) by a 0(N) behavior
+
+	* pp/output_format.cpp: actualize comment
+
+2002-12-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/profile.cpp: use scoped_ptr<counter_profile_t>
+
+	* libopt++/popt_options.h:
+	* pp/counter_profile.cpp: minor cleanup
+
+2002-12-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/counter_profile.cpp:
+	* pp/counter_profile.h: use scoped_ptr
+
+2002-12-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/counter_profile.h:
+	* pp/counter_profile.cpp: relax samples_db_t sooner
+
+2002-12-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opp_samples_files.cpp:
+	* pp/opp_samples_files.h:
+	* pp/samples_container.cpp:
+	* pp/samples_container.h:
+	* pp/samples_file.cpp:
+	* pp/samples_file.h: rename class samples_file_t to counter_profile_t
+	  rename class opp_samples_files to profile_t
+	  rename class samples_container_t to profile_container_t
+	  rename file using the new class name as filename w/o _t suffix
+
+	* pp/format_output.cpp:
+	* pp/format_output.h:
+	* pp/op_merge.cpp:
+	* pp/op_time.cpp:
+	* pp/op_to_source.cpp:
+	* pp/oprofpp.cpp:
+	* pp/symbol_container_imp.cpp:
+	* pp/symbol_container_imp.h:
+	* pp/Makefile.am: reflect above class/file name change
+
+2002-12-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db_manage.c:
+	* libdb/db_hash.h: db_init() new to properly initialize a samples_db_t
+
+	* dae/opd_image.c:
+	* daemon/opd_imge.c: earlier init a samples_db_t object using
+	  db_init() rather a memset. This fix a potential bogosity cause we
+	  closed a lot of time file descriptor 0
+
+2002-12-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_image.c:
+	* dae/opd_image.h:
+	* dae/opd_kernel.c: use hash table entry 0 for kernel and module image
+
+2002-12-04  John Levon  <levon@movementarian.org>
+
+	* pp/opp_symbol.h:
+	* pp/opp_symbol.cpp:
+	* pp/format_output.h:
+	* pp/format_output.cpp:
+	* others from above: create format_output namespace, some
+	  clean up
+ 
+2002-12-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_image.c: revert last change, it break daemon...
+	
+2002-12-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_image.c: re-enable opd_check_image_mtime() it's not
+	  perfect but better than nothing
+
+	* libutil++/cverb.cpp: comment fix
+
+2002-12-04  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: Revised checking to determine kernel
+	  interface.
+
+
+2002-12-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db_test.c: measure system + user time
+
+	* dae/oprofiled.c: better error message
+	* daemon/oprofiled.c: write_abi() is static
+
+2002-12-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db_stat.c:
+	* libdb/db_debug.c: Alex whisp me than a few code was not 64 bits
+	  size_t safe.
+
+2002-12-03  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml:
+	* doc/oprofile.1.in:
+	* doc/Makefile.am: remove references to deprecated stuff
+ 
+2002-12-03  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: add --version
+ 
+2002-12-03  John Levon  <levon@movementarian.org>
+
+	* utils/op_start:
+	* utils/op_start_25:
+	* utils/op_stop_25:
+	* utils/op_stop: print deprecation notice
+ 
+2002-12-03  John Levon  <levon@movementarian.org>
+
+	* utils/op_session.c:
+	* utils/op_dump: print deprecation notice
+ 
+2002-12-03  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: do not shutdown on --reset. Send
+	  signal on --reset/--save like op_session. Try to dump
+	  like op_session to hack race "fix"
+ 
+2002-12-03  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: complain on opcontrol --save 
+ 
+2002-12-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_kernel.c:
+	* daemon/opd_kernel.h: minor cleanup
+
+	* libabi/abi.cpp:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp: fix bad include filename.
+
+2002-12-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/.cvsignore:
+	* libdb/Makefile.am:
+	* libdb/*.c --> db-hash-name.c to db_name.c
+
+	* dae/opd_image.h:
+	* daemon/opd_image.h:
+	* pp/samples_file.h: include db_hash.h
+
+2002-12-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start_config.cpp: allow default value change w/o
+	  breaking actual user.
+
+2002-12-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* dae/opd_image.h:
+	* dae/opd_kernel.c:
+	* dae/opd_kernel.h:
+	* dae/opd_parse_proc.c:
+	* dae/opd_proc.c:
+	* dae/opd_proc.h:
+	* dae/opd_sample_files.c:
+	* dae/oprofiled.c:
+	* daemon/opd_image.h:
+	* pp/op_merge.cpp:
+	* pp/samples_file.h:
+	* pp/samples_file.cpp:
+	* pp/Makefile.am:
+	* libabi/Makefile.am:
+	* libabi/abi.cpp:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp: use hash table implementation of libdb
+
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_config.cpp:
+	* gui/oprof_start_config.h:
+	* gui/ui/oprof_start.base.ui:
+	* utils/op_start:
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: remove module hash table size
+
+	* libdb/.cvsignore: update
+	* libdb/Makefile.am: build libdb-hash.a
+	* libdb/db-hash.h:
+	* libdb/db-hash-debug.c:
+	* libdb/db-hash-manage.c:
+	* libdb/db-hash-test.c:
+	* libdb/db-hash-insert.c:
+	* libdb/db-hash-stat.c:
+	* libdb/db-hash-travel.c: new files implementing a growable hash table
+	* libdb/Makefile.am: update
+
+	* libop/op_config_24.h: remove module hash table. Increase
+	  OP_PRE_WATERMARK, OP_DEFAULT_BUF_SIZE.
+	* libop/op_interface.h: struct op_sample update.
+
+	* module/oprofile.h:
+	* module/oprofile.c: remove hash table
+
+2002-12-02  John Levon  <levon@movementarian.org>
+
+	* configure.in: remove annoying AC_REVISION()
+ 
+2002-12-02  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: couple of minor cleanups
+ 
+2002-12-02  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: fix --deinit, complain on missing
+	  argument
+ 
+2002-12-02  Will Cohen  <wcohen@redhat.com>
+
+	* doc/Makefile.am: Generate opcontrol.
+	* doc/oprofile.1.in: Add opcontrol information.
+	* doc/oprofile.xml: Add opcontrol information.
+
+2002-12-01  Will Cohen  <wcohen@redhat.com>
+
+	* utils/Makefile.am: Add opcontrol.
+	* utils/opcontrol: New.
+
+2002-12-01  John Levon  <levon@movementarian.org>
+
+	* various files: don't use db_tree name outside of libdb,
+	  it's implementation detail for most case
+ 
+2002-11-29  Graydon Hoare  <graydon@redhat.com>
+
+	* module/x86/op_model_p4.c: fix dropped overflows.
+
+2002-11-26  Graydon Hoare  <graydon@redhat.com>
+
+	* module/x86/op_model_p4.c: fix CCCR-clearing logic.
+	* module/x86/cpu_type.c: re-enable Pentium IV.
+
+2002-11-25  John Levon  <levon@movementarian.org>
+
+	* module/x86/cpu_type.c: disable Pentium IV till it works
+ 
+2002-11-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/oprofile.xml: start a FAQ. Clarify debug information vs
+	  symbol information. Explain why we don't use dynamic symbol
+
+2002-11-20  John Levon  <levon@movementarian.org>
+
+	* daemon/oprofiled.c:
+	* utils/op_start_25: kernel_only is a no-op on 2.5, no point
+	  in it existing
+ 
+2002-11-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/oprofiled.c: /dev/oprofile/kernel_only doesn't exists
+	  in timer int mode (second pass to fix #637804 ...)
+
+2002-11-17  Graydon Hoare  <graydon@redhat.com>
+
+	* module/x86/op_apic.h:
+	* module/x86/op_apic.c: revert, use copy of kernel code.
+
+2002-11-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_kernel.c:
+	* dae/opd_mapping.c:
+	* dae/opd_proc.c:
+	* daemon/opd_image.c:
+	* daemon/opd_kernel.c:
+	* libop++/op_mangling.h:
+	* libutil++/cverb.h:
+	* pp/opp_samples_files.cpp:
+	* pp/samples_file.cpp: doxygen fix
+	* doc/srcdoc/Doxyfile: bump to 0.5 cvs
+
+2002-11-14  Will Cohen  <wcohen@redhat.com>
+
+	* gui/Makefile.am: Use $(bindir).
+	* oprof_report/Makefile.am: Use $(bindir).
+
+2002-11-15  Dave Jones <davej@suse.de>
+
+	* module/x86/cputype.c: Make the AMD case a bit simpler.
+
+2002-11-14  John Levon  <levon@movementarian.org>
+
+	* dae/Makefile.am:
+	* daemon/Makefile.am: proper fix for c++ link
+	  as suggested by Alexandre Duret-Lutz
+ 
+2002-11-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* Makefile.am: we installed module in the wrong directory.
+
+2002-11-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/op_file.c: op_simplify_path_name(): strip leading '/'
+	* daemon/oprofiled.c:
+	* dae/oprofiled.c: fix incorrect specification of vmlinux file
+	  through --vmlinux=/foo//bar fixing #637805
+
+2002-11-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/op_start_25: /dev/oprofile/kernel_only doesn't exists
+	  in timer int mode. fix #637804
+
+2002-11-14  John Levon  <levon@movementarian.org>
+
+	* dae/*:
+	* daemon/*:
+	* libutil++/op_bfd.h:
+	* pp/samples_container.cpp:
+	* pp/samples_container.h: doxygen anality
+ 
+2002-11-14  John Levon  <levon@movementarian.org>
+
+	* libopt++/popt_options.h:
+	* libopt++/popt_options.cpp: place in popt
+	namespace to avoid clash with getopt.h
+
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp:
+	* pp/op_merge.cpp:
+	* pp/op_time_options.cpp:
+	* pp/op_to_source_options.cpp:
+	* pp/oprofpp_options.cpp:
+	* pp/session.cpp: fix for above
+ 
+	* libabi/abi.cpp:
+	* libabi/abi.h: g++ 3.2 fixes
+
+	* libabi/op_import.cpp: uninline extract
+
+	* dae/Makefile.am:
+	* daemon/Makefile.am: fix c++ link hack for -Werror
+ 
+2002-11-13  Graydon Hoare  <graydon@redhat.com>
+
+	( this changeset is mostly Dave Jones' work )
+
+	* README:
+	* TODO:
+	* configure.in:
+	* doc/oprofile.xml:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/op_help.c:
+	* module/compat.h:
+	* module/compat24.h:
+	* module/op_util.c:
+	* module/x86/Makefile.in:
+	* module/x86/apic_compat.h:
+	* module/x86/arch.h:
+	* module/x86/cpu_type.c:
+	* module/x86/op_fixmap.c:
+	* module/x86/op_nmi.c: minor additions for hammer support.
+
+	* module/x86/op_apic.c:
+	* module/x86/op_apic.h: major cleanup; add hammer support.
+	
+	* module/x86/hammer_entry.S:
+	* module/x86/hammer_ia32entry.S:
+	* module/x86/hammer_op_syscalls.c:
+	* module/x86/hammer_oprofile_nmi.S: new hammer support files.
+
+2002-11-14  John Levon  <levon@movementarian.org>
+
+	* configure.in: hack around case where clean checkout
+	  then ./configure --with-kernel-support
+ 
+2002-11-12  Graydon Hoare  <graydon@redhat.com>
+
+	* autogen.sh: support overriding autotool binary names.
+
+2002-11-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: honor --with-extra-libs
+
+2002-11-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: add -W -Wall and optionnaly -Werror to user space
+	  compilation
+
+2002-11-11  John Levon  <levon@movementarian.org>
+
+	* dae/Makefile.am:
+	* daemon/Makefile.am: don't dist dummy.cpp
+ 
+2002-11-11  John Levon  <levon@movementarian.org>
+
+	* dae/Makefile.am:
+	* daemon/Makefile.am: hack to fix --enable-abi
+ 
+2002-11-10  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* gui/Makefile.am:
+	* oprof_report/Makefile.am: only use X libs where
+	  they're actually wanted
+ 
+2002-11-10  John Levon  <levon@movementarian.org>
+
+	* configure.in: make included sstream work again
+ 
+2002-11-08  Will Cohen  <wcohen@redhat.com>
+
+	* doc/oprofile.xml: Update with IA64 information.
+
+2002-11-10  John Levon  <levon@movementarian.org>
+
+	* Makefile.am: remove oprof_report from SUBDIRS to
+	  avoid separate objdir problem
+ 
+2002-11-10  John Levon  <levon@movementarian.org>
+
+	* most Makefile.am: do the dist_sources trick
+	  properly
+ 
+2002-11-10  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* configure.in:
+	* dae/Makefile.am:
+	* daemon/Makefile.am:
+	* utils/Makefile.am: s/WITH_KERNEL_SUPPORT/kernel_support
+
+	* configure.in:
+	* dae/Makefile.am:
+	* dae/oprofiled.c:
+	* daemon/Makefile.am:
+	* daemon/oprofiled.c:
+	* libabi/Makefile.am: approximate working --enable-abi more
+
+2002-11-10  John Levon  <levon@movementarian.org>
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c: abi tidy
+ 
+2002-11-10  John Levon  <levon@movementarian.org>
+
+	* autogen.sh: be verbose
+ 
+	* gui/Makefile.am:
+	* gui/ui/Makefile.am:
+	* oprof_report/Makefile.am:
+	* oprof_report/ui/Makefile.am: remove duplicate
+	  set MOC/UIC
+ 
+2002-11-10  John Levon  <levon@movementarian.org>
+
+	* Makefile.am: add comment
+
+	* configure.in: no need to subst OPROFILE_25
+ 
+2002-11-09  John Levon  <levon@movementarian.org>
+
+	* TODO: update
+ 
+	* configure.in:
+	* most Makefile.am: make separate objdir work,
+	  except for module (impossible I suppose)
+
+2002-11-09  John Levon  <levon@movementarian.org>
+
+	* autogen.sh: use --foreign
+ 
+2002-11-09  John Levon  <levon@movementarian.org>
+
+	* configure.in: fix --with-kernel-support
+ 
+	* doc/.cvsignore: add *.1
+
+	* libabi/Makefile.am: don't install abi_test
+ 
+2002-11-09  John Levon  <levon@movementarian.org>
+
+	* all cvsignore: add Makefile.in
+ 
+	* gui/Makefile.am: move EXTRA_DIST out of qt check
+
+	* gui/ui/Makefile.am:
+	* oprof_report/ui/Makefile.am: fix AM_CPPFLAGS typo
+ 
+2002-11-09  John Levon  <levon@movementarian.org>
+
+	* all build files: use automake, written by Phil
+ 
+2002-11-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/samples_file.cpp: check than samples files version
+	  match expected version fixing #635759
+
+2002-11-07  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* module/compat.h: 
+	* module/compat24.h:
+	* module/op_dname.c: 
+	* module/oprofile.c: 
+	* module/x86/op_fixmap.c: 
+	* module/x86/op_nmi.c: remove 2.5 support from old
+	  module code
+ 
+2002-11-06  Will Cohen  <wcohen@redhat.com>
+
+	* configure.in: Tests for ia64 architecture.
+	* dae/opd_mapping.c: Added includes.
+	* oprofile/dae/oprofiled.c (opd_do_samples): Typecast.
+	* libop/op_cpu_type.c (cpu_names, cpu_nr_counters): Add IA64 info.
+	* libop/op_cpu_type.h (op_cpu): Add IA64 enums.
+	* libop/op_events.c: Add defines for IA64 and IA64 events.
+	* libop++/op_print_event.cpp: Change include order to work on IA64.
+	* module/oprofile.c: Include "arch.h" file.
+	(evict_op_entry): Use IRQ_ENABLED macro.
+	(op_do_profile): Use INST_PTR and STATUS macros.
+	(oprof_init_data): Factor out computation.
+	* module/op_util.c (rvmalloc, rvfree): Typecasts.
+	* module/x86/arch.h: New.
+	* README: Update.
+	* utils/op_help.c (main): Add IA64 information.
+
+	* module/ia64/arch.h:
+	* module/ia64/cpu_type.c:
+	* module/ia64/IA64entry.h:
+	* module/ia64/IA64minstate.h:
+	* module/ia64/IA64syscallstub.h:
+	* module/ia64/Makefile.in:
+	* module/ia64/op_ia64_model.h: 
+	* module/ia64/op_pmu.c:
+	* module/ia64/oprofile_stubs.S:
+	* module/ia64/op_syscalls.c: New.
+
+2002-11-06  John Levon  <levon@movementarian.org>
+ 
+	* configure.in: 0.5cvs
+
+	* Makefile.in: mention doxyfile in release steps
+ 
+2002-11-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_to_source.cpp: op_to_source --source-with-assembly: avoid
+	  to be confused by source line which look like an asm line and
+	  stop incorrectly the output. This change go in 0.4 release
+
+2002-11-06  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.4 in prep for release
+
+2002-11-06  John Levon  <levon@movementarian.org>
+
+	* module/x86/cpu_type.c: detect if we actually are
+	  using HT (from Alex T)
+ 
+2002-11-05  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: manual fixes from Will Cohen
+ 
+2002-11-01  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c: fix lookup_dcookie usage
+ 
+	* libabi/.cvsignore: add
+ 
+2002-11-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/x86/op_apic.c: restore correctly the lvtpc register
+
+2002-11-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_hw_config.h: define DCOOKIE_SHIFT
+	* daemon/opd_image.c: use it
+
+2002-11-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/Makefile.in: cleanup, build and use libpp.a
+
+2002-10-31  John Levon  <levon@movementarian.org>
+
+	* pp/counter_array.cpp: using namespace std
+ 
+2002-10-31  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/.cvsignore:
+	* dae/opd_image.c:
+	* dae/opd_kernel.c:
+	* dae/opd_sample_files.c:
+	* dae/opd_stats.c:
+	* dae/oprofiled.c:
+	* daemon/opd_image.c:
+	* daemon/opd_sample_files.c:
+	* libop/op_config_24.h: cleanup, including some little merging
+	  from daemon to dae
+
+	* daemon/opd_image.c: change dcookie hashing function
+	
+	* doc/oprofile.xml: typo
+
+2002-10-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/file_manip.cpp:
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: cleanup
+
+	* pp/counter_array.h:
+	* pp/counter_array.cpp: add a bool empty() member to counter_array_t
+	* pp/sample_container_imp.cpp: use it
+
+2002-10-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: minor cleanup. Use config.h rather than gcc -D option
+
+	* libutil/op_libiberty.h:
+	* libutil++/op_bfd.h:
+	* pp/opp_symbol.h: #include <config.h>
+
+	* libutil/Makefile.in:
+	* pp/Makefile.in: remove BFD_CXXFLAGS
+
+2002-10-24  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp:
+	* libutil++/op_bfd.h: allow to specify explicetly on which symbol we
+	  want to work.
+
+	* pp/op_to_source_options.h:
+	* pp/op_to_source_options.cpp:
+	* pp/op_to_source.cpp: handle --include-symbol, for asm output only
+	  output for symbols with samplels or selected symbols.
+
+	* pp/oprofp.cpp:
+	* pp/samplesc_ontainer.cpp: minor change to reflect op_bfd api change
+
+2002-10-24  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_image.c: revert 64 bit dcookie patch commited
+	  accidentally with 2002-10-18 abi patch.
+
+2002-10-21  Graydon Hoare  <graydon@redhat.com>
+
+	* doc/oprofile.xml: Describe op_import and --enable-abi.
+
+2002-10-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/Makefile.in:
+	* pp/session.cpp:
+	* pp/session.h:
+	* pp/op_time_options.cpp:
+	* pp/op_to_source.cpp:
+	* pp/oprofpp.cpp:
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: handle --session options
+
+2002-10-19  John Levon  <levon@movementarian.org>
+
+	* configure.in: AC_HELP_STRING is too new for my autoconf
+ 
+2002-10-18  Graydon Hoare  <graydon@redhat.com>
+
+	* libabi/*: Add support for abi descriptions, for portability.
+	* daemon/oprofiled.c:
+	* dae/oprofiled.c: Emit abi description on startup.
+	* configure.in: Add --enable-abi option.
+	* make.common.in:
+	* Makefile.in: Support building libabi/
+ 
+2002-10-19  John Levon  <levon@movementarian.org>
+ 
+	* utils/op_start_25: grep -o does not exist on any of
+	  my systems - fix
+ 
+2002-10-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: calculate symbol size after removing duplicate
+	  symbol. Fix #625678
+
+2002-10-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_to_source.cpp:
+	* pp/op_to_source_options.cpp:
+	* pp/op_to_source_options.h:
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml:  allow to pass multiple options to objdump
+
+	* pp/opp_symbol.h:
+	* pp/samples_container.cpp: store symbol size in symbol_entry object.
+
+2002-10-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/child_reader.cpp: In some pathological case getline()
+	  finished too early when child process write on stderr.
+
+2002-10-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutill++/child_reader.cpp: read_block() : cumulate stderr
+	  output rather to overwrite always the same buffer space ...
+
+2002-10-16  John Levon  <levon@movementarian.org>
+
+	* utils/op_start_25: check if mounted, from Will Cohen
+	Also mkdir the mountpoint 
+ 
+2002-10-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: get linux include path earlier
+
+2002-10-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled: strerrno --> strerror
+
+2002-10-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events.c: typo in L2_DBUS_BUSY_RD PPro event name
+
+2002-10-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* README: update contrib
+	* TODO: update
+
+	* gui/oprof_start.cpp: better error message, fixme removal
+
+	* libdb/db-insert.c: fix samples count overflow.
+
+	* libdb/db.h:
+	* libdb/db-manage.c:
+	* libdb/db-debug.c: don't use page zero, use this value as nil page
+	  number, avoid to touch mmaped memory when growing the samples file.
+	* libop/op_config.h: bump OPD_VERSION
+
+2002-10-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/samples_file.h:
+	* pp/samples_file.cpp: move class opp_samples_files ...
+	* pp/opp_samples_files.h:
+	* pp/opp_samples_files.cpp: to these new files
+
+	* pp/Makefile.in:
+	* pp/op_to_source.cpp:
+	* pp/oprofpp.cpp: reflect above change
+
+2002-10-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_sample_files.c: fixme remove
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c: minor error message improvement
+
+	* pp/op_time.cpp:
+	* pp/symbol_container.cpp: fixme remove
+	
+	* pp/samples_file.cpp:
+	* pp/sample_file.h: privatize more data members
+
+2002-10-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/utility.h: op_ratio() new
+	* pp/op_time.cpp:
+	* pp/op_to_source.cpp:
+	* pp/opp_symbol.cpp:
+	* pp/samples_container.cpp: use op_ratio()
+
+2002-10-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/file_manip.cpp:
+	* libutil++/filename_match.cpp:
+	* libutil++/string_manip.cpp:
+	* libutil++/string_manip.h: fix dirname(), basename(), remove rtrim()
+
+2002-10-07  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.h:
+	* daemon/opd_image.c:
+	* daemon/oprofiled.c:
+	* libop/op_interface_25.h: update to latest interface
+
+2002-10-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_image.c: allow to free(image->app_name)
+
+2002-10-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_image.c:
+	* dae/opd_image.c: spacing
+
+	* dae/opd_mapping.c:
+	* dae/opd_mapping.h: kill op_grow_maps() simplify adding map path
+	* dae/opd_parse_proc.c: use opd_add_mapping()
+
+2002-10-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* doc/oprofile.xml: more doc in interpreting results
+
+2002-10-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opp_symbols.cpp:
+	* pp/opp_symbols.h:
+	* pp/outsymbflag.h: implement 'q' 'Q' format flags. Fix #618165
+	* pp/op_time_options.cpp: reject these formats for op_time
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: document them
+
+2002-10-02  John Levon  <levon@movementarian.org>
+
+	* Makefile.in: use -P to strip dead dirs on dist
+ 
+	* dae/opd_parse_proc.c: spacing
+
+2002-10-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db-*.c/*.h: typedef tweaking for 64 bits arch (signaled
+	  by Dave Jones)
+
+	* remove libdb/ChangeLog, old entries are:
+
+	2002-04-20  Philippe Elie  <phil.el@wanadoo.fr>
+	* db-insert.c: check for count overflow
+
+	2002-04-20  Philippe Elie  <phil.el@wanadoo.fr>
+	* db-manage.c: properly handle already existing db file
+	* db.h: extern "C" wrapper
+
+	2002-04-19  Philippe Elie  <phil.el@wanadoo.fr>
+	* *.c;*.h: make plugin db in oprofile more easy.
+
+	2002-04-18  Philippe Elie  <phil.el@wanadoo.fr>
+	* *.c;*.h: prefix all public identifier with db_.
+	  Use typedef as much I can rather than plain unsigned int.
+
+	2002-04-17  Philippe Elie  <phil.el@wanadoo.fr>
+	* db-debug.c:
+	* db-insert.c:
+	* db-manage.c:
+	* dbtest.c:
+	* db-travel.c:
+	* db.h: add file locking and necessary stuff to allow
+	  plugging db in an imbedded file format like oprofile
+	  samples files.
+
+	2002-04-16  Philippe Elie  <phil.el@wanadoo.fr>
+	* db-manage.c: silly bug fix, db works now with
+	  malloc/realloc or mmap/mremap memory allocation
+	  selected at compile time.
+
+	2002-04-14  Philippe Elie  <phil.el@wanadoo.fr>
+	* first import standalone code to test btree samples files
+
+2002-10-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/x86/op_msr.h: Hyper threading #define
+	* module/x86/cpu_type.c: include op_msr.h
+
+2002-10-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* */*.cpp: using std::xxx; --> using namespace std;
+
+2002-10-01  Will Cohen  <wcohen@redhat.com>
+ 
+	* module/x86/cpu_type.c (p4_threads): New.
+	  (get_cpu_type): Use p4_threads().
+	* doc/oprofile.xml: Add comment about P4 HT support.
+
+2002-10-01  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c: fix non --separate-samples. Still broke.
+ 
+2002-10-01  John Levon  <levon@movementarian.org>
+
+	* libop/op_cpu_type.h:
+	* libop/op_cpu_type.c: make this work on 2.5/normal both.
+	  Does not respect different mounted oprofilefs (yet)
+ 
+2002-10-01  John Levon  <levon@movementarian.org>
+
+	* daemon/.cvsignore: add
+ 
+	* libop/op_interface_25.h: 
+	* daemon/opd_image.h:
+	* daemon/opd_image.c:
+	* daemon/oprofiled.c: fixups for new encoded interface. Fix
+	  --separate-samples
+
+	* utils/op_start_25: startup fixes
+ 
+2002-09-26  Will Cohen  <wcohen@redhat.com>
+
+	* module/x86/op_model_p4.c: Correct TC_DELIVER_MODE cccr select.
+ 
+2002-09-23  Graydon Hoare  <graydon@redhat.com>
+
+	* dae/oprofiled.c:
+	* daemon/op_sample_files.c:
+	* daemon/oprofiled.c:
+	* pp/op_to_source.c:
+	* utils/op_help.c: u8 unit mask -> u16 unit-mask. I'm not sure this
+	  catches *all* the instances, but it does appear to be an improvement
+
+2002-09-30  William Cohen  <wcohen@redhat.com>
+
+	* libutil++/string_manip.cpp (sample_filename): Correct declaration.
+	* pp/samples_container.h: Correct add_samples() declaration. 
+
+2002-09-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/string_manip.cpp:
+	* libutil++/string_manip.h: sample_filename() new
+	
+	* pp/samples_container.cpp:
+	* pp/samples_container.h: add_samples() new
+	
+	* pp/op_merge.cpp:
+	* pp/op_time.cpp:
+	* pp/oprofpp.cpp:
+	* pp/samples_file.cpp: use them + minor cleanup
+
+2002-09-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libopt++/popt_options.cpp: fix #615760, in rare case
+	  oprofpp called with lot of invalid arguments segfault
+	  during the help printing. All post-profile tools are
+	  concerned by this fix.
+
+	* doc/oprofile.xml: small improvements
+
+	* libutil++/op_bfd.cpp: improve error message when bfd_openr() fails.
+	
+	* TODO: update
+
+2002-09-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_image.c:
+	* dae/opd_kernel.c:
+	* dae/opd_parse_proc.c:
+	* dae/opd_parse_parse.h:
+	* dae/opd_proc.c:
+	* dae/opd_sample_files.c:
+	* daemon/opd_image.c:
+	* daemon/opd_kernel.c:
+	* daemon/opd_sample_files.c:
+	* libop/op_cpu_type.c:
+	* libop/op_events.c:
+	* libop/op_events_desc.c:
+	* libopt++/popt_options.cpp:
+	* libutil/op_deviceio.c:
+	* libutil/op_file.c:
+	* libutil++/file_manip.cpp:
+	* libutil++/file_manip.h:
+	* libutil++/string_manip.h:
+	* pp/op_to_source.cpp: doxygen fix
+
+2002-09-27  John Levon  <levon@movementarian.org>
+
+	* configure.in: add --with-kernel-support for 2.5
+ 
+	* daemon/oprofiled.c: fix comment, give exit message on sig
+
+	* utils/Makefile.in:
+	* utils/op_stop_25: add 2.5 op_stop, no 2.5 op_dump
+
+	* utils/op_start_25: use enable
+ 
+2002-09-25  Bob Montgomery  <bobm@fc.hp.com>
+
+	* module/oprofile.c: avoid to dump zero samples count, fix #615087
+
+2002-09-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_image.c: fix #615166, ensure we recognize an
+	  existing image struct so we don't try to create db_tree_t
+	  object for the same samples files.
+	* db/db-debug.c: display page index when something goes wrong
+	* db/db-insert.c: be more strict on assertion
+
+2002-09-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/Makefile.in: remove dependencies for doc/html.xsl
+
+2002-09-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/xsl/.cvsignore: new
+	* doc/oprofile.xml: document watchdog problem
+
+2002-09-25  John Levon  <levon@movementarian.org>
+
+	* module/x86/op_nmi.c: OP_MAX_CPUS is not necessarily
+	  static so use NR_CPUS for array instead. Fix a prototype.
+ 
+2002-09-23  Graydon Hoare  <graydon@redhat.com>
+ 
+	* doc/oprofile.xml: Add some P4 documentation.
+	* configure.in: Add detection of different stylesheet paths.
+	* doc/xsl/xhtml.xsl.in: Parameterize by configure's result.
+	* doc/xsl/xhtml.xsl: Remove.
+	* dae/opd_sample_files.c: Change unit mask from 8 to 16 bits.
+	* gui/oprof_start.cpp: Change number of unit masks from 7 to 16.
+	* gui/ui/oprof_start.base.ui: Likewise.
+	* libop/op_cpu_type.c: Add P4 CPU type.
+	* libop/op_events.h: Change unit mask bit width, number.
+	* libop/op_events.c: Add P4 events, unit masks.
+	* libop_op_hw_config.h: Set OP_MAX_COUNTERS to 8.
+	* libop++/op_print_event.cpp: Change unit mask bit width.
+	* libop++/op_print_event.h: Likewise.
+	* module/oprofile.c: Add extra sysctls for counters 5-8.
+	* module/x86/Makefile.in: Add op_model_p4.o to obj list.
+	* module/x86/cpu_type.c: Change CPU identification to handle P4.
+	* module/x86/op_apic.c: (enable_apic): APIC_MAXLVT < 4, not != 4.
+	(check_cpu_ok): Accept CPU_P4.
+	* module/x86/op_model_p4.c: New file.
+	* module/x86/op_nmi.c: (get_model): Handle CPU_P4.
+	Add sysctl names for counters 5-8.
+	* module/x86/op_x86_model.h: Declare extern op_p4_spec.
+
+2002-09-24  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_image.c:
+	* dae/opd_image.h:
+	* dae/opd_kernel.c:
+	* dae/oprofiled.c:
+	* dae/p_module.h:
+	* dae/opd_image.c:
+	* dae/opd_kernel.c:
+	* dae/oprofiled.c:
+	* dae/p_module.h: small blank/comment change to minimize
+	  diff between daemon and dae dir.
+
+2002-09-23  John Levon  <levon@movementarian.org>
+
+	* configure.in: fix for 2.5 patch to build
+ 
+2002-09-23  John Levon  <levon@movementarian.org>
+
+	* utils/Makefile.in:
+	* utils/op_start_25: 2.5 patch start script
+ 
+2002-09-23  John Levon  <levon@movementarian.org>
+  
+  	* dae/opd_image.c:
+
+	* libop/op_cpu_type.c: fix arrays
+ 
+2002-09-23  John Levon  <levon@movementarian.org>
+
+	* utils/op_start: use right value for RTC CPU
+ 
+2002-09-23  John Levon  <levon@movementarian.org>
+
+	* libop/op_config.h:
+	* libop/op_config_24.h:
+	* libop/op_config_25.h: split config file up
+ 
+	* daemon/opd_kernel.c:
+	* daemon/oprofiled.c: include op_config_25.h
+
+	* dae/oprofiled.c:
+	* dae/opd_image.c:
+	* dae/opd_kernel.c:
+	* dae/opd_mapping.c: include op_config_24.h
+
+	* module/oprofile.h: include op_config_24.h
+ 
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_config.cpp: fix from above
+	  (old support only right now)
+
+	* libop/op_cpu_type.h: introduce 2.5-patch CPU_TIMER_INT
+
+2002-09-23  John Levon  <levon@movementarian.org>
+
+	* libop/op_interface_25.h: 2.5 interface
+
+	* daemon/opd_image.c:
+	* daemon/opd_sample_files.c:
+	* daemon/oprofiled.c:
+
+	* libop++/op_print_event.h: fix header
+
+	* pp/op_to_source.cpp: change from above
+
+2002-09-23  John Levon  <levon@movementarian.org>
+
+	* daemon/: new 2.5 patch daemon code. WIP
+
+	* configure.in:
+	* Makefile.in: detect 2.5 patch and build appropriately
+ 
+2002-09-23  John Levon  <levon@movementarian.org>
+
+	* module/x86/op_msr.h: match kernel naming
+
+	* module/x86/op_model_athlon.c: from above
+ 
+2002-09-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db-insert.c: bad cut&paste. Shame on me, I broke the build...
+
+2002-09-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db-insert.c: handle samples count overflow.
+	
+	* libdb/Makefile.in: db-test new target not built by default.
+	* libdb/db-debug.c: more strict checking
+	* libdb/db-test.c: allow db-test to be used as "db-test samples_dir/*"
+
+2002-09-22  John Levon  <levon@movementarian.org>
+
+	* dae/opd_stats.c: nicify
+ 
+	* module/x86/op_model_pproc.c:
+	* module/x86/op_model_athlon.c: drop macro prefixes, ws fixes
+
+	* module/x86/op_nmi.c: fix save/restore possible crash, init
+	  possible leak
+ 
+2002-09-22  Philippe Elie <phil.el@wanadoo.fr>
+
+	* module/x86/op_model_pproc.c: fix p6_start()
+	* module/x86/op_model_athlon.c: fix athlon_start()
+	* module/x86/op_nmi.c: pmc_save_registers() typo when checking
+	  null for kmalloc return value
+ 
+2002-09-20  Graydon Hoare  <graydon@redhat.com>
+
+	* module/x86/op_x86_model.h: New interface for MSRs.
+	* module/x86/op_nmi.c: Use interface.
+	* module/x86/op_model_ppro.c: New, code from op_nmi.c.
+	* module/x86/op_model_athlon.c: New, code from op_nmi.c.
+	* module/x86/Makefile.in: Reflect new files.
+
+2002-09-20  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.cpp: fix a bug where we broke
+	  with multiple executable sections due to sorting
+	  the symbols wrongly. Fix #617288 and the duplicated
+	  #617264
+
+	* libutil++/op_bfd.h: fix an outdated comment
+
+	* dae/opd_image.c: fix comment
+ 
+2002-09-19  Graydon Hoare  <graydon@redhat.com>
+
+	* libop/op_events.h:
+	* libop/op_events_desc.c: Move descriptions from here.
+	* libop/op_events_desc.h:
+	* libop/op_events.c: To here.
+	(um_*): Add new static unit masks.
+	(op_events): Use pointers to static unit masks.	
+	* libop++/op_print_event.h:
+	* libop++/op_print_event.cpp:
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp: 
+	* utils/op_help.c: Make compatible with struct changes.
+
+2002-09-18  John Levon  <levon@movementarian.org>
+
+	* utils/op_start: give an example for unit mask.
+ 
+2002-09-18  Will Cohen  <wcohen@redhat.com>
+
+	* libop/op_mangle.c: (op_mangle_filename): Correct logic for
+	  generating mangled name. Fix #611107
+	
+2002-09-15  John Levon  <levon@movementarian.org>
+
+	* libop/op_event.c: fix comment
+ 
+2002-09-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/x86/cpu_type.c: allow to force RTC mode.
+	* dae/oprofiled.c: checking when we need to backup samples
+	  dir in RTC mode was broken.
+
+2002-09-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_config.h: remove OP_MIN/MAX_PID, OP_MIN/MAX_PGRP
+	* gui/oprof_start.cpp: pid_filter/pgrp_filter accept all integer
+
+2002-09-13  John Levon  <levon@movementarian.org>
+
+	* acinclude.m4: another tweak
+ 
+2002-09-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* Makefile.in: never remove doc/oprofile.html.
+	* acinclude.m4: small work-around for sed-related problem
+
+2002-09-12  Will Cohen  <wcohen@redhat.com>
+
+	* Makefile.in: Separate kernel and user code build rules.
+
+2002-09-12  Will Cohen  <wcohen@redhat.com>
+ 
+	* libutil++/child_reader.h (child_reader): Add missing "std::".
+	* libutil++/child_reader.cpp (error_str): Ditto.
+ 
+2002-09-12  John Levon  <levon@movementarian.org>
+
+	* acinclude.m4: update from upstream
+ 
+2002-09-12  John Levon  <levon@movementarian.org>
+
+	* acinclude.m4: fix moc2/moc conflict, cache val
+ 
+2002-09-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/child_reader.cpp:
+	* libutil++/child_reader.h: fix for child terminated by a signal
+	* gui/oprof_start_util.cpp:
+	* pp/op_to_source.cpp: use the the new child_reader interface
+
+2002-09-11  John Levon  <levon@movementarian.org>
+
+	* acinclude.m4:
+	* configure.in:
+	* gui/Makefile.in: replace with new Qt configure script
+ 
+2002-09-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* acinclude.m4: fix qt3 detection in some corner case.
+
+2002-09-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/samples_container.cpp:
+	* pp/samples_container.h: Check at run time we don't try to use an
+	  unitialized samples_container_t.
+
+2002-09-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_time.cpp: exit sooner when no samples files are available.
+
+2002-09-09  Will Cohen  <wcohen@redhat.com>
+
+	* dae/opd_kernel.c (struct opd_module): 
+	  (kernel_start, kernel_end):
+	  (opd_parse_kernel_range):
+	  (opd_drop_module_sample):
+	  (opd_find_module_by_eip):
+	  (opd_handle_module_sample):
+	  (opd_handle_kernel_sample):
+	  (opd_eip_is_kernel):
+	* dae/opd_kernel.h (opd_handle_kernel_sample):
+	  (opd_eip_is_kernel):
+	* dae/opd_mapping.c (opd_put_mapping):
+	* dae/opd_mapping.h (struct opd_map):
+	  (opd_is_in_map):
+	  (opd_map_offset):
+	* dae/opd_parse_proc.c (opd_add_ascii_map):
+	* dae/opd_proc.c(verb_show_sample):
+	  (opd_put_image_sample):
+	* dae/opd_proc.h (opd_put_image_sample): Change things referring
+	  to addresses to unsigned long for operation on 64-bit machines.
+ 
+2002-09-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* all source file : remove email address from @author
+
+2002-09-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_interface.h: (op_sample, op_note): Make compatible with
+	  64-bit targets.
+	* dae/opd_proc.c: (opd_put_sample): Adjust verbprintf arguments.
+	  (opd_handle_fork): Ditto.
+	* dae/oprofiled.c: (opd_do_samples): Ditto.
+
+2002-09-04    Will Cohen  <wcohen@redhat.com>
+
+	* module/op_rtc.c: move to ...
+	* module/x86/op_rtc.c: here
+	* module/Makefile.in:
+	* module/x86/Makefile.in: reflect file move
+
+2002-09-03  Will Cohen  <wcohen@redhat.com>
+
+	* module/oprofile.h: (regparm3): remove, use FASTCALL instead.
+	* module/oprofile.c: (op_do_profile): Eliminate regparm3.
+
+2002-09-03  Will Cohen  <wcohen@redhat.com>
+
+	* module/oprofile.c: (oprof_read, oprof_note_read): Return ssize_t.
+
+2002-08-30  Will Cohen <wcohen@nc.rr.com>
+
+	* Makefile.in:
+	* make.common.in: more DESTDIR change
+
+2002-09-02  Dave Jones <davej@suse.de>
+
+	* module/x86/cpu_type.c: support hammer in ia32 mode
+
+2002-09-02  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: mention Qt 3
+ 
+2002-08-30  Will Cohen <wcohen@nc.rr.com>
+
+	* doc/Makefile.in: Set MANDIR and CATDIR based on DESTDIR.
+
+2002-08-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_kernel.c:
+	* dae/opd_kernel.h:
+	* dae/opd_proc.c:
+	* dae/opd_proc.h:
+	* dae/oprofiled.c:
+	* libop/op_hw_config.h:
+	* libop/op_interface.h:
+	* module/oprofile.c:
+	* module/oprofile.h: change the layout of data used between
+	  daemon/module (32 bits pid fix for 2.5.31)
+
+	* gui/oprof_start_config.h: use pid_t
+
+	* libutil/op_fileio.c: op_read_file(), op_write_file(), use %lu
+	  and cast, uglier solution but more portable than last fix
+
+	* utils/op_start: typo
+
+2002-08-14  William Cohen  <wcohen@nc.rr.com>
+ 
+	* libutil/op_fileio.c (op_read_file): Change fprintf specifier.
+	(op_write_file): Ditto.
+
+2002-08-08  Will Cohen  <wcohen@nc.rr.com>
+
+	* utils/op_start: Do not compute quantity of counters from
+	  CPUTYPE. Get counter names directly from /proc/sys/dev/oprofile.
+
+2002-08-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* Makefile.in:
+	* doc/Makefile.in: delete generated doc only on a make maintainerclean
+
+	* pp/opp_symbol.cpp: small cleanup
+
+2002-08-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_parse.c:
+	* dae/opd_proc.c:
+	* dae/opd_proc.h: fix #591275 which is a re-hash of #584723 we can
+	  now safely assume than proc->maps[0] is the primary image.
+	  Problem reported by William cohen
+
+2002-08-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/string_manip.h:
+	* libutil++/string_manip.cpp: separate_token() treat escape sequence
+
+2002-07-30  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp: apply misssing part from this patch
+	  2002-07-27  Will Cohen  <wcohen@nc.rr.com>
+
+	* dae/oprofiled.c:
+	* doc/oprofile.1.in:
+	* util/oprof_start:
+	* doc/oprofile.xml: clarify than pgrp filter is the tty program
+	  group id
+
+2002-07-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.h:
+	* pp/samples_file.cpp: op_get_cpu_nr_counters() / op_get_nr_counters()
+	  merge
+
+	* module/compat22.h:
+	* module/x68/op_apic.c: __cli()/__sti() removal, this fix build up
+	  to 2.5.29
+
+	* module/op_fixmap.c: fix test_bit() warning
+
+2002-07-27  Will Cohen  <wcohen@nc.rr.com>
+ 
+	* gui/oprof_start_config.cpp: config_setting::config_setting()
+	  uses uname to guess path to vmlinux. 
+
+2002-07-27  John Levon  <levon@movementarian.org>
+
+	* dae/opd_stats.h:
+	* dae/opd_stats.c: 
+	* dae/opd_proc.c: log unique samples vs. sample entries
+ 
+2002-07-27  Will Cohen  <wcohen@nc.rr.com>
+ 
+	* dae/oprofiled.c:
+	* gui/oprof_start.cpp:
+	* libop/op_cpu_type.h:
+	* libop/op_cpu_type.c: op_get_nr_counter() new, localize
+	  op_nr_counter computations.
+
+2002-07-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* utils/op_start: fix #587093, some option of op_start
+	  was incorrectly checked
+
+2002-07-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_time_options.cpp:
+	* pp/oprofpp_options.cpp: output format header or details are illegal
+	  if not combined with other output format flag
+
+	* pp/opp_symbol.cpp:
+	* pp/opp_symbol.h:
+	* pp/oprofpp.cpp:
+	* pp/outsymbflag.h: minor cleanup
+
+2002-07-25  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: bump to 0.4cvs
+ 
+2002-07-24  Kevin Puetz  <puetzk@iastate.edu>
+
+	* gui/ui/oprof_start.base.ui: fix resize
+ 
+2002-07-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/op_fileio.c:
+	* libutil/op_fileio.h: opd_get_link() new, read a symlink filename
+	* libutil++/file_manip.cpp:
+	* libutil++/file_manip.h: opd_read_link() use the above function
+
+	* dae/opd_image.c:
+	* dae/opd_parse_proc.c: fix #584723 we can not assume than the first
+	  map in /proc/pid/maps is the the map for the binary image
+
+2002-07-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: bump to 0.3
+ 
+2002-07-17  William Cohen  <wcohen@nc.rr.com>
+ 
+	* gui/oprof_start_util.cpp: get HZ from sysconf
+
+2002-07-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.base.ui: revert patch 2002-07-13, reapply
+	  the same modification with QT2 designer rather QT3 designer
+
+2002-07-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.in: set KVERS properly
+ 
+	* dae/oprofiled.c: remove eip == 0 checking
+ 
+	* module/oprofile.c: do check in evict_op_entry() instead,
+	  as suggested by Philippe
+ 
+2002-07-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* make.deps:
+	* gui/Makefile.in: fix include search path for dependencies generation
+
+2002-07-13  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/oprofiled.c: don't throw away last samples on shutdown
+	  notification
+ 
+2002-07-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml:
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_config.cpp:
+	* gui/oprof_start_config.h:
+	* gui/oprof_start.base.ui: remove kernel-range specification UI
+
+2002-07-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+ 
+	* dae/oprofiled.c:
+	* libop/op_interface.h: 
+	* module/oprofile.c: 
+	* module/oprofile.h:
+	* module/x86/op_nmi.c: 
+	* module/x86/op_syscalls.c: replace partial_stop,quitting,prof_on
+	  with single state variable, and clean up how shutdown is triggered.
+ 
+	* module/oprofile.c: always init data->entries etc. for every CPU
+ 
+2002-07-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* Makefile.in: typo in clean target
+
+	* module/compat.h:
+	* module/compat24.h:
+	* module/oprofile.c:
+	* module/x86/op_nmi.c: support for online/offline cpu for 2.5.23+
+
+2002-07-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* Makefile.in:
+	* module/Makefile.in:
+	* module/x86/Makefile.in: move all goal to the topdir Makefile
+
+2002-07-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* pp/op_time.cpp:  errno for file permission problem is
+	  EACCES not EPERM ...
+
+	* module/x86/op_apic.c:
+	* module/x86/op_fixmap.c:
+	* module/x86/op_nmi.c: revert partially the 2002-06-26 patch, preempt
+	  need rather to be fixed before/after calling the
+	  op_int_operation functions pointer.
+
+2002-07-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp: use <ctime> not <time.h>
+	* libutil/op_libiberty.c: don't assume than string.h is included
+	   by libiberty.h as in old gcc release
+
+2002-07-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: pass vector by const reference rather
+	  than by value
+
+	* pp/op_to_source.cpp: always output file even if the corresponding
+	  source file does not exist
+
+2002-07-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libopt++/popt_options.cpp: provide a dtor in derived class
+
+	* doc/oprofile.1.in:
+	* pp/op_to_source.cpp: --output --no-output are meaningfull
+	  in all case.
+
+2002-07-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp:
+	* pp/sample_container_imp.cpp:
+	* pp/symbol_container_imp.cpp:
+	* pp/op_to_source.cpp: fix an ISO corner case (3.4.2 #2)
+
+2002-07-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/filename_match.h:
+	* libutil++/filename_match.cpp: constify
+
+	* module/Makefile.in: small typo
+	* Makefile.in: do not make uninstall in module/arch
+
+	* pp/op_to_source_options.h:
+	* pp/op_to_source_options.cpp:
+	* pp/op_to_source.cpp: general cleanup, remove the output class and
+	  use free function instead, doxygen'ize them.
+
+2002-07-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events.cpp:
+	* libop/op_events.h:
+	* module/x86/op_nmi.c:
+	* dae/oprofiled.c: op_check_events() no longer accept 0 as valid events
+
+	* pp/opp_symbol.cpp: small dead code removal
+	* pp/opp_symbol.h: doxygen comment fix
+
+	* configure.in: do not use AC_CHECK_FILE: this macro generate
+	  spurious warning with autoconf 2.2.13
+
+	* pp/op_to_source_options.h:
+	* pp/op_to_source_options.cpp:
+	* pp/op_to_source.cpp:
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: implement --objdump-params='params_strings'
+	  allowing to pass additional parameters to objdump.
+
+2002-07-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/op_fileio.c: remove a FIXME, it's not worthwhile to try to
+	  use GNU getline() instead of op_get_line()
+
+	* pp/op_time.cpp:
+	* pp/op_time_options.cpp:
+	* pp/op_time_options.h:
+	* pp/oprofpp.cpp: remove minor FIXME
+
+	* pp/opp_symbol.h: class outut_symbol: clarify why, with the current
+	  design, some function are public member rather private.
+
+2002-07-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in:
+	* module/compat.h: fix compile error with kernel <= 2.2.17
+
+2002-07-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: minor upadte
+
+	* configure.in: support 2.5.20
+
+	* dae/opd_image.c:
+	* dae/opd_proc.c:
+	* libop++/op_print_event.h:
+	* libutil/op_popt.c:
+	* pp/op_merge.cpp:
+	* pp/samples_container.cpp:
+	* pp/symbol_container_imp.cpp:
+	* pp/symbol_functors.h: minor #include tweak
+
+2002-06-30  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db.h:
+	* libdb/db-manage.c: constify db_sync() parameter.
+
+	* dae/opd_image.c: fix #574459 "vmlinux samples file not backed up
+	  by op_session". Small cleanup by adding opd_for_each_image()
+
+2002-06-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* libutil++/filename_match.cpp:
+	* libutil++/filename_match.h: add a convenience ctor.
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml:
+	* op_time.cpp: better error message for EPERM problem
+	* op_time_options.h:
+	* op_time_options.cpp: allow the user to specify explicitely on which
+	  filename he want to work
+
+2002-06-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* acinclude.m4:
+	* configure.in:
+	* make.common.in:
+	* gui/Makefile.in:
+	* gui/ui/Makefile.in: better qt3 handling
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: fix oprof_start --option=blah
+
+2002-06-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* .cvsignore: minor fix
+
+	* configure.in:
+	* acinclude.m4: ugly temporary hack to compile with kde3/qt3
+	* oprof_start.cpp:
+	* oprof_start_config.cpp: gcc-3.1 and qt3 fix (qt3 have an
+	  hex() somewhere ...)
+
+	* module/x86/op_fixmap.c: minor comment fix
+
+2002-06-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* module/compat.h:
+	* module/x86/op_apic.c:
+	* module/x86/op_fixmap.c:
+	* module/x86/op_nmi.c: preemptible kernel support. This fix point
+	  #2 of kernel_src/Documentation/preempt-locking.txt
+
+2002-06-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: document op_start --kernel-range option
+	* gui/oprf_start.cpp:
+	* gui/oprof_start.h:
+	* gui/oprof_start_config.cpp:
+	* gui/oprof_start_config.h: 
+	* gui/ui/oprof_start_base.ui:
+	* utils/op_start: implement --kernel-range
+
+	* gui/Makefile.in: force ui sub-dir build
+	
+2002-06-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* configure.in: new AX_KERNEL_VERSION()  to allow kernel version check,
+	  use it to check minimal kernel version and fix 2.5.19 breakage
+	* module/.cvsignore:
+	* module/x86/.cvsignore: add .*.cmd
+	* module/Makefile.in:
+	* module/x86/Makefile.in: fix 2.5.19 make through EXTRA_CFLAGS_MODULE
+	* module/compat22.h: fix missing BUG() definition in 2.2 kernel
+	* module/x86/oprofile_nmi.S: fix minor 2.2 compile problem
+
+	* pp/op_to_source.cpp: minor comment fix
+
+2002-06-18  John Levon  <moz@compsoc.man.ac.uk>
+
+	* utils/op_start:
+	* pp/samples_file.h:
+	* libop/op_config.h:
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml:
+	* dae/oprofiled.c:
+	* dae/opd_kernel.h:
+	* dae/opd_kernel.c: don't parse System.map any more,
+	  now we work based off vmlinux alone
+	 
+	* dae/opd_proc.c: move eip_is_kernel() into opd_kernel.c
+ 
+2002-06-18  John Levon  <moz@compsoc.man.ac.uk>
+
+	* README:
+	* doc/oprofile.xml: update credits
+ 
+2002-06-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/op_time_options.h:
+	* pp/op_time_options.cpp: move private stuff out of
+	  options namespace
+ 
+2002-06-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/counter_util.cpp: stop when we reach the first
+	  available counter for sorting
+
+	* pp/op_to_source.cpp: use absolute sample file name 
+
+	* pp/samples_file.cpp: better error message
+
+2002-06-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* various: remove spurious == false, == true
+ 
+2002-06-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/oprofiled.c:
+	* libop/op_interface.h:
+	* libop++/op_print_event.h:
+	* module/oprofile.c: define a buffer head for the module
+	  buffer interface, and use it
+ 
+	* module/Makefile.in: oops, install the module properly
+ 
+2002-06-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libop/Makefile.in:
+	* libop/op_cpu_type.h:
+	* libop/op_cpu_type.c: new files split out, defines
+	  changed
+
+	* dae/opd_proc.c:
+	* dae/opd_sample_files.c:
+	* dae/oprofiled.c:
+	* gui/oprof_start.cpp:
+	* libop/op_events.h: 
+	* libop/op_events.c: 
+	* libop/op_events_desc.h:
+	* libop/op_events_desc.c: 
+	* libop/op_interface.h:
+	* libop++/op_print_event.h: 
+	* module/oprofile.h:
+	* module/x86/op_nmi.c: changes from above
+ 
+2002-06-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.in: compile module early as it's most
+	  likely to fail
+ 
+	* TODO: update
+ 
+	* doc/oprofile.xml:
+	* configure.in: remove unneeded --with-cc
+ 
+	* module/x86/Makefile.in: use USE_STANDARD_AS_RULE
+ 
+	* module/x86/op_nmi.c: add preemption exclusion
+
+2002-06-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/opd_parse_proc.c: remove FIXME. We are fine to
+	  assume first entry in maps is the executable, because
+	  this is exactly what the kernel does (see /proc/pid/exe)
+ 
+2002-06-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/oprofpp.cpp: call check_mtime() correctly
+	  for shared libraries
+ 
+2002-06-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libop/op_events.c: add warning
+ 
+	* module/Makefile.in: link against libop.a like I meant to
+ 
+	* module/oprofile.h:
+	* module/oprofile.c: readability cleanup
+ 
+2002-06-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/compat.h:
+	* module/x86/arch_compat.h: remove arch_compat.h,
+	  add BUG_ON()
+
+	* module/op_util.c: return -EINVAL not 1 from check_range() 
+
+	* module/oprofile.c: use BUG_ON() in release functions,
+	  fix use of check_range, remove spurious check for malloc
+	  failure (already checked)
+
+	* module/oprofile.h: clarify API 
+
+	* module/x86/op_msr.h: new file, MSR back-compat
+
+	* module/x86/op_nmi.c:
+	* module/x86/op_apic.c: use it
+ 
+2002-06-10  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+ 
+	* configure.in: remove old checks we don't need.
+	  Add to EXTRA_CFLAGS not KCFLAGS 
+
+	* module/Makefile.in: update to use Rules.make and
+	  kernel rules.
+ 
+	* module/op_init.c: make this one include kernel modversion
+	  stuff for 2.2
+ 
+	* module/oprofile.h: remove __cacheline_aligned in wrong place
+
+	* module/x86/Makefile.in: use Rules.make (hacky)
+
+	* module/x86/arch.mak: remove
+ 
+	* module/x86/op_fixmap.c: add missing header
+ 
+	* module/x86/op_syscalls.c: my_sys_exit is not static
+ 
+2002-06-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/cverb.h:
+	* libutil++/cverb.cpp: cverb ostream initializations
+	* pp/op_merge.cpp:
+	* pp/op_time_options.cpp:
+	* pp/op_to_source_options.cpp:
+	* pp/oprofpp_options.cpp: use it
+
+	* utils/Makefile.in: fix a typo in lib dependencies
+
+2002-06-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* pp/samples_container.cpp:
+	* pp/samples_container.h: add an hint parameter to add()
+	  used to avoid recording all samples.
+	* pp/oprofpp.cpp: use it for the -s option. This change
+	  slightly behavior of oprofpp -s, now percent are relative
+	  to the selected symbol, not to the whole samples file.
+	  Performance of oprofpp -s are improved a lot (40 times on vmlinux)
+
+	* utils/Makefile.in: missing libs dependencies
+
+2002-06-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/Makefile.in:
+	* dae/Makefile.in:
+	* gui/Makefile.in: update dependencies for library
+
+2002-06-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libopt++/popt_options.cpp:
+	* libopt++/popt_options.h: memory leak fix
+
+2002-06-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/Makefile.in: fix bfd compilation problem
+	  with gcc >= 3.0 and old bfd.h
+	* module/Makefile.in:
+	* module/x86/Makefile.in: fix -Werror typo
+	* pp/op_merge.cpp:
+	* pp/op_time_options.cpp:
+	* pp/op_to_source_options.cpp:
+	* pp/oprofpp_options.cpp: work around for cverb
+	  initialisations and gcc 2.91.
+	* pp/op_to_source.cpp: use the right comand line argument.
+
+2002-06-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* libutil++/utility.h: fix stupid bug, add scoped_array
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: use it
+
+2002-06-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libutil++/utility.h: add a scoped_ptr
+
+	* pp/op_to_source.cpp:
+	* pp/samples_container.h:
+	* pp/samples_container.cpp: use it
+
+2002-06-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/opd_kernel.c: remove some duplicate code
+ 
+2002-06-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/opp_symbol.cpp: kill last of the accursed char
+	  arrays
+
+2002-06-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libutil++/op_bfd.cpp:
+	* libutil++/op_bfd.h:
+	* libutil++/verbose_ostream.h:
+	* pp/op_merge.cpp:
+	* pp/op_time_options.cpp:
+	* pp/oprofpp_options.cpp:
+	* pp/op_to_source_options.cpp: remove verbose_ostream
+	  in favour of a much simpler solution
+ 
+	* module/oprofile.h: remove dead prototype
+ 
+2002-06-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/x86/Makefile.in:
+	* module/Makefile.in: remove 2.91 check, add 2.5 check
+ 
+	* module/compat22.h:
+	* module/compat24.h:
+	* module/apic_up_compat.h: move to ...
+
+	* module/x86/op_apic.h:
+	* module/x86/apic_compat.h: ... here
+ 
+	* module/compat.h: move arch stuff to ...
+
+	* module/x86/arch_compat.h: ... here
+ 
+2002-06-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: remove gcc 2.91 check
+	* make.common.in: use -Werror even for gcc 2.91
+	* gui/oprof_start.cpp:
+	* libutil++/op_bfd.cpp:
+	* pp/derive_files.cpp:
+	* pp/op_to_source.cpp: small tweak for gcc 2.91 and -Werror
+
+2002-06-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/op_rtc.c: use check_range
+ 
+2002-06-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: fix typo so non-2.91 is detected
+ 
+	* module/Makefile.in:
+	* module/x86/Makefile.in: enable -Werror
+
+	* module/op_dname.c:
+	* module/oprofile.h:
+	* module/oprofile.c:
+	* module/op_util.h:
+	* module/op_util.c:
+	* module/x86/op_nmi.c: add op_util.h, make
+	  op_check_range a function check_range
+ 
+2002-06-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/Makefile.in: use @CC@, add clean for x86
+
+	* module/compat24.h: add path_hash prototype 
+ 
+	* module/x86/Makefile.in: use @CC@, make sure
+	  options get picked up
+ 
+2002-06-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libutil/op_get_time.c: return "" not NULL
+	  on failure, so we don't try to printf NULL
+ 
+	* module/op_dname.c: do_path_hash_2_4 should not be static now 
+
+	* module/oprofile.c: add const
+ 
+2002-06-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/x86: new directory, for now some small portion
+	  of x86 dependant code remains in module/* mainly in
+	  oprofile.[ch]. This patch also don't take care about
+	  libop/* which are architecture dependant
+
+	* module/op_apic.c:
+	* module/op_nmi.c:
+	* module/op_syscalls.c:
+	* module/oprofile_nmi.S:
+	* module/op_fixmap.c: move this file to ...
+	* module/x86/op_apic.c:
+	* module/x86/op_nmi.c:
+	* module/x86/op_syscalls.c:
+	* module/x86/oprofile_nmi.S:
+	* module/x86/op_fixmap.c: these new files
+	* module/x86/op_apic.c: x86 stuff
+	* module/x86/arch.mak: specific arch makefile fragment
+	* module/op_init.c: move cpu detection code ...
+	* module/x86/cpu_type.c: here
+	* module/Makefile: handle arch sub-dir
+	* module/x86/.cvsignore: new
+	* module/oprofile.h: declare the interface to the
+	  architecture dependant code
+
+	* Makefile.in:
+	* configure.in: handle module/arch
+	* make.common.in: avoid -Werror with gcc 2.91
+	* make.deps: small tweak allowing to use it in module
+
+2002-06-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: use CXXINCLUDES not CXXFLAGS
+	for including sstream
+ 
+	* make.common.in: remove duplicate -g -O2
+ 
+	* include/sstream: fix compiler warning to
+	  allow -Werror
+ 
+	* libutil/op_file.c:
+	* libutil/op_fileio.h:
+	* libutil/op_fileio.c: more API fixage
+
+	* libutil++/file_manip.cpp: add missing header
+ 
+2002-06-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* make.common.in: enable -Werror for CVS builds
+	(not in module/)
+ 
+	* dae/opd_image.c:
+	* dae/oprofiled.c:
+	* libutil/op_deviceio.h:
+	* libutil/op_deviceio.c: API fixes
+
+	* libutil++/file_manip.h:
+	* libutil++/file_manip.cpp: 
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp:
+	* pp/op_time.cpp:
+	* pp/oprofpp.cpp: 
+	* libutil/op_lockfile.c: 
+	* libutil/op_file.h:
+	* libutil/op_file.c: add op_file_readable(),
+	  API fixes 
+ 
+2002-06-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* utils/op_stop: fail early if ! root
+ 
+2002-06-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/*: s/OutputSymbol/output_symbol/,
+	  s/OutSymbFlag/outsymbflag/
+ 
+2002-06-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/op_time_options.cpp:
+	* pp/op_time_options.h:
+	* pp/op_to_source_options.h:
+	* pp/oprofpp_options.h: document
+
+2002-06-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/Makefile.in:
+	* pp/counter_util.h:
+	* pp/counter_util.cpp: move from ...
+
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp: ... here (removed)
+
+	* pp/op_time.cpp:
+	* pp/op_time_options.cpp: 
+	* pp/op_to_source.cpp: 
+	* pp/opp_symbol.h: 
+	* pp/oprofpp.cpp:
+	* pp/oprofpp_options.h: 
+	* pp/oprofpp_options.cpp: 
+	* pp/samples_container.h: 
+	* pp/samples_container.cpp: 
+	* pp/samples_file.h:
+	* pp/samples_file.cpp: changes from above
+
+2002-06-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libutil++/file_manip.h:
+	* libutil++/file_manip.cpp: move oprofile specific stuff
+	  to ...
+ 
+	* libop++/op_mangling.h:
+	* libop++/op_mangling.cpp: ... here
+
+	* pp/Makefile.in:
+	* pp/op_bfd.h:
+	* pp/op_bfd.cpp: move to ...
+ 
+	* libutil++/Makefile.in:
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: ... here 
+ 
+	* libutil++/verbose_ostream.h: add
+ 
+	* pp/op_merge.cpp:
+	* pp/op_time.cpp: 
+	* pp/op_time_options.h:
+	* pp/op_time_options.cpp:
+	* pp/op_to_source.cpp: 
+	* pp/op_to_source_options.h:
+	* pp/op_to_source_options.cpp:
+	* pp/oprofpp.h: 
+	* pp/oprofpp.cpp: 
+	* pp/oprofpp_options.h:
+	* pp/oprofpp_options.cpp:
+	* pp/oprofpp_util.cpp:
+	* pp/samples_file.h: various changes and
+	  cleanups from above
+ 
+	* pp/derive_files.cpp: remove now duplicate code
+ 
+2002-06-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libutil++/file_manip.h:
+	* libutil++/file_manip.cpp: simplify but don't
+	  break already absolute paths, remove dead code
+ 
+	* pp/op_time_options.h:
+	* pp/op_time_options.cpp:
+	* pp/op_time.cpp: remove dead code
+ 
+	* pp/op_to_source_options.h: 
+	* pp/op_to_source_options.cpp:
+	* pp/oprofpp_options.h:
+	* pp/oprofpp_options.cpp: variable name tweaks
+
+	* pp/Makefile.in:
+	* pp/op_to_source.cpp: 
+	* pp/oprofpp.cpp:
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp:
+	* pp/derive_files.h:
+	* pp/derive_files.cpp: factor command-line file
+	  derivation guessing out
+ 
+2002-06-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libop++/op_print_event.cpp:
+	* pp/op_bfd.h: 
+	* pp/op_time_options.cpp: 
+	* pp/op_to_source_options.cpp: 
+	* pp/oprofpp_options.cpp: fixes for std
+ 
+	* pp/Makefile.in:
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp:
+	* pp/samples_file.cpp:
+	* pp/opp_symbol.h:
+	* pp/counter_array.h:
+	* pp/counter_array.cpp: factor out counter_array
+ 
+2002-06-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/oprofpp.h:
+	* pp/samples_file.cpp:
+	* pp/oprofpp_util.cpp: remove a sanity check
+	  that wasn't particularly useful
+ 
+2002-06-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libop++/Makefile.in:
+	* libop++/op_mangling.h:
+	* libop++/op_mangling.cpp:
+	* pp/op_merge.cpp:
+	* pp/op_time.cpp:
+	* pp/oprofpp.cpp: 
+	* pp/oprofpp.h: 
+	* pp/oprofpp_util.cpp: move mangle/unmangle to libop++
+ 
+2002-06-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/Makefile.in:
+	* pp/op_to_source.cpp:
+	* pp/opp_symbol.cpp:
+	* pp/demangle_symbol.h:
+	* pp/demangle_symbol.cpp: move this ...
+ 
+	* libutil++/Makefile.in:
+	* libutil++/demangle_symbol.h:
+	* libutil++/demangle_symbol.cpp: ... to here
+
+2002-06-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* make.common.in: 
+	* make.deps: split out CXXINCLUDES
+ 
+	* Makefile.in:
+	* configure.in:	
+	* libop++/Makefile.in:
+	* libop++/op_print_event.h:
+	* libop++/op_print_event.cpp:
+	* pp/Makefile.in:
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp:
+	* pp/samples_file.cpp: start libop++ library,
+	  move op_print_event there
+
+	* pp/op_bfd.h:
+	* pp/op_bfd.cpp: 
+	* pp/op_time.cpp: 
+	* pp/op_to_source.cpp: 
+	* pp/oprofpp.cpp: 
+	* pp/samples_file.h:
+	* pp/samples_file.cpp: remove all knowledge of
+	  is_kernel from op_bfd, some minor cleanups
+ 
+2002-06-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/op_bfd.h:
+	* pp/op_bfd.cpp:
+	* pp/samples_container.cpp: kill another char*
+ 
+	* pp/outsymbflag.h: reduce fake dependencies with
+	  new file, little cleanup
+
+	* pp/Makefile.in:
+	* pp/demangle_symbol.cpp:
+	* pp/op_merge.cpp:
+	* pp/op_time.cpp:
+	* pp/op_time_options.h:
+	* pp/op_time_options.cpp:
+	* pp/op_to_source.cpp:
+	* pp/op_to_source_options.h:
+	* pp/op_to_source_options.cpp:
+	* pp/opp_symbol.h:
+	* pp/oprofpp.h:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp_options.h:
+	* pp/oprofpp_options.cpp:
+	* pp/oprofpp_util.cpp: Some more refactoring. More work
+	  needed...
+ 
+2002-06-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* doc/Makefile.in: fix DOCDIR (from Al Stone)
+ 
+2002-06-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libutil++/file_manip.h:
+	* libutil++/file_manip.cpp: clarify API
+ 
+	* pp/oprofpp.cpp: fix bug 563324 resulting from above
+
+2002-06-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* make.common.in: make --with-extra-lib work again
+
+	* dae/opd_image.h:
+	* dae/opd_image.c: comment typos
+
+	* doc/srcdoc/Doxyfile: generate PNG not GIF 
+ 
+2002-05-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/srcdoc/Doxyfile:
+	* libopt++/popt_options.cpp:
+	* libopt++/popt_options.h:
+	* pp/symbol_container_impl.h: small doxygen tweak.
+
+2002-05-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/oprofiled.c: minor bug when backing up samples dir
+
+	* libopt++/popt_options.h:
+	* libopt++/popt_options.cpp: avoid to force client code to
+	  explicitly select the option template specializations.
+
+	* pp/op_merge.cpp:
+	* pp/op_time.cpp:
+	* pp/op_to_source.pp:
+	* pp/oprofpp.cpp: we no longer need explicit template
+	  instantiations for options
+
+2002-05-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/oprofpp.cpp: fix a missing SAMPLES_DIR prepend
+
+2002-05-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* lib/util/op_file.c:
+	* utils/op_session.c: restore accidentally lost
+	  commits :
+
+	2002-05-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+		* dae/op_session.c: tweak error message when session already
+		  exist. Avoid to op_dump when profiler is not started.
+
+	2002-05-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+		* dae/op_session.c: do not create empty session directory
+		  and backup oprofileg.log too
+		* dae/opd_util.c:
+		* op_user.h: minor related change
+
+2002-05-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/*: complete re-organisation of files
+ 
+	* libop/op_config.h: add VMA_OFFSET and MAX_MODULES
+	  tunables
+ 
+2002-05-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui:
+	* libdb:
+	* libopt++:
+	* libutil:
+	* libutil++:
+	* oprof_report:
+	* pp: all C/c++ source/header file, fix a few doxygen warning,
+	  many const type to  type const + other minor comestic change.
+
+2002-05-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libopt++/popt_options.cpp: my usual boring shit
+ 
+	* libopt++/popt_options.h: document
+
+	* libutil/op_popt.h: POPT_TABLEEND missing in some popt.h
+ 
+	* TODO: update
+ 
+	* doc/oprofile.xml: add some to ack.html
+ 
+	* libop/op_events_desc.c: fix long-standing typo
+ 
+2002-05-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in:
+	* Makefile.in:
+	* libopt++/*: new directory, command line options handling
+	
+	* make.common.in:
+	* pp/Makefile.in:
+	* pp/op_merge.cpp:
+	* pp/op_time.cpp:
+	* pp/op_to_source.cpp:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp: use libpopt++
+
+2002-05-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+2002-05-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/op_bfd.cpp: fix bug coming from mis-placed
+	strlen() brackets
+ 
+	* pp/op_bfd.h:
+	* pp/op_bfd.cpp: kill some more char[]s to avoid silly
+	  bugs like the above
+ 
+	* README: some minor change
+ 
+2002-05-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/compat.h:
+	* module/op_fixmap.c:
+	* module/op_syscalls.c:
+	* module/oprofile.c:
+	* module/oprofile.h:
+	* module/oprofile_nmi.S: fix module up to kernel 2.5.15
+
+	* module/compat22.h: small fix for 2.2
+
+2002-05-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/op_fixmap.c: revert my last change :/. Something is
+	  wrong with oprofiel and 2.5.15 but elsewhere
+
+2002-05-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/op_fixmap.c: fix a long time outstanding bug,
+	  we tested bit in the address of x86_capability
+	  rather the capability itself.
+
+2002-05-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_proc.c: from a typo in opd_put_image_samples first
+	  incoming samples for each image was always ignored. As
+	  a side effect if opd_open_sample_file() fail the daemon
+	  will die with a seg fault. This behavior is in 0.2 release.
+	  fix #556918
+
+2002-05-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* utils/op_start: typo in detect stale lock file
+
+2002-05-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/*: gcc 3.1 compilation.
+
+2002-05-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_proc.c: close samples files at cleanup
+
+	* libdb/db-insert.cpp: if we don't lock the file when creating
+	  the root we must ensure than initialization is atomic
+
+	* pp/op_bfd.cpp:
+	* pp/op_bfd.h:
+	* pp/op_time.cpp:
+	* pp/op_to_source.cpp:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp:
+	* pp/samples_file.cpp:
+	* pp/samples_file.h: move all coherency check between a op_bfd and
+	  it's related opp_samples_files outside these class
+
+	* pp/samples_container.cpp: small modification allowing to privatize
+	  op_bfd::ibfd pointer.
+
+2002-05-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* libutil/op_lockfile.c: detect and remove stale
+	  lock files
+
+	* utils/op_start: detect stale lock file
+ 
+2002-05-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/Makefile.in:
+	* pp/op_time.cpp:
+	* pp/op_to_source.cpp:
+	* pp/oprofpp.cpp:
+	* pp/samples_container.h:
+	* pp/samples_container.cpp:
+	* pp/sample_container_imp.h:
+	* pp/sample_container_imp.cpp:
+	* pp/symbol_container_imp.h:
+	* pp/symbol_container_imp.cpp:
+	* pp/symbol_functors.h: some more file-refactoring, and some
+	  minor changes
+ 
+2002-05-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/oprofpp.cpp: only allow -r with -l
+	* doc/oprofile.1.in: document -r for oprofpp
+ 
+2002-05-15  William Cohen  <wcohen@nc.rr.com>
+ 
+	* pp/oprofpp.cpp: Added "-r" reverse sort option.
+
+2002-05-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/utility.h: fix a copyright problem, work-around
+	  a (probable) gcc 2.91 bug.
+
+	* pp/op_bfd.cpp: valgrind exposed a delete problem.
+
+	* pp/op_time.cpp:
+	* pp/op_to_source.cpp:
+	* pp/oprofpp.cpp:
+	* pp/samples_container.cpp:
+	* pp/samples_container.h:
+	* pp/samples_container.cpp:
+	* pp/samples_container.h: change the handling of shared lib,
+	  we no longer allow samples_container_t to auto load related
+	  samples files belonging to a shared lib but we create at a higher
+	  level an explicit list of samples files : fix #555276
+
+	* pp/op_to_source.cpp:
+	* pp/sample_container.cpp:
+	* pp/opp_symbol.cpp: demangle symbol only when we output
+	  symbol name, not when we store symbol name in internal
+	  representation of symbol.
+
+2002-05-14  Cliff Woolley  <jwoolley@apache.org>
+
+	* gui/oprof_start.cpp: allow Qt3 compilation
+
+2002-05-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/oprofile.xml: clarify RTC use, fix #555302
+
+	* gui/oprof_start_util.cpp: missing closedir(). Fix #555268
+	  Thanks to William Cohen for his precise report.
+
+	* module/Makefile.in: fix #555304, a non-native compiler can
+	  fail to compile oprofile
+
+	* libutil++/utility.h: class noncopyable
+	* pp/samples_file.h: use it
+
+2002-05-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events_desc.c:
+	* libop/op_events_desc.h:
+
+	* pp/op_bfd.h:
+	* pp/op_bfd.cpp:
+	* pp/op_to_source.cpp:
+	* pp/oprofpp.h:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp_util.cpp:
+	* pp/samples_file.cpp:
+	* pp/samples_file.h:
+	* pp/samplesfile.h: fix some FIXME
+
+2002-05-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/oprofiled.c: delete lockfile on SIGTERM
+ 
+	* pp/samples_file.h:
+	* pp/samples_file.cpp: minor changes
+
+2002-05-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_bfd.cpp:
+	* pp/op_bfd.h: ehance op_bfd_symbol ...
+	* pp/oprofpp.cpp:
+	* pp/samples_container.cpp: move handling of image w/o symbol
+	  in op_bfd
+
+	* pp/samples_file.h: ehance comment (John's work)
+
+2002-05-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_bfd.cpp:
+	* pp/op_bfd.h:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp.h:
+	* pp/samples_files.cpp: minor cleanup
+
+2002-05-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_bfd.h:
+	* pp/op_bfd.cpp:
+	* pp/opp_symbol.h:
+	* pp/opp_symbol.cpp:
+	* pp/oprofpp.cpp:
+	* pp/samples_container.h:
+	* pp/samples_container.cpp: more typedef for indexed things
+
+2002-05-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/*: split oprofpp_util.cpp, oprofpp.h to these ..
+	* pp/samples_file.cpp: new file
+	* pp/samples_file.h: new file
+	* pp/op_bfd.cpp: new file
+	* pp/opbfd.h: new file
+
+	* pp/*: add a symbol_index_t typedef
+
+2002-05-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/srcdoc/Makefile: always clean before building
+	* doc/srcdoc/Doxyfile: ehance file filtering
+
+	* pp/oprofpp.h: small typo fix
+
+2002-05-10  Philippe Elie  <phil.el@wanadoo.fr>	
+
+	* pp/oprofpp.h:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp_util.cpp:
+	* pp/samples_container.cpp: generalize infrastucture for symbol
+	  vma/size
+
+	* pp/op_time.cpp: allow to exclude symbol with op_time -l
+
+2002-05-09  John Levon  <moz@compsoc.man.ac.uk>
+
+	* doc/xhtml-chunk.xsl:
+	* doc/xhtml-common.xsl:
+	* doc/xhtml.xsl:
+	* doc/Makefile.in: some small improvements
+ 
+	* doc/src/doc/Doyxfile: add FIXME
+
+	* gui/oprof_start.cpp:
+	* libop/op_events_desc.h:
+	* libop/op_events_desc.c:
+	* libutil/filename_match.h: 
+	* oprof_report/oprofpp_view.h: 
+	* pp/op_time.cpp: 
+	* pp/opp_symbol.h:
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp:
+	* pp/samples_container.cpp: 
+	* pp/samples_container.h: more doxygen etc. fixes
+ 
+2002-05-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* pp/op_symbol.cpp: better column handling with oprofpp -L
+
+2002-05-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/Makefile.in:
+	* gui/Makefile.in:
+	* pp/Makefile.in:
+	* utils/Makefile.in: fix make uninstall
+
+2002-05-08  Philippe Elie  <phil.el@wanadoo.fr>
+	
+	* pp/opf_filter.cpp: move to ...
+	* pp/op_to_source.cpp:
+	* pp/opf_container.cpp: move to ..
+	* pp/samples_container.cpp:
+	* pp/opf_filter.h: move to ...
+	* pp/samples_container.h:
+	* pp/Makefile.in:
+	* pp/.cvsignore: update
+
+	* oprof_report/hotspotview.cpp:
+	* oprof_report/hotspotview.h:
+	* oprof_report/op_view.h:
+	* oprof_report/oprof_report.cpp:
+	* oprof_report/oprof_report.h:
+	* oprof_report/oprof_view.cpp:
+	* oprof_report/oprof_view.h:
+	* pp/op_time.cpp:
+	* pp/opf_container.cpp:
+	* pp/opf_filter.cpp:
+	* pp/opf_filter.h:
+	* pp/opp_symbol.cpp:
+	* pp/opp_symbol.h:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp.h: samples_files_t -> samples_container_t
+
+	* ui/.cvsignore: update
+
+	* pp/opf_filter.cpp: move filename_match ...
+	* libutil++/filename_match.cpp: here
+	* libutil++/filename_match.cpp:
+	* libutil++/Makefile.in:
+
+	* pp/Makefile.in: fix typo that prevent op_to_source
+	  to be recompiled
+
+2002-05-08  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* doc/Makefile.in: make clean delete *.html
+ 
+	* libdb/db-debug.c: pedantry
+ 
+	* libutil/op_fileio.h:
+	* libutil/op_fileio.c:
+	* pp/oprofpp.cpp: remove unused code and change
+	  function names
+ 
+2002-05-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/op_libiberty.h: fix compile error (missing
+	  size_t definition)
+
+2002-05-08  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.in: missing backslash
+ 
+2002-05-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* <various>: OK I lied. Fix some doxygen warnings,
+	  and some char const *a -> const char * a
+ 
+	* doc/srcdoc/Makefile: add
+ 
+2002-05-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* <all>: ok, fix the headers properly. Last tedious
+	  patch, I promise.
+ 
+	* dae/opd_util.h: finally remove !
+ 
+2002-05-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* <various>: move to new header style, doxygen
+	  should use @param blah not @blah: or \param blah 
+
+	* doc/srcdoc/Doxyfile: new file for api docs
+
+	* scripts/Doxyfile:
+	* scripts/dodoc: remove
+ 
+2002-05-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: don't add KINC to BKCFLAGS directly
+ 
+	* module/Makefile.in: re-write
+ 
+	* TODO: update
+ 
+2002-05-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	Massive re-organisation of code + build. Most
+	files have been changed. Some small cosmetic
+	changes.
+ 
+	* libutil/:
+	* libutil++/: general-purpose utility libs
+
+	* libop/: oprofile-specific utility lib
+
+	* utils/: moved op_start et al to this dir
+
+	* events/:
+	* util/: removed
+
+	* libutil++/child_reader.cpp: make sure to set
+	  member "pid", not local variable
+
+2002-05-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/op_session.c: tweak error message when session already
+	  exist. Avoid to op_dump when profiler is not started.
+
+2002-05-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update:
+
+	* dae/op_session.c: do not create empty session directory
+	  and backup oprofileg.log too
+	* dae/opd_util.c:
+	* op_user.h: minor related change
+
+2002-05-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* doc/oprofile.xml: update copyright for 2002
+
+	* doc/xsl/xhtml-chunk.xsl: indent=yes
+ 
+2002-05-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+	
+	* Makefile.in: update my release steps
+ 
+2002-05-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: ->0.3cvs
+
+	* results/: hmm, remove /all/ the files 
+ 
+2002-05-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: bump to 0.2
+ 
+2002-05-04  William Cohen  <wcohen@nc.rr.com>
+
+	* doc/oprofile.xml: add note on power management
+ 
+2002-05-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* doc/Makefile.in:
+	* doc/xsl/xhtml-common.xsl:
+	* doc/xsl/xhtml.xsl:
+	* doc/xsl/xhtml-chunk.xsl: use some xsl to fix
+	  some of the problems (not all :()
+ 
+2002-05-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+ 
+2002-05-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/op_session.c: couple of improvements
+ 
+	* dae/opd_util.c: fix warning
+
+	* doc/oprofile.xml: some docs on op_session
+
+	* pp/op_time.cpp: introduce -s parameter (should be
+	  in all utils)
+ 
+2002-05-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* oprof_report/Makefile.in: disable for release
+ 
+2002-05-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* results/: nuke this in favour of oprofile-tests
+	  module
+ 
+2002-05-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+ 
+	* op_user.h:
+	* dae/op_start: 
+	* dae/op_stop: 
+	* dae/opd_util.h:
+	* dae/opd_util.c: 
+	* dae/oprofiled.c: 
+	* dae/oprofiled.h: 
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: 
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_config.h:
+	* gui/oprof_start_config.cpp:
+	* gui/ui/oprof_start_base.ui: 
+	* oprof_report/oprof_report.cpp: 
+	* pp/op_merge.cpp: 
+	* pp/op_time.cpp: 
+	* pp/opf_filter.cpp: 
+	* pp/oprofpp.cpp: 
+	* pp/oprofpp.h: 
+	* pp/oprofpp_util.cpp: remove useless command line
+	  options in anticipation of the new spec
+	 
+	* libdb/db-manage.c: reset base_memory and fd
+	  on close
+ 
+	* dae/.cvsignore: 
+	* dae/Makefile.in:
+	* dae/op_session.c:
+	* dae/opd_proc.c: 
+	* dae/opd_proc.h:
+	* dae/oprofiled.h:
+	* dae/oprofiled.c: use lock file for daemon.
+	  Implement named sessions
+ 
+2002-05-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/oprofpp.cpp:
+	* pp/op_time.cpp:
+	* pp/opf_container.cpp:
+	* pp/opf_filter.cpp:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp: fix sect_offset problem. now all
+	  class work on vma except samples_file_t which offset vma
+	  to samples files offset
+
+2002-05-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/opd_proc.c:
+	* libdb/db-manage.c:
+	* libdb/db-test.c:
+	* libdb/db.h:
+	* pp/op_merge.cpp:
+	* pp/op_time.cpp:
+	* pp/oprofpp_util.cpp: allow read-only sample
+	  file reading
+	
+	* oprof_report/hotspot_view.cpp: fix warning
+ 
+2002-05-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/op_start:
+	* dae/oprofiled.c:
+	* doc/oprofile.1.in: 
+	* doc/oprofile.xml: 
+	* gui/oprof_start.cpp: 
+	* module/op_nmi.c:
+	* module/op_rtc.c:
+	* module/op_syscalls.c: 
+	* module/oprofile.h:
+	* module/oprofile.c: move pid/pgrp filter into
+	  userspace only. Remove --ignore-myself
+ 
+2002-04-30  John Levon  <moz@compsoc.man.ac.uk>
+
+	* op_user.h:
+	* dae/opd_proc.c:
+	* pp/oprofpp_util.cpp: first part of removing
+	  OPD_KERNEL_OFFSET
+
+2002-04-30  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/op_nmi.c: also allow user to see 0/ 1/ contents
+ 
+2002-04-30  William Cohen  <wcohen@nc.rr.com>
+
+	* module/oprofile.c: Allow non-root examination of
+	  /proc/sys/dev/oprofile and initiation of dump. 
+
+	* dae/op_dump: modify message for above
+
+2002-04-30  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+ 
+	* libdb/Makefile: remove from CVS
+ 
+	* dae/oprofiled.c:
+	* module/oprofile.c: 
+	* module/oprofile.h: use better hash function.
+	  Fold unused/full entry case into eviction case
+	  for faster common path
+ 
+2002-04-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: fix little blooper that shows up
+	  when CONFIG_M386 is chosen
+ 
+2002-04-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/oprofpp.cpp:
+	* pp/oprofpp_util.cpp: yet another bug fix for --sort=
+	  and counter nr command line specification ...
+
+2002-04-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_proc.c: opd_alarm() flush properly samples files
+
+	* oprof_report/oprof_report.cpp: use the right filename
+	  when selecting a shared lib profiled with --separate-samples
+
+2002-04-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_merge.c: implement merging of the new file format files.
+
+2002-04-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* oprof_report/Makefile.in:
+	* oprof_report/oprof_report.cpp: use db
+
+2002-04-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_proc.c: OPD_KERNEL_OFFSET thing
+	* pp/oprofpp_util.cpp:
+
+2002-04-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_proc.c: minor warning suppression
+
+	* pp/Makefile.in:
+	* pp/oprofpp.cpp:
+	* pp/op_time.cpp:
+	* pp/opf_container.cpp:
+	* pp/opf_filter.cpp:
+	* pp/oprofpp.h: handle the new db file format, this stuff is
+	  not yet extensively tested
+
+	* pp/op_merge.c: not already updated, exit at run time
+	  with an error message
+
+2002-04-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_proc.h:
+	* dae/oprofiled.h: enable db samples file format
+
+2002-04-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/*: initial import from oprofile-tests module
+	  note than this direcroty have it's own ChangeLog file
+	* dae/Makefile.in: use libdb.a
+	* dae/opd_util.h: use db.h. These change do not yet enable
+	  the db samples files format.
+
+2002-04-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO:
+	* doc/oprofile.xml:
+	* pp/oprof_convert.c:
+	* util/misc.h:
+	* util/misc.c:
+	* util/file_manip.h:
+	* pp/Makefile.in: kill oprof_convert
+	 
+2002-04-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/opf_container.cpp:
+	* pp/oprofpp.h:
+	* pp/demangle_symbol.h:
+	* pp/demangle_symbol.cpp:
+	* pp/Makefile.in: move demangle_symbol into own
+	  file
+ 
+	* TODO: update some...
+ 
+2002-04-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opf_filter.cpp: fix a memory leak uncovered
+	  by valgrind <http://developer.kde.org/~sewardj>
+
+2002-04-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/oprofiled.h: move definition of linked list to ...
+	* dae/opd_list.h: this new file
+	
+	* dae/opd_proc.c: iterate on opened sample file
+	  rather on image list to sync mmap'ed file
+
+2002-04-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/oprofpp.h:
+	* oprof_report/oprof_report.cpp:
+	* pp/op_time.cpp:
+	* pp/opf_container.cpp:
+	* pp/opf_filter.cpp:
+	* pp/oprofpp_util.cpp:
+	* pp/oprofpp.cpp: use samples_file_t as internal implementation
+	  of opp_samples_files. Now all samples files read are made
+	  through samples_file_t object.
+
+2002-04-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/op_start: fix bash1 detection
+
+	* doc/Makefile.in: fix install target
+
+2002-03-25  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: some preliminary stuff for NGPT
+
+	* TODO: update
+
+	* doc/Makefile.in:
+	* doc/oprofile.sgml:
+	* doc/oprofile.xml: move to DocBook/XML
+
+	* doc/oprofile.xml: document Bash 2 dependency
+ 
+	* dae/op_start: fix for /bin/bash being bash v1 - untested
+ 
+2002-04-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/oprofpp.cpp:
+	* pp/oprofp_util.cpp: debug and use opp_bfd::symbol_size()
+
+2002-03-30  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* ChangeLog: change my email address
+
+2002-03-22  Philippe Elie  <ph_e@club-internet.fr>
+
+	* dae/op_start: default buffer size to zero and let module
+	  override the default.
+
+	* module/op_rtc.c:
+	* module/oprofile.h:
+	* op_user.h:
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_config.cpp:
+	* gui/oprof_start_config.h: an another coherency fix, unhopefully
+	  this bug fix does not fix the configuration file (see # )
+
+	* pp/oprofpp.cpp: for gprof dump do not print events settings
+
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp: prepare using symbol size
+
+2002-03-21  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/opf_filter.cpp:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp_util.cpp: factorize event settings output
+	* pp/oprofpp.h: ditto + do_list_xxx/do_dump_gprof : static
+	  free function rather than member function.
+
+2002-03-21  Philippe Elie  <ph_e@club-internet.fr>
+
+	* op_user.h:
+	* pp/oprofpp.h: more doxygen comments
+
+	* dae/opd_kernel.c:
+	* dae/opd_proc.c:
+	* dae/opd_util.c:
+	* dae/oprofiled.c:
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_util.cpp: exit(): use {EXIT_FAILURE|EXIT_SUCCESS}
+
+2002-03-20  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/opf_filter.h: simplify slightly interface of samples_files_t
+	* oprof_report/oprof_report.cpp:
+	* pp/op_time.cpp:
+	* pp/opf_container.cpp:
+	* pp/opf_filter.cpp:
+	* pp/oprofp.cpp: reflect the new interface.
+
+	* pp/opp_symbol.cpp: ParseOutputOption --> static member of
+	  OutputSymbol ...
+
+	* pp/opp_symbol.h:
+	* util/file_manip.h:
+	* util/string_manip.h: doxygen comments
+
+2002-03-19  Philippe Elie  <ph_e@club-internet.fr>
+
+	* scripts/Doxyfile: small tweak
+	* op_user.h:
+	* pp/opp_symbol.h:
+	* pp/oprofpp.h:
+	* util/child_reader.h: doxygen comments.
+
+2002-03-19  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/opf_filter.h:
+	* pp/opf_container.cpp: remove delegation
+	  {symbol|samples}_container_t -> xxx_impl, no functionnal change
+
+	* pp/*: start a more serious doxygenization. first step
+	  include fixing prototype and a client documentation for
+ 	  opp_bfd
+	* script/Doxyfile: doxygen script for pp/*.h, util/*.h
+	
+2002-03-19  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/op_fixmap.c: include pagemap.h, so
+	we pick up highmem.h, which is needed with
+	some kernels (missing kmap_pagetable define
+	via pte_offset)
+
+2002-03-18  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/op_time.cpp:
+	* doc/oprofile1.1.in:
+	* doc/oprofile.sgml: allow reverse sort in all case
+
+	* pp/opp_symbol.h:
+	* pp/opp_symbol.cpp: remove unnecessary cast
+
+	* oprof_report/oprof_report.cpp:
+	* oprof_report/oprof_report.h:
+	* oprof_report/*_view.*: revert partially 2002-03-17 patch,
+	  making again data change notification in two step.
+
+2002-03-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/oprofpp_util.cpp: clarify binutils bug workaround
+ 
+2002-03-17  Philippe Elie  <ph_e@club-internet.fr>
+
+	* oprof_report/op_view.h:
+	* oprof_report/hostpost_view.cpp:
+	* oprof_report/hostpost_view.h:
+	* oprof_report/oprof_report.cpp:
+	* oprof_report/oprof_report.h:
+	* oprof_report/oprof_view.cpp:
+	* oprof_report/oprof_view.h: simplify virtual interface +
+	  minor graphic bug fix
+
+2002-03-16  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* oprof_report/hotspot_view.cpp: new
+	* oprof_report/hotspot_view.h: new HotspotView class
+	* oprof_report/oprof_report.cpp:
+	* oprof_report/oprof_report.h:  use HotspotView
+	* oprof_report/Makefile.in: reflect above
+
+	* pp/op_time.cpp: small tidy
+
+2002-03-15  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* dae/oprofiled.c: fix --version when module is not loaded
+
+	* pp/opp_symbol.cpp:
+	* pp/opp_symbol.h: avoid to padd the last field, use a positive
+	  form for osf_header
+
+	* pp/oprofpp.h:
+	* pp/oprofpp.cpp:
+	* pp/opf_filter.cpp:
+	* pp/opprofpp_util.cpp:
+	* pp/op_time.cpp: fix --sort option
+
+2002-03-14  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* pp/op_time.cpp:
+	* pp/opf_filter.cpp:
+	* pp/opp_symbol.cpp:
+	* pp/oprofpp_.cpp:
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp: handle -c0,1 and --sort #nr_ctr
+	  for all post-profile tools allowing a more precise way
+	  to specify on which counters tools must work
+
+2002-03-13  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/oprofpp_util.cpp: get_linenr() better handling
+	  of bfd_find_nearest_line. Fix #529622
+
+	* pp/opf_container.cpp: simplify symbol_container_impl
+
+	* pp/opp_symbol.cpp: use ostringstream only when necessary
+
+2002-03-09  John Levon  <moz@compsoc.man.ac.uk>
+
+	* doc/oprofile.sgml: some laptops have a usable local APIC
+ 
+2002-03-09  Philippe Elie  <ph_e@club-internet.fr>
+
+	* oprof_report: new directory, oprofpp/op_time like GUI
+	* oprof_report/op_view.h: base class for view
+	* oprof_report/oprof_report_main.cpp:
+	* oprof_report/oprof_report.h:
+	* oprof_report/oprof_report.cpp: main class
+	* oprof_report/oprofpp_view.h:
+	* oprof_report/oprofpp_view.cpp: oproffp like view
+	* oprof_report/Makefile.in:
+	* oprof_report/ui/oprof_report.base.ui: oprof_report UI
+	* oprof_report/ui/Makefile.in:
+
+	* Makefile.in:
+	* configure.in: handle oprof_report
+
+	* ui/Makefile.in: clarify how dependencies work
+
+2002-03-08  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: bump to 0.2cvs
+
+	* TODO: update
+ 
+2002-03-07  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/opf_container.cpp: handle osf_short_linr_info
+	* pp/opp_symbol.cpp: tweak output output when
+	  linenr/filename is not available
+
+2002-03-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* util/Makefile.in: remove -pedantic (Phil don't you
+	  read comments ? ;)
+ 
+2002-03-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* pp/: use "invalid" not "illegal"
+ 
+2002-03-06  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+ 
+2002-03-06  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/opfropp_util.cpp: more specific error messages
+
+	* doc/oprofile.sgml: clarify problem about sparse
+	  samples files and filesystem.
+
+	* util/file_manip.h:
+	* util/file_manip.cpp: create_file_list() allow recursive
+	  file list creation.
+	* pp/op_time.cpp: add option -p/-P to allow specifying
+	  alternate path name where to search for image name
+	* doc/oprofile.1.in:
+	* doc/oprofile.sgml: update option for op_time
+
+2002-03-05  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/oprofpp_util.cpp: remove multiple symbols belonging
+	  to the same vma (Fix #526098)
+	  Accept also all symbol types, we filter them by name.
+
+2002-03-04  Philippe Elie  <ph_e@club-internet.fr>
+
+	* util/misc.h: minor comment fix
+
+	* pp/oprofpp_util.cpp: tweak the last commit
+
+2002-03-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/oprofpp_util.cpp: welcome in the local symbols ...
+ 
+2002-03-03  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/opf_filter.h:
+	* pp/opf_container.cpp: samples_files_t::add() add an hint
+	  parameter on what information will needed.
+	* pp/op_time.cpp:
+	* pp/oprofpp.cpp:
+	* pp/opf_filter.cpp: use it
+	
+	* pp/op_time.cpp: when a samples files for one counter
+	  does not exist avoid to load it (op_time -l) fix #525237
+
+2002-03-02  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/Makefile.in: add -pedantic to CXXFLAGS
+	* pp/oprofpp.h: replace macro verpbrintf with a function
+	* pp/oprofpp_util.cpp: implement it
+	* pp/opp_symbol.h:
+	* pp/op_time.cpp: fix pedantic warning
+
+	* pp/opevents.cpp:
+	* op_user.h: op_get_cpu_nr_counters() new
+
+	* pp/op_time.cpp:
+	* pp/opf_container.cpp:
+	* pp/opf_filter.cpp:
+	* pp/opf_filter.h:
+	* pp/opp_symbol.cpp:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp_util.cpp: remove global var op_nr_counters
+
+2002-03-02  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/op_syscalls.c: do not pre-allocate some dname
+	  hash map entry for common pathname but pre alloc entry
+	  zero to reserve it
+
+	* pp/op_time.cpp: add image name to the default output format
+
+	* module/compat22.h: move cacheline_aligned macro to ...
+	* module/op_cache.h: this new file
+	* module/compat.h: use it
+	* module/compat22.h:
+	* module/oprofile.c: replace some __cacheline_aligned by
+	  __cacheline_aligned_in_smp
+
+2002-03-01  Philippe Elie  <ph_e@club-internet.fr>
+
+	* dae/opd_kernel.c:
+	* dae/opd_proc.c: simplify handling of kernel samples
+
+	* pp/opt_time.cpp:
+	* pp/opp_symbol.cpp:
+	* pp/opp_symbol.h:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp.h: tidy, gives a negative form to header output
+	  format
+
+	* version.h.in: new macro show_version() to output version
+	* doc/oprofile.sgml: document it
+	* dae/oprofiled.c:
+	* events/op_help.c:
+	* pp/op_merge.cpp:
+	* pp/op_time.cpp:
+	* pp/opf_filter.cpp:
+	* pp/oprofpp.cpp: use it
+
+2002-03-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* module/oprofile.c:
+	* module/op_syscalls.c: merge note/map lock 
+ 
+2002-02-27  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: upadte
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.sgml:
+	* pp/opp_symbol.h:
+	* pp/opp_symbol.cpp:
+	* pp/oprofpp.cpp: use columned output for oprofpp -L, -s
+
+	* pp/oprofpp.cpp: command-line counter specification
+	  was broken by my last patch
+	* pp/opf_filter.cpp: ditto but bug comes from the far past
+
+2002-02-26  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/op_merge.cpp: small tidy
+
+	* pp/op_time.cpp:
+	* pp/opf_container.cpp:
+	* pp/opf_filter.h:
+	* pp/opf_filter.cpp:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp: remove the nasty global var int ctr;
+	  pass it as parameter to each relevant function using it.
+
+	* module/compat.h: support for 2.5.5. 2.4.18 also tested
+
+	* pp/opp_symbol.h:
+	* pp/opp_symbol.cpp: new, mainly for implementing --output-format
+	* pp/op_time.cpp:
+	* pp/oprofpp.cpp: use output format stuff
+	* pp/Makefile.in: reflect above change
+	* doc/oprofile.1.in:
+	* doc/oprofile.sgml: document --output-format
+
+2002-02-13  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* module/compat22.h:
+	* module/compat24.h:
+	* module/oprofile_nmi.S: small tidy
+
+	* module/op_apic.c:
+	* module/op_fixmap.c:
+	* module/op_nmi.c:
+	* module/oprofile.h: avoid memory leak of apic mapping
+
+2002-02-12  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* pp/oprofpp_util.cpp: use stable sort and correct the comparison
+	  function on symbol vma
+	* pp/opf_filter.cpp: remove a boring new line in output
+
+	* module/makefile.in: optimize for 686 but do not use any specific
+	  686 insn.
+
+	* configure.in: check against CONFIG_PREEMPT
+
+2002-02-10  John Levon  <moz@compsoc.man.ac.uk>
+
+	* events/op_events_desc.c: remove dead code
+ 
+	* module/compat.h: RedHat backported MODULE_LICENSE()
+ 
+	* module/op_syscalls.c:
+	* module/op_util.c: remove FIXMEs
+ 
+2002-02-09  Bob Montgomery  <bobm@fc.hp.com>
+
+	* module/op_rtc.c: right actual RTC value back
+
+	* doc/oprofile.sgml: document that
+
+2002-02-09  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/op_init.c: set rtc cpu type directly
+ 
+2002-02-08  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* module/oprofile_nmi.S: cut and copy from oprofile_nmi24.s
+	* module/oprofile_nmi22.S: remove
+	* module/oprofile_nmi22.S: remove
+	* module/Makefile.in: reflect them
+
+	* pp/opf_filter.cpp: do not print unit mask for RTC cpu type
+
+	* doc/oprofile.sgml: document post-profile tools commons options
+
+2002-02-05  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update mainly by moving things to 0.1
+
+	* pp/opf_filter.h:
+	* pp/opf_container.cpp: small cleanup + minor tweak to get
+	  more reliable sort order on filename.
+
+2002-02-05  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/opf_filter.h: declare create_artificial_symbol()
+	* pp/oprofpp_util.cpp: show how elf symbols size could
+	  be handled.
+
+	* pp/oprofpp_util.cpp: add BSF_GLOBAL symbols to
+	  symbols of interest.
+
+2002-02-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/oprofile.c: add [un]lock_sysctl
+ 
+2002-02-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/oprofiled.h:
+	* dae/oprofiled.c:
+	* dae/opd_proc.c: free stuff on shutdown (to
+	  clean dmalloc reports)
+ 
+2002-02-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: bump to 0.1
+
+	* TODO: update
+ 
+2002-02-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: bump to 0.0.9
+ 
+2002-02-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/op_nmi.c: fix stupid bug spotted by Bob
+	  Montgomery
+ 
+2002-02-01  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/compat.h: define REMAP_PAGE_RANGE
+	* module/op_syscalls.c: use it (2.5.3 support)
+
+2002-01-30  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/compat.h:
+	* module/op_nmi.c: re-add explicit constant for all MSR_
+	  constants.
+
+2002-01-30  Philippe Elie  <ph_e@club-internet.fr>
+
+	* configure.in:
+	* doc/oprofile.sgml:
+	* module/compat22.h: remove support for kernel version
+	  prior to 2.2.11
+
+	* module/op_fixmap.c:
+	* module/compat.h: small cleanup
+
+	* module/oprofile.c: avoid multi-line literal string
+
+	* pp/oprofpp_util.cpp: better to get_symbols() ;)
+
+2002-01-29  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/op_fixmap.c: remap fake mapping on 2.2 as well
+	  when necessary
+ 
+2002-01-27  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/Makefile.in: sorry, -Werror is only usefull
+	  for test.
+
+	* doc/oprofile.1.in: a few words about op_stop
+
+	* module/compat.h:
+	* module/compat22.h:
+	* module/compat24.h: change pte_page_address definition
+	  for 2.2.20
+
+	* pp/opf_container.cpp: no warning when creating artificial symbols
+	* pp/oprofpp_tuil.cpp: no warning for image without symbols
+
+2002-01-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* gui/oprof_start.cpp:
+	* pp/op_merge.cpp:
+	* pp/op_time.cpp:
+	* pp/opf_container.cpp: std namespace fixes.
+ 
+2002-01-27  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/op_time.cpp: small hacky output cleanup
+ 
+2002-01-27  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* dae/opd_proc.c: small cleanup
+
+	* doc/opf_container.cpp: handle image without symbols
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.sgml:
+	* doc/op_time.cpp: implement and document --demangle
+	  and --show-image-name
+
+	* pp/oprofpp_util.cpp: add using elf symbols size but
+	  disable it
+
+2002-01-26  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* dae/opd_proc.c: tiny clean
+
+	* doc/oprofile.sgml: spell fix
+ 
+2002-01-26  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* pp/op_merge.c: remove FIXME
+	* pp/op_time.cpp: minor fix
+	
+	* pp/opf_filter.h:
+	* pp/opf_filter.cpp:
+	* pp/oprofpp.cpp:
+	* pp/opf_container.cpp: Show more clearly than
+	  samples_files_t support adding any number of samples
+	  files to the underlined container.
+
+2002-01-26  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/oprofpp_util.cpp: allow to load image without symbols
+
+	* pp/Makefile.in:
+	* pp/op_time: implement -l option that show symbols details.
+	  Currently with separate-samples files symbols are showed
+	  more than one time. This is a bug rather a feature.
+	* doc/oprofile.1.in:
+	* doc/oprofile.sgml: document op_time -l
+
+	* dae/opd_proc.c: bug fix from last change
+
+2002-01-25  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO:
+	* dae/opd_proc.c: search maps in reverse order so we prefer
+	  newer mappings.
+ 
+2002-01-25  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/op_merge.cpp: minor fix + comment
+	* pp/op_time.cpp: comment, use samples_file_t
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp: minor change
+
+2002-01-24  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/opd_proc.c: remove stale comment
+
+	* TODO: update
+
+	* module/compat.h:
+	* module/compat22.h:
+	* module/compat24.h: fix for pte_page on 2.2.20+
+ 
+2002-01-24  Philippe Elie  <ph_e@club-internet.fr>
+
+	* op_merge.cpp:
+	* oprofpp.h:
+	* oprofpp_util.cpp: code move + cleanup
+
+2002-01-23  Philippe Elie  <ph_e@club-internet.fr>
+
+	* util/shared_ptr.h: a templatized shared pointer.
+
+	* pp/op_merge.c: new to merge samples files
+	* pp/Makefile.in:
+	* pp/opf_filter.cpp:
+	* pp/opf_filter.h:
+	* pp/oprofpp.h:
+	* pp/oprofpp_util.cpp: minor change to add op_merge support
+
+	* doc/Makefile.in:
+	* doc/oprofile.1.in:
+	* doc/oprofle.smgl: document op_merge
+
+2002-01-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/Makefile.in: can only depmod if we run that kernel
+ 
+	* module/op_fixmap.c: deal with no APIC config for
+	  2.4.10+
+ 
+2002-01-22  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/Makefile.in:
+	* module/oprofile.h:
+	* module/oprofile.c:
+	* module/op_x86.c:
+	* module/op_apic.c:
+	* module/op_fixmap.c: split op_x86.c. Various changes to
+	  only enable the APIC if it's not, and to remap / map the APIC
+	  as is necessary.
+
+	* module/apic_up_compat.h: 
+	* module/compat.h:
+	* module/compat22.h: clean up V_*() macros
+
+	* module/op_init.c: remove FORCE_RTC
+ 
+2002-01-22  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* dae/opd_proc.c: use remove not unlink
+	* gui/oprof_start.cpp: use remove not system("rm xxx")
+
+	* doc/Makefile.in: slightly improvment
+	* doc/oprofile.1.in: move --help --version to a common section
+
+2002-01-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/compat22.h: fix missing cli()
+ 
+2002-01-21  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/oprofile.c: 
+	* module/compat22.h:
+	* module/compat24.h: fix NMI wake-up for 2.2 SMP
+ 
+	* module/op_dcache.h: add KERN_ERR
+ 
+	* module/op_x86.c: cleanup a little
+ 
+2002-01-21  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.sgml: minor change
+
+	* module/Makefile.in: auto-dependencies for compat.c
+
+	* module/compat.c:
+	* module/compat22.h: FIXME remove for vmalloc_32
+
+2002-01-20  Philippe Elie  <ph_e@club-internet.fr>
+
+	* gui/oprof_start.cpp: fix configuration saving when
+	  switching of cpu_type.
+
+	* module/Makefile.in:
+	* module/compat.c: minor change
+
+	* compat.h: add minor macro
+	* oprofile.c: use minor instead MINOR (2.5.2 support)
+
+	* op_x86.c: check SPIV (missing from a previous patch)
+
+2002-01-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: punt some things to next release
+
+	* dae/opd_proc.c: fix printf of null
+ 
+2002-01-20  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+ 
+	* module/oprofile.c: add comment
+ 
+	* module/compat22.h:
+	* module/compat24.h:
+	* module/op_syscalls.c: fix locking for out_mmap
+ 
+2002-01-20  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/op_x86.c: check MSR + SPIV for enabling APIC
+ 
+	* module/compat.c: don't attempt to get root
+
+	* module/compat.h: NEED_FIXMAP fixes
+ 
+2002-01-18  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* module/compat.h:
+	* module/compat24.h: move things needed for 2.2/2.4 in compat.h
+
+2002-01-18  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/compat22.h: never wake up from NMI
+	  on 2.2 SMP for now :(
+ 
+2002-01-18  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/compat.h:
+	* module/compat22.h: 
+	* module/compat24.h: s/VATLEAST/V_AT_LEAST/
+ 
+	* module/oprofile.c: remove dead code
+ 
+2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/compat.c: don't need to re-take BKL for
+	  d_path on 2.2
+ 
+2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/compat22.h:
+	* module/compat24.h:
+	* module/op_syscalls.c: we mustn't take the mmap sem
+	  under 2.2
+ 
+2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/compat22.h:
+	* module/compat24.h:
+	* module/op_syscalls.c: whoops, handy to lock the
+	  BKL when it is necessary.
+ 
+	* dae/oprofiled.c: fix warning
+
+2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* op_user.h:
+	* dae/op_start:
+	* gui/oprof_start_config.h:
+	* module/oprofile.h: bump note size and watermark,
+	  I was getting problems on my dual SMP box in kernel compiles
+ 
+2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/Makefile.in:
+	* module/oprofile_nmi.S:
+	* module/oprofile_nmi22.S:
+	* module/oprofile_nmi24.S: split assembly for 2.2/4 
+
+	* module/compat.h:
+	* module/compat22.h:
+	* module/compat24.h: s/AFTER/ATLEAST/
+ 
+2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/compat24.h: define to have ->owner
+ 
+2002-01-17  Philippe Elie  <ph_e@club-internet.fr>
+
+	* gui/oprof_start.h:
+	* gui/oprof_start_config.h:
+	* gui/oprof_start.cpp: validate the RTC max count
+
+2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* oprofile.c:
+	* module/compat24.h: 
+	* module/compat22.h: fix compile, nmi wake up check
+	 
+	* module/op_rtc.c: user/kernel profiling feature
+ 
+2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* doc/oprofile.sgml: clarification
+ 
+	* module/compat22.h:
+	* module/compat24.h:
+	* module/oprofile.c: ->owner fixes
+ 
+2002-01-17  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/oprofile.h: clean up
+ 
+	* module/compat.h:
+	* module/compat22.h:
+	* module/compat24.h: split header files up
+	  for readability
+ 
+2002-01-17  Philippe Elie  <ph_e@club-internet.fr>
+
+	* TODO: update
+
+	* doc/oprofile.sgml: speach about assembler
+
+	* module/compat.h: small tweak for 2.2, no impact on 2.4
+
+2002-01-16  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: look for rtc_lock
+ 
+	* module/compat.h: use rtc_lock if there
+
+2002-01-16  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/compat.h:
+	* module/apic_up_compat.h: cleanup + allow compile
+	  !CONFIG_X86_LOCAL_APIC on 2.4/2.5. (only compile
+	  tested)
+
+2002-01-15  Philippe Elie  <ph_e@club-internet.fr>
+
+	* events/op_events.c: avoid gui crash: event name must
+	  contain only one word. If you test RTC patch destroy
+	  ~/.oprofile/oprof_start_event#0
+
+2002-01-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/compat.h:
+	* module/compat.c:
+	* module/op_rtc.c: 2.2 modversions fix
+ 
+2002-01-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* module/compat.h:
+	* module/compat.c:
+	* module/op_rtc.c: fix 2.2 compile
+
+2002-01-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/Makefile.in: whoops, forgot to commit this
+ 
+2002-01-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* gui/oprof_start.cpp: some improvements for RTC
+ 
+2002-01-15  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/op_stop: fix "op_start && op_stop" bug using multiple
+	  dump_stop writes.
+
+2002-01-14  Dave Jones <davej@suse.de>
+
+	* pp/op_time.cpp: fix for printing (NaN%) in the zero sample case.
+
+2002-01-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/op_rtc.c: remove unneeded check
+
+2002-01-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/op_start: fix for PMC case
+ 
+2002-01-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* dae/op_start: take --rtc-value
+
+	* dae/oprofiled.c: set headers sensibly for RTC
+
+	* doc/oprofile.1.in: update
+
+	* doc/oprofile.sgml: RTC update
+
+	* events/op_events_descr.c: 
+	* events/op_events.c: good name for RTC event 
+
+	* gui/oprof_start.cpp: basic support for RTC
+
+	* module/op_rtc.c: implement and use rtc_value
+
+2002-01-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* dae/op_start: load module at start. Handle CPU_RTC.
+	  Avoid sysctl for now on RTC case.
+
+	* dae/oprofiled.c: only read sysctls if PMC. Needs clean.
+
+	* events/op_events.c: add RTC event.
+
+	* events/op_events_desc.c: get CPU type from module. 
+
+	* module/op_init.c: detect CPU_RTC.
+
+	* module/op_nmi.c: setup code moved from op_init.c
+
+	* module/op_rtc.c: enable interrupt, fixed at 128 for now.
+
+	* module/op_x86.c: add Athlon to needs_apic_setup checks
+
+	* module/oprofile.c: use correct interrupt handler based on
+	  CPU type
+
+2002-01-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* op_user.h: add CPU_RTC
+
+	* op_init.c: add FIXMEs
+
+	* op_nmi.c:
+	* op_rtc.c:
+	* oprofile.h:
+	* oprofile.c: implement abstract interrupt handler code
+
+2002-01-14  John Levon  <moz@compsoc.man.ac.uk>
+
+	* gui/oprof_start_config.cpp: fix vmlinux/system.map defaults
+ 
+2002-01-13  Philippe Elie  <ph_e@club-internet.fr>
+
+	* configure.in: reject unsupported kernel version
+	* module/apic_up_compat.h:
+	* module/compat.h: small cleanup
+	* module/op_x86.c: ditto, always put apic memory page as
+	  non cachable
+
+2002-01-12  John Levon  <moz@compsoc.man.ac.uk>
+
+	* gui/oprof_start_util.h:
+	* gui/oprof_start_util.cpp: implement whitelist for arguments
+	  to op_start
+ 
+	* TODO: update
+
+2002-01-13  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/compat.h:
+	* module/apic_up_compat.h:
+	* module/op_x86.c: allow to run oprofile when
+	  !CONFIG_X86_LOCAL_APIC on 2.2.x kernel
+
+2002-01-12  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/compat.h: fix some FIXME
+	* module/op_x86.c: do not hang SMP kernel UP box with 2.2.x
+
+2002-01-11  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/compat.h: support for UP from 2.2.0, for SMP
+	  from 2.2.8. It is worthwhile to try more support.
+	  !CONFIG_X86_LOCAL_APIC not yet supported.
+
+2002-01-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* dae/opd_proc.c:
+	* doc/oprofile.sgml:
+	* pp/op_time.cpp: add FIXMEs
+ 
+2002-01-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/oprofile.c: never return 0 unless we're
+	  really closing down
+ 
+2002-01-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+ 
+	* gui/Makefile.in:
+	* gui/oprof_start.cpp: use absolute paths
+ 
+2002-01-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* doc/oprofile.sgml: add note about --with-linux
+ 
+2002-01-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Rules.make.in:
+	* gui/Makefile.in:
+	* gui/oprof_start_config.h:
+	* gui/oprof_start_config.cpp: remove kernel headers
+	  from userland !
+
+2002-01-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: remove dead checks. comment out APIC check,
+	  hide grep output
+
+	* module/Makefile.in: add compat.c
+
+	* apic_up_compat.h: UP 2.2 missing defines. Need to investigate
+	  fixmap situation. 
+
+	* compat.c: move 2.2 dcache code here
+
+	* compat.h: dcache compat support. check for whether we
+	  should check for mptable. Don't do fixmap hack on 2.2 
+
+	* op_dcache.h: shared dcache inline functions
+
+	* op_syscalls.c: clean up dcache code for 2.2/2.4 
+
+	* op_x86.c: update apic_need_setup for 2.2 and the possibility
+	  of not enabling APIC support on 2.4 too. Needs checking ! Also
+	  don't do mptable check on 2.2
+
+	* oprofile.h: add missing include guard ;)
+ 
+2002-01-11  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/compat.h: minor fixes
+ 
+2002-01-11  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/compat.h: many change, can be used down to 2.2.8
+	* module/oprofile.h: move #ifdef on kernel version to compat.h
+	* module/op_util.c:
+	* module/op_syscalls.c: minor change
+	* configure.in: comment unnecessary stuf.
+
+	* module/Makefile.in: missing include path for oprofile.s
+
+2002-01-10  John Levon  <moz@compsoc.man.ac.uk>
+
+	* Makefile.in: update checklist for dist
+
+	* module/oprofile.h: add apparently needed version.h
+ 
+2002-01-10  John Levon  <moz@compsoc.man.ac.uk>
+
+	* configure.in: fix accidental trashing of BKCFLAGS
+
+	* module/op_util.c: include right header
+
+	* module/compat.h: use correct smp_call_function
+ 
+2002-01-10  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/compat.h: new file include backward compatibility
+	  stuff
+
+2002-01-09  John Levon  <moz@compsoc.man.ac.uk>
+
+	* doc/oprofile.sgml: update infodragon's email
+	  address
+ 
+	* configure.in: bump to 0.0.9cvs
+
+2002-01-08  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* configure.in: fix case when X isn't installed. Bump to 0.0.8
+ 
+2002-01-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* util/Makefile.in: "fix" last g++ 3.0 problem
+	  with libiberty.h and string.h clashing prototypes
+	  by disabling -pedantic for this directory
+ 
+2002-01-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* pp/opf_container.cpp:
+	* pp/opf_filter.h:
+	* pp/oprofpp.cpp: 
+	* pp/oprofpp.h: 
+	* pp/oprofpp_util.cpp: 
+	* util/file_manip.h:
+	* util/file_manip.cpp: 
+	* util/string_manip.h: fix most g++ 3.0 problems
+
+2002-01-07  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+ 
+2002-01-05  Philippe Elie  <ph_e@club-internet.fr>
+
+	* doc/oprofile.sgml: Avoid to use -- inside
+	  sgml comment
+
+2002-01-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/op_start:
+	* dae/op_stop: (very) hacky loop to wait for
+	daemon start and stop
+ 
+2002-01-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/oprofile.c: revert my broken stop fix,
+	  and fix the old (new) one
+ 
+2002-01-05  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/opd_kernel.c:
+	* dae/opd_proc.c:
+	* dae/opd_proc.h:
+	* dae/opd_util.c:
+	* dae/oprofiled.c: 
+	* dae/oprofiled.h: further minor cleanups
+
+2002-01-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/oprofile.c: change last change to have an
+	  explicit check in the sysctl dump, rather than generalised
+	  code.
+
+2002-01-04  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/oprofile.c: do not re-enable counter during
+	  shutdown
+
+	* dae/Makefile.in: fix opd_kernel.c dependancy
+
+2002-01-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/Makefile.in:
+	* dae/opd_proc.c:
+	* dae/opd_kernel.c: move kernel/module stuff into
+	  new file. Some minor changes.
+ 
+2002-01-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/oprofiled.c: remove extra dump
+ 
+2002-01-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/opd_proc.c: minor crap
+ 
+2002-01-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* TODO: update
+
+	* dae/oprofiled.c:
+	* dae/oprofiled.h:
+	* dae/opd_proc.c: print stats on shutdown too
+
+	* module/oprofile.c: additional check against daemon hanging on shutdown :(
+ 
+2002-01-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/op_stop:
+	* dae/oprofiled.c:
+	* doc/oprofile.sgml:
+	* module/oprofile.h:
+	* module/oprofile.c: implement new clean shutdown via
+	  sysctl dump_stop
+
+2002-01-04  Philippe Elie  <ph_e@club-internet.fr>
+
+	* module/oprofile.c: add a warning when note buff overflow.
+
+2002-01-04  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/oprofile.c: pin note at the end on overflow
+ 
+2002-01-03  Philippe Elie  <ph_e@club-internet.fr>
+
+	* dae/opd_proc.c: Apologies: stupid bug. Never forget
+	  than LRU list of samples files must not contain already
+  	  unmaped files
+
+	* module/oprofile.c: another silly bug, detected cpu was
+	  overwritten...
+
+2002-01-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* doc/oprofile.sgml: some fixes, comments
+
+2002-01-03  Philippe Elie  <ph_e@club-internet.fr>
+
+	* doc/oprofile.sgml: improve documentation, corrected
+	  by John Levon
+
+2002-01-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp:
+	* gui/ui/oprof_start.base.ui: remove the config buttons
+	  and save on a hide from the WM
+ 
+2002-01-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* module/oprofile.c: make sure note_pos never goes
+	  past the buffer :P
+ 
+2002-01-03  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/opd_util.c: allow EAGAINs through as well
+ 
+2002-01-02  Philippe Elie  <ph_e@club-internet.fr>
+
+	* pp/opf_container.cpp:
+	* pp/opf_filter.cpp: minor change
+
+2002-01-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* doc/oprofile.sgml: various docs improvements
+ 
+2002-01-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/oprofiled.c: better enable the actual
+	  profiling again :P
+ 
+2002-01-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* config.h.in: remove this again from CVS.
+ 
+2002-01-02  John Levon  <moz@compsoc.man.ac.uk>
+
+	* dae/op_stop: send SIGUSR1 to stop profiler
+ 
+	* dae/opd_proc.c: reformat a little
+ 
+	* dae/opd_util.h:
+	* dae/opd_util.c: change opd_read_device semantics
+ 
+	* dae/oprofiled.c: clean shutdown from SIGUSR1
+ 
+	* module/oprofile.c: handle non-blocking reads
+ 
+	* pp/opf_filter.h:
+	* pp/opf_filter.cpp: slight cleanups
+ 
+	* TODO: update
+ 
+2002-01-01  John Levon  <moz@compsoc.man.ac.uk>
+
+	* oprofile.sgml: clarify that -g is not necessary for
+	  basic profiling (reported by Jeff Epler <jepler@inetnebr.com>)
+
+See ChangeLog-2001 for earlier changelogs.

@@ -1,0 +1,91 @@
+#PPC64 pmu-compat events, version 1
+#
+# Copyright OProfile authors
+# Copyright (c) International Business Machines, 2009.
+# Contributed by Maynard Johnson <maynardj@us.ibm.com>.
+#
+#
+#  Within each group, the event names must be unique.  Each event in a group is
+#  assigned to a unique counter.
+#
+#  Only events within the same group can be selected simultaneously.
+#  Each event is given a unique event number.  The event number is used by the
+#  OProfile code to resolve event names for the post-processing.  This is done
+#  to preserve compatibility with the rest of the OProfile code.  The event
+#  numbers are formatted as follows: <group_num>concat(<counter for the event>).
+
+#Group Default
+event:0X001 counters:2 um:zero minimum:10000 name:CYCLES : Processor Cycles
+
+
+#Group 1 pm_compat_utilization1, Basic CPU utilization
+event:0X0010 counters:0 um:zero minimum:1000 name:PM_THRD_ONE_RUN_CYC_GRP1 : (Group 1 pm_compat_utilization1) At least one thread in run cycles
+event:0X0011 counters:1 um:zero minimum:10000 name:PM_RUN_CYC_GRP1 : (Group 1 pm_compat_utilization1) Run cycles
+event:0X0012 counters:2 um:zero minimum:10000 name:PM_CYC_GRP1 : (Group 1 pm_compat_utilization1) Processor cycles
+event:0X0013 counters:3 um:zero minimum:1000 name:PM_RUN_PURR_GRP1 : (Group 1 pm_compat_utilization1) Run PURR Even
+
+#Group 2 pm_compat_utilization2, CPI and utilization data
+event:0X0020 counters:0 um:zero minimum:1000 name:PM_FPU_FLOP_GRP2 : (Group 2 pm_compat_utilization2) FPU executed 1FLOP, FMA, FSQRT or FDIV instruction
+event:0X0021 counters:1 um:zero minimum:10000 name:PM_RUN_CYC_GRP2 : (Group 2 pm_compat_utilization2) Run cycles
+event:0X0022 counters:2 um:zero minimum:10000 name:PM_CYC_GRP2 : (Group 2 pm_compat_utilization2) Processor cycles
+event:0X0023 counters:3 um:zero minimum:1000 name:PM_RUN_INST_CMPL_GRP2 : (Group 2 pm_compat_utilization2) Run instructions completed
+
+#Group 3 pm_compat_dsource, Data Access sources
+event:0X0030 counters:0 um:zero minimum:1000 name:PM_DATA_FROM_L1-5_GRP3 : (Group 3 pm_compat_dsource) Data loaded from L1.5
+event:0X0031 counters:1 um:zero minimum:1000 name:PM_DATA_FROM_L2MISS_GRP3 : (Group 3 pm_compat_dsource) Data loaded missed L2
+event:0X0032 counters:2 um:zero minimum:1000 name:PM_DATA_FROM_L3MISS_GRP3 : (Group 3 pm_compat_dsource) Data loaded from private L3 miss
+event:0X0033 counters:3 um:zero minimum:1000 name:PM_RUN_INST_CMPL_GRP3 : (Group 3 pm_compat_dsource) Run instructions completed
+
+#Group 4 pm_compat_l1_dcache_load_store_miss, L1 D-Cache load/store miss
+event:0X0040 counters:0 um:zero minimum:10000 name:PM_INST_CMPL_GRP4 : (Group 4 pm_compat_l1_dcache_load_store_miss) Instruction completed
+event:0X0041 counters:1 um:zero minimum:1000 name:PM_ST_FIN_GRP4 : (Group 4 pm_compat_l1_dcache_load_store_miss) Store instructions finished
+event:0X0042 counters:2 um:zero minimum:1000 name:PM_ST_MISS_L1_GRP4 : (Group 4 pm_compat_l1_dcache_load_store_miss) L1 D cache store misses
+event:0X0043 counters:3 um:zero minimum:1000 name:PM_LD_MISS_L1_GRP4 : (Group 4 pm_compat_l1_dcache_load_store_miss) L1 D cache load misses
+
+#Group 5 pm_compat_l1_cache_load, L1 Cache loads
+event:0X0050 counters:0 um:zero minimum:10000 name:PM_INST_CMPL_GRP5 : (Group 5 pm_compat_l1_cache_load) Instruction completed
+event:0X0051 counters:1 um:zero minimum:1000 name:PM_DATA_FROM_L2MISS_GRP5 : (Group 5 pm_compat_l1_cache_load) Data loaded missed L2
+event:0X0052 counters:2 um:zero minimum:1000 name:PM_L1_DCACHE_RELOAD_VALID_GRP5 : (Group 5 pm_compat_l1_cache_load) L1 reload data source valid
+event:0X0053 counters:3 um:zero minimum:1000 name:PM_LD_MISS_L1_GRP5 : (Group 5 pm_compat_l1_cache_load) L1 D cache load misses
+
+#Group 6 pm_compat_instruction_directory, Instruction Directory
+event:0X0060 counters:0 um:zero minimum:1000 name:PM_IERAT_MISS_GRP6 : (Group 6 pm_compat_instruction_directory) IERAT miss coun
+event:0X0061 counters:1 um:zero minimum:1000 name:PM_L1_ICACHE_MISS_GRP6 : (Group 6 pm_compat_instruction_directory) L1 I cache miss coun
+event:0X0062 counters:2 um:zero minimum:10000 name:PM_INST_CMPL_GRP6 : (Group 6 pm_compat_instruction_directory) Instruction completed
+event:0X0063 counters:3 um:zero minimum:1000 name:PM_ITLB_MISS_GRP6 : (Group 6 pm_compat_instruction_directory) Instruction TLB misses
+
+#Group 7 pm_compat_data_directory, Data Directory
+event:0X0070 counters:0 um:zero minimum:1000 name:PM_LSU_DERAT_MISS_CYC_GRP7 : (Group 7 pm_compat_data_directory) DERAT miss latency
+event:0X0071 counters:1 um:zero minimum:1000 name:PM_LSU_DERAT_MISS_GRP7 : (Group 7 pm_compat_data_directory) DERAT misses
+event:0X0072 counters:2 um:zero minimum:1000 name:PM_DTLB_MISS_GRP7 : (Group 7 pm_compat_data_directory) Data TLB misses
+event:0X0073 counters:3 um:zero minimum:1000 name:PM_RUN_INST_CMPL_GRP7 : (Group 7 pm_compat_data_directory) Run instructions completed
+
+#Group 8 pm_compat_cpi_1plus_ppc, Misc CPI and utilization data
+event:0X0080 counters:0 um:zero minimum:1000 name:PM_1PLUS_PPC_CMPL_GRP8 : (Group 8 pm_compat_cpi_1plus_ppc) One or more PPC instruction completed
+event:0X0081 counters:1 um:zero minimum:10000 name:PM_RUN_CYC_GRP8 : (Group 8 pm_compat_cpi_1plus_ppc) Run cycles
+event:0X0082 counters:2 um:zero minimum:1000 name:PM_INST_DISP_GRP8 : (Group 8 pm_compat_cpi_1plus_ppc) Instructions dispatched
+event:0X0083 counters:3 um:zero minimum:1000 name:PM_1PLUS_PPC_DISP_GRP8 : (Group 8 pm_compat_cpi_1plus_ppc) Cycles at least one instruction dispatched
+
+#Group 9 pm_compat_misc_events1, Misc Events
+event:0X0090 counters:0 um:zero minimum:10000 name:PM_INST_CMPL_GRP9 : (Group 9 pm_compat_misc_events1) Instruction completed
+event:0X0091 counters:1 um:zero minimum:1000 name:PM_EXT_INT_GRP9 : (Group 9 pm_compat_misc_events1) External interrupts
+event:0X0092 counters:2 um:zero minimum:1000 name:PM_TB_BIT_TRANS_GRP9 : (Group 9 pm_compat_misc_events1) Time Base bit transition
+event:0X0093 counters:3 um:zero minimum:10000 name:PM_CYC_GRP9 : (Group 9 pm_compat_misc_events1) Processor cycles
+
+#Group 10 pm_compat_misc_events2, Misc Events
+event:0X00A0 counters:0 um:zero minimum:1000 name:PM_INST_IMC_MATCH_CMPL_GRP10 : (Group 10 pm_compat_misc_events2) IMC matched instructions completed
+event:0X00A1 counters:1 um:zero minimum:1000 name:PM_INST_DISP_GRP10 : (Group 10 pm_compat_misc_events2) Instructions dispatched
+event:0X00A2 counters:2 um:zero minimum:1000 name:PM_THRD_CONC_RUN_INST_GRP10 : (Group 10 pm_compat_misc_events2) Concurrent run instructions
+event:0X00A3 counters:3 um:zero minimum:1000 name:PM_FLUSH_GRP10 : (Group 10 pm_compat_misc_events2) Flushes
+
+#Group 11 pm_compat_misc_events3, Misc Events
+event:0X00B0 counters:0 um:zero minimum:1000 name:PM_GCT_EMPTY_CYC_GRP11 : (Group 11 pm_compat_misc_events3) Cycles GCT empty
+event:0X00B1 counters:1 um:zero minimum:1000 name:PM_INST_DISP_GRP11 : (Group 11 pm_compat_misc_events3) Instructions dispatched
+event:0X00B2 counters:2 um:zero minimum:1000 name:PM_TB_BIT_TRANS_GRP11 : (Group 11 pm_compat_misc_events3) Time Base bit transition
+event:0X00B3 counters:3 um:zero minimum:1000 name:PM_BR_MPRED_GRP11 : (Group 11 pm_compat_misc_events3) Branches incorrectly predicted
+
+#Group 12 pm_compat_suspend, Suspend Events
+event:0X00C0 counters:0 um:zero minimum:1000 name:PM_SUSPENDED_GRP12 : (Group 12 pm_compat_suspend) Suspended
+event:0X00C1 counters:1 um:zero minimum:1000 name:PM_SUSPENDED_GRP12 : (Group 12 pm_compat_suspend) Suspended
+event:0X00C2 counters:2 um:zero minimum:1000 name:PM_SUSPENDED_GRP12 : (Group 12 pm_compat_suspend) Suspended
+event:0X00C3 counters:3 um:zero minimum:1000 name:PM_SUSPENDED_GRP12 : (Group 12 pm_compat_suspend) Suspended

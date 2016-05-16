@@ -1,0 +1,27 @@
+# Athlon Events
+#
+event:0x76 counters:0,1,2,3 um:zero minimum:3000 name:CPU_CLK_UNHALTED : Cycles outside of halt state
+event:0xc0 counters:0,1,2,3 um:zero minimum:3000 name:RETIRED_INSNS : Retired instructions (includes exceptions, interrupts, resyncs)
+event:0xc1 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_OPS : Retired Ops
+event:0x80 counters:0,1,2,3 um:zero minimum:500 name:ICACHE_FETCHES : Instruction cache fetches
+event:0x81 counters:0,1,2,3 um:zero minimum:500 name:ICACHE_MISSES : Instruction cache misses
+event:0x40 counters:0,1,2,3 um:zero minimum:500 name:DATA_CACHE_ACCESSES : Data cache accesses
+event:0x41 counters:0,1,2,3 um:zero minimum:500 name:DATA_CACHE_MISSES : Data cache misses
+event:0x42 counters:0,1,2,3 um:moesi minimum:500 name:DATA_CACHE_REFILLS_FROM_L2 : Data cache refills from L2
+event:0x43 counters:0,1,2,3 um:moesi minimum:500 name:DATA_CACHE_REFILLS_FROM_SYSTEM : Data cache refills from system
+event:0x44 counters:0,1,2,3 um:moesi minimum:500 name:DATA_CACHE_WRITEBACKS : Data cache write backs
+event:0xc2 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_BRANCHES : Retired branches (conditional, unconditional, exceptions, interrupts)
+event:0xc3 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_BRANCHES_MISPREDICTED : Retired branches mispredicted
+event:0xc4 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_TAKEN_BRANCHES : Retired taken branches
+event:0xc5 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_TAKEN_BRANCHES_MISPREDICTED : Retired taken branches mispredicted
+event:0x45 counters:0,1,2,3 um:zero minimum:500 name:L1_DTLB_MISSES_L2_DTLD_HITS : L1 DTLB misses and L2 DTLB hits
+event:0x46 counters:0,1,2,3 um:zero minimum:500 name:L1_AND_L2_DTLB_MISSES : L1 and L2 DTLB misses
+event:0x47 counters:0,1,2,3 um:zero minimum:500 name:MISALIGNED_DATA_REFS : Misaligned data references
+event:0x84 counters:0,1,2,3 um:zero minimum:500 name:L1_ITLB_MISSES_L2_ITLB_HITS : L1 ITLB misses (and L2 ITLB hits)
+event:0x85 counters:0,1,2,3 um:zero minimum:500 name:L1_AND_L2_ITLB_MISSES : L1 and L2 ITLB misses
+event:0xc6 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_FAR_CONTROL_TRANSFERS : Retired far control transfers
+event:0xc7 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_RESYNC_BRANCHES : Retired resync branches (only non-control transfer branches counted)
+event:0xcd counters:0,1,2,3 um:zero minimum:500 name:INTERRUPTS_MASKED : Interrupts masked cycles (IF=0)
+event:0xce counters:0,1,2,3 um:zero minimum:500 name:INTERRUPTS_MASKED_PENDING : Interrupts masked while pending cycles (INTR while IF=0)
+event:0xcf counters:0,1,2,3 um:zero minimum:10 name:HARDWARE_INTERRUPTS : Number of taken hardware interrupts
+# There are other events, but they were removed from the architecture manuals

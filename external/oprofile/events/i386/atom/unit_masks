@@ -1,0 +1,120 @@
+#
+# Intel Atom (Silverthorne) unit masks
+#
+include:i386/arch_perfmon
+name:store_forwards type:mandatory default:0x81
+	0x81 good Good store forwards
+name:segment_reg_loads type:mandatory default:0x00
+	0x00 any Number of segment register loads
+name:simd_prefetch type:bitmask default:0x01
+	0x01 prefetcht0 Streaming SIMD Extensions (SSE) PrefetchT0 instructions executed
+	0x06 sw_l2 Streaming SIMD Extensions (SSE) PrefetchT1 and PrefetchT2 instructions executed
+	0x08 prefetchnta Streaming SIMD Extensions (SSE) Prefetch NTA instructions executed
+name:data_tlb_misses type:bitmask default:0x07
+	0x07 dtlb_miss Memory accesses that missed the DTLB
+	0x05 dtlb_miss_ld DTLB misses due to load operations
+	0x09 l0_dtlb_miss_ld L0_DTLB misses due to load operations
+	0x06 dtlb_miss_st DTLB misses due to store operations
+name:page_walks type:bitmask default:0x03
+	0x03 walks Number of page-walks executed
+	0x03 cycles Duration of page-walks in core cycles
+name:x87_comp_ops_exe type:bitmask default:0x81
+	0x01 s Floating point computational micro-ops executed
+	0x81 ar Floating point computational micro-ops retired
+name:fp_assist type:mandatory default:0x81
+	0x81 ar Floating point assists
+name:mul type:bitmask default:0x01
+	0x01 s Multiply operations executed
+	0x81 ar Multiply operations retired
+name:div type:bitmask default:0x01
+	0x01 s Divide operations executed
+	0x81 ar Divide operations retired
+name:l2_rqsts type:bitmask default:0x41
+	0x41 i_state L2 cache demand requests from this core that missed the L2
+	0x4F mesi L2 cache demand requests from this core
+name:cpu_clk_unhalted type:bitmask default:0x00
+	0x00 core_p Core cycles when core is not halted
+	0x01 bus Bus cycles when core is not halted
+	0x02 no_other Bus cycles when core is active and the other is halted
+name:l1d_cache type:bitmask default:0x21
+	0x21 ld L1 Cacheable Data Reads
+	0x22 st L1 Cacheable Data Writes
+name:icache type:bitmask default:0x03
+	0x03 accesses Instruction fetches
+	0x02 misses Icache miss
+name:itlb type:bitmask default:0x04
+	0x04 flush ITLB flushes
+	0x02 misses ITLB misses
+name:macro_insts type:exclusive default:0x03
+	0x02 cisc_decoded CISC macro instructions decoded
+	0x03 all_decoded All Instructions decoded
+name:simd_uops_exec type:exclusive default:0x80
+	0x00 s SIMD micro-ops executed (excluding stores)
+	0x80 ar SIMD micro-ops retired (excluding stores)
+name:simd_sat_uop_exec type:bitmask default:0x00
+	0x00 s SIMD saturated arithmetic micro-ops executed
+	0x80 ar SIMD saturated arithmetic micro-ops retired
+name:simd_uop_type_exec type:bitmask default:0x01
+	0x01 s SIMD packed multiply microops executed
+	0x81 ar SIMD packed multiply microops retired
+	0x02 s SIMD packed shift micro-ops executed
+	0x82 ar SIMD packed shift micro-ops retired
+	0x04 s SIMD pack micro-ops executed
+	0x84 ar SIMD pack micro-ops retired
+	0x08 s SIMD unpack micro-ops executed
+	0x88 ar SIMD unpack micro-ops retired
+	0x10 s SIMD packed logical microops executed
+	0x90 ar SIMD packed logical microops retired
+	0x20 s SIMD packed arithmetic micro-ops executed
+	0xA0 ar SIMD packed arithmetic micro-ops retired
+name:uops_retired type:mandatory default:0x10
+	0x10 any Micro-ops retired
+name:br_inst_retired type:bitmask default:0x00
+	0x00 any Retired branch instructions
+	0x01 pred_not_taken Retired branch instructions that were predicted not-taken
+	0x02 mispred_not_taken Retired branch instructions that were mispredicted not-taken
+	0x04 pred_taken Retired branch instructions that were predicted taken
+	0x08 mispred_taken Retired branch instructions that were mispredicted taken
+	0x0A mispred Retired mispredicted branch instructions (precise event)
+	0x0C taken Retired taken branch instructions
+	0x0F any1 Retired branch instructions
+name:cycles_int_masked type:bitmask default:0x01
+	0x01 cycles_int_masked Cycles during which interrupts are disabled
+	0x02 cycles_int_pending_and_masked Cycles during which interrupts are pending and disabled
+name:simd_inst_retired type:bitmask default:0x01
+	0x01 packed_single Retired Streaming SIMD Extensions (SSE) packed-single instructions
+	0x02 scalar_single Retired Streaming SIMD Extensions (SSE) scalar-single instructions
+	0x04 packed_double Retired Streaming SIMD Extensions 2 (SSE2) packed-double instructions
+	0x08 scalar_double Retired Streaming SIMD Extensions 2 (SSE2) scalar-double instructions
+	0x10 vector Retired Streaming SIMD Extensions 2 (SSE2) vector instructions
+	0x1F any Retired Streaming SIMD instructions
+name:simd_comp_inst_retired type:bitmask default:0x01
+	0x01 packed_single Retired computational Streaming SIMD Extensions (SSE) packed-single instructions
+	0x02 scalar_single Retired computational Streaming SIMD Extensions (SSE) scalar-single instructions
+	0x04 packed_double Retired computational Streaming SIMD Extensions 2 (SSE2) packed-double instructions
+	0x08 scalar_double Retired computational Streaming SIMD Extensions 2 (SSE2) scalar-double instructions
+name:mem_load_retired type:bitmask default:0x01
+	0x01 l2_hit Retired loads that hit the L2 cache (precise event)
+	0x02 l2_miss Retired loads that miss the L2 cache (precise event)
+	0x04 dtlb_miss Retired loads that miss the DTLB (precise event)
+name:thermal_trip type:mandatory default:0xc0
+	0xc0 thermal_trip Number of thermal trips.
+# 18-11
+name:core type:bitmask default:0x180
+	0x180 all All cores.
+	0x080 this This Core.
+# 18-12
+name:agent type:bitmask default:0x00
+	0x00 this This agent
+	0x40 any Include any agents
+# 18-13
+name:prefetch type:bitmask default:0x60
+	0x60 all All inclusive
+	0x20 hw Hardware prefetch only
+	0x00 exclude_hw Exclude hardware prefetch
+# 18-14
+name:mesi type:bitmask default:0x0f
+	0x08 modified Counts modified state
+	0x04 exclusive Counts exclusive state
+	0x02 shared Counts shared state
+	0x01 invalid Counts invalid state

@@ -1,0 +1,12 @@
+This directory contains the fonts from the Noto project, chosen for
+Android. For more detail about Noto, please refer to:
+
+https://code.google.com/p/noto/
+
+The tagline is: "Fonts support all languages/characters in Unicode"
+
+The above is the authoritative repository for the fonts. This directory
+does not necessarily track it exactly, and contains only the fonts
+needed for Android (the unhinted versions in particular, if both hinted
+and unhinted versions are available, for size reasons), so does not
+include any utilities or installers.

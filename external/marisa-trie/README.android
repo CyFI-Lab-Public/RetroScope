@@ -1,0 +1,20 @@
+URL: http://marisa-trie.googlecode.com/files/marisa-0.1.4.tar.gz
+Version: 0.1.4
+License: New BSD
+License File: LICENSE
+
+Description:
+C++ library providing implementation of Matching
+Algorithm with Recursively Implemented StorAge (MARISA) -- static and
+space-efficient trie data structure.
+
+
+Homepage: http://code.google.com/p/marisa-trie/
+
+Local Modifications:
+- Remove files under vs2008/ as we don't need to build under
+  visual studio.
+- Changes to string.h to avoid a header collision with the C
+  standard header with the same name.
+- Apply patch 30551945 from alexgru to fix a critical bug.
+- Remove all the exceptions: see <android_diff.txt> for details.

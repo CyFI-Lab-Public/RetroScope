@@ -1,0 +1,58 @@
+.TH OPHELP 1 "@DATE@" "oprofile @VERSION@"
+.UC 4
+.SH NAME
+ophelp \- list OProfile events
+.SH SYNOPSIS
+.br
+.B ophelp
+[
+.I options
+]
+[event name]
+.SH DESCRIPTION
+
+By default,
+.B ophelp
+lists the available performance counter options. If you
+give it a symbolic event name, it will return the hardware
+value (e.g. "ophelp DATA_MEM_REFS").
+
+.SH OPTIONS
+.TP
+.BI "--cpu-type / -c"
+Show the events for the given numerical CPU type.
+.br
+.TP
+.BI "--get-cpu-type / -r"
+Show the symbolic CPU name.
+.br
+.TP
+.BI "--xml / -X"
+List events in XML format.
+.br
+.TP
+.BI "--help / -? / --usage"
+Show help message.
+.br
+.TP
+.BI "--version / -v"
+Show version.
+
+.SH ENVIRONMENT
+No special environment variables are recognised by ophelp.
+
+.SH FILES
+.TP
+.I $prefix/share/oprofile/
+Event description files used by OProfile.
+.TP
+.I /var/lib/oprofile/samples/
+The location of the generated sample files.
+
+.SH VERSION
+.TP
+This man page is current for @PACKAGE@-@VERSION@.
+
+.SH SEE ALSO
+.BR @OP_DOCDIR@,
+.BR oprofile(1)

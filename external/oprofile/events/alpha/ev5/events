@@ -1,0 +1,49 @@
+# Alpha EV5 events
+#
+event:0x00 counters:0,2 um:zero minimum:256 name:CYCLES : Total cycles
+event:0x01 counters:0 um:zero minimum:256 name:ISSUES : Total issues
+event:0x02 counters:1 um:zero minimum:256 name:NON_ISSUE_CYCLES : Nothing issued, pipeline frozen
+event:0x03 counters:1 um:zero minimum:256 name:SPLIT_ISSUE_CYCLES : Some but not all issuable instructions issued
+event:0x04 counters:1 um:zero minimum:256 name:PIPELINE_DRY : Nothing issued, pipeline dry
+event:0x05 counters:1 um:zero minimum:256 name:REPLAY_TRAP : Replay traps (ldu, wb/maf, litmus test)
+event:0x06 counters:1 um:zero minimum:256 name:SINGLE_ISSUE_CYCLES : Single issue cycles
+event:0x07 counters:1 um:zero minimum:256 name:DUAL_ISSUE_CYCLES : Dual issue cycles
+event:0x08 counters:1 um:zero minimum:256 name:TRIPLE_ISSUE_CYCLES : Triple issue cycles
+event:0x09 counters:1 um:zero minimum:256 name:QUAD_ISSUE_CYCLES : Quad issue cycles
+event:0x0a counters:1 um:zero minimum:256 name:FLOW_CHANGE : Flow change (meaning depends on counter 2)
+# ??? This one's dependent on the value in PCSEL2: If measuring PC_MISPR,
+# this is jsr-ret instructions, if measuring BRANCH_MISPREDICTS, this is
+# conditional branches, otherwise this is all branch insns, including hw_rei.
+event:0x0b counters:1 um:zero minimum:256 name:INTEGER_OPERATE : Integer operate instructions
+event:0x0c counters:1 um:zero minimum:256 name:FP_INSNS : FP operate instructions (not br, load, store)
+# FIXME: Bug carried over
+event:0x0c counters:1 um:zero minimum:256 name:LOAD_INSNS : Load instructions
+event:0x0d counters:1 um:zero minimum:256 name:STORE_INSNS : Store instructions
+event:0x0e counters:1 um:zero minimum:256 name:ICACHE_ACCESS : Instruction cache access
+event:0x0f um:zero minimum:256 name:DCACHE_ACCESS : Data cache access
+event:0x10 counters:2 um:zero minimum:256 name:LONG_STALLS : Stalls longer than 15 cycles
+event:0x11 counters:2 um:zero minimum:256 name:PC_MISPR : PC mispredicts
+event:0x12 counters:2 um:zero minimum:256 name:BRANCH_MISPREDICTS : Branch mispredicts
+event:0x13 counters:2 um:zero minimum:256 name:ICACHE_MISSES : Instruction cache misses
+event:0x14 counters:2 um:zero minimum:256 name:ITB_MISS : Instruction TLB miss
+event:0x15 counters:2 um:zero minimum:256 name:DCACHE_MISSES : Data cache misses
+event:0x16 counters:2 um:zero minimum:256 name:DTB_MISS : Data TLB miss
+event:0x17 counters:2 um:zero minimum:256 name:LOADS_MERGED : Loads merged in MAF
+event:0x18 counters:2 um:zero minimum:256 name:LDU_REPLAYS : LDU replay traps
+event:0x19 counters:2 um:zero minimum:256 name:WB_MAF_FULL_REPLAYS : WB/MAF full replay traps
+event:0x1a counters:2 um:zero minimum:256 name:MEM_BARRIER : Memory barrier instructions
+event:0x1b counters:2 um:zero minimum:256 name:LOAD_LOCKED : LDx/L instructions
+event:0x1c counters:1 um:zero minimum:256 name:SCACHE_ACCESS : S-cache access
+event:0x1d counters:1 um:zero minimum:256 name:SCACHE_READ : S-cache read
+event:0x1e counters:1,2 um:zero minimum:256 name:SCACHE_WRITE : S-cache write
+event:0x1f counters:1 um:zero minimum:256 name:SCACHE_VICTIM : S-cache victim
+event:0x20 counters:2 um:zero minimum:256 name:SCACHE_MISS : S-cache miss
+event:0x21 counters:2 um:zero minimum:256 name:SCACHE_READ_MISS : S-cache read miss
+event:0x22 counters:2 um:zero minimum:256 name:SCACHE_WRITE_MISS : S-cache write miss
+event:0x23 counters:2 um:zero minimum:256 name:SCACHE_SH_WRITE : S-cache shared writes
+event:0x24 counters:1 um:zero minimum:256 name:BCACHE_HIT : B-cache hit
+event:0x25 counters:1 um:zero minimum:256 name:BCACHE_VICTIM : B-cache victim
+event:0x26 counters:2 um:zero minimum:256 name:BCACHE_MISS : B-cache miss
+event:0x27 counters:1 um:zero minimum:256 name:SYS_REQ : System requests
+event:0x28 counters:2 um:zero minimum:256 name:SYS_INV : System invalidates
+event:0x29 counters:2 um:zero minimum:256 name:SYS_READ_REQ : System read requests

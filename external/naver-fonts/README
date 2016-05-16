@@ -1,0 +1,41 @@
+The NanumGothicBold.ttf and NanumGothic.ttf fonts in this directory are
+modified versions of the NanumGothicBold.ttf and NanumGothic.ttf fonts
+from http://hangeul.naver.com/font.  Because these fonts ship with
+DroidSansFallback.ttf (which contains an extensive collection of Chinese
+glyphs as well as other non-Korean characters) and because these fonts
+will ship on Android devices which do not use hints, the following changes
+were made to reduce the size of the NanumGothicBold.ttf and NanumGothic.ttf
+font files:
+
+1. Remove 4,888 Chinese characters
+2. Remove non-Korean characters other than ASCII (up to U+007F)
+3. Remove hints
+
+Shawn Kwon at NHN <kss@nhn.com> has given permission to use the reserved
+font name with these moidified versions of NanumGothicBold.ttf and
+NanumGothic.ttf in the following email:
+
+
+To: Raph Levien , Dave Crossland
+Subject: Permission to use Reserved Font Names
+
+Hi,
+
+I hereby grant permission in perpetuity to Google, Inc and affiliates
+to use the following Reserved Font Names declared in my SIL Open Font
+Licence notices:
+
+Nanum
+Naver Nanum
+NanumGothic
+Naver NanumGothic
+NanumMyeongjo
+Naver NanumMyeongjo
+NanumBrush
+Naver NanumBrush
+NanumPen
+Naver NanumPen
+
+
+Best regards,
+Shawn Kwon at NHN kss@nhn.com

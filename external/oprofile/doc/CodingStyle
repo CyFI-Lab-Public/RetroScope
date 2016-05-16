@@ -1,0 +1,137 @@
+
+*** Patches not matching these rules will be rejected ***
+
+First off, read Linus' CodingStyle in the kernel Documentation/ directory.
+Most of it applies directly. There are a number of other points worth making,
+however.
+
+The script "check_style.py" in the oprofile-tests CVS module can help
+identify some problems. Note that it generates a lot of false positives,
+as well as false negatives, so be careful in its use. If all else fails,
+use common sense.
+
+General points
+--------------
+
+Keep lines within 80 columns with a maximum tab size of 8. You may
+exceed 80 columns if the alternative is uglier (see format_output.h).
+
+Keep files (especially headers) focussed on one small aspect.
+Make judicious use of forward declarations.
+
+	Rationale: reduce false include dependencies
+
+Separate out more general routines and place them in the appropriate
+utility library (e.g. libop/, libutil++).
+
+	Rationale: re-use, clean organisation
+
+Avoid complex conditionals via helper functions (e.g. comma_match)
+
+Avoid ifdefs: prefer configure options / build trickery.
+
+Use Doxygen comments judiciously. Actual source code should generally
+only document the unexpected. Comments should not duplicate what the code
+says (this means variable/function naming is uber-important). The Doxygen
+function comments go in the header (except for static functions obviously).
+
+Do not use trailing comments, unless they are used for an enum or struct
+member, e.g. :
+
+	enum foo {
+		bar, /**< foo */
+		baz, /**< quux */
+	};
+
+If you do this, you must use the above doxygenated markup.
+
+Makefile.am: prefer using
+LIST = \
+	foo1 \
+	foo2
+rather than
+LIST = foo1 foo2
+
+	Rationale: diffs are a lot easier to read.
+
+Arbitrary rules
+---------------
+
+Two blank lines between functions.
+
+Use tabs for indentation, spaces for alignment. Avoid wrapping lines,
+but if you do, choose a reasonable point and align the next line
+sensibly. If there is no sensible alignment point, use single extra
+tab to indicate "continuation". Avoid using tabs for alignment: it
+breaks on different sized tabs. Lines should be less than 80
+on screen characters wide (assuming a maximum tab-size of 8).
+
+rationale: http://www.movementarian.org/docs/whytabs/
+
+C++ inline methods in headers. use Java braces :
+
+	void method() {
+	}
+
+Avoid using inline methods at all.
+
+Space types like this :
+
+	void blah(int * x, int * y);
+	void blah(int & x);
+	int & ref = get_ref();
+	int * x = &y;
+	int z = *x;
+	int arr[4];
+
+Rationale: makes application of operators visually different from
+type specifications.
+
+Use "char const *" not "const char *".
+
+Make use of the C++ standard library. That's what it's there for. Bear
+in mind we support gcc 2.91.66
+
+Avoid CamelCase in preference to cpp_std_library.
+
+Use "using namespace std;" in .cpp files. Use std:: qualification in .h files.
+
+Avoid do { } while(). Avoid defines.
+
+Single-line for/while/if blocks should generally not use containing
+braces. Never use the comma operator to avoid braces. If there is more
+than one visual line (regardless of number of statements), you need
+braces. If there is an else clause, you should probably use braces; if
+any of the branches in an if/else if change has braces, they all should.
+
+Spacing :
+
+	if (blah) {
+	call_method(&param);
+	x = y + z;
+	x = func(a, b, c + SOME_DEFINE);
+
+Use noncopyable, scoped_ptr, and scoped_array.
+
+Use the standard comments + include guards for headers.
+
+Do not inline unless you have good reason.
+
+Use anon namespaces for static variables.
+
+In a derived class re-implementing a virtual function, include the
+(unnecessary) "virtual" keyword in the function declaration.
+
+"nr_doobries" not "no_doobries" - disambiguates between "number" and "negative"
+
+Wrap long function definitions like this if possible :
+
+struct some_frobnication const &
+my_frobnicator(vector<string> const & values, bool bogo);
+
+or, if not :
+
+static void my_frobnicator(vector<string> const & values,
+                           vector<string> const & things);
+
+Note the spaces for alignment here. Avoid such long prototypes at all where sensible.

@@ -1,0 +1,451 @@
+2008-12-23  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* utils/opcontrol: reverse the logic in
+	  is_non_cell_ppc64_variant to avoid the need
+	  for maintenance as new ppc64 variants are addded
+
+2008-12-12  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* libop/Makefile.am: Add Andi Kleen's new op_hw_specific.h
+	  file to to Makefile.am
+
+2008-11-24  Robert Richter <robert.richter@amd.com>
+
+	* utils/opcontrol: Correct spelling error
+
+2008-11-24  Robert Richter <robert.richter@amd.com>
+
+	* daemon/opd_events.c:
+	* daemon/opd_events.h:
+	* daemon/opd_mangling.c:
+	* daemon/opd_mangling.h:
+	* daemon/opd_sfile.c:
+	* daemon/opd_trans.c:
+	* events/x86-64/family10/events:
+	* utils/opcontrol: fix whitespaces
+
+2008-11-12  Andi Kleen  <andi@firstfloor.org>
+
+	* libop/op_events.c
+	* libop/op_events.h
+	* libpp/op_header.cpp: Fix regression in arch perfmon code
+	  (see bug #2161762)
+
+2008-11-12  Andi Kleen  <andi@firstfloor.org>
+
+	* events/i386/arch_perfmon/events: Fix event name to avoid
+	  parsing error
+
+2008-11-05  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* libutil++/file_manip.cpp: Add mode arg to open
+
+2008-10-30  William Cohen  <wcohen@redhat.com>
+
+	* m4/binutils.m4: Defeat compiler optimization in configure
+	  check for bfd_get_synthetic_symtab
+
+2008-10-27  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* libutil++/op_spu_bfd.cpp: Initialize anon_obj to false for op_bfd
+	  objects for Cell SPE embedded binaries
+
+2008-10-23  Dave Nomura  <dcnltc@us.ibm.com>
+
+	* libutil++/xml_output.cpp:
+	* libutil/xml_out.c:
+	* libutil/xml_out.h:
+	* libutil/xml_events.c:
+	* libutil/xml_events.h:
+	* libutil/Makefile.am:
+	* libop/op_xml_out.c:
+	* libop/op_xml_out.h:
+	* libop/op_xml_events.c:
+	* libop/op_xml_events.h:
+	* libop/Makefile.am: moved xml util routines to libop and fixed some
+	  other problems in the previous patch
+
+2008-10-15  Dave Nomura  <dcnltc@us.ibm.com>
+
+	* utils/ophelp.c:
+	* libutil++/xml_output.cpp:
+	* libutil++/xml_output.h:
+	* libutil/xml_out.c:
+	* libutil/xml_out.h:
+	* libutil/xml_events.c:
+	* libutil/xml_events.h:
+	* libutil/Makefile.am: added -X option to ophelp to generate XML
+
+2008-10-06  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* configure.in:
+	* m4/binutils.m4:
+	* m4/cellspubfdsupport.m4: Handle BFD's new dependency on libz
+
+2008-08-28  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* configure.in: Add configure option for non-standard binutils lib
+
+2008-08-28  Andi Kleen  <andi@firstfloor.org>
+
+	* events/i386/arch_perfmon/events:
+	* events/i386/arch_perfmon/unit_masks:
+	* events/Makefile.am:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* libop/op_events.h:
+	* libop/op_hw_specific.h:
+	* libpp/op_header.cpp:
+	* utils/ophelp.c: support for Intel arch perfmon
+
+2008-08-28  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* configure.in: Change AM_INIT_AUTOMAKE to 0.9.5cvs; enables -werror
+	  gcc option to stop build on warnings
+
+2008-08-27  Jatin Nansi <jnansi@redhat.com>
+
+	* utils/opcontrol: vecho parameters after "--verbose" option processed
+
+2008-08-08  Daniel Hansel <daniel.hansel@linux.vnet.ibm.com>
+
+	* daemon/init.c: Fixed call of execvp() to execute opjitconv if
+	  it is installed in a custom directory
+
+2008-08-07  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* libutil++/bfd_support.cpp:
+	* libutil++/op_bfd.cpp:
+	* libutil++/op_bfd.h: Fix a couple problems relating
+	  to overlay symbols for Cell SPE applications
+
+2008-07-31  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* configure.in: Fix to allow libtool to recognize
+	  alternate binutils dir passed via --with-binutils
+
+2008-07-24  Jean Pihet <jpihet@mvista.com>
+
+	* events/arm/armv7/events:
+	* events/arm/armv7/unit_masks:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/ophelp.c: Added ARMv7 support to be consistent with the
+	  kernel, added ARMv7 specific events.
+	  Tested on OMAP3430 and OMAP3530 chipsets.
+
+2008-07-17  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* configure.in: bump version in AM_INIT_AUTOMAKE to 0.9.4
+
+2008-07-17  Will Cohen  <wcohen@redhat.com>
+
+	* libop/op_alloc_counter.c: Assume perfmon managing PMU hw
+	  when no counters
+
+2008-07-07  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* HACKING: Ask contributors to include Signed-off-by
+	  line with their patches
+
+2008-07-03  Richard Purdie  <rpurdie@openedhand.com>
+
+	* libutil++/bfd_support.cpp:
+	* libutil++/bfd_support.h:
+	* libutil++/op_bfd.cpp:
+	* libutil++/op_bfd.h:
+	* libutil++/op_spu_bfd.cpp:
+	* pp/oparchive.cpp: Switch separate_debug_file_exists()
+	  and hence find_separate_debug_file() to use
+	  extra_images::find_image_path() so debug files in --root
+	  directories are correctly found
+
+2008-07-03  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* ChangeLog:  Correct date of previous entry
+	* README_PACKAGERS: Add more advice to packagers
+	  regarding the new JIT support libraries
+
+2008-07-03  Maynard Johnson <maynardj@us.ibm.com>
+
+	* libopagent/Makefile.am:
+	* libopagent/opagent.c:
+	* remove libopagent/bfddefines.c: Move code from bfddefines
+	  to libopagent to fix cross-compile error
+
+2008-06-30  Shunichi Fuji  <palglowr@gmail.com>
+
+	* libpp/callgraph_container.cpp: Fix compile warning
+	  using gcc 4.3.1 for uninitialized variable
+
+2008-06-23  Maynard Johnson <maynardj@us.ibm.com>
+
+	* daemon/opd_stats.c: Do not force printing of sample_invalid_eip
+	  since this is not available from pre-2.6.24 kernels
+
+2008-06-23  Maynard Johnson <maynardj@us.ibm.com>
+
+	* opjitconv/opjitconv.c: Switch to special user account
+	  after determining whether or not we have JIT dump files
+	  to process in order to avoid unnecessary error messages
+	  in oprofiled.log
+
+2008-06-11  Maynard Johnson <maynardj@us.ibm.com>
+
+	* configure.in:
+	* Makefile.am:
+	* agents/Makefile.am:
+	* doc/oprofile.xml: Change make install error to warning
+	  if special user account does not exist
+
+2008-06-11  Maynard Johnson <maynardj@us.ibm.com>
+
+	* Makefile.am: Add README_PACKAGERS to EXTRA_DIST
+
+2008-06-03  Will Cohen  <wcohen@redhat.com>
+
+	* libop/op_alloc_counter.c: Use counters actually available.
+
+2008-05-21  George McCollister  <georgem@novatech-llc.com>
+
+	* daemon/opd_cookie.c: Fix ARM big-endian syscall
+
+2008-05-20  Jason Yeh  <jason.yeh@amd.com>
+
+	* events/x86_64/hammer/events:
+	* events/x86_64/hammer/unit_masks:
+	* events/x86_64/family10/events:
+	* events/x86_64/family10/unit_masks: update for recent BKDG
+	revisions
+
+2008-05-19  Maynard Johnson <maynardj@us.ibm.com>
+
+	* libpp/profile_spec.cpp: Fix bug in differential profile
+	  when using archive spec and an image spec
+
+2008-05-19  Maynard Johnson <maynardj@us.ibm.com>
+
+	* libpp/format_output.cpp:
+	* libpp/xml_utils.cpp:
+	* libutil++/op_bfd.cpp:
+	* libutil++/op_bfd.h: Do not to try to get symbol contents
+	  for artificial symbols and other cases where no symbol contents
+	  exist.  Also change to use scoped array for symbol contents
+	  instead of automatic allocation from the stack to avoid allocation
+	  attempt exceeding max stack size.
+
+2008-05-09  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* configure.in:
+	* Makefile.am: Improve error messages for special user account checks
+
+2008-05-08  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* libpp/callgraph_container.cpp:
+	* libpp/profile_container.cpp:
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: Fix to allow 32-bit opreport to
+	  properly process samples from 64-bit JIT profile agent
+
+2008-04-29  René Rebe  <rene@exactcode.de>
+
+        * libabi/opimport.cpp:
+        * libpp/op_header.cpp:
+        * libpp/profile.cpp:
+        * libutil++/bfd_support.cpp:
+        * libutil++/cverb.cpp:
+        * libutil++/op_bfd.cpp:
+        * libutil++/op_spu_bfd.cpp:
+        * pp/common_option.cpp:
+        * pp/opannotate_options.cpp:
+        * pp/oparchive.cpp:
+        * pp/opgprof_options.cpp: added explicit includes for C functions
+	  as required for compilation with GCC-4.3
+
+2008-04-28  Daniel Hansel <daniel.hansel@linux.vnet.ibm.com>
+
+	* oprofile/agents/jvmpi/jvmpi_oprofile.cpp:
+	* oprofile/agents/jvmpi/Makefile.am:
+	* oprofile/agents/jvmti/libjvmti_oprofile.c:
+	* oprofile/agents/jvmti/Makefile.am:
+	* oprofile/agents/Makefile.am:
+	* oprofile/autogen.sh:
+	* oprofile/configure.in:
+	* oprofile/daemon/init.c:
+	* oprofile/daemon/Makefile.am:
+	* oprofile/daemon/opd_anon.c:
+	* oprofile/daemon/opd_pipe.c:
+	* oprofile/daemon/opd_pipe.h:
+	* oprofile/daemon/oprofiled.c:
+	* oprofile/daemon/oprofiled.h:
+	* oprofile/doc/Makefile.am:
+	* oprofile/doc/op-jit-devel.xml:
+	* oprofile/doc/oprofile.xml:
+	* oprofile/libop/op_config.c:
+	* oprofile/libop/op_config.h:
+	* oprofile/libopagent/bfddefines.c:
+	* oprofile/libopagent/jitdump.h:
+	* oprofile/libopagent/Makefile.am:
+	* oprofile/libopagent/opagent.c:
+	* oprofile/libopagent/opagent.h:
+	* oprofile/libopagent/opagent_symbols.ver:
+	* oprofile/libpp/arrange_profiles.cpp:
+	* oprofile/libpp/callgraph_container.cpp:
+	* oprofile/libpp/filename_spec.cpp:
+	* oprofile/libpp/filename_spec.h:
+	* oprofile/libpp/op_header.cpp:
+	* oprofile/libpp/op_header.h:
+	* oprofile/libpp/parse_filename.cpp:
+	* oprofile/libpp/parse_filename.h:
+	* oprofile/libpp/profile_container.cpp:
+	* oprofile/libpp/profile.cpp:
+	* oprofile/libpp/profile.h:
+	* oprofile/libpp/profile_spec.cpp:
+	* oprofile/libregex/demangle_java_symbol.cpp:
+	* oprofile/libregex/demangle_java_symbol.h:
+	* oprofile/libregex/demangle_symbol.cpp:
+	* oprofile/libregex/Makefile.am:
+	* oprofile/libregex/tests/java_test.cpp:
+	* oprofile/libregex/tests/Makefile.am:
+	* oprofile/libutil/Makefile.am:
+	* oprofile/libutil/op_file.c:
+	* oprofile/libutil/op_file.h:
+	* oprofile/libutil/op_growable_buffer.c:
+	* oprofile/libutil/op_growable_buffer.h:
+	* oprofile/libutil/op_list.h:
+	* oprofile/libutil++/bfd_support.cpp:
+	* oprofile/libutil++/bfd_support.h:
+	* oprofile/libutil++/file_manip.cpp:
+	* oprofile/libutil++/op_bfd.cpp:
+	* oprofile/libutil++/op_bfd.h:
+	* oprofile/Makefile.am:
+	* oprofile/opjitconv/conversion.c:
+	* oprofile/opjitconv/create_bfd.c:
+	* oprofile/opjitconv/debug_line.c:
+	* oprofile/opjitconv/jitsymbol.c:
+	* oprofile/opjitconv/Makefile.am:
+	* oprofile/opjitconv/opjitconv.c:
+	* oprofile/opjitconv/opjitconv.h:
+	* oprofile/opjitconv/parse_dump.c:
+	* oprofile/pp/opgprof.cpp:
+	* oprofile/README_PACKAGERS:
+	* oprofile/TODO:
+	* oprofile/utils/opcontrol: JIT support
+
+2008-04-18  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* m4/binutils.m4: A correct fix for the --with-binutils problem
+
+2008-04-17  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* m4/binutils.m4: Revert previous patch as it was buggy
+
+2008-04-16  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* m4/binutils.m4:  Fix the bfd_get_synthetic_symtab check
+	  in this m4 macro to work correctly with '--with-binutils'
+	  configure option 
+
+2008-04-10  Chris J Arges  <arges@linux.vnet.ibm.com>
+
+	* utils/opcontrol:
+	For ppc64 architectures, need to check if all user/kernel flags
+	per counter match. Then use this value to set user/kernel domain
+	profiling.
+
+2008-03-13  Dave Nomura <dcnltc@us.ibm.com>
+
+	* libutil++/op_bfd.cpp:
+	* libutil++/op_bfd.h:
+	* pp/opreport.cpp:
+	gcc 4.3 gives warnings on const function return types
+
+2008-03-03  John Levon  <levon@movementarian.org>
+
+	* daemon/oprofiled.c: fix error message typo
+
+2008-02-22  Haavard Skinnemoen  <hskinnemoen@atmel.com>
+
+	*  events/Makefile.am:
+	*  events/avr32/events:
+	*  events/avr32/unit_masks:
+	*  libop/op_cpu_type.c:
+	*  libop/op_cpu_type.h:
+	*  libop/op_events.c:
+	*  utils/ophelp.c: Add AVR32 support
+ 
+2008-02-22  Richard Purdie  <rpurdie@openedhand.com>
+
+	* libutil++/file_manip.cpp:
+	* pp/oparchive.cpp:
+	Check files actually exist before copying or listing the file as part of
+	oparchive --list-files.
+
+	The copy_file function breaks if passed a directory as a file to copy 
+	since it will create a file at the destination causing subtle bugs.
+
+2008-02-22  Andy Fleming <afleming@freescale.com>
+
+	*  events/Makefile.am:
+	*  events/ppc/e300/events:
+	*  events/ppc/e300/unit_masks:
+	*  libop/op_cpu_type.c:
+	*  libop/op_cpu_type.h:
+	*  libop/op_events.c:
+	*  utils/ophelp.c: Add e300 support
+ 
+2008-02-22  Bob Nelson  <rrnelson@us.ibm.com>
+
+	* utils/opcontrol: Fix loop in dump code when using
+	  --session-dir on a network drive.  (clock issues)
+
+2008-02-15  Will Cohen  <wcohen@redhat.com>
+
+	* gui/oprof_start_util.cpp
+	* libutil++/file_manip.cpp
+	* libutil++/bfd_support.cpp
+	* libutil++/bfd_spu_support.cpp
+	* libutil++/op_spu_bfd.cpp
+	* libutil++/cverb.cpp
+	* libutil++/child_reader.cpp
+	* pp/opgprof_options.cpp
+	* pp/opannotate_options.cpp
+	* pp/oparchive.cpp
+	* pp/common_option.cpp
+	* libpp/sample_container.cpp
+	* libpp/op_header.cpp
+	* libpp/profile.cpp
+	* libabi/opimport.cpp
+	* libregex/demangle_symbol.cpp: Add includes for gcc 4.3 compatibility.
+
+2008-02-07  Bob Nelson  <rrnelson@us.ibm.com>
+
+	* libutil++/op_bfd.h:  add bool symb_artificial to op_bfd_symbol
+	* libutil++/op_bfd.cpp:  ctor changes, use symb_artificial
+	* libutil++/op_spu_bfd.cpp:  profile SPU 'stack' code
+
+2008-02-04  Bob Nelson  <rrnelson@us.ibm.com>
+
+	* daemon/opd_spu.c: Fix number of records to check for
+	  in an SPU context switch
+
+2008-01-21  Daniel Hansel  <daniel.hansel@linux.vnet.ibm.com>
+
+	* various: style cleanups
+
+2008-01-15  Isaku Yamahata  <yamahata@valinux.co.jp>
+
+	* daemon/opd_trans.c: fix previous SPU patch
+
+2008-01-11  Isaku Yamahata  <yamahata@valinux.co.jp>
+
+	* daemon/opd_perfmon.c: Xen support for IA64
+
+2008-01-11  Markus Armbruster  <armbru@redhat.com>
+
+	* daemon/opd_interface.h:
+	* daemon/opd_trans.c: work around SPU/Xen code numbering problem
+
+See ChangeLog-2007 for earlier changelogs.

@@ -1,0 +1,115 @@
+# Core Solo / Duo events
+#
+# Architectural events
+#
+event:0x3c counters:0,1 um:nonhlt minimum:6000 name:CPU_CLK_UNHALTED : Unhalted clock cycles
+event:0xc0 counters:0,1 um:zero minimum:6000 name:INST_RETIRED : number of instructions retired
+event:0x2e counters:0,1 um:mesi minimum:6000 name:L2_RQSTS : number of L2 requests
+#
+# Model specific events
+#
+event:0x03 counters:0,1 um:zero minimum:500 name:LD_BLOCKS : number of store buffer blocks
+event:0x04 counters:0,1 um:zero minimum:500 name:SB_DRAINS : number of store buffer drain cycles
+event:0x05 counters:0,1 um:zero minimum:500 name:MISALIGN_MEM_REF : number of misaligned data memory references
+event:0x06 counters:0,1 um:zero minimum:500 name:SEGMENT_REG_LOADS : number of segment register loads
+event:0x07 counters:0,1 um:kni_prefetch minimum:500 name:EMON_KNI_PREF_DISPATCHED : number of SSE pre-fetch/weakly ordered insns retired
+event:0x10 counters:0 um:zero minimum:3000 name:FLOPS : number of computational FP operations executed
+event:0x11 counters:1 um:zero minimum:500 name:FP_ASSIST : number of FP exceptions handled by microcode
+event:0x12 counters:1 um:zero minimum:1000 name:MUL : number of multiplies
+event:0x13 counters:1 um:zero minimum:500 name:DIV : number of divides
+event:0x14 counters:0 um:zero minimum:1000 name:CYCLES_DIV_BUSY : cycles divider is busy
+event:0x21 counters:0,1 um:zero minimum:500 name:L2_ADS : number of L2 address strobes
+event:0x22 counters:0,1 um:zero minimum:500 name:L2_DBUS_BUSY : number of cycles data bus was busy
+event:0x23 counters:0,1 um:zero minimum:500 name:L2_DBUS_BUSY_RD : cycles data bus was busy in xfer from L2 to CPU
+event:0x24 counters:0,1 um:zero minimum:500 name:L2_LINES_IN : number of allocated lines in L2
+event:0x25 counters:0,1 um:zero minimum:500 name:L2_M_LINES_INM : number of modified lines allocated in L2
+event:0x26 counters:0,1 um:zero minimum:500 name:L2_LINES_OUT : number of recovered lines from L2
+event:0x27 counters:0,1 um:zero minimum:500 name:L2_M_LINES_OUTM : number of modified lines removed from L2
+event:0x28 counters:0,1 um:mesi minimum:500 name:L2_IFETCH : number of L2 instruction fetches
+event:0x29 counters:0,1 um:mesi minimum:500 name:L2_LD : number of L2 data loads
+event:0x2a counters:0,1 um:mesi minimum:500 name:L2_ST : number of L2 data stores
+event:0x30 counters:0,1 um:mesi minimum:500 name:L2_REJECT_CYCLES : Cycles L2 is busy and rejecting new requests
+event:0x32 counters:0,1 um:mesi minimum:500 name:L2_NO_REQUEST_CYCLES : Cycles there is no request to access L2
+event:0x3a counters:0,1 um:est_trans minimum:500 name:EST_TRANS_ALL : Intel(tm) Enhanced SpeedStep(r) Technology transitions
+event:0x3b counters:0,1 um:xc0 minimum:500 name:THERMAL_TRIP : Duration in a thremal trip based on the current core clock
+event:0x40 counters:0,1 um:mesi minimum:500 name:DCACHE_CACHE_LD : L1 cacheable data read operations
+event:0x41 counters:0,1 um:mesi minimum:500 name:DCACHE_CACHE_ST : L1 cacheable data write operations
+event:0x42 counters:0,1 um:mesi minimum:500 name:DCACHE_CACHE_LOCK : L1 cacheable lock read operations to invalid state
+event:0x43 counters:0,1 um:one minimum:500 name:DATA_MEM_REFS : all L1 memory references, cachable and non
+event:0x44 counters:0,1 um:two minimum:500 name:DATA_MEM_CACHE_REFS : L1 data cacheable read and write operations
+event:0x45 counters:0,1 um:x0f minimum:500 name:DCACHE_REPL : L1 data cache line replacements
+event:0x46 counters:0,1 um:zero minimum:500 name:DCACHE_M_REPL : L1 data M-state cache line allocated
+event:0x47 counters:0,1 um:zero minimum:500 name:DCACHE_M_EVICT : L1 data M-state cache line evicted
+event:0x48 counters:0,1 um:dc_pend_miss minimum:500 name:DCACHE_PEND_MISS : Weighted cycles of L1 miss outstanding
+event:0x49 counters:0,1 um:zero minimum:500 name:DTLB_MISS : Data references that missed TLB
+event:0x4b counters:0,1 um:sse_miss minimum:500 name:SSE_PREF_MISS : SSE instructions that missed all caches
+event:0x4f counters:0,1 um:zero minimum:500 name:L1_PREF_REQ : L1 prefetch requests due to DCU cache misses
+#
+event:0x60 counters:0,1 um:zero minimum:500 name:BUS_REQ_OUTSTANDING : weighted number of outstanding bus requests
+event:0x61 counters:0,1 um:zero minimum:500 name:BUS_BNR_DRV : External bus cycles this processor is driving BNR pin
+event:0x62 counters:0,1 um:zero minimum:500 name:BUS_DRDY_CLOCKS : External bus cycles DRDY is asserted
+event:0x63 counters:0,1 um:zero minimum:500 name:BUS_LOCK_CLOCKS : External bus cycles LOCK is asserted
+event:0x64 counters:0,1 um:x40 minimum:500 name:BUS_DATA_RCV : External bus cycles this processor is receiving data
+event:0x65 counters:0,1 um:zero minimum:500 name:BUS_TRAN_BRD : number of burst read transactions
+event:0x66 counters:0,1 um:zero minimum:500 name:BUS_TRAN_RFO : number of completed read for ownership transactions
+event:0x67 counters:0,1 um:xc0 minimum:500 name:BUS_TRAN_WB : number of completed writeback transactions
+event:0x68 counters:0,1 um:zero minimum:500 name:BUS_TRAN_IFETCH : number of completed instruction fetch transactions
+event:0x69 counters:0,1 um:zero minimum:500 name:BUS_TRAN_INVAL : number of completed invalidate transactions
+event:0x6a counters:0,1 um:zero minimum:500 name:BUS_TRAN_PWR : number of completed partial write transactions
+event:0x6b counters:0,1 um:zero minimum:500 name:BUS_TRANS_P : number of completed partial transactions
+event:0x6c counters:0,1 um:zero minimum:500 name:BUS_TRANS_IO : number of completed I/O transactions
+event:0x6d counters:0,1 um:x20 minimum:500 name:BUS_TRANS_DEF : number of completed defer transactions
+event:0x6e counters:0,1 um:xc0 minimum:500 name:BUS_TRAN_BURST : number of completed burst transactions
+event:0x6f counters:0,1 um:xc0 minimum:500 name:BUS_TRAN_MEM : number of completed memory transactions
+event:0x70 counters:0,1 um:xc0 minimum:500 name:BUS_TRAN_ANY : number of any completed bus transactions
+event:0x77 counters:0,1 um:zero minimum:500 name:BUS_SNOOPS : External bus cycles
+event:0x78 counters:0,1 um:one minimum:500 name:DCU_SNOOP_TO_SHARE : DCU snoops to share-state L1 cache line due to L1 misses
+event:0x7d counters:0,1 um:zero minimum:500 name:BUS_NOT_IN_USE : Number of cycles there is no transaction from the core
+event:0x7e counters:0,1 um:zero minimum:500 name:BUS_SNOOP_STALL : Number of bus cycles during bus snoop stall
+event:0x80 counters:0,1 um:zero minimum:500 name:ICACHE_READS : number of instruction fetches
+event:0x81 counters:0,1 um:zero minimum:500 name:ICACHE_MISSES : number of instruction fetch misses
+event:0x85 counters:0,1 um:zero minimum:500 name:ITLB_MISS : number of ITLB misses
+event:0x86 counters:0,1 um:zero minimum:500 name:IFU_MEM_STALL : cycles instruction fetch pipe is stalled
+event:0x87 counters:0,1 um:zero minimum:500 name:ILD_STALL : cycles instruction length decoder is stalled
+event:0x88 counters:0,1 um:zero minimum:3000 name:BR_INST_EXEC : Branch instructions executed (not necessarily retired)
+event:0x89 counters:0,1 um:zero minimum:3000 name:BR_MISSP_EXEC : Branch instructions executed that were mispredicted at execution
+event:0x8a counters:0,1 um:zero minimum:3000 name:BR_BAC_MISSP_EXEC : Branch instructions executed that were mispredicted at Front End (BAC)
+event:0x8b counters:0,1 um:zero minimum:3000 name:BR_CND_EXEC : Conditional Branch instructions executed
+event:0x8c counters:0,1 um:zero minimum:3000 name:BR_CND_MISSP_EXEC : Conditional Branch instructions executed that were mispredicted
+event:0x8d counters:0,1 um:zero minimum:3000 name:BR_IND_EXEC : Indirect Branch instructions executed
+event:0x8e counters:0,1 um:zero minimum:3000 name:BR_IND_MISSP_EXEC : Indirect Branch instructions executed that were mispredicted
+event:0x8f counters:0,1 um:zero minimum:3000 name:BR_RET_EXEC : Return Branch instructions executed
+event:0x90 counters:0,1 um:zero minimum:3000 name:BR_RET_MISSP_EXEC : Return Branch instructions executed that were mispredicted at Execution
+event:0x91 counters:0,1 um:zero minimum:3000 name:BR_RET_BAC_MISSP_EXEC :Return Branch instructions executed that were mispredicted at Front End (BAC)
+event:0x92 counters:0,1 um:zero minimum:3000 name:BR_CALL_EXEC : CALL instruction executed
+event:0x93 counters:0,1 um:zero minimum:3000 name:BR_CALL_MISSP_EXEC : CALL instruction executed and miss predicted
+event:0x94 counters:0,1 um:zero minimum:3000 name:BR_IND_CALL_EXEC : Indirect CALL instruction executed
+event:0xa2 counters:0,1 um:zero minimum:500 name:RESOURCE_STALLS : cycles during resource related stalls
+event:0xb0 counters:0,1 um:zero minimum:500 name:MMX_INSTR_EXEC : number of MMX instructions executed (not MOVQ and MOVD)
+event:0xb1 counters:0,1 um:zero minimum:3000 name:SIMD_SAT_INSTR_EXEC : number of SIMD saturating instructions executed
+event:0xb3 counters:0,1 um:mmx_instr_type_exec minimum:3000 name:MMX_INSTR_TYPE_EXEC : number of MMX packing instructions
+event:0xc1 counters:0 um:zero minimum:3000 name:COMP_FLOP_RET : number of computational FP operations retired
+event:0xc2 counters:0,1 um:zero minimum:6000 name:UOPS_RETIRED : number of UOPs retired
+event:0xc3 counters:0,1 um:zero minimum:500 name:SMC_DETECTED : number of times self-modifying code condition is detected
+event:0xc4 counters:0,1 um:zero minimum:500 name:BR_INST_RETIRED : number of branch instructions retired
+event:0xc5 counters:0,1 um:zero minimum:500 name:BR_MISS_PRED_RETIRED : number of mispredicted branches retired
+event:0xc6 counters:0,1 um:zero minimum:500 name:CYCLES_INT_MASKED : cycles interrupts are disabled
+event:0xc7 counters:0,1 um:zero minimum:500 name:CYCLES_INT_PENDING_AND_MASKED : cycles interrupts are disabled with pending interrupts
+event:0xc8 counters:0,1 um:zero minimum:500 name:HW_INT_RX : number of hardware interrupts received
+event:0xc9 counters:0,1 um:zero minimum:500 name:BR_TAKEN_RETIRED : number of taken branches retired
+event:0xca counters:0,1 um:zero minimum:500 name:BR_MISS_PRED_TAKEN_RET : number of taken mispredictions branches retired
+event:0xcc counters:0,1 um:mmx_trans minimum:3000 name:FP_MMX_TRANS : MMX-floating point transitions
+event:0xcd counters:0,1 um:zero minimum:500 name:MMX_ASSIST : number of EMMS instructions executed
+event:0xce counters:0,1 um:zero minimum:3000 name:MMX_INSTR_RET : number of MMX instructions retired
+event:0xd0 counters:0,1 um:zero minimum:6000 name:INST_DECODED : number of instructions decoded
+event:0xd7 counters:0,1 um:zero minimum:3000 name:ESP_UOPS : Number of ESP folding instructions decoded
+event:0xd8 counters:0,1 um:sse_sse2_inst_retired minimum:3000 name:EMON_SSE_SSE2_INST_RETIRED : Streaming SIMD Extensions Instructions Retired
+event:0xd9 counters:0,1 um:sse_sse2_inst_retired minimum:3000 name:EMON_SSE_SSE2_COMP_INST_RETIRED : Computational SSE Instructions Retired
+event:0xda counters:0,1 um:fused minimum:3000 name:EMON_FUSED_UOPS_RET : Number of retired fused micro-ops
+event:0xdb counters:0,1 um:zero minimum:3000 name:EMON_UNFUSION : Number of unfusion events in the ROB, happened on a FP exception to a fused uOp
+event:0xe0 counters:0,1 um:zero minimum:500 name:BR_INST_DECODED : number of branch instructions decoded
+event:0xe2 counters:0,1 um:zero minimum:500 name:BTB_MISSES : number of branches that miss the BTB
+event:0xe4 counters:0,1 um:zero minimum:500 name:BR_BOGUS : number of bogus branches
+event:0xe6 counters:0,1 um:zero minimum:500 name:BACLEARS : number of times BACLEAR is asserted
+event:0xf0 counters:0,1 um:zero minimum:3000 name:EMON_PREF_RQSTS_UP : Number of upward prefetches issued
+event:0xf8 counters:0,1 um:zero minimum:3000 name:EMON_PREF_RQSTS_DN : Number of downward prefetches issued

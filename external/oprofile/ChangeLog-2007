@@ -1,0 +1,757 @@
+2007-12-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.h: remove sym_offset(), we can get what did
+	  sym_offset() in a simpler way at call site
+	* libutil++/op_bfd.cpp:
+	* libpp/callgraph_container.cpp:
+	* libpp/profile_container.cpp:
+	* libpp/profile_container.h:
+
+2007-11-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_stats.c: dump invalid pc count, added to oprofile stats
+	  fs 2.6.24-rc
+
+2007-11-15  Dave Nomura  <dcnltc@us.ibm.com>
+
+	* fixed a some typos in manually patched event files
+
+2007-11-15  Dave Nomura  <dcnltc@us.ibm.com>
+
+	* libpp/format_output.cpp: output XML SYMBOL_DATA for callers/callees
+	* libpp/format.h:
+
+2007-11-15   Dave Nomura  <dcnltc@us.ibm.com>
+
+	* events/ppc64/power6/event_mappings: updated Power6 event files
+	* events/ppc64/power6/events:
+
+2007-11-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	handle --root which act as a replacement (a prefix) for the / fs
+	* libpp/locate_images.cpp: root path search taking care if a
+	  root path is given we never search through "/"
+	* libpp/locate_images.h:
+	* libpp/populate.cpp:
+	* libpp/populate_for_spu.cpp: use the right path to check last
+	  modification time, this is yet again a change in behavior, module
+	  was never found a this point, even if we found them later, and we
+	  didn't try to check_mtime(), so opreport is again a bit more verbose
+	* libutil++/op_bfd.cpp: be more cautious when checking if we can try to
+	  open the bfd file, don't open it in the '/' fs if a --root is  given
+	* libpp/profile_spec.cpp: convey the root_path all over the code.
+	* libpp/profile_spec.h:
+	* pp/common_option.cpp:
+	* pp/common_option.h:
+	* pp/opannotate_options.cpp:
+	* pp/oparchive.cpp:
+	* pp/oparchive_options.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport_options.cpp:
+	* doc/opannotate.1.in: document --root
+	* doc/oparchive.1.in:
+	* doc/opgprof.1.in:
+	* doc/opreport.1.in:
+	* doc/oprofile.xml:
+
+2007-11-10  Dave Nomura  <dcnltc@us.ibm.com>
+
+	* libutil++/bfd_support.cpp: is_correct_function() is itended to deal
+	  with missing debug information, if linenr != 0, don't call it since
+	  we know we have valid debug info
+
+2007-11-08  Haavard Skinnemoen  <hskinnemoen@atmel.com>
+
+	* utils/opcontrol: Busybox's implementation of "kill" doesn't
+	  understand the "-s SIG" option. Use "-SIG" instead.
+
+2007-11-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	Compile fix for gcc 2.95.3
+	* libpp/format_output.cpp: unused local var, then unused params
+	* libpp/format_output.h:
+	* libpp/op_header.cpp: missing include
+	* libutil++/bfd_spu_support.cpp: gcc 2.95.3 do not like struct bfd,
+	 2.95 get it wrong probably but anyway all these struct are useless.
+
+2007-11-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opannotate.cpp: for module we didn't use the right image name,
+	  this bug appeared after 0.9.3 release
+
+2007-11-05  Richard Purdie  <rpurdie@openedhand.com>
+
+	* events/arm/armv6/events: Fix armv6 events to match mainline kernels
+
+2007-11-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: nmi watchdog is now cleanly handled in the kernel
+	  but it can be on by default even if CONFIG_WATCHDOG=n, a sysctl
+	  exists to put it off. We need to check this in opcontrol since we
+	  returned success if a counter is missing and starting oprofile with
+	  oprof_start silently failed.
+
+2007-11-03  Richard Purdie  <rpurdie@openedhand.com>
+
+	* pp/oparchive.cpp:  Check list_files option before calling
+	  create_dir() for debug files.
+
+2007-11-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	with --xml and --details, bfd open/close was done one time per
+	symbols, not one time per application. Solved by moving open/close
+	in the caller and cache bfd object, this work because --xml imply
+	symbols are sorted by app name then lib name. This is not perfect as
+	we can open/close multiple time bfd object with --separate=library
+	but still a real win. Quick test showed an improvement by over 40
+	times. Improvement grows as number of symbols per binary.
+	* libpp/xml_utils.cpp: move bfd open ...
+	* libpp/xml_utils.h:
+	* libpp/format_output.cpp: ... here
+	* libpp/format_output.h:
+	* pp/opreport.cpp:
+
+2007-11-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport_options.cpp: --xml is not compatible with --sort since
+	  xml output need some predefined sort options, we warned against
+	  the use of --sort but didn't reset the sort options to default.
+
+2007-11-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/oparchive_options.cpp: oparchive need to be run as root if you
+	  want to get save all binaries, generally I don't like to restrict
+	  user to do silly things but --output-directory / is an easy typo
+	  to do and will completely screw up the box.
+
+2007-10-30  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.cpp: Fix #931882, xml output not changed at
+	the moment.
+
+2007-10-30  Philippe Elie  <phil.el@wanadoo.fr>
+
+	Prepare #931882 fix, continue to move down real filename
+	retrieval by extending image_name_storage which can hold now the
+	real image name and the image as derived from the sample filename.
+	Use the new api in a compatible way with the old behavior, no output
+	change intended.
+	* libpp/format_output.cpp:
+	* libpp/format_output.h:
+	* libpp/locate_images.cpp:
+	* libpp/locate_images.h:
+	* libpp/name_storage.cpp:
+	* libpp/name_storage.h:
+	* libpp/symbol.cpp:
+	* libpp/symbol.h:
+	* libpp/xml_utils.cpp:
+	* libpp/xml_utils.h:
+	* pp/opreport.cpp:
+
+2007-10-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/image_errors.cpp: Pass to image_errors the archive_path through
+	  an extra_images to ensure no duplicate error message occur nor we
+	  miss error, this fix two bugs, one with differential profile
+	  an error message was missing when two binary are missing, another
+	  with opreport where the same error message was duplicate because in
+	  on case we passed the real binary name (prefixed with archive_path)
+	  while latter we passed the short form of the binary name.
+	* libpp/image_errors.h:
+	* libpp/callgraph_container.cpp:
+	* libpp/populate.cpp:
+	* libpp/populate_for_spu.cpp:
+	* libpp/xml_utils.cpp:
+	* libutil++/op_bfd.h:
+
+	* pp/opannotate.cpp: global var archive_path is no longer used
+	* pp/opannotate_options.cpp:
+	* pp/opannotate_options.h:
+	* pp/oparchive.cpp:
+	* pp/opgprof.cpp:
+	* pp/opgprof_options.h:
+	* pp/opreport.cpp:
+	* pp/opreport_options.cpp:
+	* pp/opreport_options.h:
+
+2007-10-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	Cleanup the way per spec archive_path is handled, as extra_images
+	is built using an archive_path it make no sense to pass archive_path
+	as parameter all over the place, rather make it a member of
+	extra_images and use it, anyway it was required the archive_path
+	passed to find_image_path() was the same as used to build the
+	extra_images.
+
+	As a side effect it fix a corner case: oparchive archive:tmp1 -o tmp2
+	was not working for module, archiving from an archive should work now.
+	* libpp/arrange_profiles.cpp:
+	* libpp/arrange_profiles.h:
+	* libpp/callgraph_container.cpp:
+	* libpp/callgraph_container.h:
+	* libpp/locate_images.cpp:
+	* libpp/locate_images.h:
+	* libpp/populate.cpp:
+	* libpp/populate.h:
+	* libpp/populate_for_spu.cpp:
+	* libpp/populate_for_spu.h:
+	* libpp/profile_spec.cpp:
+	* libpp/xml_utils.cpp:
+	* libpp/xml_utils.h:
+	* libutil++/op_bfd.cpp:
+	* libutil++/op_bfd.h:
+	* libutil++/op_spu_bfd.cpp:
+	* pp/opannotate.cpp:
+	* pp/oparchive.cpp:
+	* pp/oparchive_options.cpp:
+	* pp/oparchive_options.h:
+	* pp/opgprof.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport.cpp:
+
+2007-10-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/file_manip.cpp: do not create the output file if the input
+	  file can not be read. It change oparchive behavior which created
+	  empty file with input file like -rws--x--x 1 root root
+
+2007-10-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.cpp: minor overkill
+
+2007-10-27  Philippe Elie  <phil.el@wanadoo.fr>
+
+	Fix #1819350, it turned out this implied another fix for differential
+	profile, extra_images must be built per profile specification not
+	globally so most of this patch pass an extra_images down to op_bfd.
+	The way image name resolution has changed. We fixup an image name
+	only when really needed, when opening a bfd file, when checking a
+	binary exists and when we try matching an image name with a profile
+	specification, this robustify differential profile. This patch also
+	allow a profile_spec ala image:*oprofile.ko which was broken too.
+	It's now mandatory to use the same -p option used with oparchive when
+	using an archive with other pp tools, it was already the case but was
+	broken, this patch does not clarify the documentation about this
+	point because I suspect oparchive should be modified to save at the
+	top level directory the contents of -p option, pp tools will use that
+	automatically and --image_path will be obsoleted when used with an
+	archive.
+
+	This patch except clarifying than --image-path with archive: is a bit
+	special does not add any user level visible change.
+	* libpp/arrange_profiles.cpp:
+	* libpp/arrange_profiles.h:
+	* libpp/callgraph_container.cpp:
+	* libpp/callgraph_container.h:
+	* libpp/locate_images.cpp:
+	* libpp/locate_images.h:
+	* libpp/populate.cpp:
+	* libpp/populate_for_spu.cpp:
+	* libpp/profile_container.cpp:
+	* libpp/profile_container.h:
+	* libpp/profile_spec.cpp:
+	* libpp/profile_spec.h:
+	* libpp/xml_utils.cpp:
+	* libpp/xml_utils.h:
+	* libutil++/Makefile.am:
+	* libutil++/op_bfd.cpp:
+	* libutil++/op_bfd.h:
+	* libutil++/op_spu_bfd.cpp:
+	* pp/common_option.cpp:
+	* pp/common_option.h:
+	* pp/opannotate.cpp:
+	* pp/opannotate_options.cpp:
+	* pp/oparchive.cpp:
+	* pp/oparchive_options.cpp:
+	* pp/opgprof.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport.cpp:
+	* pp/opreport_options.cpp:
+
+2007-10-27  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_spec.cpp: look like an obvious typo, we must fixup
+	  the string we are parsing not a previously seen or empty string
+
+2007-10-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/sparse_array.h: size() return the max index while we
+	  want the max index + 1, the only user is diff_container,
+	  differential container is broken in 0.9.3. This fix bug #1820202
+
+2007-10-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: fix the previous opcontrol --reset patch, it was
+	  broken if the daemon is running because --reset imply --dump so
+	  we can use this --reset shortcut only if the daemon is not running.
+
+2007-10-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: if objdump is missing the error message is
+	  obscure, this fix bug #1564920 by checking if objdump exists
+	  and is an executable before using it
+
+2007-10-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: --reset doesn't need to load the module, it was
+	  counter-intuitive than the sequence opcontrol --deinit;
+	  opcontrol --reset must be followed by another opcontrol --deinit
+
+2007-10-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: error out earlier if the module is not loaded
+	  even for --list-events or --dump to avoid obscure error message
+
+2007-10-24  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_config.h: bump sample filename format, should have been
+	  done before 0.9.3
+	* libpp/op_header.cpp: do not use odb_open() to read the sample file
+	  header, if it fails it can return EINVAL if sanity checking fails
+	  so we can't know if the failure came from a sample file format
+	  change or some other failure. This explain some "sample_filename:
+	  Invalid argument" we got in bug report when user didn't cleanup
+	  the sample file directory.
+	* libpp/profile.cpp: use read_header() first to check the sample file
+	  format to get better error message.
+
+2007-10-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events.c: force the use of hexa notation in event file for
+	  the field intended to be in hexacidemal so make check will catch
+	  attempt to use decimal notation for them.
+
+	* events/mips/20K/events: all event number were in decimal but parsed
+	  as hexadecimal, this fix bug #1717298
+	* events/mips/24K/events:
+	* events/mips/25K/events:
+	* events/mips/5K/events:
+	* events/mips/r12000/events:
+	* events/mips/sb1/events:
+	* events/mips/vr5432/events:
+	* events/mips/vr5500/events:
+	* events/mips/34K/events: comment a bunch of overlapping event.
+	* events/ppc64/cell-be/unit_masks: well, 0 == 0x0 but it's easier
+	  to catch real error by forcing hexa notation for default unit mask.
+
+	* libop/tests/alloc_counter_tests.c: fix mips/34K test, the used event
+	  has been remoded
+
+2007-10-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/oprofile.xml: fix dead url
+	* utils/ophelp.c:
+
+2007-10-17  Jason Yeh  <jason.yeh@amd.com>
+
+	* events/x86-64/family10/events: This patch updates the events and
+	  unit_masks files to match the BIOS and Kernel Developer's Guide
+	  For AMD Family 10h Processors Rev 3.00 released on September 07,
+	  2007. The notable changes are L3 cache events and updates to
+	  corresponding unit masks.
+	* events/x86-64/family10/unit_masks:
+
+2007-10-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: newer shell accept if -z ... but older need 
+	  if test -z. This broke opcontrol --dump with bash 2.x and probably
+	  other shell. With bash the error when running opcontrol as non root
+	  was:
+	    /usr/local/bin/opcontrol: line 1670: -z: command not found
+
+2007-10-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events.c: check for '.' inside event name, they can't work
+	* events/i386/core_2/events: change '.' by '_' in events name
+	* events/ppc64/cell-be/events:
+
+2007-10-11  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* events/ppc64/970MP/event_mappings: Turn off profiling in
+	  hypervisor on 970MP to prevent lost interrupts
+
+2007-10-10  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* events/ppc64/970MP/events:
+	* events/ppc64/970MP/event_mappings: Fix MMCR values
+	  and counter-to-event mappings on a few 970MP groups
+
+2007-10-09  Melchior Franz  <mfranz@aon.at>
+
+	* libregex/op_regex.cpp: Fix broken string concatenation
+
+2007-10-05  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: Modify opcontrol to allow  short form -l and -d for
+	  normal users.
+
+2007-09-25  Brian Twichell <tbrian@us.ibm.com>
+
+	* utils/opcontrol: Modify opcontrol to use a more inclusive
+	  kernel range
+
+2007-08-23  Maynard Johnson <maynardj@us.ibm.com>
+
+	* daemon/opd_anon.c: Make anonymous sample recording
+	  work with 32-bit OProfile and 64-bit anonymous code
+
+2007-08-14  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml:
+	* doc/opcontrol.1.in: clarify behaviour of opcontrol -e
+
+2007-08-02  Jens Wilke <jens.wilke@de.ibm.com>
+
+	* ChangeLog:  Correct the date from previous patch (maynardj)
+
+	* libutil++/op_bfd.cpp: Fix sym_offset calculation.
+	  Bug triggers on 64 bit systems with code mapped
+	  with an address >4G.
+
+2007-08-02  Jens Wilke <jens.wilke@de.ibm.com>
+
+	* libpp/profile_container.cpp: Remove unnecessary offset
+	  calculation.
+
+2007-07-18  Maynard Johnson <maynardj@us.ibm.com>
+
+	* doc/Makefile.am: Include buffers diagram in dist
+
+	* doc/oprofile.xml: Correct filename reference to opreport.xsd
+
+2007-07-16  Maynard Johnson <maynardj@us.ibm.com>
+
+        * configure.in: Bump to 0.9.4cvs.
+
+2007-07-16  Maynard Johnson <maynardj@us.ibm.com>
+
+	* configure.in:
+	* Makefile.am:  Bump release to 0.9.3 and add a line to
+	  EXTRA_DIST to distribute ChangeLog-2006.
+
+2007-07-09  Maynard Johnson <maynardj@us.ibm.com>
+
+        * doc/opreport.xsd:
+        * libpp/xml_utils.cpp: Correct schema version bump
+
+2007-07-02  Maynard Johnson <maynardj@us.ibm.com>
+
+	* libpp/populate_for_spu.cpp: Fix logic in is_spu_profile()
+	  to handle '--separate=thread' option.
+
+2007-06-27  Maynard Johnson <maynardj@us.ibm.com>
+
+	* ChangeLog: ChangeLog cleanup
+
+2007-06-15  Maynard Johnson <maynardj@us.ibm.com>
+
+	* doc/opreport.xsd:
+	* libpp/xml_utils.cpp: Bump schema version to 2.0 to coincide with
+	  callgraph elements added recently to the schema
+
+2007-06-13  Maynard Johnson <maynardj@us.ibm.com>
+
+	* doc/oprofile.xml:
+	* events/Makefile.am:
+	* events/ppc64/power5++/event_mappings:
+	* events/ppc64/power5++/events:
+	* events/ppc64/power5++/unit_masks:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/opcontrol:
+	* utils/ophelp.c: Add support for POWER5++ (i.e., POWER5+ with PMU
+	  set to POWER6 mode)
+
+2007-06-12  dean gaudet  <dean@arctic.org>
+
+	* events/i386/core_2/events:
+	* events/i386/core_2/unit_masks:  updates to match
+	  253669-022US ISA vol 3B from Intel.  (Including fix
+	  for #1580064 from Arun Sharma.)
+
+2007-06-08  dean gaudet  <dean@arctic.org>
+
+	* events/x86-64/hammer/events:
+	* events/x86-64/hammer/unit_masks: updates from December 2006
+	  AMD update
+
+2007-05-31  Maynard Johnson <maynardj@us.ibm.com>
+
+	* libpp/symbol.h:
+	* libutil++/bfd_support.h:
+	* m4/cellspubfdsupport.m4: Fixups for compile failures on older Linux
+	  distributions
+
+2007-05-29  Dave Nomura  <dcnltc@us.ibm.com>
+
+	* libregex/demangle_symbol.cpp: Strip off leading '.' generated for elf6r-powerpc targets in mangled symbol names.
+
+2007-05-24  Richard Purdie  <rpurdie@openedhand.com>
+
+	* events/arm/xscale1/events:
+	* events/arm/xscale2/events: Add extra Xscale PMU event definitions
+
+2007-05-24  Richard Purdie  <rpurdie@openedhand.com>
+
+	* events/arm/armv6/events:
+	* events/arm/armv6/unit_masks:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/ophelp.c: Name ARM11 support to be consistent with the kernel,
+	  remove some duplicate code and add some extra events
+
+2007-05-24  Richard Purdie  <rpurdie@openedhand.com>
+
+	* oprofile/pp/oparchive.cpp: If the debug files have the same name
+	  as the original binary, the binary gets overwritten. Add in a .debug
+	  directory to avoid this.
+
+2007-05-23  Joerg Wagner  <wagner@ccrl-nece.de>
+
+	* events/Makefile.am:
+	* events/arm/mpcore/events:
+	* events/arm/mpcore/unit_masks:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/ophelp.c: ARM MPCore support
+
+2007-05-23  Riku Voipio  <riku.voipio@iki.fi>
+
+	* events/Makefile.am:
+	* events/arm/armv6/events:
+	* events/arm/armv6/unit_masks:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/ophelp.c: ARM11 support
+
+2007-05-21  Richard Purdie  <rpurdie@openedhand.com>
+  
+	* doc/opreport.xsd:
+	* libpp/format_output.cpp:
+	* libpp/format_output.h:
+	* libpp/xml_utils.cpp:
+	* libutil++/xml_output.cpp:
+	* libutil++/xml_output.h:
+	* pp/opreport.cpp:
+	* pp/opreport_options.cpp: Add callgraph XML output
+ 
+2007-05-20  Dean Gaudet  <dgaudet@users.sourceforge.net>
+
+	* events/i386/core_2/events: ITLB_MISS_RETIRED,MEM_LOAD_RETIRED
+	  only work with counter 0
+
+2007-05-20  Richard Purdie  <rpurdie@openedhand.com>
+
+	* libpp/callgraph_container.cpp:
+	* libpp/callgraph_container.h:
+	* libpp/format_output.cpp:
+	* libpp/format_output.h:
+	* libpp/symbol.h:
+	* libpp/symbol_sort.cpp:
+	* libpp/symbol_sort.h:
+	* pp/opreport.cpp: Convert cg_collection to symbol_collection and use
+	dynamic casting allowing more code reuse for callgraphs
+
+2007-05-19  Richard Purdie  <rpurdie@openedhand.com>
+
+	* doc/oparchive.1.in:
+	* doc/oprofile.xml:
+	* pp/oparchive.cpp:
+	* pp/oparchive_options.cpp:
+	* pp/oparchive_options.h: Add --list-files option to list all files
+	  that would be handled by oparchive.
+
+2007-05-19  Olof Johansson  <olof@lixom.net>
+
+	* events/Makefile.in:
+	* events/ppc64/pa6t/event_mappings:
+	* events/ppc64/pa6t/events:
+	* events/ppc64/pa6t/unit_masks:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/opcontrol:
+	* utils/ophelp.c: PA Semi 6T support
+
+2007-05-09  Richard Purdie  <rpurdie@openedhand.com>
+
+	* oprofile/daemon/opd_cookie.c: Fix syscall for ARM EABI
+
+2007-05-10  Maynard Johnson <maynardj@us.ibm.com>
+
+	* libpp/Makefile.am:
+	* libpp/populate.cpp:
+	* libpp/populate_for_spu.cpp:
+	* libpp/populate_for_spu.h:
+	* libpp/profile.h:
+	* libpp/profile.cpp:
+	* libutil++/Makefile.am:
+	* libutil++/bfd_spu_support.cpp:
+	* libutil++/bfd_support.h:
+	* libutil++/op_bfd.h:
+	* libutil++/op_spu_bfd.cpp:
+	* libpp/xml_utils.cpp:
+	* libpp/profile_container.cpp:
+	* libpp/symbol.h: Patch 3 of 3 for adding support for profiling
+	  Cell Broadband Engine SPU
+
+2007-05-10  Maynard Johnson <maynardj@us.ibm.com>
+
+	* daemon/liblegacy/opd_sample_files.c:
+	* daemon/opd_events.c:
+	* daemon/opd_events.h:
+	* daemon/opd_interface.h:
+	* daemon/Makefile.am:
+	* daemon/opd_mangling.c:
+	* daemon/opd_sfile.c:
+	* daemon/opd_sfile.h:
+	* daemon/opd_spu.c:
+	* daemon/opd_trans.c:
+	* daemon/opd_trans.h:
+	* libop/op_sample_file.h: Patch 2 of 3 for adding support for profiling
+	  Cell Broadband Engine SPU
+
+2007-05-10  Maynard Johnson <maynardj@us.ibm.com>
+
+	* configure.in:
+	* doc/oprofile.xml:
+	* events/ppc64/cell-be/events:
+	* m4/Makefile.am:
+	* m4/cellspubfdsupport.m4:
+	* utils/opcontrol: Patch 1 of 3 for adding support for profiling
+	  Cell Broadband Engine SPU
+
+2007-04-25  Manoj Ekbote  <manoj.ekbote@broadcom.com>
+
+	* events/mips/sb1/events: fix SB1 events
+
+2007-04-19  Dave Nomura  <dcnltc@us.ibm.com>
+
+	* events/ppc64/power6/events: counter 3 should have been used 
+	  in the specification of the default CYCLES event, not counter 1
+
+2007-04-13  Will Cohen  <wcohen@redhat.com>
+
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h: Move new entries to end of list
+	to improve backward compatibility with enum values.
+	
+2007-04-11  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: IRC channel is on OFTC
+
+2007-04-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/ophelp.c: if userspace doesn't recognize the cpu type
+	  warn the user it can use timer mode or upgrade oprofile.
+
+2007-04-04  Maynard johnson <maynardj@us.ibm.com>
+
+	* libutil++/file_manip.cpp: catch result from chown() to avoid
+	  compilation warning (treated as error)
+
+2007-03-23  Jason Yeh  <jason.yeh@amd.com>
+
+	* events/Makefile.am:
+	* events/x86-64/family10/events:
+	* events/x86-64/family10/unit_masks:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/ophelp.c: Add AMD Family 10 support.
+	
+2007-02-28  Rob Bradford  <rob@o-hand.com>
+
+	* pp/oparchive.cpp: return from main
+
+2007-02-21  Rob Bradford <rob@o-hand.com>
+
+	Reverted previous patches.
+	* pp/oparchive.cpp: Save debuginfo files in .debug sub directory.
+
+	* pp/oparchive.cpp:
+	* pp/oparchive_options.h:
+	* pp/oparchive_options.cpp: List files option.
+
+2007-02-21  Rob Bradford <rob@o-hand.com>
+
+	* pp/oparchive.cpp: Save debuginfo files in .debug sub directory.
+
+	* pp/oparchive.cpp:
+	* pp/oparchive_options.h:
+	* pp/oparchive_options.cpp: List files option.
+
+2007-02-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_mangling.c: missing initialisation when mangling an 
+	  anon and callgraph filename. Fix given by Amitabha Roy.
+
+2007-02-06  Dave Nomura <dcnltc@us.ibm.com>
+
+	* libpp/symbol.h:
+	* libutil++/Makefile.am:
+	* libutil++/sparse_array.h: represent count_array_t as a sparse 
+	  array type based on std::map rather than growable_vector which is
+	  based on std::vector to reduce the excessive heap usage on large
+	  profiles.
+
+2007-02-02  Amitabha Roy  <amitabha.roy@gmail.com>
+
+	* daemon/opd_anon.c:
+	* daemon/opd_anon.h:
+	* daemon/opd_mangling.c:
+	* libop/op_mangle.c:
+	* libop/op_mangle.h:
+	* libpp/parse_filename.cpp: save and report name of anonymous
+	  mapping if there is one (as self-contradictory as that
+	  sounds).
+
+2007-02-02  Dave Nomura <dcnltc@us.ibm.com>
+
+	* events/Makefile.am:
+	* events/ppc64/970MP/event_mappings:
+	* events/ppc64/970MP/events:
+	* events/ppc64/970MP/unit_masks:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/ophelp.c: PPC970MP has different hardware counters than the rest
+	  of the PPC family and must be treated as a different architecture
+	  by oprofile.
+
+2007-01-31  Dave Nomura <dcnltc@us.ibm.com>
+
+	* libpp/xml_utils.cpp: opreport -X was still getting some incorrect 
+	  symbols attributed to the <binary> when processing a --separate=lib
+	  profile.
+	  
+2007-01-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/oprofiled.c: no need for 0755 for the log file mode, use 0644
+	* utils/opcontrol: don't create the log in opcontrol
+
+2007-01-26  Dave Nomura <dcnltc@us.ibm.com>
+
+	* libpp/format_output.cpp:
+	* libpp/xml_utils.cpp: opreport -X was mixing the symbols associated with
+	  an application with those of a library when processing a --separate=lib
+	  profile.
+
+2007-01-02  Dave Nomura <dcnltc@us.ibm.com>
+
+	* events/Makefile.am:
+	* events/ppc64/power6/event_mappings:
+	* events/ppc64/power6/events:
+	* events/ppc64/power6/unit_masks:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/opcontrol:
+	* utils/ophelp.c:  Add support for Power6
+
+
+See ChangeLog-2006 for earlier changelogs.

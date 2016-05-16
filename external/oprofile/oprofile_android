@@ -1,0 +1,470 @@
+#!/usr/bin/env python2.6
+#
+# Copyright (C) 2011 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+#
+# Remotely controls an OProfile session on an Android device.
+#
+
+import os
+import sys
+import subprocess
+import getopt
+import re
+import shutil
+
+
+# Find oprofile binaries (compiled on the host)
+try:
+  oprofile_bin_dir = os.environ['OPROFILE_BIN_DIR']
+except:
+  try:
+    android_host_out = os.environ['ANDROID_HOST_OUT']
+  except:
+    print "Either OPROFILE_BIN_DIR or ANDROID_HOST_OUT must be set. Run \". envsetup.sh\" first"
+    sys.exit(1)
+  oprofile_bin_dir = os.path.join(android_host_out, 'bin')
+
+opimport_bin = os.path.join(oprofile_bin_dir, 'opimport')
+opreport_bin = os.path.join(oprofile_bin_dir, 'opreport')
+opannotate_bin = os.path.join(oprofile_bin_dir, 'opannotate')
+
+
+# Find symbol directories
+try:
+  android_product_out = os.environ['ANDROID_PRODUCT_OUT']
+except:
+  print "ANDROID_PRODUCT_OUT must be set. Run \". envsetup.sh\" first"
+  sys.exit(1)
+
+symbols_dir = os.path.join(android_product_out, 'symbols')
+system_dir = os.path.join(android_product_out, 'system')
+
+
+def execute(command, echo=True):
+  if echo:
+    print ' '.join(command)
+  popen = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+  output = ''
+  while True:
+    stdout, stderr = popen.communicate()
+    if echo and len(stdout) != 0:
+      print stdout
+    if echo and len(stderr) != 0:
+      print stderr
+    output += stdout
+    output += stderr
+    rc = popen.poll()
+    if rc is not None:
+      break
+  if echo:
+    print 'exit code: %d' % rc
+  return rc, output
+
+# ADB wrapper
+class Adb:
+  def __init__(self, serial_number):
+    self._base_args = ['adb']
+    if serial_number != None:
+      self._base_args.append('-s')
+      self._base_args.append(serial_number)
+
+  def shell(self, command_args, echo=True):
+    return self._adb('shell', command_args, echo)
+
+  def pull(self, source, dest, echo=True):
+    return self._adb('pull', [source, dest], echo)
+
+  def _adb(self, command, command_args, echo):
+    return execute(self._base_args + [command] + command_args, echo)
+
+
+# The tool program itself
+class Tool:
+  def __init__(self, argv):
+    self.argv = argv
+    self.verbose = False
+    self.session_dir = '/tmp/oprofile'
+
+  def usage(self):
+    print "Usage: " + self.argv[0] + " [options] <command> [command args]"
+    print
+    print "  Options:"
+    print
+    print "    -h, --help            : show this help text"
+    print "    -s, --serial=number   : the serial number of the device being profiled"
+    print "    -v, --verbose         : show verbose output"
+    print "    -d, --dir=path        : directory to store oprofile session on the host, default: /tmp/oprofile"
+    print
+    print "  Commands:"
+    print
+    print "    setup [args]          : setup profiler with specified arguments to 'opcontrol --setup'"
+    print "      -t, --timer             : enable timer based profiling"
+    print "      -e, --event=[spec]      : specify an event type to profile, eg. --event=CPU_CYCLES:100000"
+    print "                                (not supported on all devices)"
+    print "      -c, --callgraph=[depth] : specify callgraph capture depth, default is none"
+    print "                                (not supported in timer mode)"
+    print "      -k, --kernel-image      : specifies the location of a kernel image relative to the symbols directory"
+    print "                                (and turns on kernel profiling). This need not be the same as the"
+    print "                                location of the kernel on the actual device."
+    print
+    print "    shutdown              : shutdown profiler"
+    print
+    print "    start                 : start profiling"
+    print
+    print "    stop                  : stop profiling"
+    print
+    print "    status                : show profiler status"
+    print
+    print "    import                : dump samples and pull session directory from the device"
+    print "      -f, --force             : remove existing session directory before import" 
+    print
+    print "    report [args]         : generate report with specified arguments to 'opreport'"
+    print "      -l, --symbols           : show symbols"
+    print "      -c, --callgraph         : show callgraph"
+    print "      --help                  : show help for additional opreport options"
+    print
+    print "    annotate [args]       : generate annotation with specified arguments to 'annotation'"
+    print "      -s, --source            : show source"
+    print "      -a, --assembly          : show assembly"
+    print "      --help                  : show help for additional opannotate options"
+    print
+
+  def main(self):
+    rc = self.do_main()
+    if rc == 2:
+      print
+      self.usage()
+    return rc
+
+  def do_main(self):
+    try:
+      opts, args = getopt.getopt(self.argv[1:],
+        'hs:vd', ['help', 'serial=', 'dir=', 'verbose'])
+    except getopt.GetoptError, e:
+      print str(e)
+      return 2
+
+    serial_number = None
+    for o, a in opts:
+      if o in ('-h', '--help'):
+        self.usage()
+        return 0
+      elif o in ('-s', '--serial'):
+        serial_number = a
+      elif o in ('-d', '--dir'):
+        self.session_dir = a
+      elif o in ('-v', '--verbose'):
+        self.verbose = True
+
+    if len(args) == 0:
+      print '* A command must be specified.'
+      return 2
+
+    command = args[0]
+    command_args = args[1:]
+
+    self.adb = Adb(serial_number)
+
+    if command == 'setup':
+      rc = self.do_setup(command_args)
+    elif command == 'shutdown':
+      rc = self.do_shutdown(command_args)
+    elif command == 'start':
+      rc = self.do_start(command_args)
+    elif command == 'stop':
+      rc = self.do_stop(command_args)
+    elif command == 'status':
+      rc = self.do_status(command_args)
+    elif command == 'import':
+      rc = self.do_import(command_args)
+    elif command == 'report':
+      rc = self.do_report(command_args)
+    elif command == 'annotate':
+      rc = self.do_annotate(command_args)
+    else:
+      print '* Unknown command: ' + command
+      return 2
+
+    return rc
+
+  def do_setup(self, command_args):
+    events = []
+    timer = False
+    kernel = False
+    kernel_image = ''
+    callgraph = None
+
+    try:
+      opts, args = getopt.getopt(command_args,
+        'te:c:k:', ['timer', 'event=', 'callgraph=', 'kernel='])
+    except getopt.GetoptError, e:
+      print '* Unsupported setup command arguments:', str(e)
+      return 2
+
+    for o, a in opts:
+      if o in ('-t', '--timer'):
+        timer = True
+      elif o in ('-e', '--event'):
+        events.append('--event=' + a)
+      elif o in ('-c', '--callgraph'):
+        callgraph = a
+      elif o in ('-k', '--kernel'):
+        kernel = True
+        kernel_image = a
+
+    if len(args) != 0:
+      print '* Unsupported setup command arguments: %s' % (' '.join(args))
+      return 2
+
+    if not timer and len(events) == 0:
+      print '* Must specify --timer or at least one --event argument.'
+      return 2
+
+    if timer and len(events) != 0:
+      print '* --timer and --event cannot be used together.'
+      return 2
+
+    opcontrol_args = events
+    if timer:
+      opcontrol_args.append('--timer')
+    if callgraph is not None:
+      opcontrol_args.append('--callgraph=' + callgraph)
+    if kernel and len(kernel_image) != 0:
+      opcontrol_args.append('--vmlinux=' + kernel_image)
+
+    # Get kernal VMA range.
+    rc, output = self.adb.shell(['cat', '/proc/kallsyms'], echo=False)
+    if rc != 0:
+      print '* Failed to determine kernel VMA range.'
+      print output
+      return 1
+    vma_start = re.search('([0-9a-fA-F]{8}) T _text', output).group(1)
+    vma_end = re.search('([0-9a-fA-F]{8}) A _etext', output).group(1)
+
+    # Setup the profiler.
+    rc, output = self.adb.shell(['/system/xbin/opcontrol'] + self._opcontrol_verbose_arg() + [
+      '--reset',
+      '--kernel-range=' + vma_start + ',' + vma_end] + opcontrol_args + [
+      '--setup',
+      '--status', '--verbose-log=all'])
+    if rc != 0:
+      print '* Failed to setup profiler.'
+      return 1
+    return 0
+
+  def do_shutdown(self, command_args):
+    if len(command_args) != 0:
+      print '* Unsupported shutdown command arguments: %s' % (' '.join(command_args))
+      return 2
+
+    rc, output = self.adb.shell(['/system/xbin/opcontrol'] + self._opcontrol_verbose_arg() + [
+      '--shutdown'])
+    if rc != 0:
+      print '* Failed to shutdown.'
+      return 1
+    return 0
+
+  def do_start(self, command_args):
+    if len(command_args) != 0:
+      print '* Unsupported start command arguments: %s' % (' '.join(command_args))
+      return 2
+
+    rc, output = self.adb.shell(['/system/xbin/opcontrol'] + self._opcontrol_verbose_arg() + [
+      '--start', '--status'])
+    if rc != 0:
+      print '* Failed to start profiler.'
+      return 1
+    return 0
+
+  def do_stop(self, command_args):
+    if len(command_args) != 0:
+      print '* Unsupported stop command arguments: %s' % (' '.join(command_args))
+      return 2
+
+    rc, output = self.adb.shell(['/system/xbin/opcontrol'] + self._opcontrol_verbose_arg() + [
+      '--stop', '--status'])
+    if rc != 0:
+      print '* Failed to stop profiler.'
+      return 1
+    return 0
+
+  def do_status(self, command_args):
+    if len(command_args) != 0:
+      print '* Unsupported status command arguments: %s' % (' '.join(command_args))
+      return 2
+
+    rc, output = self.adb.shell(['/system/xbin/opcontrol'] + self._opcontrol_verbose_arg() + [
+      '--status'])
+    if rc != 0:
+      print '* Failed to get profiler status.'
+      return 1
+    return 0
+
+  def do_import(self, command_args):
+    force = False
+
+    try:
+      opts, args = getopt.getopt(command_args,
+        'f', ['force'])
+    except getopt.GetoptError, e:
+      print '* Unsupported import command arguments:', str(e)
+      return 2
+
+    for o, a in opts:
+      if o in ('-f', '--force'):
+        force = True
+
+    if len(args) != 0:
+      print '* Unsupported import command arguments: %s' % (' '.join(args))
+      return 2
+
+    # Create session directory.
+    print 'Creating session directory.'
+    if os.path.exists(self.session_dir):
+      if not force:
+        print "* Session directory already exists: %s" % (self.session_dir)
+        print "* Use --force to remove and recreate the session directory."
+        return 1
+
+      try:
+        shutil.rmtree(self.session_dir)
+      except e:
+        print "* Failed to remove existing session directory: %s" % (self.session_dir)
+        print e
+        return 1
+
+    try:
+      os.makedirs(self.session_dir)
+    except e:
+      print "* Failed to create session directory: %s" % (self.session_dir)
+      print e
+      return 1
+
+    raw_samples_dir = os.path.join(self.session_dir, 'raw_samples')
+    samples_dir = os.path.join(self.session_dir, 'samples')
+    abi_file = os.path.join(self.session_dir, 'abi')
+
+    # Dump samples.
+    print 'Dumping samples.'
+    rc, output = self.adb.shell(['/system/xbin/opcontrol'] + self._opcontrol_verbose_arg() + [
+      '--dump', '--status'])
+    if rc != 0:
+      print '* Failed to dump samples.'
+      print output
+      return 1
+
+    # Pull samples.
+    print 'Pulling samples from device.'
+    rc, output = self.adb.pull('/data/oprofile/samples/', raw_samples_dir + '/', echo=False)
+    if rc != 0:
+      print '* Failed to pull samples from the device.'
+      print output
+      return 1
+
+    # Pull ABI.
+    print 'Pulling ABI information from device.'
+    rc, output = self.adb.pull('/data/oprofile/abi', abi_file, echo=False)
+    if rc != 0:
+      print '* Failed to pull abi information from the device.'
+      print output
+      return 1
+
+    # Invoke opimport on each sample file to convert it from the device ABI (ARM)
+    # to the host ABI (x86).
+    print 'Importing samples.'
+    for dirpath, dirnames, filenames in os.walk(raw_samples_dir):
+      for filename in filenames:
+        if not re.match('^.*\.log$', filename):
+          in_path = os.path.join(dirpath, filename)
+          out_path = os.path.join(samples_dir, os.path.relpath(in_path, raw_samples_dir))
+          out_dir = os.path.dirname(out_path)
+          try:
+            os.makedirs(out_dir)
+          except e:
+            print "* Failed to create sample directory: %s" % (out_dir)
+            print e
+            return 1
+
+          rc, output = execute([opimport_bin, '-a', abi_file, '-o', out_path, in_path], echo=False)
+          if rc != 0:
+            print '* Failed to import samples.'
+            print output
+            return 1
+
+    # Generate a short summary report.
+    rc, output = self._execute_opreport([])
+    if rc != 0:
+      print '* Failed to generate summary report.'
+      return 1
+    return 0
+
+  def do_report(self, command_args):
+    rc, output = self._execute_opreport(command_args)
+    if rc != 0:
+      print '* Failed to generate report.'
+      return 1
+    return 0
+
+  def do_annotate(self, command_args):
+    rc, output = self._execute_opannotate(command_args)
+    if rc != 0:
+      print '* Failed to generate annotation.'
+      return 1
+    return 0
+
+  def _opcontrol_verbose_arg(self):
+    if self.verbose:
+      return ['--verbose']
+    else:
+      return []
+
+  def _execute_opreport(self, args):
+    return execute([opreport_bin,
+      '--session-dir=' + self.session_dir,
+      '--image-path=' + symbols_dir + ',' + system_dir] + args)
+
+  def _execute_opannotate(self, command_args):
+    try:
+      opts, args = getopt.getopt(command_args, 'sap:',
+                                 ['source', 'assembly', 'help', 'image-path='])
+    except getopt.GetoptError, e:
+      print '* Unsupported opannotate command arguments:', str(e)
+      return 2
+
+    # Start with the default symbols directory
+    symbols_dirs = symbols_dir
+
+    anno_flag = []
+    for o, a in opts:
+      if o in ('-s', '--source'):
+        anno_flag.append('-s')
+      if o in ('-a', '--assembly'):
+        anno_flag.append('-a')
+        anno_flag.append('--objdump-params=-Cd')
+      if o in ('--help'):
+        anno_flag.append('--help')
+      if o in ('p', '--image-path'):
+        symbols_dirs = a + ',' + symbols_dir
+
+    return execute([opannotate_bin,
+      '--session-dir=' + self.session_dir,
+      '--image-path=' + symbols_dirs + ',' + system_dir] + anno_flag + args)
+
+# Main entry point
+tool = Tool(sys.argv)
+rc = tool.main()
+sys.exit(rc)

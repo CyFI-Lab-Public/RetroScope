@@ -1,0 +1,122 @@
+#!/usr/bin/python2.4 -E
+
+import os
+import re
+import sys
+
+def PrintUsage():
+    print "Usage:" + sys.argv[0] + " [-s serial_number] [-r] dir"
+    print "    serial_number: the device being profiled"
+    print "    -r : reuse the directory if it already exists"
+    print "    dir: directory on the host to store profile results"
+
+if (len(sys.argv) <= 1 or len(sys.argv) > 5):
+    PrintUsage()
+    sys.exit(1)
+
+# find binaries
+try:
+    oprofile_bin_dir = os.environ['OPROFILE_BIN_DIR']
+except:
+    try:
+        android_host_out = os.environ['ANDROID_HOST_OUT']
+    except:
+        print "Either OPROFILE_BIN_DIR or ANDROID_HOST_OUT must be set. Run \". envsetup.sh\" first"
+        sys.exit(1)
+    oprofile_bin_dir = android_host_out + '/bin'
+
+argv_next = 1
+if sys.argv[1] == "-s":
+  if len(sys.argv) < 4:
+    PrintUsage()
+    sys.exit(1)
+  device = " -s %s" % sys.argv[2]
+  argv_next = argv_next + 2
+else:
+  device = ""
+
+if sys.argv[argv_next] == "-r" :
+    replace_dir = 1
+    output_dir = sys.argv[argv_next+1]
+else:
+    replace_dir = 0
+    output_dir = sys.argv[argv_next]
+
+if (os.path.exists(output_dir) and (replace_dir == 1)):
+    os.system("rm -fr " + output_dir)
+
+try:
+    os.makedirs(output_dir)
+except:
+    if os.path.exists(output_dir):
+        print "Directory already exists:", output_dir
+        print "Try \"" + sys.argv[0] + " -r " + output_dir + "\""
+    else:
+        print "Cannot create", output_dir
+    sys.exit(1)
+
+# get the samples off the phone
+result = os.system("adb%s pull /data/oprofile/samples %s/raw_samples "
+                   "> /dev/null 2>&1" % (device, output_dir))
+if result != 0:
+    print "adb%s pull failure, exiting" % device
+    sys.exit(1)
+
+# get the ABI information off the phone
+result = os.system("adb%s pull /data/oprofile/abi %s/abi "
+                   "> /dev/null 2>&1" % (device, output_dir))
+if result != 0:
+    print "adb%s pull failure, exiting" % device
+    sys.exit(1)
+
+# enter the destination directory
+os.chdir(output_dir)
+
+# We need to replace the " (deleted)" part in the directory names if
+# the region is allocated through ashmem. The post-processing tool doesn't like
+# space and parentheses.
+# Rename each individual directory from the longest first
+# For example, first rename
+# raw_samples/current/{root}/dev/ashmem/dalvik-jit-code-cache (deleted)/{dep}/{root}/dev/ashmem/dalvik-jit-code-cache (deleted)
+# to
+# raw_samples/current/{root}/dev/ashmem/dalvik-jit-code-cache (deleted)/{dep}/{root}/dev/ashmem/dalvik-jit-code-cache
+# then to
+# raw_samples/current/{root}/dev/ashmem/dalvik-jit-code-cache/{dep}/{root}/dev/ashmem/dalvik-jit-code-cache
+deleted_pattern = re.compile(" \(deleted\)$");
+stream = os.popen("find raw_samples -type d -name \*\ \(deleted\)\* | sort -r")
+for line in stream:
+    line = line.rstrip()
+    new_dir = deleted_pattern.sub("", line)
+    cmd = "mv " + "\"" + line + "\" \"" + new_dir + "\""
+    os.system(cmd)
+
+# now all the sample files are on the host, we need to invoke opimport one at a
+# time to convert the content from the ARM abi to x86 ABI
+
+# break the full filename into:
+# 1: leading dir: "raw_samples"
+# 2: intermediate dirs: "/blah/blah/blah"
+# 3: filename: e.g. "CPU_CYCLES.150000.0.all.all.all"
+pattern = re.compile("(^raw_samples)(.*)/(.*)$")
+
+stream = os.popen("find raw_samples -type f -name \*all")
+for line in stream:
+    match = pattern.search(line)
+    leading_dir = match.group(1)
+    middle_part = match.group(2)
+    file_name = match.group(3)
+
+    dir = "samples" + middle_part
+
+    # if multiple events are collected the directory could have been setup
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+
+    cmd = oprofile_bin_dir + "/opimport -a abi " \
+          + " -o samples" + middle_part + "/" + file_name + " " + line
+    os.system(cmd)
+
+stream.close()
+
+# short summary of profiling results
+os.system(oprofile_bin_dir + "/opreport --session-dir=.")

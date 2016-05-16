@@ -1,0 +1,18 @@
+apply plugin: 'java'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+            exclude 'com/google/clearsilver/jsilver/benchmark/*.java'
+        }
+        resources {
+            srcDirs = ['src']
+            include '**/*.dat'
+        }
+    }
+}
+
+dependencies {
+    compile project(':external:guava')
+}

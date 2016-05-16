@@ -1,0 +1,6251 @@
+2003-12-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: my_op_prefix is not necessarily suffixed by a '/'
+
+2003-12-29  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* doc/*.1.in: add HTML docs to SEE ALSO
+
+2003-12-29  John Levon  <levon@movementarian.org>
+
+	* doc/opcontrol.1.in:
+	* doc/oprofile.xml: minor language cleanups
+
+	* utils/opcontrol: only allow --verbose when it makes sense
+
+2003-12-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/tests/file_manip_tests.cpp: ensure filename passed to
+	  op_realpath() exists
+
+2003-12-28  John Levon  <levon@movementarian.org>
+
+	* doc/internals.xml:
+	* libutil++/file_manip.h: fix typos
+
+2003-12-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: error message rewording
+
+2003-12-16  Carlo Wood  <carlo@alinoe.com>
+
+	* libregex/tests/Makefile.am: avoid to install mangled-name test file
+
+2003-11-20  John Levon  <levon@movementarian.org>
+
+	* libregex/op_regex.cpp: move global ctor out of namespace
+	anon (bug #845616)
+
+2003-11-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/arrange_profiles.cpp: merge all unit mask before generating
+	  event description string
+
+2003-11-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/arrange_profiles.cpp: put unitmask in the same axis as
+	  event:count, meaning than unitmask is now a part of the event
+	  specification.
+
+2003-12-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_sfile.c: we reversed to/from pc in call graph sample
+
+2003-11-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile.h:
+	* pp/opgprof.cpp: oops a simplify a bit too cg handling in my last
+	  patch, it was segfaulting each time no cg file was found...
+
+2003-11-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opgprof.cpp: simplify a bit cg handling, we don't need to know
+	  if we retrieved some cg files since the profile_t will be empty
+	  in this case
+
+2003-11-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile.h: iterator::vma() must return the full key not only
+	  an unsigned int.
+	* pp/opgprof.cpp: implement merging of cg files.
+
+2003-11-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_spec.cpp:
+	* libpp/profile_spec.h:
+	* pp/opannotate_options.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport_options.cpp: filter call graph samples files
+
+2003-11-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_mangling.c: oops, it's better to really open the cg file
+
+	* daemon/opd_sfile.c:
+	* daemon/opd_stats.c:
+	* daemon/opd_stats.h:
+	* daemon/liblegacy/opd_24_stats.c:
+	* daemon/liblegacy/opd_24_stats.h:
+	* daemon/liblegacy/opd_proc.c: log sample lost due to sample file open
+	  failure
+
+2003-11-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/liblegacy/opd_parse_proc.c: always provide an image name
+	  for parsed process in /proc
+
+2003-11-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/oprofile.xml:
+	* libop/op_cpu_type.c: s/hammer/AMD64 processors/ for user visible
+	  name.
+
+2003-11-13  John Levon  <levon@movementarian.org>
+
+	* libutil/op_file.h:
+	* libutil/op_file.c: remove op_c_dirname(),
+	op_relative_to_absolute_path(), op_is_directory(),
+	op_follow_link(), in favour of using realpath(3)
+
+	* libutil/tests/file_tests.c: fixes for above changes
+
+	* libutil++/file_manip.h:
+	* libutil++/file_manip.cpp: changes from above. Add
+	op_realpath().
+
+	* libutil++/tests/file_manip_tests.cpp: changes from 
+	above.
+
+	* daemon/oprofiled.c:
+	* daemon/liblegacy/opd_parse_proc.c:
+	* gui/oprof_start_util.cpp:
+	* libpp/locate_images.cpp:
+	* libpp/profile_spec.cpp:
+	* pp/opannotate.cpp: changes from above
+
+2003-11-12  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.8cvs
+
+2003-11-11  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.7.1
+
+2003-11-11  Joseph VanAndel  <unknown@unknown.org>
+
+	* daemon/liblegacy/init.c: fix #840046 (segfault when starting profiler
+	 with --no-vmlinux setup), this bug was present in 0.7.0.
+
+2003-11-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_spec.cpp: more precise error message
+	* libutil++/tests/file_manip_tests.cpp: corner case test added
+	  for dirname
+
+2003-11-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/arrange_profiles.cpp: report_error() shows only distinct
+	  conflicting name.
+
+2003-11-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/opcontrol.1.in: reverse kernel:user in event setting description.
+	  Fix #838968
+
+2003-11-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/init.c:
+	* daemon/liblegacy/init.c: move opd_read_fs_int ...
+	* daemon/oprofiled.h:
+	* daemon/oprofiled.c: here
+	* daemon/liblegacy/opd_24_stats.c: dump kernel note buffer overflow and
+	  buffer overlow
+
+2003-11-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/op_help.c: do not use OP_MAX_COUNTERS but get counter number
+	  at runtime
+
+2003-11-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/tests/string_manip_tests.cpp: rtrim/ltrim/trim tests
+
+2003-11-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/tests/Makefile.am:
+	* libop/tests/mangle_tests.c: new tests: sample filename mangling
+
+2003-11-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/x86/op_syscalls.c: fix build with 2.2 kernel
+
+2003-11-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* Makefile.am: use .PHONY for module goal to not statisfy this goal
+	  with the subdir named module
+	* m4/findkernel.m4: minor fix.
+
+2003-11-06  John Levon  <levon@movementarian.org>
+
+	* Makefile.am: minor cleanup
+
+2003-11-06  John Levon  <levon@movementarian.org>
+
+	* gui/Makefile.am: remove unused -DKVERSION
+
+2003-11-06  John Levon  <levon@movementarian.org>
+
+	* configure.in: add --disable-werror and --disable-optimization
+
+	* doc/oprofile.xml: document above. Remove docs for
+	* --enable-gcov (only useful to developers)
+
+2003-11-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_kernel.c:
+	* daemon/liblegacy/opd_kernel.c: be less paranoid about kernel range,
+	  this is slightly different than the patch Thomas Spatzier tested but
+	  it can't hurt (famous last words ...). This fixes s390x where kernel
+	  start can be zero and was rejected.
+
+2003-11-06  Thomas Spatzier  <tspat@de.ibm.com>
+
+	* daemon/opd_cookie.c: changed an #if defined for selecting right
+	  system call for IBM s390 or s390x, respectively
+	  
+2003-11-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/path_filter.cpp: remove 2 identical FIXME
+	* libutil++/tests/file_manip_tests.cpp:
+	* libutil++/tests/path_filter_tests.cpp: reflect the behavior by
+	  new tests
+
+2003-11-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db_manage.c:
+	* libop/op_events.h: -pedantic fix
+
+2003-11-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_sfile.c:
+	* daemon/liblegacy/opd_kernel.c:
+	* libutil/op_cpufreq.c:
+	* libutil/op_file.c: a few s/goto/break/
+	* libpp/format_output.cpp: padding never used after initialization
+
+2003-11-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/comma_list.h: don't accept cumulative behavior
+	* libutil++/string_manip.cpp: separate_token() return by value
+	* gui/oprof_start.cpp:
+	* libopt++/popt_options.cpp:
+	* libpp/parse_filename.cpp:
+	* libpp/profile_spec.cpp:
+	* libutil++/comma_list.h:
+	* libutil++/string_filter.cpp:
+	* libutil++/string_manip.cpp:
+	* libutil++/string_manip.h:
+	* libutil++/tests/comma_list_tests.cpp:
+	* libutil++/tests/string_manip_tests.cpp: update according
+	* libpp/profile_spec.cpp: remove all trace of defunct op_alias
+
+2003-11-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/liblegacy/opd_image.c:
+	* daemon/liblegacy/opd_image.h:
+	* daemon/liblegacy/opd_mapping.c:
+	* daemon/liblegacy/opd_mapping.h:
+	* daemon/liblegacy/opd_proc.c:
+	* gui/oprof_start.cpp:
+	* gui/oprof_start.h:
+	* gui/oprof_start_config.cpp:
+	* gui/oprof_start_util.cpp:
+	* libop/op_config_24.h:
+	* libpp/format_output.cpp:
+	* libpp/op_header.cpp:
+	* libpp/profile.h:
+	* libpp/profile_container.cpp:
+	* libpp/profile_spec.cpp:
+	* libpp/profile_spec.h:
+	* libpp/symbol.h:
+	* libpp/symbol_sort.cpp:
+	* libutil++/stream_util.cpp:
+	* libutil++/stream_util.h:
+	* libutil++/utility.h:
+	* pp/common_option.cpp:
+	* pp/common_option.h:
+	* pp/opannotate_options.h:
+	* pp/opgprof.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opgprof_options.h:
+	* pp/opreport_options.cpp:
+	* pp/opreport_options.h:
+	* pp/populate.cpp: remove some .h dependencies
+
+2003-11-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/tests/Makefile.am:
+	* libutil++/tests/utility_tests.cpp: new test files convering most of
+	  utility.h and op_exception.h
+
+2003-11-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/parse_filename.cpp: avoid repetitive vector::erase(v.begin())
+	* libregex/stl.pat.in:
+	* libregex/tests/mangled-name.in: add (i|o)stream operator(>>|<<)
+
+2003-11-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/liblegacy/opd_image.h:
+	* daemon/liblegacy/opd_image.c:
+	* daemon/liblegacy/opd_proc.c:
+	* daemon/liblegacy/opd_sample_files.c: sparse sample file array
+	  allocated by line.
+
+2003-11-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/glob_filter.h:
+	* libutil++/path_filter.h:
+	* libutil++/string_filter.h: comment fix to match implementation
+	* libutil++/tests/path_filter_tests.cpp: new file test
+	* libutil++/tests/Makefile.am: upate build
+	* libutil++/tests/string_filter_tests.cpp: test white space at start
+	  of pattern
+
+2003-11-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/string_manip.cpp: format_double can only format percent
+	* libutil++/string_manip.h:
+	* libpp/format_output.cpp:
+	* libutil++/tests/string_manip_tests.cpp:
+	* pp/opannotate.cpp:
+	* pp/opreport.cpp: s/format_double/format_percent/
+
+2003-11-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/glob_filter.h:
+	* libutil++/string_filter.h:
+	* libutil++/tests/string_filter_tests.cpp: minor tidy
+
+	* libutil++/tests/glob_filter_tests.cpp: new file
+	* libutil++/tests/Makefile.am: update build
+
+2003-11-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/arrange_profiles.cpp: typo
+	* libutil++/generic_spec.cpp: removed file
+	* libutil++/Makefile.am: update according
+	* libutil++/generic_spec.h: ensure generic_spec<string> will not link
+	* libutil++/path_filter.cpp: minor tidy
+
+2003-11-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/tests/string_manip_tests.cpp: ehance output on failure
+	* module/oprofile.h:
+	* module/oprofile.c: two new read-only sysctl: nr_buffer_overflow and
+	  nr_note_buffer_overflow
+
+2003-11-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/tests/Makefile.am:
+	* libutil++/tests/file_manip_tests.cpp: don't use getcwd nor __FILE__
+	  but ${topdir} and hard coded filename
+
+2003-11-01  John Levon  <levon@movementarian.org>
+
+	* daemon/liblegacy/opd_parse_proc.c: use op_follow_link
+
+	* libutil/op_file.c:
+	* libutil/op_file.h: make op_get_link() static, rename
+	op_basename to op_c_basename
+
+	* libutil++/file_manip.cpp:
+	* libutil++/file_manip.h: rename to op_basename()/op_dirname().
+	Use op_follow_link() for follow_link().
+
+	* libutil++/tests/file_manip_tests.cpp:
+	* gui/oprof_start_util.cpp:
+	* libpp/locate_images.cpp:
+	* libpp/name_storage.cpp:
+	* libutil++/path_filter.cpp:
+	* pp/opannotate.cpp:
+	* pp/opreport.cpp: fixup from above changes
+
+2003-11-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.h: has_debug_info() new member
+	* pp/populate.h:
+	* pp/populate.cpp: 
+	* pp/opannotate.cpp: use it to error out when --assembly is not
+	  requested and no debug information exists
+
+2003-10-31  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/common_option.cpp: don't exit() if merge_by.lib is set through
+	  !allow_lib
+
+2003-10-31  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport_options.cpp: move handle_merge_option() ...
+	* pp/common_option.h: 
+	* pp/common_option.cpp: here
+	* pp/opannotate_options.cpp: use it but disallow --merge=lib
+
+2003-10-31  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/op_file.c:
+	* libutil/op_file.h: implement dirname(), is_directory() and
+	  op_follow_link()
+	* daemon/oprofiled.c: follow symlink for image filter
+	* libutil++/file_manip.cpp:
+	* libutil++/file_manip.h:
+	* gui/oprof_start_util.cpp:
+	* libpp/profile_spec.cpp:  rename op_follow_link() to follow_link()
+
+2003-10-31  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/tests/file_tests.c: "//usr" --> "//usr"
+	* libutil++/tests/.cvsignore:
+	* libutil++/tests/Makefile.am:
+	* libutil++/tests/file_manip_tests.cpp: new tests file.
+
+2003-10-31  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_perfmon.c: fix compilation
+
+2003-10-30  John Levon  <levon@movementarian.org>
+
+	* libpp/profile_spec.cpp: introduce a helper function
+	to make the comma_list matching clear
+
+2003-10-30  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/comma_list.h: is_set() new member
+	* libpp/profile_spec.cpp: fix matching logic for cpu/tid/tgid
+
+2003-10-30  John Levon  <levon@movementarian.org>
+
+	* libutil++/generic_spec.h: add value() and
+	is_set(), remove bool parameter from T value
+	match() (it was never set to true)
+
+	* libutil++/comma_list.h: do not accept
+	generic_spec, the behaviour was to implicitly
+	not match an "all" generic_spec. Instead:
+
+	* libpp/profile_spec.cpp: encode the matching
+	behaviour explicitly, and add a comment.
+
+	* libutil++/tests/comma_list_tests.cpp: fix to
+	match the above
+
+2003-10-30  John Levon  <levon@movementarian.org>
+
+	* Makefile.am: re-order build subdirs
+
+	* libabi/Makefile.am: only build abitest on
+	make check
+
+	* pp/Makefile.am: pp_common not pp_commons
+
+2003-10-30  John Levon  <levon@movementarian.org>
+
+	* libutil++/tests/Makefile.am:
+	* libutil++/tests/comma_list_tests.cpp: Add.
+
+2003-10-30  John Levon  <levon@movementarian.org>
+
+	* doc/Makefile.am: improve chunk rules
+
+2003-10-30  John Levon  <levon@movementarian.org>
+
+	* libutil++/tests/Makefile.am:
+	* libutil++/tests/string_filter_tests.cpp: Add.
+
+	* libutil++/tests/string_manip_tests.cpp: fix header include
+
+2003-10-30  John Levon  <levon@movementarian.org>
+
+	* libutil++/tests/string_manip_tests.cpp: fix tobool test
+	("33" is not castable to bool)
+
+2003-10-30  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/string_manip.cpp:
+	* libutil++/string_manip.h: remove tostr()/tobool/touint(), rename
+	  lexical_cast_no_ws<> to op_lexical_cast<>
+
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_config.cpp:
+	* libpp/arrange_profiles.cpp:
+	* libpp/filename_spec.cpp:
+	* libpp/op_header.cpp:
+	* libutil++/comma_list.h:
+	* libutil++/generic_spec.h:
+	* libutil++/tests/string_manip_tests.cpp: use op_lexical_cast<>
+
+2003-10-29  John Levon  <levon@movementarian.org>
+
+	* pp/common_option.h: use std namespace
+
+2003-10-28  Jason Lunz  <lunz@falooley.org>
+
+	* doc/oprofile.1.in: document cpu,tid,tgid in profile
+	spec
+
+2003-10-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_spec.cpp: error out for all tag:value specified
+	  more than once.
+
+2003-10-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/opannotate.1.in:
+	* doc/opreport.1.in:
+	* doc/oprofile.xml:
+	* libregex/demangle_symbol.cpp:
+	* libregex/demangle_symbol.h:
+	* pp/common_option.cpp:
+	* pp/common_option.h:
+	* pp/opannotate_options.cpp:
+	* pp/opannotate_options.h:
+	* pp/opreport_options.cpp:
+	* pp/opreport_options.h: remove --no-demangle, --smart-demangle and
+	  --demangle, replace them with --demangle=none|smart|normal
+
+2003-10-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/tests: new directory
+	* libutil++/tests/string_manip_tests.cpp: new tests file
+	* configure.in:
+	* libutil++/Makefile.am:
+	* libutil++/tests/.cvsignore:
+	* libutil++/tests/Makefile.am: handle new test
+
+	* libutil++/string_manip.h:
+	* libutil++/string_manip.cpp: correct implementation of separate_token
+	  to match the documentation
+	* daemon/liblegacy/opd_image.c: fix comment
+
+2003-10-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/count_array.cpp:
+	* libpp/count_array.h:
+	* libpp/locate_images.h:
+	* libpp/parse_filename.cpp:
+	* libpp/profile.cpp:
+	* libpp/profile.h:
+	* libpp/profile_spec.cpp:
+	* libpp/symbol_sort.cpp: minor tidy
+
+2003-10-28  Jason Lunz  <lunz@falooley.org>
+
+	* doc/opcontrol.1.in: better wording for --separate=
+	* doc/oprofile.1.in: typo
+
+2003-10-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/liblegacy/init.c:
+	* daemon/liblegacy/opd_24_stats.c:
+	* daemon/liblegacy/opd_24_stats.h:
+	* daemon/liblegacy/opd_image.c:
+	* daemon/liblegacy/opd_image.h:
+	* daemon/liblegacy/opd_kernel.c:
+	* daemon/liblegacy/opd_kernel.h:
+	* daemon/liblegacy/opd_mapping.c:
+	* daemon/liblegacy/opd_mapping.h:
+	* daemon/liblegacy/opd_parse_proc.c:
+	* daemon/liblegacy/opd_parse_proc.h:
+	* daemon/liblegacy/opd_proc.c:
+	* daemon/liblegacy/opd_proc.h:
+	* daemon/liblegacy/opd_sample_files.c:
+	* daemon/liblegacy/opd_sample_files.h: move doygen comment from *.c to
+	  *.h. Add some doxygen comment.
+
+2003-10-27  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/liblegacy/opd_24_stats.c:
+	* daemon/liblegacy/opd_image.h:
+	* daemon/liblegacy/opd_image.h: nr_images static
+
+2003-10-27  John Levon  <levon@movementarian.org>
+
+	* doc/opcontrol.1.in: document --image=
+
+	* doc/oprofile.xml:
+	* utils/opcontrol: make user specify "--image=all"
+	to reset. Clean up help message. Ensure note table
+	size is given a value. Add '-t' for '--stop', and
+	'-i' for '--image'.
+
+2003-10-27  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: document opcontrol --image=
+
+2003-10-27  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_events.h:
+	* daemon/opd_events.c: move code for handling
+	event descriptions here, and share find_counter_event(),
+	plus fill_header()
+
+	* daemon/opd_mangling.c:
+	* daemon/opd_perfmon.c:
+	* daemon/oprofiled.c:
+	* daemon/oprofiled.h:
+	* daemon/liblegacy/opd_proc.c:
+	* daemon/liblegacy/opd_sample_files.c: changes from
+	above
+
+2003-10-27  John Levon  <levon@movementarian.org>
+
+	* daemon/oprofiled.c: fix help text
+
+	* daemon/liblegacy/init.c:
+	* daemon/liblegacy/opd_proc.h:
+	* daemon/liblegacy/opd_proc.c: clean up headers
+	a bit
+
+2003-10-27  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp: check we can get kernel interface
+
+2003-10-27  John Levon  <levon@movementarian.org>
+
+	* daemon/liblegacy/Makefile.am: remove unneeded
+	-I for abi
+
+2003-10-27  John Levon  <levon@movementarian.org>
+
+	* daemon/init.c:
+	* daemon/opd_perfmon.c: move timer interrupt checks
+	into perfmon
+
+2003-10-27  John Levon  <levon@movementarian.org>
+
+	* daemon/oprofiled.c: use op_get_interface()
+
+	* libop/op_get_interface.c: simplify
+
+2003-10-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/ui/oprof_start.base.ui:
+	* gui/oprof_start.cpp:
+	* gui/oprof_start.h: check separate_lib checkbox when
+	  separate_kernel_cb is checked
+
+2003-10-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: allow to reset --image through empty --image=
+	  or --image
+
+2003-10-26  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_cookie.c: reduce the hash table size somewhat
+
+	* various: fixes for doxygen
+
+2003-10-26  John Levon  <levon@movementarian.org>
+
+	* HACKING:
+	* configure.in:
+	* Makefile.am:
+	* dae/: move all of 2.4 daemon code to ...
+
+	* daemon/liblegacy/: here
+
+	* daemon/Makefile.am:
+	* daemon/opd_util.h:
+	* daemon/opd_util.c: move to ...
+
+	* daemon/oprofiled.h:
+	* daemon/oprofiled.c: here, and call the right operations
+	depending upon oprofile kernel version.
+
+	* daemon/init.c:
+	* daemon/liblegacy/init.c: init and running for each version
+
+2003-10-26  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_cookie.c: make sure to create the
+	cookie for the ignore value if it's not found
+
+	* daemon/opd_sfile.c: simplify ignored logic
+
+2003-10-26  John Levon  <levon@movementarian.org>
+
+	* doc/internals.xml:
+	* doc/buffers.png: add a diagram
+
+2003-10-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	implement image filtering:
+
+	* dae/opd_image.h: add a field filtered
+	* dae/opd_image.c: set it at image creation
+	* dae/opd_proc.c: don't record sample when !image->filtered
+
+	* daemon/opd_cookie.h: add a field filtered
+	* daemon/opd_cookie.c: set it a cookie_entry creation.
+	* daemon/opd_sfile.h: add a field filtered
+	* daemon/opd_file.c: set it a opd_sfile struct creation
+	* daemon/opd_trans.c: record sample if filtered
+
+	* daemon/opd_util.h: export opd_hash_name(), is_image_filtered()
+	* daemon/opd_util.c: implement --image=xxx
+
+	* oprofiled.c: #include "config.h" not <>
+
+	* utils/opcontrol: handle --image
+
+2003-10-26  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: remove some outdated stuff
+
+2003-10-25  John Levon  <levon@movementarian.org>
+
+	* doc/internals.xml: more docs
+
+2003-10-25  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_perfmon.c: cleanups
+
+2003-10-24  John Levon  <levon@movementarian.org>
+
+	* doc/internals.xml: write some more
+
+2003-10-23  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.7.1cvs
+
+2003-10-22  John Levon  <levon@movementarian.org>
+
+	* libop/tests/Makefile.am:
+	* libop/tests/load_events_files_tests.c:
+	* libop/tests/alloc_counter_tests.c: fix
+	make distcheck
+
+	* configure.in: bump to 0.7
+ 
+2003-10-22  John Levon  <levon@movementarian.org>
+
+	* daemon/Makefile.am:
+	* daemon/opd_perfmon.h:
+	* daemon/opd_perfmon.c: re-enable. Wait for children.
+	More safety checking.
+
+	* daemon/oprofiled.c: only use perfmon if !timer
+
+2003-10-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/oprofile.xml:
+	* doc/oprofile.1.in: s/physical CPU/CPU/
+
+2003-10-20  John Levon  <levon@movementarian.org>
+
+	* daemon/Makefile.am:
+	* daemon/opd_perfmon.h: disable perfmon nicely
+
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_config.h:
+	* gui/oprof_start_config.cpp:
+	* gui/ui/oprof_start.base.ui: Fix reading of separate
+	parameters. Add CPU and thread separation
+
+2003-10-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_spec.cpp: relative path are relative to current dir
+	  not filename.
+
+2003-10-20  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml:
+	* doc/opreport.1.in: fix --merge docs and profile specs
+
+2003-10-20  John Levon  <levon@movementarian.org>
+
+	* dae/opd_sample_files.c:
+	* daemon/opd_mangling.c:
+	* libabi/abi.cpp:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp:
+	* libop/op_config.h:
+	* libop/op_sample_file.h:
+	* libpp/op_header.cpp: remove ctr and separate_* from
+	header. Re-arrange it a little, and make it 64 bytes
+	on ILP32. Bump the version.
+
+2003-10-20  John Levon  <levon@movementarian.org>
+
+	* libpp/arrange_profiles.cpp: rework the clashing-axes
+	error message to be nicer to the user
+
+2003-10-20  John Levon  <levon@movementarian.org>
+
+	* libpp/arrange_profiles.cpp: if tid == tgid for
+	every profile class, allow axes of both TID and TGID
+	- there is no actual difference, only theoretical
+
+2003-10-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/oprofiled.c: correct an error message
+	* libop/op_alloc_counter.h: remove bogus FIXME
+	* libutil++/child_reader.cpp: avoid quadratic behaviour if child does a
+	  lot of output in stderr
+	* libpp/opgprof.cpp: fix comment
+
+2003-10-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp: redundant return
+
+2003-10-19  John Levon  <levon@movementarian.org>
+
+	* libop/op_events.c: move to a fixed value for the default
+	event count value
+
+2003-10-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	remove some FIXME:
+	* libpp/format_output.h: remove first_output bool member
+	* libpp/format_output.cpp: call output_header from the right place
+	* libpp/op_header.h: remove bogus FIXME
+
+	* libregex/tests/Makefile.am: fix dependencies on mangled-name file,
+	  fix make dist
+	* libregex/tests/mangled-name.in: simplify a bit and remove a bogus
+	  FIXME
+	* libregex/tests/regex_test.cpp: fix comment
+
+	* module/ia64/op_syscalls.c:
+	* module/x86/hammer_op_syscalls.c:
+	* module/x86/op_syscalls.c: remove some FIXME
+
+2003-10-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/arrange_profiles.cpp: clarify suggestion.
+	* pp/opreport_options.cpp: update options help string for --merge.
+
+	* libpp/profile_container.cpp:
+	* libpp/profile_spec.cpp:
+	* pp/common_option.cpp:
+	* pp/populate.cpp: ';' are not necessary to end namespace
+
+2003-10-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/arrange_profiles.cpp: use a set<profile_classes> instead
+	  of a vector<...> to replace a O(N*M) by a O(N*log(M)) behavior.
+	  (N number of samples files, M number of class).
+
+2003-10-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: show filename when warning about no debug
+	  information available. get_linenr(): s/filename/source_filename/
+
+2003-10-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/ia64/itanium/events: counter 0,1 not 2,3 for IA64_INST_RETIRED
+
+	* daemon/opd_util.c: opd_parse_events() fix use after free.
+
+2003-10-16  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_perfmon.c: disable the code
+
+2003-10-15  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_perfmon.c: fflushes to improve
+	order of debug log
+
+2003-10-15  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_perfmon.c: fix dumb allocation typo;
+	handle signals correctly; wait for children to
+	come up before returning
+
+2003-10-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_sample_files.c:
+	* daemon/opd_mangling.c:
+	* daemon/opd_perfmon.c:
+	* daemon/opd_util.c: check we not overflow op_nr_counters
+
+2003-10-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/ia64/itanium/events: correct counter available according
+	  to intel doc.
+
+2003-10-15  John Levon  <levon@movementarian.org>
+
+	* dae/opd_image.c:
+	* dae/opd_kernel.c:
+	* dae/opd_proc.c:
+	* dae/opd_sample_files.c:
+	* dae/oprofiled.c:
+	* daemon/opd_kernel.c:
+	* daemon/opd_mangling.c:
+	* daemon/opd_sfile.c:
+	* daemon/opd_trans.c:
+	* daemon/opd_util.c:
+	* daemon/opd_util.h:
+	* daemon/oprofiled.c: merge the options handling
+	for dae and daemon
+
+2003-10-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_perfmon.c:
+	* module/ia64/op_pmu.c: bit mask for event select field is 8 bits not 7
+
+2003-10-14  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* m4/findkernel.m4:
+	* utils/opcontrol: 2.5 refs -> 2.6
+
+2003-10-14  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: merge some 2.4/6 code
+
+2003-10-14  John Levon  <levon@movementarian.org>
+
+	* dae/opd_image.c:
+	* dae/opd_sample_files.c:
+	* dae/oprofiled.c:
+	* utils/opcontrol: use --events for 2.4 daemon
+	too
+
+	* daemon/opd_perfmon.c:
+	* daemon/opd_mangling.c: fix counter numbering
+	on !perfmon
+
+2003-10-14  John Levon  <levon@movementarian.org>
+
+	* configure.in: xmemdup not xmemdump
+
+2003-10-14  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_perfmon.c: propagate a SIGTERM
+	up to the parent.
+
+2003-10-14  John Levon  <levon@movementarian.org>
+
+	* m4/perfmon.m4:
+	* configure.in: remove pfmlib checks
+
+	* daemon/opd_util.h:
+	* daemon/opd_util.c:
+	* daemon/opd_mangling.c:
+	* daemon/oprofiled.c: parse more detailed events
+	passed on command line
+
+	* daemon/opd_perfmon.h:
+	* daemon/opd_perfmon.c: don't use libpfm at all,
+	do it ourselves.
+
+	* utils/opcontrol: pass more of the events info to
+	the daemon
+
+2003-10-14  John Levon  <levon@movementarian.org>
+
+	* m4/perfmon.m4:
+	* configure.in: look for pfmlib 3
+
+	* daemon/Makefile.am:
+	* daemon/opd_perfmon.h:
+	* daemon/opd_perfmon.c: interface to perfmon on 2.6 IA64
+
+	* daemon/opd_mangling.c:
+	* daemon/oprofiled.c: read event descriptions from command
+	line not oprofilefs
+
+	* daemon/opd_util.h:
+	* daemon/opd_util.c: receive SIGUSR1/2 for perfmon
+
+	* utils/opcontrol: handle multiple oprofileds. Send SIGUSR1/2
+	on start/stop. Pass in events list to oprofiled on 2.6. Don't
+	attempt to fill in oprofilefs with event info if using perfmon.
+
+2003-10-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_mangling.c:
+	* daemon/opd_sfile.c:
+	* daemon/opd_sfile.h: protect the sfile we are acting on to be freed
+	  by sfile_lru_clear()
+
+	* libdb/db_manage.c:
+	* libdb/odb_hash.h: Do not put hash->descr in an inconsistent state
+	  when a failure occur.
+
+2003-10-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/oprofile.c: don't restore syscall and stop counter twice
+
+2003-10-13  Will Cohen  <wcohen@redhat.com>
+
+	* libop/op_parse_event.c(parse_events): Correct fprintf.
+
+2003-10-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/x86/hammer_op_syscalls.c: pass tgid to daemon. Not tested!
+
+2003-10-12  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: share --separate-cpu/thread code now
+
+2003-10-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: add libregex/tests/mangled-name.in
+	* libregex/tests/mangled-name.txt: move ...
+	* libregex/tests/mangled-name.in: here, tune to support different arch
+	* libregex/tests/Makefile.am: s/mangled-name.txt/mangled-name.in
+	* libregex/stl.pat.in: fix iterator<... ptrdiff_t>
+	* libregex/tests/Makefile.am: update according to filename change
+
+	* libregex/tests/regex_test.cpp: really fails on exception.
+
+2003-10-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/oprofiled.c: don't set cpu_number when !--separate=cpu
+	
+	* libop/tests/alloc_counter_tests.c: printf format for 64 bits arch
+	* libop/tests/cpu_type_tests.c: #include <string.h>
+	* libop/tests/parse_event_tests.c: #include <string.h>
+
+2003-10-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_interface.h: struct op_sample: remove packed attribute
+
+2003-10-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_image.c:
+	* dae/opd_image.h: reference count opd_image. Remove modification time
+	  checking. Remove hash field. Tidy
+	* dae/opd_kernel.c: pass tid, tgid to op_get_kernel_image()
+	* dae/opd_mapping.c:
+	* dae/opd_mapping.h: use module hash code for image name to index
+	  a cache of name, this hash code is no longer used elsewhere. When
+	  killing map delete associated image, reference count of image
+	  will check for a real delete.
+	* dae/opd_parse_proc.c: get tgid from /proc/pid/status
+	* dae/opd_proc.c: create an opd_proc by process when
+	  separate_thread == true. Tidy by adding an opd_for_each_proc()
+	* dae/opd_proc.h: add tid/tgid to opd_proc struct
+	* dae/opd_sample_files.c:
+	* dae/opd_sample_files.h: lru all samples files, allowing to cleanup
+	  a part of the lru if we go out of resource. Remove
+	  opd_handle_old_sample_files() since we no longer check for image
+	  modification time.
+	* dae/opd_stats.c:
+	* dae/opd_stats.h: statistics for opd_image struct depth search
+	* dae/oprofiled.c: add --separate-cpu and --separate-thread
+	* libop/op_interface.h: add tgid to samples struct passed from module
+	  to daemon.
+	* module/compat22.h:
+	* module/compat24.h: op_get_tgid() return tgid, fall back to return
+	  tid on 2.2 kernel.
+	* module/oprofile.c:
+	* module/ia64/op_syscalls.c: pass tgid to daemon. NOT TESTED but I
+	  think it's ok. Note than even if it's broken ia64 should work w/o
+	  --separate=thread
+	* module/x86/op_syscalls.c: pass tgid to daemon.
+	* utils/opcontrol: enable 2.4 thread/cpu separation
+
+	* libdb/tests/db_test.c: verbose on when we provide filename of db file
+	  to test on command line.
+
+2003-10-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_cpu_type.h:
+	* libop/op_cpu_type.c: constification
+	* utils/op_help.c: check only if CPU_NO_GOOD not range
+
+	* libutil/tests/Makefile.am:
+	* libregex/tests/Makefile.am:
+	* libdb/tests/Makefile.am: s/TEST = (.*)/TESTS = ${check_PROGRAMS}/
+
+	* libop/tests/alloc_counter_tests.c: comment fix
+
+	* libop/tests/Makefile.am:
+	* libop/tests/cpu_type_tests.c: new file, test libop/op_cpu_type.c
+
+2003-10-10  Will Cohen  <wcohen@redhat.com>
+
+	* libop/op_cpu_type.h (op_get_cpu_number): Clarify comment.
+	* libop/op_cpu_type.c (op_get_cpu_number): Check number.
+	* utils/op_help.c (main): Make check with CPU_NO_GOOD.
+
+2003-10-10  Will Cohen  <wcohen@redhat.com>
+
+	* libop/op_cpu_type.h (op_get_cpu_number): Declare.
+	* libop/op_cpu_type.c (op_get_cpu_number): New.
+	  (op_get_cpu_type): Use op_get_cpu_number.
+	* utils/op_help.c (main): Use op_get_cpu_number.
+
+2003-10-10  John Levon  <levon@movementarian.org>
+
+	* libop/op_parse_event.c: fix compile for IA64
+
+2003-10-09  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: document "no results" and
+	how to fix it
+
+2003-10-08  John Levon  <levon@movementarian.org>
+
+	* utils/op_help.c: standardise name
+
+	* gui/oprof_start.cpp: Qt 2.3.1 compile fix
+	(bug 819943)
+
+2003-10-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_kernel.c: memory leak
+
+	* dae/opd_mapping.c:
+	* dae/opd_mapping.h:
+	* dae/opd_parse_proc.c:
+	* dae/opd_proc.c: 
+	* dae/opd_proc.h: use a list of struct opd_map instead of an array,
+	  remove last_map optimization.
+
+	* dae/oprofiled.c: memory leak
+	
+	* libutil/op_cpufreq.c: memory leak, FILE* leak
+	* libutil/op_list.h: fix @author
+
+2003-10-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/oprofiled.c:
+	* dae/opd_proc.h:
+	* dae/opd_proc.c: use struct list_head to chain opd_proc struct in hash
+	  table
+
+	* utils/op_help.c: comment fix
+
+2003-10-06  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: work around 2.6 daemon's signal
+	handling race that could cause it to hang during
+	a --shutdown
+
+2003-10-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/i386/p4/events:
+	* events/i386/p4-ht/events: put GLOBAL_POWER_EVENTS on top
+
+	* events/i386/pii/unit_masks:
+	* events/i386/piii/unit_masks: typo in help string
+
+	* utils/op_help.c: show "counter: all" instead an enumeration of all
+	  counter
+
+2003-10-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/*.events *.unit_masks: move these files to subdir named
+	  arch/processor_name/events and arch/processor_name/unit_masks
+	* events/Makefile.am: update according
+	
+	* libop/op_events.c: now it's safe to allow loading events file from a
+	  directory provided through environment var OPROFILE_EVENTS_FILE_DIR
+	* libop/tests/alloc_counter_tests.c: use it
+	* libop/tests/load_events_files_tests.c: use it
+
+2003-10-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events.c: revert last commit (allowed to find events files
+	  description directory in alternate directory)
+
+	* libop/tests/Makefile.am:
+	* libop/tests/load_events_files_tests.c: new files. Validate events
+	  description file by loading them.
+
+	* libutil/op_cpufreq.c: comment why we don't have any code handling
+	  s390
+
+2003-10-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in:
+	* libop/Makefile.am: new subdir
+	* libop/op_events.c: allow to retrieve events file dir through
+	  environment variable
+	* utils/op_help.c: move parse_events() and parsed_event struct to ...
+	* libop/op_parse_event.h:
+	* libop/op_parse_event.c: these new files
+
+	* libop/tests/Makefile.am: new tests subdir
+	* libop/tests/alloc_counter_tests.c: events mapping to counter nr tests
+	* libop/tests/parse_event_tests.c: event parsing tests
+
+2003-10-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_alloc_counter.c: add forward declaration
+	* libop/op_alloc_counter.c: alloc counter in increasing number order,
+	  it's less surprising.
+
+2003-10-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/tests/db_test.c: if previous tests fails a corrupted samples
+	  file can exist in test dir and will be re-used, remove() it.
+
+2003-10-01  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_sfile.c:
+	* libabi/op_import.cpp:
+	* libop/op_interface.h:
+	* libpp/locate_images.h: small cleanups
+
+	* pp/opreport_options.cpp: don't complain about
+	"-x -m all"
+
+2003-09-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/op_file.c:
+	* libutil/tests/file_tests.c: honor posix "//" filename namespace
+
+2003-09-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_alloc_counter.h:
+	* libop/op_alloc_counter.c: change allocator by a backtracking
+	  algorithm walking only through possible solution.
+
+2003-09-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/tests/db_test.c: success must be silent
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c:
+	* libutil/op_deviceio.c:
+	* libutil/op_deviceio.h: op_open_device(): remove unused parameter
+	  fatal
+
+2003-09-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/tests/file_tests.c: Fix some test: in some case the pathname
+	  component must be valid since we lstat() them. Fix a segfault due
+	  to missing ',' 
+
+2003-09-26  John Levon  <levon@movementarian.org>
+
+	* libdb/tests/Makefile.am:
+	* libregex/tests/Makefile.am:
+	* libutil/tests/Makefile.am: don't build tests
+	unless "make check"
+
+2003-09-26  John Levon  <levon@movementarian.org>
+
+	* libutil/op_file.c: don't test for NULL path
+	passed in, we want to crash here instead of
+	in xstrdup
+
+	* configure.in:
+	* libutil/Makefile.am:
+	* libutil/tests/Makefile.am:
+	* libutil/tests/file_tests.c:
+	* libutil/tests/string_tests.c: add some unit tests
+	for libutil string and path handling
+
+2003-09-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db_debug.c: remove useless display interface
+	* libdb/db_db_travel.c: remove callback interface
+	* libdb/odb_hash.h: remove display/callback interface
+	* libdb/db_test.cpp: move to tests subdir
+	* libdb/Makefile.am: update according
+	* libdb/tests: new dir
+	* libdb/tests/.cvsignore:
+	* libdb/tests/Makefile.am: new files
+	* libdb/tests/db_test.cpp: shorter tests
+
+	* libregex/mangled-name.txt:
+	* libregex/regex_testc.cpp: move to ...
+	* libregex/tests: new directory
+	* libdb/Makefile.am: update according
+	* libregex/tests/.cvsignore:
+	* libregex/tests/Makefile.am: new files
+
+2003-09-26  John Levon  <levon@movementarian.org>
+
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp: small cleanups
+
+2003-09-25  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_cookie.c:
+	* daemon/opd_kernel.c:
+	* daemon/opd_sfile.c:
+	* daemon/opd_trans.c:
+	* daemon/oprofiled.c: trivial cleanups
+
+2003-09-25  Marc Herbert  <marc.herbert@ens-lyon.fr>
+
+	* configure.in: fix prefix stuff to allow stow
+	to work
+
+2003-09-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pch-c++.h: remove
+	* Makefile.am: update according
+	* configure.in: no longer need for conditional enable_pch
+	* m4/precompiledheader.m4: don't use -Winvalid-pch
+
+2003-09-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_sfile.c: sfile_lru_clear() return 0 if lru is empty
+	* daemon/opd_mangling.c: abort() if lru was empty (not tested)
+	* daemon/oprofiled.c: likewise; opd_alarm(): don't sfile_lru_clear()
+
+	* utils/op_help.c:
+	* daemon/opd_sfile.h:
+	* daemon/opd_cookie.h: s/()/(void)/ in some function prototype and
+	  definition
+
+	* daemon/opd_cookie.c: s/"not looked up"/"not hashed"/
+
+2003-09-25  John Levon  <levon@movementarian.org>
+
+	* daemon/oprofiled.c: push rlimit down back to 2048.
+	This gives a running RSS of about 10Mb when thread
+	profiling on my box, which seems reasonable (at 8192
+	it was hitting 40Mb)
+
+2003-09-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/oprofile.xml: clarify what means a configured kernel.
+
+2003-09-25  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_sfile.c: bump LRU_AMOUNT to 1000
+
+2003-09-24  John Levon  <levon@movementarian.org>
+
+	* doc/opcontrol.1.in:
+	* doc/oprofile.xml: document thread and cpu
+	profiling a bit
+
+	* daemon/opd_mangling.c:
+	* daemon/opd_sfile.c:
+	* daemon/oprofiled.c:
+	* utils/opcontrol: implement per-CPU profiling,
+	not tested yet
+
+2003-09-24  John Levon  <levon@movementarian.org>
+
+	* dae/opd_proc.c:
+	* dae/opd_sample_files.c:
+	* daemon/opd_mangling.c:
+	* daemon/opd_sfile.c:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp:
+	* libdb/db_insert.c:
+	* libdb/db_manage.c:
+	* libdb/db_test.c:
+	* libdb/odb_hash.h:
+	* libpp/op_header.cpp:
+	* libpp/profile.cpp: remove samples_odb_t.err_msg
+	entirely - prefer UNIX-style errno returns. Modify
+	error messages to match
+
+2003-09-24  John Levon  <levon@movementarian.org>
+
+	* dae/opd_sample_files.c:
+	* daemon/opd_sample_files.c:
+	* libpp/op_header.cpp:
+	* libpp/profile.cpp:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp:
+	* libdb/db_test.c:
+	* libdb/odb_hash.h:
+	* libdb/odb_manage.c: make odb_open return errno
+	instead of EXIT_FAILURE/SUCCESS to allow EMFILE
+	handling. Also do not leak fd's on failure.
+
+	* libutil/op_types.h: cookie_t moved into daemon/
+
+	* daemon/: major rewrite: move to a hash on all
+	parameters of struct transient. Lots of readability
+	cleanups, plus resistance to cookie lookup failures,
+	and hitting open file limits. Additionally thread
+	profiling for kernel threads is enabled now.
+
+2003-09-24  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c: remove support for missing
+	CTX_TGID
+
+2003-09-24  John Levon  <levon@movementarian.org>
+
+	* daemon/oprofiled.c: remove /proc/kcore support
+
+2003-09-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_parse_proc.c: both op_file.h and op_fileio.h are needed
+
+2003-09-22  John Levon  <levon@movementarian.org>
+
+	* doc/CodingStyle: document doxygen placing rule
+
+	* libop/op_alloc_counter.h:
+	* libop/op_get_interface.c:
+	* libutil++/file_manip.cpp:
+	* libutil++/file_manip.h:
+	* libutil++/op_bfd.cpp:
+	* libutil++/op_bfd.h:
+	* libutil/op_deviceio.c:
+	* libutil/op_deviceio.h:
+	* libutil/op_get_time.c:
+	* libutil/op_get_time.h:
+	* libutil/op_libiberty.c:
+	* libutil/op_libiberty.h:
+	* libutil/op_lockfile.c:
+	* libutil/op_lockfile.h:
+	* libutil/op_popt.c:
+	* libutil/op_popt.h: follow the above
+
+	* libutil/op_file.c:
+	* libutil/op_file.h:
+	* libutil/op_fileio.c:
+	* libutil/op_fileio.h:
+	* dae/opd_parse_proc.c:
+	* libutil++/string_manip.cpp: move op_get_link to
+	op_file
+
+2003-09-22  John Levon  <levon@movementarian.org>
+
+	* libutil/op_fileio.h:
+	* libutil/op_fileio.c: warn about op_get_link()
+	restrictions
+
+	* libutil++/file_manip.h:
+	* libutil++/file_manip.cpp: s/op_read_link/op_follow_link,
+	and behaviour change to match
+
+	* libpp/profile_spec.cpp:
+	* gui/oprof_start_util.cpp: use op_follow_link
+
+2003-09-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/makefile.am: missing AM_CFLAGS setting
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c: handle signal in read loop
+	* daemon/opd_util.h:
+	* daemon/opd_util.c: move opd_setup_signal() from dae/ daemon/
+
+2003-09-22  John Levon  <levon@movementarian.org>
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c: mask SIGTERM too to prevent
+	the possibility of empty sample files
+
+2003-09-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.h:
+	* libpp/format_output.cpp:
+	* pp/opreport.cpp: format_output::show_header no hide_header
+
+2003-09-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/opreport.1.in:
+	* doc/oprofile.xml:
+	* libpp/format_output.h:
+	* libpp/format_output.cpp:
+	* pp/opreport.cpp: --global_percent must be effective for detailed
+	  output too
+
+2003-09-21  John Levon  <levon@movementarian.org>
+
+	* pp/opreport_options.cpp: prevent --global-percent
+	when appropriate
+
+2003-09-21  John Levon  <levon@movementarian.org>
+
+	* Makefile.am: back out broken make clean change
+
+2003-09-21  John Levon  <levon@movementarian.org>
+
+	* Makefile.am: make clean now removes *.html
+
+	* internals.xml: add some outline sections
+
+2003-09-21  John Levon  <levon@movementarian.org>
+
+	* doc/internals.xml: provide a short overview
+	and start a glossary
+
+	* libpp/count_array.h:
+	* libpp/format_output.cpp:
+	* libpp/format_output.h:
+	* libpp/profile.cpp:
+	* libpp/profile.h:
+	* libpp/profile_container.cpp:
+	* libpp/profile_container.h:
+	* pp/opreport.cpp: replace residual references to
+	count groups with profile class concept
+
+2003-09-21  John Levon  <levon@movementarian.org>
+
+	* doc/Makefile.am:
+	* doc/internals.xml: start an internals manual ...
+
+2003-09-19  John Levon  <levon@movementarian.org>
+
+	* pp/image_errors.cpp: missing include
+
+2003-09-19  John Levon  <levon@movementarian.org>
+
+	* libopt++/popt_options.h:
+	* libopt++/popt_options.cpp: remove additional_help
+	stuff, unused for some time
+
+2003-09-18  John Levon  <levon@movementarian.org>
+
+	* libutil++/Makefile.am:
+	* libutil++/image_flags.h: move to ...
+
+	* libpp/Makefile.am:
+	* libpp/image_error.h: ... here, and rename
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: take an in-out bool
+	instead of image_flags
+
+	* libpp/arrange_profiles.cpp:
+	* libpp/arrange_profiles.h:
+	* libpp/locate_images.cpp:
+	* libpp/locate_images.h:
+	* libpp/profile_spec.cpp:
+	* pp/image_errors.cpp:
+	* pp/opgprof.cpp:
+	* pp/populate.cpp: changes from above
+
+2003-09-18  John Levon  <levon@movementarian.org>
+
+	* libutil++/Makefile.am:
+	* libutil++/image_flags.h: flags for image read failure
+
+	* libpp/profile_spec.cpp:
+	* libpp/locate_images.h:
+	* libpp/locate_images.cpp:
+	* libpp/arrange_profiles.h:
+	* libpp/arrange_profiles.cpp: use image_flags
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: use image_flags, no longer error
+	out on format failure
+
+	* pp/Makefile.am:
+	* pp/image_errors.cpp:
+	* pp/image_errors.h: errors previously reported in locate_images
+	are now reported here by the client
+
+	* pp/opannotate.cpp:
+	* pp/opgprof.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport.cpp:
+	* pp/populate.h:
+	* pp/populate.cpp: use the above
+
+2003-09-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.cpp: use 9 not 12 for % field width
+	* libutil++/string_manip.cpp: shrink 100.0000 to 100.000
+	* pp/opreport.cpp: s/" "/' '
+
+2003-09-18  John Levon  <levon@movementarian.org>
+
+	* pp/opannotate_options.cpp:
+	* pp/opreport_options.cpp: clean up error messages
+
+	* pp/opgprof_options.h:
+	* pp/opgprof_options.cpp:
+	* pp/opgprof.cpp: use inverted_profile API
+
+2003-09-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: overwrite all current settings with --separate,
+	  this change behavior of --separate=kernel,library now we really setup
+	  both in this case.
+
+2003-09-18  John Levon  <levon@movementarian.org>
+
+	* libpp/locate_images.cpp: rewrite a little
+
+	* libutil++/op_bfd.cpp: set fsize to default to -1,
+	for fake artificial symbol
+
+2003-09-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/locate_images.h:
+	* libpp/locate_images.cpp: find_module_path() extra bool parameter
+	  to know if we fail to retrieve the image.
+	* libpp/arrange_profiles.h:
+	* libpp/arrange_profiles.cpp: use it and save this bool in
+	  inverted_profile struct
+	* libpp/profile_spec.cpp: update caller according
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: use the above change to create fake op_bfd
+
+	* pp/opgprof_options.cpp:
+	* pp/opgprof.cpp: update caller but never allow fake op_bfd
+
+	* pp/populate.cpp: allow to create fake op_bfd
+	
+
+2003-09-18  John Levon  <levon@movementarian.org>
+
+	* dae/opd_image.c:
+	* dae/opd_proc.c:
+	* dae/opd_sample_files.c:
+	* dae/oprofiled.c:
+	* daemon/opd_image.c:
+	* daemon/opd_image.h:
+	* daemon/opd_kernel.c:
+	* daemon/opd_sample_files.c:
+	* daemon/oprofiled.c:
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_config.cpp:
+	* gui/oprof_start_config.h:
+	* gui/ui/oprof_start.base.ui:
+	* libabi/abi.cpp:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp:
+	* libop/op_sample_file.h:
+	* libpp/op_header.cpp:
+	* utils/opcontrol: renamings of separate stuff
+
+2003-09-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_kernel.c: thinko in opd_get_module_info(): we must take
+	  care to re-use a previously created module not to create a new
+
+2003-09-17  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_kernel.c: logging improvements
+
+2003-09-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_kernel.c:
+	* daemon/opd_kernel.c: fix use after free of module
+
+2003-09-17  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c: fix thread profiling when
+	--separate-library=0
+
+2003-09-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_kernel.c: add module to list of module ...
+	* daemon/opd_kernel.c: s/print/verbprintf
+
+2003-09-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_config.h: remove OPD_MAX_MODULEs
+	* dae/opd_kernel.c:
+	* daemon/opd_kernel.c: remove fixed array of modules replaced by
+	  a list. Unify the way we create opd_module
+	* utils/opcontrol: don't use --thread-profiling for 2.4
+
+2003-09-17 Ka Fai Lu  <kafai0928@yahoo.com>
+
+	I adapted slightly this patch Phil.
+	* daemon/opd_image.c:
+	* daemon/opd_image.h:
+	* daemon/opd_kernel.c:
+	* daemon/opd_sample_files.c:
+	* daemon/oprofiled.c:
+	* utils/opcontrol: implement per thread profiling
+
+2003-09-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libopt++/popt_options.h:
+	* libpp/locate_images.cpp: minor tidy
+
+2003-09-16  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: don't pass pid/pgrp filter
+	to 2.6 daemon
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c: setrlimit to 8192 (lame
+	workaround for now), minor cleanups
+
+2003-09-15  John Levon  <levon@movementarian.org>
+
+	* common_option.cpp: rename the array to
+	avoid a link error in GCC 3.4
+
+2003-09-15  John Levon  <levon@movementarian.org>
+
+	* libop/Makefile.am:
+	* libop/op_interface_25.h: move to ...
+
+	* daemon/Makefile.am:
+	* daemon/opd_interface.h: ... here
+
+	* daemon/opd_image.c:
+	* daemon/oprofiled.c: use above. Remove pointless
+	command line options.
+
+	* libop/op_config_25.h: remove.
+
+	* libop/op_hw_config.h: move DCOOKIE_SHIFT to
+	opd_interface.h
+
+2003-09-15  John Levon  <levon@movementarian.org>
+
+	* configure.in: use -Wdeclaration-after-statement
+	if available
+
+	* README:
+	* daemon/opd_util.c:
+	* daemon/opd_util.h:
+	* doc/opannotate.1.in:
+	* doc/opgprof.1.in:
+	* doc/opreport.1.in:
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml:
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_util.cpp:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_get_interface.c:
+	* libpp/locate_images.cpp: remove references to
+	2.5, replaced with 2.6
+
+2003-09-15  John Levon  <levon@movementarian.org>
+
+	* doc/opreport.1.in: document --show-address
+
+2003-09-15  John Levon  <levon@movementarian.org>
+
+	* libpp/arrange_profiles.cpp:
+	* libpp/arrange_profiles.h:
+	* pp/populate.cpp: more commentary
+
+2003-09-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport.cpp: handle 2.95 right io manipulator and the lack
+	  of a proper setw(w) << std::string
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: re-add header for image summary
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* libpp/arrange_profiles.cpp: throw an exception
+	if there are two many unmerged profiles, with details
+	of how to fix it
+
+	* pp/opgprof_options.cpp:
+	* pp/common_option.cpp: clean up error messages
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* libpp/arrange_profiles.h:
+	* libpp/arrange_profiles.cpp: add location of 
+	images when inverting profiles
+
+	* libpp/locate_images.cpp: return empty string
+	if file isn't readable
+
+	* pp/opannotate.cpp: use the above
+
+	* pp/opreport.cpp: use the above; place warnings
+	before any other output
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* pp/opgprof_options.cpp: use locate_image_path
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* populate.h:
+	* populate.cpp: shared code for populating from
+	inverted profiles
+
+	* opreport.cpp:
+	* opannotate.cpp: use above
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* libpp/arrange_profiles.h:
+	* libpp/arrange_profiles.cpp: add invert_profiles
+
+	* pp/opreport.cpp: use it
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml:
+	* pp/opreport.cpp:
+	* pp/opreport_options.cpp:
+	* pp/opreport_options.h: Turn off VMA report by
+	default, add --show-address
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: nice formatting of image report
+	column headers, respect --no-header
+
+2003-09-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/arrange_profiles.cpp: use string::erase() not string::clear()
+	  for 2.95
+
+	* libutil++/generic_spec.h: allow to ignore "all" match
+	* libutil++/comma_list.h: use it
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: output column headers for
+	image report
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* libpp/op_header.h:
+	* libpp/op_header.cpp: output header info to
+	a string not a stream
+
+	* libpp/arrange_profiles.h:
+	* libpp/arrange_profiles.cpp: give classes a long
+	name, and fill in global event/cpu info
+
+	* pp/opannotate.cpp:
+	* pp/opannotate_options.cpp:
+	* pp/opannotate_options.h:
+	* pp/opgprof_options.cpp:
+	* pp/opreport.cpp:
+	* pp/opreport_options.cpp:
+	* pp/opreport_options.h: use the class long names
+	and info
+
+2003-09-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_spec.cpp: handle symlink
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* arrange_profiles.h:
+	* arrange_profiles.cpp: Add code to give short names
+	to each class, unused yet
+
+2003-09-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/arrange_profiles.cpp: missing include<> with gcc 2.95
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* libpp/Makefile.am:
+	* libpp/split_sample_filename.cpp:
+	* libpp/split_sample_filename.h: rename as ...
+
+	* libpp/parse_filename.cpp:
+	* libpp/parse_filename.h: ... this
+
+	* libpp/filename_spec.cpp:
+	* libpp/arrange_profiles.cpp:
+	* libpp/arrange_profiles.h: sort classes for niceness,
+	changes from above
+
+	* pp/opreport.cpp: remove needless double check of
+	exclude_dependent
+
+	* libutil++/string_manip.cpp: touint should init to 0
+	in case of parse failure
+
+2003-09-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: fix maximum template depth to 50
+	* libutil/op_fileio.c: op_get_link() don't truncate silently results
+	* m4/sstream.m4: use OP_CXXFLAGS not CXXFLAGS
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* pp/partition_files.h:
+	* pp/partition_files.cpp: remove, now unused
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* pp/opannotate.cpp:
+	* pp/opannotate_options.cpp:
+	* pp/opannotate_options.h: use arrange_profiles API
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* pp/opgprof_options.h:
+	* pp/opgprof_options.cpp:
+	* pp/opgprof.cpp: use arrange_profiles API
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* libpp/Makefile.am:
+	* libpp/arrange_profiles.cpp:
+	* libpp/arrange_profiles.h: introduce new
+	code for partitioning profiles and handling
+	merging
+
+	* libpp/partition_files.h:
+	* pp/opreport_options.cpp:
+	* pp/opreport_options.h:
+	* pp/opreport.cpp: use the above code
+
+	* libpp/format_flags.h:
+	* libpp/profile_container.cpp: remove unneeded
+	multiple apps hint
+
+	* libpp/count_array.cpp:
+	* libpp/count_array.h: remove unnecessary code
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* configure.in: back to 0.7cvs
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* pp/opannotate.cpp: gcc 2.91 workaround
+	(in 0.6.1 release)
+
+2003-09-14  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.6.1
+
+2003-09-13  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: document "incorrect source attribution"
+	a bit
+
+2003-09-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/op_header.cpp: typo in comment
+
+2003-09-11  John Levon  <levon@movementarian.org>
+
+	* configure.in: check for -lintl, tweak -ldl check
+
+2003-09-11  John Levon  <levon@movementarian.org>
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c:
+	* libdb/db_manage.c:
+	* libdb/db_test.c: correct headers
+
+2003-09-11  John Levon  <levon@movementarian.org>
+
+	* op_lockfile.c: use correct headers
+
+2003-09-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/op_help.c: check than all events are distincts
+
+2003-09-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pch-c++.h:
+	* m4/precompiledheader.m4: new file to handle precompiled header
+	* m4/Makefile.am:
+	* configure.in:
+	* Makefile.am: handle precompiled header
+
+2003-09-05  John Levon  <levon@movementarian.org>
+
+	* opd_image.c: cleanup of ctx_switch_set_image()
+
+2003-09-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_image.c: After a context switch ensure we update correctly
+	  the current image.
+
+2003-09-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport.cpp:
+	* pp/opannotate.cpp: catch op_bfd exception and recover gracefully
+
+2003-09-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: tweak "signaling daemon " message as suggested
+	  by Carlo Wood
+
+2003-09-04  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: mention --reset in
+	"Getting Started"
+
+2003-09-03  John Levon  <levon@movementarian.org>
+
+	* libop/op_events.c:
+	* libpp/op_header.cpp:
+	* dae/opd_sample_files.c:
+	* daemon/opd_sample_files.c: propagate event
+	error back up to caller
+
+	* libdb/odb_hash.h: fix comment
+
+2003-09-02  John Levon  <levon@movementarian.org>
+
+	* dae/opd_image.c:
+	* dae/opd_proc.c:
+	* dae/oprofiled.c:
+	* daemon/opd_image.c: use abort() not exit()
+	on "can't happen" errors
+
+2003-09-02  John Levon  <levon@movementarian.org>
+
+	* dae/opd_proc.c:
+	* daemon/opd_image.c: fix error message
+
+2003-08-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/alpha.ev6.events: fix duplicate um tag
+
+2003-08-28  John Levon  <levon@movementarian.org>
+
+	* events/i386.athlon.events: fix duplicate minimum tag
+
+	* daemon/opd_image.c:
+	* libop/op_events.c: check for duplicate tags
+
+2003-08-28  John Levon  <levon@movementarian.org>
+
+
+2003-08-27  Will Cohen  <wcohen@redhat.com>
+
+	* utils/op_help.c (resolve_events): Typecast printf argument.
+
+2003-08-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opannotate_options.cpp:
+	* pp/opannotate_options.h:
+	* pp/opannotate.cpp: enable multiple events
+
+	* pp/opreport_options.cpp: remove #if 0 .... #endif
+
+2003-08-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/count_array.cpp: avoid to access invalid memory
+
+2003-08-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in:
+	* m4/builtinexpect.m4:
+	* m4/configmodule.m4:
+	* module/Makefile.in:
+	* module/ia64/Makefile.in:
+	* module/x86/makefile.in: always use EXTRA_CFLAGS_MODULE not
+	EXTRA_CFLAGS for module build flags
+
+2003-08-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libregex/op_regex.h:
+	* libregex/op_regex.cpp: tidy
+
+	* libutil++/op_bfd.cpp: remove obsolete comment
+
+2003-08-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/file_manip.h:
+	* libutil++/file_manip.cpp: is_directory(dirname): return true if
+	  dirname exists
+	* pp/common_option.cpp: validate --image-path parameters
+
+2003-08-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/i386.p4.events: clarify than 128BIT_MMX_UOP count only integer
+	  SSE2 ops
+	* pp/opreport.cpp: minor spacing change in output
+
+2003-08-22  John Levon  <levon@movementarian.org>
+
+	* daemon/oprofiled.c: report the kernel pointer size
+
+2003-08-22  John Levon  <levon@movementarian.org>
+
+	* daemon/oprofiled.c: read new /dev/oprofile/pointer_size
+	in preference to kcore. kcore code will eventually go.
+
+2003-08-21  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.cpp: update gcc2_compiled. comment
+	to reflect reality
+
+2003-08-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport.cpp: really merge when --merge=lib and image name are
+	  specified.
+
+2003-08-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opannotate.cpp: output threshold percent when necessary.
+
+2003-08-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: remove ELF-based symbol size code
+
+2003-08-15  William Cohen  <wcohen@redhat.com>
+
+	* doc/opcontrol.1.in:
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: Correct path to /root/.oprofile/daemonrc.
+
+2003-08-15  Thomas Spatzier  <TSPAT@de.ibm.com>
+
+	* daemon/opd_cookie.h: fix s390 syscall
+
+2003-08-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/string_manip.cpp: erase_to_last_of() is not a ltrim()
+
+2003-08-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	Dave Jones suggested this change.
+
+	* module/x86/op_model_p4.c: remove superflous ';' at end of some macro
+
+2003-08-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/string_manip.h: remove erase_from_last_of()
+	* libutil++/string_manip.cpp: and tidy erase_to_last_of(), rtrim() and
+	  ltrim()
+
+2003-08-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.h:
+	* libpp/profile_container.cpp: remove nil_symbol_index
+
+2003-08-13  John Levon  <levon@movementarian.org>
+
+	* libpp/profile_container.cpp:
+	* libpp/profile_container.h: remove "base_vma" parameter
+	to add_samples(), we can just re-grab it straight from
+	the abfd
+
+2003-08-13  John Levon  <levon@movementarian.org>
+
+	* libpp/profile_container.cpp:
+	* libpp/profile_container.h: remove unused "zero samples"
+	optimization hint: it's always false
+
+	* pp/opannotate.cpp:
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp: from above
+
+2003-08-12  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: small trivialities
+
+2003-08-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libregex/stl.pat.in: minor fix/improvements
+	* libregex/mangled-name.txt: add tests
+
+2003-08-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport.cpp: fix thinko when --merge=lib
+
+2003-08-12  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: s/count_groups_summary/summary_container/g
+
+2003-08-12  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: document opreport's side-by-side a little
+	bit
+
+2003-08-12  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: s/group_summary/app_summary/, and
+	a lot of other renamings to clarify the count groups
+	usage.
+
+2003-08-12  John Levon  <levon@movementarian.org>
+
+	* utils/op_help.c: add --unit-mask
+
+	* utils/opcontrol: use --unit-mask
+
+2003-08-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport.cpp: re write using count_array_t
+
+2003-08-11  John Levon  <levon@movementarian.org>
+
+	* libpp/count_array.cpp:
+	* libpp/count_array.h: auto-resize the number of groups
+	based on how we index.
+
+	* libpp/profile_container.cpp: remove check
+
+	* pp/opannotate.cpp: count_array.zero() not .empty()
+
+2003-08-11  John Levon  <levon@movementarian.org>
+
+	* libpp/filename_spec.h:
+	* libpp/profile_spec.cpp:
+	* libpp/profile_spec.h: add comments, allow comma lists
+	for event, count, and unit mask
+
+	* libutil++/comma_list.h: implement missing method
+
+2003-08-11  John Levon  <levon@movementarian.org>
+
+	* libpp/format_output.cpp:
+	* libpp/format_output.h: add set_nr_groups(), remove
+	pp_nr_counters.
+
+	* libpp/profile_container.cpp:
+	* libpp/profile_container.h:
+	* pp/opannotate.cpp:
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp: count_group not counter
+
+2003-08-11  John Levon  <levon@movementarian.org>
+
+	* libpp/Makefile.am:
+	* libpp/counter_array.cpp:
+	* libpp/counter_array.h: rename to ...
+
+	* libpp/count_array.h:
+	* libpp/count_array.cpp: ... this ...
+
+	* libpp/format_output.cpp:
+	* libpp/format_output.h:
+	* libpp/profile.cpp:
+	* libpp/profile.h:
+	* libpp/profile_container.cpp:
+	* libpp/profile_container.h:
+	* libpp/sample_container.cpp:
+	* libpp/sample_container.h:
+	* libpp/symbol.h:
+	* pp/opannotate.cpp:
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp: ... and several renamings to starting
+	change the notion from "counters" to the more general notion
+	of "count groups"
+
+2003-08-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	Multiple counter support for pp tools.
+
+	* libpp/counter_array.h:
+	* libpp/counter_array.cpp: resurrected from pp-interface-branch, for
+	 now memory use is inefficient.
+	* libpp/Makefile.am: add counter_array.cpp .h
+	* libpp/format_out.h:
+	* libpp/format_out.cpp: handle multiple counter + a general tidy
+	* libpp/format_flags.h: remove ff_immutable_mask and some nasty
+	  requisite on flags value
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp:
+	* libpp/sample_container.h:
+	* libpp/sample_container.cpp:
+	* libpp/symbol.h:
+	* libpp/symbol_container.cpp:
+	* libpp/symbol_sort.cpp:
+	* pp/opreport.cpp: handle multiple counter
+	* pp/opannotate.cpp: partial handling of multiple counter
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp: minor bits
+
+2003-08-08  Will Cohen  <wcohen@redhat.com>
+
+	* dae/Makefile.am:
+	* daemon/Makefile.am: Correct library linking order.
+	* daemon/opd_util.c: Add needed include files.
+
+2003-08-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: move_and_remove() do nothing if source doesn't exist
+
+2003-08-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	revert the previous patch
+	* dae/Makefile.am:
+	* dae/opd_sample_files.h:
+	* dae/opd_sample_files.c:
+	* daemon/Makefile.am:
+	* daemon/opd_sample_files.c: un-share opd_sample_files
+	code
+
+2003-08-08  John Levon  <levon@movementarian.org>
+
+	* dae/Makefile.am:
+	* dae/opd_sample_files.h:
+	* dae/opd_sample_files.c:
+	* daemon/Makefile.am:
+	* daemon/opd_sample_files.c: share opd_sample_files
+	code
+
+2003-08-08  John Levon  <levon@movementarian.org>
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c:
+	* daemon/opd_util.h:
+	* daemon/opd_util.c: share opd_write_abi()
+
+2003-08-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_alloc_counter.c:
+	* libop/op_events.h: minor doxygen fix
+
+2003-08-08  John Levon  <levon@movementarian.org>
+
+	* dae/Makefile.am:
+	* dae/oprofiled.c:
+	* daemon/Makefile.am:
+	* daemon/oprofiled.c:
+	* daemon/opd_util.h:
+	* daemon/opd_util.c: share some small bits of code
+	between the daemons
+
+2003-08-08  John Levon  <levon@movementarian.org>
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c: remove mypid, unused
+
+2003-08-08  John Levon  <levon@movementarian.org>
+
+	* dae/Makefile.am:
+	* dae/opd_printf.h: remove duplicate header
+	and use daemon/opd_printf.h
+
+2003-08-08  John Levon  <levon@movementarian.org>
+
+	* dae/opd_image.c:
+	* dae/opd_sample_files.h:
+	* dae/opd_sample_files.c:
+	* daemon/opd_image.c:
+	* daemon/opd_sample_files.h:
+	* daemon/opd_sample_files.c: remove "create" bool
+	from opd_mangle_filename(): only one callsite needs
+	that functionality, open code the create instead
+
+	* dae/opd_proc.c:
+	* dae/opd_sample_files.h:
+	* dae/opd_sample_files.c:
+	* daemon/opd_sample_files.h:
+	* daemon/opd_sample_files.c: return error from
+	opd_open_sample_filename(). Do not fail when odb_open
+	fails due to --reset races.
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c: a little more verbosity.
+
+	* libutil/op_file.h:
+	* libutil/op_file.c: fix create_dir/path() comments,
+	don't use access()
+
+	* utils/opcontrol: reduce chance of --reset races
+
+2003-08-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/symbol_sort.h:
+	* libpp/symbol_sort.cpp: add app_name sort order, force sort order
+	  for criteria unspecified by user.
+	* pp/opreport_options.cpp: update --sort option help string.
+
+2003-08-04  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml:
+	* doc/opannotate.1.in:
+	* pp/opannotate.cpp:
+	* pp/opannotate_options.h:
+	* pp/opannotate_options.cpp: add --base-dirs
+
+2003-08-04  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml:
+	* doc/opannotate.1.in:
+	* pp/opannotate.cpp:
+	* pp/opannotate_options.h:
+	* pp/opannotate_options.cpp: add --search-dirs
+
+2003-08-04  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml:
+	* doc/opannotate.1.in:
+	* pp/opannotate.cpp:
+	* pp/opannotate_options.h:
+	* pp/opannotate_options.cpp: remove --source-dir and --base-dir,
+	  they're confusing and not useful in the current form
+
+2003-08-03  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: avoid using ps, it's very slow with kallsyms
+
+2003-08-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: c++ static function doesn't get a mangled name
+	  in debug info (see gcc #11774). Try to recover through a not
+	  completely reliable mechanism but better than ignoring the problem
+
+2003-08-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport.cpp: minor: more consistency about function ordering
+
+2003-08-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile.h:
+	* libpp/profile.cpp: profile::sample_count() new to allow raw access
+	  to samples count
+	* pp/opreport.cpp: use above function to implement opreport (w/o -l
+	  or --details options). opreport is roughly twice faster.
+
+2003-08-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport.cpp: clarify multiple counter support
+
+2003-08-01  John Levon  <levon@movementarian.org>
+
+	* libregex/stl.pat.in: fix _List_iterator regex
+	(from Phil)
+
+2003-07-31  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opannotate.cpp: output cpu type and cpu speed.
+
+2003-07-30  John Levon  <levon@movementarian.org>
+
+	* libpp/partition_files.cpp: remove some apparently
+	dead code
+
+2003-07-30  John Levon  <levon@movementarian.org>
+
+	* events/i386.p4.unit_masks: make flame_uops value
+	mandatory, Yuan.Lu@rrze.uni-erlangen.de does not
+	see any events without setting the unit mask
+
+2003-07-30  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: bfd_openr() keeps a copy of
+	the passed in char * around, sickenly enough. Ensure lifetimes
+	will always be correct by adding a filename data member to
+	op_bfd
+
+2003-07-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/op_header.h:
+	* libpp/op_header.cpp: separate output of cpu_type, cpu_speed
+	  and counter setup
+
+	* libpp/partition_files.h:
+	* libpp/partition_files.cpp: unmergeable_profile() split profile
+	  by the unmergeable.
+
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp:
+	* pp/opreport.cpp: initial multiple counter output, multiple counter
+	  with -l is not yet available.
+
+2003-07-29  John Levon  <levon@movementarian.org>
+
+	* doc/opcontrol.1.in: update for --event
+
+2003-07-29  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* doc/srcdoc/Doxyfile.in:
+	* oprof_report/: remove badly out of date oprof_report
+
+2003-07-28  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.7cvs
+
+2003-07-26  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.6
+
+2003-07-26  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: fix call of op_help
+
+2003-07-26  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.cpp: replace folder icons with clearer
+	red/green circles
+
+2003-07-26  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.cpp: actually select and show the default
+	event
+
+2003-07-26  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.cpp: small string tweak, show "conflicts"
+	message consistently
+
+2003-07-26  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.cpp: don't use invalidated iterator
+
+2003-07-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp: fix for 2.91.66
+
+	* libpp/profile.cpp: typo invoking an undefined behavior revealed
+	  by gcc stl debug mode
+	* libpp/profile.h: ensure we provide the right typedef to std::
+	  for profile::const_iterator revealed by gcc stl debug mode at compile
+	  time. The implementation is a bit tricky to work with old compiler
+	* libpp/symbol_sort.cpp: compare must define a weak ordered relation
+	  order, revealed by gcc stl debug mode.
+
+2003-07-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/ui/oprof_start.base.ui:
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp: change UI to use the new counter allocation
+	  API
+
+	* libop/op_alloc_counter.h:
+	* libop/op_alloc_counter.c:
+	* utils/op_help.c: minor const-ness api change
+
+2003-07-25  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: Restrict the search path.
+
+2003-07-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_alloc_counter.c: use tabulation
+
+	* libop/op_events.c:
+	* libop/op_events.h: find_event_by_name() new
+	* utils/op_help.c: use find_event_by_name()
+
+2003-07-24  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/op_help.c: make valgrind happy + minor cleanup
+
+2003-07-24  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_alloc_counter.h:
+	* libop/op_alloc_counter.c: new file providing mapping from an event 
+	  list to hardware counter number
+	* utils/op_help.c: use the above api
+
+2003-07-24  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/op_help.c: fix hardware counter allocation order
+
+2003-07-23  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: comment out --base-dir mention
+
+2003-07-23  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: remove mention of oprof_start_event
+
+2003-07-23  John Levon  <levon@movementarian.org>
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c: don't uselessly try to unlink
+	non-existent lockfile
+
+	* daemon/opd_image.c:
+	* daemon/oprofiled.c: clean up buffer read messages
+
+2003-07-23  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: error out at --setup time if vmlinux is not
+	valid. Cleanup the error message if so
+
+	* daemon/opd_kernel.c: fix potential null deref
+
+2003-07-21  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.cpp: select "No event" when switching counter
+	if needed
+
+2003-07-21  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.cpp: fix default event choosing when
+	daemonrc exists
+
+2003-07-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp: thinko in has_unique_event(), don't warn for
+	  no counter with CPU_TIMER_INT
+
+2003-07-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp: allow to de-select a counter
+
+2003-07-21  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_util.h:
+	* gui/oprof_start_util.cpp: remove uptime pretty printing.
+	It's broken for 2.5 and ugly code
+
+2003-07-21  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp: use a default event if no
+	events are set yet
+
+2003-07-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* m4/compileroption.m4: fix for autoconf 2.13
+
+2003-07-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp:
+	* libpp/format_output.cpp:
+	* libpp/format_output.h:
+	* pp/opannotate.cpp:
+	* pp/opreport_options.cpp: minor tidy
+
+2003-07-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp: RTC mode was not working
+
+2003-07-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start_config.h:
+	* gui/oprof_start_config.cpp: remove dead code, fix kernel_only read
+
+2003-07-16  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: fix typo that was partly breaking
+	CPU_TIMER_INT
+
+2003-07-16  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp: fixes for CPU_TIMER_INT
+
+2003-07-16  John Levon  <levon@movementarian.org>
+
+	* gui/ui/oprof_start.base.ui: remove add/remove event buttons,
+	fix resize weirdness
+
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp: remove add/remove event buttons, allow
+	short-form event descriptions
+
+2003-07-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/persistent_config.h: remove
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp: debug, remove dead code, works better now, see
+	  TODO
+
+2003-07-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_util.cpp: re-enable partially the gui, sorta of
+	  working if cautioulsy used
+
+2003-07-15  John Levon  <levon@movementarian.org>
+
+	* gui/ui/oprof_start_base.ui:
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp: some steps towards fixing gui for
+	the new events stuff
+
+2003-07-15  John Levon  <levon@movementarian.org>
+
+	* libop/op_events.h:
+	* libop/op_events.c: add op_default_event
+
+	* utils/op_help.c: move default event stuff to libop,
+	fix -c option
+
+2003-07-15  John Levon  <levon@movementarian.org>
+
+	* utils/op_help.c: fix default RTC event to be
+	"RTC_INTERRUPTS"
+
+2003-07-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol
+	* events/rtc..events: use RTC_INTERRUPTS as event name
+
+2003-07-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_sample_files.c: C89 compile fix
+
+2003-07-15  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol:
+	* utils/op_help.c: move the default event strings into
+	op_help.c instead of in opcontrol
+
+2003-07-15  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: document event name for timer interrupt
+
+	* daemon/opd_sample_files.c: handle CPU_TIMER_INT
+
+	* utils/op_help.c: fix a core dump
+
+2003-07-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_image.c: verbprintf() when starting reading buffer not
+	  printf
+
+2003-07-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* from BRANCH_CALLGRAPH:
+	* daemon/opd_image.c: printf -> verbprintf, fix comment
+	* daemon/opd_kernel.c: kernel/module samples statistics was wrong
+
+	* daemon/opd_image.c:
+	* daemon/opd_image.h:
+	* daemon/opd_kernel.c:
+	* daemon/opd_kernel.h: import cleanup from branch, mainly don't handle
+	  samples in opd_kernel.c but return (creating if necessary) an
+	  opd_image struct where the sample must go and let opd_image caller
+	  in opd_image.c do sample insertion
+
+2003-07-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: shows basename $0 with --version
+	* libpp/op_header.cpp: formating
+	
+2003-07-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: don't try to save current if the directory doesn't
+	  exist
+
+2003-07-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/stream_util.h:
+	* libutil++/stream_util.cpp: new file, io_state() save object
+	* libutil++/Makefile.am: handle new file
+	* libutil++/op_bfd.cpp:
+	* pp/opreport.cpp:
+	* libpp/op_header.cpp: use io_state
+
+2003-07-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/x86/op_model_p4.c: reflect intel documentation fix.
+
+2003-07-08  Will Cohen  <wcohen@redhat.com>
+
+	* daemon/opd_kernel.c: Handle /proc/modules format.
+	
+2003-07-08  Will Cohen  <wcohen@redhat.com>
+
+	* doc/oprofile.xml:
+	* configure.in: --enable-gcov option and documentation.
+
+2003-07-08  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: Correct P4 default event.
+
+2003-06-03  John Levon  <levon@movementarian.org>
+
+	* from BRANCH_CALLGRAPH
+	* libdb/odb_hash.h:
+	* libdb/db_manage.c:
+	* libdb/db_insert.c: namespace safety
+
+	* libpp/partition_files.cpp:
+	* libpp/profile.cpp: spacing, add a FIXME
+
+2003-07-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opannotate.cpp:
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp: cleanup walking through multimap with a
+	  pair<iterator, iterator>
+
+2003-07-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_image.c:
+	* libdb/db_insert.c: 64 bits arch compile fix, thanks to Falk Hueffner
+	 <falk@debian.org>
+
+2003-07-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport.cpp: honor options::show_header
+
+2003-06-30  Graydon Hoare  <graydon@redhat.com>
+
+	* libpp/op_header.cpp: Handle printing multiple bitmask values.
+
+2003-06-19  John Levon  <levon@movementarian.org>
+
+	* doc/Makefile.am: fix make distcheck
+
+2003-06-18  John Levon  <levon@movementarian.org>
+
+	* pp/opannotate_options.c: hide the unhandled
+	--base-dir option
+
+2003-06-18  John Levon  <levon@movementarian.org>
+
+	* pp/Makefile.am: don't build opdiff
+
+2003-06-17  Will Cohen  <wcohen@redhat.com>
+
+	* daemon/opd_cookie.h: Add s390 syscall value.
+	
+2003-06-17  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: don't accept "-r" - it's too easy to typo
+
+2003-06-17  John Levon  <levon@movementarian.org>
+
+	* doc/srcdoc/Doxyfile: removed
+
+	* doc/srcdoc/Doxyfile.in:
+	* configure.in: generate doxygen version nr. automatically
+
+2003-06-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db_insert.cpp: missing initialization of error message on
+	  error path
+
+2003-06-17  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: accept some short forms for common
+	operations
+
+2003-06-17  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: accept --foo blah as well as
+	--foo=blah
+
+2003-06-16  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: "opcontrol" will show usage
+	instead of doing nothing
+
+2003-06-16  Will Cohen  <wcohen@nc.rr.com>
+
+	* libabi/abi.cpp:
+	* libabi/op_import.cpp: Add required include for cassert.
+
+2003-06-16  John Levon  <levon@movementarian.org>
+
+	* events/x86-64.hammer.unit_masks: remove some
+	bogus FIXMEs
+
+2003-06-15  John Levon  <levon@movementarian.org>
+
+	* README: fix autogen.sh line
+
+2003-06-15  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c: 64 bit fixes
+
+2003-06-15  John Levon  <levon@movementarian.org>
+
+	* utils/op_help.c: c89 fix
+
+2003-06-15  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c: c89 fix
+
+2003-06-15  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: document --event
+
+	* utils/opcontrol:
+	* utils/op_help.c: allow unit mask, kernel, user to be
+	optional. Verify not too many events are passed.
+
+2003-06-15  John Levon  <levon@movementarian.org>
+
+	* libop/op_cpu_type.c: fix nr_counters cpu type check
+
+	* utils/op_help: implement --check_events, event validation
+	and counter allocation
+
+	* utils/opcontrol: use the above, implement --event=default
+
+2003-06-14  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c: fix a stupid error in my previous TGID patch
+
+2003-06-12  Graydon Hoare  <graydon@redhat.com>
+
+	* libop/op_events.c (op_check_events): Check bitmasks as well as 
+	exclusive values, for unit masks.
+
+2003-06-12  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c: we were not handling a truncated
+	TGID entry properly
+
+2003-06-12  John Levon  <levon@movementarian.org>
+
+	* libutil++/unique_storage.h: missing typename
+
+2003-06-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opannotate_options.cpp: typo in option name
+
+2003-06-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: boring_symbol() new to get a better choice
+	when eliminating symbol at identical vma
+
+2003-06-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: fix rtc option checking, bug added after 0.5.3,
+	no big deal
+
+2003-06-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libregex/op_regex.cpp:
+	* libpp/profile.cpp: compile fix, tree was broken by my previous patch
+
+2003-06-11  Jason Yeh  <jason.yeh@amd.com>
+
+	* events/i386.athlon.events: add CPU_CLK_UNHALTED
+
+	* utils/opcontrol: use the above by default
+
+	* events/x86-64.hammer.events:
+	* events/x86-64.hammer.unit_masks: various fixes
+
+2003-06-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/op_header.cpp:
+	* libpp/profile.cpp:
+	* libpp/profile_spec.cpp:
+	* libpp/symbol_sort.cpp:
+	* libregex/op_regex.cpp:
+	* libutil++/op_bfd.cpp: use exception rather exit(EXIT_FAILURE) in
+	library code
+
+2003-06-11  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c: future-proof the code handlers
+
+2003-06-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opannotate.cpp: output_asm() avoid output when the set of selected
+	symbols doesn't contain any samples
+
+2003-06-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/unique_storage.h: we don't need to check if key is present
+	  before trying to insert it
+
+2003-06-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/name_storage.h: minor tidy
+	* libutil++/unique_storage.h: small efficiency improvement
+
+2003-06-09  John Levon  <levon@movementarian.org>
+
+	* pp/Makefile.am:
+	* libutil/Makefile.am: fix make distcheck
+
+2003-06-09  John Levon  <levon@movementarian.org>
+
+	* libpp/opp_symbol.h: rename to ...
+
+	* libpp/symbol.h: ... this
+
+	* libpp/Makefile.am:
+	* libpp/format_output.h:
+	* libpp/format_output.cpp:
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp:
+	* libpp/sample_container.h:
+	* libpp/sample_container.cpp:
+	* libpp/symbol_functors.h:
+	* libpp/symbol_sort.cpp: fix up from above and some header
+	cleanups
+
+2003-06-09  John Levon  <levon@movementarian.org>
+
+	* libpp/profile.h: std::pair not pair
+
+2003-06-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile.cpp: don't underflow start offset when the vma range
+	  is unknown
+	* pp/opreport.cpp: use samples_range() not samples_range(0, ~0)
+
+2003-06-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile.h:
+	* libpp/profile.cpp: replace accumulate_samples() API by an iterator
+	  interface
+	* libpp/profile_container.h:
+	* libpp/profilecontainer.cpp:
+	* pp/opreport.cpp: use new API
+
+2003-06-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* include/sstream: replace old version by the once shipped with
+	  2.95.3, seekg() in the old was not working
+
+2003-06-08  John Levon  <levon@movementarian.org>
+
+	* libpp/name_storage.h: don't need to define the tag structs
+
+	* libutil++/unique_storage.h: fix the comments,
+	make get() public
+
+2003-06-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_container.cpp:
+	* libutil++/string_manip.cpp: gcc 2.91.66 fix
+
+2003-06-08  John Levon  <levon@movementarian.org>
+
+	* libpp/name_storage.h:
+	* libpp/name_storage.cpp:
+	* libpp/opp_symbol.h:
+	* libpp/profile_container.cpp:
+	* libpp/symbol_functors.cpp:
+	* libutil++/unique_storage.h: don't derive from I()
+	at all for id_value, it's not needed. Hide .id and
+	provide operator<(), operator==(), operator!=(), and
+	set()
+
+2003-06-08  John Levon  <levon@movementarian.org>
+
+	* libutil++/unique_storage.h: make some of
+	id_value only visible to unique_storage.
+
+2003-06-08  John Levon  <levon@movementarian.org>
+
+	* libpp/name_storage.h:
+	* libutil++/unique_storage.h: move the ID class
+	into unique_storage, and make it derive from the
+	template parameter, to give simpler type safe support
+
+2003-06-08  John Levon  <levon@movementarian.org>
+
+	* libutil++/Makefile.am:
+	* libutil++/unique_storage.h: add new template for
+	unique storage of values
+
+	* libpp/name_storage.h:
+	* libpp/name_storage.cpp: use it
+
+2003-06-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_container.cpp: fix order of file output with opannotate
+	--source to be consistent with other tools
+
+2003-06-07  John Levon  <levon@movementarian.org>
+
+	* libpp/profile_container.cpp: fix operator<
+
+2003-06-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile.h:
+	* libpp/profile.cpp: change API to walk through vma with non zero
+	samples count rather looking for all vma. This is not very clean, an
+	iterator interface will be perhaps a better idea. Measures shows it's
+	to do it so for now I apply it.
+	* libpp/profile_container.cpp: update according to above change.
+
+2003-06-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp:
+	* libpp/symbol_container.h:
+	* libpp/symbol_container.cpp: remove dead api
+	  find_symbol(string symbol_name)
+
+2003-06-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/name_storage.h:
+	* libpp/name_storage.cpp:
+	* libpp/profile_container.cpp:
+	* libpp/profile_container.h:
+	* libpp/sample_container.h:
+	* libpp/sample_container.cpp:
+	* libpp/symbol_container.h:
+	* libpp/symbol_container.cpp:
+	* pp/opannotate.cpp: replace some use of string filename by
+	  debug_name_id
+
+2003-06-05  John Levon  <levon@movementarian.org>
+
+	* daemon/Makefile.am:
+	* daemon/opd_kernel.c:
+	* daemon/p_module.h: remove p_module.h, unused
+
+	* daemon/opd_cookie.h: use __NR_lookup_dcookie and
+	use our definitions only if it's not defined
+
+	* daemon/opd_image.c:
+	* daemon/opd_kernel.c:
+	* daemon/opd_sample_files.c:
+	* daemon/oprofiled.c: pedantry
+
+	* libabi/op_import.cpp:
+	* libabi/abi_test.cpp: fix build from odb change
+
+	* libop/op_config.h: move NR_CPUS to ...
+
+	* libop/op_config_24.h: ... here
+
+	* libop/op_hw_config.h: remove unused OP_COUNT_MAX
+
+2003-06-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/op_header.cpp:
+	* libpp/profile.cpp:
+	* dae/opd_proc.c:
+	* dae/opd_sample_files.c:
+	* daemon/opd_image.c:
+	* daemon/opd_sample_files.c:
+	* libdb/odb_hash.h:
+	* libdb/db_insert.c:
+	* libdb/db_manage.c:
+	* libdb/db_test.c: error message is now a field of a samples_odb_t
+
+2003-06-03  John Levon  <levon@movementarian.org>
+
+	* libutil++/child_reader.cpp:
+	* libabi/abi.cpp:
+	* libabi/abi.h:
+	* libabi/abi_test.cpp:
+	* libabi/op_api.h:
+	* libabi/op_abi.cpp:
+	* libabi/op_import.cpp: pedantry, remove unused code
+
+2003-06-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/oprofiled.c:
+	* libop/oprofiled.c:
+	* libop/op_cpu_type.c:
+	* module/oprofile.c:
+	* module/oprofile.h:
+	* pp/opdiff.cpp: more static data and function
+
+2003-05-31  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start_util.h:
+	* libdb/db_stat.c:
+	* libdb/odb_hash.h:
+	* libpp/format_output.h:
+	* libpp/locate_image.h:
+	* libpp/name_storage.h:
+	* libpp/partition_files.h:
+	* libpp/profile.h:
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: improve doxygen comment
+
+2003-05-31  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: use AC_DEFINE_UNQUOTED() to define version string
+	  in config.h not in version-1.h
+	* Makefile.am: distclean-local: is no longer used
+	* version-1.h.in: delete
+	* libutil/op_version.h:
+	* libutil/op_version.c: new file: package version output
+	* libutil/Makefile.am:
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c:
+	* gui/oprof_start.h:
+	* libop/op_events.c:
+	* libopt++/popt_options.cpp:
+	* libregex/demangle_sybol.cpp:
+	* module/oprofile.c:
+	* utils/op_help.c: tweak # include according
+
+2003-05-30  Dan Zink  <Dan.Zink@hp.com>
+
+	* module/x86/op_apic.c: really disable the apic if it was disabled
+
+2003-05-29  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: don't allow --rtc-value if not RTC mode
+
+2003-05-27  John Levon  <levon@movementarian.org>
+
+	* libutil++/string_manip.h: add <stdexcept>
+
+	* pp/opannotate.cpp: use '\n' not endl
+
+	* pp/opreport.cpp: untie cout
+
+2003-05-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* merge with pp-interface-branch: following ChangeLog was unmerged
+	  to branch
+
+	2003-05-27  John Levon  <levon@movementarian.org>
+
+	* configure.in: oprofile 0.5.3 is released, back to
+	0.6cvs
+
+	2003-05-26  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: update docs for --no-vmlinux
+
+	2003-05-26  John Levon  <levon@movementarian.org>
+
+	* libop/op_interface_25.h:
+	* daemon/opd_image.c: handle tgid for future
+	compatibility, fix compile on older gccs
+
+	2003-05-26  John Levon  <levon@movementarian.org>
+
+	* libop/op_interface_25.h: add LAST_CODE
+
+	* daemon/opd_stats.h:
+	* daemon/opd_stats.c: count short reads of
+	buffer and unplaceable samples
+
+	* daemon/opd_image.c: rewrite buffer parsing
+	code, handle window where we can't place a
+	sample
+
+	2003-05-26  John Levon  <levon@movementarian.org>
+
+	* libutil++/utility.h: fix typo
+
+	* utils/opcontrol: fix typo
+
+	2003-05-16  John Levon  <levon@movementarian.org>
+
+	* pp/counter_profile.cpp: remove bogus cpu speed
+	consistency check
+
+	2003-05-09  John Levon  <levon@movementarian.org>
+
+	* m4/Makefile.am:
+	* m4/compileroption.m4: add a generalised compiler option
+	tester
+
+	* configure.in: use it, add -fno-common
+
+	2003-05-09  John Levon  <levon@movementarian.org>
+
+	* daemon/oprofiled.c:
+	* dae/oprofiled.c: remove duplicate declaration found
+	via -fno-common
+
+	2003-05-04  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: fix validation errors from xmllint --valid
+	
+
+2003-05-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_spec.cpp: make image:/path/to:image working
+
+2003-05-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/string_manip.h:
+	* libutil++/string_manip.cpp: specialize
+	  lexical_cast_no_ws<unsigned int> to accept hexadecimal input
+
+	* pp/common_option.cpp: missing << endl
+
+2003-05-27  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/oprofile.xml: update example in "Interpreting profiling results"
+	section
+
+2003-05-26  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: add new pp tools options
+
+2003-05-26  John Levon  <levon@movementarian.org>
+
+	* doc/opreport.1.in:
+	* doc/opgprof.1.in:
+	* doc/opannotate.1.in:
+	* doc/op_help.1.in: complete
+
+2003-05-26  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* doc/Makefile.am:
+	* doc/oprofile.1.in:
+	* doc/op_help.1.in:
+	* doc/opcontrol.1.in:
+	* doc/opreport.1.in:
+	* doc/opannotate.1.in:
+	* doc/opgprof.1.in: re-organise and add manpages
+
+2003-05-26  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: start to document the pp interface
+
+2003-05-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport.cpp: remove automatic switch to --symbols mode
+
+2003-05-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/symbol_sort.h:
+	* pp/opannotate_options.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport_options.cpp: handle meaningless options combinations
+
+2003-05-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opgprof_options.cpp: no need to use unmergeable_profile here
+
+2003-05-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/i386.piii.unit_masks: tweak comment, change default unit mask
+	  for kni instruction to 0 and type to exclusive
+
+2003-05-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_container.cpp: thinko
+	* pp/opreport.cpp: typo
+
+2003-05-25  John Levon  <levon@movementarian.org>
+
+	* libopt++/popt_options.h:
+	* libopt++/popt_options.cpp: obvious cleanup,
+	remove some dead code
+
+2003-05-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_flags: cf_image_name new column_flags flag
+	* libpp/profile_container.cpp: use above flag. Don't compare app_name
+	  by string but id
+	* pp/opreport.cpp: hide image_name when un-necessary
+
+2003-05-24  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/srcdoc/Doxyfile:
+	* libpp/profile.h:
+	* libpp/profile_container.h:
+	* libutil++/utility.h: remove gcc 2.91 noncopyable as empty base class
+	 work-around
+
+2003-05-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: do early check of libiberty
+
+	* libpp/symbol_sort.cpp: 2.91 compile fix
+
+2003-05-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/child_reader.h: minor #include fix
+
+2003-05-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/name_storage.cpp: debug_name_storage::name() 
+	  return an empty string when for zero id to avoid exception
+
+2003-05-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile.cpp:
+	* libpp/op_header.h:
+	* libpp/op_header.cpp: when sample file differ output the sample
+	  filename
+
+	* pp/opannotate.cpp: remove spurious output
+
+	* */Makefile.am:
+	* configure.in: handle our own OP_CFLAGS, OP_CXXFLAGS to let user
+	  free to use make CFLAGS=
+
+2003-05-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_spec.h:
+	* libpp/profile_spec.cpp: remove lib_image_exclude, use image_exclude
+	  instead. match() Handle image exclusion.
+
+	* libregex/stl.pat.in: FIXME
+
+	* libutil++/string_manip.h: compile fix
+
+2003-05-19  John Levon  <levon@movementarian.org>
+
+	* libutil++/comma_list.h:
+	* libpp/filename_spec.cpp:
+	* libutil++/string_manip.h:
+	* libutil++/generic_spec.h: rename strict_convert<>
+	to lexical_cast_no_ws<>
+
+2003-05-19  John Levon  <levon@movementarian.org>
+
+	* libutil++/generic_spec.h: move strict_convert<> to...
+
+	* libutil++/string_manip.h: ...here
+
+2003-05-19  John Levon  <levon@movementarian.org>
+
+	* libutil++/generic_spec.h: comma_list isn't a friend
+	any more
+
+	* libutil++/comma_list.h: use generic_spec<>::match()
+	directly
+
+2003-05-19  John Levon  <levon@movementarian.org>
+
+	* libpp/name_storage.h: s/name_map/stored_names/, it's not
+	a map any more.
+
+2003-05-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libregex/mangled-name.txt:
+	* libregex/stl.pat.in: partial handling of _Identity<> and
+	  _Select1st<>, pattern fail if type are too complex
+
+2003-05-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.cpp: small cleanup
+
+	* libpp/name_storage.h:
+	* libpp/name_storage.cpp: ensure type safety by providing distinct
+	  type identifier for each name_storage based container
+
+	* libpp/profile_container.cpp:
+	* libpp/sample_container.cpp:
+	* libpp/symbol_functors.cpp:
+	* libpp/symbol_sort.cpp:
+	* libpp/opp_symbol.h: use the name identifier api
+
+	* libpp/op_header.cpp: 
+	* libpp/partition_files.cpp: use a set<string> not a name_storage
+
+	* libpp/format_output.cpp: small cleanup
+
+
+2003-05-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/partition_files.cpp: merge partition entry when necessary
+	  fixing a corner case when a binary can be a dependent or a primary
+	  image and was not merged
+
+2003-05-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport_options.cpp:
+	* pp/opannotate_options.cpp: remove conflicting options shortcut
+
+2003-05-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libregex/stl.pat.in: add list<T>::{const_}+iterator
+
+2003-05-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/name_storage.cpp: basename() return an empty string for nil id
+
+2003-05-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: get_linenr() init linenr to zero
+
+	* libpp/name_storage.cpp: don't use id zero
+	* libpp/opp_symbol.h: now we use id and not string we must provide
+	  default ctor to initialize the id
+	* libpp/profile_container.cpp: init debug info entry only if
+	  get_linenr() succeed
+
+2003-05-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db_manage.c: better handling of zero sample file size when
+	  opening in read only mode
+
+	* module/x86/op_nmi.c: printk format fix
+
+2003-05-17  John Levon  <levon@movementarian.org>
+
+	* pp/opannotate_option.cpp:
+	* pp/opreport_options.cpp: command line changes
+
+2003-05-17  John Levon  <levon@movementarian.org>
+
+	* libpp/name_storage.h:
+	* libpp/name_storage.cpp: add present()
+
+	* libpp/op_header.cpp:
+	* libpp/partition_files.cpp: use a name store
+	to track what we've warned about, and clean up
+	the warnings a bit
+
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: expose anonymous symbols
+	to the world as "??sectionname". Useful for .plt
+	and .fini, which are quite common.
+
+	* libpp/name_storage.cpp: demangle anonymous symbols
+	nicely.
+
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* libpp/symbol_sort.cpp: fix image-sorting
+
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* libpp/name_storage.h:
+	* libpp/name_storage.cpp: make ID be per-container
+
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* libpp/name_storage.h:
+	* libpp/name_storage.cpp: merge processed names
+	into one string, remove the boolean
+
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* libpp/name_storage.h:
+	* libpp/name_storage.cpp: whoops, use string
+	not stored_name for the ID map
+
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* libpp/name_storage.h:
+	* libpp/name_storage.cpp: split into three
+	stores for debug filenames, symbols, and images
+
+	* libpp/format_output.cpp:
+	* libpp/profile_container.cpp:
+	* libpp/sample_container.cpp:
+	* libpp/symbol_container.cpp:
+	* libpp/symbol_sort.cpp:
+	* pp/opannotate.cpp: changes from above
+
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* libpp/Makefile.am:
+	* libpp/name_storage.h:
+	* libpp/name_storage.cpp: add shared storage
+	and caching of symbol and file names
+
+	* libpp/opp_symbol.h:
+	* libpp/format_output.cpp:
+	* libpp/profile_container.cpp:
+	* libpp/sample_container.cpp:
+	* libpp/symbol_container.cpp:
+	* libpp/symbol_container.h:
+	* libpp/symbol_sort.cpp:
+	* libpp/symbol_sort.h:
+	* pp/opannotate.cpp:
+	* pp/opreport.cpp: use it
+
+	* pp/opgprof_options.cpp: add unused demangle
+	options to hack-fix the build
+
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* libpp/symbol_sort.cpp: fix --sort debug
+
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: remove have_debug_info()
+
+2003-05-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/op_header.cpp: remove cpu_speed checking
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: bail out in get_linenr() if binary doesn't
+	  contain any debug info. Speed up my test case opreport --debug-info
+	  -l by 25
+
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.cpp: clean up interesting_symbol
+	a bit
+
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.cpp: make sure linenr is
+	always set to something
+
+	* libpp/opp_symbol.h: linenr should be unsigned
+
+	* libpp/profile_container.cpp: remove some unneeded
+	copies
+	
+2003-05-16  John Levon  <levon@movementarian.org>
+
+	* pp/opannotate.cpp: small renaming
+
+2003-05-15  John Levon  <levon@movementarian.org>
+
+	* libpp/symbol_container.h:
+	* libpp/symbol_container.cpp: add begin(), end(),
+	remove symbols_by_count()
+
+	* libpp/profile_container.cpp: use symbol container
+	iterator directly in select_symbols()
+
+2003-05-15  John Levon  <levon@movementarian.org>
+
+	* libpp/format_output.h:
+	* libpp/format_output.cpp:
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp:
+	* libpp/symbol_container.h:
+	* libpp/symbol_container.cpp:
+	* libpp/symbol_sort.h:
+	* libpp/symbol_sort.cpp:
+	* pp/opannotate.cpp:
+	* pp/opreport.cpp:
+	* pp/opgprof.cpp: move symbol_collection typedef
+	  into global namespace, and use consistently
+
+2003-05-15  John Levon  <levon@movementarian.org>
+
+	* libpp/format_output.h:
+	* libpp/format_output.cpp: add vma_format_64bit(),
+	remove bool parameter from output()
+
+	* pp/opreport.cpp: change from above, refactor flags
+	code into get_format_flags() helper
+
+2003-05-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.h:
+	* libpp/format_output.cpp:
+	* libpp/symbol_sort.h:
+	* libpp/symbol_sort.cpp: handle reverse sort in sorting not in output
+	* pp/opannotate.cpp:
+	* pp/opreport.cpp: update according
+
+2003-05-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/symbol_sort.h:
+	* libpp/symbol_sort.cpp: handle sort order as specified on command line
+
+	* pp/opgprof.cpp: sort symbol is not necessary for gprof
+	* pp/opreport.cpp:
+	* pp/opreport_options.cpp:
+	* pp/opannotate.cpp: use new sort API
+
+2003-05-12  John Levon  <levon@movementarian.org>
+
+	* libpp/symbol_sort.h:
+	* libpp/symbol_sort.cpp: partial implementation
+	of other sort options
+
+2003-05-12  John Levon  <levon@movementarian.org>
+
+	* libpp/Makefile.am:
+	* libpp/symbol_sort.h:
+	* libpp/symbol_sort.cpp: add sorting code
+
+	* symbol_functors.h: move some less() into
+	symbol_sort.cpp
+
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp: don't pass in
+	sort option to select_symbols(), do it in caller
+
+	* pp/opannotate.cpp:
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp:
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp: from the above
+
+2003-05-12  John Levon  <levon@movementarian.org>
+
+	* format_flags.h: remove vma64_p. Add column_flags
+
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp: pass in a struct
+	to select_symbols. Generate hints for 64-bit VMA
+	and multiple apps in the profile.
+
+	* pp/opannotate.cpp:
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp: use the above
+
+2003-05-12  John Levon  <levon@movementarian.org>
+
+	* libpp/format_output.cpp:
+	* libpp/format_flags.h:
+	* pp/opreport.cpp: trivial renaming of flags
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* libpp/format_output.cpp:
+	* libpp/format_flags.h: better output for
+	the default of short filenames
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: improve the app/image name column
+	showing a bit
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: default to -l if we were just
+	going to show one image summary.
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: move some code around that
+	outputs the image summaries
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* libpp/format_output.h:
+	* libpp/format_output.cpp:
+	* pp/opreport.cpp:
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp: s/--short-filename/--long-filenames/
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* libpp/profile_spec.h:
+	* libpp/profile_spec.cpp: take exclude_dependent not
+	include_dependent
+
+	* pp/opannotate_options.c:
+	* pp/opgprof_options.c:
+	* pp/opreport_options.h:
+	* pp/opreport_options.c: change to use exclude_dependent,
+	remove --hide-dependent
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* locate_images.h:
+	* locate_images.cpp: extra_images can now use
+	relative paths for its search dirs. Move most of 
+	the warnings out of find_image_path, and make it
+	also handle relative paths. Return the file
+	even if it wasn't readable.
+
+	* libpp/partition_files.cpp: give warnings when
+	necessary.
+
+	* libpp/profile_spec.h:
+	* libpp/profile_spec.cpp: handle relative paths
+	inside image specs, as stated in pp_interface; also
+	use the extra images search path for resolution.
+
+	* pp/opannotate_options.cpp:
+	* pp/opreport_options.cpp:
+	* pp/opgprof_options.cpp: changes from above
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* libpp/format_flags.h: source doc improvements
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* libpp/opp_symbol.h: move vma64_p to ...
+
+	* libpp/format_flags.h: ... here
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* libpp/Makefile.am:
+	* libpp/outsymbflags.h:
+	* libpp/format_flags.h:
+	* libpp/profile_container.h:
+	* libpp/format_output.h:
+	* libpp/format_output.cpp:
+	* pp/opreport.cpp: rename outsymbflags to format_flags
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* profile_container.h:
+	* profile_container.cpp:
+	* opannotate.cpp: clean up select_filename() in a
+	similar fashion
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp:
+	* pp/opreport.cpp:
+	* pp/opannotate.cpp:
+	* pp/opgprof.cpp: another select_symbols() API cleanup
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* pp/opgprof.cpp: use select_symbols so we can
+	handle --threshold
+
+2003-05-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opannotate.cpp: use threshold for source output
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* pp/common_option.h:
+	* pp/common_option.cpp:
+	* pp/opannotate_options.cpp:
+	* pp/opreport_options.cpp: make --threshold
+	be a common option.
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* pp/profile_container.h:
+	* pp/profile_container.cpp:
+	* pp/opannotate.cpp:
+	* pp/opreport.cpp: clean up select_symbols
+	interface
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: make --threshold work for
+	image summaries too
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* pp/opreport_options.cpp: fix --threshold
+	description to match reality
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* libpp/partition_files.h:
+	* libpp/partition_files.cpp:
+	* pp/opannotate_options.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport.cpp:
+	* pp/opreport_options.cpp: rename merge_by members
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: add some logic to not output
+	duplicate lines for dep images when we've already
+	shown all the possible details in the main image summary
+
+2003-05-11  John Levon  <levon@movementarian.org>
+
+	* pp/common_option.h: use std::
+
+2003-05-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport_options.cpp: move handle_threshold()
+	* pp/common_option.h:
+	* pp/common_option.cpp: here
+	* pp/opannotate_options.h:
+	* pp/opannotate_options.cpp:
+	* pp/opannotate.cpp: handle --threshold
+
+2003-05-10  John Levon  <levon@movementarian.org>
+
+	* libop/op_mangle.h:
+	* libop/op_mangle.c: use a temp struct for
+	passing the mangle parameters with a set of
+	flags.
+
+	* dae/opd_sample_files.c:
+	* daemon/opd_sample_files.c: use it
+
+2003-05-10  John Levon  <levon@movementarian.org>
+
+	* Makefile.am:
+	* HACKING:
+	* libop++/:
+	* pp/Makefile.am:
+	* libpp/Makefile.am:
+	* libpp/op_header.h:
+	* libpp/op_header.cpp: remove libop++ after
+	moving op_header into libpp
+
+2003-05-10  John Levon  <levon@movementarian.org>
+
+	* libop++/op_header.cpp: make CPU info take up
+	one line not two
+
+2003-05-10  John Levon  <levon@movementarian.org>
+
+	* libop++/Makefile.am:
+	* libop++/op_header.cpp:
+	* libop++/op_print_event.h:
+	* libop++/op_print_event.cpp: remove op_print_event
+	files, making it a function local to op_header.cpp
+
+2003-05-10  John Levon  <levon@movementarian.org>
+
+	* libop++/op_header.h:
+	* libop++/op_header.cpp: make output_header() be
+	an operator<<
+	
+	* pp/opannotate.cpp:
+	* pp/opreport.cpp: changes from the above
+
+	* libpp/profile.h: small cleanup
+
+2003-05-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/string_manip.h:
+	* libutil++/string_manip.cpp: replace format_percent() by
+	  format_double()
+
+	* libpp/format_output.cpp:
+	* pp/opannotate.cpp:
+	* pp/opreport.cpp: use format_double()
+
+2003-05-09  John Levon  <levon@movementarian.org>
+
+	* libpp/opp_symbol.h: app name, image name should
+	be in symbol not in file_location
+
+	* libpp/format_output.cpp:
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp:
+	* libpp/symbol_container.cpp:
+	* libpp/symbol_functors.cpp: changes from above
+
+2003-05-09  John Levon  <levon@movementarian.org>
+
+	* libpp/format_output.h:
+	* libpp/format_output.cpp: vma_64 doesn't need
+	to be in field_datum. make one output() private
+
+2003-05-09  John Levon  <levon@movementarian.org>
+
+	* libpp/format_output.h:
+	* libpp/format_output.cpp: pass a symbol ref
+	not name down into the formatters
+
+2003-05-09  John Levon  <levon@movementarian.org>
+
+	* libutil++/string_manip.h:
+	* libutil++/string_manip.cpp: sample_filename() is unused
+
+2003-05-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop++/op_header.h:
+	* libop++/op_header.cpp: read_header() new
+	* libop++/Makefile.in: we depend on libdb
+
+	* pp/opannotate.cpp:
+	* pp/opreport.cpp: better way to get sample file header
+
+2003-05-09  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.cpp: remove redundant map formater
+	* pp/opannotate.cpp: spurious cout
+
+2003-05-08  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp:
+	* pp/opreport_options.cpp:
+	* pp/opreport_options.h: clean up cout stuff as
+	suggested by Phil
+
+2003-05-08  John Levon  <levon@movementarian.org>
+
+	* libpp/profile_spec.h:
+	* libpp/profile_spec.c: rename the set_p variables,
+	remove pointless is_empty() function
+
+	* pp/opreport.cpp: split collation and output into
+	two separate functions. Rename the temporary structures
+	so it's hopefully a bit more obvious what's happening.
+	Add sourcedocs.
+
+2003-05-08  John Levon  <levon@movementarian.org>
+
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp: add options::cout,
+	  --output-file option
+
+	* pp/opreport.cpp: use options::cout
+
+2003-05-08  John Levon  <levon@movementarian.org>
+
+	* pp/format_output.cpp: fix cumulative column widths
+
+2003-05-08  John Levon  <levon@movementarian.org>
+
+	* opreport_options.h: add accumulated
+
+	* opreport.cpp: handle --accumulated
+
+2003-05-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/symbol_container.cpp: minor tidy
+
+	* libpp/profile.h:
+	* libpp/profile.cpp: allow to cumulate sample file
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp: remove free function add_samples()
+
+	* pp/annotate.cpp:
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp: when possible cumulate samples into a profile_t
+	  first before cumulating them in a profile_container
+
+2003-05-07  John Levon  <levon@movementarian.org>
+
+	* pp/opannotate.cpp: small cleanup
+
+2003-05-07  John Levon  <levon@movementarian.org>
+
+	* pp/opreport_options.cpp: remove unneeded include
+
+2003-05-07  John Levon  <levon@movementarian.org>
+
+	* libpp/Makefile.am:
+	* libpp/parse_cmdline.h:
+	* libpp/parse_cmdline.cpp: rename to ...
+
+	* libpp/profile_spec.h:
+	* libpp/profile_spec.cpp: this. Make handle_nonoptions()
+	be a static factory create() method instead. Make
+	select_sample_filenames() be a member generate_file_list()
+	instead. Concomitant cleanups.
+
+	* libpp/filename_spec.h:
+	* pp/opannotate_options.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport_options.cpp: changes from above
+
+2003-05-07  John Levon  <levon@movementarian.org>
+
+	* libpp/profile.cpp: fix stupid error in last commit
+
+2003-05-07  John Levon  <levon@movementarian.org>
+
+	* libpp/profile.h:
+	* libpp/profile.cpp: remove sample_filename member,
+	bogus old spurious check, set_start_offset().
+
+	* libpp/profile_container.cpp:
+	* pp/opannotate.cpp:
+	* pp/opreport.cpp: changes from above
+
+2003-05-07  John Levon  <levon@movementarian.org>
+
+	* libpp/derive_files.h:
+	* libpp/derive_files.cpp: rename files as ...
+
+	* libpp/locate_images.h:
+	* libpp/locate_images.cpp: this.
+
+	* libpp/Makefile.am:
+	* libpp/partition_files.h:
+	* pp/common_option.h:
+	* pp/opgprof.cpp:
+	* pp/opgprof_options.h:
+	* pp/opreport_options.h: changes from above
+
+2003-05-07  John Levon  <levon@movementarian.org>
+
+	* libpp/derive_files.h:
+	* libpp/derive_files.cpp: rework into extra_images
+	class
+
+	* libpp/partition_files.h:
+	* libpp/partition_files.cpp:
+	* pp/common_option.h:
+	* pp/common_option.cpp:
+	* pp/opannotate.cpp:
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp: use the above
+
+2003-05-07  John Levon  <levon@movementarian.org>
+
+	* libpp/Makefile.am:
+	* session.h:
+	* session.cpp: remove session.{h,cpp}
+
+2003-05-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/oprofpp.cpp pp/oprofpp_options.cpp pp/oprofpp_options.h:
+	* pp/op_time.cpp pp/op_time_options.cpp pp/op_time_options.h:
+	* pp/op_to_source.cpp pp/op_to_source_options.cpp:
+	* pp/op_to_source_options.h pp/op_merge.cpp: removed files
+
+	* pp/Makefile.am: update
+
+2003-05-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opgprof.cpp: infamous typo
+
+	* pp/opannotate.cpp: output sample file header
+
+
+2003-05-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpop++/op_mangling.h:
+	* libpop++/op_mangling.cpp: removed file
+	* libop++/op_header.h:
+	* libop++/op_header.cpp: new file, misc function acting on sample
+	  file header stolen from libpp/profile.(cpp|h)
+	* libop++/op_print_event.h: typo
+	* libop++/op_print_event.cpp: save/restore ostream state
+	* libop++/Makefile.am: update
+	
+	* libop/op_sample_file.h: remove dead #define OPD_MANGLE_CHAR
+
+	* libpp/profile.h:
+	* libpp/profile.cpp: move some member function to free function in
+	  libop++/op_header.(cpp|h)
+	* libpp/profile_container.cpp: minor call change
+
+	* libpp/Makefile.am: op_merge can't be compiled currently inhibit build
+
+	* libpp/opreport.cpp: output sample file header
+
+2003-05-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/path_filter.h: default param to empty string not "*"
+
+	* libpp/symbol_functors.h: remove dead code
+
+	* pp/opgprof.cpp: off by one in histsize calculation
+
+2003-05-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/op_file.h:
+	* libutil/op_file.c: sanitize create_path()
+
+	* libutil++/path_filter.h: default ctor match all
+
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp:
+	* libpp/sample_container.h:
+	* libpp/sample_container.cpp:
+	* libpp/symbol_container.h:
+	* libpp/symbol_container.cpp: extend api to allow selecting symbol
+	  restricted to one application, ditto for retrieving samples
+
+	* pp/opannotate_options.h:
+	* pp/opannotate_options.cpp:
+	* pp/opannotate.cpp: implement
+
+	* pp/opgprof_options.h:
+	* pp/opgprof_options.cpp:
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp: comment fix
+
+	* pp/opreport.cpp: update to match new profile_container api
+
+2003-05-03  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport.cpp: don't show dependent file if !--include-dependent
+
+2003-05-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/partition_files.h:
+	* libpp/partition_files.cpp: sort_by_image_name() new return a list
+	  of sample filename sorted by bfd image name.
+	* libpp/profile_container.cpp: add_samples() don't build op_bfd object
+	  used here but pass it as parameters
+
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp: use the above change to avoid opening multiple time
+	  a bfd object.
+
+	* pp/opannotate_options.cpp: add --(include|exclude)-symbols
+
+	* libpp/parse_cmdline.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport.cpp: make a distinction in error message between no
+	  sample available and sample file available but no one was selected
+
+2003-05-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opannotate_options.h:
+	* pp/opannotate_options.cpp:
+	* pp/opdiff.cpp:
+	* pp/opdiff_options.h:
+	* pp/opdiff_options.cpp:
+	* pp/opgprof.cpp:
+	* pp/opgprof_options.h:
+	* pp/opgprof_options.cpp:
+	* pp/opreport.cpp:
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp: move common options handling ...
+	* pp/common_option.h:
+	* pp/common_option.cpp: here
+
+	* pp/opannotate.cpp: add options
+
+	* libpp/parse_cmdline.cpp: #include <iterator> ...
+
+2003-05-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/counter_util.h:
+	* libpp/counter_util.cpp: remove these files from cvs
+
+	* libpp/derive_files.h:
+	* libpp/derive_files.cpp: remove dead code derive_files() + typo
+
+	* libpp/parse_cmdline.cpp: select_sample_filename() throw if empty
+	  session after filtering
+
+	* pp/common_option.cpp: catch invalid_argument, return failure on
+	  catched exception
+
+2003-05-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: remove _init from excluded symbol
+	* libpp/profile_container.cpp: tidy
+
+	* pp/opgprof.cpp: fix capping samples
+
+2003-04-30  John Levon  <levon@movementarian.org>
+
+	* pp/opgprof.cpp:
+	* pp/opgprof_options.cpp:
+	* libpp/profile.cpp: tiny cleanups, fix compile
+
+2003-04-30  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db_stat.c: minor improvement to stat, useful to track missed
+	  sample by our tools.
+
+	* pp/op_report.cpp: move matching_sample_filename() to ...
+	* libpp/parse_cmdline.h:
+	* libpp/parse_cmdline.cpp: here renamed select_sample_filename()
+
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp: expose begin() / end() from
+	 sample_container
+
+	* pp/common_option.h:
+	* pp/common_option.cpp: move option which was not really common to ..
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp: here
+	* pp/opannotate_options.h:
+	* pp/opannotate_options.cpp: and here
+
+	* pp/operport.cpp:
+	* pp/opannotate.cpp: better to return a value from main() ...
+
+	* pp/opgprof_options.h:
+	* pp/opgprof_options.cpp:
+	* pp/opgprof.cpp: implement opgprof
+
+2003-04-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/parse_cmdline.h:
+	* libpp/parse_cmdline.cpp: handle opreport /lib/libc-2.2.5.so, now
+	  non tag, non option argument match either an image name or lib name
+
+2003-04-29  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.cpp: remove "static " inside anon namespace
+
+2003-04-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.h:
+	* libpp/format_output.cpp: need header tweaking
+
+	* pp/opannotate.cpp:
+	* pp/opgprof.cpp: minor tidy
+
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp:
+	* pp/opreport.cpp: handle -no-header and --image-path
+
+2003-04-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/glob_filter.cpp:
+	* libutil++/path_filter.cpp:
+	* libutil++/string_filter.cpp: #include <algorithm>
+
+2003-04-28  John Levon  <levon@movementarian.org>
+
+	* libutil++/string_filter.cpp:
+	* libutil++/string_filter.h:
+	* libutil++/glob_filter.h:
+	* libutil++/glob_filter.cpp:
+	* libutil++/path_filter.h:
+	* libutil++/path_filter.cpp: use std::find[_if],
+	share some code
+
+2003-04-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: replace a loop by a std::copy()
+
+2003-04-28  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: cleanup of last fix
+
+2003-04-28  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: make symbol filtering
+	happen *after* adding of artificial symbol
+
+2003-04-28  John Levon  <levon@movementarian.org>
+
+	* libutil++/string_filter.cpp:
+	* libutil++/glob_filter.cpp:
+	* libutil++/path_filter.cpp: match as true if
+	include_list is empty and not excluded
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: use string_filter to
+	filter symbols
+
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp:
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp:
+	* pp/opreport.cpp: changes from using string_filter
+
+2003-04-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport.cpp: finish to remove use of split_sample_filename
+
+2003-04-28  John Levon  <levon@movementarian.org>
+
+	* libutil++/filename_match.h:
+	* libutil++/filename_match.cpp: replace with ...
+
+	* libutil++/Makefile.am:
+	* libutil++/string_filter.h:
+	* libutil++/string_filter.cpp:
+	* libutil++/glob_filter.h:
+	* libutil++/glob_filter.cpp:
+	* libutil++/path_filter.h:
+	* libutil++/path_filter.cpp: .. split up variants
+	of the filters
+
+	* libpp/parse_cmdline.cpp: use glob_filter
+
+	* pp/op_to_source.cpp: use path_filter
+
+2003-04-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/partition_files.h:
+	* libpp/partition_files.cpp:
+	* libpp/split_sample_filename.h:
+	* libpp/split_sample_filename.cpp:
+	* pp/opreport.cpp: replace some use of std::string sample_filename
+	  by a split_sample_filename struct
+
+2003-04-28  John Levon  <levon@movementarian.org>
+
+	* libutil++/filename_match.h:
+	* libutil++/filename_match.cpp: use file-scope
+	not private static member function
+
+2003-04-27  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.h:
+	* libpp/format_output.cpp: remove all string based output format flag
+
+	* libpp/format_output.cpp: move options::demangle handling ...
+	* libregx/demangle_symbol.cpp: here
+
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp:
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp:
+	* pp/opreport.cpp: handle --include-symbols
+
+2003-04-27  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp:
+	* pp/opreport.cpp: handle --threshold, remove --ignore-symbols
+
+2003-04-27  John Levon  <levon@movementarian.org>
+
+	* libpp/<various>: minor spacing etc.
+
+2003-04-27  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/outsymbflag.h: remove osf_short_xxx variant
+	* libpp/format_output.h:
+	* libpp/format_output.cpp: replace osf_short_xxx by a boolean
+	* libpp/profile_container.cpp: update according
+
+	* pp/opreport_options.h: export short_filename option
+	* pp/opreport.cpp: use short_filename
+
+2003-04-27  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/symbol_functors.h: add less_symbol predicate
+	* libpp/symbol_functors.cpp: new file, less_symbol implementation
+	* libpp/Makefile.am: symbol_functors.cpp
+
+	* libpp/symbol_container.h:
+	* libpp/symbol_container.cpp: use a node based container for symbols
+	  ensuring validity of symbol pointer over a symbol_container life time
+	* libpp/sample_container.h:
+	* libpp/sample_container.cpp: ditto as above for samples
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp: use this new api to merge symbols
+	  and sample.
+
+	* libpp/format_output.h:
+	* libpp/format_output.cpp: use new api to iterate over sample by symbol
+
+	* pp/opreport.cpp: detailed output
+	
+
+2003-04-27  John Levon  <levon@movementarian.org>
+
+	* pp/opreport.cpp: make opreport -l put largest results
+	at the top like opreport does
+
+2003-04-26  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile_container.h: comment
+
+	* pp/opreport_options.h: more options export
+	* pp/opreport.cpp: implement -l. Doesn't works correctly: --merge=lib
+
+2003-04-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opreport_options.h: export global_percent
+	* pp/opreport.cpp: finish to implement op_time like behavior. Remains
+	  to implement op_time -l
+
+2003-04-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/partition_files.cpp: fix a crash when profile spec is empty
+
+	* pp/opreport_options.cpp: bail out if no samples files are found
+
+2003-04-25  John Levon  <levon@movementarian.org>
+
+	* pp/opreport_options.cpp: --hide-dependent should have 'h' as
+	short form. Add a FIXME for a crash
+
+2003-04-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/partition_files.cpp: thinko in sample filename partition
+
+	* pp/opreport_options.h: export more options
+	* pp/opreport_options.cpp: add --hide-dependent, change --merge to not
+	  default to all
+	* pp/opreport.cpp: handle --hide-dependent --include-dependent and
+	  --merge=lib. Code is ugly, tidy incoming
+
+2003-04-25  John Levon  <levon@movementarian.org>
+
+	* libpp/format_output.cpp:
+	* libpp/format_output.h:
+	* libpp/outsymbflag.h: "immutable" not "imutable"
+
+	* libpp/partition_files.cpp: include <iterator> to compile
+
+2003-04-24  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/partition_files.h: typo
+	* libpp/profile.cpp: difficult to get right result with a random value
+	  in profile::start_offset
+
+	* pp/opreport_options.h: export options::reverse_sort
+	* pp/opreport_options.cpp: bail out if we get multiple counter
+
+	* pp/opreport.cpp: raw output result for application (not symbol)
+	  output.
+
+2003-04-24  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/filename_spec.h:
+	* libpp/filename_spec.cpp:
+	* libpp/parse_cmdline.h:
+	* libpp/parse_cmdline.cpp:
+	* libpp/split_sample_filename.h:
+	* libpp/split_sample_filename.cpp: s/unit_mask/unitmask
+
+	* libpp/merge_spec.cpp:
+	* libpp/merge_spec.h: rename to
+	* libpp/partition_files.h:
+	* libpp/partition_files.cpp: here. Add and merge_option.
+	  partition_files is now a class.
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp:
+	* pp/opreport.cpp: update according to the above. Add a roughly support
+	  to count samples for plain op_time opreport like
+
+2003-04-24  John Levon  <levon@movementarian.org>
+
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp: chop off the _t of the class name
+
+	* libpp/format_output.cpp:
+	* libpp/format_output.h:
+	* libpp/symbol_container.cpp:
+	* libpp/symbol_container.h:
+	* pp/op_time.cpp:
+	* pp/op_to_source.cpp:
+	* pp/oprofpp.cpp: changes from the above
+
+2003-04-24  John Levon  <levon@movementarian.org>
+
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp: pedantry for sample_container
+	indices.
+
+	* libpp/sample_container.h:
+	* libpp/sample_container.cpp: various cleanups and docs. Add
+	and use size_type.
+
+	* libpp/symbol_container.h:
+	* libpp/symbol_container.cpp: renamings. Add and use size_type.
+
+2003-04-24  John Levon  <levon@movementarian.org>
+
+	* libpp/symbol_container.h:
+	* libpp/symbol_container.cpp: remove unused operator[].
+	Add some docs. Some small cleanups
+
+2003-04-24  John Levon  <levon@movementarian.org>
+
+	* libpp/symbol_container_imp.h:
+	* libpp/symbol_container_imp.cpp:
+	* libpp/sample_container_imp.h:
+	* libpp/sample_container_imp.cpp: These classes weren't using
+	the pimpl idiom, so the _imp was spurious. Remove that as well
+	as removing the _t from the names, and rename to ...
+
+	* libpp/symbol_container.h:
+	* libpp/symbol_container.cpp:
+	* libpp/sample_container.h:
+	* libpp/sample_container.cpp: ...files moved from the above with
+	new names.
+
+2003-04-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/generic_spec.h: minor formating tweak
+
+	* libpp/parse_cmdline.h:
+	* libpp/parse_cmdline.cpp: handle_non_options(): return parse_cmdline
+	  by value
+
+	* libpp/merge_spec.h:
+	* libpp/merge_spec.cpp: new files: partition list of samples filename
+	  according to merge options.
+	* libpp/Makefile.am: update
+
+	* pp/opreport_options.cpp: more options handling, use partition_files()
+
+2003-04-22  John Levon  <levon@movementarian.org>
+
+	* pp/opreport_options.cpp: compile fix
+
+2003-04-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/filename_match.h:
+	* libutil++/filename_match.cpp: add strict_match()
+
+	* libutil++/generic_spec.cpp: generic_spec<string>::set() was not
+	  setting is_all member leading to bad matching
+
+	* libpp/filename_spec.cpp: minor tidy
+
+	* libpp/parse_cmdline.h:
+	* libpp/parse_cmdline.cpp: fix match()
+
+	* libpp/split_sample_filename.h:
+	* libpp/split_sample_filename.cpp: handle sample file base directory
+
+	* libop++/op_print_event.h:
+	* libop++/op_print_event.cpp:
+	* libpp/format_output.h:
+	* libpp/format_output.cpp:
+	* libpp/opp_symbol.h:
+	* libpp/profile.h:
+	* libpp/profile.cpp:
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp:
+	* libpp/sample_container_imp.h:
+	* libpp/sample_container_imp.cpp:
+	* libpp/symbol_container_imp.h:
+	* libpp/symbol_container_imp.cpp:
+	* libpp/symbol_functors.h: remove all use of counter number
+
+	* libpp/counter_array.h:
+	* libpp/counter_array.cpp:
+	* libpp/counter_profile.h:
+	* libpp/counter_profile.cpp: no longer used, move some bits to
+	  libpp/profile.(h|cpp) and remove these files.
+	* libpp/Makefile.am: update according
+
+	* pp/op_merge.cpp: use profile_t not counter_profile_t
+	* pp/makefile.am: correct lib for op_merge
+
+	* pp/opreport_options.cpp: more options handling
+
+2003-04-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libopt++/popt_options.cpp: don't show help_str with --usage
+	* libpp/format_output.cpp: typo
+	* libutil/op_file.c: create dir with 755 not 700
+	* pp/common_option.cpp: source formating
+
+	* libpp/parse_cmdline.h:
+	* libpp/parse_cmdline.cpp: handle_non_options() new
+	* pp/opreport_options.cpp: handle more options
+
+	* pp/opsummary.cpp:
+	* pp/opsummary_options.h:
+	* pp/opsummary_options.cpp: remove, opreport should do its job.
+	* pp/Makefile.am: update
+
+2003-04-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libopt++/popt_options.cpp: allow "no-" prefix to long option name
+	  implicitly specify the value must be negated
+	* libopt++/popt_options.cpp: update doxygen documentation
+
+	* libpp/format_output.h: missing #include
+	* libpp/format_output.cpp: space + minor change
+
+	* pp/opannotate_options.h:
+	* pp/opannotate_options.cpp:
+	* pp/opdiff_options.h:
+	* pp/opdiff_options.cpp:
+	* pp/opgprof_options.h:
+	* pp/opgprof_options.cpp:
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp:
+	* pp/opsummary_options.h:
+	* pp/opsummary_options.cpp: new skeleton file
+
+	* pp/opannotate.cpp:
+	* pp/opdiff.cpp:
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp:
+	* pp/opsummary.cpp: update to handle options
+
+	* pp/common_option.cpp: follow more closely pp_interface
+
+	* pp/opsummary_options.cpp: start to handle opsummary option
+
+	* pp/Makefile.am: update
+
+2003-04-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.h:
+	* libpp/format_output.cpp:
+	* libpp/outsymbflag.h:
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp: osf_header/osf_details are no longer
+	  flags but separate boolean.
+
+2003-04-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_kernel.c:
+	* daemon/opd_kernel.c: remove leading '/' on module name fixing 2.5
+	 module not under {kern} and similar case for "no-vmlinux" with 2.4/2.5
+
+	* libutil/op_file.c: tiny tidy
+
+2003-04-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_mangle.c: app_name and image was reversed, {dep} was missing
+
+2003-04-17  John Levon  <levon@movementarian.org>
+
+	* libpp/filename_spec.h:
+	* libutil++/comma_list.h: compile fixes
+
+2003-04-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: better --reset handling
+
+2003-04-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae works, daemon compiles but not tested.
+
+	* libop/op_config.h:
+	* libpp/op_session.h:
+	* libpp/session.cpp:
+	* pp/op_merge: handle new path to samples files.
+
+	* libutil++/file_manip.h:
+	* libutil++/file_manip.cpp: move create_dir(), create_path() ...
+	* libutil/op_file.h:
+	* libutil/op_file.c: here. Remove op_move_regular_file()
+
+	* daemon/opd_image.c:
+	* daemon/opd_sample_files.h:
+	* daemon/opd_sample_files.c:
+	* dae/opd_image.c:
+	* dae/opd_sample_files.h:
+	* dae/opd_sample_files.c: use new filename scheme
+
+	* daemon/oprofiled.c:
+	* dae/oprofiled.c: remove samples files backup stuff
+
+	* libop/op_mangle.h:
+	* libop/op_mangle.c: ugly modification to handle new samples filename
+
+	* utils/opcontrol: handle new samples files path, --save and --reset
+	  are working too.
+
+	* gui/oprof_start_util.cpp: use new create_path() API
+
+2003-04-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/common_option.cpp:
+	* pp/common_option.h:
+	* libregex/demangle_symbol.cpp: rename demangle_and_shrink to
+	  smart_demangle
+
+2003-04-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* starting branch pp-interface-branch
+
+	* Makefile.am:
+	* configure.in: handle new sub dir libpp
+
+	* libutil++/comma_list.h: new file handling of comma separated list of
+	  items.
+	* libutil++/generic_spec.cpp:
+	* libutil++/generic_spec.h: new file
+	* libutil++/Makefile.am: handle new file
+
+	* pp/counter_array.*:
+	* pp/counter_profile.*:
+	* pp/counter_util.*:
+	* pp/derive_files.*:
+	* pp/format_output.*:
+	* pp/opp_symbol.h:
+	* pp/outsymbflag.h:
+	* pp/profile.*:
+	* pp/profile_container.*:
+	* pp/sample_container_imp.*:
+	* pp/session.*:
+	* pp/symbol_container_imp.*:
+	* pp/symbol_functors.*: move to
+
+	* libpp/*: here
+	* libpp/filename_spec.cpp:
+	* libpp/filename_spec.h: new file handling of pp sample filename
+	* libpp/parse_cmdline.cpp:
+	* libpp/parse_cmdline.h: new file, handling of command line tag:value
+	* libpp/Makefile.am: new file build libpp.a
+
+	* pp/common_option.h:
+	* pp/common_option.cpp: common option to pp tools. Implement common
+	  entry point to pp tools.
+	* pp/opannotate.cpp:
+	* pp/opdiff.cpp:
+	* pp/opgprof.cpp:
+	* pp/opreport.cpp:
+	* pp/opsummary.cpp: skeleton file for all pp tools.
+	* pp/Makefile.am: remove old pp tools, add the news.
+
+2003-04-28  Alex Tsariounov  <alext@fc.hp.com>
+
+	* module/ia64/op_pmu.c: fix compile
+
+2003-04-24  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/compat22.h: add cpuid_edx when linux version < 2.2.21
+
+2003-04-24  Dave Jones <davej@codemonkey.org.uk>
+
+	* events/x86-64.hammer.events:
+	* events/x86-64.hammer.unit_masks: typo fixes from AMD.
+	* module/x86/cpu_type.c: Check for APIC on Athlon before enabling it.
+
+2003-04-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/i386-ht.events: all events allow only one counter, remove
+	  three events due to ESCR restriction.
+	* events/i386.events: add some comments.
+
+	* module/x86/op_model_p4.c: synch with linux 2.5 mainline
+	  - except events CTR_BPU_0 all virtual counter was not working.
+	  - Prevents a segfault when using incorrect counter number.
+	  - ESCR event select is 6 bits length not 5.
+	  - Don't fail silently in p4_setup_ctrs().
+	* module/x86/op_msr.h: match name used in linux.
+
+2003-04-15  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: small english fixes
+
+2003-04-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_kernel.c:
+	* dae/opd_proc.c:
+	* dae/oprofiled.c:
+	* utils/opcontrol:
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: handle --no-vmlinux
+
+	* daemon/opd_kernel.c: use no-vmlinux not /no-vmlinux when user
+	  specify --no-vmlinux
+
+2003-04-08  John Levon  <levon@movementarian.org>
+
+	* HACKING: describe what happens with oprofile-www
+
+2003-04-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: check for #717720 and direct user to
+	  FAQ if detected. Note than we don't detect all symptom of this bug.
+
+2003-04-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_exception.h: op_runtime_error is no longer abstract
+
+	* libregex/op_regex.h: comment and tidy
+	* libregex/op_regex.cpp: tidy
+
+2003-04-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_to_source.cpp: make each line be prefixed with the samples
+	counts. It was too hard to find samples inside previous format.
+
+2003-04-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/string_manip.cpp: work around for gcc 2.95
+	* p/op_to_source.cpp: minor cleanup
+
+2003-04-07  John Levon  <levon@movementarian.org>
+
+	* pp/op_to_source.cpp: cheat a bit to get
+	better indentation on the default setup, by
+	widening counter width to 7.
+
+2003-04-07  John Levon  <levon@movementarian.org>
+
+	* pp/op_to_source.cpp: append symbol summary
+	annotations separate from the prolog samples on
+	the same line.
+
+2003-04-07  John Levon  <levon@movementarian.org>
+
+	* pp/op_to_source.cpp: only output line 0 annotation
+	if samples found there.
+
+2003-04-07  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: make sure --ctrX-event=none gets noticed
+
+2003-04-06  John Levon  <levon@movementarian.org>
+
+	* libutil++/string_manip.h:
+	* libutil++/string_manip.cpp: remove ws_prefix(). Add
+	format_percent().
+
+	* pp/op_to_source.cpp: make each line be prefixed with
+	the sample counts, instead of on a line above, to preserve
+	line numbering.
+
+2003-04-06  John Levon  <levon@movementarian.org>
+
+	* pp/op_to_source.cpp: some renamings for clarity
+
+2003-04-06  John Levon  <levon@movementarian.org>
+
+	* pp/op_to_source.cpp: move extract_blank_at_begin() to ...
+
+	* libutil++/string_manip.cpp: ... here, and rename as
+	ws_prefix().
+	
+2003-04-06  John Levon  <levon@movementarian.org>
+
+	* pp/op_to_source.cpp: prefix comment lines.
+	Output the general footer on each separate file.
+	Output the info at the bottom when outputting
+	separate files (towards maintaining line numbering).
+
+2003-04-06  John Levon  <levon@movementarian.org>
+
+	* pp/op_to_source.cpp: construct a file-scope
+	cmdline string, instead of passing it around.
+
+2003-04-06  John Levon  <levon@movementarian.org>
+
+	* libregex/op_regexp.cpp: re-arrange a bit
+
+2003-04-06  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* all Makefile.am: don't blindly set $LIBS, use
+	explicit mention of which libs are needed.
+
+	* dae/Makefile.am:
+	* daemon/Makefile.am: only link with C++ if needed.
+
+2003-04-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_config_24.h:
+	* module/oprofile.c:
+	* module/oprofile.c: make watermark size proportional to buffer size.
+
+2003-04-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events.h:
+	* libop/op_events.c: re-add op_min_count();
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c: use op_min_count() fixing #715923
+
+2003-04-01  John Levon  <levon@movementarian.org>
+
+	* libdb/Makefile.am: fix make dist
+
+	* daemon/opd_cookie.h: add SPARC syscall number.
+	  The system call function is OK for sparc/sparc64
+
+2003-03-31  Will Cohen  <wcohen@redhat.com>
+
+	* libdb/odb_hash.h: Renamed db_hash.h.
+
+	* dae/Makefile.am:
+	* dae/opd_image.c:
+	* dae/opd_image.h:
+	* dae/opd_proc.c:
+	* dae/opd_sample_files.c:
+	* daemon/Makefile.am:
+	* daemon/opd_image.c:
+	* daemon/opd_image.h:
+	* daemon/opd_sample_files.c:
+	* libabi/Makefile.am:
+	* libabi/abi.cpp:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp:
+	* libdb/Makefile.am:
+	* libdb/db_debug.c:
+	* libdb/db_hash.h:
+	* libdb/db_insert.c:
+	* libdb/db_manage.c:
+	* libdb/db_stat.c:
+	* libdb/db_test.c:
+	* libdb/db_travel.c:
+	* pp/Makefile.am:
+	* pp/counter_profile.cpp:
+	* pp/counter_profile.h:
+	* pp/op_merge.cpp: Change names to avoid libdb.a name conflicts.
+	
+2003-03-30  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.6cvs
+
+	* doc/oprofile.xml: fix id. Add java etc. mention
+
+	* utils/Makefile.am:
+	* utils/op_start:
+	* utils/op_start_25:
+	* utils/op_stop:
+	* utils/op_stop_25:
+	* utils/op_dump:
+	* utils/op_dump_25:
+	* utils/op_session: finally remove the back compat crap
+
+	* HACKING: add release-notes policy
+
+2003-03-30  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.5.2
+
+2003-03-30  John Levon  <levon@movementarian.org>
+
+	* Makefile.am: remove op_arch.h for ia64
+
+2003-03-27  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: several more examples and fixes
+
+2003-03-26  John Levon  <levon@movementarian.org>
+
+	From a patch by Bryan Rittmeyer.
+
+	* module/oprofile.c:
+	* module/oprofile.h: push "irq_enabled" test
+	into arch code, don't pass struct pt_regs.
+
+	* module/x86/op_arch.h: cleanups
+
+	* module/x86/op_model_athlon.c:
+	* module/x86/op_model_ppro.c:
+	* module/x86/op_model_p4.c:
+	* module/x86/op_rtc.c: changes from above
+
+	* module/ia64/op_arch.h: remove
+	* module/ia64/op_pmu.c: change from above
+
+2003-03-24  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: document prologues, and inline functions
+
+2003-03-24  Will Cohen  <wcohen@redhat.com>
+
+	* libutil/op_fileio.c (op_get_line): Use lower cost getc().
+
+2003-03-24  John Levon  <levon@movementarian.org>
+
+	* m4/configmodule.m4: fix quoting problem for awk
+
+2003-03-23  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* m4/: move lots of stuff into separate .m4 files
+
+	* m4/typedef.m4: improve configure message
+
+2003-03-23  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* m4/Makefile.am:
+	* m4/copyifchange.m4:
+	* m4/docbook.m4:
+	* m4/kerneloption.m4:
+	* m4/kernelversion.m4:
+ 	* m4/resultyn.m4: move configure.in macros to m4/
+
+2003-03-23  John Levon  <levon@movementarian.org>
+
+	* m4/ChangeLog: add comment
+
+	* m4/typedef.m4: can't use AC_LANG_PUSH/POP
+
+2003-03-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* m4/Makefile.am:
+	* m4/typedef.m4: new file to get underlined type for a typedef.
+	
+	* configure.in: get at configure time the real underlined type
+	  for size_t and ptrdiff_t
+
+	* libregex/stl.pat: move to ...
+	* libregex/stl.pat.in: here. Use @SIZE_T_TYPE@ and @PTRDIFF_T_TYPE@
+	* libregex/Makefile.am: update according
+	* libregex/.cvsignore: ignore stl.pat
+
+2003-03-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: use $OP_HELP not op_help
+	* utils/op_help.c: remove short option for --get-cpu-frequency
+
+2003-03-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* m4: new directory
+	* m4/.cvsignore: new
+
+	* acinclude.m4: move to
+	* m4/qt.m4: here
+	* m4/Makefile.am: new for EXTRA_DIST = all our .m4
+	* Makefile.am:
+	* configure.in:
+	* autogen.sh: handle m4 subdir, add -I m4 to aclocal flags
+
+2003-03-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	  Suggested by John
+
+	* libutil/op_cpufreq.c: typo in comment
+
+	* utils/op_help.c: add --get-cpu-frequency, intentionnaly not
+	  documented.
+	* utils/opcontrol: use op_help --get-cpu-frequency and remove
+	  ugly shell script doing the same thing.
+
+2003-03-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/op_cpufreq.h:
+	* libutil/op_cpufreq.c: new file exporting op_cpu_frequency()
+	* libutil/Makefile.am: update according
+
+	* utils/opcontrol: handle other arch
+
+	* gui/oprof_start_util.h:
+	* gui/oprof_start_util.cpp: remove get_cpu_speed()
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp: and use instead op_cpu_frequency()
+
+	* daemon/oprofiled.c:
+	* dae/oprofiled.c: replace --cpu-speed option by a call to
+	  op_cpu_frequencey()
+
+2003-03-20  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: doc some 2.5 module stuff
+
+2003-03-20  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: fix opcontrol --dump to do something
+
+	* daemon/opd_image.c: give a printf when reading the buffer.
+
+2003-03-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: correct get_vma_range()
+
+	* pp/oprofpp.cpp: do_dump_gprof() this time it's right!
+
+2003-03-18  John Levon  <levon@movementarian.org>
+
+	* pp/profile.cpp: improve mtime warning for 2.5 modules
+
+2003-03-18  John Levon  <levon@movementarian.org>
+
+	* pp/derive_files.cpp: some more 2.5 modules derivation fixes
+
+2003-03-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/derive_files.cpp: fix handling of 2.5 module name
+
+2003-03-18  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c:
+	* libop/op_interface_25.h: rename to MODULE_LOADED_CODE
+
+2003-03-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* pp/derive_files.cpp: special to retrieve 2.5 module
+
+2003-03-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* pp/symbol_container_imp.h:
+	* pp/symbol_container_imp.cpp:
+	* pp/profile_container.h:
+	* pp/profile_container.cpp: find(string symbol_name) return a vector
+	  of symbol rather a a single symbol
+	* pp/oprofpp.cpp: use above change so oprofpp -s will show all
+	  symbol with the same name.
+
+	* pp/symbol_functors.h: remove unused functors equal_symbol_by_name
+
+2003-03-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* libutil/op_fileio.h:
+	* libutil/op_fileio.c: op_write_u64() new
+	* libutil/op_types.h: continue our silly typedef: add u64
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: op_bfd::arch_bits_per_address() new allowing
+	  to get, on a per-binary basis, the vma size.
+
+	* pp/oprofpp.cpp: fix 64 bits arch gprof output. Fix multiplier and
+	  get the multiplier of gprof file at runtime. Fix a very old bug
+	  where we credit the samples to previous gprof bin having the effect
+	  than sample at start of function was credited to the previous
+	  function
+
+2003-03-17  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_kernel.c:
+	* daemon/opd_kernel.h:
+	* daemon/opd_image.c:
+	* daemon/oprofiled.c: don't try to reread the module
+	list on a failed EIP match. We must have the module load
+	notification instead.
+
+2003-03-17  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_kernel.c: fix module accounting. Remove
+	quick-drop code that can't work.
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: english tweaks
+
+2003-03-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: remove documentation about -P, update doc about -p
+
+	* pp/derive_files.h:
+	* pp/derive_files.cpp: check_image_name(), add_to_alternate_filename()
+	  functions moved from op_time.cpp
+
+	* pp/op_time_options.h:
+	* pp/op_time_options.cpp:
+	* pp/op_time.cpp: remove -P option, minor cleanup
+
+	* pp/oprofpp_options.h:
+	* pp/oprofpp_options.cpp:
+	* pp/oprofpp.cpp: add -p option, minor cleanup
+	
+	* pp/op_to_source.cpp: minor cleanup
+
+2003-03-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: check return code for --ctr??-event=none
+
+2003-03-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp: check for --separate=xxxx in the right order.
+	  Old code do: if user set separate=library and separate=kernel only
+	  separate=library was taken by opcontrol
+
+2003-03-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: typo
+
+2003-03-16  John Levon  <levon@movementarian.org>
+
+	* configure.in: more docbook macro fixes
+
+2003-03-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/op_libiberty.h: cut&paste typo breaking compilation on box
+	  w/o libiberty.h
+
+	* daemon/opd_image.c: remove bogus fprintf. compilation was broken
+	  on alpha.
+
+	* configure.in: xsltproc checking fix, was always accepted even
+	 on box where xsltproc is not installed
+
+2003-03-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* Makefile.am: add ChangeLog-2002 in dist files
+	* all Makefile.am: put one item by line for most  xxxx = blah
+	* doc/CodingStyle: rationale for the above change
+
+2003-03-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events.c: minor cleanup
+
+2003-03-15  Dave Jones <davej@codemonkey.org.uk>
+
+	* module/x86/op_nmi.c: Remove stale debug code from yesterdays commit.
+
+2003-03-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: add checking for existence of xmemdup()
+
+	* libutil/Makefile.am:
+	* libutil/op_string.h:
+	* libutil/op_string.c: new, a few C string handling function
+
+	* libutil/op_libiberty.h:
+	* libutil/op_libiberty.c: xmemdup() new.
+
+	* libop/op_events.h:
+	* libop/op_events.c: tidy parser. Add op_free_events(). Fix minor
+	  buglet.
+
+	* dae/oprofiled.c:
+	* daemon/oprofiled.c: fix memleak from parsing events files
+
+	* gui/Makefile.am:
+	* pp/Makefile.am: fix lib ordering, now libop depend on libutil
+
+	* utils/op_help.c: error message if invalid cpu type. Fix op_help
+	  when using timer interrupt.
+
+2003-03-14  Andi Kleen <ak@suse.de>
+
+	* module/x86/op_nmi.c: Fix another possible race condition.
+
+2003-03-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* libregex/stl.pat: support for rb tree, set/map, anonymous namespace.
+	  Fix incorrect pattern for gcc 3.2. Handle 2.95 vector/string
+	  iterator and a few stl free function handling. add all C++ base type.
+	* libregex/mangled-name.txt: test for the above change
+
+2003-03-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start.cpp: gcc 2.91 warning work around
+
+2003-03-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events.c: fix a daemon segfault depending on the used
+	  libc version, added 2003-03-04 (0.5.1 is ok)
+
+2003-03-13  Dave Jones <davej@codmeonkey.org.uk>
+
+	* events/x86-64.hammer.events: Remove duplicate minimum tag
+	  from RETIRED_INSNS counter.
+
+2003-03-11  John Levon  <levon@movementarian.org>
+
+	* module/ia64/op_pmu.c: include op_arch.h not arch.h
+
+2003-03-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* configure.in: remove unsupported --warnnet, fix docbook root dir test
+	* doc/oprofile.xml: typo
+
+2003-03-10  John Levon  <levon@movementarian.org>
+
+	* doc/Makefile.am:
+	* configure.in:
+	* doc/xsl/catalog-1.xml.in: more docbook changes
+
+2003-03-10  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* doc/Makefile.am:
+	* doc/xsl/xhtml.xsl:
+	* doc/xsl/xhtml-chunk.xsl:
+	* doc/xsl/catalog-1.xml.in: Use a catalog for finding
+	the XSL, so we only have one .in file now.
+
+2003-03-08  Will Cohen  <wcohen@redhat.com>
+
+	* doc/Makefile.am: Correct path for htmldir.
+
+2003-03-08  John Levon  <levon@movementarian.org>
+
+	* libop/op_cpu_type.c: improve error message
+
+	* utils/op_help.c: show CPU name in events list. Show CPU
+	 pretty name in op_help --get-cpu-type.
+
+2003-03-08  John Levon  <levon@movementarian.org>
+
+	* configure.in: specify distcheck ./configure flags.
+	  Add version.h to distclean.
+
+	* doc/Makefile.am: 
+	* doc/xsl/xhtml-1.in:
+	* doc/xsl/xhtml-chunk-1.in: fix make distcheck
+
+2003-03-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/xsl/.cvsignore: update
+
+	* module/x86/cpu_type.c: <smpboot.h> is not necessary
+
+2003-03-07  John Levon  <levon@movementarian.org>
+
+	* README: document autogen.sh
+
+2003-03-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* doc/xsl/xhtml.xsl.in: move to
+	* doc/xsl/xhtml-1.xsl.in: here
+	* doc/xsl/xhtml-chunk.xsl.in: move to
+	* doc/xsl/xhtml-chunk-1.xsl.in: here
+	* doc/Makefile.am; update according
+	* configure.in: avoid to touch doc/xsl generated files
+
+2003-03-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* daemon/opd_image.c:
+	* daemon/op_stats.c:
+	* daemon/opd_stats.h: add statistics for nil image whilst receiving
+	  user space samples.
+
+2003-03-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* libdb/db_hash.h:
+	* libdb/db_insert.c: get error message from db_insert()
+
+	* libdb/db_test.c:
+	* dae/opd_proc.c:
+	* daemon/opd_image.c:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp:
+	* pp/op_merge.cpp: update according to the new api
+
+2003-03-06  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: pedantry
+
+2003-03-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: document --smart-demangle
+
+2003-03-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/ia64/op_pmu.c:
+	* module/x86/op_nmi.c: remove #include <op_events.h>
+
+2003-03-06  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: sh != C. This is the last opcontrol
+	  bug, honest ! OK, maybe not.
+
+2003-03-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* gui/oprof_start.cpp: save_config() gcc 2.95.3 warning work-around
+
+2003-03-05  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: Make --setup optional (e.g.
+	  opcontrol --no-vmlinux). Fix a bug in the --setup
+	  exclusive arg testing.
+
+	* doc/oprofile.xml: reflect the above
+
+2003-03-05  John Levon  <levon@movementarian.org>
+
+	* libutil++/string_manip.h:
+	* libutil++/string_manip.cpp: cleanup, use s.find
+	  because older gcc's don't have the right s.compare
+
+2003-03-04  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: only sleep 2 after dump on 2.4
+
+2003-03-04  John Levon  <levon@movementarian.org>
+
+	* configure.in: tweak the xsltproc test
+
+2003-03-04  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* doc/Makefile.am: don't try to build the docs
+	  if it will fail.
+
+2003-03-04  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol:
+	* daemon/opd_kernel.h:
+	* daemon/opd_image.c:
+	* daemon/opd_kernel.c:
+	* daemon/oprofiled.c: implement --no-vmlinux.
+ 	  Remove back compat for is_kernel.
+
+	* gui/uioprof_start.base.ui:
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_config.h:
+	* gui/oprof_start_config.cpp: support the above
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: doc the above
+
+2003-03-04  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: allow --version, --help early on
+
+2003-03-04  John Levon  <levon@movementarian.org>
+
+	* libop/op_events.c: alter the parser to give file/linenr on
+	  error, and handle more whitespace.
+
+2003-03-04  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.cpp:
+	* gui/oprof_start.h:
+	* gui/oprof_start_config.cpp:
+	* gui/oprof_start_config.h:
+
+	* libutil++/string_manip.h:
+	* libutil++/string_manip.cpp: add is_prefix(),
+	  make the trimmers take an argument
+
+2003-03-04  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.cpp:
+	* gui/oprof_start.h:
+	* gui/oprof_start_config.cpp:
+	* gui/oprof_start_config.h:
+	* gui/persistent_config.h:
+
+	* libutil++/string_manip.h:
+	* libutil++/string_manip.cpp: add split(), tobool(), touint()
+
+	* utils/opcontrol: don't write BUF_SIZE twice. Write
+	  RTC_VALUE properly. Write KERNEL_ONLY
+
+2003-03-03  John Levon  <levon@movementarian.org>
+
+	* gui/oprof_start.cpp: use --ctrX-event=none,
+	  --separate=none. --pid/pgrp-filter=0 was already
+	  being done.
+
+2003-03-03  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml:
+	* doc/opcontrol: add --ctrX-event=none
+
+2003-03-03  Will Cohen  <wcohen@redhat.com>
+
+	* gui/oprof_start.cpp (oprof_start::on_start_profiler): Limit
+	  check to only utm_bitmask.
+
+2003-03-03  Will Cohen  <wcohen@redhat.com>
+
+    * events/ia64.itanium2.events:
+    * events/ia64.itanium2.unit_masks: Add Itanium 2 events.
+
+2003-03-03  Will Cohen  <wcohen@redhat.com>
+
+    * libop/op_events.h:
+    * libop/op_events.c: Correct checking for the number of unit
+      masks.
+
+2003-03-03  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: another round of cleanups
+
+	* pp/op_merge.cpp: --counter not --use-counter,
+	  for consistency
+
+2003-03-03  John Levon  <levon@movementarian.org>
+
+	Patch from Chris Moller, modified.
+
+	* dae/opd_proc.c:
+	* dae/opd_sample_files.c:
+	* daemon/opd_image.c:
+	* daemon/opd_sample_files.c:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp:
+	* libdb/db_hash.h:
+	* libdb/db_insert.c:
+	* libdb/db_manage.c:
+	* libdb/db_test.c:
+	* pp/counter_profile.cpp:
+	* pp/op_merge.cpp: push asserts in libdb down into
+	  the clients.
+
+2003-03-03  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml:
+	* doc/oprofile.1.in:
+	* utils/opcontrol: add --separate=none, --pid/pgrp-filter=non
+
+2003-03-03  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* doc/Makefile.am:
+	* doc/oprofile.xml:
+	* doc/xsl/xhtml-chunk.xsl.in:
+	* doc/xsl/xhtml.xsl.in:
+	* doc/xsl/xhtml-common.xsl: Add version to the
+	  docs. Some doc cleanups
+
+2003-03-02  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: --separate=library should turn kernel off
+
+2003-03-02  John Levon  <levon@movementarian.org>
+
+	* events/Makefile.am: fix uninstall
+
+2003-03-02  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: more re-workings prodded by aeb
+
+2003-03-02  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_kernel.c: remove /proc/ksyms reading
+
+2003-03-02  John Levon  <levon@movementarian.org>
+
+	* libutil/op_fileio.c: change op_get_line to return
+	  NULL on EOF. Also bump up the default allocation some.
+
+	* dae/opd_kernel.c:
+	* dae/opd_parse_proc.c:
+	* daemon/opd_kernel.c:
+	* libop/op_events.c: changes from the above
+
+2003-03-02  John Levon  <levon@movementarian.org>
+
+	* configure.in:
+	* Makefile.am:
+	* events/: add text files describing the CPU counters
+	  and unit masks. Install them.
+
+	* libop/op_events.h:
+	* libop/op_events.c: remove the bletcherous hard coded
+	  descriptions.
+
+	* module/ia64/op_pmu.c:
+	* module/x86/op_nmi.c: remove another big of validation
+
+	* libutil/op_list.h: make C++ friendly
+
+	* libop/op_cpu_type.h:
+	* libop/op_cpu_type.c: add op_get_cpu_name()
+
+	* libop/Makefile:
+	* libop/op_events_desc.h:
+	* libop/op_events_desc.cpp: removed
+
+	* libop++/op_print_event.cpp:
+	* utils/Makefile.am:
+	* utils/op_help.c:
+	* gui/oprof_start.h:
+	* gui/oprof_start.cpp: changes from above
+
+2003-03-01  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: tweaks
+
+	* utils/opcontrol: scale the default event count. Please
+	  test ...
+
+2003-03-01  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: setup default events. Allow part-setting
+	  using --setup. Fix a help text.
+
+	* doc/oprofile.xml: changes from the above
+
+2003-03-01  John Levon  <levon@movementarian.org>
+
+	* libop/op_cpu_type.c: fix alpha/ev4 mis-detection
+
+2003-03-01  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: expand intro a little, small fixes
+
+2003-03-01  John Levon  <levon@movementarian.org>
+
+	* pp/format_output.cpp: use "%" not "%-age"
+
+2003-02-28  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: fix IS_TIMER setting, noticed by
+	  Duncan Sands
+
+2003-02-28  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.6cvs
+
+2003-02-28  John Levon  <levon@movementarian.org>
+
+	* doc/Makefile.am: tweak
+
+	* libregex/Makefile.am: fix make dist
+
+2003-02-27  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.5.1
+
+2003-02-27  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: clarify --separate=kernel
+
+2003-02-25  John Levon  <levon@movementarian.org>
+
+	* configure.in: clarify --with-kernel-support
+
+	* libop/op_events.c:
+	* module/x86/op_nmi.c:
+	* module/ia64/op_nmi.c: remove sanity checking - it's
+	  the wrong place to have such code, is a barrier to op_events
+	  cleanup, and makes life harder for NDAers.
+
+2003-02-25  Will Cohen <wcohen@redhat.com>
+
+	* utils/opcontrol (do_deinit): Correct search for /dev/oprofile.
+
+2003-02-24  Dave Jones <davej@codemonkey.org.uk>
+
+	* module/x86/op_apic.[c|h]: move NMI gate setup to architecture
+	  specific SET_NMI_GATE macro. x86=no change.
+	  Make x86-64 use the kernels _set_gate instead of its own open
+	  coded variant.
+
+2003-02-23  John Levon  <levon@movementarian.org>
+
+	* version-1.h.in: another rename
+
+2003-02-23  John Levon  <levon@movementarian.org>
+
+	* configure.in: set up OP_DATADIR and OP_BINDIR
+
+	* gui/oprof_start.cpp:
+	* libregex/demangle_symbol.cpp: use the above
+
+	* version_tpl.h.in: move to ...
+
+	* version.h.in.in: ... here
+
+2003-02-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* configure.in: add AX_COPY_IF_CHANGE() use it to generate version.h
+	* .cvsignore: update
+
+	* gui/Makefile.am:
+	* gui/oprof_start.cpp:
+	* libregex/Makefile.am:
+	* libregex/demangle_symbol.cpp: don't use -DBINDIR, rather include
+	  version.h to get install path
+
+2003-02-23  John Levon  <levon@movementarian.org>
+
+	* README: quick start build insns
+
+2003-02-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* libregex/Makefile.am: install stl.pat in $prefix/share/oprofile
+	* libregex/demangle_symbol.cpp: use DATADIR not BINDIR
+	* libregex/magle-name.txt: add test for pointer
+	* libregex/stl.pat: partial support for pointer
+
+2003-02-23  John Levon  <levon@movementarian.org>
+
+	* autogen.sh: error out if options passed
+
+2003-02-23  John Levon  <levon@movementarian.org>
+
+	* libregex/op_regex.h:
+	* libregex/regex_test.cpp: fix std::
+
+2003-02-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/demangle_symbol.cpp:
+	* libutil++/demangle_symbol.h: move to
+	* libregex/demangle_symbol.cpp:
+	* libregex/demangle_symbol.h: here to avoid circular reference between
+	  libutil++ and libregex
+	* libregex/Makefile.am:
+	* libutil++/Makefile.am: update according to file move
+
+	* pp/Makefile.am:
+	* pp/op_time.cpp:
+	* pp/op_time_options.cpp:
+	* pp/op_to_source.cpp:
+	* pp/op_to_source_options.cpp:
+	* pp/oprofpp.cpp:
+	* pp/oprofpp_options.cpp: add -D --Demangle options enabling C++
+	  demangled name filtering.
+
+2003-02-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/string_manip.h:
+	* libutil++/string_manip.cpp: trim(), ltrim(), rtrim() new functions
+
+	* Makefile.am: handle libregex directory
+	* configure.in: handle libregex/Makefile
+
+	* libregex/.cvsignore:
+	* libregex/Makefile.am :
+	* libregex/mangled-name.txt:
+	* libregex/op_regex.cpp:
+	* libregex/op_regex.h:
+	* libregex/regex_test.cpp:
+	* libregex/stl.pat: new file implementing a match and replace regular
+	  expression around glibc regex. Not used for now, next commit will
+	  use this for pp tools C++ name demangling.
+
+2003-02-22  John Levon  <levon@movementarian.org>
+
+	* configure.in: fix X, non-Qt build case
+
+2003-02-22  John Levon  <levon@movementarian.org>
+
+	* libutil++/Makefile.am: fix make dist
+
+2003-02-21  Dave Jones <davej@codemonkey.org.uk>
+
+	* configure.in: Enable building on hammer again.
+
+2003-02-21  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: "Params used" was lying
+
+2003-02-20  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c: Fixed a bitch of a bug with separate-kernel,
+	  now attribution of kernel samples should be more accurate
+
+2003-02-20  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: set LIB_SAMPLES if KERNEL_SAMPLES in .daemonrc
+
+2003-02-20  John Levon  <levon@movementarian.org>
+
+	* dae/opd_stats.h:
+	* dae/opd_stats.c:
+	* daemon/opd_stats.h:
+	* daemon/opd_stats.c:
+	* dae/opd_proc.c:
+	* daemon/opd_image.c: remove unused OPD_SAMPLE_COUNTS. Actually
+	  count samples for 2.5
+
+2003-02-20  John Levon  <levon@movementarian.org>
+
+	* libop/op_interface_25.h:
+	* daemon/opd_kernel.c: implement module dropping
+
+	* daemon/opd_image.c:
+	* daemon/opd_kernel.c: attempt to make verbose logs
+	  less confusing
+
+2003-02-22  Dave Jones <davej@codemonkey.org.uk>
+
+	* libop/op_events.c: segregload is utm_mask not utm_exclusive
+
+2003-02-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* pp/output_format.h:
+	* pp/output_format.cpp:
+	* pp/op_time.cpp:
+	* pp/oprofpp.cpp:
+	* pp/opp_symbol.h: better handling of 64/32 bits bfd_vma
+	  in output
+
+2003-02-20  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_exception.h:
+	* libutil++/op_exception.cpp: throw() where needed
+
+2003-02-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* daemon/opd_image.h:
+	* daemon/opd_image.cpp:
+	* daemon/opd_kernel.cpp: fix thinko with --separate=kernel resulting
+	  in duplicate opening of the same samples file.
+
+2003-02-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_exception.h:
+	* libutil++/op_exception.cpp: new files, base class for exception.
+	  Not used for now.
+
+2003-02-19  John Levon  <levon@movementarian.org>
+
+	* acinclude.m4: update from upstream
+
+	* gui/ui/oprof_start.base.ui:
+	* gui/oprof_start.cpp: separate --setup,--start.
+	  Hide non-2.5 stuff in 2.5.
+
+2003-02-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* dae/opd_sample_files.c:
+	* daemon/opd_sample_files.c: opd_handle_old_sample_file() don't
+	  try to delete old samples files if they don't exist.
+
+2003-02-18  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol (do_options): Better option error checking.
+
+2003-02-17  Will Cohen  <wcohen@redhat.com>
+
+	* pp/format_output.h (show_help): namespace std.
+
+2003-02-17  Will Cohen  <wcohen@redhat.com>
+
+	* TODO: update.
+
+2003-02-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	From Anton Blanchard :
+
+	* daemon/opd_image.c: cookie_t fix for 64 bits
+
+2003-02-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* libopt++/popt_options.cpp:
+	* libopt++/popt_options.h: handle an user specific additional
+	  help string
+
+	* pp/output_format.h:
+	* pp/output_format.cpp:
+	* pp/op_time_options.cpp:
+	* pp/oprofpp_options.cpp: use it to show in --output_format
+	  options details.
+
+2003-02-14  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml:
+	* pp/oprofpp_options.cpp: allow --show-shared-libs with -s
+
+2003-02-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* TODO: update
+
+	* pp/output_format.h:
+	* pp/output_format.cpp: fix #686272, crash when using
+	  oprofpp -s symb_name.
+
+2003-02-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_kernel.h:
+	* dae/opd_image.h:
+	* dae/opd_image.c: don't use hash entry zero for kernel image
+	 fix #686175
+
+2003-02-13  Will Cohen  <wcohen@redhat.com>
+
+	* daemon/opd_cookie.h(opd_nr_lookup_dcookie): Correct number.
+
+2003-02-13  Will Cohen  <wcohen@redhat.com>
+
+	* daemon/opd_cookie.h(opd_nr_lookup_dcookie): Add x86_64.
+
+2003-02-13  John Levon  <levon@movementarian.org>
+
+	* dae/opd_image.c: little cleanup and fix error message
+	  to not lie
+
+2003-02-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: enhance doc about --separate=kernel
+
+	* utils/opcontrol: handle gracefully opcontrol --deinit if profiler
+	  was already shutdown. Avoid wrong warning when umount /dev/oprofile
+
+2003-02-12  Will Cohen  <wcohen@redhat.com>
+
+	* gui/oprof_start.cpp (oprof_start::oprof_start,
+	    oprof_start::on_flush_profiler_data,
+	    oprof_start::on_start_profiler,
+	    oprof_start::on_stop_profiler): Use opcontrol.
+	* gui/oprof_start_util.cpp (daemon_status::daemon_status):
+	    Allow reading interrupt info from new kernel interface.
+	* libop/op_get_interface.c: New.
+	* libop/Makefile.am: Add libop/op_get_interface.c.
+	* libop/op_cpu_type.h: Add enum op_interface.
+
+	I Added some bits. Phil
+	* gui/oprof_start.cpp: correct --separate= handling
+	* gui/oprof_start_util.cpp: read only the real number of interrupts
+
+2003-02-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: handle --note-table-size --kernel-only (2.4 kernel)
+
+2003-02-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/op_start: map --separate-samples to daemon option
+	  --separate-lib-samples.
+
+2003-02-11  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* dae/opd_image.c:
+	* dae/opd_kernel.c:
+	* dae/opd_kernel.h:
+	* dae/opd_parse_proc.c:
+	* dae/opd_proc.c:
+	* dae/opd_proc.h:
+	* dae/opd_sample_files.c:
+	* dae/oprofiled.c:
+	* daemon/opd_image.c:
+	* daemon/opd_image.h:
+	* daemon/opd_kernel.c:
+	* daemon/opd_kernel.h:
+	* daemon/opd_sample_files.c:
+	* daemon/oprofiled.c: per application kernel samples files
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml: document opcontrol --separate=kernel
+
+	* gui/oprof_start.cpp:
+	* gui/oprof_start_config.cpp:
+	* gui/oprof_start_config.h:
+	* gui/ui/oprof_start.base.ui: remove ignore_daemon checkbox, handle
+	  --separate=[library|kernel]
+
+	* libop/op_sample_file.h: add separate_kernel_samples field, file
+	  format is backward compatible
+
+	* libabi/abi.cpp:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp: handle new samples file header field
+
+	* pp/counter_profile.cpp: dump new sample files header field.
+
+	* utils/opcontrol: handle --separate=kernel
+
+2003-02-09  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: Add rtc-value option.
+
+2003-02-09  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: stale lock file detection
+
+2003-02-06  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol (do_dump): Do not exit if no daemon.
+
+2003-02-06  Will cohen  <wcohen@redhat.com>
+
+	* doc/oprofile.1.in: Update man page information.
+
+2003-02-03  John Levon  <levon@movementarian.org>
+
+	* configure.in: 0.6cvs
+
+2003-02-02  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.5
+
+2003-02-02  John Levon  <levon@movementarian.org>
+
+	* configure.in: disable x86_64
+
+2003-02-02  John Levon  <levon@movementarian.org>
+
+	* pp/format_output.cpp: revert previous patch, Phil's
+	  x86 binutils is built with 64-bit bfd_vma
+
+2003-02-01  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: rename --separate-samples to --separate=library
+	  for future proofing.
+
+	* pp/format_output.cpp: output vma at a suitable width
+
+2003-01-31  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol(get_kernel_range): Match only .text segment.
+
+2003-01-31  Graydon Hoare  <graydon@redhat.com>
+
+	* libabi/abi.cpp
+	* libabi/abi_test.cpp
+	* libabi/op_import.cpp: Treat endianness as a property of the datum
+	being imported, rather than the memory architecture.
+
+2003-01-31  Dave Jones <davej@codemonkey.org.uk>
+
+	* module/x86/op_model_athlon.c: Don't poke reserved bits in the counter.
+	  Only rdmsr/wrmsr counters that we've enabled in the NMI handler.
+	  ulong->uint conversion.
+
+2003-01-30  Philippe Elie  <phil.el@wanadoo.fr>
+
+	From Randolph Chung :
+
+	* daemon/opd_cookie.h: add parisc support
+
+2003-01-30  John Levon  <levon@movementarian.org>
+
+	From Anton Blanchard :
+
+	* daemon/opd_cookie.h: add ppc32/64
+
+	* utils/op_start_25: fix start of kernel for ppc
+
+2003-01-30  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol(get_kernel_range): Avoid using perl arithmetic.
+
+2003-01-29  Dave Jones <davej@codemonkey.org.uk>
+
+	* utils/opcontrol: Trying to use the options --pid-filter=pid and
+	  --pgmr-filter=pgmr, opcontrol returned "command not found.
+	  This was due to 2 missing 'test' statements.
+	
+2003-01-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/op_to_source.cpp: read vma with strtoull not strtoul fixing
+	  32/64 failure to read output of objdump
+
+2003-01-29  Dave Jones <davej@codemonkey.org.uk>
+
+	* libop/op_cpu_type.c: Clue the user in on why the cpu type isn't
+	  recognised, by suggesting the module wasn't loaded.
+	* libop/op_events.c: Doh, unit masks use bit numbers, not values.
+
+2003-01-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/op_help.c: get cpu type only if not forced on command line.
+	  Avoid wrong warning about unsupported cpu type.
+
+2003-01-27  Will Cohen  <wcohen@redhat.com>
+
+	* daemon/opd_cookie.h(opd_nr_lookup_dcookie): Add ia64 version.
+
+2003-01-27  Dave Jones <davej@codemonkey.org.uk>
+
+	* libop/op_events.c: K8 HT events are utm_exclusive, not utm_bitmask
+	* libop/op_events.c: Add additional K8 unit masks.
+
+2003-01-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_interface_25.h:
+	* daemon/opd_image.c: prepare drop modules support. exit() when
+	  receiving unknown escape code.
+
+2003-01-23   Randolph Chung  <tausq@debian.org>
+
+	Added minor change: backward compatibility, u_int to uint, fix
+	32/64 bits escape code marker comparison. Phil
+
+	* libop/op_interface_25.h:
+	* daemon/opd_kernel.c:
+	* daemon/opd_image.c: new scheme to recognize kernel or user space
+	  eip, now kernel module pass the relevent information through
+	  escape sequence.
+
+2003-01-21  Dave Jones <davej@codemonkey.org.uk>
+
+	* libop/op_events.c: Add unit mask for Hypertransport events.
+
+2003-01-21  Dave Jones <davej@codemonkey.org.uk>
+
+	* libop/op_events.c: Add x86-64 specific events.
+
+2003-01-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_kernel.c: use sscanf to parse /proc/modules
+
+2003-01-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_kernel.c: more robust /proc/modules parsing.
+
+2003-01-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_kernel.c: 2.5 modules support, for now I keep
+	  the code for /proc/ksyms parsing in daemon. Let's it living a few
+	  weeks please.
+
+2003-01-18  Falk Hueffner  <falk@debian.org>
+
+	I added to the original patch all %L to %ll, Phil
+
+	* daemon/opd_image.c:
+	* daemon/opd_kernel.c:
+	* libutil/op_types.h: 64 bits printf/scanf safety.
+
+2003-01-18  Falk Hueffner  <falk@debian.org>
+
+	* libop/op_cpu_type.h:
+	* libop/op_cpu_type.c: add Alpha CPU families.
+	* libop/op_events.h: make op_event.cpu_mask u32, since we now have
+	  more than 16 CPU types
+	* libop/op_hw_config.h: bump OP_MAX_COUNTERS to 20 for Alpha
+	* libop/op_events.c: add Alpha events
+	* daemon/opd_cookie.h: add dcookie syscall number for Alpha
+	* utils/op_help.c (main): add help string for Alpha
+
+2003-01-18  John Levon  <levon@movementarian.org>
+
+	* module/Makefile.in:
+	* module/x86/Makefile.in:
+	* module/ia64/Makefile.in: kernel headers are too fubar
+	  for -Werror. So I'm taking my ball home.
+
+2003-01-17  John Levon  <levon@movementarian.org>
+
+	* HACKING:
+	* doc/CodingStyle: add
+
+2003-01-17  John Levon  <levon@movementarian.org>
+
+	* TODO: some updates
+
+2003-01-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/x86/op_model_p4.c: pmc_setup_one_p4_counter() show clearly
+	  than event == 0 is an error
+
+2003-01-15  John Levon  <levon@movementarian.org>
+
+	* utils/opcontrol: prefer oprofiled/op_help binaries in the same
+	  dir as opcontrol
+
+2003-01-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events.c: rename OP_P4_HT2 to OP_P4_ALL
+
+2003-01-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop++/op_print_event.cpp: no event,nor unit mask for CPU_TIMER_INT,
+	  problem reported by Ka Fai Lu.
+
+2003-01-12  John Levon  <levon@movementarian.org>
+
+	From Graydon Hoare
+
+	* libop/op_cpu_type.h:
+	* libop/op_cpu_type.c: add P4 HT
+
+	* libop/op_events.c: tag P4 HT events
+
+2003-01-11   Randolph Chung  <tausq@debian.org>
+
+	* daemon/oprofiled.c: fix ELF sniff
+
+2003-01-11  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c: bail out immediately on dcookie
+	  lookup failure.
+
+2003-01-10  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_cookie.h: insulate against missing arch support
+	  for sys_lookup_dcookie
+
+	* daemon/opd_image.c: use the above
+
+2003-01-10  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_image.c:
+	* daemon/oprofiled.c: move complete_dump to a better place
+
+2003-01-10  John Levon  <levon@movementarian.org>
+
+	* libutil/op_types.h: add cookie_t and vma_t
+
+	* daemon/opd_image.c:
+	* daemon/opd_image.h:
+	* daemon/opd_kernel.c:
+	* daemon/opd_kernel.h: use above types, and kernel_pointer_size
+
+	* daemon/oprofiled.c: sniff /proc/kcore for kernel_pointer_size
+
+2003-01-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libopt++/popt_options.cpp:
+	* libopt++/popt_options.h: work-around to support both gcc new parser
+	  and gcc 2.95
+
+2003-01-08  John Levon  <levon@movementarian.org>
+
+	* libop/op_type.cpp: support for ascii-string cpu types
+
+2003-01-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp:
+	* libutil++/op_bfd.h:
+	* pp/oprofpp.cpp: more use of bfd_vma
+
+2003-01-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/Makefile.am: fix include dir
+	* libdb/db_test.c: don't assume than sizeof(struct opd_header) == 128
+
+2003-01-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.h: fix for 64 bits.
+
+2003-01-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libabi/abi.cpp:
+	* libabi/op_import.cpp: broken by my last change in libdb.
+
+2003-01-06  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* db/db_hash.h: do_hash() use db_key_t as parameter
+
+2003-01-04  John Levon  <levon@movementarian.org>
+
+	* pp/op_time.cpp: suggest opcontrol --dump instead
+
+	* utils/opcontrol: implement --start-daemon. Fix a number
+	  of bugs
+
+	* doc/oprofile.xml:
+	* doc/oprofile.1.in: document --start-daemon
+
+2003-01-03  Will Cohen  <wcohen@redhat.com>
+
+	* daemon/oprofiled.c (opd_do_samples): Typecast to match
+	  arguments.
+
+See ChangeLog-2002 for earlier changelogs.

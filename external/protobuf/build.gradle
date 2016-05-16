@@ -1,0 +1,51 @@
+apply plugin: 'java'
+
+configurations {
+    micro
+    nano
+}
+
+sourceSets {
+    micro {
+        java {
+            srcDirs = ['java/src/main/java/com/google/protobuf/micro']
+        }
+    }
+
+    nano {
+        java {
+            srcDirs = ['java/src/main/java/com/google/protobuf/nano']
+        }
+    }
+}
+
+jar {
+    from sourceSets.nano.output, sourceSets.micro.output
+    baseName "libprotobuf"
+    appendix "java"
+    version "2.3"
+    classifier "micronano"
+}
+
+task nanoJar(type: Jar) {
+    from sourceSets.nano.output
+    dependsOn nanoClasses
+    baseName "libprotobuf"
+    appendix "java"
+    version "2.3"
+    classifier "nano"
+}
+
+task microJar(type: Jar) {
+    from sourceSets.micro.output
+    dependsOn microClasses
+    baseName "libprotobuf"
+    appendix "java"
+    version "2.3"
+    classifier "micro"
+}
+
+artifacts {
+    micro microJar
+    nano nanoJar
+}

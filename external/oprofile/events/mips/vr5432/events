@@ -1,0 +1,14 @@
+#
+# VR5432 events
+#
+event:0x0 counters:0,1 um:zero minimum:500 name:CYCLES : Processor cycles (PClock)
+event:0x1 counters:0,1 um:zero minimum:500 name:INSTRUCTIONS_EXECUTED : (Instructions executed)/2 and truncated
+event:0x2 counters:0,1 um:zero minimum:500 name:LOAD_PREF_CACHE_INSTRUCTIONS : Load, prefetch/CacheOps execution (no sync)
+event:0x3 counters:0,1 um:zero minimum:500 name:STORES : Store execution
+event:0x4 counters:0,1 um:zero minimum:500 name:BRANCHES : Branch execution (no jumps or jump registers)
+event:0x5 counters:0,1 um:zero minimum:500 name:FP_INSTRUCTIONS : (FP instruction execution) / 2 and truncated excluding cp1 loads and stores
+event:0x6 counters:0,1 um:zero minimum:500 name:DOUBLEWORDS_FLUSHED : Doublewords flushed to main memory (no uncached stores)
+event:0x7 counters:0,1 um:zero minimum:500 name:JTLB_REFILLS : JTLB refills
+event:0x8 counters:0,1 um:zero minimum:500 name:DCACHE_MISSES : Data cache misses (no I-cache misses)
+event:0x9 counters:0,1 um:zero minimum:500 name:ICACHE_MISSES : Instruction cache misses (no D-cache misses)
+event:0xa counters:0,1 um:zero minimum:500 name:BRANCHES_MISPREDICTED : Branches mispredicted

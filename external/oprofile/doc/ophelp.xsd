@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="help_events">
+    <xs:complexType>
+      <xs:sequence>
+		<xs:element minOccurs="1" maxOccurs="1" ref="header"/>
+		<xs:element minOccurs="1" maxOccurs="unbounded" ref="event"/>
+      </xs:sequence>
+      <!-- integer part of schemaversion should changes for major schema -->
+      <xs:attribute name="schemaversion" use="required">
+        <xs:simpleType>
+          <xs:restriction base = "xs:string">
+            <xs:pattern value = "1\.[0-9]+"/>
+          </xs:restriction>
+        </xs:simpleType>       </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="header">
+    <xs:complexType>
+      <xs:attribute name="title" type="xs:string" use="required"/>
+      <xs:attribute name="doc" type="xs:string" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="event">
+    <xs:complexType>
+      <xs:sequence>
+	  <xs:element minOccurs="0" maxOccurs="1" ref="unit_masks"/>
+      </xs:sequence>
+      <xs:attribute name="event_name" type="xs:string" use="required"/>
+      <xs:attribute name="group" type="xs:nonNegativeInteger" use="optional"/>
+      <xs:attribute name="counter_mask" type="xs:nonNegativeInteger" use="required"/>
+      <xs:attribute name="min_count" type="xs:nonNegativeInteger" use="required"/>
+      <xs:attribute name="desc" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="unit_masks">
+    <xs:complexType>
+      <xs:sequence>
+		<xs:element minOccurs="1" maxOccurs="unbounded" ref="unit_mask"/>
+      </xs:sequence>
+      <xs:attribute name="default" type="xs:nonNegativeInteger" use="required"/>
+      <xs:attribute name="category" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="unit_mask">
+    <xs:complexType>
+      <xs:attribute name="mask" type="xs:nonNegativeInteger" use="required"/>
+      <xs:attribute name="desc" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

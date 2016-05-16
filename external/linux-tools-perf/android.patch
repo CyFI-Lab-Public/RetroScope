@@ -1,0 +1,1381 @@
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/arch/arm/util/dwarf-regs.c ./arch/arm/util/dwarf-regs.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/arch/arm/util/dwarf-regs.c	2011-12-09 13:14:49.000000000 -0800
++++ ./arch/arm/util/dwarf-regs.c	2012-03-22 17:08:09.000000000 -0700
+@@ -8,8 +8,15 @@
+  * published by the Free Software Foundation.
+  */
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <libio.h>
+ #include <dwarf-regs.h>
++#else
++#include <stdio.h>
++#include "util/include/dwarf-regs.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ struct pt_regs_dwarfnum {
+ 	const char *name;
+@@ -20,7 +27,7 @@
+ #define REG_DWARFNUM_NAME(r, num) {.name = r, .dwarfnum = num}
+ #define GPR_DWARFNUM_NAME(num) \
+ 	{.name = STR(%r##num), .dwarfnum = num}
+-#define REG_DWARFNUM_END {.name = NULL, .dwarfnum = 0}
++#define REG_DWARFNUM_END {.name = 0, .dwarfnum = 0}
+ 
+ /*
+  * Reference:
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/arch/x86/util/dwarf-regs.c ./arch/x86/util/dwarf-regs.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/arch/x86/util/dwarf-regs.c	2011-12-09 13:14:49.000000000 -0800
++++ ./arch/x86/util/dwarf-regs.c	2012-03-22 17:08:09.000000000 -0700
+@@ -21,7 +21,13 @@
+  */
+ 
+ #include <libio.h>
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <dwarf-regs.h>
++#else
++#include "util/include/dwarf-regs.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ /*
+  * Generic dwarf analysis helpers
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/bench/mem-memcpy.c ./bench/mem-memcpy.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/bench/mem-memcpy.c	2011-12-09 13:14:50.000000000 -0800
++++ ./bench/mem-memcpy.c	2012-03-22 17:08:09.000000000 -0700
+@@ -146,9 +146,9 @@
+ 	if (prefault)
+ 		fn(dst, src, len);
+ 
+-	BUG_ON(gettimeofday(&tv_start, NULL));
++	gettimeofday(&tv_start, NULL);
+ 	fn(dst, src, len);
+-	BUG_ON(gettimeofday(&tv_end, NULL));
++	gettimeofday(&tv_end, NULL);
+ 
+ 	timersub(&tv_end, &tv_start, &tv_diff);
+ 
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/bench/sched-messaging.c ./bench/sched-messaging.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/bench/sched-messaging.c	2011-12-09 13:14:50.000000000 -0800
++++ ./bench/sched-messaging.c	2012-03-22 17:08:09.000000000 -0700
+@@ -16,6 +16,11 @@
+ #include "bench.h"
+ 
+ /* Test groups of 20 processes spraying to 20 receivers */
++/* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++#include <asm/page.h>
++#endif
++/* ANDROID_CHANGE_END */
+ #include <pthread.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/bench/sched-pipe.c ./bench/sched-pipe.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/bench/sched-pipe.c	2011-12-09 13:14:50.000000000 -0800
++++ ./bench/sched-pipe.c	2012-03-22 17:08:09.000000000 -0700
+@@ -45,6 +45,8 @@
+ int bench_sched_pipe(int argc, const char **argv,
+ 		     const char *prefix __used)
+ {
++        /* ANDROID_CHANGE_BEGIN */
++#ifndef __BIONIC__
+ 	int pipe_1[2], pipe_2[2];
+ 	int m = 0, i;
+ 	struct timeval start, stop, diff;
+@@ -122,6 +124,8 @@
+ 		exit(1);
+ 		break;
+ 	}
++#endif
++        /* ANDROID_CHANGE_END */
+ 
+ 	return 0;
+ }
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-annotate.c ./builtin-annotate.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-annotate.c	2011-12-09 13:14:50.000000000 -0800
++++ ./builtin-annotate.c	2012-03-22 17:08:09.000000000 -0700
+@@ -9,9 +9,17 @@
+ 
+ #include "util/util.h"
+ #include "util/color.h"
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include "util/cache.h"
+ #include <linux/rbtree.h>
++#else
++#include "util/include/linux/list.h"
++#include "util/cache.h"
++#include "util/include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include "util/symbol.h"
+ 
+ #include "perf.h"
+@@ -252,6 +260,10 @@
+ 		    "print matching source lines (may be slow)"),
+ 	OPT_BOOLEAN('P', "full-paths", &full_paths,
+ 		    "Don't shorten the displayed pathnames"),
++        /* ANDROID_CHANGE_BEGIN */
++	OPT_STRING(0, "symfs", &symbol_conf.symfs, "directory",
++		    "Look for files with symbols relative to this directory"),
++        /* ANDROID_CHANGE_END */
+ 	OPT_END()
+ };
+ 
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-evlist.c ./builtin-evlist.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-evlist.c	2011-12-09 13:14:50.000000000 -0800
++++ ./builtin-evlist.c	2012-03-22 17:08:09.000000000 -0700
+@@ -6,7 +6,13 @@
+ 
+ #include "util/util.h"
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
++#else
++#include "util/include/linux/list.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ #include "perf.h"
+ #include "util/evlist.h"
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-kmem.c ./builtin-kmem.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-kmem.c	2011-12-09 13:14:50.000000000 -0800
++++ ./builtin-kmem.c	2012-03-22 17:08:09.000000000 -0700
+@@ -13,7 +13,13 @@
+ 
+ #include "util/debug.h"
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/rbtree.h>
++#else
++#include "util/include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ struct alloc_stat;
+ typedef int (*sort_fn_t)(struct alloc_stat *, struct alloc_stat *);
+@@ -775,4 +781,3 @@
+ 
+ 	return 0;
+ }
+-
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-lock.c ./builtin-lock.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-lock.c	2011-12-09 13:14:50.000000000 -0800
++++ ./builtin-lock.c	2012-03-22 17:08:09.000000000 -0700
+@@ -20,8 +20,15 @@
+ #include <math.h>
+ #include <limits.h>
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include <linux/hash.h>
++#else
++#include "util/include/linux/list.h"
++#include "util/include/linux/hash.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ static struct perf_session *session;
+ 
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-record.c ./builtin-record.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-record.c	2011-12-09 13:14:50.000000000 -0800
++++ ./builtin-record.c	2012-03-22 17:08:09.000000000 -0700
+@@ -464,7 +464,13 @@
+ 		if (!fstat(STDOUT_FILENO, &st) && S_ISFIFO(st.st_mode))
+ 			pipe_output = 1;
+ 		else
++                        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++			output_name = "/data/perf.data";
++#else
+ 			output_name = "perf.data";
++#endif
++                        /* ANDROID_CHANGE_END */
+ 	}
+ 	if (output_name) {
+ 		if (!strcmp(output_name, "-"))
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-report.c ./builtin-report.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-report.c	2011-12-09 13:14:50.000000000 -0800
++++ ./builtin-report.c	2012-03-22 17:08:09.000000000 -0700
+@@ -11,9 +11,17 @@
+ 
+ #include "util/annotate.h"
+ #include "util/color.h"
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include "util/cache.h"
+ #include <linux/rbtree.h>
++#else
++#include "util/include/linux/list.h"
++#include "util/cache.h"
++#include "util/include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include "util/symbol.h"
+ #include "util/callchain.h"
+ #include "util/strlist.h"
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-sched.c ./builtin-sched.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-sched.c	2011-12-09 13:14:50.000000000 -0800
++++ ./builtin-sched.c	2012-03-22 17:08:09.000000000 -0700
+@@ -16,6 +16,12 @@
+ #include <sys/prctl.h>
+ 
+ #include <semaphore.h>
++/* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++/* PTHREAD_STACK_MIN is defined as (2 * PAGE_SIZE) */
++#include <asm/page.h>
++#endif
++/* ANDROID_CHANGE_END */
+ #include <pthread.h>
+ #include <math.h>
+ 
+@@ -473,6 +479,11 @@
+ 	BUG_ON(ret);
+ 
+ 	goto again;
++        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++        return NULL;
++#endif
++        /* ANDROID_CHANGE_END */
+ }
+ 
+ static void create_tasks(void)
+@@ -484,8 +495,15 @@
+ 
+ 	err = pthread_attr_init(&attr);
+ 	BUG_ON(err);
++        /* ANDROID_CHANGE_BEGIN */
++#if 0
+ 	err = pthread_attr_setstacksize(&attr,
+ 			(size_t) max(16 * 1024, PTHREAD_STACK_MIN));
++#else
++	err = pthread_attr_setstacksize(&attr,
++			(size_t) max((unsigned) 16 * 1024, (unsigned) PTHREAD_STACK_MIN));
++#endif
++        /* ANDROID_CHANGE_END */
+ 	BUG_ON(err);
+ 	err = pthread_mutex_lock(&start_work_mutex);
+ 	BUG_ON(err);
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-stat.c ./builtin-stat.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-stat.c	2011-12-09 13:14:50.000000000 -0800
++++ ./builtin-stat.c	2012-03-22 17:08:09.000000000 -0700
+@@ -743,7 +743,14 @@
+ 	if (csv_output)
+ 		fmt = "%s%.0f%s%s";
+ 	else if (big_num)
++                /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++                /* bionic doesn't like "'" */
++		fmt = "%s%18.0f%s%-25s";
++#else
+ 		fmt = "%s%'18.0f%s%-25s";
++#endif
++                /* ANDROID_CHANGE_END */
+ 	else
+ 		fmt = "%s%18.0f%s%-25s";
+ 
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-test.c ./builtin-test.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-test.c	2011-12-09 13:14:50.000000000 -0800
++++ ./builtin-test.c	2012-03-22 17:08:09.000000000 -0700
+@@ -453,6 +453,10 @@
+  */
+ static int test__basic_mmap(void)
+ {
++        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++        return 0;
++#else
+ 	int err = -1;
+ 	union perf_event *event;
+ 	struct thread_map *threads;
+@@ -598,6 +602,8 @@
+ 	thread_map__delete(threads);
+ 	return err;
+ #undef nsyscalls
++#endif
++        /* ANDROID_CHANGE_END */
+ }
+ 
+ static struct test {
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-timechart.c ./builtin-timechart.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-timechart.c	2011-12-09 13:14:50.000000000 -0800
++++ ./builtin-timechart.c	2012-03-22 17:08:09.000000000 -0700
+@@ -17,9 +17,17 @@
+ #include "util/util.h"
+ 
+ #include "util/color.h"
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include "util/cache.h"
+ #include <linux/rbtree.h>
++#else
++#include "util/include/linux/list.h"
++#include "util/cache.h"
++#include "util/include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include "util/symbol.h"
+ #include "util/callchain.h"
+ #include "util/strlist.h"
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-top.c ./builtin-top.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/builtin-top.c	2011-12-09 13:14:50.000000000 -0800
++++ ./builtin-top.c	2012-03-22 17:08:09.000000000 -0700
+@@ -31,7 +31,13 @@
+ #include "util/thread_map.h"
+ #include "util/top.h"
+ #include "util/util.h"
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/rbtree.h>
++#else
++#include "util/include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include "util/parse-options.h"
+ #include "util/parse-events.h"
+ #include "util/cpumap.h"
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/perf.h ./perf.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/perf.h	2011-12-09 13:14:50.000000000 -0800
++++ ./perf.h	2012-03-22 17:08:09.000000000 -0700
+@@ -6,7 +6,13 @@
+ void get_term_dimensions(struct winsize *ws);
+ 
+ #if defined(__i386__)
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include "../../arch/x86/include/asm/unistd.h"
++#else
++#include <asm/unistd.h>
++#endif
++/* ANDROID_CHANGE_END */
+ #define rmb()		asm volatile("lock; addl $0,0(%%esp)" ::: "memory")
+ #define cpu_relax()	asm volatile("rep; nop" ::: "memory");
+ #endif
+@@ -64,7 +70,13 @@
+ #endif
+ 
+ #ifdef __arm__
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include "../../arch/arm/include/asm/unistd.h"
++#else
++#include <asm/unistd.h>
++#endif
++/* ANDROID_CHANGE_END */
+ /*
+  * Use the __kuser_memory_barrier helper in the CPU helper page. See
+  * arch/arm/kernel/entry-armv.S in the kernel source for details.
+@@ -88,9 +100,16 @@
+ #include <time.h>
+ #include <unistd.h>
+ #include <sys/types.h>
++
+ #include <sys/syscall.h>
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include "../../include/linux/perf_event.h"
++#else
++#include "util/include/linux/added/perf_event.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include "util/types.h"
+ #include <stdbool.h>
+ 
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/annotate.c ./util/annotate.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/annotate.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/annotate.c	2012-03-22 17:08:10.000000000 -0700
+@@ -322,12 +322,23 @@
+ 	pr_debug("annotating [%p] %30s : [%p] %30s\n",
+ 		 dso, dso->long_name, sym, sym->name);
+ 
++        /* ANDROID_CHANGE_BEGIN */
++#if 0
+ 	snprintf(command, sizeof(command),
+ 		 "objdump --start-address=0x%016" PRIx64
+ 		 " --stop-address=0x%016" PRIx64 " -dS -C %s|grep -v %s|expand",
+ 		 map__rip_2objdump(map, sym->start),
+ 		 map__rip_2objdump(map, sym->end),
+ 		 symfs_filename, filename);
++#else
++	snprintf(command, sizeof(command),
++		 "arm-eabi-objdump --start-address=0x%016" PRIx64
++		 " --stop-address=0x%016" PRIx64 " -d -C %s|grep -v %s|expand",
++		 map__rip_2objdump(map, sym->start),
++		 map__rip_2objdump(map, sym->end),
++		 symfs_filename, filename);
++#endif
++        /* ANDROID_CHANGE_END */
+ 
+ 	pr_debug("Executing: %s\n", command);
+ 
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/annotate.h ./util/annotate.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/annotate.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/annotate.h	2012-03-22 17:08:10.000000000 -0700
+@@ -4,8 +4,18 @@
+ #include <stdbool.h>
+ #include "types.h"
+ #include "symbol.h"
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include <linux/rbtree.h>
++#else
++#include "include/linux/list.h"
++#include "include/linux/rbtree.h"
++#ifdef __BIONIC__
++#include <pthread.h>
++#endif
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ struct objdump_line {
+ 	struct list_head node;
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/bitmap.c ./util/bitmap.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/bitmap.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/bitmap.c	2012-03-22 17:08:10.000000000 -0700
+@@ -5,7 +5,13 @@
+  * This source code is licensed under the GNU General Public License,
+  * Version 2.  See the file COPYING for more details.
+  */
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/bitmap.h>
++#else
++#include "include/linux/bitmap.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ int __bitmap_weight(const unsigned long *bitmap, int bits)
+ {
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/callchain.h ./util/callchain.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/callchain.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/callchain.h	2012-03-22 17:08:10.000000000 -0700
+@@ -2,8 +2,15 @@
+ #define __PERF_CALLCHAIN_H
+ 
+ #include "../perf.h"
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include <linux/rbtree.h>
++#else
++#include "include/linux/list.h"
++#include "include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include "event.h"
+ #include "symbol.h"
+ 
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/event.c ./util/event.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/event.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/event.c	2012-03-22 17:08:10.000000000 -0700
+@@ -91,7 +91,13 @@
+ 	}
+ 
+ 	event->comm.header.type = PERF_RECORD_COMM;
++        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++	size = KERNEL_ALIGN(size, sizeof(u64));
++#else
+ 	size = ALIGN(size, sizeof(u64));
++#endif
++        /* ANDROID_CHANGE_END */
+ 	memset(event->comm.comm + size, 0, session->id_hdr_size);
+ 	event->comm.header.size = (sizeof(event->comm) -
+ 				(sizeof(event->comm.comm) - size) +
+@@ -184,7 +190,13 @@
+ 			size = strlen(execname);
+ 			execname[size - 1] = '\0'; /* Remove \n */
+ 			memcpy(event->mmap.filename, execname, size);
++                        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++			size = KERNEL_ALIGN(size, sizeof(u64));
++#else
+ 			size = ALIGN(size, sizeof(u64));
++#endif
++                        /* ANDROID_CHANGE_END */
+ 			event->mmap.len -= event->mmap.start;
+ 			event->mmap.header.size = (sizeof(event->mmap) -
+ 					        (sizeof(event->mmap.filename) - size));
+@@ -234,7 +246,13 @@
+ 		if (pos->dso->kernel)
+ 			continue;
+ 
++                /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++		size = KERNEL_ALIGN(pos->dso->long_name_len + 1, sizeof(u64));
++#else
+ 		size = ALIGN(pos->dso->long_name_len + 1, sizeof(u64));
++#endif
++                /* ANDROID_CHANGE_END */
+ 		event->mmap.header.type = PERF_RECORD_MMAP;
+ 		event->mmap.header.size = (sizeof(event->mmap) -
+ 				        (sizeof(event->mmap.filename) - size));
+@@ -409,7 +427,13 @@
+ 	map = machine->vmlinux_maps[MAP__FUNCTION];
+ 	size = snprintf(event->mmap.filename, sizeof(event->mmap.filename),
+ 			"%s%s", mmap_name, symbol_name) + 1;
++        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++	size = KERNEL_ALIGN(size, sizeof(u64));
++#else
+ 	size = ALIGN(size, sizeof(u64));
++#endif
++        /* ANDROID_CHANGE_END */
+ 	event->mmap.header.type = PERF_RECORD_MMAP;
+ 	event->mmap.header.size = (sizeof(event->mmap) -
+ 			(sizeof(event->mmap.filename) - size) + session->id_hdr_size);
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/event.h ./util/event.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/event.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/event.h	2012-03-22 17:08:10.000000000 -0700
+@@ -87,7 +87,13 @@
+ struct build_id_event {
+ 	struct perf_event_header header;
+ 	pid_t			 pid;
++        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++	u8			 build_id[KERNEL_ALIGN(BUILD_ID_SIZE, sizeof(u64))];
++#else
+ 	u8			 build_id[ALIGN(BUILD_ID_SIZE, sizeof(u64))];
++#endif
++        /* ANDROID_CHANGE_END */
+ 	char			 filename[];
+ };
+ 
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/evlist.c ./util/evlist.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/evlist.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/evlist.c	2012-03-22 17:08:10.000000000 -0700
+@@ -15,8 +15,15 @@
+ 
+ #include <sys/mman.h>
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/bitops.h>
+ #include <linux/hash.h>
++#else
++#include "include/linux/bitops.h"
++#include "include/linux/hash.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ #define FD(e, x, y) (*(int *)xyarray__entry(e->fd, x, y))
+ #define SID(e, x, y) xyarray__entry(e->sample_id, x, y)
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/evlist.h ./util/evlist.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/evlist.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/evlist.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1,7 +1,13 @@
+ #ifndef __PERF_EVLIST_H
+ #define __PERF_EVLIST_H 1
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
++#else
++#include "include/linux/list.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include "../perf.h"
+ #include "event.h"
+ 
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/evsel.h ./util/evsel.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/evsel.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/evsel.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1,9 +1,17 @@
+ #ifndef __PERF_EVSEL_H
+ #define __PERF_EVSEL_H 1
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include <stdbool.h>
+ #include "../../../include/linux/perf_event.h"
++#else
++#include "include/linux/list.h"
++#include <stdbool.h>
++#include "include/linux/added/perf_event.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include "types.h"
+ #include "xyarray.h"
+ #include "cgroup.h"
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/generate-cmdlist.sh ./util/generate-cmdlist.sh
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/generate-cmdlist.sh	2011-12-09 13:14:50.000000000 -0800
++++ ./util/generate-cmdlist.sh	2012-03-22 17:08:10.000000000 -0700
+@@ -1,5 +1,7 @@
+ #!/bin/sh
+ 
++PREFIX="$1"
++
+ echo "/* Automatically generated by $0 */
+ struct cmdname_help
+ {
+@@ -9,7 +11,7 @@
+ 
+ static struct cmdname_help common_cmds[] = {"
+ 
+-sed -n -e 's/^perf-\([^ 	]*\)[ 	].* common.*/\1/p' command-list.txt |
++sed -n -e 's/^perf-\([^ 	]*\)[ 	].* common.*/\1/p' ${PREFIX}/command-list.txt |
+ sort |
+ while read cmd
+ do
+@@ -19,6 +21,6 @@
+             x
+             s/.*perf-'"$cmd"' - \(.*\)/  {"'"$cmd"'", "\1"},/
+ 	    p
+-     }' "Documentation/perf-$cmd.txt"
++     }' "${PREFIX}/Documentation/perf-$cmd.txt"
+ done
+ echo "};"
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/header.c ./util/header.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/header.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/header.c	2012-03-22 17:08:10.000000000 -0700
+@@ -5,8 +5,15 @@
+ #include <unistd.h>
+ #include <stdio.h>
+ #include <stdlib.h>
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include <linux/kernel.h>
++#else
++#include "include/linux/list.h"
++#include "include/linux/kernel.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ #include "evlist.h"
+ #include "evsel.h"
+@@ -57,10 +64,23 @@
+ 	return NULL;
+ }
+ 
++/* ANDROID_CHANGE_BEGIN */
++/*
++ * The string in the literal pool might not be aligned properly. ARM doesn't
++ * support unaligned loads with NEON registers
++ */
++#if 0
+ static const char *__perf_magic = "PERFFILE";
+ 
++#else
++static const char const __perf_magic[9] __attribute__ ((aligned (8))) = 
++  "PERFFILE";
++#endif
++/* ANDROID_CHANGE_END */
++
+ #define PERF_MAGIC	(*(u64 *)__perf_magic)
+ 
++
+ struct perf_file_attr {
+ 	struct perf_event_attr	attr;
+ 	struct perf_file_section	ids;
+@@ -129,7 +149,13 @@
+ 		if (!pos->hit)
+ 			continue;
+ 		len = pos->long_name_len + 1;
++                /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++		len = KERNEL_ALIGN(len, NAME_ALIGN);
++#else
+ 		len = ALIGN(len, NAME_ALIGN);
++#endif
++                /* ANDROID_CHANGE_BEGIN */
+ 		memset(&b, 0, sizeof(b));
+ 		memcpy(&b.build_id, pos->build_id, sizeof(pos->build_id));
+ 		b.pid = pid;
+@@ -705,7 +731,13 @@
+ 	struct perf_session *session = container_of(header, struct perf_session, header);
+ 	struct {
+ 		struct perf_event_header   header;
++                /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++		u8			   build_id[KERNEL_ALIGN(BUILD_ID_SIZE, sizeof(u64))];
++#else
+ 		u8			   build_id[ALIGN(BUILD_ID_SIZE, sizeof(u64))];
++#endif
++                /* ANDROID_CHANGE_END */
+ 		char			   filename[0];
+ 	} old_bev;
+ 	struct build_id_event bev;
+@@ -950,7 +982,13 @@
+ 	int err;
+ 
+ 	size = sizeof(struct perf_event_attr);
++        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++	size = KERNEL_ALIGN(size, sizeof(u64));
++#else
+ 	size = ALIGN(size, sizeof(u64));
++#endif
++        /* ANDROID_CHANGE_END */
+ 	size += sizeof(struct perf_event_header);
+ 	size += ids * sizeof(u64);
+ 
+@@ -1046,7 +1084,13 @@
+ 
+ 	ev.event_type.header.type = PERF_RECORD_HEADER_EVENT_TYPE;
+ 	size = strlen(name);
++        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++	size = KERNEL_ALIGN(size, sizeof(u64));
++#else
+ 	size = ALIGN(size, sizeof(u64));
++#endif
++        /* ANDROID_CHANGE_END */
+ 	ev.event_type.header.size = sizeof(ev.event_type) -
+ 		(sizeof(ev.event_type.event_type.name) - size);
+ 
+@@ -1100,7 +1144,13 @@
+ 	size = read_tracing_data_size(fd, &evlist->entries);
+ 	if (size <= 0)
+ 		return size;
++        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++	aligned_size = KERNEL_ALIGN(size, sizeof(u64));
++#else
+ 	aligned_size = ALIGN(size, sizeof(u64));
++#endif
++        /* ANDROID_CHANGE_END */
+ 	padding = aligned_size - size;
+ 	ev.tracing_data.header.size = sizeof(ev.tracing_data);
+ 	ev.tracing_data.size = aligned_size;
+@@ -1126,7 +1176,13 @@
+ 
+ 	size_read = trace_report(session->fd, session->repipe);
+ 
++        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++	padding = KERNEL_ALIGN(size_read, sizeof(u64)) - size_read;
++#else
+ 	padding = ALIGN(size_read, sizeof(u64)) - size_read;
++#endif
++        /* ANDROID_CHANGE_END */
+ 
+ 	if (read(session->fd, buf, padding) < 0)
+ 		die("reading input file");
+@@ -1157,7 +1213,13 @@
+ 	memset(&ev, 0, sizeof(ev));
+ 
+ 	len = pos->long_name_len + 1;
++        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++	len = KERNEL_ALIGN(len, NAME_ALIGN);
++#else
+ 	len = ALIGN(len, NAME_ALIGN);
++#endif
++        /* ANDROID_CHANGE_END */
+ 	memcpy(&ev.build_id.build_id, pos->build_id, sizeof(pos->build_id));
+ 	ev.build_id.header.type = PERF_RECORD_HEADER_BUILD_ID;
+ 	ev.build_id.header.misc = misc;
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/header.h ./util/header.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/header.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/header.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1,13 +1,25 @@
+ #ifndef __PERF_HEADER_H
+ #define __PERF_HEADER_H
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include "../../../include/linux/perf_event.h"
++#else
++#include "include/linux/added/perf_event.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include <sys/types.h>
+ #include <stdbool.h>
+ #include "types.h"
+ #include "event.h"
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/bitmap.h>
++#else
++#include "include/linux/bitmap.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ enum {
+ 	HEADER_TRACE_INFO = 1,
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/help.c ./util/help.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/help.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/help.c	2012-03-22 17:08:10.000000000 -0700
+@@ -74,12 +74,18 @@
+ {
+ 	int cols = 1, rows;
+ 	int space = longest + 1; /* min 1 SP between words */
+-	struct winsize win;
+ 	int max_cols;
+ 	int i, j;
++        /* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++        max_cols = 75;
++#else
++	struct winsize win;
+ 
+ 	get_term_dimensions(&win);
+ 	max_cols = win.ws_col - 1; /* don't print *on* the edge */
++#endif
++        /* ANDROID_CHANGE_END */
+ 
+ 	if (space < max_cols)
+ 		cols = max_cols / space;
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/hweight.c ./util/hweight.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/hweight.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/hweight.c	2012-03-22 17:08:10.000000000 -0700
+@@ -1,4 +1,10 @@
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/bitops.h>
++#else
++#include "include/linux/bitops.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ /**
+  * hweightN - returns the hamming weight of a N-bit word
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/asm/byteorder.h ./util/include/asm/byteorder.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/asm/byteorder.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/include/asm/byteorder.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1,2 +1,8 @@
+ #include <asm/types.h>
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include "../../../../include/linux/swab.h"
++#else
++#include <linux/swab.h>
++#endif
++/* ANDROID_CHANGE_END */
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/bitmap.h ./util/include/linux/bitmap.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/bitmap.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/include/linux/bitmap.h	2012-03-22 17:08:10.000000000 -0700
+@@ -2,7 +2,13 @@
+ #define _PERF_BITOPS_H
+ 
+ #include <string.h>
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/bitops.h>
++#else
++#include "bitops.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ int __bitmap_weight(const unsigned long *bitmap, int bits);
+ 
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/bitops.h ./util/include/linux/bitops.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/bitops.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/include/linux/bitops.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1,9 +1,20 @@
+ #ifndef _PERF_LINUX_BITOPS_H_
+ #define _PERF_LINUX_BITOPS_H_
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/kernel.h>
+ #include <linux/compiler.h>
+ #include <asm/hweight.h>
++#else
++#include "kernel.h"
++#include "compiler.h"
++#include "../asm/hweight.h"
++#if defined(__BIONIC__)
++#define __WORDSIZE 32
++#endif
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ #define BITS_PER_LONG __WORDSIZE
+ #define BITS_PER_BYTE           8
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/compiler.h ./util/include/linux/compiler.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/compiler.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/include/linux/compiler.h	2012-03-22 17:08:10.000000000 -0700
+@@ -7,6 +7,10 @@
+ #define __user
+ #define __attribute_const__
+ 
++/* ANDROID_CHANGE_BEGIN */
++#ifndef __BIONIC__
+ #define __used		__attribute__((__unused__))
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ #endif
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/hash.h ./util/include/linux/hash.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/hash.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/include/linux/hash.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1,5 +1,10 @@
+-#include "../../../../include/linux/hash.h"
+-
+ #ifndef PERF_HASH_H
+ #define PERF_HASH_H
++/* ANDROID_CHANGE_BEGIN */
++#if 0
++#include "../../../../include/linux/hash.h"
++#else
++#include "added/hash.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #endif
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/kernel.h ./util/include/linux/kernel.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/kernel.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/include/linux/kernel.h	2012-03-22 17:08:10.000000000 -0700
+@@ -8,7 +8,14 @@
+ 
+ #define DIV_ROUND_UP(n,d) (((n) + (d) - 1) / (d))
+ 
++/* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++/* Bionic defines ALIGN in sys/param.h */
++#define KERNEL_ALIGN(x,a)	__ALIGN_MASK(x,(typeof(x))(a)-1)
++#else
+ #define ALIGN(x,a)		__ALIGN_MASK(x,(typeof(x))(a)-1)
++#endif
++/* ANDROID_CHANGE_END */
+ #define __ALIGN_MASK(x,mask)	(((x)+(mask))&~(mask))
+ 
+ #ifndef offsetof
+@@ -28,7 +35,11 @@
+ 	(type *)((char *)__mptr - offsetof(type, member)); })
+ #endif
+ 
++/* ANDROID_CHANGE_BEGIN */
++#ifndef __BIONIC__
+ #define BUILD_BUG_ON_ZERO(e) (sizeof(struct { int:-!!(e); }))
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ #ifndef max
+ #define max(x, y) ({				\
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/list.h ./util/include/linux/list.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/list.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/include/linux/list.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1,7 +1,15 @@
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/kernel.h>
+ #include <linux/prefetch.h>
+-
+ #include "../../../../include/linux/list.h"
++#else
++#include "kernel.h"
++#include "prefetch.h"
++#include "types.h"
++#include "added/list.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ #ifndef PERF_LIST_H
+ #define PERF_LIST_H
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/poison.h ./util/include/linux/poison.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/poison.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/include/linux/poison.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1 +1,7 @@
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include "../../../../include/linux/poison.h"
++#else
++#include "added/poison.h"
++#endif
++/* ANDROID_CHANGE_END */
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/rbtree.h ./util/include/linux/rbtree.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/include/linux/rbtree.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/include/linux/rbtree.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1 +1,7 @@
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include "../../../../include/linux/rbtree.h"
++#else
++#include "added/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/map.h ./util/map.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/map.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/map.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1,9 +1,17 @@
+ #ifndef __PERF_MAP_H
+ #define __PERF_MAP_H
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/compiler.h>
+ #include <linux/list.h>
+ #include <linux/rbtree.h>
++#else
++#include "include/linux/compiler.h"
++#include "include/linux/list.h"
++#include "include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include <stdio.h>
+ #include <stdbool.h>
+ #include "types.h"
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/parse-events.c ./util/parse-events.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/parse-events.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/parse-events.c	2012-03-22 17:08:10.000000000 -0700
+@@ -1,4 +1,10 @@
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include "../../../include/linux/hw_breakpoint.h"
++#else
++#include "include/linux/added/hw_breakpoint.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include "util.h"
+ #include "../perf.h"
+ #include "evlist.h"
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/parse-events.h ./util/parse-events.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/parse-events.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/parse-events.h	2012-03-22 17:08:10.000000000 -0700
+@@ -4,7 +4,13 @@
+  * Parse symbolic events/counts passed in as options:
+  */
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include "../../../include/linux/perf_event.h"
++#else
++#include "include/linux/added/perf_event.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ struct list_head;
+ struct perf_evsel;
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/probe-finder.c ./util/probe-finder.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/probe-finder.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/probe-finder.c	2012-03-22 17:08:10.000000000 -0700
+@@ -31,9 +31,16 @@
+ #include <string.h>
+ #include <stdarg.h>
+ #include <ctype.h>
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <dwarf-regs.h>
+-
+ #include <linux/bitops.h>
++#else
++#include "include/dwarf-regs.h"
++#include "include/linux/bitops.h"
++#endif
++/* ANDROID_CHANGE_END */
++
+ #include "event.h"
+ #include "debug.h"
+ #include "util.h"
+@@ -2061,4 +2068,3 @@
+ 	dwfl_end(dwfl);
+ 	return (ret < 0) ? ret : lf.found;
+ }
+-
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/probe-finder.h ./util/probe-finder.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/probe-finder.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/probe-finder.h	2012-03-22 17:08:10.000000000 -0700
+@@ -33,10 +33,20 @@
+ 				  struct variable_list **vls, int max_points,
+ 				  bool externs);
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <dwarf.h>
+ #include <elfutils/libdw.h>
+ #include <elfutils/libdwfl.h>
+ #include <elfutils/version.h>
++#else
++/* These headers live under the external/elfutils */
++#include <dwarf.h>
++#include <libdw.h>
++#include <libdwfl.h>
++#include <version.h>
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ struct probe_finder {
+ 	struct perf_probe_event	*pev;		/* Target probe event */
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/pstack.c ./util/pstack.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/pstack.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/pstack.c	2012-03-22 17:08:09.000000000 -0700
+@@ -6,7 +6,13 @@
+ 
+ #include "util.h"
+ #include "pstack.h"
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/kernel.h>
++#else
++#include "util/include/linux/kernel.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include <stdlib.h>
+ 
+ struct pstack {
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/session.h ./util/session.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/session.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/session.h	2012-03-22 17:08:10.000000000 -0700
+@@ -6,8 +6,15 @@
+ #include "header.h"
+ #include "symbol.h"
+ #include "thread.h"
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/rbtree.h>
+ #include "../../../include/linux/perf_event.h"
++#else
++#include "include/linux/rbtree.h"
++#include "include/linux/added/perf_event.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ struct sample_queue;
+ struct ip_callchain;
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/sort.h ./util/sort.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/sort.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/sort.h	2012-03-22 17:08:10.000000000 -0700
+@@ -5,9 +5,17 @@
+ #include "util.h"
+ 
+ #include "color.h"
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include "cache.h"
+ #include <linux/rbtree.h>
++#else
++#include "include/linux/list.h"
++#include "cache.h"
++#include "include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include "symbol.h"
+ #include "string.h"
+ #include "callchain.h"
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/strfilter.h ./util/strfilter.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/strfilter.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/strfilter.h	2012-03-22 17:08:09.000000000 -0700
+@@ -2,7 +2,13 @@
+ #define __PERF_STRFILTER_H
+ /* General purpose glob matching filter */
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
++#else
++#include "util/include/linux/list.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include <stdbool.h>
+ 
+ /* A node of string filter */
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/strlist.h ./util/strlist.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/strlist.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/strlist.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1,7 +1,14 @@
+ #ifndef __PERF_STRLIST_H
+ #define __PERF_STRLIST_H
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/rbtree.h>
++#else
++#include "include/linux/kernel.h"
++#include "include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include <stdbool.h>
+ 
+ struct str_node {
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/symbol.c ./util/symbol.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/symbol.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/symbol.c	2012-03-22 17:08:10.000000000 -0700
+@@ -31,6 +31,12 @@
+ #define NT_GNU_BUILD_ID 3
+ #endif
+ 
++/* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++#define roundup(x, y)  ((((x) + ((y) - 1)) / (y)) * (y))
++#endif
++/* ANDROID_CHANGE_END */
++
+ static bool dso__build_id_equal(const struct dso *dso, u8 *build_id);
+ static int elf_read_build_id(Elf *elf, void *bf, size_t size);
+ static void dsos__add(struct list_head *head, struct dso *dso);
+@@ -2465,7 +2471,13 @@
+ 	if (symbol_conf.initialized)
+ 		return 0;
+ 
++        /* ANDROID_CHANGE_BEGIN */
++#if __BIONIC__
++	symbol_conf.priv_size = KERNEL_ALIGN(symbol_conf.priv_size, sizeof(u64));
++#else
+ 	symbol_conf.priv_size = ALIGN(symbol_conf.priv_size, sizeof(u64));
++#endif
++        /* ANDROID_CHANGE_END */
+ 
+ 	elf_version(EV_CURRENT);
+ 	if (symbol_conf.sort_by_name)
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/symbol.h ./util/symbol.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/symbol.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/symbol.h	2012-03-22 17:08:10.000000000 -0700
+@@ -5,8 +5,15 @@
+ #include <stdbool.h>
+ #include <stdint.h>
+ #include "map.h"
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include <linux/rbtree.h>
++#else
++#include "include/linux/list.h"
++#include "include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include <stdio.h>
+ 
+ #ifdef HAVE_CPLUS_DEMANGLE
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/thread.h ./util/thread.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/thread.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/thread.h	2012-03-22 17:08:10.000000000 -0700
+@@ -1,7 +1,13 @@
+ #ifndef __PERF_THREAD_H
+ #define __PERF_THREAD_H
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/rbtree.h>
++#else
++#include "include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ #include <unistd.h>
+ #include "symbol.h"
+ 
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/top.h ./util/top.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/top.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/top.h	2012-03-22 17:08:10.000000000 -0700
+@@ -5,8 +5,15 @@
+ #include "../perf.h"
+ #include <stddef.h>
+ #include <pthread.h>
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include <linux/rbtree.h>
++#else
++#include "include/linux/list.h"
++#include "include/linux/rbtree.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ struct perf_evlist;
+ struct perf_evsel;
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/trace-event.h ./util/trace-event.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/trace-event.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/trace-event.h	2012-03-22 17:08:10.000000000 -0700
+@@ -5,7 +5,11 @@
+ #include "parse-events.h"
+ #include "session.h"
+ 
++/* ANDROID_CHANGE_BEGIN */
++#ifndef __BIONIC__
+ #define __unused __attribute__((unused))
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ 
+ #ifndef PAGE_MASK
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/trace-event-info.c ./util/trace-event-info.c
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/trace-event-info.c	2011-12-09 13:14:50.000000000 -0800
++++ ./util/trace-event-info.c	2012-03-22 17:08:10.000000000 -0700
+@@ -34,8 +34,15 @@
+ #include <ctype.h>
+ #include <errno.h>
+ #include <stdbool.h>
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include <linux/list.h>
+ #include <linux/kernel.h>
++#else
++#include "include/linux/list.h"
++#include "include/linux/kernel.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ #include "../perf.h"
+ #include "trace-event.h"
+diff -r -u -d /home/bccheng/local/kernels/crespo-ics/tools/perf/util/util.h ./util/util.h
+--- /home/bccheng/local/kernels/crespo-ics/tools/perf/util/util.h	2011-12-09 13:14:50.000000000 -0800
++++ ./util/util.h	2012-03-22 17:08:09.000000000 -0700
+@@ -1,7 +1,11 @@
+ #ifndef GIT_COMPAT_UTIL_H
+ #define GIT_COMPAT_UTIL_H
+ 
++/* ANDROID_CHANGE_BEGIN */
++#ifndef __BIONIC__
+ #define _FILE_OFFSET_BITS 64
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ #ifndef FLEX_ARRAY
+ /*
+@@ -58,6 +62,11 @@
+ #include <limits.h>
+ #include <sys/param.h>
+ #include <sys/types.h>
++/* ANDROID_CHANGE_BEGIN */
++#ifdef __BIONIC__
++#include <pthread.h>
++#endif
++/* ANDROID_CHANGE_END */
+ #include <dirent.h>
+ #include <sys/time.h>
+ #include <time.h>
+@@ -77,9 +86,23 @@
+ #include <netdb.h>
+ #include <pwd.h>
+ #include <inttypes.h>
++
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include "../../../include/linux/magic.h"
++#else
++#include <linux/magic.h>
++#endif
++/* ANDROID_CHANGE_END */
++
+ #include "types.h"
++
++/* ANDROID_CHANGE_BEGIN */
++#ifndef __BIONIC__
+ #include <sys/ttydefaults.h>
++#endif
++/* ANDROID_CHANGE_END */
++
+ 
+ extern const char *graph_line;
+ extern const char *graph_dotted_line;
+@@ -135,7 +158,13 @@
+ extern int error(const char *err, ...) __attribute__((format (printf, 1, 2)));
+ extern void warning(const char *err, ...) __attribute__((format (printf, 1, 2)));
+ 
++/* ANDROID_CHANGE_BEGIN */
++#if 0
+ #include "../../../include/linux/stringify.h"
++#else
++#include "util/include/linux/added/stringify.h"
++#endif
++/* ANDROID_CHANGE_END */
+ 
+ #define DIE_IF(cnd)	\
+ 	do { if (cnd)	\

@@ -1,0 +1,14 @@
+URL: http://code.google.com/p/mp4parser/source/checkout
+Version: 1.0-RC-16
+License: Apache 2
+Description: "Provides a Java API for parsing MP4 files"
+
+Local Modifications:
+    Only taking the isoparser/src/main/ part, remove others.
+    Remove the RequiresParseDetailAspect.java file since we don't have the aspectJ yet.
+
+Originally written by Sebastian Annies, this isoparser API can read and write
+the MP4 file structure. It is a low level tool dealing with the so called boxes
+but it is as well as dealing with structure like tracks and movies.
+
+This code is built as a static library.

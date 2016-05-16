@@ -1,0 +1,3 @@
+# IA-64 events
+event:0x12 counters:0,1,2,3 um:zero minimum:500 name:CPU_CYCLES : CPU Cycles
+event:0x08 counters:0,1,2,3 um:zero minimum:500 name:IA64_INST_RETIRED : IA-64 Instructions Retired

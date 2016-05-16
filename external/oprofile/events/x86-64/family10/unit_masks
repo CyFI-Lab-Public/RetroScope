@@ -1,0 +1,374 @@
+#
+# AMD Family 10 processor unit masks
+#
+# Copyright OProfile authors
+# Copyright (c) 2006-2008 Advanced Micro Devices
+# Contributed by Ray Bryant <raybry at amd.com>,
+#		Jason Yeh <jason.yeh at amd.com>
+#		Suravee Suthikulpanit <suravee.suthikulpanit at amd.com>
+#
+# Sources: BIOS and Kernel Developer's Guide for AMD Family 10h Processors,
+#          Publication# 31116, Revision 3.34, September 2009
+#
+#          Software Optimization Guide for AMD Family 10h Processors,
+#          Publication# 40546, Revision 3.04, September 2007
+#
+# Revision: 1.3
+#
+# ChangeLog: 
+#	1.3: 22 October 2009.
+# 	- Update from BKDG Rev 3.28 to Rev 3.34 (no change)
+#	- Modify unitmasks l3_evict
+#
+#	1.2: 03 June 2009.
+# 	- Update from BKDG Rev 3.20 to Rev 3.28
+#	- Add Event 4EDh
+#	- Modify unitmasks for 4E0h-4E3h
+#
+#	1.1: 06 April 2009.
+# 	- Add IBS-derived events
+# 	- Update from BKDG Rev 3.00 to Rev 3.20
+# 	- Add Events 165h, 1c0h, 1cfh, 1d3h-1d5h
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask
+name:moesi type:bitmask default:0x1f
+	0x01 (I)nvalid cache state
+	0x02 (S)hared cache state
+	0x04 (E)xclusive cache state
+	0x08 (O)wner cache state
+	0x10 (M)odified cache state
+	0x1f All cache states
+name:moess type:bitmask default:0x1e
+	0x01 Refill from northbridge
+	0x02 Shared-state line from L2
+	0x04 Exclusive-state line from L2
+	0x08 Owner-state line from L2
+	0x10 Modified-state line from L2
+	0x1e All cache states except refill from northbridge
+name:fpu_ops type:bitmask default:0x3f
+	0x01 Add pipe ops excluding load ops and SSE move ops
+	0x02 Multiply pipe ops excluding load ops and SSE move ops
+	0x04 Store pipe ops excluding load ops and SSE move ops 
+	0x08 Add pipe load ops and SSE move ops
+	0x10 Multiply pipe load ops and SSE move ops
+	0x20 Store pipe load ops and SSE move ops
+	0x3f All ops
+name:segregload type:bitmask default:0x7f
+	0x01 ES register
+	0x02 CS register
+	0x04 SS register
+	0x08 DS register
+	0x10 FS register
+	0x20 GS register
+	0x40 HS register
+name:fpu_instr type:bitmask default:0x07
+	0x01 x87 instructions
+	0x02 MMX & 3DNow instructions
+	0x04 SSE instructions (SSE, SSE2, SSE3, and SSE4A)
+name:fpu_fastpath type:bitmask default:0x07
+	0x01 With low op in position 0
+	0x02 With low op in position 1
+	0x04 With low op in position 2
+name:fpu_exceptions type:bitmask default:0x0f
+	0x01 x87 reclass microfaults
+	0x02 SSE retype microfaults
+	0x04 SSE reclass microfaults
+	0x08 SSE and x87 microtraps
+name:page_access type:bitmask default:0x3f
+	0x01 DCT0 Page hit
+	0x02 DCT0 Page miss
+	0x04 DCT0 Page conflict
+	0x08 DCT1 Page hit
+	0x10 DCT1 Page miss
+	0x20 DCT1 Page Conflict
+name:mem_page_overflow  type:bitmask default:0x03
+	0x01 DCT0 Page Table Overflow
+	0x02 DCT1 Page Table Overflow
+name:turnaround type:bitmask default:0x3f
+	0x01 DCT0 DIMM (chip select) turnaround
+	0x02 DCT0 Read to write turnaround
+	0x04 DCT0 Write to read turnaround
+	0x08 DCT1 DIMM (chip select) turnaround
+	0x10 DCT1 Read to write turnaround
+	0x20 DCT1 Write to read turnaround
+name:saturation type:bitmask default:0x0f
+	0x01 Memory controller high priority bypass
+	0x02 Memory controller medium priority bypass
+	0x04 DCT0 DCQ bypass
+	0x08 DCT1 DCQ bypass
+name:slot_missed  type:bitmask default:0x03
+	0x01 DCT0 Command slots missed
+	0x02 DCT2 Command slots missed
+name:sizecmds type:bitmask default:0x3f
+	0x01 Non-posted write byte (1-32 bytes)
+	0x02 Non-posted write DWORD (1-16 DWORDs)
+	0x04 Posted write byte (1-32 bytes)
+	0x08 Posted write DWORD (1-16 DWORDs)
+	0x10 Read byte (4 bytes)
+	0x20 Read DWORD (1-16 DWORDs)
+name:probe type:bitmask default:0xff
+	0x01 Probe miss
+	0x02 Probe hit clean
+	0x04 Probe hit dirty without memory cancel
+	0x08 Probe hit dirty with memory cancel
+	0x10 Upstream display refresh/ISOC reads
+	0x20 Upstream non-display refresh reads
+	0x40 Upstream ISOC writes
+	0x80 Upstream non-ISOC writes
+name:l2_internal type:bitmask default:0x3f
+	0x01 IC fill
+	0x02 DC fill
+	0x04 TLB fill (page table walks)
+	0x08 Tag snoop request
+	0x10 Canceled request
+	0x20 Hardware prefetch from data cache
+name:l2_req_miss type:bitmask default:0x0f
+	0x01 IC fill
+	0x02 DC fill (includes possible replays)
+	0x04 TLB page table walk
+	0x08 Hardware prefetch from data cache
+name:l2_fill type:bitmask default:0x03
+	0x01 L2 fills (victims from L1 caches, TLB page table walks and data prefetches)
+	0x02 L2 writebacks to system
+name:gart type:bitmask default:0xff
+	0x01 GART aperture hit on access from CPU
+	0x02 GART aperture hit on access from I/O
+	0x04 GART miss
+	0x08 GART/DEV request hit table walk in progress
+	0x10 DEV hit
+	0x20 DEV miss
+	0x40 DEV error
+	0x80 GART/DEV multiple table walk in progress
+name:cpiorequests type:bitmask default:0xa2
+	0xa1 Requests Local I/O to Local I/O
+	0xa2 Requests Local I/O to Local Memory
+	0xa3 Requests Local I/O to Local (I/O or Mem) 
+	0xa4 Requests Local CPU to Local I/O
+	0xa5 Requests Local (CPU or I/O) to Local I/O
+	0xa8 Requests Local CPU to Local Memory
+	0xaa Requests Local (CPU or I/O) to Local Memory
+	0xac Requests Local CPU to Local (I/O or Mem)
+	0xaf Requests Local (CPU or I/O) to Local (I/O or Mem)
+	0x91 Requests Local I/O to Remote I/O
+	0x92 Requests Local I/O to Remote Memory
+	0x93 Requests Local I/O to Remote (I/O or Mem)
+	0x94 Requests Local CPU to Remote I/O
+	0x95 Requests Local (CPU or I/O) to Remote I/O
+	0x98 Requests Local CPU to Remote Memory
+	0x9a Requests Local (CPU or I/O) to Remote Memory
+	0x9c Requests Local CPU to Remote (I/O or Mem)
+	0x9f Requests Local (CPU or I/O) to Remote (I/O or Mem)
+	0xb1 Requests Local I/O to Any I/O
+	0xb2 Requests Local I/O to Any Memory
+	0xb3 Requests Local I/O to Any (I/O or Mem)
+	0xb4 Requests Local CPU to Any I/O
+	0xb5 Requests Local (CPU or I/O) to Any I/O
+	0xb8 Requests Local CPU to Any Memory
+	0xba Requests Local (CPU or I/O) to Any Memory
+	0xbc Requests Local CPU to Any (I/O or Mem)
+	0xbf Requests Local (CPU or I/O) to Any (I/O or Mem)
+	0x61 Requests Remote I/O to Local I/O
+	0x64 Requests Remote CPU to Local I/O
+	0x65 Requests Remote (CPU or I/O) to Local I/O
+name:cacheblock type:bitmask default:0x3d
+	0x01 Victim Block (Writeback)
+	0x04 Read Block (Dcache load miss refill)
+	0x08 Read Block Shared (Icache refill)
+	0x10 Read Block Modified (Dcache store miss refill)
+	0x20 Change-to-Dirty (first store to clean block already in cache)
+name:dataprefetch type:bitmask default:0x03
+	0x01 Cancelled prefetches
+	0x02 Prefetch attempts
+name:memreqtype type:bitmask default:0x83
+	0x01 Requests to non-cacheable (UC) memory
+	0x02 Requests to write-combining (WC) memory or WC buffer flushes to WB memory
+	0x80 Streaming store (SS) requests
+name:systemreadresponse type:bitmask default:0x1f
+	0x01 Exclusive
+	0x02 Modified
+	0x04 Shared
+	0x08 Owned
+	0x10 Data Error
+name:l1_dtlb_miss_l2_hit type:bitmask default:0x07
+	0x01 L2 4K TLB hit
+	0x02 L2 2M TLB hit
+	0x04 L2 1G TLB hit (RevC)
+name:l1_l2_dtlb_miss type:bitmask default:0x07
+	0x01 4K TLB reload
+	0x02 2M TLB reload
+	0x04 1G TLB reload
+name:ecc type:bitmask default:0x0f
+	0x01 Scrubber error
+	0x02 Piggyback scrubber errors
+	0x04 Load pipe error
+	0x08 Store write pip error
+name:prefetch type:bitmask default:0x07
+	0x01 Load (Prefetch, PrefetchT0/T1/T2)
+	0x02 Store (PrefetchW)
+	0x04 NTA (PrefetchNTA)
+name:locked_instruction_dcache_miss type:bitmask default:0x02
+	0x02 Data cache misses by locked instructions
+name:octword_transfer type:bitmask  default:0x01
+	0x01 Octword write transfer
+name:thermal_status  type:bitmask default:0x7c
+	0x04 Number of times the HTC trip point is crossed
+	0x08 Number of clocks when STC trip point active
+	0x10 Number of times the STC trip point is crossed
+	0x20 Number of clocks HTC P-state is inactive
+	0x40 Number of clocks HTC P-state is active
+name:mem_control_request type:bitmask default:0x78
+	0x01 Write requests
+	0x02 Read Requests including Prefetch
+	0x04 Prefetch Request
+	0x08 32 Bytes Sized Writes
+	0x10 64 Bytes Sized Writes
+	0x20 32 Bytes Sized Reads
+	0x40 64 Byte Sized Reads
+	0x80 Read requests sent to the DCT while write requests are pending in the DCQ
+name:httransmit type:bitmask default:0xbf
+	0x01 Command DWORD sent
+	0x02 Data DWORD sent
+	0x04 Buffer release DWORD sent
+	0x08 Nop DW sent (idle)
+	0x10 Address DWORD sent
+	0x20 Per packet CRC sent
+	0x80 SubLink Mask
+name:lock_ops type:bitmask default:0x0f
+	0x01 Number of locked instructions executed
+	0x02 Cycles in speculative phase
+	0x04 Cycles in non-speculative phase (including cache miss penalty)
+	0x08 Cache miss penalty in cycles 
+name:sse_ops type:bitmask default:0x7f
+	0x01 Single Precision add/subtract ops
+	0x02 Single precision multiply ops
+	0x04 Single precision divide/square root ops
+	0x08 Double precision add/subtract ops
+	0x10 Double precision multiply ops
+	0x20 Double precision divide/square root ops
+	0x40 OP type: 0=uops 1=FLOPS
+name:move_ops type:bitmask default:0x0f
+	0x01 Merging low quadword move uops
+	0x02 Merging high quadword move uops
+	0x04 All other merging move uops
+	0x08 All other move uops
+name:serial_ops type:bitmask default:0x0f
+	0x01 SSE bottom-executing uops retired
+	0x02 SSE bottom-serializing uops retired
+	0x04 x87 bottom-executing uops retired
+	0x08 x87 bottom-serializing uops retired
+name:serial_ops_sched type:bitmask default:0x03
+	0x01 Number of cycles a bottom-execute uops in FP scheduler
+	0x02 Number of cycles a bottom-serializing uops in FP scheduler
+name:store_to_load type:bitmask default:0x07
+	0x01 Address mismatches (starting byte not the same)
+	0x02 Store is smaller than load
+	0x04 Misaligned
+name:moesi_gh type:bitmask default:0x1f
+	0x01 (I)nvalid cache state
+	0x02 (S)hared cache state
+	0x04 (E)xclusive cache state
+	0x08 (O)wner cache state
+	0x10 (M)odified cache state
+	0x20 Cache line evicted brought into the cache by PrefetchNTA
+	0x40 Cache line evicted not brought into the cache by PrefetchNTA
+name:l1_dtlb_hit type:bitmask default:0x07
+	0x01 L1 4K TLB hit
+	0x02 L1 2M TLB hit
+	0x04 L1 1G TLB hit
+name:soft_prefetch type:bitmask default:0x09
+	0x01 Software prefetch hit in L1
+	0x08 Software prefetch hit in L2
+name:l1_l2_itlb_miss type:bitmask default:0x03
+	0x01 Instruction fetches to a 4K page
+	0x02 Instruction fetches to a 2M page	
+name:cpu_dram_req type:bitmask default:0xff
+	0x01 From local node to node 0
+	0x02 From local node to node 1
+	0x04 From local node to node 2
+	0x08 From local node to node 3
+	0x10 From local node to node 4
+	0x20 From local node to node 5
+	0x40 From local node to node 6
+	0x80 From local node to node 7
+name:io_dram_req type:bitmask default:0xff
+	0x01 From local node to node 0
+	0x02 From local node to node 1
+	0x04 From local node to node 2
+	0x08 From local node to node 3
+	0x10 From local node to node 4
+	0x20 From local node to node 5
+	0x40 From local node to node 6
+	0x80 From local node to node 7
+name:cpu_read_lat_0_3 type:bitmask default:0xff
+	0x01 Read block 
+	0x02 Read block shared
+	0x04 Read block modified
+	0x08 Change-to-Dirty
+	0x10 From local node to node 0
+	0x20 From local node to node 1
+	0x40 From local node to node 2
+	0x80 From local node to node 3
+name:cpu_read_lat_4_7 type:bitmask default:0xff
+	0x01 Read block 
+	0x02 Read block shared
+	0x04 Read block modified
+	0x08 Change-to-Dirty
+	0x10 From local node to node 4
+	0x20 From local node to node 5
+	0x40 From local node to node 6
+	0x80 From local node to node 7
+name:cpu_comm_lat type:bitmask default:0xf7
+	0x01 Read sized
+	0x02 Write sized
+	0x04 Victim block
+	0x08 Node group select: 0=Nodes 0-3, 1=Nodes 4-7
+	0x10 From local node to node 0/4
+	0x20 From local node to node 1/5
+	0x40 From local node to node 2/6
+	0x80 From local node to node 3/7
+name:l3_cache type:bitmask default:0xf7
+	0x01 Read block Exclusive (Data cache read)
+	0x02 Read block Shared (Instruciton cache read)
+	0x04 Read block Modify
+	0x10 Reserved (Must be selected)
+	0x20 Reserved (Must be selected)
+	0x40 Reserved (Must be selected)
+	0x80 Reserved (Must be selected)
+name:l3_fill type:bitmask default:0xff
+	0x01 Shared
+	0x02 Exclusive
+	0x04 Owned
+	0x08 Modified
+	0x10 Reserved (Must be selected)
+	0x20 Reserved (Must be selected)
+	0x40 Reserved (Must be selected)
+	0x80 Reserved (Must be selected)
+name:l3_evict type:bitmask default:0x0f
+	0x01 Shared
+	0x02 Exclusive
+	0x04 Owned
+	0x08 Modified
+name:icache_invalidated type:bitmask default:0x03
+	0x01 Invalidating probe that did not hit any in-flight instructions
+	0x02 Invalidating probe that hit one or more in-flight instructions
+name:page_size_mismatches type:bitmask default:0x07
+	0x01 Guest page size is larger than the host page size
+	0x02 MTRR mismatch
+	0x04 Host page size is larger than the guest page size
+name:retired_x87_fp type:bitmask default:0x07
+	0x01 Add/subtract ops
+	0x02 Multiply ops
+	0x04 Divide ops
+name:ibs_op type:bitmask default:0x01
+	0x00 Using IBS OP cycle count mode
+	0x01 Using IBS OP dispatch count mode
+	0x02 Enable IBS OP Memory Access Log 
+name:non_cancelled_l3_read_requests type:bitmask default:0xf7
+	0x01 RbBlk
+	0x02 RbBlkS
+	0x04 RbBlkM
+	0x10 Reserved (Must be selected)
+	0x20 Reserved (Must be selected)
+	0x40 Reserved (Must be selected)
+	0x80 Reserved (Must be selected)

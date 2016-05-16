@@ -1,0 +1,4 @@
+# Alpha EV-67 possible unit masks
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask

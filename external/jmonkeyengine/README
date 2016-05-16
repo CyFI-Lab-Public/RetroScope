@@ -1,0 +1,37 @@
+jMonkeyEngine3 on Android README
+
+This is the source tree for the engine portion of jMonkeyEngine, from a
+Subversion snapshot taken on 2012.02.24. It includes the engine/src directory
+from their source repository, but not the rest as it is quite large.
+
+The Android makefile does not build the entire library, but only these
+directories:
+
+engine/src/android
+engine/src/core
+engine/src/core-plugins
+engine/src/ogre
+
+which should be enough to use the core parts of the library.
+
+jMonkeyEngine relies on material and shader resources that are intended to be
+saved in the Java classpath and picked up by the classloader. On Android, they
+are saved in the APK and AssetManager is used to load them in. This works if
+you build the APK in something like Eclipse and simply include a source jar,
+but that will not work in the Android.mk build environment. Even if the
+resources are included in the static library jar build here, they will be
+stripped out when dex compiles the libraries into the APK. If you want to use
+this library, you will need to duplicate the resources you need into the assets
+directory of your project. As long as the path under assets/ is the same, the
+Android-specific asset loader will find them, e.g. if asked to load
+"Common/MatDefs/Misc/Unshaded.j3md", it will find it under
+"assets/Common/MatDefs/Misc/Unshaded.j3md".
+
+Links:
+
+http://jmonkeyengine.org/
+http://code.google.com/p/jmonkeyengine/checkout
+
+THe NOTICES file was generated with this command:
+
+find engine/src -type f | xargs head -n 35 | grep "^[ /=][*=]" > NOTICE

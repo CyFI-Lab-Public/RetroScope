@@ -1,0 +1,107 @@
+#
+# Intel "Nehalem" microarchitecture (Core i7; Xeon 75xx etc.) core events
+# the uncore (memory controller/QPI) events are in separate files because
+# they vary between implementations (right now they are not implemented
+# in oprofile)
+#
+# Note the minimum counts are not discovered experimentally and could be likely
+# lowered in many cases without ill effect.
+#
+event:0x3c counters:0,1,2,3 um:zero minimum:6000 name:CPU_CLK_UNHALTED : Clock cycles when not halted
+event:0x3c counters:0,1,2,2 um:one minimum:6000 name:UNHALTED_REFERENCE_CYCLES : Unhalted reference cycles
+event:0x2e counters:0,1,2,3 um:x41 minimum:6000 name:LLC_MISSES : Last level cache demand requests from this core that missed the LLC
+event:0x2e counters:0,1,2,3 um:x4f minimum:6000 name:LLC_REFS : Last level cache demand requests from this core
+event:0xc0 counters:0,1,2,3 um:inst_retired minimum:6000 name:INST_RETIRED : number of instructions retired
+event:0xc4 counters:0,1,2,3 um:br_inst_retired minimum:500 name:BR_INST_RETIRED : number of branch instructions retired
+event:0xc5 counters:0,1,2,3 um:br_misp_retired minimum:500 name:BR_MISS_PRED_RETIRED : number of mispredicted branches retired (precise)
+#
+event:0x02 counters:0,1,2,3 um:sb_forward minimum:6000 name:SB_FORWARD : Counts the number of store forwards.
+event:0x03 counters:0,1,2,3 um:load_block minimum:6000 name:LOAD_BLOCK : Counts the number of loads blocked
+event:0x04 counters:0,1,2,3 um:sb_drain minimum:6000 name:SB_DRAIN : Counts the cycles of store buffer drains.
+event:0x05 counters:0,1,2,3 um:misalign_mem_ref minimum:6000 name:MISALIGN_MEM_REF : Counts the number of misaligned load references
+event:0x06 counters:0,1,2,3 um:store_blocks minimum:6000 name:STORE_BLOCKS : This event counts the number of load operations delayed caused by preceding stores.
+event:0x07 counters:0,1,2,3 um:one minimum:6000 name:PARTIAL_ADDRESS_ALIAS : Counts false dependency due to partial address aliasing
+event:0x08 counters:0,1,2,3 um:dtlb_load_misses minimum:6000 name:DTLB_LOAD_MISSES : Counts dtlb page walks
+event:0x09 counters:0,1,2,3 um:memory_disambiguration minimum:6000 name:MEMORY_DISAMBIGURATION : Counts memory disambiguration events
+event:0x0B counters:0,1,2,3 um:mem_inst_retired minimum:6000 name:MEM_INST_RETIRED : Counts the number of instructions with an architecturally-visible load/store retired on the architected path.
+event:0x0C counters:0,1,2,3 um:mem_store_retired minimum:6000 name:MEM_STORE_RETIRED : The event counts the number of retired stores that missed the DTLB. The DTLB miss is not counted if the store operation causes a fault. Does not count prefetches. Counts both primary and secondary misses to the TLB
+event:0x0E counters:0,1,2,3 um:uops_issued minimum:6000 name:UOPS_ISSUED : Counts the number of Uops issued by the Register Allocation Table to the Reservation Station, i.e. the UOPs issued from the front end to the back end.
+event:0x0F counters:0,1,2,3 um:mem_uncore_retired minimum:6000 name:MEM_UNCORE_RETIRED : Counts number of memory load instructions retired where the memory reference hit modified data in another core
+event:0x10 counters:0,1,2,3 um:fp_comp_ops_exe minimum:6000 name:FP_COMP_OPS_EXE : Counts the number of FP Computational Uops Executed.
+event:0x12 counters:0,1,2,3 um:simd_int_128 minimum:6000 name:SIMD_INT_128 : Counts number of 128 bit SIMD integer operations.
+event:0x13 counters:0,1,2,3 um:load_dispatch minimum:6000 name:LOAD_DISPATCH : Counts number of loads dispatched from the Reservation Station that bypass.
+event:0x14 counters:0,1,2,3 um:arith minimum:6000 name:ARITH : Counts division cycles and number of multiplies. Includes integer and FP, but excludes DPPS/MPSAD.
+event:0x17 counters:0,1,2,3 um:one minimum:6000 name:INST_QUEUE_WRITES : Counts the number of instructions written into the instruction queue every cycle.
+event:0x18 counters:0,1,2,3 um:inst_decoded minimum:6000 name:INST_DECODED : Counts number of instructions that require  decoder 0 to be decoded. Usually, this means that the instruction maps to more than 1 uop
+event:0x19 counters:0,1,2,3 um:one minimum:6000 name:TWO_UOP_INSTS_DECODED : An instruction that generates two uops was decoded
+event:0x1D counters:0,1,2,3 um:hw_int minimum:100 name:HW_INT : Counts hardware interrupt events.
+event:0x1E counters:0,1,2,3 um:one minimum:6000 name:INST_QUEUE_WRITE_CYCLES : This event counts the number of cycles during which instructions are written to the instruction queue.  Dividing this counter by the number of instructions written to the instruction queue (INST_QUEUE_WRITES) yields the average number of instructions decoded each cycle. If this number is  less than four and the pipe stalls, this indicates that the decoder is failing to decode enough instructions per cycle to sustain the 4-wide pipeline.
+event:0x24 counters:0,1,2,3 um:l2_rqsts minimum:500 name:L2_RQSTS : Counts number of L2 data loads
+event:0x26 counters:0,1,2,3 um:l2_data_rqsts minimum:500 name:L2_DATA_RQSTS : More L2 data loads.
+event:0x27 counters:0,1,2,3 um:l2_write minimum:500 name:L2_WRITE : Counts number of L2 writes
+event:0x28 counters:0,1,2,3 um:l1d_wb_l2 minimum:500 name:L1D_WB_L2 : Counts number of L1 writebacks to the L2.
+event:0x2E counters:0,1,2,3 um:longest_lat_cache minimum:6000 name:LONGEST_LAT_CACHE : Count LLC cache reference latencies.
+event:0x3C counters:0,1,2,3 um:cpu_clk_unhalted minimum:6000 name:CPU_CLK_UNHALTED : Counts the number of thread cycles while the thread is not in a halt state.
+event:0x3D counters:0,1,2,3 um:one minimum:6000 name:UOPS_DECODED_DEC0 : Counts micro-ops decoded by decoder 0.
+event:0x40 counters:0,1 um:l1d_cache_ld minimum:6000 name:L1D_CACHE_LD : Counts L1 data cache read requests.
+event:0x41 counters:0,1 um:l1d_cache_st minimum:6000 name:L1D_CACHE_ST : Counts L1 data cache stores.
+event:0x42 counters:0,1 um:l1d_cache_lock minimum:6000 name:L1D_CACHE_LOCK : Counts retired load locks in the L1D cache.
+event:0x43 counters:0,1 um:l1d_all_ref minimum:6000 name:L1D_ALL_REF : Counts all references to the L1 data cache,
+event:0x49 counters:0,1,2,3 um:dtlb_misses minimum:6000 name:DTLB_MISSES : Counts the number of misses in the STLB
+event:0x4B counters:0,1,2,3 um:sse_mem_exec minimum:6000 name:SSE_MEM_EXEC : Counts number of SSE instructions which missed the L1 data cache.
+event:0x4C counters:0,1,2,3 um:one minimum:6000 name:LOAD_HIT_PRE : Counts load operations sent to the L1 data cache while a previous SSE prefetch instruction to the same cache line has started prefetching but has not yet finished.
+event:0x4D counters:0,1,2,3 um:one minimum:6000 name:SFENCE_CYCLES : Counts store fence cycles
+event:0x4E counters:0,1,2,3 um:l1d_prefetch minimum:6000 name:L1D_PREFETCH : Counts number of hardware prefetch requests.
+event:0x4F counters:0,1,2,3 um:ept minimum:6000 name:EPT : Counts Extended Page Directory Entry accesses. The Extended Page Directory cache is used by Virtual Machine operating systems while the guest operating systems use the standard TLB caches.
+event:0x51 counters:0,1 um:l1d minimum:6000 name:L1D : Counts the number of lines brought from/to the L1 data cache.
+event:0x52 counters:0,1,2,3 um:one minimum:6000 name:L1D_CACHE_PREFETCH_LOCK_FB_HIT : Counts the number of cacheable load lock speculated instructions accepted into the fill buffer.
+event:0x53 counters:0,1,2,3 um:one minimum:6000 name:L1D_CACHE_LOCK_FB_HIT : Counts the number of cacheable load lock speculated or retired instructions accepted into the fill buffer.
+event:0x60 counters:0,1,2,3 um:offcore_requests_outstanding minimum:6000 name:OFFCORE_REQUESTS_OUTSTANDING : Counts weighted cycles of offcore requests.
+event:0x63 counters:0,1 um:cache_lock_cycles minimum:6000 name:CACHE_LOCK_CYCLES : Cycle count during which the L1/L2 caches are locked.  A lock is asserted when there is a locked memory access, due to uncacheable memory, a locked operation that spans two cache lines, or a page walk from an uncacheable page table.
+event:0x6C counters:0,1,2,3 um:one minimum:6000 name:IO_TRANSACTIONS : Counts the number of completed I/O transactions.
+event:0x80 counters:0,1,2,3 um:l1i minimum:6000 name:L1I : Counts L1i instruction cache accesses.
+event:0x81 counters:0,1,2,3 um:ifu_ivc minimum:6000 name:IFU_IVC : Instruction Fetch unit events
+event:0x82 counters:0,1,2,3 um:large_itlb minimum:6000 name:LARGE_ITLB : Counts number of large ITLB accesses
+event:0x83 counters:0,1,2,3 um:one minimum:6000 name:L1I_OPPORTUNISTIC_HITS : Opportunistic hits in streaming.
+event:0x85 counters:0,1,2,3 um:itlb_misses minimum:6000 name:ITLB_MISSES : Counts the number of ITLB misses in various variants
+event:0x87 counters:0,1,2,3 um:ild_stall minimum:6000 name:ILD_STALL : Cycles Instruction Length Decoder stalls
+event:0x88 counters:0,1,2,3 um:br_inst_exec minimum:6000 name:BR_INST_EXEC : Counts the number of near branch instructions executed, but not necessarily retired.
+event:0x89 counters:0,1,2,3 um:br_misp_exec minimum:6000 name:BR_MISP_EXEC : Counts the number of mispredicted conditional near branch instructions executed, but not necessarily retired.
+event:0xA2 counters:0,1,2,3 um:resource_stalls minimum:6000 name:RESOURCE_STALLS : Counts the number of Allocator resource related stalls. Includes register renaming buffer entries, memory buffer entries. In addition to resource related stalls, this event counts some other events. Includes stalls arising during branch misprediction recovery, such as if retirement of the mispredicted branch is delayed and stalls arising while store buffer is draining from synchronizing operations.
+event:0xA6 counters:0,1,2,3 um:one minimum:6000 name:MACRO_INSTS : Counts the number of instructions decoded that are macro-fused but not necessarily executed or retired.
+event:0xA7 counters:0,1,2,3 um:one minimum:6000 name:BACLEAR_FORCE_IQ : Counts number of times a BACLEAR was forced by the Instruction Queue. The IQ is also responsible for providing conditional branch prediciton direction based on a static scheme and dynamic data provided by the L2 Branch Prediction Unit. If the conditional branch target is not found in the Target Array and the IQ predicts that the branch is taken, then the IQ will force the Branch Address Calculator to issue a BACLEAR. Each BACLEAR asserted by the BAC generates approximately an 8 cycle bubble in the instruction fetch pipeline.
+event:0xA8 counters:0,1,2,3 um:one minimum:6000 name:LSD : Counts the number of micro-ops delivered by loop stream detector
+event:0xAE counters:0,1,2,3 um:one minimum:6000 name:ITLB_FLUSH : Counts the number of ITLB flushes
+event:0xB0 counters:0,1,2,3 um:offcore_requests minimum:6000 name:OFFCORE_REQUESTS : Counts number of offcore data requests.
+event:0xB1 counters:0,1,2,3 um:uops_executed minimum:6000 name:UOPS_EXECUTED : Counts number of Uops executed that were issued on various ports
+event:0xB2 counters:0,1,2,3 um:one minimum:6000 name:OFFCORE_REQUESTS_SQ_FULL : Counts number of cycles the SQ is full to handle off-core requests.
+event:0xB3 counters:0,1,2,3 um:snoopq_requests_outstanding minimum:6000 name:SNOOPQ_REQUESTS_OUTSTANDING : Counts weighted cycles of snoopq requests.
+event:0xB7 counters:0,1,2,3 um:one minimum:6000 name:OOF_CORE_RESPONSE_0 : Off-core Response Performance Monitoring in the Processor Core. Requires special setup.
+event:0xB8 counters:0,1,2,3 um:snoop_response minimum:6000 name:SNOOP_RESPONSE : Counts HIT snoop response sent by this thread in response to a snoop request.
+event:0xBA counters:0,1,2,3 um:pic_accesses minimum:6000 name:PIC_ACCESSES : Counts number of TPR accesses
+event:0xC2 counters:0,1,2,3 um:uops_retired minimum:6000 name:UOPS_RETIRED : Counts the number of micro-ops retired, (macro-fused=1, micro-fused=2, others=1; maximum count of 8 per cycle). Most instructions are composed of one or two microops. Some instructions are decoded into longer sequences such as repeat instructions, floating point transcendental instructions, and assists
+event:0xC3 counters:0,1,2,3 um:machine_clears minimum:6000 name:MACHINE_CLEARS : Counts the cycles machine clear is asserted.
+event:0xC7 counters:0,1,2,3 um:ssex_uops_retired minimum:6000 name:SSEX_UOPS_RETIRED : Counts SIMD packed single-precision floating point Uops retired.
+event:0xC8 counters:0,1,2,3 um:x20 minimum:6000 name:ITLB_MISS_RETIRED : Counts the number of retired instructions that missed the ITLB when the instruction was fetched.
+event:0xCB counters:0,1,2,3 um:mem_load_retired minimum:6000 name:MEM_LOAD_RETIRED : Counts number of retired loads.
+event:0xCC counters:0,1,2,3 um:fp_mmx_trans minimum:6000 name:FP_MMX_TRANS : Counts transitions between MMX and x87 state.
+event:0xD0 counters:0,1,2,3 um:macro_insts minimum:6000 name:MACRO_INSTS : Counts the number of instructions decoded, (but not necessarily executed or retired).
+event:0xD1 counters:0,1,2,3 um:uops_decoded minimum:6000 name:UOPS_DECODED : Counts the number of Uops decoded by various subsystems.
+event:0xD2 counters:0,1,2,3 um:rat_stalls minimum:6000 name:RAT_STALLS : Counts the number of cycles during which execution stalled due to several reason
+event:0xD4 counters:0,1,2,3 um:one minimum:6000 name:SEG_RENAME_STALLS : Counts the number of stall cycles due to the lack of renaming resources for the ES, DS, FS, and GS segment registers. If a segment is renamed but not retired and a second update to the same segment occurs, a stall occurs in the front-end of the pipeline until the renamed segment retires.
+event:0xD5 counters:0,1,2,3 um:one minimum:6000 name:ES_REG_RENAMES : Counts the number of times the ES segment register is renamed.
+event:0xDB counters:0,1,2,3 um:one minimum:6000 name:UOP_UNFUSION : Counts unfusion events due to floating point exception to a fused uop.
+event:0xE0 counters:0,1,2,3 um:one minimum:6000 name:BR_INST_DECODED : Counts the number of branch instructions decoded.
+event:0xE4 counters:0,1,2,3 um:one minimum:6000 name:BOGUS_BR : Counts the number of bogus branches.
+event:0xE5 counters:0,1,2,3 um:one minimum:6000 name:BPU_MISSED_CALL_RET : Counts number of times the Branch Prediciton Unit missed predicting a call or return branch.
+event:0xE6 counters:0,1,2,3 um:baclear minimum:6000 name:BACLEAR : Counts the number of times the front end is resteered,
+event:0xE8 counters:0,1,2,3 um:bpu_clears minimum:6000 name:BPU_CLEARS : Counts Branch Prediction Unit clears.
+event:0xF0 counters:0,1,2,3 um:l2_transactions minimum:6000 name:L2_TRANSACTIONS : Counts L2 transactions
+event:0xF1 counters:0,1,2,3 um:l2_lines_in minimum:6000 name:L2_LINES_IN : Counts the number of cache lines allocated in the L2 cache in various states.
+event:0xF2 counters:0,1,2,3 um:l2_lines_out minimum:6000 name:L2_LINES_OUT : Counts L2 cache lines evicted.
+event:0xF3 counters:0,1,2,3 um:l2_hw_prefetch minimum:6000 name:L2_HW_PREFETCH : Count L2 HW prefetcher events
+event:0xF4 counters:0,1,2,3 um:sq_misc minimum:6000 name:SQ_MISC : Counts events in the Super Queue below the L2.
+event:0xF6 counters:0,1,2,3 um:one minimum:6000 name:SQ_FULL_STALL_CYCLES : Counts cycles the Super Queue is full. Neither of the threads on this core will be able to access the uncore.
+event:0xF7 counters:0,1,2,3 um:fp_assist minimum:6000 name:FP_ASSIST : Counts the number of floating point operations executed that required micro-code assist intervention.
+event:0xF8 counters:0,1,2,3 um:one minimum:6000 name:SEGMENT_REG_LOADS : Counts number of segment register loads
+event:0xFD counters:0,1,2,3 um:simd_int_64 minimum:6000 name:SIMD_INT_64 : Counts number of SID integer 64 bit packed multiply operations.

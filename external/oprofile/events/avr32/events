@@ -1,0 +1,27 @@
+# AVR32 events
+#
+event:0x00 counters:1,2 um:zero minimum:500 name:IFU_IFETCH_MISS : number of instruction fetch misses
+event:0x01 counters:1,2 um:zero minimum:500 name:CYCLES_IFU_MEM_STALL : cycles instruction fetch pipe is stalled
+event:0x02 counters:1,2 um:zero minimum:500 name:CYCLES_DATA_STALL : cycles stall due to data dependency
+event:0x03 counters:1,2 um:zero minimum:500 name:ITLB_MISS : number of Instruction TLB misses
+event:0x04 counters:1,2 um:zero minimum:500 name:DTLB_MISS : number of Data TLB misses
+event:0x05 counters:1,2 um:zero minimum:500 name:BR_INST_EXECUTED : branch instruction executed w/ or w/o program flow change
+event:0x06 counters:1,2 um:zero minimum:500 name:BR_INST_MISS_PRED : branch mispredicted
+event:0x07 counters:1,2 um:zero minimum:500 name:INSN_EXECUTED : instructions executed
+event:0x08 counters:1,2 um:zero minimum:500 name:DCACHE_WBUF_FULL : data cache write buffers full
+event:0x09 counters:1,2 um:zero minimum:500 name:CYCLES_DCACHE_WBUF_FULL : cycles stalled due to data cache write buffers full
+event:0x0a counters:1,2 um:zero minimum:500 name:DCACHE_READ_MISS : data cache read miss
+event:0x0b counters:1,2 um:zero minimum:500 name:CYCLES_DCACHE_READ_MISS : cycles stalled due to data cache read miss
+event:0x0c counters:1,2 um:zero minimum:500 name:WRITE_ACCESS : write access
+event:0x0d counters:1,2 um:zero minimum:500 name:CYCLES_WRITE_ACCESS : cycles when write access is ongoing
+event:0x0e counters:1,2 um:zero minimum:500 name:READ_ACCESS : read access
+event:0x0f counters:1,2 um:zero minimum:500 name:CYCLES_READ_ACCESS : cycles when read access is ongoing
+event:0x10 counters:1,2 um:zero minimum:500 name:CACHE_STALL : read or write access that stalled
+event:0x11 counters:1,2 um:zero minimum:500 name:CYCLES_CACHE_STALL : cycles stalled doing read or write access
+event:0x12 counters:1,2 um:zero minimum:500 name:DCACHE_ACCESS : data cache access
+event:0x13 counters:1,2 um:zero minimum:500 name:CYCLES_DCACHE_ACCESS : cycles when data cache access is ongoing
+event:0x14 counters:1,2 um:zero minimum:500 name:DCACHE_WB : data cache line writeback
+event:0x15 counters:1,2 um:zero minimum:500 name:ACCUMULATOR_HIT : accumulator cache hit
+event:0x16 counters:1,2 um:zero minimum:500 name:ACCUMULATOR_MISS : accumulator cache miss
+event:0x17 counters:1,2 um:zero minimum:500 name:BTB_HIT : branch target buffer hit
+event:0xff counters:0 um:zero minimum:500 name:CPU_CYCLES : clock cycles counter

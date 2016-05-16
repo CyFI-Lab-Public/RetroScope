@@ -1,0 +1,11 @@
+# Athlon possible unit masks
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask
+name:moesi type:bitmask default:0x1f
+	0x10 (M)odified cache state
+	0x08 (O)wner cache state
+	0x04 (E)xclusive cache state
+	0x02 (S)hared cache state
+	0x01 (I)nvalid cache state
+	0x1f All cache states

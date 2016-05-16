@@ -1,0 +1,140 @@
+.TH OPREPORT 1 "@DATE@" "oprofile @VERSION@"
+.UC 4
+.SH NAME
+opreport \- produce symbol or binary image summaries
+.SH SYNOPSIS
+.br
+.B opreport
+[
+.I options
+]
+[profile specification]
+.SH DESCRIPTION
+
+.B opreport
+outputs binary image summaries, or per-symbol data, from OProfile profiling
+sessions. See oprofile(1) for how to write profile specifications.
+
+.SH OPTIONS
+.TP
+.BI "--accumulated / -a"
+Accumulate sample and percentage counts in the symbol list.
+.br
+.TP
+.BI "--debug-info / -g"
+Show source file and line for each symbol.
+.br
+.TP
+.BI "--demangle / -D none|smart|normal"
+none: no demangling. normal: use default demangler (default) smart: use
+pattern-matching to make C++ symbol demangling more readable.
+.br
+.TP
+.BI "--callgraph / -c"
+Show call graph information if available.
+.br
+.TP
+.BI "--details / -d"
+Show per-instruction details for all selected symbols.
+.br
+.TP
+.BI "--exclude-dependent / -x"
+Do not include application-specific images for libraries, kernel modules
+and the kernel. This option only makes sense if the profile session
+used --separate.
+.br
+.TP
+.BI "--exclude-symbols / -e [symbols]"
+Exclude all the symbols in the given comma-separated list.
+.br
+.TP
+.BI "--global-percent / -%"
+Make all percentages relative to the whole profile.
+.br
+.TP
+.BI "--help / -? / --usage"
+Show help message.
+.br
+.TP
+.BI "--image-path / -p [paths]"
+Comma-separated list of additional paths to search for binaries.
+This is needed to find modules in kernels 2.6 and upwards.
+.br
+.TP
+.BI "--root / -R [path]"
+A path to a filesystem to search for additional binaries.
+.br
+.TP
+.BI "--include-symbols / -i [symbols]"
+Only include symbols in the given comma-separated list.
+.br
+.TP
+.BI "--long-filenames / -f"
+Output full paths instead of basenames.
+.br
+.TP
+.BI "--merge / -m [lib,cpu,tid,tgid,unitmask,all]"
+Merge any profiles separated in a --separate session.
+.br
+.TP
+.BI "--no-header"
+Don't output a header detailing profiling parameters.
+.br
+.TP
+.BI "--output-file / -o [file]"
+Output to the given file instead of stdout.
+.br
+.TP
+.BI "--reverse-sort / -r"
+Reverse the sort from the default.
+.br
+.TP
+.BI "--session-dir="dir_path
+Use sample database out of directory dir_path instead of the default location (/var/lib/oprofile).
+.br
+.TP
+.BI "--show-address / -w"
+Show each symbol's VMA address.
+.br
+.TP
+.BI "--sort / -s [vma,sample,symbol,debug,image]"
+Sort the list of symbols by, respectively, symbol address,
+number of samples, symbol name, debug filename and line number,
+binary image filename.
+.br
+.TP
+.BI "--symbols / -l"
+List per-symbol information instead of a binary image summary.
+.br
+.TP
+.BI "--threshold / -t [percentage]"
+Only output data for symbols that have more than the given percentage
+of total samples.
+.br
+.TP
+.BI "--verbose / -V [options]"
+Give verbose debugging output.
+.br
+.TP
+.BI "--version / -v"
+Show version.
+.br
+.TP
+.BI "--xml / -X"
+Generate XML output.
+
+.SH ENVIRONMENT
+No special environment variables are recognised by opreport.
+
+.SH FILES
+.TP
+.I /var/lib/oprofile/samples/
+The location of the generated sample files.
+
+.SH VERSION
+.TP
+This man page is current for @PACKAGE@-@VERSION@.
+
+.SH SEE ALSO
+.BR @OP_DOCDIR@,
+.BR oprofile(1)

@@ -1,0 +1,16 @@
+# AMD Generic unit masks
+#
+# Copyright OProfile authors
+# Copyright (c) 2006-2010 Advanced Micro Devices
+# Contributed by Ray Bryant <raybry at amd.com>,
+#		Jason Yeh <jason.yeh at amd.com>
+#		Suravee Suthikulpanit <suravee.suthikulpanit at amd.com>
+#
+# Revision: 1.0
+#
+# ChangeLog: 
+#	1.0: 30 August 2010.
+#	- Initial revision
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask

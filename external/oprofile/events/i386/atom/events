@@ -1,0 +1,80 @@
+#
+# Intel Atom (Silverthorne) events
+#
+# architectural perfmon events
+event:0x3c counters:0,1 um:cpu_clk_unhalted minimum:6000 name:CPU_CLK_UNHALTED : Clock cycles when not halted
+event:0x3c counters:0,1 um:one minimum:6000 name:UNHALTED_REFERENCE_CYCLES : Unhalted reference cycles
+event:0xc0 counters:0,1 um:one minimum:6000 name:INST_RETIRED : number of instructions retired
+event:0x2e counters:0,1 um:x41 minimum:6000 name:LLC_MISSES : Last level cache demand requests from this core that missed the LLC
+event:0x2e counters:0,1 um:x4f minimum:6000 name:LLC_REFS : Last level cache demand requests from this core
+event:0xc4 counters:0,1 um:br_inst_retired minimum:500 name:BR_INST_RETIRED : number of branch instructions retired
+event:0xc5 counters:0,1 um:zero minimum:500 name:BR_MISS_PRED_RETIRED : number of mispredicted branches retired (precise)
+#
+event:0x02 counters:0,1 um:store_forwards minimum:6000 name:STORE_FORWARDS : Good store forwards
+event:0x06 counters:0,1 um:segment_reg_loads minimum:6000 name:SEGMENT_REG_LOADS : Number of segment register loads
+event:0x07 counters:0,1 um:simd_prefetch minimum:6000 name:PREFETCH : Streaming SIMD Extensions (SSE) Prefetch instructions executed
+event:0x08 counters:0,1 um:data_tlb_misses minimum:6000 name:DATA_TLB_MISSES : Memory accesses that missed the DTLB
+event:0x0C counters:0,1 um:page_walks minimum:6000 name:PAGE_WALKS : Page walks
+event:0x10 counters:0,1 um:x87_comp_ops_exe minimum:6000 name:X87_COMP_OPS_EXE : Floating point computational micro-ops
+event:0x11 counters:0,1 um:fp_assist minimum:6000 name:FP_ASSIST : Floating point assists
+event:0x12 counters:0,1 um:mul minimum:6000 name:MUL : Multiply operations
+event:0x13 counters:0,1 um:div minimum:6000 name:DIV : Divide operations
+event:0x14 counters:0,1 um:one minimum:6000 name:CYCLES_DIV_BUSY : Cycles the driver is busy
+event:0x21 counters:0,1 um:core minimum:6000 name:CORE : Cycles L2 address bus is in use
+event:0x22 counters:0,1 um:core minimum:6000 name:L2_DBUS_BUSY : Cycles the L2 cache data bus is busy
+event:0x24 counters:0,1 um:core,prefetch minimum:500 name:L2_LINES_IN : L2 cache misses
+event:0x25 counters:0,1 um:core minimum:500 name:L2_M_LINES_IN : L2 cache line modifications
+event:0x26 counters:0,1 um:core,prefetch minimum:500 name:L2_LINES_OUT : L2 cache lines evicted
+event:0x27 counters:0,1 um:core,prefetch minimum:500 name:L2_M_LINES_OUT : Modified lines evicted from the L2 cache
+event:0x28 counters:0,1 um:core,mesi minimum:6000 name:L2_IFETCH : L2 cacheable instruction fetch requests
+event:0x29 counters:0,1 um:core,prefetch,mesi minimum:6000 name:L2_LD : L2 cache reads
+event:0x2A counters:0,1 um:core,mesi minimum:6000 name:L2_ST : L2 store requests
+event:0x2B counters:0,1 um:core,mesi minimum:6000 name:L2_LOCK : L2 locked accesses
+event:0x2E counters:0,1 um:l2_rqsts,core,prefetch,mesi minimum:6000 name:L2_RQSTS : L2 cache requests
+event:0x30 counters:0,1 um:core,prefetch,mesi minimum:500 name:L2_REJECT_BUSQ : Rejected L2 cache requests
+event:0x32 counters:0,1 um:core minimum:6000 name:L2_NO_REQ : Cycles no L2 cache requests are pending
+event:0x3A counters:0,1 um:zero minimum:6000 name:EIST_TRANS : Number of Enhanced Intel SpeedStep(R) Technology (EIST) transitions
+event:0x3B counters:0,1 um:thermal_trip minimum:6000 name:THERMAL_TRIP : Number of thermal trips
+event:0x40 counters:0,1 um:l1d_cache minimum:6000 name:L1D_CACHE : L1d Cache accesses
+event:0x60 counters:0,1 um:core,agent minimum:6000 name:BUS_REQUEST_OUTSTANDING : Outstanding cacheable data read bus requests duration
+event:0x61 counters:0,1 um:agent minimum:6000 name:BUS_BNR_DRV : Number of Bus Not Ready signals asserted
+event:0x62 counters:0,1 um:agent minimum:6000 name:BUS_DRDY_CLOCKS : Bus cycles when data is sent on the bus
+event:0x63 counters:0,1 um:core,agent minimum:6000 name:BUS_LOCK_CLOCKS : Bus cycles when a LOCK signal is asserted.
+event:0x64 counters:0,1 um:core minimum:6000 name:BUS_DATA_RCV : Bus cycles while processor receives data
+event:0x65 counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_BRD : Burst read bus transactions
+event:0x66 counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_RFO : RFO bus transactions
+event:0x67 counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_WB : Explicit writeback bus transactions
+event:0x68 counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_IFETCH : Instruction-fetch bus transactions.
+event:0x69 counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_INVAL : Invalidate bus transactions
+event:0x6A counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_PWR : Partial write bus transaction.
+event:0x6B counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_P : Partial bus transactions
+event:0x6C counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_IO : IO bus transactions
+event:0x6D counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_DEF : Deferred bus transactions
+event:0x6E counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_BURST : Burst (full cache-line) bus transactions.
+event:0x6F counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_MEM : Memory bus transactions
+event:0x70 counters:0,1 um:core,agent minimum:500 name:BUS_TRANS_ANY : All bus transactions
+event:0x77 counters:0,1 um:core,mesi minimum:500 name:EXT_SNOOP : External snoops
+event:0x7A counters:0,1 um:agent minimum:500 name:BUS_HIT_DRV : HIT signal asserted
+event:0x7B counters:0,1 um:agent minimum:500 name:BUS_HITM_DRV : HITM signal asserted
+event:0x7D counters:0,1 um:core minimum:500 name:BUSQ_EMPTY : Bus queue is empty
+event:0x7E counters:0,1 um:core,agent minimum:6000 name:SNOOP_STALL_DRV : Bus stalled for snoops
+event:0x7F counters:0,1 um:core minimum:6000 name:BUS_IO_WAIT : IO requests waiting in the bus queue
+event:0x80 counters:0,1 um:icache minimum:6000 name:ICACHE : Instruction cache accesses
+event:0x82 counters:0,1 um:itlb minimum:6000 name:ITLB : ITLB events
+event:0xAA counters:0,1 um:macro_insts minimum:6000 name:MACRO_INSTS : instructions decoded
+event:0xB0 counters:0,1 um:simd_uops_exec minimum:6000 name:SIMD_UOPS_EXEC : SIMD micro-ops executed
+event:0xB1 counters:0,1 um:simd_sat_uop_exec minimum:6000 name:SIMD_SAT_UOP_EXEC : SIMD saturated arithmetic micro-ops executed
+event:0xB3 counters:0,1 um:simd_uop_type_exec minimum:6000 name:SIMD_UOP_TYPE_EXEC : SIMD packed microops executed
+event:0xC2 counters:0,1 um:uops_retired minimum:6000 name:UOPS_RETIRED : Micro-ops retired
+event:0xC3 counters:0,1 um:one minimum:6000 name:MACHINE_CLEARS : Self-Modifying Code detected
+event:0xC6 counters:0,1 um:cycles_int_masked minimum:6000 name:CYCLES_INT_MASKED : Cycles during which interrupts are disabled
+event:0xC7 counters:0,1 um:simd_inst_retired minimum:6000 name:SIMD_INST_RETIRED : Retired Streaming SIMD Extensions (SSE) instructions
+event:0xC8 counters:0,1 um:zero minimum:6000 name:HW_INT_RCV : Hardware interrupts received
+event:0xCA counters:0,1 um:simd_comp_inst_retired minimum:6000 name:SIMD_COMP_INST_RETIRED : Retired computational Streaming SIMD Extensions (SSE) instructions.
+event:0xCB counters:0,1 um:mem_load_retired minimum:6000 name:MEM_LOAD_RETIRED : Retired loads
+event:0xCD counters:0,1 um:zero minimum:6000 name:SIMD_ASSIST : SIMD assists invoked
+event:0xCE counters:0,1 um:zero minimum:6000 name:SIMD_INSTR_RETIRED : SIMD Instructions retired
+event:0xCF counters:0,1 um:zero minimum:6000 name:SIMD_SAT_INSTR_RETIRED : Saturated arithmetic instructions retired
+event:0xE0 counters:0,1 um:zero minimum:6000 name:BR_INST_DECODED : Branch instructions decoded
+event:0xE4 counters:0,1 um:zero minimum:6000 name:BOGUS_BR : Bogus branches
+event:0xE6 counters:0,1 um:one minimum:6000 name:BACLEARS : BACLEARS asserted

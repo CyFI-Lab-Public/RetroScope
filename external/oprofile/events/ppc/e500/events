@@ -1,0 +1,83 @@
+# e500 Events
+#
+event:0x1 counters:0,1,2,3 um:zero minimum:3000 name:CPU_CLK : Cycles
+event:0x2 counters:0,1,2,3 um:zero minimum:3000 name:COMPLETED_INSNS : Completed Instructions (0, 1, or 2 per cycle)
+event:0x3 counters:0,1,2,3 um:zero minimum:500 name:COMPLETED_OPS : Completed Micro-ops (counts 2 for load/store w/update)
+event:0x4 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_FETCHES : Instruction fetches
+event:0x5 counters:0,1,2,3 um:zero minimum:500 name:DECODED_OPS : Micro-ops decoded
+event:0x8 counters:0,1,2,3 um:zero minimum:500 name:COMPLETED_BRANCHES : Branch Instructions completed
+event:0x9 counters:0,1,2,3 um:zero minimum:500 name:COMPLETED_LOAD_OPS : Load micro-ops completed
+event:0xa counters:0,1,2,3 um:zero minimum:500 name:COMPLETED_STORE_OPS : Store micro-ops completed
+event:0xb counters:0,1,2,3 um:zero minimum:500 name:COMPLETION_REDIRECTS : Number of completion buffer redirects
+event:0xc counters:0,1,2,3 um:zero minimum:500 name:BRANCHES_FINISHED : Branches finished
+event:0xd counters:0,1,2,3 um:zero minimum:500 name:TAKEN_BRANCHES_FINISHED : Taken branches finished
+event:0xe counters:0,1,2,3 um:zero minimum:500 name:BIFFED_BRANCHES_FINISHED : Biffed branches finished
+event:0xf counters:0,1,2,3 um:zero minimum:500 name:BRANCHES_MISPREDICTED : Branch instructions mispredicted due to direction, target, or IAB prediction
+event:0x10 counters:0,1,2,3 um:zero minimum:500 name:BRANCHES_MISPREDICTED_DIRECTION : Branches mispredicted due to direction prediction
+event:0x11 counters:0,1,2,3 um:zero minimum:500 name:BTB_HITS : Branches that hit in the BTB, or missed but are not taken
+event:0x12 counters:0,1,2,3 um:zero minimum:500 name:DECODE_STALLED : Cycles the instruction buffer was not empty, but 0 instructions decoded
+event:0x13 counters:0,1,2,3 um:zero minimum:500 name:ISSUE_STALLED : Cycles the issue buffer is not empty but 0 instructions issued 
+event:0x14 counters:0,1,2,3 um:zero minimum:500 name:BRANCH_ISSUE_STALLED : Cycles the branch buffer is not empty but 0 instructions issued 
+event:0x15 counters:0,1,2,3 um:zero minimum:500 name:SRS0_SCHEDULE_STALLED : Cycles SRS0 is not empty but 0 instructions scheduled 
+event:0x16 counters:0,1,2,3 um:zero minimum:500 name:SRS1_SCHEDULE_STALLED : Cycles SRS1 is not empty but 0 instructions scheduled 
+event:0x17 counters:0,1,2,3 um:zero minimum:500 name:VRS_SCHEDULE_STALLED : Cycles VRS is not empty but 0 instructions scheduled 
+event:0x18 counters:0,1,2,3 um:zero minimum:500 name:LRS_SCHEDULE_STALLED : Cycles LRS is not empty but 0 instructions scheduled 
+event:0x19 counters:0,1,2,3 um:zero minimum:500 name:BRS_SCHEDULE_STALLED : Cycles BRS is not empty but 0 instructions scheduled Load/Store, Data Cache, and dLFB Events 
+event:0x1a counters:0,1,2,3 um:zero minimum:500 name:TOTAL_TRANSLATED : Total Ldst microops translated. 
+event:0x1b counters:0,1,2,3 um:zero minimum:500 name:LOADS_TRANSLATED : Number of cacheable L* or EVL* microops translated. (This includes microops from load-multiple, load-update, and load-context instructions.) 
+event:0x1c counters:0,1,2,3 um:zero minimum:500 name:STORES_TRANSLATED : Number of cacheable ST* or EVST* microops translated. (This includes microops from store-multiple, store-update, and save-context instructions.) 
+event:0x1d counters:0,1,2,3 um:zero minimum:500 name:TOUCHES_TRANSLATED : Number of cacheable DCBT and DCBTST instructions translated (L1 only) (Does not count touches that are converted to nops i.e. exceptions, noncacheable, hid0[nopti] bit is set.) 
+event:0x1e counters:0,1,2,3 um:zero minimum:500 name:CACHEOPS_TRANSLATED : Number of dcba, dcbf, dcbst, and dcbz instructions translated (e500 traps on dcbi) 
+event:0x1f counters:0,1,2,3 um:zero minimum:500 name:CACHEINHIBITED_ACCESSES_TRANSLATED : Number of cache inhibited accesses translated 
+event:0x20 counters:0,1,2,3 um:zero minimum:500 name:GUARDED_LOADS_TRANSLATED : Number of guarded loads translated 
+event:0x21 counters:0,1,2,3 um:zero minimum:500 name:WRITETHROUGH_STORES_TRANSLATED : Number of write-through stores translated 
+event:0x22 counters:0,1,2,3 um:zero minimum:500 name:MISALIGNED_ACCESSES_TRANSLATED : Number of misaligned load or store accesses translated. 
+event:0x23 counters:0,1,2,3 um:zero minimum:500 name:TOTAL_ALLOCATED_DLFB : Total allocated to dLFB
+event:0x24 counters:0,1,2,3 um:zero minimum:500 name:LOADS_TRANSLATED_ALLOCATED_DLFB : Loads translated and allocated to dLFB (Applies to same class of instructions as loads translated.) 
+event:0x25 counters:0,1,2,3 um:zero minimum:500 name:STORES_COMPLETED_ALLOCATED_DLFB : Stores completed and allocated to dLFB (Applies to same class of instructions as stores translated.) 
+event:0x26 counters:0,1,2,3 um:zero minimum:500 name:TOUCHES_TRANSLATED_ALLOCATED_DLFB : Touches translated and allocated to dLFB (Applies to same class of instructions as touches translated.) 
+event:0x27 counters:0,1,2,3 um:zero minimum:500 name:STORES_COMPLETED : Number of cacheable ST* or EVST* microops completed. (Applies to the same class of instructions as stores translated.) 
+event:0x28 counters:0,1,2,3 um:zero minimum:500 name:DL1_LOCKS : Number of cache lines locked in the dL1. (Counts a lock even if an overlock condition is encountered.) 
+event:0x29 counters:0,1,2,3 um:zero minimum:500 name:DL1_RELOADS : This is historically used to determine dcache miss rate (along with loads/stores completed). This counts dL1 reloads for any reason. 
+event:0x2a counters:0,1,2,3 um:zero minimum:500 name:DL1_CASTOUTS : dL1 castouts. Does not count castouts due to DCBF. 
+event:0x2b counters:0,1,2,3 um:zero minimum:500 name:DETECTED_REPLAYS : Times detected replay condition - Load miss with dLFB full. 
+event:0x2c counters:0,1,2,3 um:zero minimum:500 name:LOAD_MISS_QUEUE_FULL_REPLAYS : Load miss with load queue full. 
+event:0x2d counters:0,1,2,3 um:zero minimum:500 name:LOAD_GUARDED_MISS_NOT_LAST_REPLAYS : Load guarded miss when the load is not yet at the bottom of the completion buffer.
+event:0x2e counters:0,1,2,3 um:zero minimum:500 name:STORE_TRANSLATED_QUEUE_FULL_REPLAYS : Translate a store when the StQ is full.
+event:0x2f counters:0,1,2,3 um:zero minimum:500 name:ADDRESS_COLLISION_REPLAYS : Address collision.
+event:0x30 counters:0,1,2,3 um:zero minimum:500 name:DMMU_MISS_REPLAYS : DMMU_MISS_REPLAYS : DMMU miss.
+event:0x31 counters:0,1,2,3 um:zero minimum:500 name:DMMU_BUSY_REPLAYS : DMMU_BUSY_REPLAYS : DMMU busy.
+event:0x32 counters:0,1,2,3 um:zero minimum:500 name:SECOND_PART_MISALIGNED_AFTER_MISS_REPLAYS : Second part of misaligned access when first part missed in cache.
+event:0x33 counters:0,1,2,3 um:zero minimum:500 name:LOAD_MISS_DLFB_FULL_CYCLES : Cycles stalled on replay condition - Load miss with dLFB full.
+event:0x34 counters:0,1,2,3 um:zero minimum:500 name:LOAD_MISS_QUEUE_FULL_CYCLES : Cycles stalled on replay condition - Load miss with load queue full.
+event:0x35 counters:0,1,2,3 um:zero minimum:500 name:LOAD_GUARDED_MISS_NOT_LAST_CYCLES : Cycles stalled on replay condition - Load guarded miss when the load is not yet at the bottom of the completion buffer.
+event:0x36 counters:0,1,2,3 um:zero minimum:500 name:STORE_TRANSLATED_QUEUE_FULL_CYCLES : Cycles stalled on replay condition - Translate a store when the StQ is full.
+event:0x37 counters:0,1,2,3 um:zero minimum:500 name:ADDRESS_COLLISION_CYCLES : Cycles stalled on replay condition - Address collision.
+event:0x38 counters:0,1,2,3 um:zero minimum:500 name:DMMU_MISS_CYCLES : Cycles stalled on replay condition - DMMU miss.
+event:0x39 counters:0,1,2,3 um:zero minimum:500 name:DMMU_BUSY_CYCLES : Cycles stalled on replay condition - DMMU busy.
+event:0x3a counters:0,1,2,3 um:zero minimum:500 name:SECOND_PART_MISALIGNED_AFTER_MISS_CYCLES : Cycles stalled on replay condition - Second part of misaligned access when first part missed in cache.
+event:0x3b counters:0,1,2,3 um:zero minimum:500 name:IL1_LOCKS : Number of cache lines locked in the iL1. (Counts a lock even if an overlock condition is encountered.) 
+event:0x3c counters:0,1,2,3 um:zero minimum:500 name:IL1_FETCH_RELOADS : This is historically used to determine icache miss rate (along with instructions completed) Reloads due to demand fetch. 
+event:0x3d counters:0,1,2,3 um:zero minimum:500 name:FETCHES : Counts the number of fetches that write at least one instruction to the instruction buffer. (With instruction fetched, can used to compute instructions-per-fetch) 
+event:0x3e counters:0,1,2,3 um:zero minimum:500 name:IMMU_TLB4K_RELOADS : iMMU TLB4K reloads
+event:0x3f counters:0,1,2,3 um:zero minimum:500 name:IMMU_VSP_RELOADS : iMMU VSP reloads
+event:0x40 counters:0,1,2,3 um:zero minimum:500 name:DMMU_TLB4K_RELOADS : dMMU TLB4K reloads
+event:0x41 counters:0,1,2,3 um:zero minimum:500 name:DMMU_VSP_RELOADS : dMMU VSP reloads
+event:0x42 counters:0,1,2,3 um:zero minimum:500 name:L2MMU_MISSES : Counts iTLB/dTLB error interrupt 
+event:0x43 counters:0,1,2,3 um:zero minimum:500 name:BIU_MASTER_REQUESTS : Number of master transactions. (Number of master TSs.) 
+event:0x44 counters:0,1,2,3 um:zero minimum:500 name:BIU_MASTER_I_REQUESTS : Number of master I-Side transactions. (Number of master I-Side TSs.) 
+event:0x45 counters:0,1,2,3 um:zero minimum:500 name:BIU_MASTER_D_REQUESTS : Number of master D-Side transactions. (Number of master D-Side TSs.) 
+event:0x46 counters:0,1,2,3 um:zero minimum:500 name:BIU_MASTER_D_CASTOUT_REQUESTS : Number of master D-Side non-program-demand castout transactions. This counts replacement pushes and snoop pushes. This does not count DCBF castouts. (Number of master D-side non-program-demand castout TSs.) 
+event:0x47 counters:0,1,2,3 um:zero minimum:500 name:BIU_MASTER_RETRIES : Number of transactions which were initiated by this processor which were retried on the BIU interface. (Number of master ARTRYs.) 
+event:0x48 counters:0,1,2,3 um:zero minimum:500 name:SNOOP_REQUESTS : Number of externally generated snoop requests. (Counts snoop TSs.) 
+event:0x49 counters:0,1,2,3 um:zero minimum:500 name:SNOOP_HITS : Number of snoop hits on all D-side resources regardless of the cache state (modified, exclusive, or shared) 
+event:0x4a counters:0,1,2,3 um:zero minimum:500 name:SNOOP_PUSHES : Number of snoop pushes from all D-side resources. (Counts snoop ARTRY/WOPs.) 
+event:0x4b counters:0,1,2,3 um:zero minimum:500 name:SNOOP_RETRIES : Number of snoop requests retried. (Counts snoop ARTRYs.) 
+event:0x52 counters:0,1,2,3 um:zero minimum:500 name:PMC0_OVERFLOW : Counts the number of times PMC0[32] transitioned from 1 to 0. 
+event:0x53 counters:0,1,2,3 um:zero minimum:500 name:PMC1_OVERFLOW : Counts the number of times PMC1[32] transitioned from 1 to 0. 
+event:0x54 counters:0,1,2,3 um:zero minimum:500 name:PMC2_OVERFLOW : Counts the number of times PMC2[32] transitioned from 1 to 0. 
+event:0x55 counters:0,1,2,3 um:zero minimum:500 name:PMC3_OVERFLOW : Counts the number of times PMC3[32] transitioned from 1 to 0.
+event:0x56 counters:0,1,2,3 um:zero minimum:500 name:INTERRUPTS : Number of interrupts taken
+event:0x57 counters:0,1,2,3 um:zero minimum:500 name:EXTERNAL_INTERRUPTS : Number of external input interrupts taken
+event:0x58 counters:0,1,2,3 um:zero minimum:500 name:CRITICAL_INTERRUPTS : Number of critical input interrupts taken
+event:0x59 counters:0,1,2,3 um:zero minimum:500 name:SC_TRAP_INTERRUPTS : Number of system call and trap interrupts

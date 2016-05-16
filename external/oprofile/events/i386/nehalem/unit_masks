@@ -1,0 +1,372 @@
+#
+# Unit masks for the Intel "Nehalem" micro architecture
+# (Intel Core i7 "Bloomfield"; Xeon 75xx)
+#
+include:i386/arch_perfmon
+name:sb_forward type:mandatory default:0x01
+	0x01 any Counts the number of store forwards
+name:load_block type:bitmask default:0x01
+	0x01 std Counts the number of loads blocked by a preceding store with unknown data
+	0x04 address_offset Counts the number of loads blocked by a preceding store address
+name:sb_drain type:mandatory default:0x01
+	0x01 cycles Counts the cycles of store buffer drains
+name:misalign_mem_ref type:bitmask default:0x03
+	0x01 load Counts the number of misaligned load references
+	0x02 store Counts the number of misaligned store references
+	0x03 any Counts the number of misaligned memory references
+name:store_blocks type:bitmask default:0x0f
+	0x01 not_sta This event counts the number of load operations delayed caused by preceding stores whose addresses are known but whose data is unknown, and preceding stores that conflict with the load but which incompletely overlap the load
+	0x02 sta This event counts load operations delayed caused by preceding stores whose addresses are unknown (STA block)
+	0x04 at_ret Counts number of loads delayed with at-Retirement block code
+	0x08 l1d_block Cacheable  loads delayed with L1D block code
+	0x0F any All loads delayed due to store blocks
+name:dtlb_load_misses type:bitmask default:0x01
+	0x01 any Counts all load misses that cause a page walk
+	0x02 walk_completed Counts number of completed page walks due to load miss in the STLB
+	0x10 stlb_hit Number of cache load STLB hits
+	0x20 pde_miss Number of DTLB cache load misses where the low part of the linear to physical address translation was missed
+	0x40 pdp_miss Number of DTLB cache load misses where the high part of the linear to physical address translation was missed
+	0x80 large_walk_completed Counts number of completed large page walks due to load miss in the STLB
+name:memory_disambiguration type:bitmask default:0x01
+	0x01 reset Counts memory disambiguration reset cycles
+	0x02 success Counts the number of loads that memory disambiguration succeeded
+	0x04 watchdog Counts the number of times the memory disambiguration watchdog kicked in
+	0x08 watch_cycles Counts the cycles that the memory disambiguration watchdog is active
+name:mem_inst_retired type:bitmask default:0x01
+	0x01 loads Counts the number of instructions with an architecturally-visible store retired on the architected path
+	0x02 stores Counts the number of instructions with an architecturally-visible store retired on the architected path
+name:mem_store_retired type:mandatory default:0x01
+	0x01 dtlb_miss The event counts the number of retired stores that missed the DTLB
+name:uops_issued type:bitmask default:0x01
+	0x01 any Counts the number of Uops issued by the Register Allocation Table to the Reservation Station, i
+	0x01 stalled_cycles Counts the number of cycles no Uops issued by the Register Allocation Table to the Reservation Station, i
+	0x02 fused Counts the number of fused Uops that were issued from the Register Allocation Table to the Reservation Station
+name:mem_uncore_retired type:bitmask default:0x02
+	0x02 other_core_l2_hitm Counts number of memory load instructions retired where the memory reference hit modified data in a sibling core residing on the same socket
+	0x08 remote_cache_local_home_hit Counts number of memory load instructions retired where the memory reference missed the L1, L2 and LLC caches and HIT in a remote socket's cache
+	0x10 remote_dram Counts number of memory load instructions retired where the memory reference missed the L1, L2 and LLC caches and was remotely homed
+	0x20 local_dram Counts number of memory load instructions retired where the memory reference missed the L1, L2 and LLC caches and required a local socket memory reference
+name:fp_comp_ops_exe type:bitmask default:0x01
+	0x01 x87 Counts the number of FP Computational Uops Executed
+	0x02 mmx Counts number of MMX Uops executed
+	0x04 sse_fp Counts number of SSE and SSE2 FP uops executed
+	0x08 sse2_integer Counts number of SSE2 integer uops executed
+	0x10 sse_fp_packed Counts number of SSE FP packed uops executed
+	0x20 sse_fp_scalar Counts number of SSE FP scalar uops executed
+	0x40 sse_single_precision Counts number of SSE* FP single precision uops executed
+	0x80 sse_double_precision Counts number of SSE* FP double precision uops executed
+name:simd_int_128 type:bitmask default:0x01
+	0x01 packed_mpy Counts number of 128 bit SIMD integer multiply operations
+	0x02 packed_shift Counts number of 128 bit SIMD integer shift operations
+	0x04 pack Counts number of 128 bit SIMD integer pack operations
+	0x08 unpack Counts number of 128 bit SIMD integer unpack operations
+	0x10 packed_logical Counts number of 128 bit SIMD integer logical  operations
+	0x20 packed_arith Counts number of 128 bit SIMD integer arithmetic operations
+	0x40 shuffle_move Counts number of 128 bit SIMD integer shuffle and move operations
+name:load_dispatch type:bitmask default:0x07
+	0x01 rs Counts number of loads dispatched from the Reservation Station that bypass the Memory Order Buffer
+	0x02 rs_delayed Counts the number of delayed RS dispatches at the stage latch
+	0x04 mob Counts the number of loads dispatched from the Reservation Station to the Memory Order Buffer
+	0x07 any Counts all loads dispatched from the Reservation Station
+name:arith type:bitmask default:0x01
+	0x01 cycles_div_busy Counts the number of cycles the divider is busy executing divide or square root operations
+	0x02 mul Counts the number of multiply operations executed
+name:inst_decoded type:mandatory default:0x01
+	0x01 dec0 Counts number of instructions that require  decoder 0 to be decoded
+name:hw_int type:bitmask default:0x01
+	0x01 rcv Number of interrupt received
+	0x02 cycles_masked Number of cycles interrupt are masked
+	0x04 cycles_pending_and_masked Number of cycles interrupts are pending and masked
+name:l2_rqsts type:bitmask default:0x01
+	0x01 ld_hit Counts number of loads that hit the L2 cache
+	0x02 ld_miss Counts the number of loads that miss the L2 cache
+	0x03 loads Counts all L2 load requests
+	0x04 rfo_hit Counts the number of store RFO requests that hit the L2 cache
+	0x08 rfo_miss Counts the number of store RFO requests that miss the L2 cache
+	0x0C rfos Counts all L2 store RFO requests
+	0x10 ifetch_hit Counts number of instruction fetches that hit the L2 cache
+	0x20 ifetch_miss Counts number of instruction fetches that miss the L2 cache
+	0x30 ifetches Counts all instruction fetches
+	0x40 prefetch_hit Counts L2 prefetch hits for both code and data
+	0x80 prefetch_miss Counts L2 prefetch misses for both code and data
+	0xC0 prefetches Counts all L2 prefetches for both code and data
+	0xAA miss Counts all L2 misses for both code and data
+	0xFF references Counts all L2 requests for both code and data
+name:l2_data_rqsts type:bitmask default:0xff
+	0x01 i_state Counts number of L2 data demand loads where the cache line to be loaded is in the I (invalid) state, i
+	0x02 s_state Counts number of L2 data demand loads where the cache line to be loaded is in the S (shared) state
+	0x04 e_state Counts number of L2 data demand loads where the cache line to be loaded is in the E (exclusive) state
+	0x08 m_state Counts number of L2 data demand loads where the cache line to be loaded is in the M (modified) state
+	0x0F mesi Counts all L2 data demand requests
+	0x10 i_state Counts number of L2 prefetch data loads where the cache line to be loaded is in the I (invalid) state, i
+	0x20 s_state Counts number of L2 prefetch data loads where the cache line to be loaded is in the S (shared) state
+	0x40 e_state Counts number of L2 prefetch data loads where the cache line to be loaded is in the E (exclusive) state
+	0x80 m_state Counts number of L2 prefetch data loads where the cache line to be loaded is in the M (modified) state
+	0xF0 mesi Counts all L2 prefetch requests
+	0xFF any Counts all L2 data requests
+name:l2_write type:bitmask default:0x01
+	0x01 i_state Counts number of L2 demand store RFO requests where the cache line to be loaded is in the I (invalid) state, i
+	0x02 s_state Counts number of L2 store RFO requests where the cache line to be loaded is in the S (shared) state
+	0x04 e_state Counts number of L2 store RFO requests where the cache line to be loaded is in the E (exclusive) state
+	0x08 m_state Counts number of L2 store RFO requests where the cache line to be loaded is in the M (modified) state
+	0x0E hit Counts number of L2 store RFO requests where the cache line to be loaded is in either the S, E or M states
+	0x0F mesi Counts all L2 store RFO requests
+	0x10 i_state Counts number of L2 demand lock RFO requests where the cache line to be loaded is in the I (invalid) state, i
+	0x20 s_state Counts number of L2 lock RFO requests where the cache line to be loaded is in the S (shared) state
+	0x40 e_state Counts number of L2 demand lock RFO requests where the cache line to be loaded is in the E (exclusive) state
+	0x80 m_state Counts number of L2 demand lock RFO requests where the cache line to be loaded is in the M (modified) state
+	0xE0 hit Counts number of L2 demand lock RFO requests where the cache line to be loaded is in either the S, E, or M state
+	0xF0 mesi Counts all L2 demand lock RFO requests
+name:l1d_wb_l2 type:bitmask default:0x01
+	0x01 i_state Counts number of L1 writebacks to the L2 where the cache line to be written is in the I (invalid) state, i
+	0x02 s_state Counts number of L1 writebacks to the L2 where the cache line to be written is in the S state
+	0x04 e_state Counts number of L1 writebacks to the L2 where the cache line to be written is in the E (exclusive) state
+	0x08 m_state Counts number of L1 writebacks to the L2 where the cache line to be written is in the M (modified) state
+	0x0F mesi Counts all L1 writebacks to the L2
+name:longest_lat_cache type:bitmask default:0x4F
+	0x4F reference This event counts requests originating from the core that reference a cache line in the last level cache
+	0x41 miss This event counts each cache miss condition for references to the last level cache
+name:cpu_clk_unhalted type:bitmask default:0x00
+	0x00 thread_p Counts the number of thread cycles while the thread is not in a halt state
+	0x01 ref_p Increments at the frequency of a slower reference clock when not halted
+name:l1d_cache_ld type:bitmask default:0x01
+	0x01 i_state Counts L1 data cache read requests where the cache line to be loaded is in the I (invalid) state, i
+	0x02 s_state Counts L1 data cache read requests where the cache line to be loaded is in the S (shared) state
+	0x04 e_state Counts L1 data cache read requests where the cache line to be loaded is in the E (exclusive) state
+	0x08 m_state Counts L1 data cache read requests where the cache line to be loaded is in the M (modified) state
+	0x0F mesi Counts L1 data cache read requests
+name:l1d_cache_st type:bitmask default:0x01
+	0x01 i_state Counts L1 data cache store RFO requests where the cache line to be loaded is in the I state
+	0x02 s_state Counts L1 data cache store RFO requests where the cache line to be loaded is in the S (shared) state
+	0x04 e_state Counts L1 data cache store RFO requests where the cache line to be loaded is in the E (exclusive) state
+	0x08 m_state Counts L1 data cache store RFO requests where cache line to be loaded is in the M (modified) state
+	0x0F mesi Counts L1 data cache store RFO requests
+name:l1d_cache_lock type:bitmask default:0x01
+	0x01 hit Counts retired load locks that hit in the L1 data cache or hit in an already allocated fill buffer
+	0x02 s_state Counts L1 data cache retired load locks that hit the target cache line in the shared state
+	0x04 e_state Counts L1 data cache retired load locks that hit the target cache line in the exclusive state
+	0x08 m_state Counts L1 data cache retired load locks that hit the target cache line in the modified state
+name:l1d_all_ref type:bitmask default:0x01
+	0x01 any Counts all references (uncached, speculated and retired) to the L1 data cache, including all loads and stores with any memory types
+	0x02 cacheable Counts all data reads and writes (speculated and retired) from cacheable memory, including locked operations
+#name:l1d_pend_miss type:mandatory default:0x02
+#	0x02 load_buffers_full Counts cycles of L1 data cache load fill buffers full
+name:dtlb_misses type:bitmask default:0x01
+	0x01 any Counts the number of misses in the STLB which causes a page walk
+	0x02 walk_completed Counts number of misses in the STLB which resulted in a completed page walk
+	0x10 stlb_hit Counts the number of DTLB first level misses that hit in the second level TLB
+	0x20 pde_miss Number of DTLB cache misses where the low part of the linear to physical address translation was missed
+	0x40 pdp_miss Number of DTLB misses where the high part of the linear to physical address translation was missed
+	0x80 large_walk_completed Counts number of completed large page walks due to misses in the STLB
+name:sse_mem_exec type:bitmask default:0x01
+	0x01 nta Counts number of SSE NTA prefetch/weakly-ordered instructions which missed the L1 data cache
+	0x08 streaming_stores Counts number of SSE nontemporal stores
+name:l1d_prefetch type:bitmask default:0x01
+	0x01 requests Counts number of hardware prefetch requests dispatched out of the prefetch FIFO
+	0x02 miss Counts number of hardware prefetch requests that miss the L1D
+	0x04 triggers Counts number of prefetch requests triggered by the Finite State Machine and pushed into the prefetch FIFO
+name:ept type:bitmask default:0x02
+	0x02 epde_miss Counts Extended Page Directory Entry misses
+	0x04 epdpe_hit Counts Extended Page Directory Pointer Entry hits
+	0x08 epdpe_miss Counts Extended Page Directory Pointer Entry misses
+name:l1d type:bitmask default:0x01
+	0x01 repl Counts the number of lines brought into the L1 data cache
+	0x02 m_repl Counts the number of modified lines brought into the L1 data cache
+	0x04 m_evict Counts the number of modified lines evicted from the L1 data cache due to replacement
+	0x08 m_snoop_evict Counts the number of modified lines evicted from the L1 data cache due to snoop HITM intervention
+name:offcore_requests_outstanding type:bitmask default:0x01
+	0x01 read_data Counts weighted cycles of offcore demand data read requests
+	0x02 read_code Counts weighted cycles of offcore demand code read requests
+	0x04 rfo Counts weighted cycles of offcore demand RFO requests
+	0x08 read Counts weighted cycles of offcore read requests of any kind
+name:cache_lock_cycles type:bitmask default:0x01
+	0x01 l1d_l2 Cycle count during which the L1D and L2 are locked
+	0x02 l1d Counts the number of cycles that cacheline in the L1 data cache unit is locked
+name:l1i type:bitmask default:0x01
+	0x01 hits Counts all instruction fetches that hit the L1 instruction cache
+	0x02 misses Counts all instruction fetches that miss the L1I cache
+	0x03 reads Counts all instruction fetches, including uncacheable fetches that bypass the L1I
+	0x04 cycles_stalled Cycle counts for which an instruction fetch stalls due to a L1I cache miss, ITLB miss or ITLB fault
+name:ifu_ivc type:bitmask default:0x01
+	0x01 full Instruction Fetche unit victim cache full
+	0x02 l1i_eviction L1 Instruction cache evictions
+name:large_itlb type:mandatory default:0x01
+	0x01 hit Counts number of large ITLB hits
+name:itlb_misses type:bitmask default:0x01
+	0x01 any Counts the number of misses in all levels of the ITLB which causes a page walk
+	0x02 walk_completed Counts number of misses in all levels of the ITLB which resulted in a completed page walk
+	0x04 walk_cycles Counts ITLB miss page walk cycles
+	0x04 pmh_busy_cycles Counts PMH busy cycles
+	0x10 stlb_hit Counts the number of ITLB misses that hit in the second level TLB
+	0x20 pde_miss Number of ITLB misses where the low part of the linear to physical address translation was missed
+	0x40 pdp_miss Number of ITLB misses where the high part of the linear to physical address translation was missed
+	0x80 large_walk_completed Counts number of completed large page walks due to misses in the STLB
+name:ild_stall type:bitmask default:0x0f
+	0x01 lcp Cycles Instruction Length Decoder stalls due to length changing prefixes: 66, 67 or REX
+	0x02 mru Instruction Length Decoder stall cycles due to Brand Prediction Unit (PBU) Most Recently Used (MRU) bypass
+	0x04 iq_full Stall cycles due to a full instruction queue
+	0x08 regen Counts the number of regen stalls
+	0x0F any Counts any cycles the Instruction Length Decoder is stalled
+name:br_inst_exec type:bitmask default:0x7f
+	0x01 cond Counts the number of conditional near branch instructions executed, but not necessarily retired
+	0x02 direct Counts all unconditional near branch instructions excluding calls and indirect branches
+	0x04 indirect_non_call Counts the number of executed indirect near branch instructions that are not calls
+	0x07 non_calls Counts all non call near branch instructions executed, but not necessarily retired
+	0x08 return_near Counts indirect near branches that have a return mnemonic
+	0x10 direct_near_call Counts unconditional near call branch instructions, excluding non call branch, executed
+	0x20 indirect_near_call Counts indirect near calls, including both register and memory indirect, executed
+	0x30 near_calls Counts all near call branches executed,  but not necessarily retired
+	0x40 taken Counts taken near branches executed, but not necessarily retired
+	0x7F any Counts all near executed branches (not necessarily retired)
+name:br_misp_exec type:bitmask default:0x7f
+	0x01 cond Counts the number of mispredicted conditional near branch instructions executed, but not necessarily retired
+	0x02 direct Counts mispredicted macro unconditional near branch instructions, excluding calls and indirect branches (should always be 0)
+	0x04 indirect_non_call Counts the number of executed mispredicted indirect near branch instructions that are not calls
+	0x07 non_calls Counts mispredicted non call near branches executed,  but not necessarily retired
+	0x08 return_near Counts mispredicted indirect branches that have a rear return mnemonic
+	0x10 direct_near_call Counts mispredicted non-indirect near calls executed, (should always be 0)
+	0x20 indirect_near_call Counts mispredicted indirect near calls exeucted, including both register and memory indirect
+	0x30 near_calls Counts all mispredicted near call branches executed, but not necessarily retired
+	0x40 taken Counts executed mispredicted near branches that are taken, but not necessarily retired
+	0x7F any Counts the number of mispredicted near branch instructions that were executed, but not necessarily retired
+name:resource_stalls type:bitmask default:0x01
+	0x01 any Counts the number of Allocator resource related stalls
+	0x02 load Counts the cycles of stall due to lack of load buffer for load operation
+	0x04 rs_full This event counts the number of cycles when the number of instructions in the pipeline waiting for execution reaches the limit the processor can handle
+	0x08 store This event counts the number of cycles that a resource related stall will occur due to the number of store instructions reaching the limit of the pipeline, (i
+	0x10 rob_full Counts the cycles of stall due to reorder buffer full
+	0x20 fpcw Counts the number of cycles while execution was stalled due to writing the floating-point unit (FPU) control word
+	0x40 mxcsr Stalls due to the MXCSR register rename occurring to close to a previous MXCSR rename
+	0x80 other Counts the number of cycles while execution was stalled due to other resource issues
+name:offcore_requests type:bitmask default:0x80
+	0x01 demand_read_data Counts number of offcore demand data read requests
+	0x02 demand_read_code Counts number of offcore demand code read requests
+	0x04 demand_rfo Counts number of offcore demand RFO requests
+	0x08 any_read Counts number of offcore read requests
+	0x10 any_rfo Counts number of offcore RFO requests
+	0x20 uncached_mem Counts number of offcore uncached memory requests
+	0x40 l1d_writeback Counts number of L1D writebacks to the uncore
+	0x80 any Counts all offcore requests
+name:uops_executed type:bitmask default:0x3f
+	0x01 port0 Counts number of Uops executed that were issued on port 0
+	0x02 port1 Counts number of Uops executed that were issued on port 1
+	0x04 port2_core Counts number of Uops executed that were issued on port 2
+	0x08 port3_core Counts number of Uops executed that were issued on port 3
+	0x10 port4_core Counts number of Uops executed that where issued on port  4
+	0x20 port5 Counts number of Uops executed that where issued on port 5
+	0x40 port015 Counts number of Uops executed that where issued on port  0, 1, or 5
+	0x80 port234 Counts number of Uops executed that where issued on port 2, 3, or 4
+name:snoopq_requests_outstanding type:bitmask default:0x01
+	0x01 data Counts weighted cycles of snoopq requests for data
+	0x02 invalidate Counts weighted cycles of snoopq invalidate requests
+	0x04 code Counts weighted cycles of snoopq requests for code
+name:snoop_response type:bitmask default:0x01
+	0x01 hit Counts HIT snoop response sent by this thread in response to a snoop request
+	0x02 hite Counts HIT E snoop response sent by this thread in response to a snoop request
+	0x04 hitm Counts HIT M snoop response sent by this thread in response to a snoop request
+name:pic_accesses type:bitmask default:0x01
+	0x01 tpr_reads Counts number of TPR reads
+	0x02 tpr_writes Counts number of TPR writes
+name:inst_retired type:bitmask default:0x01
+	0x01 any_p instructions retired
+	0x02 x87 Counts the number of floating point computational operations retired: floating point computational operations executed by the assist handler and sub-operations of complex floating point instructions like transcendental instructions
+name:uops_retired type:bitmask default:0x01
+	0x01 any Counts the number of micro-ops retired, (macro-fused=1, micro-fused=2, others=1; maximum count of 8 per cycle)
+	0x02 retire_slots Counts the number of retirement slots used each cycle
+	0x04 macro_fused Counts number of macro-fused uops retired
+name:machine_clears type:bitmask default:0x01
+	0x01 cycles Counts the cycles machine clear is asserted
+	0x02 mem_order Counts the number of machine clears due to memory order conflicts
+	0x04 smc Counts the number of times that a program writes to a code section
+	0x10 fusion_assist Counts the number of macro-fusion assists
+name:br_inst_retired type:bitmask default:0x00
+	0x00 all_branches See Table A-1
+	0x01 conditional Counts the number of conditional branch instructions retired
+	0x02 near_call Counts the number of direct & indirect near unconditional calls retired
+	0x04 all_branches Counts the number of branch instructions retired
+name:br_misp_retired type:bitmask default:0x00
+	0x00 all_branches See Table A-1
+	0x02 near_call Counts mispredicted direct & indirect near unconditional retired calls
+name:ssex_uops_retired type:bitmask default:0x01
+	0x01 packed_single Counts SIMD packed single-precision floating point Uops retired
+	0x02 scalar_single Counts SIMD calar single-precision floating point Uops retired
+	0x04 packed_double Counts SIMD packed double-precision floating point Uops retired
+	0x08 scalar_double Counts SIMD scalar double-precision floating point Uops retired
+	0x10 vector_integer Counts 128-bit SIMD vector integer Uops retired
+name:mem_load_retired type:bitmask default:0x01
+	0x01 l1d_hit Counts number of retired loads that hit the L1 data cache
+	0x02 l2_hit Counts number of retired loads that hit the L2 data cache
+	0x04 llc_unshared_hit Counts number of retired loads that hit their own, unshared lines in the LLC cache
+	0x08 other_core_l2_hit_hitm Counts number of retired loads that hit in a sibling core's L2 (on die core)
+	0x10 llc_miss Counts number of retired loads that miss the LLC cache
+	0x40 hit_lfb Counts number of retired loads that miss the L1D and the address is located in an allocated line fill buffer and will soon be committed to cache
+	0x80 dtlb_miss Counts the number of retired loads that missed the DTLB
+name:fp_mmx_trans type:bitmask default:0x03
+	0x01 to_fp Counts the first floating-point instruction following any MMX instruction
+	0x02 to_mmx Counts the first MMX instruction following a floating-point instruction
+	0x03 any Counts all transitions from floating point to MMX instructions and from MMX instructions to floating point instructions
+name:macro_insts type:mandatory default:0x01
+	0x01 decoded Counts the number of instructions decoded, (but not necessarily executed or retired)
+name:uops_decoded type:bitmask default:0x0e
+	0x02 ms Counts the number of Uops decoded by the Microcode Sequencer, MS
+	0x04 esp_folding Counts number of stack pointer (ESP) instructions decoded: push , pop , call , ret, etc
+	0x08 esp_sync Counts number of stack pointer (ESP) sync operations where an ESP instruction is corrected  by adding the ESP offset register to the current value of the ESP register
+name:rat_stalls type:bitmask default:0x0f
+	0x01 flags Counts the number of cycles during which execution stalled due to several reasons, one of which is a partial flag register stall
+	0x02 registers This event counts the number of cycles instruction execution latency became longer than the defined latency because the instruction used a register that was partially written by previous instruction
+	0x04 rob_read_port Counts the number of cycles when ROB read port stalls occurred, which did not allow new micro-ops to enter the out-of-order pipeline
+	0x08 scoreboard Counts the cycles where we stall due to microarchitecturally required serialization
+	0x0F any Counts all Register Allocation Table stall cycles due to:  Cycles when ROB read port stalls occurred, which did not allow new micro-ops to enter the execution pipe
+name:baclear type:bitmask default:0x01
+	0x01 clear Counts the number of times the front end is resteered, mainly when the Branch Prediction Unit cannot provide a correct prediction and this is corrected by the Branch Address Calculator at the front end
+	0x02 bad_target Counts number of Branch Address Calculator clears (BACLEAR) asserted due to conditional branch instructions in which there was a target hit but the direction was wrong
+name:bpu_clears type:bitmask default:0x03
+	0x01 early Counts early (normal) Branch Prediction Unit clears: BPU predicted a taken branch after incorrectly assuming that it was not taken
+	0x02 late Counts late Branch Prediction Unit clears due to Most Recently Used conflicts
+	0x03 any Counts all BPU clears
+name:l2_transactions type:bitmask default:0x80
+	0x01 load Counts L2 load operations due to HW prefetch or demand loads
+	0x02 rfo Counts L2 RFO operations due to HW prefetch or demand RFOs
+	0x04 ifetch Counts L2 instruction fetch operations due to HW prefetch or demand ifetch
+	0x08 prefetch Counts L2 prefetch operations
+	0x10 l1d_wb Counts L1D writeback operations to the L2
+	0x20 fill Counts L2 cache line fill operations due to load, RFO, L1D writeback or prefetch
+	0x40 wb Counts L2 writeback operations to the LLC
+	0x80 any Counts all L2 cache operations
+name:l2_lines_in type:bitmask default:0x07
+	0x02 s_state Counts the number of cache lines allocated in the L2 cache in the S (shared) state
+	0x04 e_state Counts the number of cache lines allocated in the L2 cache in the E (exclusive) state
+	0x07 any Counts the number of cache lines allocated in the L2 cache
+name:l2_lines_out type:bitmask default:0x0f
+	0x01 demand_clean Counts L2 clean cache lines evicted by a demand request
+	0x02 demand_dirty Counts L2 dirty (modified) cache lines evicted by a demand request
+	0x04 prefetch_clean Counts L2 clean cache line evicted by a prefetch request
+	0x08 prefetch_dirty Counts L2 modified cache line evicted by a prefetch request
+	0x0F any Counts all L2 cache lines evicted for any reason
+name:l2_hw_prefetch type:bitmask default:0x01
+	0x01 hit Count L2 HW prefetcher detector hits
+	0x02 alloc Count L2 HW prefetcher allocations
+	0x04 data_trigger Count L2 HW data prefetcher triggered
+	0x08 code_trigger Count L2 HW code prefetcher triggered
+	0x10 dca_trigger Count L2 HW DCA prefetcher triggered
+	0x20 kick_start Count L2 HW prefetcher kick started
+name:sq_misc type:bitmask default:0x01
+	0x01 promotion Counts the number of L2 secondary misses that hit the Super Queue
+	0x02 promotion_post_go Counts the number of L2 secondary misses during the Super Queue filling L2
+	0x04 lru_hints Counts number of Super Queue LRU hints sent to L3
+	0x08 fill_dropped Counts the number of SQ L2 fills dropped due to L2 busy
+	0x10 split_lock Counts the number of SQ lock splits across a cache line
+name:fp_assist type:bitmask default:0x01
+	0x01 all Counts the number of floating point operations executed that required micro-code assist intervention
+	0x02 output Counts number of floating point micro-code assist when the output value (destination register) is invalid
+	0x04 input Counts number of floating point micro-code assist when the input value (one of the source operands to an FP instruction) is invalid
+name:simd_int_64 type:bitmask default:0x01
+	0x01 packed_mpy Counts number of SID integer 64 bit packed multiply operations
+	0x02 packed_shift Counts number of SID integer 64 bit packed shift operations
+	0x04 pack Counts number of SID integer 64 bit pack operations
+	0x08 unpack Counts number of SID integer 64 bit unpack operations
+	0x10 packed_logical Counts number of SID integer 64 bit logical operations
+	0x20 packed_arith Counts number of SID integer 64 bit arithmetic operations
+	0x40 shuffle_move Counts number of SID integer 64 bit shift or move operations
+name:x20 type:mandatory default:0x20
+	0x20 No unit mask

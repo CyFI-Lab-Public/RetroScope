@@ -1,0 +1,82 @@
+# -*- mode: python; -*-
+# Copyright 2008 Google Inc. All Rights Reserved.
+
+# Use with
+# subinclude('//java/com/google/clearsilver/jsilver/precompiler:compile_cs')
+
+"""compile_cs build target
+
+compile_cs(name, srcs)
+
+This rule produces generated Java source code that represents JSilver Template
+classes for rendering the given source CS files
+It'll output one .java file for each .cs file.
+
+Arguments
+
+    * name: A unique name for this rule. (Name; required)
+    * srcs: The list of cs files to pass to the code generator. (List of files,
+            required)
+"""
+
+def compile_cs(name, srcs, mode='none'):
+  if not srcs:
+    raise BadRule(None, '%s: srcs is empty' % name)
+  if mode == 'none':
+    suffix = '.java'
+  else:
+    suffix = '_' + mode + '.java'
+  gen_java_files = [ file.replace('.cs', suffix) for file in srcs]
+  input_file = 'gen_cs_' + name + '.in'
+  output_file = 'gen_cs_' + name + '.out'
+  map_file = name + '.map' 
+  genrule(name = 'gen_cs_' + name,
+          srcs = srcs,
+          outs = [ map_file ] + gen_java_files,
+          deps = [
+                   '//java/com/google/clearsilver/jsilver/precompiler:BatchCompiler',
+                 ],
+          cmd = (
+              'echo "$(SRCS)" > $(@D)/' + input_file + ' && '
+              'echo "$(OUTS)" > $(@D)/' + output_file + ' && '
+              '//java/com/google/clearsilver/jsilver/precompiler:BatchCompiler '
+              '--src_list_file=$(@D)/' + input_file + ' '
+              '--out_list_file=$(@D)/' + output_file + ' '
+              '--escape_mode=' + mode
+            )
+        )
+  java_library(name = name,
+               srcs = gen_java_files,
+               resources = [ map_file ],
+               deps = [ '//java/com/google/clearsilver/jsilver/compiler' ]
+              )
+
+
+"""join_compiled_cs build target
+
+join_compiled_cs(name, deps)
+
+This rule merges multiple compile_cs output libraries and maps into one Java
+library and one map file that will be included as a system resource and can be
+read into the binary that wants to load the compiled template classes.
+
+Arguments
+
+    * name: A unique name for this rule. (Name; required)
+    * deps: The list of compile_cs BUILD targets to merge (List of labels,
+            required)
+"""
+
+def join_compiled_cs(name, deps):
+  if not deps:
+    raise BadRule(None, '%s: deps is empty' % name)
+  map_files = [ file + '.map' for file in deps]
+  joined_map_file = name + '.map'
+  genrule(name = 'gen_' + joined_map_file,
+          srcs = map_files,
+          outs = [ joined_map_file ],
+          cmd = ('cat $(SRCS) > $@')
+         )
+  java_library(name = name,
+               resources = [ joined_map_file ],
+               deps = deps)

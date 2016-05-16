@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+ xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="profile">
+    <xs:complexType>
+      <xs:sequence>
+		<xs:element minOccurs="1" maxOccurs="1" ref="options"/>
+		<xs:element minOccurs="1" maxOccurs="1" ref="setup"/>
+		<xs:element minOccurs="0" maxOccurs="1" ref="classes"/>
+		<xs:choice>
+		  <xs:element maxOccurs="unbounded" ref="process"/>
+		  <!-- a binary can be either an application or a library -->
+		  <xs:element maxOccurs="unbounded" ref="binary"/>
+		</xs:choice>
+		<xs:element minOccurs="1" maxOccurs="1" ref="symboltable"/>
+		<!-- put details last to allow parser to gather summary information -->
+		<xs:element minOccurs="0" maxOccurs="unbounded" ref="detailtable"/>
+		<!-- bytestable only present when details option used -->
+		<xs:element minOccurs="0" maxOccurs="1" ref="bytestable"/>
+      </xs:sequence>
+      <xs:attribute name="title" type="xs:string" use="required"/>
+      <!-- integer part of schemaversion should changes for major schema -->
+      <xs:attribute name="schemaversion" use="required">
+        <xs:simpleType>
+          <xs:restriction base = "xs:string">
+            <xs:pattern value = "3\.[0-9]+"/>
+          </xs:restriction>
+        </xs:simpleType>       </xs:attribute>
+
+      <xs:attribute name="cputype" type="xs:NCName" use="required"/>
+      <xs:attribute name="processor" type="xs:NCName" use="required"/>
+      <xs:attribute name="mhz" type="xs:decimal" use="required"/>      
+	  <!-- separatedcpus is only used for profiles with separate=cpu -->
+      <xs:attribute name="separatedcpus" type="xs:nonNegativeInteger" use="optional"/>      
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="options">
+    <xs:complexType>
+      <xs:attribute name="session" type="xs:string" use="optional"/>
+      <xs:attribute name="debuginfo" type="xs:boolean" use="optional"/>
+      <xs:attribute name="details" type="xs:boolean" use="optional"/>
+      <xs:attribute name="excludedependent" type="xs:boolean" use="optional"/>
+      <xs:attribute name="excludesymbols" type="xs:string" use="optional"/>
+      <xs:attribute name="imagepath" type="xs:string" use="optional"/>
+      <xs:attribute name="includesymbols" type="xs:string" use="optional"/>
+      <xs:attribute name="merge" type="xs:string" use="optional"/>
+      <xs:attribute name="reversesort" type="xs:boolean" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="setup">
+    <xs:complexType>
+      <xs:choice>
+        <xs:element maxOccurs="1" ref="timersetup"/>
+        <xs:element maxOccurs="unbounded" ref="eventsetup"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="timersetup">
+    <xs:complexType>
+      <xs:attribute name="rtcinterrupts" type="xs:nonNegativeInteger"/>  
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="eventsetup">
+    <xs:complexType>
+      <xs:attribute name="id" type="xs:nonNegativeInteger" use="required"/>
+      <xs:attribute name="eventname" type="xs:Name" use="required"/>
+      <xs:attribute name="unitmask" type="xs:string" use="optional"/>
+      <xs:attribute name="setupcount" type="xs:nonNegativeInteger" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!--
+  	the cpu attribute will only be present in profiles with more than one
+	separated cpus.  the event attribute will only appear if there is more
+	than one event in the profile.  the mask attribute will only appear if
+	there is a single non-zero mask, or multiple mask values.
+   -->
+  <xs:element name="class">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="cpu" type="xs:nonNegativeInteger" use="optional"/>
+      <xs:attribute name="event" type="xs:nonNegativeInteger" use="optional"/>
+      <xs:attribute name="mask" type="xs:nonNegativeInteger" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:element name="classes">
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element minOccurs="1" maxOccurs="unbounded" ref="class"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="count">
+  <xs:complexType>
+    <xs:simpleContent>
+      <xs:extension base="xs:nonNegativeInteger">
+		<!-- if no separation by cpu and only a single non masked event
+		     the class attribute is unnecessary -->
+        <xs:attribute name="class" type="xs:string" use="optional"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  </xs:element>
+
+  <xs:element name="process">
+    <xs:complexType>
+      <xs:sequence>
+	<xs:element minOccurs="1" maxOccurs="1" ref="count"/>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="thread"/>
+      </xs:sequence>
+      <xs:attribute name="pid" type="xs:integer" use="required"/>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="thread">
+    <xs:complexType>
+      <xs:sequence>
+		<xs:element minOccurs="1" maxOccurs="1" ref="count"/>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="module"/>
+      </xs:sequence>
+      <xs:attribute name="tid" type="xs:integer" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="binary">
+    <xs:complexType>
+      <xs:sequence>
+		<xs:element minOccurs="1" maxOccurs="1" ref="count"/>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="symbol"/>
+        <!-- When the separate=lib option is used an binary
+		     can contain a list of library Modules.  -->
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="module"/>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="module">
+    <xs:complexType>
+      <xs:sequence>
+		<xs:element minOccurs="0" maxOccurs="1" ref="count"/>
+        <xs:element minOccurs="1" maxOccurs="unbounded" ref="symbol"/>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="callees">
+    <xs:complexType>
+      <xs:choice>
+		<xs:element minOccurs="0" maxOccurs="unbounded" ref="module"/>
+		<xs:element minOccurs="0" maxOccurs="unbounded" ref="symbol"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="callers">
+    <xs:complexType>
+      <xs:choice>
+		<xs:element minOccurs="0" maxOccurs="unbounded" ref="module"/>
+		<xs:element minOccurs="0" maxOccurs="unbounded" ref="symbol"/>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+
+
+  <xs:element name="symboltable">
+    <xs:complexType>
+      <xs:sequence>
+		<xs:element minOccurs="1" maxOccurs="unbounded" ref="symboldata"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!--
+    The symboldata element contains the symbolic debug information that is
+    made available by the debug-info and details options.  This information
+    is shared across by all module instances that reference it and thus it
+    does not contain any sample dependent data.
+   -->
+  <xs:element name="symboldata">
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="id" type="xs:integer" use="required"/>
+      <!-- optional debug-info attributes -->
+      <xs:attribute name="file" type="xs:string" use="optional"/>
+      <xs:attribute name="line" type="xs:nonNegativeInteger" use="optional"/>
+      <!-- startingaddr: optional details or show-address attribute  -->
+      <xs:attribute name="startingaddr" use="optional"/>
+      <!-- codelength: optional details attribute  -->
+      <xs:attribute name="codelength" type="xs:integer" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="symbol">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="1" ref="callers"/>
+        <xs:element minOccurs="0" maxOccurs="1" ref="callees"/>
+        <xs:element minOccurs="0" maxOccurs="1" ref="count"/>
+      </xs:sequence>
+	  <!-- idref is an index into symboltable table-->
+      <xs:attribute name="idref" type="xs:nonNegativeInteger" use="required"/>
+	  <!-- self is a boolean to mark self referencing callee symbols -->
+      <xs:attribute name="self" type="xs:boolean" use="optional"/>
+	  <!-- detaillo,detailhi lookup ids into corresponding symboldetails -->
+      <xs:attribute name="detaillo" type="xs:nonNegativeInteger" use="optional"/>
+      <xs:attribute name="detailhi" type="xs:nonNegativeInteger" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- detailtable is a table of symboldetails that are referenced
+       from symboldata. The table is only generated with the details
+	   option is used and appears at the end of the XML file so that
+	   a GUI can process the summary data without having to process
+	   all of the details. -->
+  <xs:element name="detailtable">
+    <xs:complexType>
+      <xs:sequence>
+		<xs:element minOccurs="1" maxOccurs="unbounded" ref="symboldetails"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <!-- symboldetails is a collection of all of the individual detaildata
+       associated with possibly multiple instances of a symbol. -->
+  <xs:element name="symboldetails">
+    <xs:complexType>
+      <xs:sequence>
+		<xs:element minOccurs="1" maxOccurs="unbounded" ref="detaildata"/>
+      </xs:sequence>
+      <xs:attribute name="id" type="xs:integer" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="detaildata">
+    <xs:complexType>
+      <xs:sequence>
+    	  <xs:element minOccurs="1" maxOccurs="unbounded" ref="count"/>
+      </xs:sequence>
+	  <!-- line only occurs when debug-info option used -->
+	  <xs:attribute name="line" type="xs:nonNegativeInteger" use="optional"/>
+	  <!-- file only occurs when debug-info option used and
+		   the file is different than the symbol associated with
+		   this sample data.  this situation can occur when inline functions
+		   are defined in #include header files.
+	   -->
+	  <xs:attribute name="file" type="xs:string" use="optional"/>
+      <xs:attribute name="vmaoffset" type="xs:hexBinary" use="required"/>
+      <xs:attribute name="id" type="xs:integer" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="bytes">
+  <xs:complexType>
+    <xs:simpleContent>
+      <xs:extension base="xs:hexBinary">
+        <xs:attribute name="id" type="xs:nonNegativeInteger" use="required"/>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+  </xs:element>
+
+  <xs:element name="bytestable">
+    <xs:complexType>
+      <xs:sequence>
+	    <!-- Contains binary data for the machine instructions -->
+		<xs:element minOccurs="1" maxOccurs="unbounded" ref="bytes"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
+

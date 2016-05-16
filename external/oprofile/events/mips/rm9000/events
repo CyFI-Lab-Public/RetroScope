@@ -1,0 +1,32 @@
+#
+# RM9000 events
+#
+event:0x00 counters:0,1 um:zero minimum:500 name:CYCLES : Processor clock cycles
+event:0x01 counters:0,1 um:zero minimum:500 name:INSTRUCTIONS_ISSUED : Instructions issued
+event:0x02 counters:0,1 um:zero minimum:500 name:FP_INSTRUCTIONS_ISSUED : Floating-point instructions issued
+event:0x03 counters:0,1 um:zero minimum:500 name:INT_INSTRUCTIONS_ISSUED : Integer instructions issued
+event:0x04 counters:0,1 um:zero minimum:500 name:LOAD_INSTRUCTIONS_ISSUED : Load instructions issued
+event:0x05 counters:0,1 um:zero minimum:500 name:STORE_INSTRUCTIONS_ISSUED : Store instructions issued
+event:0x06 counters:0,1 um:zero minimum:500 name:INSTRUCTIONS_DUAL_ISSUED : Dual-issued instruction pairs
+event:0x07 counters:0,1 um:zero minimum:500 name:BRANCH_MISSPREDICTS : Branch mispredictions
+event:0x09 counters:0,1 um:zero minimum:500 name:STALL_CYCLES : Stall cycles
+event:0x0a counters:0,1 um:zero minimum:500 name:L2_CACHE_MISSES : L2 cache misses
+event:0x0b counters:0,1 um:zero minimum:500 name:ICACHE_MISSES : Icache misses
+event:0x0c counters:0,1 um:zero minimum:500 name:DCACHE_MISSES : Dcache misses
+event:0x0d counters:0,1 um:zero minimum:500 name:DTLB_MISSES : Data TLB misses
+event:0x0e counters:0,1 um:zero minimum:500 name:ITLB_MISSES : Instruction TLB misses
+event:0x0f counters:0,1 um:zero minimum:500 name:JTLB_INSTRUCTION_MISSES : Joint TLB instruction misses
+event:0x10 counters:0,1 um:zero minimum:500 name:JTLB_DATA_MISSES : Joint TLB data misses
+event:0x11 counters:0,1 um:zero minimum:500 name:BRANCHES_TAKEN : Branches taken
+event:0x12 counters:0,1 um:zero minimum:500 name:BRANCHES_ISSUED : Branch instructions issued
+event:0x13 counters:0,1 um:zero minimum:500 name:L2_WRITEBACKS : L2 cache writebacks
+event:0x14 counters:0,1 um:zero minimum:500 name:DCACHE_WRITEBACKS : Dcache writebacks
+event:0x15 counters:0,1 um:zero minimum:500 name:DCACHE_MISS_STALL_CYCLES : Dcache-miss stall cycles
+event:0x16 counters:0,1 um:zero minimum:500 name:CACHE_REMISSES : Cache remisses
+event:0x17 counters:0,1 um:zero minimum:500 name:FP_POSSIBLE_EXCEPTION_CYCLES : Floating-point possible exception cycles
+event:0x18 counters:0,1 um:zero minimum:500 name:MULTIPLIER_BUSY_SLIP_CYCLES : Slip cycles due to busy multiplier
+event:0x19 counters:0,1 um:zero minimum:500 name:COP0_SLIP_CYCLES : Co-processor 0 slip cycles
+event:0x1a counters:0,1 um:zero minimum:500 name:NONBLOCKING_LOAD_SLIP_CYCLES : Slip cycles due to pending non-blocking loads
+event:0x1b counters:0,1 um:zero minimum:500 name:WRITE_BUFFER_FULL_STALL_CYCLES : Stall cycles due to a full write buffer
+event:0x1c counters:0,1 um:zero minimum:500 name:CACHE_INSN_STALL_CYCLES : Stall cycles due to cache instructions
+event:0x1e counters:0,1 um:zero minimum:500 name:NONBLOCKING_LOAD_PENDING_EXCEPTION_STALL_CYCLES : Stall cycles due to pending non-blocking loads - stall start of exception

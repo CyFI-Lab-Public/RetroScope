@@ -1,0 +1,3 @@
+# RTC events
+#
+name:RTC_INTERRUPTS event:0xff counters:0 um:zero minimum:2 : RTC interrupts/sec (rounded up to power of two)

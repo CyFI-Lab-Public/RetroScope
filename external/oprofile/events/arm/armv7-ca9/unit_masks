@@ -1,0 +1,4 @@
+# ARM V7 PMNC possible unit masks
+#
+name:zero type:mandatory default:0x00
+	0x00 No unit mask

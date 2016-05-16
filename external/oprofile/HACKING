@@ -1,0 +1,206 @@
+And when you drive for hours, arrive to find you nowhere gone, you've just been
+mouthing "brum, brum", rocking wheel, of course you have, the heap is rusted
+through and off the road since you drove drunk through thirteen school yards,
+laughing like Prescott.
+
+Then welcome, ah, oo costrinzi welcome, in OProfile.
+
+Please talk to the list before starting on something. We're not too scary.
+
+You can find some documentation on how OProfile works in doc/internals.html
+
+Here's a short list of some stuff you need to know to get started. Don't forget
+to read doc/CodingStyle
+
+Source organisation
+-------------------
+
+module/
+
+	The 2.4 module code. Sub-directories contain architecture-specific code.
+
+daemon/
+
+	The daemon. liblegacy/ contains the daemon core for 2.4
+
+utils/
+
+	Scripts for managing the daemon etc.
+
+doc/
+
+	User and developer documentation
+
+events/
+
+	Textual performance counter event descriptions.
+
+libpp/
+
+	Classes for handling profiles
+
+pp/
+
+	The post-profiling tools for showing results
+
+libabi/
+
+	opimport and its ABI support library
+
+libdb/
+
+	The sample file access library
+
+libop/
+
+	C language oprofile-specific helper stuff
+
+libopt++/
+
+	A simple C++ library for parsing command lines
+
+libregex/
+
+	C++ demangling pattern matching for smart demangling feature.
+
+libutil/
+libutil++/
+
+	Generic helpers
+
+gui/
+
+	The GUI for starting oprofile
+
+m4/
+
+	Autoconf macros for ./configure stage
+
+Tools
+-----
+
+You'll need autoconf 2.13+ and automake 2.5+ when using CVS. Don't forget to
+autogen.sh first.
+
+We still currently support gcc 2.91.66. Please bear this in mind.
+
+Shell Scripts
+-------------
+
+Any shell scripts should aim to be as compatible as possible with different
+shells and "bashisms" etc. should not be used. Busybox is often used instead 
+of bash on embedded devices for example.
+
+Making patches, commit rights
+-----------------------------
+
+Patches should be in diff -u format, appliable by patch -p1 in the top-level
+source directory. Patches should not include changes to generated files.
+
+Even trivial patches must have a change log entry in the usual format (see
+ChangeLog). Refer to bug numbers in the change log if relevant.
+
+When you submit a patch, we ask that you include a "Signed-off-by"
+line; for example:
+       Signed-off-by: Random J Developer <random@developer.example.org>
+
+Including this line with your patch implies that you have read and comply with
+the "Developer's Certificate of Origin 1.1" (DCO).  This is the same process
+the kernel community uses to try to ensure the originality of patches.  The
+DCO can be found in <kernel-source>/Documentation/SubmittingPatches, item 11,
+"Sign your work".  For convenience, a copy of the DCO is included below.
+
+   Developer's Certificate of Origin 1.1
+
+        By making a contribution to this project, I certify that:
+
+        (a) The contribution was created in whole or in part by me and I
+            have the right to submit it under the open source license
+            indicated in the file; or
+
+        (b) The contribution is based upon previous work that, to the best
+            of my knowledge, is covered under an appropriate open source
+            license and I have the right under that license to submit that
+            work with modifications, whether created in whole or in part
+            by me, under the same open source license (unless I am
+            permitted to submit under a different license), as indicated
+            in the file; or
+
+        (c) The contribution was provided directly to me by some other
+            person who certified (a), (b) or (c) and I have not modified
+            it.
+
+        (d) I understand and agree that this project and the contribution
+            are public and that a record of the contribution (including all
+            personal information I submit with it, including my sign-off) is
+            maintained indefinitely and may be redistributed consistent with
+            this project or the open source license(s) involved.
+
+
+
+If you make a change visible to the user in some way, you should check the
+website for any needed changes. Patches to oprofile-www CVS are preferred
+but a notification of what needs changing is good enough. Any changes that
+affect the docs (man-pages or oprofile.xml) must include documentation updates
+as appropriate. Also see below.
+
+You may after a while be given direct commit rights. You should be
+subscribed to both the main list and the commits mailing list if you do.
+Your cvs commit message only needs to briefly describe what your change
+does - the change log should have the detailed description. Any
+non-trivial change needs approval from either John, Phil or Maynard,
+unless stated otherwise. The CVS tree will freeze occassionally for
+release, in which case no commits are allowed at all without agreement
+of John, Phil, or Maynard. CVS admin changes (-kb, .cvsignore etc.) do
+not need a change log, and neither does changes to TODO. If you make a
+change that affects the user (feature improvement, new feature, bug fix,
+UI change), see the next section.
+
+The oprofile website
+--------------------
+
+The oprofile website source is stored in the oprofile-www CVS module, excepting
+the doc/ and srcdoc/ directories, which are updated by hand at release time.
+The visible website (http://oprofile.sf.net/) must always describe the last
+*released* version of OProfile, but the CVS contents should be up to date with
+the CVS code. This means that if you make a user-visible change as described
+in the last section, you should update the files in oprofile-www and commit.
+You can do "cvs update" in home/groups/o/op/oprofile/htdocs/cvs on sourceforge
+to get http://oprofile.sf.net/cvs/, so you can check your changes work (and
+validate: see http://www.htmlhelp.com/tools/validator/).
+
+Any user-visible change should have a short description in the file
+release-notes/release-<nextversion> in the oprofile-www CVS module.
+Do not document bug fixes that were not in the last released version.
+
+CVS branches
+------------
+
+You may need at some point to do your work on a CVS branch, if it's
+particularly invasive. CVS is a PITA in this respect unfortunately. It's
+strongly recommended that you merge changes from the trunk to your branch at
+regular intervals.
+
+To create a branch, create a branch tag :
+
+	cvs rtag -b BRANCH_WHATEVER oprofile
+
+And add a merge tag (in the trunk repository):
+
+	cvs rtag BRANCH_WHATEVER_MERGE oprofile
+
+Now make your changes on the branch as you wish. When you want to merge some
+fixes from the trunk in your branch, do something like this on a branch
+checkout :
+
+	cvs update -j BRANCH_WHATEVER_MERGE -j HEAD
+
+Fix up any conflicts and commit it the changes to the branch. Now move the
+merge tag along for the next merge (in the trunk repository) :
+
+	cvs rtag -F BRANCH_WHATEVER_MERGE oprofile
+
+When the time comes to merge the branch changes back into the trunk, I
+recommend just doing a diff -Naur on the two trees, which will make sure CVS
+hasn't done anything unusual. Don't forget to list your branch on the website
+CVS page.

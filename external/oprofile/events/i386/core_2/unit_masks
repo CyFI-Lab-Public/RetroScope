@@ -1,0 +1,195 @@
+# Core 2 possible unit masks
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask
+#name:one type:mandatory default:0x1
+#	0x1 No unit mask
+name:two type:mandatory default:0x2
+	0x2 No unit mask
+name:x0f type:mandatory default:0xf
+	0xf No unit mask
+name:x10 type:mandatory default:0x10
+	0x10 No unit mask
+#name:x20 type:mandatory default:0x20
+#	0x20 No unit mask
+#name:x40 type:mandatory default:0x40
+#	0x40 No unit mask
+name:x41 type:mandatory default:0x41
+	0x41 No unit mask
+name:x4f type:mandatory default:0x4f
+	0x4f No unit mask
+name:xc0 type:mandatory default:0xc0
+	0xc0 No unit mask
+name:nonhlt type:exclusive default:0x0
+	0x0 Unhalted core cycles
+	0x1 Unhalted bus cycles
+	0x2 Unhalted bus cycles of this core while the other core is halted
+name:mesi type:bitmask default:0x0f
+	0x08	(M)ESI: Modified
+	0x04	M(E)SI: Exclusive
+	0x02	ME(S)I: Shared
+	0x01	MES(I): Invalid
+name:sse_prefetch type:exclusive default:0x0
+	0x00 prefetch NTA instructions executed.
+	0x01 prefetch T1 instructions executed.
+	0x02 prefetch T1 and T2 instructions executed.
+	0x03 SSE weakly-ordered stores
+name:simd_instr_type_exec type:bitmask default:0x3f
+	0x01 SIMD packed multiplies
+	0x02 SIMD packed shifts
+	0x04 SIMD pack operations
+	0x08 SIMD unpack operations
+	0x10 SIMD packed logical
+	0x20 SIMD packed arithmetic
+	0x3f all of the above
+name:mmx_trans type:bitmask default:0x3
+	0x01 float->MMX transitions
+	0x02 MMX->float transitions
+name:sse_miss type:exclusive default:0x0
+	0x00 PREFETCHNTA
+	0x01 PREFETCHT0
+	0x02 PREFETCHT1/PREFETCHT2
+name:load_block type:bitmask default:0x3e
+	0x02 STA  Loads blocked by a preceding store with unknown address.
+	0x04 STD  Loads blocked by a preceding store with unknown data.
+	0x08 OVERLAP_STORE  Loads that partially overlap an earlier store, or 4K aliased with a previous store.
+	0x10 UNTIL_RETIRE  Loads blocked until retirement.
+	0x20 L1D  Loads blocked by the L1 data cache.
+name:store_block type:bitmask default:0x0b
+	0x01 SB_DRAIN_CYCLES	Cycles while stores are blocked due to store buffer drain.
+	0x02 ORDER	Cycles while store is waiting for a preceding store to be globally observed.
+	0x08 NOOP	A store is blocked due to a conflict with an external or internal snoop.
+name:dtlb_miss type:bitmask default:0x0f
+	0x01 ANY	Memory accesses that missed the DTLB.
+	0x02 MISS_LD	DTLB misses due to load operations.
+	0x04 L0_MISS_LD L0 DTLB misses due to load operations.
+	0x08 MISS_ST	TLB misses due to store operations.
+name:memory_dis type:exclusive default:0x01
+	0x01 RESET	Memory disambiguation reset cycles.
+	0x02 SUCCESS	Number of loads that were successfully disambiguated.
+name:page_walks type:exclusive default:0x02
+	0x01 COUNT	Number of page-walks executed.
+	0x02 CYCLES	Duration of page-walks in core cycles.
+name:delayed_bypass type:exclusive default:0x00
+	0x00 FP		Delayed bypass to FP operation.
+	0x01 SIMD	Delayed bypass to SIMD operation.
+	0x02 LOAD	Delayed bypass to load operation.
+name:core type:exclusive default:0x40
+	0xc0	All cores
+	0x40	This core
+name:core_prefetch type:bitmask default:0x70
+	0xc0	core: all cores
+	0x40	core: this core
+	0x30	prefetch: all inclusive
+	0x10	prefetch: Hardware prefetch only
+	0x00	prefetch: exclude hardware prefetch
+name:core_mesi type:bitmask default:0x4f
+	0xc0	core: all cores
+	0x40	core: this core
+	0x08	(M)ESI: Modified
+	0x04	M(E)SI: Exclusive
+	0x02	ME(S)I: Shared
+	0x01	MES(I): Invalid
+name:core_prefetch_mesi type:bitmask default:0x7f
+	0xc0	core: all cores
+	0x40	core: this core
+	0x30	prefetch: all inclusive
+	0x10	prefetch: Hardware prefetch only
+	0x00	prefetch: exclude hardware prefetch
+	0x08	(M)ESI: Modified
+	0x04	M(E)SI: Exclusive
+	0x02	ME(S)I: Shared
+	0x01	MES(I): Invalid
+name:l1d_split type:exclusive default:0x1
+	0x1	split loads
+	0x2	split stores
+name:bus_agents type:exclusive default:0x00
+	0x00	this agent
+	0x20	include all agents
+name:core_and_bus_agents type:bitmask default:0x40
+	0xc0	core: all cores
+	0x40	core: this core
+	0x00	bus: this agent
+	0x20	bus: include all agents
+name:bus_agents_and_snoop type:bitmask default:0x0b
+	0x00	bus: this agent
+	0x20	bus: include all agents
+	0x08	snoop: HITM snoops
+	0x02	snoop: HIT snoops
+	0x01	snoop: CLEAN snoops
+name:core_and_snoop type:bitmask default:0x40
+	0xc0	core: all cores
+	0x40	core: this core
+	0x01	snoop: CMP2I snoops
+	0x02	snoop: CMP2S snoops
+name:itlb_miss type:bitmask default:0x12
+	0x02	ITLB small page misses
+	0x10	ITLB large page misses
+	0x40	ITLB flushes
+name:macro_insts type:bitmask default:0x09
+	0x01	Instructions decoded
+	0x08	CISC Instructions decoded
+name:esp type:bitmask default:0x01
+	0x01	ESP register content synchronizations
+	0x02	ESP register automatic additions
+name:inst_retired type:bitmask default:0x00
+	0x00	Any
+	0x01	Loads
+	0x02	Stores
+	0x04	Other
+name:x87_ops_retired type:exclusive default:0xfe
+	0x01	FXCH instructions retired
+	0xfe	Retired floating-point computational operations (precise)
+name:uops_retired type:bitmask default:0x0f
+	0x01	Fused load+op or load+indirect branch retired
+	0x02	Fused store address + data retired
+	0x04	Retired instruction pairs fused into one micro-op
+	0x07	Fused micro-ops retired
+	0x08	Non-fused micro-ops retired
+	0x0f	Micro-ops retired
+name:machine_nukes type:bitmask default:0x05
+	0x01	Self-Modifying Code detected
+	0x04	Execution pipeline restart due to memory ordering conflict or memory disambiguation misprediction
+name:br_inst_retired type:bitmask default:0xa
+	0x01	predicted not-taken
+	0x02	mispredicted not-taken
+	0x04	predicted taken
+	0x08	mispredicted taken
+name:cycles_int_masked type:exclusive default:0x02
+	0x01	Interrupts disabled
+	0x02	Interrupts pending and disabled
+name:simd_inst_retired type:bitmask default:0x1f
+	0x01	Retired SSE packed-single instructions
+	0x02	Retired SSE scalar-single instructions
+	0x04	Retired SSE2 packed-double instructions
+	0x08	Retired SSE2 scalar-double instructions
+	0x10	Retired SSE2 vector integer instructions
+	0x1f	Retired Streaming SIMD instructions (precise event)
+name:simd_comp_inst_retired type:bitmask default:0xf
+	0x01	Retired computational SSE packed-single instructions
+	0x02	Retired computational SSE scalar-single instructions
+	0x04	Retired computational SSE2 packed-double instructions
+	0x08	Retired computational SSE2 scalar-double instructions
+name:mem_load_retired type:exclusive default:0x01
+	0x01	Retired loads that miss the L1 data cache (precise event)
+	0x02	L1 data cache line missed by retired loads (precise event)
+	0x04	Retired loads that miss the L2 cache (precise event)
+	0x08	L2 cache line missed by retired loads (precise event)
+	0x10	Retired loads that miss the DTLB (precise event)
+name:rat_stalls type:bitmask default:0xf
+	0x01	ROB read port
+	0x02	Partial register
+	0x04	Flag
+	0x08	FPU status word
+	0x0f	All RAT
+name:seg_regs type:bitmask default:0x0f
+	0x01	ES
+	0x02	DS
+	0x04	FS
+	0x08	GS
+name:resource_stalls type:bitmask default:0x0f
+	0x01	when the ROB is full
+	0x02	during which the RS is full
+	0x04	during which the pipeline has exceeded the load or store limit or is waiting to commit all stores
+	0x08	due to FPU control word write
+	0x10	due to branch misprediction

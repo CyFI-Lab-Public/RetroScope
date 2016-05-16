@@ -1,0 +1,5 @@
+This is libcap-ng, downloaded from
+http://people.redhat.com/sgrubb/libcap-ng/
+
+Except for some "#if !defined(ANDROID)" lines, this
+source code is unmodified from upstream.

@@ -1,0 +1,125 @@
+#
+# AMD Athlon(tm)64 and AMD Opteron(tm) processor unit masks
+#
+# Copyright OProfile authors
+# Copyright (c) 2006-2008 Advanced Micro Devices
+# Contributed by Ray Bryant <raybry at amd.com>
+#		Jason Yeh <jason.yeh at amd.com>
+#		Suravee Suthikulpanit <suravee.suthikulpanit at amd.com>
+#		Paul Drongowski <paul.drongowski at amd.com>
+#
+# Source: BIOS and Kernel Developer's Guide for AMD NPT Family 0Fh Processors,
+#         Publication# 32559, Revision 3.08, July 2007
+#
+# This file was last updated on 10 January 2008:
+#
+#    Sorted by event select value for easier maintenance and to be
+#    consistent with events for other AMD processor families.
+#                
+#    Updated for the latest version of the BKDG.
+#
+# Floating point events
+event:0x00 counters:0,1,2,3 um:fpu_ops minimum:500 name:DISPATCHED_FPU_OPS : Dispatched FPU ops
+event:0x01 counters:0,1,2,3 um:zero minimum:500 name:CYCLES_NO_FPU_OPS_RETIRED : Cycles with no FPU ops retired
+event:0x02 counters:0,1,2,3 um:zero minimum:500 name:DISPATCHED_FPU_OPS_FAST_FLAG : Dispatched FPU ops that use the fast flag interface
+
+# Load, Store, and TLB events
+event:0x20 counters:0,1,2,3 um:segregload minimum:500 name:SEGMENT_REGISTER_LOADS : Segment register loads
+event:0x21 counters:0,1,2,3 um:zero minimum:500 name:PIPELINE_RESTART_DUE_TO_SELF_MODIFYING_CODE : Micro-architectural re-sync caused by self modifying code
+event:0x22 counters:0,1,2,3 um:zero minimum:500 name:PIPELINE_RESTART_DUE_TO_PROBE_HIT : Micro-architectural re-sync caused by snoop
+event:0x23 counters:0,1,2,3 um:zero minimum:500 name:LS_BUFFER_2_FULL_CYCLES : Cycles LS Buffer 2 full
+event:0x24 counters:0,1,2,3 um:locked_ops minimum:500 name:LOCKED_OPS : Locked operations
+
+# Execution Unit Events
+event:0x26 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_CLFLUSH_INSTRUCTIONS : Retired CLFLUSH instructions
+event:0x27 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_CPUID_INSTRUCTIONS : Retired CPUID instructions
+
+# Data Cache event
+event:0x40 counters:0,1,2,3 um:zero minimum:500 name:DATA_CACHE_ACCESSES : Data cache accesses
+event:0x41 counters:0,1,2,3 um:zero minimum:500 name:DATA_CACHE_MISSES : Data cache misses
+# Event 0x42 with unit mask 0x01 counts same events as event select 0x43
+event:0x42 counters:0,1,2,3 um:moess minimum:500 name:DATA_CACHE_REFILLS_FROM_L2_OR_SYSTEM : Data cache refills from L2 or system
+event:0x43 counters:0,1,2,3 um:moesi minimum:500 name:DATA_CACHE_REFILLS_FROM_SYSTEM : Data cache refills from system
+event:0x44 counters:0,1,2,3 um:moesi minimum:500 name:DATA_CACHE_LINES_EVICTED : Data cache lines evicted
+event:0x45 counters:0,1,2,3 um:zero minimum:500 name:L1_DTLB_MISS_AND_L2_DTLB_HIT : L1 DTLB misses and L2 DTLB hits
+event:0x46 counters:0,1,2,3 um:zero minimum:500 name:L1_DTLB_AND_L2_DTLB_MISS : L1 and L2 DTLB misses
+event:0x47 counters:0,1,2,3 um:zero minimum:500 name:MISALIGNED_ACCESSES : Misaligned Accesses
+event:0x48 counters:0,1,2,3 um:zero minimum:500 name:MICROARCHITECTURAL_LATE_CANCEL_OF_AN_ACCESS : Micro-architectural late cancel of an access
+event:0x49 counters:0,1,2,3 um:zero minimum:500 name:MICROARCHITECTURAL_EARLY_CANCEL_OF_AN_ACCESS : Micro-architectural early cancel of an access
+event:0x4a counters:0,1,2,3 um:ecc minimum:500 name:SCRUBBER_SINGLE_BIT_ECC_ERRORS : One bit ECC error recorded by scrubber
+event:0x4b counters:0,1,2,3 um:prefetch minimum:500 name:PREFETCH_INSTRUCTIONS_DISPATCHED : Prefetch instructions dispatched
+event:0x4c counters:0,1,2,3 um:dcachemisslocked minimum:500 name:DCACHE_MISS_LOCKED_INSTRUCTIONS : DCACHE misses by locked instructions
+
+# L2 Cache and System Interface events
+event:0x65 counters:0,1,2,3 um:memreqtype minimum:500 name:MEMORY_REQUESTS : Memory requests by type
+event:0x67 counters:0,1,2,3 um:dataprefetch minimum:500 name:DATA_PREFETCHES : Data prefetcher
+event:0x6c counters:0,1,2,3 um:systemreadresponse minimum:500 name:SYSTEM_READ_RESPONSES : System read responses by coherency state
+event:0x6d counters:0,1,2,3 um:writtentosystem minimum:500 name:QUADWORD_WRITE_TRANSFERS : Quadwords written to system
+event:0x76 counters:0,1,2,3 um:zero minimum:3000 name:CPU_CLK_UNHALTED : Cycles outside of halt state
+event:0x7d counters:0,1,2,3 um:l2_internal minimum:500 name:REQUESTS_TO_L2 : Requests to L2 cache
+event:0x7e counters:0,1,2,3 um:l2_req_miss minimum:500 name:L2_CACHE_MISS : L2 cache misses
+event:0x7f counters:0,1,2,3 um:l2_fill minimum:500 name:L2_CACHE_FILL_WRITEBACK : L2 fill/writeback
+
+# Instruction Cache events
+event:0x80 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_CACHE_FETCHES : Instruction cache fetches
+event:0x81 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_CACHE_MISSES : Instruction cache misses
+event:0x82 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_CACHE_REFILLS_FROM_L2 : Instruction cache refills from L2
+event:0x83 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_CACHE_REFILLS_FROM_SYSTEM : Instruction cache refills from system
+event:0x84 counters:0,1,2,3 um:zero minimum:500 name:L1_ITLB_MISS_AND_L2_ITLB_HIT : L1 ITLB miss and L2 ITLB hit
+event:0x85 counters:0,1,2,3 um:zero minimum:500 name:L1_ITLB_MISS_AND_L2_ITLB_MISS : L1 ITLB miss and L2 ITLB miss
+event:0x86 counters:0,1,2,3 um:zero minimum:500 name:PIPELINE_RESTART_DUE_TO_INSTRUCTION_STREAM_PROBE : Pipeline restart due to instruction stream probe
+event:0x87 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_FETCH_STALL : Instruction fetch stall
+event:0x88 counters:0,1,2,3 um:zero minimum:500 name:RETURN_STACK_HITS : Return stack hits
+event:0x89 counters:0,1,2,3 um:zero minimum:500 name:RETURN_STACK_OVERFLOWS : Return stack overflows
+
+# Execution Unit events
+event:0xc0 counters:0,1,2,3 um:zero minimum:3000 name:RETIRED_INSTRUCTIONS : Retired instructions (includes exceptions, interrupts, re-syncs)
+event:0xc1 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_UOPS : Retired micro-ops
+event:0xc2 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_BRANCH_INSTRUCTIONS : Retired branches (conditional, unconditional, exceptions, interrupts)
+event:0xc3 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_MISPREDICTED_BRANCH_INSTRUCTIONS : Retired mispredicted branch instructions
+event:0xc4 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_TAKEN_BRANCH_INSTRUCTIONS : Retired taken branch instructions
+event:0xc5 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_TAKEN_BRANCH_INSTRUCTIONS_MISPREDICTED : Retired taken branches mispredicted
+event:0xc6 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_FAR_CONTROL_TRANSFERS : Retired far control transfers
+event:0xc7 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_BRANCH_RESYNCS : Retired branches resyncs (only non-control transfer branches)
+event:0xc8 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_NEAR_RETURNS : Retired near returns
+event:0xc9 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_NEAR_RETURNS_MISPREDICTED : Retired near returns mispredicted
+event:0xca counters:0,1,2,3 um:zero minimum:500 name:RETIRED_INDIRECT_BRANCHES_MISPREDICTED : Retired indirect branches mispredicted
+event:0xcb counters:0,1,2,3 um:fpu_instr minimum:500 name:RETIRED_MMX_FP_INSTRUCTIONS : Retired MMX/FP instructions
+event:0xcc counters:0,1,2,3 um:fpu_fastpath minimum:500 name:RETIRED_FASTPATH_DOUBLE_OP_INSTRUCTIONS : Retired FastPath double-op instructions
+event:0xcd counters:0,1,2,3 um:zero minimum:500 name:INTERRUPTS_MASKED_CYCLES : Cycles with interrupts masked (IF=0)
+event:0xce counters:0,1,2,3 um:zero minimum:500 name:INTERRUPTS_MASKED_CYCLES_WITH_INTERRUPT_PENDING : Cycles with interrupts masked while interrupt pending
+event:0xcf counters:0,1,2,3 um:zero minimum:10 name:INTERRUPTS_TAKEN : Number of taken hardware interrupts
+event:0xd0 counters:0,1,2,3 um:zero minimum:500 name:DECODER_EMPTY : Nothing to dispatch (decoder empty)
+event:0xd1 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALLS : Dispatch stalls
+event:0xd2 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_BRANCH_ABORT : Dispatch stall from branch abort to retire
+event:0xd3 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_SERIALIZATION : Dispatch stall for serialization
+event:0xd4 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_SEGMENT_LOAD : Dispatch stall for segment load
+event:0xd5 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_REORDER_BUFFER_FULL : Dispatch stall for reorder buffer full
+event:0xd6 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_RESERVATION_STATION_FULL : Dispatch stall when reservation stations are full
+event:0xd7 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_FPU_FULL : Dispatch stall when FPU is full
+event:0xd8 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_LS_FULL : Dispatch stall when LS is full
+event:0xd9 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_WAITING_FOR_ALL_QUIET : Dispatch stall when waiting for all to be quiet
+event:0xda counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_FAR_TRANSFER_OR_RESYNC : Dispatch stall for far transfer or resync to retire
+event:0xdb counters:0,1,2,3 um:fpu_exceptions minimum:1 name:FPU_EXCEPTIONS : FPU exceptions
+event:0xdc counters:0,1,2,3 um:zero minimum:1 name:DR0_BREAKPOINTS : Number of breakpoints for DR0
+event:0xdd counters:0,1,2,3 um:zero minimum:1 name:DR1_BREAKPOINTS : Number of breakpoints for DR1
+event:0xde counters:0,1,2,3 um:zero minimum:1 name:DR2_BREAKPOINTS : Number of breakpoints for DR2
+event:0xdf counters:0,1,2,3 um:zero minimum:1 name:DR3_BREAKPOINTS : Number of breakpoints for DR3
+
+# Memory Controler events
+event:0xe0 counters:0,1,2,3 um:page_access minimum:500 name:DRAM_ACCESSES : DRAM accesses
+event:0xe1 counters:0,1,2,3 um:zero minimum:500 name:MEMORY_CONTROLLER_PAGE_TABLE_OVERFLOWS : Memory controller page table overflows
+event:0xe3 counters:0,1,2,3 um:turnaround minimum:500 name:MEMORY_CONTROLLER_TURNAROUNDS : Memory controller turnarounds
+event:0xe4 counters:0,1,2,3 um:saturation minimum:500 name:MEMORY_CONTROLLER_BYPASS_COUNTER_SATURATION : Memory controller bypass saturation
+event:0xe5 counters:0,1,2,3 um:sizedblocks minimum:500 name:SIZED_BLOCKS : Sized blocks
+event:0xe8 counters:0,1,2,3 um:thermalecc minimum:500 name:THERMAL_STATUS_AND_DRAM_ECC_ERRORS : Thermal status and ECC errors
+event:0xe9 counters:0,1,2,3 um:cpiorequests minimum:500 name:CPU_IO_REQUESTS_TO_MEMORY_IO : CPU/IO requests to memory/IO (RevE)
+event:0xea counters:0,1,2,3 um:cacheblock minimum:500 name:CACHE_BLOCK_COMMANDS : Cache block commands (RevE)
+event:0xeb counters:0,1,2,3 um:sizecmds minimum:500 name:SIZED_COMMANDS : Sized commands
+event:0xec counters:0,1,2,3 um:probe minimum:500 name:PROBE_RESPONSES_AND_UPSTREAM_REQUESTS : Probe responses and upstream requests
+event:0xee counters:0,1,2,3 um:gart minimum:500 name:GART_EVENTS : GART events
+
+# Link events
+event:0xf6 counters:0,1,2,3 um:ht minimum:500 name:HYPERTRANSPORT_LINK0_BANDWIDTH : HyperTransport(tm) link 0 transmit bandwidth
+event:0xf7 counters:0,1,2,3 um:ht minimum:500 name:HYPERTRANSPORT_LINK1_BANDWIDTH : HyperTransport(tm) link 1 transmit bandwidth
+event:0xf8 counters:0,1,2,3 um:ht minimum:500 name:HYPERTRANSPORT_LINK2_BANDWIDTH : HyperTransport(tm) link 2 transmit bandwidth

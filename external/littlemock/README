@@ -1,0 +1,18 @@
+This folder contains the littlemock library.
+
+The latest version of littlemock can be found at this url:
+    http://code.google.com/p/littlemock
+
+Version: r3
+License: Apache 2.0
+
+Description:
+Mocking framework. Looks very like Mockito (see http://mockito.org).
+Has a number of restrictions.
+Can mock concrete classes, requires dexmaker.jar on classpath.
+
+Local Modifications:
+- Change to AppDataDirGuesser to handle the new class loader toString
+  format introduced in JB.
+- bug8297640.patch: update instantiation code to handle change in internal
+  methods

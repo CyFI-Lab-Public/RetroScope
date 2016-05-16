@@ -1,0 +1,297 @@
+40003000-40005000 r-xp 00000000 103:02 545       /system/lib/libaudioutils.so
+40005000-40006000 rw-p 00002000 103:02 545       /system/lib/libaudioutils.so
+40006000-40007000 r-xp 00000000 103:02 645       /system/lib/libstagefright_enc_common.so
+40007000-40008000 rw-p 00001000 103:02 645       /system/lib/libstagefright_enc_common.so
+40009000-40043000 r-xp 00000000 103:02 544       /system/lib/libaudioflinger.so
+40043000-40048000 rw-p 0003a000 103:02 544       /system/lib/libaudioflinger.so
+40048000-4004b000 r-xp 00000000 103:02 606       /system/lib/liblog.so
+4004b000-4004c000 rw-p 00003000 103:02 606       /system/lib/liblog.so
+4004c000-40054000 r--s 00000000 00:0c 1042       /dev/__properties__ (deleted)
+40054000-40057000 r-xp 00000000 103:02 561       /system/lib/libcorkscrew.so
+40057000-40058000 rw-p 00003000 103:02 561       /system/lib/libcorkscrew.so
+40058000-4005c000 r-xp 00000000 103:02 588       /system/lib/libgccdemangle.so
+4005c000-4005d000 rw-p 00004000 103:02 588       /system/lib/libgccdemangle.so
+4005d000-4005e000 r--p 00000000 00:00 0 
+4005e000-40062000 r-xp 00000000 103:02 593       /system/lib/libhardware_legacy.so
+40062000-40063000 rw-p 00004000 103:02 593       /system/lib/libhardware_legacy.so
+40063000-40068000 r-xp 00000000 103:02 618       /system/lib/libnetutils.so
+40068000-40069000 rw-p 00005000 103:02 618       /system/lib/libnetutils.so
+40069000-4006d000 r-xp 00000000 103:02 587       /system/lib/libgabi++.so
+4006d000-4006e000 rw-p 00004000 103:02 587       /system/lib/libgabi++.so
+4006e000-40072000 r-xp 00000000 103:02 527       /system/lib/libGLESv2.so
+40072000-40073000 rw-p 00004000 103:02 527       /system/lib/libGLESv2.so
+40073000-40075000 r-xp 00000000 103:02 668       /system/lib/libusbhost.so
+40075000-40076000 rw-p 00002000 103:02 668       /system/lib/libusbhost.so
+40076000-40077000 r-xp 00000000 103:02 592       /system/lib/libhardware.so
+40077000-40078000 rw-p 00001000 103:02 592       /system/lib/libhardware.so
+40078000-40085000 r-xp 00000000 103:02 558       /system/lib/libcameraservice.so
+40085000-40087000 rw-p 0000d000 103:02 558       /system/lib/libcameraservice.so
+40087000-40088000 rw-s 8000002c000 00:0c 1227    /dev/pvrsrvkm
+40088000-4008b000 r-xp 00000000 103:02 636       /system/lib/libspeexresampler.so
+4008b000-4008c000 rw-p 00003000 103:02 636       /system/lib/libspeexresampler.so
+4008c000-4008e000 r-xp 00000000 103:02 550       /system/lib/libbluedroid.so
+4008e000-4008f000 rw-p 00002000 103:02 550       /system/lib/libbluedroid.so
+4008f000-40090000 r-xp 00000000 103:02 625       /system/lib/libpower.so
+40090000-40091000 rw-p 00001000 103:02 625       /system/lib/libpower.so
+40091000-40092000 rw-s 8000002e000 00:0c 1227    /dev/pvrsrvkm
+40092000-40095000 r-xp 00000000 103:02 665       /system/lib/libtinyalsa.so
+40095000-40096000 rw-p 00003000 103:02 665       /system/lib/libtinyalsa.so
+40096000-40097000 r-xp 00000000 103:02 158       /system/bin/mediaserver
+40097000-40098000 rw-p 00000000 103:02 158       /system/bin/mediaserver
+40098000-400d9000 r-xp 00000000 103:02 554       /system/lib/libc.so
+400d9000-400dc000 rw-p 00041000 103:02 554       /system/lib/libc.so
+400dc000-400e7000 rw-p 00000000 00:00 0 
+400e7000-400fc000 r-xp 00000000 103:02 607       /system/lib/libm.so
+400fc000-400fd000 rw-p 00015000 103:02 607       /system/lib/libm.so
+400fd000-40111000 r-xp 00000000 103:02 681       /system/lib/libz.so
+40111000-40112000 rw-p 00014000 103:02 681       /system/lib/libz.so
+40112000-40113000 r-xp 00000000 103:02 658       /system/lib/libstdc++.so
+40113000-40114000 rw-p 00001000 103:02 658       /system/lib/libstdc++.so
+40114000-40122000 r-xp 00000000 103:02 564       /system/lib/libcutils.so
+40122000-40123000 rw-p 0000e000 103:02 564       /system/lib/libcutils.so
+40123000-40132000 rw-p 00000000 00:00 0 
+40132000-40160000 r-xp 00000000 103:02 669       /system/lib/libutils.so
+40160000-40162000 rw-p 0002e000 103:02 669       /system/lib/libutils.so
+40162000-40177000 r-xp 00000000 103:02 667       /system/lib/libui.so
+40177000-40179000 rw-p 00015000 103:02 667       /system/lib/libui.so
+40179000-4017b000 r-xp 00000000 103:02 680       /system/lib/libwpa_client.so
+4017b000-4017c000 rw-p 00002000 103:02 680       /system/lib/libwpa_client.so
+4017c000-4017d000 r--s 00000000 00:04 1523       /dev/ashmem/SurfaceFlinger read-only heap (deleted)
+4017d000-40190000 r-xp 00000000 103:02 149       /system/bin/linker
+40190000-40191000 rw-p 00012000 103:02 149       /system/bin/linker
+40191000-4019d000 rw-p 00000000 00:00 0 
+4019d000-401bf000 r-xp 00000000 103:02 549       /system/lib/libbinder.so
+401bf000-401c5000 rw-p 00022000 103:02 549       /system/lib/libbinder.so
+401c5000-4021d000 r-xp 00000000 103:02 608       /system/lib/libmedia.so
+4021d000-4022d000 rw-p 00058000 103:02 608       /system/lib/libmedia.so
+4022d000-40246000 r-xp 00000000 103:02 522       /system/lib/libEGL.so
+40246000-40249000 rw-p 00019000 103:02 522       /system/lib/libEGL.so
+40249000-4024b000 rw-p 00000000 00:00 0 
+4024b000-4027f000 r-xp 00000000 103:02 525       /system/lib/libGLES_trace.so
+4027f000-40280000 rw-p 00034000 103:02 525       /system/lib/libGLES_trace.so
+40280000-402b5000 r-xp 00000000 103:02 659       /system/lib/libstlport.so
+402b5000-402b7000 rw-p 00035000 103:02 659       /system/lib/libstlport.so
+402b7000-402d1000 r-xp 00000000 103:02 624       /system/lib/libpixelflinger.so
+402d1000-402d3000 rw-p 0001a000 103:02 624       /system/lib/libpixelflinger.so
+402d3000-403f1000 r-xp 00000000 103:02 633       /system/lib/libskia.so
+403f1000-403f5000 rw-p 0011e000 103:02 633       /system/lib/libskia.so
+403f5000-403fc000 rw-p 00000000 00:00 0 
+403fc000-403fe000 r-xp 00000000 103:02 577       /system/lib/libemoji.so
+403fe000-403ff000 rw-p 00002000 103:02 577       /system/lib/libemoji.so
+403ff000-4042f000 r-xp 00000000 103:02 605       /system/lib/libjpeg.so
+4042f000-40430000 rw-p 00030000 103:02 605       /system/lib/libjpeg.so
+40430000-40442000 r-xp 00000000 103:02 579       /system/lib/libexpat.so
+40442000-40444000 rw-p 00012000 103:02 579       /system/lib/libexpat.so
+40444000-40492000 r-xp 00000000 103:02 634       /system/lib/libsonivox.so
+40492000-40493000 rw-p 0004e000 103:02 634       /system/lib/libsonivox.so
+40493000-40498000 rw-p 00000000 00:00 0 
+40498000-4056d000 r-xp 00000000 103:02 597       /system/lib/libicuuc.so
+4056d000-40575000 rw-p 000d5000 103:02 597       /system/lib/libicuuc.so
+40575000-40579000 rw-p 00000000 00:00 0 
+40579000-4058f000 r-xp 00000000 103:02 557       /system/lib/libcamera_client.so
+4058f000-40594000 rw-p 00016000 103:02 557       /system/lib/libcamera_client.so
+40594000-405b9000 r-xp 00000000 103:02 591       /system/lib/libgui.so
+405b9000-405c0000 rw-p 00025000 103:02 591       /system/lib/libgui.so
+405c0000-405ca000 r-xp 00000000 103:02 646       /system/lib/libstagefright_foundation.so
+405ca000-405cb000 rw-p 0000a000 103:02 646       /system/lib/libstagefright_foundation.so
+405cb000-405cd000 r-xp 00000000 103:02 576       /system/lib/libeffects.so
+405cd000-405ce000 rw-p 00002000 103:02 576       /system/lib/libeffects.so
+405ce000-405d0000 r-xp 00000000 103:02 626       /system/lib/libpowermanager.so
+405d0000-405d1000 rw-p 00002000 103:02 626       /system/lib/libpowermanager.so
+405d1000-40620000 r-xp 00000000 103:02 610       /system/lib/libmediaplayerservice.so
+40620000-40625000 rw-p 0004f000 103:02 610       /system/lib/libmediaplayerservice.so
+40625000-4063d000 r-xp 00000000 103:02 676       /system/lib/libvorbisidec.so
+4063d000-4063e000 rw-p 00018000 103:02 676       /system/lib/libvorbisidec.so
+4063e000-406d9000 r-xp 00000000 103:02 541       /system/lib/libandroid_runtime.so
+406d9000-406e3000 rw-p 0009b000 103:02 541       /system/lib/libandroid_runtime.so
+406e3000-40716000 r-xp 00000000 103:02 616       /system/lib/libnativehelper.so
+40716000-40719000 rw-p 00033000 103:02 616       /system/lib/libnativehelper.so
+40719000-407cf000 r-xp 00000000 103:02 562       /system/lib/libcrypto.so
+407cf000-407df000 rw-p 000b6000 103:02 562       /system/lib/libcrypto.so
+407df000-407e1000 rw-p 00000000 00:00 0 
+407e1000-408ea000 r-xp 00000000 103:02 596       /system/lib/libicui18n.so
+408ea000-408f0000 rw-p 00109000 103:02 596       /system/lib/libicui18n.so
+408f0000-4091a000 r-xp 00000000 103:02 641       /system/lib/libssl.so
+4091a000-4091e000 rw-p 0002a000 103:02 641       /system/lib/libssl.so
+4091e000-4096b000 r-xp 00000000 103:02 638       /system/lib/libsqlite.so
+4096b000-4096d000 rw-p 0004d000 103:02 638       /system/lib/libsqlite.so
+4096d000-40a0f000 r-xp 00000000 103:02 574       /system/lib/libdvm.so
+40a0f000-40a16000 rw-p 000a2000 103:02 574       /system/lib/libdvm.so
+40a16000-40a18000 rw-p 00000000 00:00 0 
+40a18000-40a1d000 r-xp 00000000 103:02 526       /system/lib/libGLESv1_CM.so
+40a1d000-40a1e000 rw-p 00005000 103:02 526       /system/lib/libGLESv1_CM.so
+40a1e000-40a20000 r-xp 00000000 103:02 523       /system/lib/libETC1.so
+40a20000-40a21000 rw-p 00002000 103:02 523       /system/lib/libETC1.so
+40a21000-40a60000 r-xp 00000000 103:02 594       /system/lib/libharfbuzz.so
+40a60000-40a61000 rw-p 0003f000 103:02 594       /system/lib/libharfbuzz.so
+40a61000-40a84000 r-xp 00000000 103:02 595       /system/lib/libhwui.so
+40a84000-40a86000 rw-p 00023000 103:02 595       /system/lib/libhwui.so
+40a86000-40acf000 r-xp 00000000 103:02 565       /system/lib/libdbus.so
+40acf000-40ad0000 rw-p 00049000 103:02 565       /system/lib/libdbus.so
+40ad0000-40bef000 r-xp 00000000 103:02 642       /system/lib/libstagefright.so
+40bef000-40bfc000 rw-p 0011f000 103:02 642       /system/lib/libstagefright.so
+40bfc000-40bfe000 r-xp 00000000 103:02 656       /system/lib/libstagefright_yuv.so
+40bfe000-40bff000 rw-p 00002000 103:02 656       /system/lib/libstagefright_yuv.so
+40bff000-40c13000 r-xp 00000000 103:02 572       /system/lib/libdrmframework.so
+40c13000-40c16000 rw-p 00014000 103:02 572       /system/lib/libdrmframework.so
+40c16000-40db3000 r-xp 00000000 103:02 559       /system/lib/libchromium_net.so
+40db3000-40dc1000 rw-p 0019d000 103:02 559       /system/lib/libchromium_net.so
+40dc1000-40dd3000 rw-p 00000000 00:00 0 
+40dd3000-40ddf000 r-xp 00000000 103:02 643       /system/lib/libstagefright_amrnb_common.so
+40ddf000-40de0000 rw-p 0000c000 103:02 643       /system/lib/libstagefright_amrnb_common.so
+40de0000-40de5000 r-xp 00000000 103:02 644       /system/lib/libstagefright_avc_common.so
+40de5000-40de6000 rw-p 00005000 103:02 644       /system/lib/libstagefright_avc_common.so
+40de6000-40df9000 r-xp 00000000 103:02 647       /system/lib/libstagefright_omx.so
+40df9000-40dfb000 rw-p 00013000 103:02 647       /system/lib/libstagefright_omx.so
+40dfb000-40ef9000 r--p 00000000 00:0c 1198       /dev/binder
+40ef9000-40efe000 r-xp 00000000 103:02 511       /system/lib/hw/audio.primary.tuna.so
+40efe000-40eff000 rw-p 00005000 103:02 511       /system/lib/hw/audio.primary.tuna.so
+40eff000-40f02000 r-xp 00000000 103:02 631       /system/lib/libsecril-client.so
+40f02000-40f03000 rw-p 00003000 103:02 631       /system/lib/libsecril-client.so
+40f03000-40f12000 r-xp 00000000 103:02 509       /system/lib/hw/audio.a2dp.default.so
+40f12000-40f13000 rw-p 0000f000 103:02 509       /system/lib/hw/audio.a2dp.default.so
+40f13000-40f4b000 r-xp 00000000 103:02 514       /system/lib/hw/camera.omap4.so
+40f4b000-40f4e000 rw-p 00038000 103:02 514       /system/lib/hw/camera.omap4.so
+40f4e000-40f50000 r-xp 00000000 103:02 666       /system/lib/libtiutils.so
+40f50000-40f51000 rw-p 00002000 103:02 666       /system/lib/libtiutils.so
+40f51000-40f54000 r-xp 00000000 103:02 614       /system/lib/libmm_osal.so
+40f54000-40f55000 rw-p 00003000 103:02 614       /system/lib/libmm_osal.so
+40f55000-40f58000 r-xp 00000000 103:02 535       /system/lib/libOMX_Core.so
+40f58000-40f5a000 rw-p 00003000 103:02 535       /system/lib/libOMX_Core.so
+40f5a000-40f5f000 rw-p 00000000 00:00 0 
+40f5f000-40f69000 r-xp 00000000 103:02 569       /system/lib/libdomx.so
+40f69000-40f6b000 rw-p 0000a000 103:02 569       /system/lib/libdomx.so
+40f6b000-40f6c000 r-xp 00000000 103:02 600       /system/lib/libion.so
+40f6c000-40f6d000 rw-p 00001000 103:02 600       /system/lib/libion.so
+40f6d000-40f76000 r-xp 00000000 103:02 578       /system/lib/libexif.so
+40f76000-40f77000 rw-p 00009000 103:02 578       /system/lib/libexif.so
+40f77000-40f79000 rw-p 00000000 00:00 0 
+40f79000-40f7a000 ---p 00000000 00:00 0 
+40f7a000-41079000 rw-p 00000000 00:00 0 
+41079000-4107a000 rw-s 00000000 00:04 7053       /dev/ashmem/OMXCodec (deleted)
+4107a000-4107b000 rw-s 80000030000 00:0c 1227    /dev/pvrsrvkm
+4107b000-4107c000 rw-s 80000032000 00:0c 1227    /dev/pvrsrvkm
+4107c000-4107d000 rw-s 80000034000 00:0c 1227    /dev/pvrsrvkm
+4107d000-4107e000 rw-s 80000036000 00:0c 1227    /dev/pvrsrvkm
+4107e000-4107f000 rw-s 80000038000 00:0c 1227    /dev/pvrsrvkm
+4107f000-41080000 rw-s 8000003a000 00:0c 1227    /dev/pvrsrvkm
+41080000-41081000 rw-s 8000003c000 00:0c 1227    /dev/pvrsrvkm
+41081000-41082000 rw-s 8000003e000 00:0c 1227    /dev/pvrsrvkm
+41082000-41083000 rw-s 80000040000 00:0c 1227    /dev/pvrsrvkm
+41083000-41084000 rw-s 80000042000 00:0c 1227    /dev/pvrsrvkm
+41084000-41087000 r-xp 00000000 103:02 533       /system/lib/libOMX.TI.DUCATI1.VIDEO.H264E.so
+41087000-41088000 rw-p 00003000 103:02 533       /system/lib/libOMX.TI.DUCATI1.VIDEO.H264E.so
+41088000-4108a000 rw-p 00000000 00:00 0 
+4108a000-4108b000 rw-s 00000000 00:04 7232       /dev/ashmem/MemoryHeapBase (deleted)
+4108b000-41090000 rw-p 00000000 00:00 0 
+41096000-41098000 r-xp 00000000 103:02 530       /system/lib/libOMX.TI.DUCATI1.VIDEO.CAMERA.so
+41098000-41099000 rw-p 00002000 103:02 530       /system/lib/libOMX.TI.DUCATI1.VIDEO.CAMERA.so
+41099000-4109a000 r-xp 00000000 103:02 657       /system/lib/libstagefrighthw.so
+4109a000-4109b000 rw-p 00001000 103:02 657       /system/lib/libstagefrighthw.so
+4109b000-4109f000 r-xp 00000000 103:02 654       /system/lib/libstagefright_soft_vorbisdec.so
+4109f000-410a0000 rw-p 00004000 103:02 654       /system/lib/libstagefright_soft_vorbisdec.so
+410a0000-410a8000 rw-s 00000000 00:04 5976       /dev/ashmem/OMXCodec (deleted)
+410a8000-410b0000 rw-s 00000000 00:04 5978       /dev/ashmem/OMXCodec (deleted)
+410b0000-410b8000 r-xp 00000000 103:02 857       /system/vendor/lib/hw/gralloc.omap4.so
+410b8000-410b9000 rw-p 00008000 103:02 857       /system/vendor/lib/hw/gralloc.omap4.so
+410b9000-410be000 r-xp 00000000 103:02 864       /system/vendor/lib/libpvr2d.so
+410be000-410bf000 rw-p 00005000 103:02 864       /system/vendor/lib/libpvr2d.so
+410bf000-410c3000 rw-s ba300000 00:08 120        anon_inode:ion_share_fd
+410c4000-410e4000 rw-s 00000000 00:04 5977       /dev/ashmem/OMXCodec (deleted)
+410e4000-41111000 r-xp 00000000 103:02 868       /system/vendor/lib/libsrv_um.so
+41111000-41113000 rw-p 0002d000 103:02 868       /system/vendor/lib/libsrv_um.so
+41113000-41117000 rw-s ba304000 00:08 120        anon_inode:ion_share_fd
+41117000-41118000 rw-s 00000000 00:04 7233       /dev/ashmem/MemoryHeapBase (deleted)
+41118000-41119000 rw-s ba318000 00:08 120        anon_inode:ion_share_fd
+4116d000-4116e000 ---p 00000000 00:00 0 
+4116e000-4126d000 rw-p 00000000 00:00 0 
+4126d000-4126e000 rw-s 00000000 00:04 7234       /dev/ashmem/MemoryHeapBase (deleted)
+4126e000-4126f000 rw-s ba319000 00:08 120        anon_inode:ion_share_fd
+4126f000-41271000 rw-p 00000000 00:00 0 
+4127c000-4127f000 rw-p 00000000 00:00 0 
+41286000-41287000 rw-s ba31a000 00:08 120        anon_inode:ion_share_fd
+4128d000-41291000 rw-s ba308000 00:08 120        anon_inode:ion_share_fd
+41291000-412b1000 rw-s 00000000 00:04 7231       /dev/ashmem/OMXCodec (deleted)
+412c9000-412ca000 rw-s 00000000 00:04 7235       /dev/ashmem/MemoryHeapBase (deleted)
+412ca000-412ce000 rw-s ba30c000 00:08 120        anon_inode:ion_share_fd
+4130f000-4131a000 r-xp 00000000 103:02 512       /system/lib/hw/audio_policy.default.so
+4131a000-4131b000 rw-p 0000b000 103:02 512       /system/lib/hw/audio_policy.default.so
+4131b000-4131c000 ---p 00000000 00:00 0 
+4131c000-4141b000 rw-p 00000000 00:00 0 
+4141b000-4141f000 rw-s ba310000 00:08 120        anon_inode:ion_share_fd
+4141f000-41420000 rw-s 00000000 00:04 7236       /dev/ashmem/MemoryHeapBase (deleted)
+41420000-41423000 rw-p 00000000 00:00 0 
+4143b000-4143f000 rw-s ba314000 00:08 120        anon_inode:ion_share_fd
+4146d000-4146e000 rw-s 00000000 00:04 7237       /dev/ashmem/MemoryHeapBase (deleted)
+414ae000-414ee000 rw-p 00000000 00:00 0          [heap]
+414ef000-414f0000 ---p 00000000 00:00 0 
+414f0000-415ef000 rw-p 00000000 00:00 0 
+415ef000-415f1000 rw-p 00000000 00:00 0 
+41628000-4162a000 rw-p 00000000 00:00 0 
+41668000-41768000 rw-s 00000000 00:04 4903       /dev/ashmem/AudioFlinger::Client (deleted)
+41768000-41769000 ---p 00000000 00:00 0 
+41769000-41868000 rw-p 00000000 00:00 0 
+41868000-41869000 ---p 00000000 00:00 0 
+41869000-41968000 rw-p 00000000 00:00 0 
+41968000-41969000 ---p 00000000 00:00 0 
+41969000-41a68000 rw-p 00000000 00:00 0 
+41a68000-41a85000 rw-s 87ba0000 00:0c 1173       /dev/snd/pcmC0D0p
+41aed000-41aee000 ---p 00000000 00:00 0 
+41aee000-41bed000 rw-p 00000000 00:00 0 
+41c1e000-41c1f000 ---p 00000000 00:00 0 
+41c1f000-41d1e000 rw-p 00000000 00:00 0 
+41dfe000-41dff000 ---p 00000000 00:00 0 
+41dff000-41efe000 rw-p 00000000 00:00 0 
+41efe000-41eff000 ---p 00000000 00:00 0 
+41eff000-41ffe000 rw-p 00000000 00:00 0 
+41ffe000-41fff000 ---p 00000000 00:00 0 
+41fff000-420fe000 rw-p 00000000 00:00 0 
+4218c000-4218d000 ---p 00000000 00:00 0 
+4218d000-4228c000 rw-p 00000000 00:00 0 
+4228c000-4228d000 ---p 00000000 00:00 0 
+4228d000-4238c000 rw-p 00000000 00:00 0 
+42463000-42464000 ---p 00000000 00:00 0 
+42464000-42563000 rw-p 00000000 00:00 0 
+42563000-42644000 rw-s ba31b000 00:08 120        anon_inode:ion_share_fd
+42655000-42656000 ---p 00000000 00:00 0 
+42656000-42755000 rw-p 00000000 00:00 0 
+42755000-42756000 ---p 00000000 00:00 0 
+42756000-42855000 rw-p 00000000 00:00 0 
+42907000-42bf7000 rw-s 8000002b000 00:0c 1227    /dev/pvrsrvkm
+42bf7000-42d6f000 rw-s 8000002d000 00:0c 1227    /dev/pvrsrvkm
+42d6f000-4305f000 rw-s 8000002f000 00:0c 1227    /dev/pvrsrvkm
+4305f000-431d7000 rw-s 80000031000 00:0c 1227    /dev/pvrsrvkm
+431d7000-434c7000 rw-s 80000033000 00:0c 1227    /dev/pvrsrvkm
+434c7000-4363f000 rw-s 80000035000 00:0c 1227    /dev/pvrsrvkm
+4363f000-4392f000 rw-s 80000037000 00:0c 1227    /dev/pvrsrvkm
+4392f000-43aa7000 rw-s 80000039000 00:0c 1227    /dev/pvrsrvkm
+43aa7000-43d97000 rw-s 8000003b000 00:0c 1227    /dev/pvrsrvkm
+43d97000-43f0f000 rw-s 8000003d000 00:0c 1227    /dev/pvrsrvkm
+43f0f000-441ff000 rw-s 8000003f000 00:0c 1227    /dev/pvrsrvkm
+441ff000-44377000 rw-s 80000041000 00:0c 1227    /dev/pvrsrvkm
+44377000-44378000 ---p 00000000 00:00 0 
+44378000-44477000 rw-p 00000000 00:00 0 
+44552000-44553000 ---p 00000000 00:00 0 
+44553000-44652000 rw-p 00000000 00:00 0 
+446d6000-446d7000 ---p 00000000 00:00 0 
+446d7000-447d6000 rw-p 00000000 00:00 0 
+44819000-44919000 rw-s 00000000 00:04 7052       /dev/ashmem/AudioFlinger::Client (deleted)
+449eb000-449ec000 ---p 00000000 00:00 0 
+449ec000-44aeb000 rw-p 00000000 00:00 0 
+44b3e000-44b3f000 ---p 00000000 00:00 0 
+44b3f000-44c3e000 rw-p 00000000 00:00 0 
+44cb7000-44cb8000 ---p 00000000 00:00 0 
+44cb8000-44db7000 rw-p 00000000 00:00 0 
+44db7000-45843000 rw-s 00000000 00:04 7050       /dev/ashmem/MemoryHeapBase (deleted)
+45943000-45cc7000 rw-s 00000000 00:04 7054       /dev/ashmem/OMXCodec (deleted)
+45cc7000-45da8000 rw-s ba3fc000 00:08 120        anon_inode:ion_share_fd
+45e96000-45f77000 rw-s ba4dd000 00:08 120        anon_inode:ion_share_fd
+45ff0000-460d1000 rw-s ba5be000 00:08 120        anon_inode:ion_share_fd
+4610b000-4610c000 ---p 00000000 00:00 0 
+4610c000-4620b000 rw-p 00000000 00:00 0 
+4620b000-4620c000 ---p 00000000 00:00 0 
+4620c000-4630b000 rw-p 00000000 00:00 0 
+463be000-463bf000 ---p 00000000 00:00 0 
+463bf000-464be000 rw-p 00000000 00:00 0 
+beeb5000-beed6000 rw-p 00000000 00:00 0          [stack]
+ffff0000-ffff1000 r-xp 00000000 00:00 0          [vectors]

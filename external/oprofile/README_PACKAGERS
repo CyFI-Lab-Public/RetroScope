@@ -1,0 +1,79 @@
+Building an RPM for OProfile
+==================================
+
+When building an RPM for OProfile, please follow the RPM packaging guidelines
+described in:
+   http://www.rpm.org/RPM-HOWTO/build.html
+
+
+New file to install as of release 0.9.3
+---------------------------------------
+
+As of release 0.9.3, opreport is capable of generating XML output.
+Tool developers who wish to use the xml output will need to have
+access to the doc/opreport.xsd file, which describes the schema.
+RPM packagers may install this file in the same package as the other
+standard OProfile components or in a separate devel package if desired.
+
+
+New files to install as of release 0.9.4
+---------------------------------------
+
+As of release 0.9.4, OProfile includes a JIT support library called libopagent.
+This library is needed at runtime when profiling JITed code from supported
+virtual machines.  The install location for this library is:
+	<oprof-install-dir>/<libdir>/oprofile
+
+And there's a new binary file to install that's used for JIT profiling called
+opjitconv.  As with the other oprofile executables, this file is installed in
+the <oprof-install-dir>/bin directory.
+
+OProfile also includes support for profiling Java applications.  This support
+must be configured by way of the '--with-java=<path_to_jdk>' configure
+option.  If your JDK is older than version 1.5, only a JVMPI agent library
+is built.  If your JDK is version 1.5, both JVMPI and JVMTI agent
+libraries are built.  If your JDK is 1.6 or newer, only the JVMTI agent
+library is built.  As with libopagent described above, the install location
+for these is '<libdir>/oprofile'.
+
+RPM packagers can install the <libdir>/oprofile libraries in the same package
+as the other standard OProfile components or in a separate package if desired.
+It is recommended to run ldconfig in %post and %postun to add/remove the
+<libdir>/oprofile path from the standard library search paths.
+
+On bi-arch platforms that support more than one "bitness" of userspace software
+(e.g., 32-bit and 64-bit programs), it is recommended that the libopagent and
+Java agent libraries be packaged in a separate RPM.  You could then build
+OProfile twice -- once for each bitness type.  You would then distribute both
+versions of the RPMs containing the libraries, but only one RPM containing the
+"base" OProfile (i.e., executables, scripts, etc.).
+
+The new JIT support also provides the ability for third parties to develop
+JIT agents for other virtual machines.  The development files provided for this
+purpose are:
+	doc/op-jit-devel.html
+	include/opagent.h
+
+Again, the RPM packager may package these files in the default package
+or in a separate devel package.
+
+
+Requirement for building a binary RPM package
+----------------------------------------
+
+OProfile requires the special user account "oprofile" to exist for purposes
+of processing samples from JIT'ed code (e.g., Java applications).
+
+When defining the spec file for the OProfile RPM, you should add the automatic
+creation of the special "oprofile" user account.  Please refer to the URL
+below for an example of how this can be done:
+   http://fedoraproject.org/wiki/Packaging/UsersAndGroups
+
+For example, the following commands would add the necessary user account:
+
+   %pre
+   getent group oprofile >/dev/null || groupadd -r oprofile
+   getent passwd oprofile >/dev/null || \
+   useradd -r -g oprofile -d /home/oprofile -s /sbin/nologin \
+       -c "Special user account to be used by OProfile" oprofile
+   exit 0

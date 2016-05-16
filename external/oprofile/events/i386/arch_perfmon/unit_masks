@@ -1,0 +1,11 @@
+# Intel architectural perfmon unit masks
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask
+name:one type:mandatory default:0x1
+	0x1 No unit mask
+name:x41 type:mandatory default:0x41
+	0x41 No unit mask
+name:x4f type:mandatory default:0x4f
+	0x4f No unit mask
+#

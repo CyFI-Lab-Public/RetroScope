@@ -1,0 +1,268 @@
+This is an (incomplete) list of some of the stuff we want to look at doing.
+
+If you're interested in hacking on any of these, please contact the list first
+for some pointers and/or read HACKING and doc/CodingStyle.
+
+1.0 release
+-----------
+
+(this is a minimal selection of stuff I think we need)
+
+ o default to a vmlinux location: need agreement from kernel developers
+ o default to --separate=library (with anon, =none, makes not much sense)
+ o prettify image name for .jo files and allow lib-image: to specify it
+ o gisle's fixes
+ o opreport tgid:<tgid> doesn't work even if .jo files with that pid
+ o Fix:
+
+warning: [vdso] (tgid:9236 range:0x7fff98ffd000-0x7fff98fff000) could not be found.
+warning: /no-vmlinux could not be found.
+warning: /usr/lib64/libpanel-applet-2.so.0.2.27.#prelink#.sXCUK1 (deleted) could not be found.
+
+ o amd64 32 bit build needs a sys32_lookup_dcookie() translator in the
+   kernel
+ o decide on -m tgid semantics for anon regions
+ o if ev67 is not fixed, back it out
+ o lapic : module should says "didn't find apic" if needed, FAQ and doc should
+  speak a bit about lapic kernel option on x86 and recent kernel
+ o see the big comment in db_insert.c, it's possible to allow unlimited
+   amount of samples with a very minor change in libdb.
+ o if oprofile doesn't recognize the processor selected by the kernel
+   opcontrol could setup the module in timer mode (remove/reload prolly), and
+   warn the user it must upgrade oprofile to get all the feature from its
+   hardware.
+
+Later
+-----
+
+ o remove 2.95/2.2 support so we can use boost multi index container in
+   symbol/sample container
+ o consider if we can improve anon mapping growing support
+
+<movement> [moz@lambent pp]$ ./opreport -lf lib-image:/lib/tls/libc-2.3.2.so /bin/bash | grep vfprintf
+<movement> 14        0.1301  6         0.0102  /lib/tls/libc-2.3.2.so   vfprintf
+<movement> [moz@lambent pp]$ ./opreport -lf lib-image:/lib/tls/libc-2.3.2.so /usr/bin/vim | grep vfprintf
+<movement> 176       2.0927  349       1.2552  /lib/tls/libc-2.3.2.so   vfprintf
+<movement> [moz@lambent pp]$ ./opreport -lf lib-image:/lib/tls/libc-2.3.2.so { image:/bin/bash } { image:/usr/bin/vim } | grep vfprintf
+<movement> 176      10.9657  +++       349       7.8888  +++       vfprintf
+<movement> 14       ---      ---       6        ---      ---       vfprintf
+<movement> it seems them as two separate symbols
+<movement> but can we remove the app_name from rough_less and still be able to walk the two lists?
+<movement> even if we could, it would still go wrong when we're profiling multiple apps
+
+ o Java stuff??
+ o with opreport -c I can get "warning: /no-vmlinux could not be found.".
+   Should be smarter ?
+ o opreport -c gives weird output for an image with no symbols:
+
+    samples  %        symbol name
+  15965    100.000  (no symbols)
+253      100.000  (no symbols)
+  15965    98.4400  (no symbols)
+  253       1.5600  (no symbols) [self]
+
+ o consider tagging opreport -c entries with a number like gprof
+ o --details for opreport -c, or diff??
+ o should [self] entries be ommitted if 0 ??
+ o stress test opreport -c: compile a Big Application w/o frame pointer and look
+   how driver and opreport -c react.
+ o oparchive could fix up {kern} paths with -p (what about diff between
+   archive and current though?)
+ o can say more in opcontrol --status
+ o consider a sort option for diff %
+ o opannotate is silent about symbols missing debug info
+ o oprofiled.log now contains various statistics about lost sample etc. from
+  the driver. Post profile tools must parse that and warn eventually, warning
+  must include a proposed work around. User need this: if nothing seems wrong
+  people are unlikely to get a look in oprofiled.log (I ran oprofile on 2.6.1
+  2 weeks before noticing at 30000 I lost a lot of samples, the profile seemed
+  ok du to the randomization of lost samples). As developper we need that too,
+  actually we have no clear idea of the behavior on different arch, NUMA etc.
+  Not perfect because if the profiler is running the oprofiled.log will show
+  those warning only after the first  alarm signal, I think we must dump the
+  statistics information after each opcontrol --dump to avoid that.
+ o odb_insert() can fail on ftruncate or mremap() in db_manage.c but we don't
+  try to recover gracefully.
+ o output column shortname headers for opreport -l
+ o is relative_to_absolute_path guaranteeing a trailing '/' documented ?
+ o move oprofiled.log to OP_SAMPLE_DIR/current ?
+ o pp tools must handle samples count overflow (marked as (unsigned)-1)
+ o the way we show kernel modules in 2.5 is not very obvious - "/oprofile"
+ o oparchive will be more usefull with a --root= options to allow profiling
+  on a small box, nfs mount / to another box and transfer sample file and
+  binary on a bigger box for analysis. There is also a problem in oparchive
+  you can use session: to get the right path to samples files but oprofiled.log
+  and abi files path are hardcoded to /var/lib/oprofile.
+ o callgraph patch: better way to skip ignored backtrace ?
+ o lib-image: and image: behavior depend on --separate=, if --separate=library
+  opreport "lib-image:*libc*" --merge=lib works but not
+  opreport "image:*libc*" --merge=lib whilst the behavior is reversed if
+  --separate==none. Must we take care ?
+ o dependencies between profile_container.h symbol_container.h and
+  sample_container.h become more and more ugly, I needed to include them
+  in a specific order in some source (still true??)
+ o add event aliases for common things like icache misses, we must start to 
+  think about metrics including simple like event alias mapped to two or more
+  events and intepreted specially by user space tools like using the ratio
+  of samples; more tricky will be to select an event used as call count (no
+  cg on it) and  used to emulate the call count field in gprof. I think this is
+  a after 1.0 thing but event aliases must be specified in a way allowing such
+  extension
+ o do we need an opreport like opreport -c (showing caller/callee at binary
+  boundary not symbols) ?
+ o we should notice an opcontrol config change (--separate etc.) and
+   auto-restart the daemon if necessary (Run)
+ o we can add lots more unit tests yet
+ o Itanium event constraints are not implemented
+ o GUI still has a physical-counter interface, should have a general one
+   like opcontrol --event
+ o I think we should have the ability to have *fixed* width headers, e.g. :
+
+vma      samples  cum. samples  %           cum. %     symbol name             image name              app name
+0804c350 64582    64582         35.0757     35.0757    odb_insert              /usr/loc...in/oprofiled /usr/local/oprofile-pp/bin/oprofiled
+
+  Note the ellipsis
+ o should we make the sighup handler re-read counter config and re-start profiling too ?
+ o improve --smart-demangle
+	o allow user to add it's own pattern in user.pat, document it.
+	o hard code ${typename} regular definition to remove all current limitations (difficult, perhaps after 1.0 ?).
+ o oprof_start dialog size is too small initially
+ o i18n. We need a good formatter, and also remember format_percent()
+ o opannotate --source --output-dir=~moz/op/ /usr/bin/oprofiled
+   will fail because the ~ is not expanded (no space around it) (popt bug I say)
+ o cpu names instead of numbers in 2.4 module/ ?
+ o remove 1 and 2 magic numbers for oprof_ready
+ o adapt Anton's patch for handling non-symbolled libraries ? (nowaday C++
+  anon namespace symbol are static, 3.4 iirc, so with recent distro we are
+  more likely to get problems with a "fallback to dynamic symbols" approch)
+ o use standard C integer type <stdint.h> int32_t int16_t etc.
+ o event multiplexing for real
+ o randomizing of reset value
+ o XML output
+ o profile the NMI handler code
+ o opannotate : I added this to the doc about difference between nr samples
+  credited to a source function and total number of samples for this function:
+   "The missing samples are not lost, they will be credited to another source
+    location where the inlined function is defined. The inlined function will
+    be credited from multiple call site and merged in one place in the
+   annotated source file so there is no way to see from what call site are
+   coming the samples for an inlined function."
+  I think we can work around this: output multiple instances of inlined
+  function like :
+  inline foo() { foo: total 1500 30.00 ...
+  ... annotated source from all call site 
+  inline foo() { foo (call site bar()): total 500 10.00
+  .. annotated source from call site bar() etc.
+  what about template..., can we do/must we do something like that
+  template <class T> eat_cpu() and do a similar things, merging and annotating
+  all instantation then annotating for each distinct instantation, this will
+  break our "keep the source line number in annotated source file identical to
+  the original source"
+ o events/mips/34k/events, some events does not make sense, they get identical
+  event number, um and counter nr so they overlap, currently commented
+ o can we find a more efficient implementation for sparse_array ?
+ o libpp/profile.cpp:is_spu_sample_file() can be simplified by using
+  read_header()
+ o while fixing #1819350 I needed to make extra_images per profile session
+   rather than a global var so I think we need to revisit find_image_path(),
+   extra_found_images, --image-path (-p).
+   Actually we can't do something ala:
+   opreport { archive:tmp1 search_path=/lib/modules/2.6.20 } { archive:tmp2 search_path=/.../2.6.20.9 }
+   because search_path is specified through -p which is not a part of the
+   profile spec. Fixing #1819350 covered all case except this one but w/o any
+   user visible change. Another way will be to save the -p option used with
+   oparchive in a file at the toplevel of the archive, use it with all tools
+   when an archive: is specified on the command line and deprecate the use of
+   -p in such case.
+ o consider to make extra_images a ref counted object, it's copied by value
+  a few time but can contain a lot of string. There is also some ugly public
+  member extra_images to fix.
+ o daemon bss size can be improved, grep for MAX_PATH to see where dynamic
+   allocation can be used, try $ nm oprofiled --size-sort too.
+
+Documentation
+-------------
+
+ o the docs should mention the default event for each arch somewhere
+ o more discussion of problematic code needs to go in the "interpreting" section. 
+ o document gcc 2.95 and linenr info problems especially for inline functions
+ o finish the internals manual
+
+JIT support
+-----------
+
+ o We need a more dynamic structure to handle entries_address_ascending and
+   entries_symbols_ascending, actually many scaling problem occur because they
+   are array, this was perfect to get a first implementation focusing on
+   handling overlap and all but the need to qsort/copy arrays at each iteration
+   is a performance killer. Some sort of AVL tree will do the job.
+ o Related to the previous, it's possible to do all processing in opjitconv.c
+   in a single left to right walk of the jitentry list.
+ o see the FIXME at parse_dump.c:parse_code_unload()
+ o Increment JITHEADER_VERSION in jitdump.h to be sure that the new code only
+   accepts dump file created by the new code.
+ o opjitconv.c:replacement_name() should be enough clever to avoid name
+   collision so we can remove the recursive call to disambiguate_symbol_names(),
+   need a hash table or some sort of associative array to check quickly if a
+   name exists, we will need some sort of avl tree so it's probably better
+   to do not implement a hash table only for this purpose.
+ o op_write_native_code() must accept one more parameter, the real code size
+   which can be zero or equal to code_size, this will allow to create elf
+   file w/o any code contents, only a symbol table and .text sections w/o
+   contents (yes ELF format allow that). For dynamic binary translation it'll
+   avoid to dump tons of code for little use, opannotate --assembly will not
+   work on such elf file but it can be a real win. It'll need to add to
+   jitrecord0 a real_size field, and some trickery when building the elf file,
+   taking care about the case we mix zero code size with non zero code size.
+   Perhaps we can use it too for java, filtering native method etc. Actually
+   we allow a simplified form of this feature by allowing to disable/enable
+   code dumping but at the whole dump level not on a symbol basis, quite
+   possible sufficient. [mpj: We're backing away from the idea of dumping
+   JIT records without code.  Since BFD asymbol type does not include symbol size,
+   the op_bfd technique for determining symbol size relies on knowing the true
+   file size; and if code is not included in the .jo file, we don't have true size.]
+ o The pipe used for triggering JIT dump conversion should be used for normal
+   dumping too.
+ o See FIXME in agents/jvmti/libjvmti_oprofile.c:
+   If enablement to get line number info would be configurable through command line,
+   what should be the default on/off?
+ o See FIXME in opjitconv/debug_line.c
+ o The way to use the pipe should be made more secure to avoid denial of service
+   attacks. We have to think about it.
+ o Callgraph does not work properly for the .jo files the JIT support creates.
+   See section Chapter 4, sect 2.3.2 "Callgraph and JIT support". Try to figure
+   out a way to correlate an anonymous sample callgraph entry with
+   the .jo file that may exist for the anonymous code.
+ o see mail from Gisle Dankel:
+   "JIT_SUPPORT: Adding support for file-backed non-ELF JIT code"
+   -> should be changed (if useful) before next release
+ o See FIXME in op_header.cpp:
+   The check for header.mtime of JIT sample files is not correct because currently
+   this mtime value is set to zero due to missing cookie setting for JIT sample files.
+   Some additional check/setting to header.mtime should be made for JIT sample files.
+ o Mono JIT support:
+
+   2007-11-08: with callgraph massi got
+   <massi> oparchive error: parse_filename() invalid filename: /var/lib/oprofile/samples/current/{root}/var/lib/oprofile/samples/current/{root}/home/massi/mono/amd64/bin/mono/{dep}/{anon:anon}/32432.0x40a26000.0x40a36000/CPU_CLK_UNHALTED.100000.0.all.all.all/{dep}/{root}/var/lib/oprofile/samples/current/{root}/home/massi/mono/amd64/bin/mono/{dep}/{anon:anon}/32432.0x40a26000.0x40a36000/CPU_CLK_UNHALTED.100000.0.all.all.all/{cg}/{root}/usr/oprofile/bin/oprofiled/CPU_CLK_
+
+   Massi added Mono JIT support, code on the stack is never unloaded and there is
+   no byte code, code is always compiled to native machine code, this mean than
+   for mono at least we can do callgraph if we can fix this samples filename
+   problem.
+
+General checks to make
+----------------------
+ 
+ o rgrep FIXME
+ o valgrind (--show-reachable=yes --leak-check=yes)
+ o audit to track unnecessary include <>
+ o gcc 3.0/3.x compile
+ o Qt2/3 check, no Qt check
+ o verify builds (modversions, kernel versions, athlon etc.). I have the
+  necessary stuff to check kernel versions/configurations on PIII core (Phil)
+ o use nm and a little script to track unused function
+ o test it to hell and back
+ o compile all C++ programs with STL_port and test them (gcc 3.4 contain a
+   debug mode too but std::string iterator are not checked)
+ o There is probably place of post profile tools where looking at errno will give better error messages.
+

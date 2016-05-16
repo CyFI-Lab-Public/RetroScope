@@ -1,0 +1,709 @@
+/*
+ * Copyright (C) 2010 Google Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ 
+ /* This is the JSilver grammar fed into SableCC to generate the parser. */
+
+// Java package of generated code.
+Package
+  com.google.clearsilver.jsilver.syntax;
+
+/***** Stage 1: The Lexer
+ *
+ * The lexer breaks the inbound text stream in to a sequence of tokens.
+ *
+ * SableCC will generate a wrapper class for each type of token.
+ *
+ * Anything outside of <?cs and ?> will be returned as a TData token.
+ * Anything in between (including) <?cs and ?> will be broken down
+ * into a finer grained set of tokens.
+ *
+ * For example: "Hello <?cs var:person.name ?>!"
+ * Results in:
+ *  TData        "Hello "
+ *  TCsOpen      "<?cs"
+ *  TWhiteSpace  " "
+ *  TVar         "var"
+ *  TColon       ":"
+ *  TWord        "person.name"
+ *  TWhitspace   " "
+ *  TCsClose     "?>"
+ *  TData        "!"
+ */
+
+/* Constants to be used elsewhere. */
+Helpers
+
+  // These aren't actually tokens, but can be used by tokens. Avoids the
+  // need for magic numbers in the token definitions.
+  alphanumeric = (['a' .. 'z'] | ['A' .. 'Z'] | ['0' .. '9']);
+  alpha        = (['a' .. 'z'] | ['A' .. 'Z']);
+  all = [0 .. 0xFFFF];
+  tab = 9;
+  cr = 13;
+  lf = 10;
+  whitespace = (tab | cr | lf | ' ');
+
+/* States of the lexer. */
+States
+
+  content,     // Anything outside of <?cs and ?>.
+  command,     // ClearSilver command: "<?cs var:".
+  args,        // Args to command: "some.variable=3 ?>"
+  comment;     // Inside a <?cs # comment ?>.
+
+/* Tokens and state transitions. */
+Tokens
+
+  // In the 'content' state, treat everything as a chunk of data,
+  // up to the sequence '<?cs '.
+  // Note, because the lexer has to read 5 characters '<?cs ' before
+  // knowing the definite state, it needs to be supplied a
+  // PushbackReader() with a buffer of at least 5.
+  {content} data = (        [all - '<']
+                   | '<'    [all - '?']
+                   | '<?'   [all - 'c']
+                   | '<?c'  [all - 's']
+                   | '<?cs' [[[[all - ' '] - cr] - lf] - tab])+;
+
+  {comment} comment = (        [all - '?']
+                      | '?'    [all - '>'] )+; // All up to ?>
+
+  // In the 'clearsilver' state, break each keyword, operator
+  // and symbol into it's own token.
+  {command} var           = 'var';
+  {command} lvar          = 'lvar';
+  {command} evar          = 'evar';
+  {command} uvar          = 'uvar';
+  {command} set           = 'set';
+  {command} if            = 'if';
+  {command} else_if       = ('elif' | 'elseif');
+  {command} else          = 'else';
+  {command} with          = 'with';
+  {command} escape        = 'escape';
+  {command} autoescape    = 'autoescape';
+  {command} loop          = 'loop';
+  {command} each          = 'each';
+  {command} alt           = 'alt';
+  {command} name          = 'name';
+  {command} def           = 'def';
+  {command} call          = 'call';
+  {command} include       = 'include';
+  {command} linclude      = 'linclude';
+  {command} content_type  = 'content-type';
+  {command} inline        = 'inline';
+
+  {args} comma         = ',';
+  {args} bang          = '!';
+  {args} assignment    = '=';
+  {args} eq            = '==';
+  {args} ne            = '!=';
+  {args} lt            = '<';
+  {args} gt            = '>';
+  {args} lte           = '<=';
+  {args} gte           = '>=';
+  {args} and           = '&&';
+  {args} or            = '||';
+  {args} string        = ('"' [all - '"']* '"' | ''' [all - ''']* ''');
+  {args} hash          = '#';
+  {args} plus          = '+';
+  {args} minus         = '-';
+  {args} star          = '*';
+  {args} percent       = '%';
+  {args} bracket_open  = '[';
+  {args} bracket_close = ']';
+  {args} paren_open    = '(';
+  {args} paren_close   = ')';
+  {args} dot           = '.';
+  {args} dollar        = '$';
+  {args} question      = '?';
+  {args} dec_number    = (['0' .. '9'])+;
+  {args} hex_number    = ('0x' | '0X') (['0' .. '9'] | ['a' .. 'f'] | ['A' .. 'F'])+;
+  {args} word          = (alphanumeric | '_')+;
+  {args} arg_whitespace = whitespace+;
+
+  // Tokens that are valid in multiple states
+  {command, args} slash         = '/'; // means divide or end command.
+
+  // State transitions.
+  {content->command}                                  cs_open        = '<?cs' whitespace+;
+  {command->comment}                                  comment_start  = '#';
+  {command->args}                                     command_delimiter = ':' | whitespace;
+  {command->args}                                     hard_delimiter = '!' | whitespace;
+  {command->content, args->content, comment->content} cs_close       = whitespace* '?>';
+
+/***** Stage 2: The Parser
+ *
+ * Below is a BNF-like grammar of how the tokens are assembled.
+ * The generate parser will read the token stream and build a
+ * tree of nodes representing the structure.
+ *
+ * This is the Concrete Syntax Tree (CST).
+ *
+ * Though this provides access to the underlying syntax tree, the
+ * resulting tree would be quite tricky to work with from code as
+ * it's heavily loaded with syntax specifics and parser tricks...
+ *
+ * So, the CST also contains transformation rules ({->x}) to
+ * convert it into a much simpler Abstract Syntax Tree (AST),
+ * which is defined in stage 3.
+ */
+
+/* Tokens from the lexer that the parser doesn't care about. */
+Ignored Tokens
+
+  arg_whitespace;
+
+/* Concrete syntax tree. */
+Productions
+
+  // Overall template structure...
+
+  grammar {->command}
+    = commands
+              {->commands.command}
+    ;
+
+  commands {->command}
+    = {none}
+              {->New command.noop()}
+    | {one}   command
+              {->command.command}
+    | {many}  command [more]:command+
+              {->New command.multiple([command.command, more.command])}
+    ;
+
+  command {->command}
+
+    = {data}  data
+              // Anything outside of <?cs ?> tag
+              {->New command.data(data)}
+
+    | {comment} cs_open comment_start comment? cs_close
+              // <?cs # comment ?>
+              {->New command.comment(New position.cs_open(cs_open),comment)}
+
+    | {var}   cs_open var command_delimiter expression_list cs_close
+              // <?cs var:x ?>
+              {->New command.var(
+                   New position.cs_open(cs_open),
+                   New expression.sequence([expression_list.expression]))}
+
+    | {lvar}  cs_open lvar command_delimiter expression_list cs_close
+              // <?cs lvar:x ?>
+              {->New command.lvar(
+                   New position.cs_open(cs_open),
+                   New expression.sequence([expression_list.expression]))}
+
+    | {evar}  cs_open evar command_delimiter expression_list cs_close
+              // <?cs evar:x ?>
+              {->New command.evar(
+                   New position.cs_open(cs_open),
+                   New expression.sequence([expression_list.expression]))}
+
+    | {uvar}  cs_open uvar command_delimiter expression_list cs_close
+              // <?cs uvar:x ?>
+              {->New command.uvar(
+                   New position.cs_open(cs_open),
+                   New expression.sequence([expression_list.expression]))}
+
+    | {set}   cs_open set command_delimiter variable assignment expression cs_close
+              // <?cs set:x = y ?>
+              {->New command.set(
+                   New position.cs_open(cs_open),
+                   variable.variable,
+                   expression.expression)}
+
+    | {name}  cs_open name command_delimiter variable cs_close
+              // <?cs name:x ?>
+              {->New command.name(
+                   New position.cs_open(cs_open),
+                   variable.variable)}
+
+    | {escape} cs_open escape command_delimiter expression cs_close
+              commands
+              [i1]:cs_open slash [i3]:escape [i2]:cs_close
+              // <?cs escape:"html" ?>...<?cs /escape?>
+              {->New command.escape(
+                   New position.cs_open(cs_open),
+                   expression.expression,
+                   commands.command)}
+
+    | {autoescape} cs_open autoescape command_delimiter expression cs_close
+              commands
+              [i1]:cs_open slash [i3]:autoescape [i2]:cs_close
+              // <?cs autoescape:"html" ?>...<?cs /autoescape?>
+              {->New command.autoescape(
+                   New position.cs_open(cs_open),
+                   expression.expression,
+                   commands.command)}
+
+    | {with}  cs_open with command_delimiter variable assignment expression cs_close
+              commands
+              [i1]:cs_open slash [i3]:with [i2]:cs_close
+              // <?cs with:x=y ?>...<?cs /with?>
+              {->New command.with(
+                  New position.cs_open(cs_open),
+                  variable.variable,
+                  expression.expression,
+                  commands.command)}
+
+    | {loop_to}  cs_open loop command_delimiter variable assignment expression cs_close
+              commands
+              [i1]:cs_open slash [i3]:loop [i2]:cs_close
+              // <?cs loop:x=20 ?>...<?cs /loop ?>
+              {->New command.loop_to(
+                  New position.cs_open(cs_open),
+                  variable.variable,
+                  expression.expression,
+                  commands.command)}
+
+    | {loop}  cs_open loop command_delimiter variable assignment
+              [start]:expression comma [end]:expression cs_close
+              commands
+              [i1]:cs_open slash [i3]:loop [i2]:cs_close
+              // <?cs loop:x=1,20 ?>...<?cs /loop ?>
+              {->New command.loop(
+                  New position.cs_open(cs_open),
+                  variable.variable,
+                  start.expression,
+                  end.expression,
+                  commands.command)}
+
+    | {loop_inc} cs_open loop command_delimiter variable assignment
+              [start]:expression comma
+              [end]:expression [i3]:comma [increment]:expression cs_close
+              commands [i1]:cs_open slash [i4]:loop [i2]:cs_close
+              // <?cs loop:x=1,20,5 ?>...<?cs /loop ?>
+              {->New command.loop_inc(
+                  New position.cs_open(cs_open),
+                  variable.variable,
+                  start.expression,
+                  end.expression,
+                  increment.expression,
+                  commands.command)}
+
+    | {each}  cs_open each command_delimiter variable assignment expression cs_close
+              commands
+              [i1]:cs_open slash [i3]:each [i2]:cs_close
+              // <?cs each:x=some.thing ?>...<?cs /each ?>
+              {->New command.each(
+                  New position.cs_open(cs_open),
+                  variable.variable,
+                  expression.expression,
+                  commands.command)}
+
+    | {alt}   cs_open alt command_delimiter expression cs_close
+              commands
+              [i1]:cs_open slash [i3]:alt [i2]:cs_close
+              // <?cs alt:some.thing ?>...<?cs /alt ?>
+              {->New command.alt(
+                  New position.cs_open(cs_open),
+                  expression.expression,
+                  commands.command)}
+
+    | {def}   cs_open def command_delimiter multipart_word paren_open variable_list?
+              paren_close cs_close commands
+              [i1]:cs_open slash [i3]:def [i2]:cs_close
+              // <?cs def:some.macro(arg,arg) ?>...<?cs /def ?>
+              {->New command.def(
+                  New position.cs_open(cs_open),
+                  [multipart_word.word],
+                  [variable_list.variable],
+                  commands.command)}
+
+    | {call}  cs_open call command_delimiter multipart_word paren_open expression_list?
+              paren_close cs_close
+              // <?cs call:some.macro(arg,arg) ?>
+              {->New command.call(
+                  New position.cs_open(cs_open),
+                  [multipart_word.word],
+                  [expression_list.expression])}
+
+    | {if}    if_block
+              {->if_block.command}
+
+    | {include} cs_open include command_delimiter expression cs_close
+              // <?cs include:x ?>
+              {->New command.include(
+                  New position.cs_open(cs_open),
+                  expression.expression)}
+
+    | {hard_include} cs_open include hard_delimiter expression cs_close
+              // <?cs include!x ?>
+              {->New command.hard_include(
+                  New position.cs_open(cs_open),
+                  expression.expression)}
+
+    | {linclude} cs_open linclude command_delimiter expression cs_close
+              // <?cs linclude:x ?>
+              {->New command.linclude(
+                  New position.cs_open(cs_open),
+                  expression.expression)}
+
+    | {hard_linclude} cs_open linclude hard_delimiter expression cs_close
+              // <?cs linclude!x ?>
+              {->New command.hard_linclude(
+                  New position.cs_open(cs_open),
+                  expression.expression)}
+
+    | {content_type} cs_open content_type command_delimiter string cs_close
+              // <?cs content-type:"html" ?>
+              {->New command.content_type(
+                  New position.cs_open(cs_open),
+                  string)}
+
+    | {inline} cs_open inline cs_close
+              commands
+              [i1]:cs_open slash [i3]:inline [i2]:cs_close
+              // <?cs inline ?>...<?cs /inline?>
+              {->New command.inline(
+                   New position.cs_open(cs_open),
+                   commands.command)}
+
+    ;
+
+  multipart_word {->word*}
+    = {bit} word
+              {->[word]}
+    | {m} multipart_word dot word
+              {->[multipart_word.word, word]}
+    ;
+
+  variable_list {->variable*}
+    = {single} variable
+              {->[variable.variable]}
+    | {multiple} variable_list comma variable
+              {->[variable_list.variable, variable.variable]}
+    ;
+
+  expression_list {->expression*}
+    = {single} expression
+              {->[expression.expression]}
+    | {multiple} expression_list comma expression
+              {->[expression_list.expression, expression.expression]}
+    ;
+
+  // If/ElseIf/Else block...
+
+  if_block {->command}
+    =           cs_open if command_delimiter expression cs_close
+                commands
+                else_if_block
+                // <?cs if:x.y ?> (commands, then optional else_if_block)
+                {->New command.if(
+                    New position.cs_open(cs_open),
+                    expression.expression,
+                    commands.command,
+                    else_if_block.command)}
+    ;
+
+  // ElseIf statements get transformed into nested if/else blocks to simplify
+  // final AST.
+  else_if_block {->command}
+    = {present} cs_open else_if command_delimiter expression cs_close
+                commands
+                else_if_block
+                // <?cs elif:x.y ?> (recurses)
+                {->New command.if(
+                    New position.cs_open(cs_open),
+                    expression.expression,
+                    commands.command,
+                    else_if_block.command)}
+    | {missing} else_block
+                {->else_block.command}
+    ;
+
+  else_block {->command}
+    = {present} cs_open else cs_close
+                commands
+                end_if_block
+                // <?cs else ?> (followed by end_if_block)
+                {->commands.command}
+    | {skip}    end_if_block
+                {->New command.noop()}
+    ;
+
+  end_if_block
+    =           cs_open slash if cs_close
+                // <?cs /if ?>
+    ;
+
+  // Expression language...
+
+  // The multiple levels allow the parser to build a tree based on operator
+  // precedence. The higher the level in the tree, the lower the precedence.
+
+  expression {->expression}
+    = {or} [left]:expression or [right]:and_expression    // x.y || a.b
+              {->New expression.or(left.expression, right.expression)}
+    | {and_expression} [value]:and_expression             // x.y
+              {->value.expression}
+    ;
+
+  and_expression {->expression}
+    = {and}  [left]:and_expression and [right]:equality   // x.y && a.b
+              {->New expression.and(left.expression, right.expression)}
+    | {equality} [value]:equality                         // x.y
+              {->value.expression}
+    ;
+
+  equality {->expression}
+    = {eq}  [left]:equality eq [right]:comparison         // x.y == a.b
+              {->New expression.eq(left.expression, right.expression)}
+    | {ne}  [left]:equality ne [right]:comparison         // x.y != a.b
+              {->New expression.ne(left.expression, right.expression)}
+    | {comparison} [value]:comparison                  // x.y
+              {->value.expression}
+    ;
+
+  comparison {->expression}
+    = {lt}  [left]:comparison lt  [right]:add_subtract         // x.y < a.b
+              {->New expression.lt(left.expression, right.expression)}
+    | {gt}  [left]:comparison gt  [right]:add_subtract         // x.y > a.b
+              {->New expression.gt(left.expression, right.expression)}
+    | {lte} [left]:comparison lte [right]:add_subtract         // x.y <= a.b
+              {->New expression.lte(left.expression, right.expression)}
+    | {gte} [left]:comparison gte [right]:add_subtract         // x.y >= a.b
+              {->New expression.gte(left.expression, right.expression)}
+    | {add_subtract} [value]:add_subtract                      // x.y
+              {->value.expression}
+    ;
+
+  add_subtract {->expression}
+    = {add} [left]:add_subtract plus [right]:factor        // x.y + a.b
+              {->New expression.add(left.expression, right.expression)}
+    | {subtract} [left]:add_subtract minus [right]:factor  // x.y - a.b
+              {->New expression.subtract(left.expression, right.expression)}
+    | {factor} [value]:factor                              // x.y
+              {->value.expression}
+    ;
+
+  factor {->expression}
+    = {multiply} [left]:factor star [right]:value   // x.y * a.b
+              {->New expression.multiply(left.expression, right.expression)}
+    | {divide} [left]:factor slash [right]:value    // x.y / a.b
+              {->New expression.divide(left.expression, right.expression)}
+    | {modulo} [left]:factor percent [right]:value  // x.y % a.b
+              {->New expression.modulo(left.expression, right.expression)}
+    | {value} value                                 // x.y
+              {->value.expression}
+    ;
+
+  value {->expression}
+    = {variable} variable          // x.y
+              {->New expression.variable(variable.variable)}
+    | {string} string              // "hello"
+              {->New expression.string(string)}
+    | {number} number              // 123
+              {->number.expression}
+    | {forced_number} hash value   // #123 or #some.var
+              {->New expression.numeric(value.expression)}
+    | {not} bang value                              // !x.y
+              {->New expression.not(value.expression)}
+    | {exists} question value      // ?x.y
+              {->New expression.exists(value.expression)}
+    | {parens} paren_open expression_list paren_close        // (x.y, a.b, d.e)
+              {->New expression.sequence([expression_list.expression])}
+    | {function} [name]:variable paren_open
+                  expression_list? paren_close // a.b(x, y)
+              {->New expression.function(
+                  name.variable,[expression_list.expression])}
+    ;
+
+  variable {->variable}
+    = {name}   dollar? word
+              {->New variable.name(word)}
+    | {dec_number} dollar dec_number
+              {->New variable.dec_number(dec_number)}
+    | {hex_number} dollar hex_number
+              {->New variable.hex_number(hex_number)}
+    | {descend_name} variable dot word
+              {->New variable.descend(
+                  variable.variable, New variable.name(word))}
+    | {descend_dec_number} variable dot dec_number
+              {->New variable.descend(
+                  variable.variable, New variable.dec_number(dec_number))}
+    | {descend_hex_number} variable dot hex_number
+              {->New variable.descend(
+                  variable.variable, New variable.hex_number(hex_number))}
+    | {expand} variable bracket_open expression bracket_close
+              {->New variable.expand(
+                  variable.variable, expression.expression)}
+    ;
+
+  number {->expression}
+    = {unsigned} digits
+              {->digits.expression}
+    | {positive} plus digits
+              {->digits.expression}
+    | {negative} minus digits
+              {->New expression.negative(digits.expression)}
+    ;
+
+  digits {->expression}
+    = {decimal} dec_number
+              {->New expression.decimal(dec_number)}
+    | {hex}     hex_number
+              {->New expression.hex(hex_number)}
+    ;
+
+
+/***** Stage 3: The Abstract Syntax Tree
+ *
+ * This is the resulting model that will be generated by the parser.
+ *
+ * It is represented in Java by a strongly typed node tree (the
+ * classes are code generated by SableCC). These can be interrogated
+ * using getter methods, or processed by passing a visitor to the
+ * tree.
+ *
+ * The Abstract Syntax Tree definition below is the only thing
+ * the Java application need to worry about. All previous definitions
+ * in this file are taken care of by the generated parser.
+ *
+ * Example input:
+ *   Hello <?cs var:user.name ?>!
+ *   <?cs if:user.age >= 90 ?>
+ *   You're way old.
+ *   <?cs elif:user.age >= 21 ?>
+ *   You're about the right age.
+ *   <?cs else ?>
+ *   You're too young.
+ *   <?cs /if ?>
+ *   Seeya!
+ *
+ * Results in the tree:
+ *   AMultipleCommand (start)
+ *     ADataCommand (command)
+ *       TData (data) "Hello "
+ *     AVarCommand (command)
+ *       AVariableExpression (expression)
+ *         TWord "user.name" (name)
+ *     ADataCommand (command)
+ *       TData "!\n" (data)
+ *     AIfCommand (command)
+ *       AGteExpression (expression)
+ *         AVariableExpression (left)
+ *           TWord "user.age" (name)
+ *         ADecimalExpresion (right)
+ *           TDecNumber "90" (value)
+ *       ADataCommand (block)
+ *         TData (data) "\nYou're way old.\n"
+ *       AGteCommand (otherwise)
+ *         AEqExpression (expression)
+ *           AVariableExpression (left)
+ *             TWord "user.age" (name)
+ *           ADecimalExpresion (right)
+ *             TDecNumber "21" (value)
+ *         ADataCommand (block)
+ *           TData (data) "\nYou're about the right age.\n"
+ *         ADataCommand (otherwise)
+ *           TData (data) "\nYou're too young.\n"
+ *     ADataCommand (command)
+ *       TData (data) "\nSeeya!\n"
+ *
+ * Although not strictly necessary, tokens are prefixed with 'T.' in
+ * the grammar so they stand out from the rest of the other rules.
+ */
+Abstract Syntax Tree
+
+  command    = {multiple} command*             // Sequence of commands
+             | {comment}  position T.comment?  // Contents of <?cs # comment ?>
+             | {data}     T.data               // Any data outside of <?cs ?>
+             | {var}      position expression           // var:x statement
+             | {lvar}     position expression           // lvar:x statement
+             | {evar}     position expression           // evar:x statement
+             | {uvar}     position expression           // uvar:x statement
+             | {set}      position variable expression  // set:x=y statement
+             | {name}     position variable             // name:x statement
+             | {escape}   position expression  // escape:x statement
+                          command              // ... commands in context
+             | {autoescape}   position expression  // autoescape:x statement
+                          command              // ... commands in context
+             | {with}     position variable expression  // with:x=y statement
+                          command              // ... commands in context
+             | {loop_to}  position variable    // loop:x=10 statement
+                          expression           // ... value to end at
+                          command              // ... commands in loop
+             | {loop}     position variable    // loop:x=1,10 statement
+                          [start]:expression   // ... value to start at
+                          [end]:expression     // ... value to end at
+                          command              // ... commands in loop
+             | {loop_inc} position variable    // loop:x=1,10,2 statement
+                          [start]:expression   // ... value to start at
+                          [end]:expression     // ... value to end at
+                          [increment]:expression // . value to increment by
+                          command              // ... commands in loop
+             | {each}     position variable expression  // each:x=y statement
+                          command              // ... commands in loop
+             | {def}      position [macro]:T.word* // def:some_macro statement
+                          [arguments]:variable* // ... arguments
+                          command              // ... commands to execute
+             | {call}     position [macro]:T.word*  // call:some_macro statement
+                          [arguments]:expression* // ... arguments
+             | {if}       position expression  // if:x statement
+                          [block]:command      // ... commands if true
+                          [otherwise]:command  // ... commands if false
+             | {alt}      position expression command   // alt:x statement
+             | {include}  position expression           // include:x statement
+             | {hard_include} position expression       // include!x statement
+             | {linclude} position expression           // linclude:x statement
+             | {hard_linclude} position expression      // linclude!x statement
+             | {content_type}  position string          // content-type:x statement
+             | {inline}   position command              // inline commands
+             | {noop}                                   // No operation
+             ;
+
+  position   = {cs_open}  T.cs_open   // We retain the <?cs token in the AST
+             ;                        // as a convenient way to get the position
+                                      // of the start of the command.
+
+  expression = {string}      [value]:T.string                     // "hello"
+             | {numeric}     expression                           // #something
+             | {decimal}     [value]:T.dec_number                 // 123
+             | {hex}         [value]:T.hex_number                 // 0x1BF
+             | {variable}    variable                             // some.thing[1]
+             | {function}    [name]:variable [args]:expression*   // a.b(x, y)
+             | {sequence}    [args]:expression*                   // x, y, z
+             | {negative}    expression                           // -x
+             | {not}         expression                           // !x
+             | {exists}      expression                           // ?x
+             | {comma}       [left]:expression [right]:expression // x, y
+             | {eq}          [left]:expression [right]:expression // x == y
+             | {numeric_eq}  [left]:expression [right]:expression // x == y (numeric)
+             | {ne}          [left]:expression [right]:expression // x != y
+             | {numeric_ne}  [left]:expression [right]:expression // x != y (numeric)
+             | {lt}          [left]:expression [right]:expression // x < y
+             | {gt}          [left]:expression [right]:expression // x > y
+             | {lte}         [left]:expression [right]:expression // x <= y
+             | {gte}         [left]:expression [right]:expression // x >= y
+             | {and}         [left]:expression [right]:expression // x && y
+             | {or}          [left]:expression [right]:expression // x || y
+             | {add}         [left]:expression [right]:expression // x + y
+             | {numeric_add} [left]:expression [right]:expression // x + y (numeric)
+             | {subtract}    [left]:expression [right]:expression // x - y
+             | {multiply}    [left]:expression [right]:expression // x * y
+             | {divide}      [left]:expression [right]:expression // x / y
+             | {modulo}      [left]:expression [right]:expression // x % y
+             | {noop}                                             // No operation
+             ;
+
+  variable   = {name}       T.word                             // something
+             | {dec_number} T.dec_number                       // 2
+             | {hex_number} T.hex_number                       // 0xA1
+             | {descend}  [parent]:variable [child]:variable   // foo.bar
+             | {expand}   [parent]:variable [child]:expression // foo["bar"]
+             ;

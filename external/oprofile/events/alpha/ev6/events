@@ -1,0 +1,11 @@
+# Alpha EV6 events
+#
+event:0x00 counters:0,1 um:zero minimum:500 name:CYCLES : Total cycles
+event:0x01 counters:1 um:zero minimum:500 name:RETIRED : Retired instructions
+event:0x02 counters:1 um:zero minimum:500 name:COND_BRANCHES : Retired conditional branches
+event:0x03 counters:1 um:zero minimum:500 name:BRANCH_MISPREDICTS : Retired branch mispredicts
+event:0x04 counters:1 um:zero minimum:500 name:DTB_MISS : Retired DTB single misses * 2
+event:0x05 counters:1 um:zero minimum:500 name:DTB_DD_MISS : Retired DTB double double misses
+event:0x06 counters:1 um:zero minimum:500 name:ITB_MISS : Retired ITB misses
+event:0x07 counters:1 um:zero minimum:500 name:UNALIGNED_TRAP : Retired unaligned traps
+event:0x08 counters:1 um:zero minimum:500 name:REPLAY_TRAP : Replay traps

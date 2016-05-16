@@ -1,0 +1,119 @@
+.TH OPANNOTATE 1 "@DATE@" "oprofile @VERSION@"
+.UC 4
+.SH NAME
+opannotate \- produce source or assembly annotated with profile data
+.SH SYNOPSIS
+.br
+.B opannotate
+[
+.I options
+]
+[profile specification]
+.SH DESCRIPTION
+
+.B opannotate
+outputs annotated source and/or assembly from profile data of an OProfile
+session. See oprofile(1) for how to write profile specifications.
+
+.SH OPTIONS
+.TP
+.BI "--assembly / -a"
+Output annotated assembly. If this is combined with --source, then mixed
+source / assembly annotations are output.
+.br
+.TP
+.BI "--demangle / -D none|smart|normal"
+none: no demangling. normal: use default demangler (default) smart: use
+pattern-matching to make C++ symbol demangling more readable.
+.br
+.TP
+.BI "--exclude-dependent / -x"
+Do not include application-specific images for libraries, kernel modules
+and the kernel. This option only makes sense if the profile session
+used --separate.
+.br
+.TP
+.BI "--exclude-file [files]"
+Exclude all files in the given comma-separated list of glob patterns.
+.br
+.TP
+.BI "--exclude-symbols / -e [symbols]"
+Exclude all the symbols in the given comma-separated list.
+.br
+.TP
+.BI "--help / -? / --usage"
+Show help message.
+.br
+.TP
+.BI "--image-path / -p [paths]"
+Comma-separated list of additional paths to search for binaries.
+This is needed to find modules in kernels 2.6 and upwards.
+.br
+.TP
+.BI "--root / -R [path]"
+A path to a filesystem to search for additional binaries.
+.br
+.TP
+.BI "--include-file [files]"
+Only include files in the given comma-separated list of glob patterns.
+.br
+.TP
+.BI "--include-symbols / -i [symbols]"
+Only include symbols in the given comma-separated list.
+.br
+.TP
+.BI "--objdump-params [params]"
+Pass the given parameters as extra values when calling objdump.
+.br
+.TP
+.BI "--output-dir / -o [dir]"
+Output directory. This makes opannotate output one annotated file for each
+source file. This option can't be used in conjunction with --assembly.
+.br
+.TP
+.BI "--search-dirs / -d [paths]"
+Comma-separated list of paths to search for source files. You may need to use
+this option when the debug information for an image contains relative paths.
+.br
+.TP
+.BI "--base-dirs / -b [paths]"
+Comma-separated list of paths to strip from debug source files, prior to
+looking for them in --search-dirs.
+.br
+.TP
+.BI "--session-dir="dir_path
+Use sample database out of directory dir_path instead of the default location (/var/lib/oprofile).
+.br
+.TP
+.BI "--source / -s"
+Output annotated source. This requires debugging information to be available
+for the binaries.
+.br
+.TP
+.BI "--threshold / -t [percentage]"
+Only output data for symbols that have more than the given percentage
+of total samples.
+.br
+.TP
+.BI "--verbose / -V [options]"
+Give verbose debugging output.
+.br
+.TP
+.BI "--version / -v"
+Show version.
+
+.SH ENVIRONMENT
+No special environment variables are recognised by opannotate.
+
+.SH FILES
+.TP
+.I /var/lib/oprofile/samples/
+The location of the generated sample files.
+
+.SH VERSION
+.TP
+This man page is current for @PACKAGE@-@VERSION@.
+
+.SH SEE ALSO
+.BR @OP_DOCDIR@,
+.BR oprofile(1)

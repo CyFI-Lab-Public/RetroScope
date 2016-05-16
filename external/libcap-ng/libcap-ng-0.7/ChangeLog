@@ -1,0 +1,78 @@
+0.7
+- Make file opens use the cloexec flag (Cristian Rodríguez)
+- Add CAP_BLOCK_SUSPEND
+- Fix possible segfaults when CAP_LAST_CAP is larger than the lookup table
+- In pscap, don't drop capabilities when running with capabilities
+
+0.6.6
+- In netcap, make sure readlink is handled properly
+- Add CAP_SYSLOG
+- In netcap and pscap, ensure euid is initialized
+- Add CAP_WAKE_ALARM
+
+0.6.5
+- Fix self test build problem on clean system (Sterling X. Winter)
+- Only open regular files in filecap
+- Make building Python bindings optional
+- Python bindings update (arfrever.fta)
+- Fix filecap segfault when checking a specific file
+- Add define for missing XATTR_NAME_CAPS since 2.6.36 makes it private
+
+0.6.4
+- Update packet socket code to print interface
+- Fix effective capabilities read from file descriptor
+- Use thread ID for capget/set calls
+
+0.6.3
+- In netcap and pscap use the effective uid
+- In capng_change_id, only retain setpcap if clearing the bounding set
+
+0.6.2
+- Make pscap drop capabilities so its not listed in report
+- Review prctl calls to make sure we are passing 5 args
+- Add package config support
+
+0.6.1
+- In netcap, don't complain about missing udp or raw network files
+- Adjusted data read in for file based capabilities
+
+0.6
+- In netcap, don't complain about missing network files
+- Add python bindings
+- Add m4 macro file to help developers configure libcap-ng in their apps
+- Fake applying bounding set for old OS
+- Ignore setpcap for old OS when changing id
+- Remove capabilities v1 data handling from reading file attributes
+- Set the SECURE_NO_SETUID_FIXUP and LOCKED securebits flags in capng_lock
+
+0.5.1
+- Remove unnecessary uid check in change_uid when dropping supplemental groups
+- Add credential printout and other improvements to captest
+- In the init routine, set hdr.pid to current process
+- Use bit mask on effective capabilities check in have_capabilities
+- Numeric printing of bounding set bits were in wrong order
+- In update function, reverse the order of bounding set vs capabilities
+- Revise the tests used to determine if bounding set should be updated
+
+0.5
+- If attr/xattr.h is not available disable file system capabilities
+- Initialize capng_have_capability with capng_get_caps_process if unknown
+- Make capng_change_id drop the gid if given
+- Fixed cap_update for bounding set
+- Fix have_capability for bounding set
+- Added more tests to the make check target
+- Remove CAPNG_LOCK_PERMS for change_id flags
+- Added captest program
+
+0.4.2
+- Fix missing includes for various OS and platforms
+- Correct misplaced #ifdef for older OS
+- Reorder clearing of bounding set in capng_change_id
+- Make locking a noop in capng_change_id for the moment
+
+0.4.1
+- spec file clean ups
+- Man pages for all library functions
+
+0.4
+- Initial public release

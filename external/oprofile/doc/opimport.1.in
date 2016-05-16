@@ -1,0 +1,59 @@
+.TH OPIMPORT 1 "@DATE@" "oprofile @VERSION@"
+.UC 4
+.SH NAME
+opimport \- converts sample database files
+.SH SYNOPSIS
+.br
+.B opimport
+[
+.I options
+]
+input_file
+.SH DESCRIPTION
+
+.B opimport
+converts sample database files from a foreign binary format (abi) to the native format.
+
+.SH OPTIONS
+.TP
+.BI "--abi / -a"
+Input abi file description location.
+.br
+.TP
+.BI "--force / -f"
+Force conversion even if the input and output abi are identical.
+.br
+.TP
+.BI "--output / -o filename"
+Specify the output filename. If the output file already exists it is not overwritten but data are accumulated in. Sample filename are informative
+for post profile tools and must be kept identical, in other word the pathname
+from the first path component containing a '{' must be kept as it in the
+output filename.
+.br
+.TP
+.BI "--help / -? / --usage"
+Show help message.
+.br
+.TP
+.BI "--verbose / -V"
+Give verbose debugging output.
+.br
+.TP
+.BI "--version / -v"
+Show version.
+
+.SH ENVIRONMENT
+No special environment variables are recognised by opimport
+
+.SH FILES
+.TP
+.I /var/lib/oprofile/abi
+The abi file description of the sample database files
+
+.SH VERSION
+.TP
+This man page is current for @PACKAGE@-@VERSION@.
+
+.SH SEE ALSO
+.BR @OP_DOCDIR@,
+.BR oprofile(1)

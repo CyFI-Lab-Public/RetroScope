@@ -1,0 +1,28 @@
+# MPCore events
+#
+event:0x00 counters:0,1 um:zero minimum:500 name:IFU_IFETCH_MISS : number of instruction fetch misses
+event:0x01 counters:0,1 um:zero minimum:500 name:CYCLES_IFU_MEM_STALL : cycles instruction fetch pipe is stalled
+event:0x02 counters:0,1 um:zero minimum:500 name:CYCLES_DATA_STALL : cycles stall occurs for due to data dependency
+event:0x03 counters:0,1 um:zero minimum:500 name:ITLB_MISS : number of ITLB misses
+event:0x04 counters:0,1 um:zero minimum:500 name:DTLB_MISS : number of DTLB misses
+event:0x05 counters:0,1 um:zero minimum:500 name:BR_INST_EXECUTED : branch instruction executed w/ or w/o program flow change
+event:0x06 counters:0,1 um:zero minimum:500 name:BR_INST_NOT_PRED : branch not predicted
+event:0x07 counters:0,1 um:zero minimum:500 name:BR_INST_MISPRED : branch mispredicted
+event:0x08 counters:0,1 um:zero minimum:500 name:INSN_EXECUTED : instruction executed
+event:0x09 counters:0,1 um:zero minimum:500 name:INSN_FOLD_EXECUTED : folded instruction executed
+event:0x0a counters:0,1 um:zero minimum:500 name:DCACHE_ACCESS : data cache read access
+event:0x0b counters:0,1 um:zero minimum:500 name:DCACHE_MISS : data cache miss
+event:0x0c counters:0,1 um:zero minimum:500 name:DCACHE_WA : data cache write access
+event:0x0d counters:0,1 um:zero minimum:500 name:DCACHE_WM : data cache write miss
+event:0x0e counters:0,1 um:zero minimum:500 name:DCACHE_LINE_EV : data cache line eviction
+event:0x0f counters:0,1 um:zero minimum:500 name:SOFT_PC_CHANGE : software changed PC without mode change
+event:0x10 counters:0,1 um:zero minimum:500 name:TLB_MISS : main TLB miss
+event:0x11 counters:0,1 um:zero minimum:500 name:MEM_REQUEST : external memory request (Cache request, write back)
+event:0x12 counters:0,1 um:zero minimum:500 name:LS_QUEUE_FULL : stall because load store unit queue being full
+event:0x13 counters:0,1 um:zero minimum:500 name:LS_QUEUE_DRAINED : number of times store buffer drained
+event:0x14 counters:0,1 um:zero minimum:500 name:LS_QUEUE_WMERGE : buffered write merged into a store buffer slot
+event:0x15 counters:0,1 um:zero minimum:500 name:LS_SAFE_MODE : LSU in safe mode
+event:0xff counters:0,1 um:zero minimum:500 name:CPU_CYCLES : clock cycles counter
+
+#see ARM11 MPCore Techical Reference Manual rev. r1p0, page 3-70
+

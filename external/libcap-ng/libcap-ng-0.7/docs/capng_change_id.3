@@ -1,0 +1,41 @@
+.TH "CAPNG_CHANGE_ID" "3" "June 2009" "Red Hat" "Libcap-ng API"
+.SH NAME
+capng_change_id \- change the credentials retaining capabilities
+.SH "SYNOPSIS"
+.B #include <cap-ng.h>
+.sp
+int capng_change_id(int uid, int gid, capng_flags_t flag);
+
+.SH "DESCRIPTION"
+
+This function will change uid and gid to the ones given while retaining the capabilities previously specified in capng_update. It is not necessary and perhaps better if capng_apply has not been called prior to this function so that all necessary privileges are still intact. The caller is required to have CAP_SETPCAP capability still active before calling this function.
+
+This function also takes a flag parameter that helps to tailor the exact actions performed by the function to secure the environment. The option may be or'ed together. The legal values are:
+
+.RS
+.TP
+.B CAPNG_NO_FLAG
+Simply change uid and retain specified capabilities and that's all.
+.TP
+.B CAPNG_DROP_SUPP_GRP
+After changing id, remove and supplement groups that may come with the account.
+.TP
+.B CAPNG_CLEAR_BOUNDING
+After changing the uid and gid, clear the bounding set regardless to the internal representation already setup.
+
+.RE
+.SH "RETURN VALUE"
+
+This returns 0 on success and a negative number on failure. -1 means capng has not been initted properly, -2 means a failure requesting to keep capabilities across the uid change, -3 means that applying the intermediate capabilities failed, -4 means changing gid failed, -5 means dropping supplemental groups failed, -6 means changing the uid failed, -7 means dropping the ability to retain caps across a uid change failed, -8 means clearing the bounding set failed, -9 means dropping CAP_SETPCAP failed.
+
+Note: the only safe action to do upon failure of this function is to probably exit. This is because you are likely in a situation with partial permissions and not what you intended.
+
+.SH "SEE ALSO"
+
+.BR capng_update (3),
+.BR capng_apply (3),
+.BR prctl (2),
+.BR capabilities (7) 
+
+.SH AUTHOR
+Steve Grubb

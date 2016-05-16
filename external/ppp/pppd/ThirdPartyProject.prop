@@ -1,0 +1,9 @@
+# Copyright 2010 Google Inc. All Rights Reserved.
+#Fri Jul 16 10:03:09 PDT 2010
+currentVersion=2.4.5
+version=2.4.3
+isNative=true
+name=pppd
+keywords=pppd
+onDevice=true
+homepage=http\://ppp.samba.org/

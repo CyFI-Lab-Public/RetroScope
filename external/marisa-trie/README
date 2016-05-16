@@ -1,0 +1,55 @@
+- Project name
+
+marisa-trie
+http://code.google.com/p/marisa-trie/
+
+- Project summary
+
+Matching Algorithms with Recursively Implemented StorAge
+
+- Version
+
+0.1.4
+
+- Description
+
+This project *marisa-trie* provides a C++ library *libmarisa* and command line tools *`marisa-*`* for building and operating nesting patricia tries. The brand-new dictionary structure is designed to be static and space efficient. Also, *marisa-trie* enables not only simple lookups but also prefix searches and predictive searches.
+
+ * Prefix searches are to find keys from prefixes of a given query.
+ * Predictive searches are to find keys starting with a given query.
+
+The biggest advantage of *marisa-trie* is that it can build a considerably compact dictionary. See below for the size of dictionaries built with various trie implementations.
+
+ * Input
+  * Source: enwiki-20110115-all-titles-in-ns0.gz
+  * Contents: all page titles of English Wikipedia (Jan. 2011)
+  * Number of keys: 8,279,325
+  * Total size: 167,223,035 bytes (plain) / 46,344,646 bytes (gzipped)
+
+|| *Implementation* || *Size (bytes)* || *Remarks*                   ||
+||  darts-clone     ||   316,065,792  || Compacted double-array trie ||
+||  tx-trie         ||   107,119,864  || LOUDS-based trie            ||
+|| *marisa-trie*    ||   *42,688,271* || Nesting patricia trie       ||
+
+ * Documentation (in Japanese)
+  * HowTo
+  * ListOfTools
+  * LibraryInterface
+  * BenchmarkResults
+
+- Version control system
+
+Subversion
+
+- Source code license
+
+New BSD License
+
+- Project labels
+
+Nesting
+Patricia
+Trie
+Static
+Dictionary
+CPlusPlus

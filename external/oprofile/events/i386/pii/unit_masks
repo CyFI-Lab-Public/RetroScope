@@ -1,0 +1,34 @@
+# Pentium II possible unit masks
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask
+name:mesi type:bitmask default:0x0f
+	0x08 (M)odified cache state
+	0x04 (E)xclusive cache state
+	0x02 (S)hared cache state
+	0x01 (I)nvalid cache state
+	0x0f All cache states
+name:ebl type:exclusive default:0x20
+	0x00 self-generated transactions
+	0x20 any transactions
+name:mmx_uops type:mandatory default:0xf
+	0x0f mandatory
+name:mmx_instr_type_exec type:bitmask default:0x3f
+	0x01 MMX packed multiplies
+	0x02 MMX packed shifts
+	0x04 MMX pack operations
+	0x08 MMX unpack operations
+	0x10 MMX packed logical
+	0x20 MMX packed arithmetic
+	0x3f all of the above
+name:mmx_trans type:exclusive default:0x0
+	0x00 MMX->float operations
+	0x01 float->MMX operations
+name:seg_rename type:bitmask default:0xf
+	0x1 ES register
+	0x2 DS register
+	0x4 FS register
+# IA manual says this is actually FS again - no mention in errata
+# but test show that is really a typo error from IA manual
+	0x8 GS register
+	0xf ES, DS, FS, GS registers

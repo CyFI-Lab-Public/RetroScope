@@ -1,0 +1,709 @@
+Building and Installing
+-----------------------
+
+See the "INSTALL" file.
+
+
+Heritage
+--------
+
+libmtp is based on several ancestors:
+
+* libptp2 by Mariusz Woloszyn was the starting point used
+  by Richard A. Low for the initial starter port. You can
+  find it at http://libptp.sourceforge.net/
+
+* libgphoto2 by Mariusz Woloszyn and Marcus Meissner was
+  used at a later stage since it was (is) more actively
+  maintained. libmtp tracks the PTP implementation in
+  libgphoto2 and considers it an upstream project. We will
+  try to submit anything generally useful back to libgphoto2
+  and not make double efforts. In practice this means we
+  use ptp.c, ptp.h and ptp-pack.c verbatim from the libgphoto2
+  source code. If you need to change things in these files,
+  make sure it is so general that libgphoto2 will want to
+  merge it to their codebase too. You find libgphoto2 as part
+  of gPhoto: http://gphoto.sourceforge.net/
+
+* libnjb was a project that Richard and Linus were working
+  on before libmtp. When Linus took Richards initial port
+  and made an generic C API he re-used the philosophy and
+  much code from libnjb. Many of the sample programs are for
+  example taken quite literally from libnjb. You find it here:
+  http://libnjb.sourceforge.net/
+
+
+Contacting and Contributing
+---------------------------
+
+See the project page at http://libmtp.sourceforge.net/
+We always need your help. There is a mailinglist and a
+bug report system there.
+
+People who want to discuss MTP devices in fora seem to
+hang out on the forums at AnythingbutiPod:
+http://www.anythingbutipod.com/forum/
+
+
+Compiling programs for libmtp
+-----------------------------
+
+libmtp has support for the pkg-config script by adding a libmtp.pc
+entry in $(prefix)/lib/pkgconfig. To compile a libmtp program,
+"just" write:
+
+gcc -o foo `pkg-config --cflags --libs libmtp` foo.c
+
+This also simplifies compilation using autoconf and pkg-config: just
+write e.g.
+
+PKG_CHECK_MODULES(MTP, libmtp)
+AC_SUBST(MTP_CFLAGS)
+AC_SUBST(MTP_LIBS)
+
+To have libmtp LIBS and CFLAGS defined. Needless to say, this will
+only work if you have pkgconfig installed on your system, but most
+people have nowadays.
+
+If your library is installed in e.g. /usr/local you may have to tell
+this to pkgconfig by setting the PKG_CONFIG_PATH thus:
+
+export PKG_CONFIG_PATH=/usr/local/lib/pkgconfig
+
+
+Documentation
+-------------
+
+Read the API documentation that can be generated with doxygen.
+It will be output in doc/html if you have Doxygen properly
+installed. (It will not be created unless you have Doxygen!)
+
+For information about the Media Transfer Protocol, see:
+http://en.wikipedia.org/wiki/Media_Transfer_Protocol
+
+The official 1.0 specification for MTP was released by the
+USB Implementers Forum in may, 2008. Prior to this, only a
+proprietary Microsoft version was available, and quite a few
+devices out there still use some aspects of the Microsoft
+version, which deviates from the specified standard. You can
+find the official specification here:
+http://www.usb.org/developers/devclass_docs/MTP_1.0.zip
+
+
+The Examples
+------------
+
+In the subdirectory "examples" you find a number of 
+command-line tools, illustrating the use of libmtp in very
+simple terms.
+
+Please do not complain about the usability or documentation
+of these examples, they look like they do for two reasons:
+
+1. They are examples, not tools. If they were intended for
+   day-to-day usage by commandline freaks, I would have
+   called them "tools" not "examples".
+
+2. The MTP usage paradigm is that a daemon should hook
+   the device upon connection, and that it should be 
+   released by unplugging. GUI tools utilizing HAL (hald)
+   and D-Bus do this much better than any commandline
+   program ever can. (See below on bugs.) Specificationwise
+   this is a bug, however it is present in many, many
+   devices.
+
+That said, if you want to pick up and maintain the examples,
+please volunteer.
+
+
+New Devices
+-----------
+
+If you happen upon a device which libmtp claims it cannot
+autodetect, please submit the vendor ID and device ID 
+(these can be obtained from the "lsusb" and "lsusb -n"
+commands run as root) as a bug, patch or feature request 
+on the Sourceforge bug tracker at our homepage. If it 
+gives a sensible  output from "mtp-detect" then please attach 
+the result as well as it teach us some stuff about your 
+device. If you've done some additional hacking, join our 
+mailinglist and post your experiences there.
+
+If you want to be able to hack some more and you're not
+afraid of C hacking, add an entry for your device's 
+vendor/product ID and a descriptive string to the database 
+in the file src/music-players.h.
+
+If you want to poke around to see if your device has some
+special pecularities, you can test some special device
+flags (defined in src/device-flags.h) by inserting them
+together with your device entry in src/music-players.h.
+Flags can be tested in isolation or catenated with "|"
+(binary OR). If relatives to your device use a certain
+flag, chances are high that a new device will need it
+too, typically from the same manufacturer.
+
+The most common flag that needs to be set is the 
+DEVICE_FLAG_UNLOAD_DRIVER that detach any Linux kernel
+drivers that may have attached to the device making
+MTP access impossible. This is however not expected to
+really work: this is a problem being tracked as of
+now (2007-08-04). See the "last resort" solutions below
+if you really need to get your dual-mode device to work 
+with MTP.
+
+Another flag which is easy to identify is the
+DEVICE_FLAG_NO_ZERO_READS, which remedies connection
+timeouts when getting files, and some timeouts on e.g. 
+successive "mtp-connect" calls.
+
+If you are a device vendor, please consider assigning one 
+of your employees as a contact person for libmtp, have them
+sign up to the libmtp development list and answer questions
+and post new device ID:s as they are released to our
+mailing list. By the way: do you have spare devices you
+can give us? Send them to Richard (Mac support) or Linus
+(Linux support). (So far nobody did that except for Microsoft
+who sent us a Zune by proxy!)
+
+If your device is very problematic we are curious of how it
+works under Windows, so we enjoy reading USB packet sniffs
+that reveal the low-level traffic carried out between
+Windows Media Player and your device. This can be done 
+using e.g.:
+
+* USBsnoop:
+  http://benoit.papillault.free.fr/usbsnoop/
+
+* The trial version of HHD Softwares software-only
+  USB monitor. You need to get a copy of version 2.37 since
+  the newer trial versions won't let you carry out the 
+  needed packet sniffs. (As of 2007-03-10 a copy can be found
+  at: http://www.cobbleware.com/files/usb-monitor-237.exe)
+
+There are other USB monitors as well, some more expensive
+alternatives use hardware and even measure electronic
+characteristics of the traffic (which is far too much 
+detail for us).
+
+Device sniffs are an easy read since the PTP/MTP protocol
+is nicely structured. All commands will have a structure such
+as this in the log, we examplify with a object list request:
+
+PTP REQEUST:
+000120: Bulk or Interrupt Transfer (UP), 03.09.2007 12:49:25.9843750 +0.0
+Pipe Handle: 0x863ce234 (Endpoint Address: 0x2)
+Send 0x20 bytes to the device:
+ 20 00 00 00 01 00 05 98 23 00 00 00 27 03 00 10    ......?#...'...
+ Length      TYPE  CMD   Trans#      Param1
+
+ 00 00 00 00 02 DC 00 00 00 00 00 00 00 00 00 00   .....Ü..........
+ Param2      Param3      Param4      Param5
+
+[OPTIONAL] DATA PHASE:
+000121: Bulk or Interrupt Transfer (UP), 03.09.2007 12:49:26.0 +0.0156250
+Pipe Handle: 0x863ce214 (Endpoint Address: 0x81)
+Get 0x1a bytes from the device:
+ 1A 00 00 00 02 00 05 98 23 00 00 00 01 00 00 00   .......?#.......
+ Length      TYPE  CMD   Trans#      DATA
+
+ 27 03 00 10 02 DC 04 00 00 30                     '....Ü...0
+
+RESPONSE:
+000122: Bulk or Interrupt Transfer (UP), 03.09.2007 12:49:26.0 +0.0
+Pipe Handle: 0x863ce214 (Endpoint Address: 0x81)
+Get 0xc bytes from the device:
+ 0C 00 00 00 03 00 01 20 23 00 00 00               ....... #...
+ Length      TYPE  CODE  Trans#
+
+* One send (OUT to the device), two reads (IN from the device).
+
+* All three byte chunks commands are 
+  sent/recieved/recieeved by the function  ptp_transaction() 
+  in the file ptp.c.
+
+* It boils down to ptp_usb_sendreq(), optionally ptp_usb_senddata() 
+  or ptp_usb_getdata() and finally ptp_usb_getresp() in the file 
+  libusb-glue.c. Notice ptp_usb_sendreq() and ptp_usb_getresp()
+  are ALWAYS called. The TYPE field correspond to this, so the
+  TYPES in this case are "COMMAND" (0x0001), "DATA" (0x0002), 
+  and "RESPONSE" (0x0003).
+
+* Notice that the byte order is little endian, so you need to read
+  each field from right to left.
+
+* This COMMAND has:
+  CMD 0x99805, we see in ptp.h that this is PTP_OC_MTP_GetObjPropList.
+  Transaction# 0x00000023.
+  REQUEST parameters 0x10000327, 0x00000000, 0x0000DC02, 0x00000000
+    0x00000000, in this case it means "get props for object 0x10000327",
+    "any format", "property 0xDC02" (PTP_OPC_ObjectFormat), then two
+    parameters that are always zero (no idea what they mean or their
+    use).
+
+* The DATA has:
+  CMD 0x99805, we see in ptp.h that this is PTP_OC_MTP_GetObjPropList.
+  Transaction# 0x00000023.
+  Then comes data 0x00000001, 0x10000327, 0xDC02, 0x0004, 0x3000
+  Which means in this case, (and this is the tricky part) "here
+  you have 1 property", "for object 0x10000327", "it is property
+  0xDC02" (PTP_OPC_ObjectFormat), "which is of type 0x0004"
+  (PTP_DTC_UINT16), "and set to 0x3000" (PTP_OFC_Undefined, it
+  is perfectly valid to have undefined object formats, since it
+  is a legal value defining this).
+
+* This RESPONSE has:
+  CMD 0x99805, we see in ptp.h that this is PTP_OC_MTP_GetObjPropList.
+  Return Code ("RC") = 0x2001, PTP_RC_OK, all went fine.
+  Transaction# 0x00000023.  
+
+If you want to compare the Windows behaviour with a similar
+operation using libmtp you can go into the src/libusb-glue.c 
+file and uncomment the row that reads:
+
+//#define ENABLE_USB_BULK_DEBUG
+
+(I.e. remove the two //.)
+
+This will make libmtp print out a hex dump of every bulk USB
+transaction. The bulk transactions contain all the PTP/MTP layer
+data, which is usually where the problems appear.
+
+
+Dual-mode devices does not work - last resort:
+----------------------------------------------
+
+Some devices that are dual-mode are simply impossible to get
+to work under Linux because the usb-storage(.ko) kernel
+module hook them first, and refuse to release them, even
+when we specify the DEVICE_FLAG_UNLOAD_DRIVER flag. (Maybe
+it DOES release it but the device will immediately be probed
+at the USB mass storage interface AGAIN because it 
+enumerates.)
+
+Here is what some people do:
+
+ 1. Plug in the device.
+ 2. USB-mass storage folder will open automatically.
+ 3. Unmount the device.
+ 4. Run mtp-detect. It will most likely fail the first time.
+ 5. Run mtp-detect again, it might work this time, or fail. Keep running
+    till it works. 99% it works by the third try.
+ 6. Once mtp-detect gives you an "Ok", open either Rhythmbox or Gnomad2,
+    everything should work.
+
+Linux: Try this, if you have a recent 2.6.x Linux kernel,
+run (as root) something like:
+
+> rmmod usb_storage ; mtp-detect
+
+You can run most any command or a client like gnomad2 or
+Amarok immediately after the rmmod command. This works 
+sometimes. Another way:
+
+* Edit /etc/modprobe.d/blacklist
+
+* Add the line "blacklist usb-storage"
+
+* Reboot.
+
+Now none of you USB disks, flash memory sticks etc will be 
+working (you just disabled them all). However you *can* try
+your device, and it might have started working because there
+is no longer a USB mass storage driver that tries to hook onto
+the mass storage interface of your device.
+
+If not even blacklisting works (check with 
+"lsmod | grep usb-storage"), there is some problem with
+something else and you may need to remove or rename the file 
+/lib/modules/<VERSION>/kernel/drivers/usb/storage/usb-storage.ko
+manually.
+
+If you find the PerfectSolution(TM) to this dilemma, so you 
+can properly switch for individual devices whether to use it
+as USB mass storage or not, please tell us how you did it. We
+know we cannot use udev, because udev is called after-the-fact:
+the device is already configured for USB mass storage when
+udev is called.
+
+On Mac OS there is another ugly hack:
+
+1. Open up a terminal window
+2. Type:
+sudo mv /System/Library/Extensions/IOUSBMassStorageClass.kext
+/System/Library/Extensions/IOUSBMassStorageClass.kext.disabled
+
+and when prompted enter your password.
+
+3. Restart.
+
+To reverse this change, just reverse the filenames:
+
+sudo mv /System/Library/Extensions/
+IOUSBMassStorageClass.kext.disabled /System/Library/Extensions/
+IOUSBMassStorageClass.kext
+
+and restart.
+
+
+Calendar and contact support:
+-----------------------------
+
+The Creative Zen series can read VCALENDAR2 (.ics) files
+and VCard (.vcf) files from programs like for example
+Evolution with the following limitations/conditions: 
+
+- The file must be in DOS (CR/LF) format, use the unix2dos
+  program to convert if needed
+
+- Repeat events in calendar files do not seem to be supported, 
+  entries will only appear once.
+
+- Calendar (.ics) files should be stored in the folder "My Organizer" 
+  when sent to the device (this directory should be autodetected
+  for use with calendar files, otherwise use the option 
+  -f "My Organizer" to sendfile for this) Apparently this file can
+  also contain tasklists.
+
+- Contact (.vcf) files should be stored in the folder "My Contacts"
+  when sent to the device. (-f "My Contacts")
+
+- Some devices are picky about the name of the calendar and
+  contact files. For example the Zen Microphoto wants:
+
+  Calendar: My Organizer/6651416.ics
+  Contacts: My Organizer/6651416.vcf
+
+
+Syncing in with Evolution and Creative Devices
+----------------------------------------------
+
+Evolution can easily export .ics an .vcf files, but you currently
+need some command-line hacking to get you stuff copied over in
+one direction host -> device. The examples/ directory contains a script
+created for the Creative Zen Microphoto by Nicolas Tetreault.
+
+
+It's Not Our Bug!
+-----------------
+
+Some MTP devices have strange pecularities. We try to work around
+these whenever we can, sometimes we cannot work around it or we 
+cannot test your solution.
+
+* Generic MTP/PTP disconnect misbehaviour: we have noticed that 
+  Windows Media Player apparently never close the session to an MTP
+  device. There is a daemon in Windows that "hooks" the device
+  by opening a PTP session to any MTP device, whenever it is 
+  plugged in. This daemon proxies any subsequent transactions 
+  to/from the device and will never close the session, thus
+  Windows simply does not close sessions at all.
+
+  Typical sign of this illness: broken pipes on closing sessions,
+  on the main transfer pipes(s) or the interrupt pipe:
+
+    Closing session
+    usb_clear_halt() on INTERRUPT endpoint: Broken pipe
+    OK.
+
+  This means that device manufacturers doesn't notice any problems
+  with devices that do not correctly handle closing PTP/MTP
+  sessions, since Windows never do it. The proper way of closing
+  a session in Windows is to unplug the device, simply put.
+
+  Since libmtp actually tries to close sessions, some devices
+  may fail since the close session functionality has never been
+  properly tested, and "it works with Windows" is sort of the
+  testing criteria at some companies.
+
+  You can get Windows-like behaviour on Linux by running a HAL-aware
+  libmtp GUI client like Rhythmbox or Gnomad2, which will "hook"
+  the device when you plug it in, and "release" it if you unplug
+  it.
+
+  If this bug in your device annoys you, contact your device 
+  manufacturer and ask them to test their product with some libmtp 
+  program.
+
+* Generic USB misbehaviour: some devices behave badly under MTP
+  and USB mass storage alike, even down to the lowest layers
+  of USB. You can always discuss such issues at the linux-usb
+  mailing list if you're using Linux: 
+  http://www.linux-usb.org/mailing.html
+
+  If you have a problem specific to USB mass storage mode, there
+  is a list of strange behaving devices in the Linux kernel:
+  http://lxr.linux.no/linux/drivers/usb/storage/unusual_devs.h
+  You can discuss this too on the mentioned list, for understanding
+  the quirks, see:
+  http://www2.one-eyed-alien.net/~mdharm/linux-usb/target_offenses.txt
+
+* Kernel bug on Linux. Linux 2.6.16 is generally speaking required
+  to use any MTP device under USB 2.0. This is because the EHCI
+  driver previously did not support zero-length writes to endpoints.
+  It should work in most cases however, or if you connect it
+  to an UHCI/OHCI port instead (yielding lower speed). But 
+  please just use a recent kernel.
+
+* Zen models AVI file seeking problem: the Zens cannot parse the
+  files for the runlength metadata. Do not transfer file with e.g.
+  mtp-sendfile, use mtp-sendtr and set the length of the track to
+  the apropriate number of seconds and it will work. In graphical
+  clients, use a "track transfer" function to send these AVI files,
+  the Zens need the metadata associated with tracks to play back
+  movies properly. Movies are considered "tracks" in the MTP world.
+
+* Some devices that disregard the metadata sent with the MTP 
+  commands will parse the files for e.g. ID3 metadata. Some still
+  of these devices expect only ID3v2.3 metadata and will fail with
+  a modern ID3v2,4 tag writer, like many of those found in Linux
+  applications. Windows Media Player use ID3v2.3 only, so many
+  manufacturers only test this version.
+
+* The Zen Vision:M (possibly more Creative Zens) has a firmware bug
+  that makes it drop the last two characters off a playlist name.
+  It is fixed in later firmware.
+
+* For Creative Technology devices, there are hard limits on how
+  many files can be put onto the device. For a 30 GiB device (like
+  the Zen Xtra) the limit is 6000, for a 60 GiB device the limit
+  is 15000 files. For further Creative pecularities, see the
+  FAQ sections at www.nomadness.net.
+
+* Sandisk sansa c150 and probably several other Sandisk devices 
+  (and possibly devices from other manufacturers) have a dual
+  mode with MTP and USB mass storage. The device will initially
+  claim to be mass storage so udev will capture is and make the
+  use of MTP mode impossible. One way of avoiding it could be to
+  be to blacklist the "usb-storage" module in 
+  /etc/modprobe.c/blacklist with a row like this:
+  "blacklist usb-storage". Some have even removed the
+  "usb-storage.ko" (kernel module file) to avoid loading.
+
+* Sandisk Sansa Fuze has three modes: auto, MTP or mass storage
+  (MSC). Please set it to MTP to avoid problems with libmtp.
+
+* The iriver devices (possibly all of them) cannot handle the 
+  enhanced GetObjectPropList MTP command (0x9805) properly. So 
+  they have been banned from using it.
+
+* iriver devices have problems with older versions of libmtp and
+  with new devices libmtp does not know of as of yet, since it
+  has an oldstyle USB device controller that cannot handle zero
+  writes. (Register your device with us!) All their devices are
+  likely to need a special device flag in the src/libusb-glue.c
+  database.
+
+* The Samsung Yepp T9 has several strange characteristics, some
+  that we've managed to work around. (For example it will return
+  multiple PTP packages in a single transaction.)
+
+* The early firmware for Philips HDD players is known to be 
+  problematic. Please upgrade to as new firmware as you can get.
+  (Yes this requires some kind of Windows Installation I think.)
+
+* Philips HDD 1630/16 or 1630/17 etc may lock themselves up,
+  turning inresponsive due to internal corruption. This typically
+  gives an error in opening the PTP session. Apparently you can
+  do a "repair" with the firmware utility (Windows only) which
+  will often fix this problem and make the device responsive
+  again.
+
+* Some devices that implement GetObjectPropList (0x9805) will
+  not return the entire object list if you request a list for object
+  0xffffffffu. (But they should.) So they may need the special
+  DEVICE_FLAG_BROKEN_MTPGETOBJPROPLIST_ALL.
+
+* Some (smaller) subset of devices cannot even get all the 
+  properties for a single object in one go, these need the
+  DEVICE_FLAG_BROKEN_MTPGETOBJPROPLIST. Currently only the
+  iriver devices seem to have this bug.
+
+* The Toshiba Gigabeat S (and probably its sibling the 
+  Microsoft Zune and other Toshiba devices) will only display
+  album information tags for a song in case there is also
+  an abstract album (created with the album interface) with
+  the exact same name.
+
+* The Zen Vision:M has an older firmware which is very corrupt,
+  it is incompatible with the Linux USB stack altogether. The
+  kernel dmesg will look something like this, and you have to
+  upgrade the firmware using Windows:
+  usb 4-5: new high speed USB device using ehci_hcd and address 5
+  usb 4-5: configuration #1 chosen from 1 choice
+  usb 4-5: can't set config #1, error -110
+
+* The Sirus Stiletto does not seem to allow you to copy any files
+  off the device. This may be someone's idea of copy protection.
+
+* The Samsung P2 assigns parent folder ID 0 to all unknown file
+  types.(i.e. moves them to the root folder) 
+
+Lost symbols
+------------
+
+Shared libraries can be troublesome to users not experienced with
+them. The following is a condensed version of a generic question 
+that has appeared on the libmtp mailing list from time to time.
+
+> PTP: Opening session
+> Queried Creative Zen Vision:M
+> gnomad2: relocation error: gnomad2: undefined symbol:
+> LIBMTP_Get_Storageinfo
+> (...)
+> Are these type of errors related to libmtp or something else?
+
+The problem is of a generic nature, and related to dynamic library 
+loading. It is colloquially known as "dependency hell".
+(http://en.wikipedia.org/wiki/Dependency_hell)
+
+The gnomad2 application calls upon the dynamic linker in Linux to
+resolve the symbol "LIBMTP_Get_Storageinfo" or any other symbol
+(ELF symbol, or link point or whatever you want to call them, a
+symbol is a label on a memory address that the linker shall 
+resolve from label to actual address.)
+For generic information on this subject see the INSTALL file and
+this Wikipedia page:
+
+http://en.wikipedia.org/wiki/Library_(computing)
+
+When Linux /lib/ld-linux.so.X is called to link the symbols compiled 
+into gnomad2 (or any other executable using libmtp), it examines the 
+ELF file for the libmtp.so.X file it finds first and cannot resolve 
+the symbol "LIBMTP_Get_Storageinfo" (or whichever symbol you have a
+problem witj) from it, since it's probably not there. There are many 
+possible causes of this symbol breakage:
+
+1) You installed precompiled libmtp and gnomad2 packages (RPMs, debs
+    whatever) that do not match up. Typical cause: your gnomad2 package was
+    built against a newer version of libmtp than what's installed on your
+    machine. Another typical cause: you installed a package you found on
+    the web, somewhere, the dependency resolution system did not protest
+    properly (as it should) or you forced it to install anyway, ignoring
+    some warnings.
+
+2) You compiled libmtp and/or gnomad2 from source, installing both or
+    either in /usr/local/lib and /usr/local/bin. This means at compile-time
+    gnomad2 finds the libmtp library in /usr/local/lib but at runtime, it
+    depends on the Linux system wide library loader (/lib/ld-linux.so.X) in
+    order to resolve the symbols. This loader will look into the file
+    /etc/ld.so.conf and/or the folder /etc/ld.so.conf.d in order to find
+    paths to libraries to be used for resolving the symbols. If you have
+    some older version of libmtp in e.g. /usr/lib (typically installed by a
+    package manager) it will take precedence over the new version you just
+    installed in /usr/local/lib and the newly compiled library in
+    /usr/local/lib will *not* be used, resulting in this error message.
+
+3) You really did install the very latest versions (as of writing libmtp
+    0.1.5 and gnomad2 2.8.11) from source and there really is no
+    pre-installed package of either on your machine. In that case I'm
+    totally lost, I have no idea what's causing this.
+
+Typical remedies:
+
+1) If you don't want to mess around with your system and risk these
+    situations, only use pre-packaged software that came with the
+    distribution or its official support channels. If it still breaks,
+    blame your distribution, they're not packaging correctly. Relying on
+    properly packaged software and not installing things yourself *is* the
+    Linux solution to the "dependency hell" problem.
+
+2) Read about dynamically linked library handling until the stuff I wrote
+    about in the previous list sounds like music to your ears, inspect
+    your /lib, /usr/lib, /usr/local/lib, /etc/ld.so.conf and the
+    /etc/ld.so.conf.d, remove all pre-packed versions using RPM, APT,
+    YaST or whatever your distribution uses, compile libmtp and gnomad2
+    (or whatever) from source only and you will be enlighted.
+
+I don't know if this helps you, it's the best answer we can give.
+
+
+API is obscure - I want plain files!
+------------------------------------
+
+PTP/MTP devices does not actually contain "files", they contain
+objects. These objects have file names, but that is actually
+just a name tag on the object.
+
+Folders/directories aren't really such entities: they are just 
+objects too, albeit objects that can act as parent to other
+objects. They are called "associations" and are created in atomic
+fashion and even though there is an MTP command to get all the
+associations of a certain association, this command is optional
+so it is perfectly possible (and most common, actually) to create
+devices where the "folders" (which are actually associations) have
+no idea whatsoever of what files they are associated as parents to 
+(i.e. which files they contain). This is very easy for device
+manufacturers to implement, all the association (i.e. finding out
+which files are in a certain folder) has to be done by the MTP
+Initiator / host computer.
+
+Moving a file to a new folder is for example very simple in a
+"real" file system. In PTP/MTP devices it is often not even possible,
+some devices *may* be able to do that. But actually the only
+reliable way of doing that is to upload the file to the host,
+download it with the new parent, then delete the old file.
+We have played with the idea of implementing this time consuming
+function, perhaps we will.
+
+Then the issue that in PTP/MTP it is legal for two files to have
+exactly the same path as long as their object IDs differ. A
+folder/association can contain two files with the exact same name.
+(And on the Creative devices this even works, too, though most devices
+implicitly fail at this.) Perhaps one could add some custom hook for
+handling that, so they become  /Foo.mp3 and /Foo.mp3(1) or something
+similar, but it's really a bit kludgy.
+
+Playlists and albums aren't really files, thinking about 
+them as files like the hacks in libgphoto2 is really backwards. They are
+called associations and are more like a symbolic link that links in a
+star-shaped pattern to all the files that are part of the album/playlist.
+Some devices (Samsung) thought that was too complicated and have a
+different way of storing playlists in an UTF-16 encoded .spl-like file
+instead! This is why playlists/albums must have their own structs and 
+functions.
+
+Plain file access also assumes to be able to write files of an
+undetermined size, which is simply not possible in a transactional
+file system like PTP/MTP. (See further below.)
+
+
+I Want Streaming!
+-----------------
+
+Streaming reads is easy. Just connect the output file descriptor from
+LIBMTP_Get_File_To_File_Descriptor() (and a similar function for tracks)
+wherever you want.
+
+People have connected this to TCP sockets for streaming web servers 
+etc, works like a charm. Some devices will even survive if the callback 
+functions return non-zero and cancel the download. Some devices will
+lock up and even require a reset if you do that. Devices are poorly
+implemented so that's life. If you want to stream off a device, the
+best idea is always to stream the entire file and discard the stuff
+at the end you don't want. It will incur a delay if you e.g. want to
+skip between tracks, sadly.
+
+Then we get to the complicated things: streaming WRITES...
+
+There is a function:
+LIBMTP_Send_File_From_File_Descriptor() (and similar for tracks)
+which will write a file to a device from a file descriptor, which may
+be a socket or whatever.
+
+HOWEVER: this requires a piece of metadata with the .filesize properly
+set first.
+
+This is not because we think it is funny to require that, the protocol
+requires it. The reason is that PTP/MTP is a transactional file system
+and it wants to be able to deny file transfer if the file won't fit on
+the device, so the transaction never even starts, it's impossible to
+start a transaction without giving file length.
+
+People really want streaming so I tried a lot of hacks to see if they
+would work, such as setting file size to 0xffffffffU or something other
+unnaturally big and then aborting the file transfer when the stream ends.
+It doesn't work: either the device crashes or the file simply disappears
+since the device rolls back all failed transactions.
+
+So this is an inherent limitation of the PTP/MTP protocol.

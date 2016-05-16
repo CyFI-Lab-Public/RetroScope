@@ -1,0 +1,36 @@
+# Pentium III possible unit masks
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask
+name:mesi type:bitmask default:0x0f
+	0x08 (M)odified cache state
+	0x04 (E)xclusive cache state
+	0x02 (S)hared cache state
+	0x01 (I)nvalid cache state
+	0x0f All cache states
+name:ebl type:exclusive default:0x20
+	0x00 self-generated transactions
+	0x20 any transactions
+name:kni_prefetch type:exclusive default:0x0
+	0x00 prefetch NTA
+	0x01 prefetch T1
+	0x02 prefetch T2
+	0x03 weakly-ordered stores
+# this bitmask can seems weirds but is correct, note there is no way to only
+# count scalar SIMD instructions
+name:kni_inst_retired type:exclusive default:0x0
+	0x00 packed and scalar
+	0x01 packed
+name:mmx_uops type:mandatory default:0xf
+	0x0f mandatory
+name:mmx_instr_type_exec type:bitmask default:0x3f
+	0x01 MMX packed multiplies
+	0x02 MMX packed shifts
+	0x04 MMX pack operations
+	0x08 MMX unpack operations
+	0x10 MMX packed logical
+	0x20 MMX packed arithmetic
+	0x3f all of the above
+name:mmx_trans type:exclusive default:0x0
+	0x00 MMX->float operations
+	0x01 float->MMX operations

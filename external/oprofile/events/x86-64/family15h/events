@@ -1,0 +1,16 @@
+# AMD Generic performance events
+#
+# Copyright OProfile authors
+# Copyright (c) 2006-2010 Advanced Micro Devices
+# Contributed by Ray Bryant <raybry at amd.com>,
+#		Jason Yeh <jason.yeh at amd.com>
+#		Suravee Suthikulpanit <suravee.suthikulpanit at amd.com>
+#
+# Revision: 1.0
+#
+# ChangeLog: 
+#	1.0: 30 August 2010.
+#	- Initial revision
+#
+event:0x76 counters:0,1,2 um:zero minimum:50000 name:CPU_CLK_UNHALTED : Cycles outside of halt state
+event:0xc0 counters:0,1,2,3,4,5 um:zero minimum:50000 name:RETIRED_INSTRUCTIONS : Retired instructions (includes exceptions, interrupts, re-syncs)

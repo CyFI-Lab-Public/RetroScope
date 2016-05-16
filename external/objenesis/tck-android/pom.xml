@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.objenesis</groupId>
+    <artifactId>objenesis-parent</artifactId>
+    <version>2.0-SNAPSHOT</version>
+  </parent>
+  <artifactId>objenesis-tck-android</artifactId>
+  <name>Objenesis Android TCK</name>
+  <description>Objenesis' TCK built for Android devices</description>
+  <packaging>apk</packaging>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.objenesis</groupId>
+      <artifactId>objenesis-tck</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.android</groupId>
+      <artifactId>android</artifactId>
+      <version>1.5_r3</version>
+      <scope>provided</scope>
+    </dependency>  
+  </dependencies>
+  <build>
+    <sourceDirectory>src</sourceDirectory>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+          <artifactId>android-maven-plugin</artifactId>
+          <version>3.5.0</version>
+          <extensions>true</extensions>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+        
+      <plugin>
+        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+        <artifactId>android-maven-plugin</artifactId>
+        <configuration>
+          <sdk>
+            <platform>17</platform>
+          </sdk>
+        </configuration>
+        <extensions>true</extensions>
+      </plugin>
+      
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <inherited>false</inherited>
+        <executions>
+          <execution>
+            <id>install</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>adb</executable>
+              <arguments>
+                <argument>install</argument>
+                <argument>-r</argument>
+                <argument>${project.build.directory}\${project.build.finalName}.apk</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>execute</id>
+            <phase>integration-test</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>adb</executable>
+              <arguments>
+                <argument>shell</argument>
+                <argument>am</argument>
+                <argument>instrument</argument>
+                <argument>-w</argument>
+                <argument>org.objenesis.tck.android/.TckInstrumentation</argument>
+              </arguments>
+            </configuration>
+          </execution>          
+        </executions>
+      </plugin>      
+    </plugins>
+  </build>
+
+</project>

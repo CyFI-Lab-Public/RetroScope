@@ -1,0 +1,186 @@
+#
+# AMD Athlon(tm)64 and AMD Opteron(tm) processor unit masks
+#
+# Copyright OProfile authors
+# Copyright (c) Advanced Micro Devices, 2006-2008
+# Contributed by Ray Bryant <raybry@amd.com>, and others.
+#
+# Source: BIOS and Kernel Developer's Guide for AMD NPT Family 0Fh Processors,
+#         Publication# 32559, Revision 3.08, July 2007
+#
+# This file was last updated on 10 January 2008:
+#
+#    Unit mask (writtentosystem) was added for the
+#    QUADWORD_WRITE_TRANSFERS event.
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask
+name:moesi type:bitmask default:0x1f
+	0x01 (I)nvalid cache state
+	0x02 (S)hared cache state
+	0x04 (E)xclusive cache state
+	0x08 (O)wned cache state
+	0x10 (M)odified cache state
+	0x1f All cache states
+name:moess type:bitmask default:0x1e
+	0x01 refill from system
+	0x02 (S)hared cache state from L2
+	0x04 (E)xclusive cache state from L2
+	0x08 (O)wned cache state from L2
+	0x10 (M)odified cache state from L2
+	0x1e All cache states except Invalid
+name:fpu_ops type:bitmask default:0x3f
+	0x01 Add pipe ops
+	0x02 Multiply pipe
+	0x04 Store pipe ops
+	0x08 Add pipe load ops
+	0x10 Multiply pipe load ops
+	0x20 Store pipe load ops
+name:segregload type:bitmask default:0x7f
+	0x01 ES register
+	0x02 CS register
+	0x04 SS register
+	0x08 DS register
+	0x10 FS register
+	0x20 GS register
+	0x40 HS register
+name:ecc type:bitmask default:0x03
+	0x01 Scrubber error
+	0x02 Piggyback scrubber errors
+name:prefetch type:bitmask default:0x07
+	0x01 Load
+	0x02 Store
+	0x04 NTA
+name:fpu_instr type:bitmask default:0x0f
+	0x01 x87 instructions
+	0x02 Combined MMX & 3DNow instructions
+	0x04 Combined packed SSE & SSE2 instructions
+	0x08 Combined packed scalar SSE & SSE2 instructions
+name:fpu_fastpath type:bitmask default:0x07
+	0x01 With low op in position 0
+	0x02 With low op in position 1
+	0x04 With low op in position 2
+name:fpu_exceptions type:bitmask default:0x0f
+	0x01 x87 reclass microfaults
+	0x02 SSE retype microfaults
+	0x04 SSE reclass microfaults
+	0x08 SSE and x87 microtraps
+name:page_access type:bitmask default:0x07
+	0x01 Page hit
+	0x02 Page miss
+	0x04 Page conflict
+name:turnaround type:bitmask default:0x07
+	0x01 DIMM (chip select) turnaround
+	0x02 Read to write turnaround
+	0x04 Write to read turnaround
+name:saturation type:bitmask default:0x0f
+	0x01 Memory controller high priority bypass
+	0x02 Memory controller low priority bypass
+	0x04 DRAM controller interface bypass
+	0x08 DRAM controller queue bypass
+name:sizecmds type:bitmask default:0x7f
+	0x01 Non-posted write byte
+	0x02 Non-posted write dword
+	0x04 Posted write byte
+	0x08 Posted write dword
+	0x10 Read byte (4 bytes)
+	0x20 Read dword (1-16 dwords)
+	0x40 Read-modify-write
+name:probe type:bitmask default:0x0f
+	0x01 Probe miss
+	0x02 Probe hit clean
+	0x04 Probe hit dirty without memory cancel
+	0x08 Probe hit dirty with memory cancel
+	0x10 Upstream display refresh reads
+	0x20 Upstream non-display refresh reads
+	0x40 Upstream writes (RevD and later)
+name:ht type:bitmask default:0x7
+	0x01 Command sent
+	0x02 Data sent
+	0x04 Buffer release sent
+	0x08 NOP sent
+name:l2_internal type:bitmask default:0x1f
+	0x01 IC fill
+	0x02 DC fill
+	0x04 TLB fill (page table walk)
+	0x08 Tag snoop request
+	0x10 Cancelled request
+name:l2_req_miss type:bitmask default:0x07
+	0x01 IC fill
+	0x02 DC fill
+	0x04 TLB page table walk
+name:l2_fill type:bitmask default:0x03
+	0x01 L2 fills (victims from L1 caches, TLB page table walks and data prefetches)
+	0x02 L2 writebacks to system
+name:gart type:bitmask default:0x07
+	0x01 GART aperture hit on access from CPU
+	0x02 GART aperture hit on access from I/O
+	0x04 GART miss
+name:sizedblocks type:bitmask default:0x3c
+	0x04 32-byte Sized Writes (RevD and later)
+	0x08 64-byte Sized Writes (RevD and later)
+	0x10 32-byte Sized Reads (RevD and later)
+	0x20 64-byte Sized Reads (RevD and later)
+name:cpiorequests type:bitmask default:0xa2
+	0xa1 Requests Local I/O to Local I/O
+	0xa2 Requests Local I/O to Local Memory
+	0xa3 Requests Local I/O to Local (I/O or Mem) 
+	0xa4 Requests Local CPU to Local I/O
+	0xa5 Requests Local (CPU or I/O) to Local I/O
+	0xa8 Requests Local CPU to Local Memory
+	0xaa Requests Local (CPU or I/O) to Local Memory
+	0xac Requests Local CPU to Local (I/O or Mem)
+	0xaf Requests Local (CPU or I/O) to Local (I/O or Mem)
+	0x91 Requests Local I/O to Remote I/O
+	0x92 Requests Local I/O to Remote Memory
+	0x93 Requests Local I/O to Remote (I/O or Mem)
+	0x94 Requests Local CPU to Remote I/O
+	0x95 Requests Local (CPU or I/O) to Remote I/O
+	0x98 Requests Local CPU to Remote Memory
+	0x9a Requests Local (CPU or I/O) to Remote Memory
+	0x9c Requests Local CPU to Remote (I/O or Mem)
+	0x9f Requests Local (CPU or I/O) to Remote (I/O or Mem)
+	0xb1 Requests Local I/O to Any I/O
+	0xb2 Requests Local I/O to Any Memory
+	0xb3 Requests Local I/O to Any (I/O or Mem)
+	0xb4 Requests Local CPU to Any I/O
+	0xb5 Requests Local (CPU or I/O) to Any I/O
+	0xb8 Requests Local CPU to Any Memory
+	0xba Requests Local (CPU or I/O) to Any Memory
+	0xbc Requests Local CPU to Any (I/O or Mem)
+	0xbf Requests Local (CPU or I/O) to Any (I/O or Mem)
+	0x61 Requests Remote I/O to Local I/O
+	0x64 Requests Remote CPU to Local I/O
+	0x65 Requests Remote (CPU or I/O) to Local I/O
+name:cacheblock type:bitmask default:0x3d
+	0x01 Victim Block (Writeback)
+	0x04 Read Block (Dcache load miss refill)
+	0x08 Read Block Shared (Icache refill)
+	0x10 Read Block Modified (Dcache store miss refill)
+	0x20 Change to Dirty (first store to clean block already in cache)
+name:dataprefetch type:bitmask default:0x03
+	0x01 Cancelled prefetches
+	0x02 Prefetch attempts
+name:memreqtype type:bitmask default:0x83
+	0x01 Requests to non-cacheable (UC) memory
+	0x02 Requests to write-combining (WC) memory or WC buffer flushes to WB memory
+	0x80 Streaming store (SS) requests
+name:systemreadresponse type:bitmask default:0x7
+	0x01 Exclusive
+	0x02 Modified
+	0x04 Shared
+name:writtentosystem type:bitmask default:0x1
+	0x01 Quadword write transfer
+# BKDG 3.28 does not include unit_mask of 0x01 for "accesses by Locked instructions"
+name:dcachemisslocked type:bitmask default:0x02
+	0x02 Data cache misses by locked instructions
+name:locked_ops type:bitmask default:0x04
+	0x01 The number of locked instructions executed
+	0x02 The number of cycles spent in speculative phase
+	0x04 The number of cycles spent in non-speculative phase (including cache miss penalty)
+name:thermalecc type:bitmask default:0x80
+	0x01 Number of clocks CPU is active when HTC is active (RevF)
+	0x02 Number of clocks CPU clock is inactive when HTC is active (RevF)
+	0x04 Number of clocks when die temperature is higher than the software high temperature threshold (RevF)
+	0x08 Number of clocks when high temperature threshold was exceeded (RevF)
+	0x80 Number of correctable and uncorrectable DRAM ECC errors (RevE)

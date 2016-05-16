@@ -1,0 +1,505 @@
+#PPC64 PowerPC970 events
+#
+#  Within each group the event names must be unique.  Each event in a group is
+#  assigned to a unique counter.  The groups are from the groups defined in the
+#  Performance Monitor Unit user guide for this processor.
+#
+#  Only events within the same group can be selected simultaneously.
+#  Each event is given a unique event number.  The event number is used by the
+#  OProfile code to resolve event names for the post-processing.  This is done
+#  to preserve compatibility with the rest of the OProfile code.  The event
+#  numbers are formatted as follows: <group_num>concat(<counter for the event>).
+
+#Group Default
+event:0X001 counters:1 um:zero minimum:10000 name:CYCLES : Processor Cycles
+
+
+#Group 1 pm_slice0, Time Slice 0
+event:0X010 counters:0 um:zero minimum:10000 name:PM_RUN_CYC_GRP1 : (Group 1 pm_slice0) Run cycles
+event:0X011 counters:1 um:zero minimum:10000 name:PM_CYC_GRP1 : (Group 1 pm_slice0) Processor cycles
+event:0X012 counters:2 um:zero minimum:1000 name:PM_STOP_COMPLETION_GRP1 : (Group 1 pm_slice0) Completion stopped
+event:0X013 counters:3 um:zero minimum:10000 name:PM_INST_CMPL_GRP1 : (Group 1 pm_slice0) Instructions completed
+event:0X014 counters:4 um:zero minimum:1000 name:PM_1PLUS_PPC_CMPL_GRP1 : (Group 1 pm_slice0) One or more PPC instruction completed
+event:0X015 counters:5 um:zero minimum:10000 name:PM_CYC_GRP1 : (Group 1 pm_slice0) Processor cycles
+event:0X016 counters:6 um:zero minimum:1000 name:PM_GRP_CMPL_GRP1 : (Group 1 pm_slice0) Group completed
+event:0X017 counters:7 um:zero minimum:1000 name:PM_GRP_DISP_REJECT_GRP1 : (Group 1 pm_slice0) Group dispatch rejected
+
+#Group 2 pm_eprof, Group for use with eprof
+event:0X020 counters:0 um:zero minimum:10000 name:PM_CYC_GRP2 : (Group 2 pm_eprof) Processor cycles
+event:0X021 counters:1 um:zero minimum:10000 name:PM_CYC_GRP2 : (Group 2 pm_eprof) Processor cycles
+event:0X022 counters:2 um:zero minimum:1000 name:PM_LD_MISS_L1_GRP2 : (Group 2 pm_eprof) L1 D cache load misses
+event:0X023 counters:3 um:zero minimum:1000 name:PM_DC_INV_L2_GRP2 : (Group 2 pm_eprof) L1 D cache entries invalidated from L2
+event:0X024 counters:4 um:zero minimum:1000 name:PM_INST_DISP_GRP2 : (Group 2 pm_eprof) Instructions dispatched
+event:0X025 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP2 : (Group 2 pm_eprof) Instructions completed
+event:0X026 counters:6 um:zero minimum:1000 name:PM_ST_REF_L1_GRP2 : (Group 2 pm_eprof) L1 D cache store references
+event:0X027 counters:7 um:zero minimum:1000 name:PM_LD_REF_L1_GRP2 : (Group 2 pm_eprof) L1 D cache load references
+
+#Group 3 pm_basic, Basic performance indicators
+event:0X030 counters:0 um:zero minimum:10000 name:PM_INST_CMPL_GRP3 : (Group 3 pm_basic) Instructions completed
+event:0X031 counters:1 um:zero minimum:10000 name:PM_CYC_GRP3 : (Group 3 pm_basic) Processor cycles
+event:0X032 counters:2 um:zero minimum:1000 name:PM_LD_MISS_L1_GRP3 : (Group 3 pm_basic) L1 D cache load misses
+event:0X033 counters:3 um:zero minimum:1000 name:PM_DC_INV_L2_GRP3 : (Group 3 pm_basic) L1 D cache entries invalidated from L2
+event:0X034 counters:4 um:zero minimum:1000 name:PM_INST_DISP_GRP3 : (Group 3 pm_basic) Instructions dispatched
+event:0X035 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP3 : (Group 3 pm_basic) Instructions completed
+event:0X036 counters:6 um:zero minimum:1000 name:PM_ST_REF_L1_GRP3 : (Group 3 pm_basic) L1 D cache store references
+event:0X037 counters:7 um:zero minimum:1000 name:PM_LD_REF_L1_GRP3 : (Group 3 pm_basic) L1 D cache load references
+
+#Group 4 pm_lsu, Information on the Load Store Unit
+event:0X040 counters:0 um:zero minimum:1000 name:PM_LSU_FLUSH_ULD_GRP4 : (Group 4 pm_lsu) LRQ unaligned load flushes
+event:0X041 counters:1 um:zero minimum:1000 name:PM_LSU_FLUSH_UST_GRP4 : (Group 4 pm_lsu) SRQ unaligned store flushes
+event:0X042 counters:2 um:zero minimum:10000 name:PM_CYC_GRP4 : (Group 4 pm_lsu) Processor cycles
+event:0X043 counters:3 um:zero minimum:10000 name:PM_INST_CMPL_GRP4 : (Group 4 pm_lsu) Instructions completed
+event:0X044 counters:4 um:zero minimum:1000 name:PM_LSU_FLUSH_SRQ_GRP4 : (Group 4 pm_lsu) SRQ flushes
+event:0X045 counters:5 um:zero minimum:1000 name:PM_LSU_FLUSH_LRQ_GRP4 : (Group 4 pm_lsu) LRQ flushes
+event:0X046 counters:6 um:zero minimum:1000 name:PM_ST_REF_L1_GRP4 : (Group 4 pm_lsu) L1 D cache store references
+event:0X047 counters:7 um:zero minimum:1000 name:PM_LD_REF_L1_GRP4 : (Group 4 pm_lsu) L1 D cache load references
+
+#Group 5 pm_fpu1, Floating Point events
+event:0X050 counters:0 um:zero minimum:1000 name:PM_FPU_FDIV_GRP5 : (Group 5 pm_fpu1) FPU executed FDIV instruction
+event:0X051 counters:1 um:zero minimum:1000 name:PM_FPU_FMA_GRP5 : (Group 5 pm_fpu1) FPU executed multiply-add instruction
+event:0X052 counters:2 um:zero minimum:1000 name:PM_FPU_FEST_GRP5 : (Group 5 pm_fpu1) FPU executed FEST instruction
+event:0X053 counters:3 um:zero minimum:1000 name:PM_FPU_FIN_GRP5 : (Group 5 pm_fpu1) FPU produced a result
+event:0X054 counters:4 um:zero minimum:10000 name:PM_CYC_GRP5 : (Group 5 pm_fpu1) Processor cycles
+event:0X055 counters:5 um:zero minimum:1000 name:PM_FPU_FSQRT_GRP5 : (Group 5 pm_fpu1) FPU executed FSQRT instruction
+event:0X056 counters:6 um:zero minimum:10000 name:PM_INST_CMPL_GRP5 : (Group 5 pm_fpu1) Instructions completed
+event:0X057 counters:7 um:zero minimum:1000 name:PM_FPU_FMOV_FEST_GRP5 : (Group 5 pm_fpu1) FPU executing FMOV or FEST instructions
+
+#Group 6 pm_fpu2, Floating Point events
+event:0X060 counters:0 um:zero minimum:1000 name:PM_FPU_DENORM_GRP6 : (Group 6 pm_fpu2) FPU received denormalized data
+event:0X061 counters:1 um:zero minimum:1000 name:PM_FPU_STALL3_GRP6 : (Group 6 pm_fpu2) FPU stalled in pipe3
+event:0X062 counters:2 um:zero minimum:10000 name:PM_CYC_GRP6 : (Group 6 pm_fpu2) Processor cycles
+event:0X063 counters:3 um:zero minimum:10000 name:PM_INST_CMPL_GRP6 : (Group 6 pm_fpu2) Instructions completed
+event:0X064 counters:4 um:zero minimum:1000 name:PM_FPU_ALL_GRP6 : (Group 6 pm_fpu2) FPU executed add, mult, sub, cmp or sel instruction
+event:0X065 counters:5 um:zero minimum:1000 name:PM_FPU_STF_GRP6 : (Group 6 pm_fpu2) FPU executed store instruction
+event:0X066 counters:6 um:zero minimum:1000 name:PM_FPU_FRSP_FCONV_GRP6 : (Group 6 pm_fpu2) FPU executed FRSP or FCONV instructions
+event:0X067 counters:7 um:zero minimum:1000 name:PM_LSU_LDF_GRP6 : (Group 6 pm_fpu2) LSU executed Floating Point load instruction
+
+#Group 7 pm_isu_rename, ISU Rename Pool Events
+event:0X070 counters:0 um:zero minimum:1000 name:PM_XER_MAP_FULL_CYC_GRP7 : (Group 7 pm_isu_rename) Cycles XER mapper full
+event:0X071 counters:1 um:zero minimum:1000 name:PM_CR_MAP_FULL_CYC_GRP7 : (Group 7 pm_isu_rename) Cycles CR logical operation mapper full
+event:0X072 counters:2 um:zero minimum:1000 name:PM_CRQ_FULL_CYC_GRP7 : (Group 7 pm_isu_rename) Cycles CR issue queue full
+event:0X073 counters:3 um:zero minimum:1000 name:PM_GRP_DISP_BLK_SB_CYC_GRP7 : (Group 7 pm_isu_rename) Cycles group dispatch blocked by scoreboard
+event:0X074 counters:4 um:zero minimum:1000 name:PM_LR_CTR_MAP_FULL_CYC_GRP7 : (Group 7 pm_isu_rename) Cycles LR/CTR mapper full
+event:0X075 counters:5 um:zero minimum:1000 name:PM_INST_DISP_GRP7 : (Group 7 pm_isu_rename) Instructions dispatched
+event:0X076 counters:6 um:zero minimum:10000 name:PM_INST_CMPL_GRP7 : (Group 7 pm_isu_rename) Instructions completed
+event:0X077 counters:7 um:zero minimum:10000 name:PM_CYC_GRP7 : (Group 7 pm_isu_rename) Processor cycles
+
+#Group 8 pm_isu_queues1, ISU Rename Pool Events
+event:0X080 counters:0 um:zero minimum:1000 name:PM_FPU0_FULL_CYC_GRP8 : (Group 8 pm_isu_queues1) Cycles FPU0 issue queue full
+event:0X081 counters:1 um:zero minimum:1000 name:PM_FPU1_FULL_CYC_GRP8 : (Group 8 pm_isu_queues1) Cycles FPU1 issue queue full
+event:0X082 counters:2 um:zero minimum:1000 name:PM_FXLS0_FULL_CYC_GRP8 : (Group 8 pm_isu_queues1) Cycles FXU0/LS0 queue full
+event:0X083 counters:3 um:zero minimum:1000 name:PM_FXLS1_FULL_CYC_GRP8 : (Group 8 pm_isu_queues1) Cycles FXU1/LS1 queue full
+event:0X084 counters:4 um:zero minimum:10000 name:PM_CYC_GRP8 : (Group 8 pm_isu_queues1) Processor cycles
+event:0X085 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP8 : (Group 8 pm_isu_queues1) Instructions completed
+event:0X086 counters:6 um:zero minimum:1000 name:PM_LSU_LRQ_FULL_CYC_GRP8 : (Group 8 pm_isu_queues1) Cycles LRQ full
+event:0X087 counters:7 um:zero minimum:1000 name:PM_LSU_SRQ_FULL_CYC_GRP8 : (Group 8 pm_isu_queues1) Cycles SRQ full
+
+#Group 9 pm_isu_flow, ISU Instruction Flow Events
+event:0X090 counters:0 um:zero minimum:1000 name:PM_INST_DISP_GRP9 : (Group 9 pm_isu_flow) Instructions dispatched
+event:0X091 counters:1 um:zero minimum:10000 name:PM_CYC_GRP9 : (Group 9 pm_isu_flow) Processor cycles
+event:0X092 counters:2 um:zero minimum:1000 name:PM_FXU0_FIN_GRP9 : (Group 9 pm_isu_flow) FXU0 produced a result
+event:0X093 counters:3 um:zero minimum:1000 name:PM_FXU1_FIN_GRP9 : (Group 9 pm_isu_flow) FXU1 produced a result
+event:0X094 counters:4 um:zero minimum:1000 name:PM_GRP_DISP_VALID_GRP9 : (Group 9 pm_isu_flow) Group dispatch valid
+event:0X095 counters:5 um:zero minimum:1000 name:PM_GRP_DISP_REJECT_GRP9 : (Group 9 pm_isu_flow) Group dispatch rejected
+event:0X096 counters:6 um:zero minimum:10000 name:PM_INST_CMPL_GRP9 : (Group 9 pm_isu_flow) Instructions completed
+event:0X097 counters:7 um:zero minimum:10000 name:PM_CYC_GRP9 : (Group 9 pm_isu_flow) Processor cycles
+
+#Group 10 pm_isu_work, ISU Indicators of Work Blockage
+event:0X0A0 counters:0 um:zero minimum:1000 name:PM_GCT_EMPTY_CYC_GRP10 : (Group 10 pm_isu_work) Cycles GCT empty
+event:0X0A1 counters:1 um:zero minimum:1000 name:PM_WORK_HELD_GRP10 : (Group 10 pm_isu_work) Work held
+event:0X0A2 counters:2 um:zero minimum:1000 name:PM_STOP_COMPLETION_GRP10 : (Group 10 pm_isu_work) Completion stopped
+event:0X0A3 counters:3 um:zero minimum:1000 name:PM_EE_OFF_EXT_INT_GRP10 : (Group 10 pm_isu_work) Cycles MSR(EE) bit off and external interrupt pending
+event:0X0A4 counters:4 um:zero minimum:10000 name:PM_CYC_GRP10 : (Group 10 pm_isu_work) Processor cycles
+event:0X0A5 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP10 : (Group 10 pm_isu_work) Instructions completed
+event:0X0A6 counters:6 um:zero minimum:1000 name:PM_EE_OFF_GRP10 : (Group 10 pm_isu_work) Cycles MSR(EE) bit off
+event:0X0A7 counters:7 um:zero minimum:1000 name:PM_EXT_INT_GRP10 : (Group 10 pm_isu_work) External interrupts
+
+#Group 11 pm_fpu3, Floating Point events by unit
+event:0X0B0 counters:0 um:zero minimum:1000 name:PM_FPU0_FDIV_GRP11 : (Group 11 pm_fpu3) FPU0 executed FDIV instruction
+event:0X0B1 counters:1 um:zero minimum:1000 name:PM_FPU1_FDIV_GRP11 : (Group 11 pm_fpu3) FPU1 executed FDIV instruction
+event:0X0B2 counters:2 um:zero minimum:1000 name:PM_FPU0_FRSP_FCONV_GRP11 : (Group 11 pm_fpu3) FPU0 executed FRSP or FCONV instructions
+event:0X0B3 counters:3 um:zero minimum:1000 name:PM_FPU1_FRSP_FCONV_GRP11 : (Group 11 pm_fpu3) FPU1 executed FRSP or FCONV instructions
+event:0X0B4 counters:4 um:zero minimum:1000 name:PM_FPU0_FMA_GRP11 : (Group 11 pm_fpu3) FPU0 executed multiply-add instruction
+event:0X0B5 counters:5 um:zero minimum:1000 name:PM_FPU1_FMA_GRP11 : (Group 11 pm_fpu3) FPU1 executed multiply-add instruction
+event:0X0B6 counters:6 um:zero minimum:10000 name:PM_INST_CMPL_GRP11 : (Group 11 pm_fpu3) Instructions completed
+event:0X0B7 counters:7 um:zero minimum:10000 name:PM_CYC_GRP11 : (Group 11 pm_fpu3) Processor cycles
+
+#Group 12 pm_fpu4, Floating Point events by unit
+event:0X0C0 counters:0 um:zero minimum:1000 name:PM_FPU0_FSQRT_GRP12 : (Group 12 pm_fpu4) FPU0 executed FSQRT instruction
+event:0X0C1 counters:1 um:zero minimum:1000 name:PM_FPU1_FSQRT_GRP12 : (Group 12 pm_fpu4) FPU1 executed FSQRT instruction
+event:0X0C2 counters:2 um:zero minimum:1000 name:PM_FPU0_FIN_GRP12 : (Group 12 pm_fpu4) FPU0 produced a result
+event:0X0C3 counters:3 um:zero minimum:1000 name:PM_FPU1_FIN_GRP12 : (Group 12 pm_fpu4) FPU1 produced a result
+event:0X0C4 counters:4 um:zero minimum:1000 name:PM_FPU0_ALL_GRP12 : (Group 12 pm_fpu4) FPU0 executed add, mult, sub, cmp or sel instruction
+event:0X0C5 counters:5 um:zero minimum:1000 name:PM_FPU1_ALL_GRP12 : (Group 12 pm_fpu4) FPU1 executed add, mult, sub, cmp or sel instruction
+event:0X0C6 counters:6 um:zero minimum:10000 name:PM_INST_CMPL_GRP12 : (Group 12 pm_fpu4) Instructions completed
+event:0X0C7 counters:7 um:zero minimum:10000 name:PM_CYC_GRP12 : (Group 12 pm_fpu4) Processor cycles
+
+#Group 13 pm_fpu5, Floating Point events by unit
+event:0X0D0 counters:0 um:zero minimum:1000 name:PM_FPU0_DENORM_GRP13 : (Group 13 pm_fpu5) FPU0 received denormalized data
+event:0X0D1 counters:1 um:zero minimum:1000 name:PM_FPU1_DENORM_GRP13 : (Group 13 pm_fpu5) FPU1 received denormalized data
+event:0X0D2 counters:2 um:zero minimum:1000 name:PM_FPU0_FMOV_FEST_GRP13 : (Group 13 pm_fpu5) FPU0 executed FMOV or FEST instructions
+event:0X0D3 counters:3 um:zero minimum:1000 name:PM_FPU1_FMOV_FEST_GRP13 : (Group 13 pm_fpu5) FPU1 executing FMOV or FEST instructions
+event:0X0D4 counters:4 um:zero minimum:10000 name:PM_CYC_GRP13 : (Group 13 pm_fpu5) Processor cycles
+event:0X0D5 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP13 : (Group 13 pm_fpu5) Instructions completed
+event:0X0D6 counters:6 um:zero minimum:1000 name:PM_FPU0_FEST_GRP13 : (Group 13 pm_fpu5) FPU0 executed FEST instruction
+event:0X0D7 counters:7 um:zero minimum:1000 name:PM_FPU1_FEST_GRP13 : (Group 13 pm_fpu5) FPU1 executed FEST instruction
+
+#Group 14 pm_fpu7, Floating Point events by unit
+event:0X0E0 counters:0 um:zero minimum:1000 name:PM_FPU0_STALL3_GRP14 : (Group 14 pm_fpu7) FPU0 stalled in pipe3
+event:0X0E1 counters:1 um:zero minimum:1000 name:PM_FPU1_STALL3_GRP14 : (Group 14 pm_fpu7) FPU1 stalled in pipe3
+event:0X0E2 counters:2 um:zero minimum:1000 name:PM_FPU0_FIN_GRP14 : (Group 14 pm_fpu7) FPU0 produced a result
+event:0X0E3 counters:3 um:zero minimum:1000 name:PM_FPU1_FIN_GRP14 : (Group 14 pm_fpu7) FPU1 produced a result
+event:0X0E4 counters:4 um:zero minimum:10000 name:PM_CYC_GRP14 : (Group 14 pm_fpu7) Processor cycles
+event:0X0E5 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP14 : (Group 14 pm_fpu7) Instructions completed
+event:0X0E6 counters:6 um:zero minimum:10000 name:PM_CYC_GRP14 : (Group 14 pm_fpu7) Processor cycles
+event:0X0E7 counters:7 um:zero minimum:1000 name:PM_FPU0_FPSCR_GRP14 : (Group 14 pm_fpu7) FPU0 executed FPSCR instruction
+
+#Group 15 pm_lsu_flush, LSU Flush Events
+event:0X0F0 counters:0 um:zero minimum:1000 name:PM_LSU0_FLUSH_LRQ_GRP15 : (Group 15 pm_lsu_flush) LSU0 LRQ flushes
+event:0X0F1 counters:1 um:zero minimum:1000 name:PM_LSU1_FLUSH_LRQ_GRP15 : (Group 15 pm_lsu_flush) LSU1 LRQ flushes
+event:0X0F2 counters:2 um:zero minimum:10000 name:PM_CYC_GRP15 : (Group 15 pm_lsu_flush) Processor cycles
+event:0X0F3 counters:3 um:zero minimum:10000 name:PM_CYC_GRP15 : (Group 15 pm_lsu_flush) Processor cycles
+event:0X0F4 counters:4 um:zero minimum:1000 name:PM_LSU0_FLUSH_SRQ_GRP15 : (Group 15 pm_lsu_flush) LSU0 SRQ flushes
+event:0X0F5 counters:5 um:zero minimum:1000 name:PM_LSU1_FLUSH_SRQ_GRP15 : (Group 15 pm_lsu_flush) LSU1 SRQ flushes
+event:0X0F6 counters:6 um:zero minimum:10000 name:PM_INST_CMPL_GRP15 : (Group 15 pm_lsu_flush) Instructions completed
+event:0X0F7 counters:7 um:zero minimum:10000 name:PM_CYC_GRP15 : (Group 15 pm_lsu_flush) Processor cycles
+
+#Group 16 pm_lsu_load1, LSU Load Events
+event:0X100 counters:0 um:zero minimum:1000 name:PM_LSU0_FLUSH_ULD_GRP16 : (Group 16 pm_lsu_load1) LSU0 unaligned load flushes
+event:0X101 counters:1 um:zero minimum:1000 name:PM_LSU1_FLUSH_ULD_GRP16 : (Group 16 pm_lsu_load1) LSU1 unaligned load flushes
+event:0X102 counters:2 um:zero minimum:1000 name:PM_LD_REF_L1_LSU0_GRP16 : (Group 16 pm_lsu_load1) LSU0 L1 D cache load references
+event:0X103 counters:3 um:zero minimum:1000 name:PM_LD_REF_L1_LSU1_GRP16 : (Group 16 pm_lsu_load1) LSU1 L1 D cache load references
+event:0X104 counters:4 um:zero minimum:10000 name:PM_CYC_GRP16 : (Group 16 pm_lsu_load1) Processor cycles
+event:0X105 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP16 : (Group 16 pm_lsu_load1) Instructions completed
+event:0X106 counters:6 um:zero minimum:1000 name:PM_LD_MISS_L1_LSU0_GRP16 : (Group 16 pm_lsu_load1) LSU0 L1 D cache load misses
+event:0X107 counters:7 um:zero minimum:1000 name:PM_LD_MISS_L1_LSU1_GRP16 : (Group 16 pm_lsu_load1) LSU1 L1 D cache load misses
+
+#Group 17 pm_lsu_store1, LSU Store Events
+event:0X110 counters:0 um:zero minimum:1000 name:PM_LSU0_FLUSH_UST_GRP17 : (Group 17 pm_lsu_store1) LSU0 unaligned store flushes
+event:0X111 counters:1 um:zero minimum:1000 name:PM_LSU1_FLUSH_UST_GRP17 : (Group 17 pm_lsu_store1) LSU1 unaligned store flushes
+event:0X112 counters:2 um:zero minimum:1000 name:PM_ST_REF_L1_LSU0_GRP17 : (Group 17 pm_lsu_store1) LSU0 L1 D cache store references
+event:0X113 counters:3 um:zero minimum:1000 name:PM_ST_REF_L1_LSU1_GRP17 : (Group 17 pm_lsu_store1) LSU1 L1 D cache store references
+event:0X114 counters:4 um:zero minimum:10000 name:PM_CYC_GRP17 : (Group 17 pm_lsu_store1) Processor cycles
+event:0X115 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP17 : (Group 17 pm_lsu_store1) Instructions completed
+event:0X116 counters:6 um:zero minimum:1000 name:PM_ST_MISS_L1_GRP17 : (Group 17 pm_lsu_store1) L1 D cache store misses
+event:0X117 counters:7 um:zero minimum:1000 name:PM_DC_INV_L2_GRP17 : (Group 17 pm_lsu_store1) L1 D cache entries invalidated from L2
+
+#Group 18 pm_lsu_store2, LSU Store Events
+event:0X120 counters:0 um:zero minimum:1000 name:PM_LSU0_SRQ_STFWD_GRP18 : (Group 18 pm_lsu_store2) LSU0 SRQ store forwarded
+event:0X121 counters:1 um:zero minimum:1000 name:PM_LSU1_SRQ_STFWD_GRP18 : (Group 18 pm_lsu_store2) LSU1 SRQ store forwarded
+event:0X122 counters:2 um:zero minimum:1000 name:PM_ST_REF_L1_LSU0_GRP18 : (Group 18 pm_lsu_store2) LSU0 L1 D cache store references
+event:0X123 counters:3 um:zero minimum:1000 name:PM_ST_REF_L1_LSU1_GRP18 : (Group 18 pm_lsu_store2) LSU1 L1 D cache store references
+event:0X124 counters:4 um:zero minimum:1000 name:PM_LSU0_BUSY_GRP18 : (Group 18 pm_lsu_store2) LSU0 busy
+event:0X125 counters:5 um:zero minimum:10000 name:PM_CYC_GRP18 : (Group 18 pm_lsu_store2) Processor cycles
+event:0X126 counters:6 um:zero minimum:10000 name:PM_INST_CMPL_GRP18 : (Group 18 pm_lsu_store2) Instructions completed
+event:0X127 counters:7 um:zero minimum:10000 name:PM_CYC_GRP18 : (Group 18 pm_lsu_store2) Processor cycles
+
+#Group 19 pm_lsu7, Information on the Load Store Unit
+event:0X130 counters:0 um:zero minimum:1000 name:PM_LSU0_DERAT_MISS_GRP19 : (Group 19 pm_lsu7) LSU0 DERAT misses
+event:0X131 counters:1 um:zero minimum:1000 name:PM_LSU1_DERAT_MISS_GRP19 : (Group 19 pm_lsu7) LSU1 DERAT misses
+event:0X132 counters:2 um:zero minimum:10000 name:PM_CYC_GRP19 : (Group 19 pm_lsu7) Processor cycles
+event:0X133 counters:3 um:zero minimum:10000 name:PM_CYC_GRP19 : (Group 19 pm_lsu7) Processor cycles
+event:0X134 counters:4 um:zero minimum:10000 name:PM_INST_CMPL_GRP19 : (Group 19 pm_lsu7) Instructions completed
+event:0X135 counters:5 um:zero minimum:10000 name:PM_CYC_GRP19 : (Group 19 pm_lsu7) Processor cycles
+event:0X136 counters:6 um:zero minimum:1000 name:PM_L1_DCACHE_RELOAD_VALID_GRP19 : (Group 19 pm_lsu7) L1 reload data source valid
+event:0X137 counters:7 um:zero minimum:10000 name:PM_CYC_GRP19 : (Group 19 pm_lsu7) Processor cycles
+
+#Group 20 pm_misc, Misc Events for testing
+event:0X140 counters:0 um:zero minimum:1000 name:PM_GCT_EMPTY_CYC_GRP20 : (Group 20 pm_misc) Cycles GCT empty
+event:0X141 counters:1 um:zero minimum:1000 name:PM_LSU_LMQ_SRQ_EMPTY_CYC_GRP20 : (Group 20 pm_misc) Cycles LMQ and SRQ empty
+event:0X142 counters:2 um:zero minimum:1000 name:PM_HV_CYC_GRP20 : (Group 20 pm_misc) Hypervisor Cycles
+event:0X143 counters:3 um:zero minimum:10000 name:PM_CYC_GRP20 : (Group 20 pm_misc) Processor cycles
+event:0X144 counters:4 um:zero minimum:1000 name:PM_1PLUS_PPC_CMPL_GRP20 : (Group 20 pm_misc) One or more PPC instruction completed
+event:0X145 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP20 : (Group 20 pm_misc) Instructions completed
+event:0X146 counters:6 um:zero minimum:1000 name:PM_GRP_CMPL_GRP20 : (Group 20 pm_misc) Group completed
+event:0X147 counters:7 um:zero minimum:1000 name:PM_TB_BIT_TRANS_GRP20 : (Group 20 pm_misc) Time Base bit transition
+
+#Group 21 pm_pe_bench1, PE Benchmarker group for FP analysis
+event:0X150 counters:0 um:zero minimum:1000 name:PM_FPU_FDIV_GRP21 : (Group 21 pm_pe_bench1) FPU executed FDIV instruction
+event:0X151 counters:1 um:zero minimum:1000 name:PM_FPU_FMA_GRP21 : (Group 21 pm_pe_bench1) FPU executed multiply-add instruction
+event:0X152 counters:2 um:zero minimum:1000 name:PM_FXU_FIN_GRP21 : (Group 21 pm_pe_bench1) FXU produced a result
+event:0X153 counters:3 um:zero minimum:1000 name:PM_FPU_FIN_GRP21 : (Group 21 pm_pe_bench1) FPU produced a result
+event:0X154 counters:4 um:zero minimum:10000 name:PM_CYC_GRP21 : (Group 21 pm_pe_bench1) Processor cycles
+event:0X155 counters:5 um:zero minimum:1000 name:PM_FPU_FSQRT_GRP21 : (Group 21 pm_pe_bench1) FPU executed FSQRT instruction
+event:0X156 counters:6 um:zero minimum:10000 name:PM_INST_CMPL_GRP21 : (Group 21 pm_pe_bench1) Instructions completed
+event:0X157 counters:7 um:zero minimum:1000 name:PM_FPU_FMOV_FEST_GRP21 : (Group 21 pm_pe_bench1) FPU executing FMOV or FEST instructions
+
+#Group 22 pm_pe_bench4, PE Benchmarker group for L1 and TLB
+event:0X160 counters:0 um:zero minimum:1000 name:PM_DTLB_MISS_GRP22 : (Group 22 pm_pe_bench4) Data TLB misses
+event:0X161 counters:1 um:zero minimum:1000 name:PM_ITLB_MISS_GRP22 : (Group 22 pm_pe_bench4) Instruction TLB misses
+event:0X162 counters:2 um:zero minimum:1000 name:PM_LD_MISS_L1_GRP22 : (Group 22 pm_pe_bench4) L1 D cache load misses
+event:0X163 counters:3 um:zero minimum:1000 name:PM_ST_MISS_L1_GRP22 : (Group 22 pm_pe_bench4) L1 D cache store misses
+event:0X164 counters:4 um:zero minimum:10000 name:PM_CYC_GRP22 : (Group 22 pm_pe_bench4) Processor cycles
+event:0X165 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP22 : (Group 22 pm_pe_bench4) Instructions completed
+event:0X166 counters:6 um:zero minimum:1000 name:PM_ST_REF_L1_GRP22 : (Group 22 pm_pe_bench4) L1 D cache store references
+event:0X167 counters:7 um:zero minimum:1000 name:PM_LD_REF_L1_GRP22 : (Group 22 pm_pe_bench4) L1 D cache load references
+
+#Group 23 pm_hpmcount1, Hpmcount group for L1 and TLB behavior
+event:0X170 counters:0 um:zero minimum:1000 name:PM_DTLB_MISS_GRP23 : (Group 23 pm_hpmcount1) Data TLB misses
+event:0X171 counters:1 um:zero minimum:1000 name:PM_LSU_LMQ_SRQ_EMPTY_CYC_GRP23 : (Group 23 pm_hpmcount1) Cycles LMQ and SRQ empty
+event:0X172 counters:2 um:zero minimum:1000 name:PM_LD_MISS_L1_GRP23 : (Group 23 pm_hpmcount1) L1 D cache load misses
+event:0X173 counters:3 um:zero minimum:1000 name:PM_ST_MISS_L1_GRP23 : (Group 23 pm_hpmcount1) L1 D cache store misses
+event:0X174 counters:4 um:zero minimum:10000 name:PM_CYC_GRP23 : (Group 23 pm_hpmcount1) Processor cycles
+event:0X175 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP23 : (Group 23 pm_hpmcount1) Instructions completed
+event:0X176 counters:6 um:zero minimum:1000 name:PM_ST_REF_L1_GRP23 : (Group 23 pm_hpmcount1) L1 D cache store references
+event:0X177 counters:7 um:zero minimum:1000 name:PM_LD_REF_L1_GRP23 : (Group 23 pm_hpmcount1) L1 D cache load references
+
+#Group 24 pm_hpmcount2, Hpmcount group for computation
+event:0X180 counters:0 um:zero minimum:1000 name:PM_FPU_FDIV_GRP24 : (Group 24 pm_hpmcount2) FPU executed FDIV instruction
+event:0X181 counters:1 um:zero minimum:1000 name:PM_FPU_FMA_GRP24 : (Group 24 pm_hpmcount2) FPU executed multiply-add instruction
+event:0X182 counters:2 um:zero minimum:1000 name:PM_FPU0_FIN_GRP24 : (Group 24 pm_hpmcount2) FPU0 produced a result
+event:0X183 counters:3 um:zero minimum:1000 name:PM_FPU1_FIN_GRP24 : (Group 24 pm_hpmcount2) FPU1 produced a result
+event:0X184 counters:4 um:zero minimum:10000 name:PM_CYC_GRP24 : (Group 24 pm_hpmcount2) Processor cycles
+event:0X185 counters:5 um:zero minimum:1000 name:PM_FPU_STF_GRP24 : (Group 24 pm_hpmcount2) FPU executed store instruction
+event:0X186 counters:6 um:zero minimum:10000 name:PM_INST_CMPL_GRP24 : (Group 24 pm_hpmcount2) Instructions completed
+event:0X187 counters:7 um:zero minimum:1000 name:PM_LSU_LDF_GRP24 : (Group 24 pm_hpmcount2) LSU executed Floating Point load instruction
+
+#Group 25 pm_l1andbr, L1 misses and branch misspredict analysis
+event:0X190 counters:0 um:zero minimum:10000 name:PM_INST_CMPL_GRP25 : (Group 25 pm_l1andbr) Instructions completed
+event:0X191 counters:1 um:zero minimum:10000 name:PM_CYC_GRP25 : (Group 25 pm_l1andbr) Processor cycles
+event:0X192 counters:2 um:zero minimum:1000 name:PM_LD_MISS_L1_GRP25 : (Group 25 pm_l1andbr) L1 D cache load misses
+event:0X193 counters:3 um:zero minimum:1000 name:PM_BR_ISSUED_GRP25 : (Group 25 pm_l1andbr) Branches issued
+event:0X194 counters:4 um:zero minimum:1000 name:PM_LSU0_BUSY_GRP25 : (Group 25 pm_l1andbr) LSU0 busy
+event:0X195 counters:5 um:zero minimum:10000 name:PM_CYC_GRP25 : (Group 25 pm_l1andbr) Processor cycles
+event:0X196 counters:6 um:zero minimum:1000 name:PM_BR_MPRED_CR_GRP25 : (Group 25 pm_l1andbr) Branch mispredictions due to CR bit setting
+event:0X197 counters:7 um:zero minimum:1000 name:PM_BR_MPRED_TA_GRP25 : (Group 25 pm_l1andbr) Branch mispredictions due to target address
+
+#Group 26 pm_imix, Instruction mix: loads, stores and branches
+event:0X1A0 counters:0 um:zero minimum:10000 name:PM_INST_CMPL_GRP26 : (Group 26 pm_imix) Instructions completed
+event:0X1A1 counters:1 um:zero minimum:10000 name:PM_CYC_GRP26 : (Group 26 pm_imix) Processor cycles
+event:0X1A2 counters:2 um:zero minimum:1000 name:PM_LD_MISS_L1_GRP26 : (Group 26 pm_imix) L1 D cache load misses
+event:0X1A3 counters:3 um:zero minimum:1000 name:PM_BR_ISSUED_GRP26 : (Group 26 pm_imix) Branches issued
+event:0X1A4 counters:4 um:zero minimum:10000 name:PM_CYC_GRP26 : (Group 26 pm_imix) Processor cycles
+event:0X1A5 counters:5 um:zero minimum:1000 name:PM_LSU0_BUSY_GRP26 : (Group 26 pm_imix) LSU0 busy
+event:0X1A6 counters:6 um:zero minimum:1000 name:PM_ST_REF_L1_GRP26 : (Group 26 pm_imix) L1 D cache store references
+event:0X1A7 counters:7 um:zero minimum:1000 name:PM_LD_REF_L1_GRP26 : (Group 26 pm_imix) L1 D cache load references
+
+#Group 27 pm_branch, SLB and branch misspredict analysis
+event:0X1B0 counters:0 um:zero minimum:10000 name:PM_RUN_CYC_GRP27 : (Group 27 pm_branch) Run cycles
+event:0X1B1 counters:1 um:zero minimum:1000 name:PM_DSLB_MISS_GRP27 : (Group 27 pm_branch) Data SLB misses
+event:0X1B2 counters:2 um:zero minimum:1000 name:PM_BR_ISSUED_GRP27 : (Group 27 pm_branch) Branches issued
+event:0X1B3 counters:3 um:zero minimum:1000 name:PM_BR_MPRED_CR_GRP27 : (Group 27 pm_branch) Branch mispredictions due to CR bit setting
+event:0X1B4 counters:4 um:zero minimum:1000 name:PM_ISLB_MISS_GRP27 : (Group 27 pm_branch) Instruction SLB misses
+event:0X1B5 counters:5 um:zero minimum:10000 name:PM_CYC_GRP27 : (Group 27 pm_branch) Processor cycles
+event:0X1B6 counters:6 um:zero minimum:10000 name:PM_INST_CMPL_GRP27 : (Group 27 pm_branch) Instructions completed
+event:0X1B7 counters:7 um:zero minimum:1000 name:PM_BR_MPRED_TA_GRP27 : (Group 27 pm_branch) Branch mispredictions due to target address
+
+#Group 28 pm_data, data source and LMQ
+event:0X1C0 counters:0 um:zero minimum:1000 name:PM_DATA_FROM_L2_GRP28 : (Group 28 pm_data) Data loaded from L2
+event:0X1C1 counters:1 um:zero minimum:10000 name:PM_INST_CMPL_GRP28 : (Group 28 pm_data) Instructions completed
+event:0X1C2 counters:2 um:zero minimum:1000 name:PM_DATA_FROM_MEM_GRP28 : (Group 28 pm_data) Data loaded from memory
+event:0X1C3 counters:3 um:zero minimum:10000 name:PM_CYC_GRP28 : (Group 28 pm_data) Processor cycles
+event:0X1C4 counters:4 um:zero minimum:10000 name:PM_INST_CMPL_GRP28 : (Group 28 pm_data) Instructions completed
+event:0X1C5 counters:5 um:zero minimum:10000 name:PM_CYC_GRP28 : (Group 28 pm_data) Processor cycles
+event:0X1C6 counters:6 um:zero minimum:1000 name:PM_LSU_LMQ_S0_ALLOC_GRP28 : (Group 28 pm_data) LMQ slot 0 allocated
+event:0X1C7 counters:7 um:zero minimum:1000 name:PM_LSU_LMQ_S0_VALID_GRP28 : (Group 28 pm_data) LMQ slot 0 valid
+
+#Group 29 pm_tlb, TLB and LRQ plus data prefetch
+event:0X1D0 counters:0 um:zero minimum:1000 name:PM_DTLB_MISS_GRP29 : (Group 29 pm_tlb) Data TLB misses
+event:0X1D1 counters:1 um:zero minimum:1000 name:PM_ITLB_MISS_GRP29 : (Group 29 pm_tlb) Instruction TLB misses
+event:0X1D2 counters:2 um:zero minimum:10000 name:PM_INST_CMPL_GRP29 : (Group 29 pm_tlb) Instructions completed
+event:0X1D3 counters:3 um:zero minimum:10000 name:PM_CYC_GRP29 : (Group 29 pm_tlb) Processor cycles
+event:0X1D4 counters:4 um:zero minimum:1000 name:PM_LSU_LRQ_S0_ALLOC_GRP29 : (Group 29 pm_tlb) LRQ slot 0 allocated
+event:0X1D5 counters:5 um:zero minimum:1000 name:PM_LSU_LRQ_S0_VALID_GRP29 : (Group 29 pm_tlb) LRQ slot 0 valid
+event:0X1D6 counters:6 um:zero minimum:1000 name:PM_L1_PREF_GRP29 : (Group 29 pm_tlb) L1 cache data prefetches
+event:0X1D7 counters:7 um:zero minimum:1000 name:PM_L2_PREF_GRP29 : (Group 29 pm_tlb) L2 cache prefetches
+
+#Group 30 pm_isource, inst source and tablewalk
+event:0X1E0 counters:0 um:zero minimum:1000 name:PM_INST_FROM_L2_GRP30 : (Group 30 pm_isource) Instructions fetched from L2
+event:0X1E1 counters:1 um:zero minimum:1000 name:PM_INST_FROM_MEM_GRP30 : (Group 30 pm_isource) Instruction fetched from memory
+event:0X1E2 counters:2 um:zero minimum:1000 name:PM_HV_CYC_GRP30 : (Group 30 pm_isource) Hypervisor Cycles
+event:0X1E3 counters:3 um:zero minimum:10000 name:PM_INST_CMPL_GRP30 : (Group 30 pm_isource) Instructions completed
+event:0X1E4 counters:4 um:zero minimum:1000 name:PM_DATA_TABLEWALK_CYC_GRP30 : (Group 30 pm_isource) Cycles doing data tablewalks
+event:0X1E5 counters:5 um:zero minimum:10000 name:PM_CYC_GRP30 : (Group 30 pm_isource) Processor cycles
+event:0X1E6 counters:6 um:zero minimum:1000 name:PM_GRP_CMPL_GRP30 : (Group 30 pm_isource) Group completed
+event:0X1E7 counters:7 um:zero minimum:1000 name:PM_DC_INV_L2_GRP30 : (Group 30 pm_isource) L1 D cache entries invalidated from L2
+
+#Group 31 pm_sync, Sync and SRQ
+event:0X1F0 counters:0 um:zero minimum:1000 name:PM_LSU_SRQ_S0_ALLOC_GRP31 : (Group 31 pm_sync) SRQ slot 0 allocated
+event:0X1F1 counters:1 um:zero minimum:1000 name:PM_LSU_SRQ_S0_VALID_GRP31 : (Group 31 pm_sync) SRQ slot 0 valid
+event:0X1F2 counters:2 um:zero minimum:1000 name:PM_LD_MISS_L1_GRP31 : (Group 31 pm_sync) L1 D cache load misses
+event:0X1F3 counters:3 um:zero minimum:1000 name:PM_LSU_SRQ_SYNC_CYC_GRP31 : (Group 31 pm_sync) SRQ sync duration
+event:0X1F4 counters:4 um:zero minimum:10000 name:PM_INST_CMPL_GRP31 : (Group 31 pm_sync) Instructions completed
+event:0X1F5 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP31 : (Group 31 pm_sync) Instructions completed
+event:0X1F6 counters:6 um:zero minimum:10000 name:PM_CYC_GRP31 : (Group 31 pm_sync) Processor cycles
+event:0X1F7 counters:7 um:zero minimum:1000 name:PM_LD_REF_L1_GRP31 : (Group 31 pm_sync) L1 D cache load references
+
+#Group 32 pm_ierat, IERAT
+event:0X200 counters:0 um:zero minimum:1000 name:PM_INST_FROM_L1_GRP32 : (Group 32 pm_ierat) Instruction fetched from L1
+event:0X201 counters:1 um:zero minimum:10000 name:PM_INST_CMPL_GRP32 : (Group 32 pm_ierat) Instructions completed
+event:0X202 counters:2 um:zero minimum:1000 name:PM_IERAT_XLATE_WR_GRP32 : (Group 32 pm_ierat) Translation written to ierat
+event:0X203 counters:3 um:zero minimum:10000 name:PM_CYC_GRP32 : (Group 32 pm_ierat) Processor cycles
+event:0X204 counters:4 um:zero minimum:10000 name:PM_INST_CMPL_GRP32 : (Group 32 pm_ierat) Instructions completed
+event:0X205 counters:5 um:zero minimum:10000 name:PM_CYC_GRP32 : (Group 32 pm_ierat) Processor cycles
+event:0X206 counters:6 um:zero minimum:10000 name:PM_INST_CMPL_GRP32 : (Group 32 pm_ierat) Instructions completed
+event:0X207 counters:7 um:zero minimum:10000 name:PM_CYC_GRP32 : (Group 32 pm_ierat) Processor cycles
+
+#Group 33 pm_derat, DERAT
+event:0X210 counters:0 um:zero minimum:1000 name:PM_GCT_EMPTY_CYC_GRP33 : (Group 33 pm_derat) Cycles GCT empty
+event:0X211 counters:1 um:zero minimum:1000 name:PM_GRP_DISP_VALID_GRP33 : (Group 33 pm_derat) Group dispatch valid
+event:0X212 counters:2 um:zero minimum:1000 name:PM_L1_DCACHE_RELOAD_VALID_GRP33 : (Group 33 pm_derat) L1 reload data source valid
+event:0X213 counters:3 um:zero minimum:10000 name:PM_INST_CMPL_GRP33 : (Group 33 pm_derat) Instructions completed
+event:0X214 counters:4 um:zero minimum:1000 name:PM_INST_DISP_GRP33 : (Group 33 pm_derat) Instructions dispatched
+event:0X215 counters:5 um:zero minimum:1000 name:PM_LSU_DERAT_MISS_GRP33 : (Group 33 pm_derat) DERAT misses
+event:0X216 counters:6 um:zero minimum:1000 name:PM_ST_REF_L1_GRP33 : (Group 33 pm_derat) L1 D cache store references
+event:0X217 counters:7 um:zero minimum:10000 name:PM_CYC_GRP33 : (Group 33 pm_derat) Processor cycles
+
+#Group 34 pm_mark1, Information on marked instructions
+event:0X220 counters:0 um:zero minimum:1000 name:PM_MRK_LD_MISS_L1_GRP34 : (Group 34 pm_mark1) Marked L1 D cache load misses
+event:0X221 counters:1 um:zero minimum:1000 name:PM_THRESH_TIMEO_GRP34 : (Group 34 pm_mark1) Threshold timeout
+event:0X222 counters:2 um:zero minimum:10000 name:PM_CYC_GRP34 : (Group 34 pm_mark1) Processor cycles
+event:0X223 counters:3 um:zero minimum:1000 name:PM_MRK_GRP_CMPL_GRP34 : (Group 34 pm_mark1) Marked group completed
+event:0X224 counters:4 um:zero minimum:1000 name:PM_GRP_MRK_GRP34 : (Group 34 pm_mark1) Group marked in IDU
+event:0X225 counters:5 um:zero minimum:1000 name:PM_MRK_GRP_ISSUED_GRP34 : (Group 34 pm_mark1) Marked group issued
+event:0X226 counters:6 um:zero minimum:1000 name:PM_MRK_INST_FIN_GRP34 : (Group 34 pm_mark1) Marked instruction finished
+event:0X227 counters:7 um:zero minimum:10000 name:PM_INST_CMPL_GRP34 : (Group 34 pm_mark1) Instructions completed
+
+#Group 35 pm_mark2, Marked Instructions Processing Flow
+event:0X230 counters:0 um:zero minimum:1000 name:PM_MRK_GRP_DISP_GRP35 : (Group 35 pm_mark2) Marked group dispatched
+event:0X231 counters:1 um:zero minimum:1000 name:PM_MRK_BRU_FIN_GRP35 : (Group 35 pm_mark2) Marked instruction BRU processing finished
+event:0X232 counters:2 um:zero minimum:10000 name:PM_CYC_GRP35 : (Group 35 pm_mark2) Processor cycles
+event:0X233 counters:3 um:zero minimum:1000 name:PM_MRK_CRU_FIN_GRP35 : (Group 35 pm_mark2) Marked instruction CRU processing finished
+event:0X234 counters:4 um:zero minimum:1000 name:PM_GRP_MRK_GRP35 : (Group 35 pm_mark2) Group marked in IDU
+event:0X235 counters:5 um:zero minimum:1000 name:PM_MRK_FXU_FIN_GRP35 : (Group 35 pm_mark2) Marked instruction FXU processing finished
+event:0X236 counters:6 um:zero minimum:1000 name:PM_MRK_FPU_FIN_GRP35 : (Group 35 pm_mark2) Marked instruction FPU processing finished
+event:0X237 counters:7 um:zero minimum:1000 name:PM_MRK_LSU_FIN_GRP35 : (Group 35 pm_mark2) Marked instruction LSU processing finished
+
+#Group 36 pm_mark3, Marked Stores Processing Flow
+event:0X240 counters:0 um:zero minimum:1000 name:PM_MRK_ST_CMPL_GRP36 : (Group 36 pm_mark3) Marked store instruction completed
+event:0X241 counters:1 um:zero minimum:10000 name:PM_CYC_GRP36 : (Group 36 pm_mark3) Processor cycles
+event:0X242 counters:2 um:zero minimum:1000 name:PM_MRK_ST_CMPL_INT_GRP36 : (Group 36 pm_mark3) Marked store completed with intervention
+event:0X243 counters:3 um:zero minimum:1000 name:PM_MRK_GRP_CMPL_GRP36 : (Group 36 pm_mark3) Marked group completed
+event:0X244 counters:4 um:zero minimum:1000 name:PM_MRK_GRP_TIMEO_GRP36 : (Group 36 pm_mark3) Marked group completion timeout
+event:0X245 counters:5 um:zero minimum:1000 name:PM_MRK_ST_GPS_GRP36 : (Group 36 pm_mark3) Marked store sent to GPS
+event:0X246 counters:6 um:zero minimum:1000 name:PM_MRK_LSU_SRQ_INST_VALID_GRP36 : (Group 36 pm_mark3) Marked instruction valid in SRQ
+event:0X247 counters:7 um:zero minimum:10000 name:PM_INST_CMPL_GRP36 : (Group 36 pm_mark3) Instructions completed
+
+#Group 37 pm_lsu_mark1, Load Store Unit Marked Events
+event:0X250 counters:0 um:zero minimum:1000 name:PM_MRK_ST_MISS_L1_GRP37 : (Group 37 pm_lsu_mark1) Marked L1 D cache store misses
+event:0X251 counters:1 um:zero minimum:1000 name:PM_MRK_IMR_RELOAD_GRP37 : (Group 37 pm_lsu_mark1) Marked IMR reloaded
+event:0X252 counters:2 um:zero minimum:1000 name:PM_MRK_LSU0_FLUSH_UST_GRP37 : (Group 37 pm_lsu_mark1) LSU0 marked unaligned store flushes
+event:0X253 counters:3 um:zero minimum:1000 name:PM_MRK_LSU1_FLUSH_UST_GRP37 : (Group 37 pm_lsu_mark1) LSU1 marked unaligned store flushes
+event:0X254 counters:4 um:zero minimum:10000 name:PM_CYC_GRP37 : (Group 37 pm_lsu_mark1) Processor cycles
+event:0X255 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP37 : (Group 37 pm_lsu_mark1) Instructions completed
+event:0X256 counters:6 um:zero minimum:1000 name:PM_MRK_LSU0_FLUSH_ULD_GRP37 : (Group 37 pm_lsu_mark1) LSU0 marked unaligned load flushes
+event:0X257 counters:7 um:zero minimum:1000 name:PM_MRK_LSU1_FLUSH_ULD_GRP37 : (Group 37 pm_lsu_mark1) LSU1 marked unaligned load flushes
+
+#Group 38 pm_lsu_mark2, Load Store Unit Marked Events
+event:0X260 counters:0 um:zero minimum:1000 name:PM_MRK_LD_MISS_L1_LSU0_GRP38 : (Group 38 pm_lsu_mark2) LSU0 L1 D cache load misses
+event:0X261 counters:1 um:zero minimum:1000 name:PM_MRK_LD_MISS_L1_LSU1_GRP38 : (Group 38 pm_lsu_mark2) LSU1 L1 D cache load misses
+event:0X262 counters:2 um:zero minimum:1000 name:PM_MRK_LSU0_FLUSH_LRQ_GRP38 : (Group 38 pm_lsu_mark2) LSU0 marked LRQ flushes
+event:0X263 counters:3 um:zero minimum:1000 name:PM_MRK_LSU1_FLUSH_LRQ_GRP38 : (Group 38 pm_lsu_mark2) LSU1 marked LRQ flushes
+event:0X264 counters:4 um:zero minimum:10000 name:PM_CYC_GRP38 : (Group 38 pm_lsu_mark2) Processor cycles
+event:0X265 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP38 : (Group 38 pm_lsu_mark2) Instructions completed
+event:0X266 counters:6 um:zero minimum:1000 name:PM_MRK_LSU0_FLUSH_SRQ_GRP38 : (Group 38 pm_lsu_mark2) LSU0 marked SRQ flushes
+event:0X267 counters:7 um:zero minimum:1000 name:PM_MRK_LSU1_FLUSH_SRQ_GRP38 : (Group 38 pm_lsu_mark2) LSU1 marked SRQ flushes
+
+#Group 39 pm_fxu1, Fixed Point events by unit
+event:0X270 counters:0 um:zero minimum:10000 name:PM_INST_CMPL_GRP39 : (Group 39 pm_fxu1) Instructions completed
+event:0X271 counters:1 um:zero minimum:10000 name:PM_INST_CMPL_GRP39 : (Group 39 pm_fxu1) Instructions completed
+event:0X272 counters:2 um:zero minimum:1000 name:PM_FXU_FIN_GRP39 : (Group 39 pm_fxu1) FXU produced a result
+event:0X273 counters:3 um:zero minimum:1000 name:PM_FXU1_BUSY_FXU0_IDLE_GRP39 : (Group 39 pm_fxu1) FXU1 busy FXU0 idle
+event:0X274 counters:4 um:zero minimum:1000 name:PM_FXU_IDLE_GRP39 : (Group 39 pm_fxu1) FXU idle
+event:0X275 counters:5 um:zero minimum:1000 name:PM_FXU_BUSY_GRP39 : (Group 39 pm_fxu1) FXU busy
+event:0X276 counters:6 um:zero minimum:1000 name:PM_FXU0_BUSY_FXU1_IDLE_GRP39 : (Group 39 pm_fxu1) FXU0 busy FXU1 idle
+event:0X277 counters:7 um:zero minimum:10000 name:PM_CYC_GRP39 : (Group 39 pm_fxu1) Processor cycles
+
+#Group 40 pm_fxu2, Fixed Point events by unit
+event:0X280 counters:0 um:zero minimum:10000 name:PM_INST_CMPL_GRP40 : (Group 40 pm_fxu2) Instructions completed
+event:0X281 counters:1 um:zero minimum:10000 name:PM_CYC_GRP40 : (Group 40 pm_fxu2) Processor cycles
+event:0X282 counters:2 um:zero minimum:1000 name:PM_FXLS1_FULL_CYC_GRP40 : (Group 40 pm_fxu2) Cycles FXU1/LS1 queue full
+event:0X283 counters:3 um:zero minimum:1000 name:PM_FXLS0_FULL_CYC_GRP40 : (Group 40 pm_fxu2) Cycles FXU0/LS0 queue full
+event:0X284 counters:4 um:zero minimum:1000 name:PM_FXU_IDLE_GRP40 : (Group 40 pm_fxu2) FXU idle
+event:0X285 counters:5 um:zero minimum:1000 name:PM_FXU_BUSY_GRP40 : (Group 40 pm_fxu2) FXU busy
+event:0X286 counters:6 um:zero minimum:1000 name:PM_FXU0_FIN_GRP40 : (Group 40 pm_fxu2) FXU0 produced a result
+event:0X287 counters:7 um:zero minimum:1000 name:PM_FXU1_FIN_GRP40 : (Group 40 pm_fxu2) FXU1 produced a result
+
+#Group 41 pm_ifu, pm_ifu
+event:0X290 counters:0 um:zero minimum:1000 name:PM_INST_FROM_L1_GRP41 : (Group 41 pm_ifu) Instruction fetched from L1
+event:0X291 counters:1 um:zero minimum:1000 name:PM_INST_FROM_MEM_GRP41 : (Group 41 pm_ifu) Instruction fetched from memory
+event:0X292 counters:2 um:zero minimum:1000 name:PM_INST_FROM_PREF_GRP41 : (Group 41 pm_ifu) Instructions fetched from prefetch
+event:0X293 counters:3 um:zero minimum:1000 name:PM_0INST_FETCH_GRP41 : (Group 41 pm_ifu) No instructions fetched
+event:0X294 counters:4 um:zero minimum:1000 name:PM_INST_FETCH_CYC_GRP41 : (Group 41 pm_ifu) Cycles at least 1 instruction fetched
+event:0X295 counters:5 um:zero minimum:1000 name:PM_INST_FROM_L25_MOD_GRP41 : (Group 41 pm_ifu) Instruction fetched from L2.5 modified
+event:0X296 counters:6 um:zero minimum:10000 name:PM_CYC_GRP41 : (Group 41 pm_ifu) Processor cycles
+event:0X297 counters:7 um:zero minimum:10000 name:PM_INST_CMPL_GRP41 : (Group 41 pm_ifu) Instructions completed
+
+#Group 42 pm_cpi_stack1, CPI stack analysis
+event:0X2A0 counters:0 um:zero minimum:1000 name:PM_LSU0_BUSY_GRP42 : (Group 42 pm_cpi_stack1) LSU0 busy
+event:0X2A1 counters:1 um:zero minimum:1000 name:PM_LSU1_BUSY_GRP42 : (Group 42 pm_cpi_stack1) LSU1 busy
+event:0X2A2 counters:2 um:zero minimum:1000 name:PM_LSU_FLUSH_GRP42 : (Group 42 pm_cpi_stack1) Flush initiated by LSU
+event:0X2A3 counters:3 um:zero minimum:1000 name:PM_FLUSH_LSU_BR_MPRED_GRP42 : (Group 42 pm_cpi_stack1) Flush caused by LSU or branch mispredict
+event:0X2A4 counters:4 um:zero minimum:1000 name:PM_CMPLU_STALL_LSU_GRP42 : (Group 42 pm_cpi_stack1) Completion stall caused by LSU instruction
+event:0X2A5 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP42 : (Group 42 pm_cpi_stack1) Instructions completed
+event:0X2A6 counters:6 um:zero minimum:1000 name:PM_CMPLU_STALL_ERAT_MISS_GRP42 : (Group 42 pm_cpi_stack1) Completion stall caused by ERAT miss
+event:0X2A7 counters:7 um:zero minimum:10000 name:PM_CYC_GRP42 : (Group 42 pm_cpi_stack1) Processor cycles
+
+#Group 43 pm_cpi_stack2, CPI stack analysis
+event:0X2B0 counters:0 um:zero minimum:1000 name:PM_CMPLU_STALL_OTHER_GRP43 : (Group 43 pm_cpi_stack2) Completion stall caused by other reason
+event:0X2B1 counters:1 um:zero minimum:10000 name:PM_INST_CMPL_GRP43 : (Group 43 pm_cpi_stack2) Instructions completed
+event:0X2B2 counters:2 um:zero minimum:1000 name:PM_LD_MISS_L1_GRP43 : (Group 43 pm_cpi_stack2) L1 D cache load misses
+event:0X2B3 counters:3 um:zero minimum:10000 name:PM_CYC_GRP43 : (Group 43 pm_cpi_stack2) Processor cycles
+event:0X2B4 counters:4 um:zero minimum:1000 name:PM_CMPLU_STALL_DCACHE_MISS_GRP43 : (Group 43 pm_cpi_stack2) Completion stall caused by D cache miss
+event:0X2B5 counters:5 um:zero minimum:1000 name:PM_LSU_DERAT_MISS_GRP43 : (Group 43 pm_cpi_stack2) DERAT misses
+event:0X2B6 counters:6 um:zero minimum:1000 name:PM_CMPLU_STALL_REJECT_GRP43 : (Group 43 pm_cpi_stack2) Completion stall caused by reject
+event:0X2B7 counters:7 um:zero minimum:1000 name:PM_LD_REF_L1_GRP43 : (Group 43 pm_cpi_stack2) L1 D cache load references
+
+#Group 44 pm_cpi_stack3, CPI stack analysis
+event:0X2C0 counters:0 um:zero minimum:10000 name:PM_INST_CMPL_GRP44 : (Group 44 pm_cpi_stack3) Instructions completed
+event:0X2C1 counters:1 um:zero minimum:1000 name:PM_GCT_EMPTY_SRQ_FULL_GRP44 : (Group 44 pm_cpi_stack3) GCT empty caused by SRQ full
+event:0X2C2 counters:2 um:zero minimum:1000 name:PM_FXU_FIN_GRP44 : (Group 44 pm_cpi_stack3) FXU produced a result
+event:0X2C3 counters:3 um:zero minimum:1000 name:PM_FPU_FIN_GRP44 : (Group 44 pm_cpi_stack3) FPU produced a result
+event:0X2C4 counters:4 um:zero minimum:1000 name:PM_CMPLU_STALL_FXU_GRP44 : (Group 44 pm_cpi_stack3) Completion stall caused by FXU instruction
+event:0X2C5 counters:5 um:zero minimum:1000 name:PM_FXU_BUSY_GRP44 : (Group 44 pm_cpi_stack3) FXU busy
+event:0X2C6 counters:6 um:zero minimum:1000 name:PM_CMPLU_STALL_DIV_GRP44 : (Group 44 pm_cpi_stack3) Completion stall caused by DIV instruction
+event:0X2C7 counters:7 um:zero minimum:10000 name:PM_CYC_GRP44 : (Group 44 pm_cpi_stack3) Processor cycles
+
+#Group 45 pm_cpi_stack4, CPI stack analysis
+event:0X2D0 counters:0 um:zero minimum:1000 name:PM_FPU_FDIV_GRP45 : (Group 45 pm_cpi_stack4) FPU executed FDIV instruction
+event:0X2D1 counters:1 um:zero minimum:1000 name:PM_FPU_FMA_GRP45 : (Group 45 pm_cpi_stack4) FPU executed multiply-add instruction
+event:0X2D2 counters:2 um:zero minimum:10000 name:PM_INST_CMPL_GRP45 : (Group 45 pm_cpi_stack4) Instructions completed
+event:0X2D3 counters:3 um:zero minimum:10000 name:PM_INST_CMPL_GRP45 : (Group 45 pm_cpi_stack4) Instructions completed
+event:0X2D4 counters:4 um:zero minimum:1000 name:PM_CMPLU_STALL_FDIV_GRP45 : (Group 45 pm_cpi_stack4) Completion stall caused by FDIV or FQRT instruction
+event:0X2D5 counters:5 um:zero minimum:1000 name:PM_FPU_FSQRT_GRP45 : (Group 45 pm_cpi_stack4) FPU executed FSQRT instruction
+event:0X2D6 counters:6 um:zero minimum:1000 name:PM_CMPLU_STALL_FPU_GRP45 : (Group 45 pm_cpi_stack4) Completion stall caused by FPU instruction
+event:0X2D7 counters:7 um:zero minimum:10000 name:PM_CYC_GRP45 : (Group 45 pm_cpi_stack4) Processor cycles
+
+#Group 46 pm_cpi_stack5, CPI stack analysis
+event:0X2E0 counters:0 um:zero minimum:1000 name:PM_GCT_EMPTY_CYC_GRP46 : (Group 46 pm_cpi_stack5) Cycles GCT empty
+event:0X2E1 counters:1 um:zero minimum:10000 name:PM_INST_CMPL_GRP46 : (Group 46 pm_cpi_stack5) Instructions completed
+event:0X2E2 counters:2 um:zero minimum:1000 name:PM_FLUSH_BR_MPRED_GRP46 : (Group 46 pm_cpi_stack5) Flush caused by branch mispredict
+event:0X2E3 counters:3 um:zero minimum:1000 name:PM_BR_MPRED_TA_GRP46 : (Group 46 pm_cpi_stack5) Branch mispredictions due to target address
+event:0X2E4 counters:4 um:zero minimum:1000 name:PM_GCT_EMPTY_IC_MISS_GRP46 : (Group 46 pm_cpi_stack5) GCT empty due to I cache miss
+event:0X2E5 counters:5 um:zero minimum:10000 name:PM_CYC_GRP46 : (Group 46 pm_cpi_stack5) Processor cycles
+event:0X2E6 counters:6 um:zero minimum:1000 name:PM_GCT_EMPTY_BR_MPRED_GRP46 : (Group 46 pm_cpi_stack5) GCT empty due to branch mispredict
+event:0X2E7 counters:7 um:zero minimum:1000 name:PM_L1_WRITE_CYC_GRP46 : (Group 46 pm_cpi_stack5) Cycles writing to instruction L1
+
+#Group 47 pm_data2, data source and LMQ
+event:0X2F0 counters:0 um:zero minimum:1000 name:PM_DATA_FROM_L25_SHR_GRP47 : (Group 47 pm_data2) Data loaded from L2.5 shared
+event:0X2F1 counters:1 um:zero minimum:10000 name:PM_INST_CMPL_GRP47 : (Group 47 pm_data2) Instructions completed
+event:0X2F2 counters:2 um:zero minimum:1000 name:PM_DATA_FROM_L25_MOD_GRP47 : (Group 47 pm_data2) Data loaded from L2.5 modified
+event:0X2F3 counters:3 um:zero minimum:10000 name:PM_CYC_GRP47 : (Group 47 pm_data2) Processor cycles
+event:0X2F4 counters:4 um:zero minimum:10000 name:PM_INST_CMPL_GRP47 : (Group 47 pm_data2) Instructions completed
+event:0X2F5 counters:5 um:zero minimum:10000 name:PM_CYC_GRP47 : (Group 47 pm_data2) Processor cycles
+event:0X2F6 counters:6 um:zero minimum:1000 name:PM_LSU_LMQ_S0_ALLOC_GRP47 : (Group 47 pm_data2) LMQ slot 0 allocated
+event:0X2F7 counters:7 um:zero minimum:1000 name:PM_LSU_LMQ_S0_VALID_GRP47 : (Group 47 pm_data2) LMQ slot 0 valid
+
+#Group 48 pm_fetch_branch, Instruction fetch and branch events
+event:0X300 counters:0 um:zero minimum:1000 name:PM_INST_FROM_L2_GRP48 : (Group 48 pm_fetch_branch) Instructions fetched from L2
+event:0X301 counters:1 um:zero minimum:1000 name:PM_INST_FROM_MEM_GRP48 : (Group 48 pm_fetch_branch) Instruction fetched from memory
+event:0X302 counters:2 um:zero minimum:1000 name:PM_INST_FROM_PREF_GRP48 : (Group 48 pm_fetch_branch) Instructions fetched from prefetch
+event:0X303 counters:3 um:zero minimum:1000 name:PM_BR_ISSUED_GRP48 : (Group 48 pm_fetch_branch) Branches issued
+event:0X304 counters:4 um:zero minimum:10000 name:PM_CYC_GRP48 : (Group 48 pm_fetch_branch) Processor cycles
+event:0X305 counters:5 um:zero minimum:10000 name:PM_INST_CMPL_GRP48 : (Group 48 pm_fetch_branch) Instructions completed
+event:0X306 counters:6 um:zero minimum:1000 name:PM_BR_MPRED_CR_GRP48 : (Group 48 pm_fetch_branch) Branch mispredictions due to CR bit setting
+event:0X307 counters:7 um:zero minimum:1000 name:PM_BR_MPRED_TA_GRP48 : (Group 48 pm_fetch_branch) Branch mispredictions due to target address
+
+#Group 49 pm_l1l2_miss, L1 and L2 miss events
+event:0X310 counters:0 um:zero minimum:1000 name:PM_DATA_FROM_L2_GRP49 : (Group 49 pm_l1l2_miss) Data loaded from L2
+event:0X311 counters:1 um:zero minimum:10000 name:PM_INST_CMPL_GRP49 : (Group 49 pm_l1l2_miss) Instructions completed
+event:0X312 counters:2 um:zero minimum:1000 name:PM_DATA_FROM_MEM_GRP49 : (Group 49 pm_l1l2_miss) Data loaded from memory
+event:0X313 counters:3 um:zero minimum:1000 name:PM_LD_MISS_L1_LSU0_GRP49 : (Group 49 pm_l1l2_miss) LSU0 L1 D cache load misses
+event:0X314 counters:4 um:zero minimum:1000 name:PM_1PLUS_PPC_CMPL_GRP49 : (Group 49 pm_l1l2_miss) One or more PPC instruction completed
+event:0X315 counters:5 um:zero minimum:10000 name:PM_CYC_GRP49 : (Group 49 pm_l1l2_miss) Processor cycles
+event:0X316 counters:6 um:zero minimum:1000 name:PM_LD_MISS_L1_LSU1_GRP49 : (Group 49 pm_l1l2_miss) LSU1 L1 D cache load misses
+event:0X317 counters:7 um:zero minimum:1000 name:PM_LD_REF_L1_GRP49 : (Group 49 pm_l1l2_miss) L1 D cache load references

@@ -1,0 +1,241 @@
+# AMD Family 10 processor performance events
+#
+# Copyright OProfile authors
+# Copyright (c) 2006-2008 Advanced Micro Devices
+# Contributed by Ray Bryant <raybry at amd.com>,
+#		Jason Yeh <jason.yeh at amd.com>
+#		Suravee Suthikulpanit <suravee.suthikulpanit at amd.com>
+#
+# Sources: BIOS and Kernel Developer's Guide for AMD Family 10h Processors,
+#          Publication# 31116, Revision 3.28, May 28, 2009
+#
+#          Software Optimization Guide for AMD Family 10h Processors,
+#          Publication# 40546, Revision 3.04, September 2007
+#
+# Revision: 1.3
+#
+# ChangeLog: 
+#	1.3: 22 October 2009.
+# 	- Update from BKDG Rev 3.28 to Rev 3.34 (no change)
+#	- Specify that event 4EDh is for Rev D only
+#
+#	1.2: 03 June 2009.
+# 	- Update from BKDG Rev 3.20 to Rev 3.28
+#	- Add Event 4EDh
+#	- Modify unitmasks for 4E0h-4E3h
+#
+#	1.1: 06 April 2009.
+# 	- Add IBS-derived events
+# 	- Update from BKDG Rev 3.00 to Rev 3.20
+# 	- Add Events 165h, 1c0h, 1cfh, 1d3h-1d5h
+#
+# Floating point events
+event:0x00 counters:0,1,2,3 um:fpu_ops minimum:500 name:DISPATCHED_FPU_OPS : Dispatched FPU ops
+event:0x01 counters:0,1,2,3 um:zero minimum:500 name:CYCLES_FPU_EMPTY : The number of cycles in which the PFU is empty
+event:0x02 counters:0,1,2,3 um:zero minimum:500 name:DISPATCHED_FPU_OPS_FAST_FLAG : The number of FPU operations that use the fast flag interface
+event:0x03 counters:0,1,2,3 um:sse_ops minimum:500 name:RETIRED_SSE_OPS : The number of SSE ops or uops retired
+event:0x04 counters:0,1,2,3 um:move_ops minimum:500 name:RETIRED_MOVE_OPS : The number of move uops retired
+event:0x05 counters:0,1,2,3 um:serial_ops minimum:500 name:RETIRED_SERIALIZING_OPS : The number of serializing uops retired.
+event:0x06 counters:0,1,2,3 um:serial_ops_sched minimum:500 name:SERIAL_UOPS_IN_FP_SCHED : Number of cycles a serializing uop is in the FP scheduler
+
+# Load, Store, and TLB events
+event:0x20 counters:0,1,2,3 um:segregload minimum:500 name:SEGMENT_REGISTER_LOADS : Segment register loads
+event:0x21 counters:0,1,2,3 um:zero minimum:500 name:PIPELINE_RESTART_DUE_TO_SELF_MODIFYING_CODE : Micro-architectural re-sync caused by self modifying code
+event:0x22 counters:0,1,2,3 um:zero minimum:500 name:PIPELINE_RESTART_DUE_TO_PROBE_HIT : Micro-architectural re-sync caused by snoop
+event:0x23 counters:0,1,2,3 um:zero minimum:500 name:LS_BUFFER_2_FULL_CYCLES : Cycles LS Buffer 2 Full
+event:0x24 counters:0,1,2,3 um:lock_ops minimum:500 name:LOCKED_OPS : Locked operations
+event:0x26 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_CLFLUSH_INSTRUCTIONS : Retired CLFLUSH instructions
+event:0x27 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_CPUID_INSTRUCTIONS : Retired CPUID instructions
+event:0x2a counters:0,1,2,3 um:store_to_load minimum:500 name:CANCELLED_STORE_TO_LOAD : Counts the number of cancelled store to load forward operations
+event:0x2b counters:0,1,2,3 um:zero minimum:500 name:SMIS_RECEIVED : Counts the number of SMIs received by the processor
+
+# Data Cache event
+event:0x40 counters:0,1,2,3 um:zero minimum:500 name:DATA_CACHE_ACCESSES : Data cache accesses
+event:0x41 counters:0,1,2,3 um:zero minimum:500 name:DATA_CACHE_MISSES : Data cache misses
+# Note: unit mask 0x01 counts same events as event select 0x43
+event:0x42 counters:0,1,2,3 um:moess minimum:500 name:DATA_CACHE_REFILLS_FROM_L2_OR_NORTHBRIDGE : Data cache refills from L2 or Northbridge
+event:0x43 counters:0,1,2,3 um:moesi minimum:500 name:DATA_CACHE_REFILLS_FROM_NORTHBRIDGE : Data cache refills from Northbridge
+event:0x44 counters:0,1,2,3 um:moesi_gh minimum:500 name:DATA_CACHE_LINES_EVICTED : Data cache lines evicted
+event:0x45 counters:0,1,2,3 um:l1_dtlb_miss_l2_hit minimum:500 name:L1_DTLB_MISS_AND_L2_DTLB_HIT : L1 DTLB miss and L2 DTLB hit
+event:0x46 counters:0,1,2,3 um:l1_l2_dtlb_miss minimum:500 name:L1_DTLB_AND_L2_DTLB_MISS : L1 DTLB and L2 DTLB miss
+event:0x47 counters:0,1,2,3 um:zero minimum:500 name:MISALIGNED_ACCESSES : Misaligned Accesses
+event:0x48 counters:0,1,2,3 um:zero minimum:500 name:MICRO_ARCH_LATE_CANCEL_ACCESS : Microarchitectural late cancel of an access
+event:0x49 counters:0,1,2,3 um:zero minimum:500 name:MICRO_ARCH_EARLY_CANCEL_ACCESS : Microarchitectural early cancel of an access
+event:0x4a counters:0,1,2,3 um:ecc minimum:500 name:1_BIT_ECC_ERRORS : Single-bit ECC errors recorded by scrubber
+event:0x4b counters:0,1,2,3 um:prefetch minimum:500 name:PREFETCH_INSTRUCTIONS_DISPATCHED : The number of prefetch instructions dispatched by the decoder
+event:0x4c counters:0,1,2,3 um:locked_instruction_dcache_miss minimum:500 name:LOCKED_INSTRUCTIONS_DCACHE_MISSES : The number of dta cache misses by locked instructions.
+event:0x4d counters:0,1,2,3 um:l1_dtlb_hit minimum:500 name:L1_DTLB_HIT : L1 DTLB hit
+event:0x52 counters:0,1,2,3 um:soft_prefetch minimum:500 name:INEFFECTIVE_SW_PREFETCHES : Number of software prefetches that did not fetch data outside of processor core
+event:0x54 counters:0,1,2,3 um:zero minimum:500 name:GLOBAL_TLB_FLUSHES : The number of global TLB flushes
+
+# L2 Cache and System Interface events
+event:0x65 counters:0,1,2,3 um:memreqtype minimum:500 name:MEMORY_REQUESTS : Memory requests by type
+event:0x67 counters:0,1,2,3 um:dataprefetch minimum:500 name:DATA_PREFETCHES : Data prefetcher
+event:0x6c counters:0,1,2,3 um:systemreadresponse minimum:500 name:NORTHBRIDGE_READ_RESPONSES : Northbridge read responses by coherency state
+event:0x6d counters:0,1,2,3 um:octword_transfer minimum:500 name:OCTWORD_WRITE_TRANSFERS : Octwords written to system
+event:0x76 counters:0,1,2,3 um:zero minimum:50000 name:CPU_CLK_UNHALTED : Cycles outside of halt state
+event:0x7d counters:0,1,2,3 um:l2_internal minimum:500 name:REQUESTS_TO_L2 : Requests to L2 Cache
+event:0x7e counters:0,1,2,3 um:l2_req_miss minimum:500 name:L2_CACHE_MISS : L2 cache misses
+event:0x7f counters:0,1,2,3 um:l2_fill minimum:500 name:L2_CACHE_FILL_WRITEBACK : L2 fill/writeback
+event:0x165 counters:0,1,2,3 um:page_size_mismatches minimum:500 name:PAGE_SIZE_MISMATCHES : Page Size Mismatches
+
+# Instruction Cache events
+event:0x80 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_CACHE_FETCHES : Instruction cache fetches (RevE)
+event:0x81 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_CACHE_MISSES : Instruction cache misses
+event:0x82 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_CACHE_REFILLS_FROM_L2 : Instruction cache refills from L2
+event:0x83 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_CACHE_REFILLS_FROM_SYSTEM : Instruction cache refills from system
+event:0x84 counters:0,1,2,3 um:zero minimum:500 name:L1_ITLB_MISS_AND_L2_ITLB_HIT : L1 ITLB miss and L2 ITLB hit
+event:0x85 counters:0,1,2,3 um:l1_l2_itlb_miss minimum:500 name:L1_ITLB_MISS_AND_L2_ITLB_MISS : L1 ITLB miss and L2 ITLB miss
+event:0x86 counters:0,1,2,3 um:zero minimum:500 name:PIPELINE_RESTART_DUE_TO_INSTRUCTION_STREAM_PROBE : Pipeline restart due to instruction stream probe
+event:0x87 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_FETCH_STALL : Instruction fetch stall
+event:0x88 counters:0,1,2,3 um:zero minimum:500 name:RETURN_STACK_HITS : Return stack hit
+event:0x89 counters:0,1,2,3 um:zero minimum:500 name:RETURN_STACK_OVERFLOWS : Return stack overflow
+event:0x8b counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_CACHE_VICTIMS : Number of instruction cache lines evicticed to the L2 cache
+event:0x8c counters:0,1,2,3 um:icache_invalidated minimum:500 name:INSTRUCTION_CACHE_INVALIDATED : Instruction cache lines invalidated
+event:0x99 counters:0,1,2,3 um:zero minimum:500 name:ITLB_RELOADS : The number of ITLB reloads requests
+event:0x9a counters:0,1,2,3 um:zero minimum:500 name:ITLB_RELOADS_ABORTED : The number of ITLB reloads aborted
+
+# Execution Unit events
+event:0xc0 counters:0,1,2,3 um:zero minimum:50000 name:RETIRED_INSTRUCTIONS : Retired instructions (includes exceptions, interrupts, re-syncs)
+event:0xc1 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_UOPS : Retired micro-ops
+event:0xc2 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_BRANCH_INSTRUCTIONS : Retired branches (conditional, unconditional, exceptions, interrupts)
+event:0xc3 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_MISPREDICTED_BRANCH_INSTRUCTIONS : Retired mispredicted branch instructions
+event:0xc4 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_TAKEN_BRANCH_INSTRUCTIONS : Retired taken branch instructions
+event:0xc5 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_TAKEN_BRANCH_INSTRUCTIONS_MISPREDICTED : Retired taken branches mispredicted
+event:0xc6 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_FAR_CONTROL_TRANSFERS : Retired far control transfers
+event:0xc7 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_BRANCH_RESYNCS : Retired branches resyncs (only non-control transfer branches)
+event:0xc8 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_NEAR_RETURNS : Retired near returns
+event:0xc9 counters:0,1,2,3 um:zero minimum:500 name:RETIRED_NEAR_RETURNS_MISPREDICTED : Retired near returns mispredicted
+event:0xca counters:0,1,2,3 um:zero minimum:500 name:RETIRED_INDIRECT_BRANCHES_MISPREDICTED : Retired indirect branches mispredicted
+event:0xcb counters:0,1,2,3 um:fpu_instr minimum:500 name:RETIRED_MMX_FP_INSTRUCTIONS : Retired MMX/FP instructions
+event:0xcc counters:0,1,2,3 um:fpu_fastpath minimum:500 name:RETIRED_FASTPATH_DOUBLE_OP_INSTRUCTIONS : Retired FastPath double-op instructions
+event:0xcd counters:0,1,2,3 um:zero minimum:500 name:INTERRUPTS_MASKED_CYCLES : Cycles with interrupts masked (IF=0)
+event:0xce counters:0,1,2,3 um:zero minimum:500 name:INTERRUPTS_MASKED_CYCLES_WITH_INTERRUPT_PENDING : Cycles with interrupts masked while interrupt pending
+event:0xcf counters:0,1,2,3 um:zero minimum:500 name:INTERRUPTS_TAKEN : Number of taken hardware interrupts
+event:0xd0 counters:0,1,2,3 um:zero minimum:500 name:DECODER_EMPTY : Nothing to dispatch (decoder empty)
+event:0xd1 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALLS : Dispatch stalls
+event:0xd2 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_BRANCH_ABORT : Dispatch stall from branch abort to retire
+event:0xd3 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_SERIALIZATION : Dispatch stall for serialization
+event:0xd4 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_SEGMENT_LOAD : Dispatch stall for segment load
+event:0xd5 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_REORDER_BUFFER_FULL : Dispatch stall for reorder buffer full
+event:0xd6 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_RESERVATION_STATION_FULL : Dispatch stall when reservation stations are full
+event:0xd7 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_FPU_FULL : Dispatch stall when FPU is full
+event:0xd8 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_LS_FULL : Dispatch stall when LS is full
+event:0xd9 counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_WAITING_FOR_ALL_QUIET : Dispatch stall when waiting for all to be quiet
+event:0xda counters:0,1,2,3 um:zero minimum:500 name:DISPATCH_STALL_FOR_FAR_TRANSFER_OR_RESYNC : Dispatch Stall for Far Transfer or Resync to Retire
+event:0xdb counters:0,1,2,3 um:fpu_exceptions minimum:500 name:FPU_EXCEPTIONS : FPU exceptions
+event:0xdc counters:0,1,2,3 um:zero minimum:500 name:DR0_BREAKPOINTS : The number of matches on the address in breakpoint register DR0
+event:0xdd counters:0,1,2,3 um:zero minimum:500 name:DR1_BREAKPOINTS : The number of matches on the address in breakpoint register DR1
+event:0xde counters:0,1,2,3 um:zero minimum:500 name:DR2_BREAKPOINTS : The number of matches on the address in breakpoint register DR2
+event:0xdf counters:0,1,2,3 um:zero minimum:500 name:DR3_BREAKPOINTS : The number of matches on the address in breakpoint register DR3
+event:0x1c0 counters:0,1,2,3 um:retired_x87_fp minimum:500 name:RETIRED_X87_FLOATING_POINT_OPERATIONS : Retired x87 Floating Point Operations (RevC and later)
+event:0x1cf counters:0,1,2,3 um:zero minimum:50000 name:IBS_OPS_TAGGED : IBS Ops Tagged (RevC and later)
+event:0x1d3 counters:0,1,2,3 um:zero minimum:500 name:LFENCE_INSTRUCTIONS_RETIRED : LFENCE Instructions Retired (RevC and later)
+event:0x1d4 counters:0,1,2,3 um:zero minimum:500 name:SFENCE_INSTRUCTIONS_RETIRED : SFENCE Instructions Retired (RevC and later)
+event:0x1d5 counters:0,1,2,3 um:zero minimum:500 name:MFENCE_INSTRUCTIONS_RETIRED : MFENCE Instructions Retired (RevC and later)
+
+# Memory Controler events
+event:0xe0 counters:0,1,2,3 um:page_access minimum:500 name:DRAM_ACCESSES : DRAM accesses
+event:0xe1 counters:0,1,2,3 um:mem_page_overflow minimum:500 name:MEMORY_CONTROLLER_PAGE_TABLE_OVERFLOWS : Memory controller page table overflows
+event:0xe2 counters:0,1,2,3 um:slot_missed minimum:500 name:MEMORY_CONTROLLER_SLOT_MISSED : Memory controller DRAM command slots missed
+event:0xe3 counters:0,1,2,3 um:turnaround minimum:500 name:MEMORY_CONTROLLER_TURNAROUNDS : Memory controller turnarounds
+event:0xe4 counters:0,1,2,3 um:saturation minimum:500 name:MEMORY_CONTROLLER_BYPASS_COUNTER_SATURATION : Memory controller bypass saturation
+event:0xe8 counters:0,1,2,3 um:thermal_status minimum:500 name:THERMAL_STATUS : Thermal status
+event:0xe9 counters:0,1,2,3 um:cpiorequests minimum:500 name:CPU_IO_REQUESTS_TO_MEMORY_IO : CPU/IO Requests to Memory/IO
+event:0xea counters:0,1,2,3 um:cacheblock minimum:500 name:CACHE_BLOCK_COMMANDS : Cache block commands
+event:0xeb counters:0,1,2,3 um:sizecmds minimum:500 name:SIZED_COMMANDS : Sized commands
+event:0xec counters:0,1,2,3 um:probe minimum:500 name:PROBE_RESPONSES_AND_UPSTREAM_REQUESTS : Probe responses and upstream requests
+event:0xee counters:0,1,2,3 um:gart minimum:500 name:GART_EVENTS : GART events
+event:0x1f0 counters:0,1,2,3 um:mem_control_request minimum:500 name:MEMORY_CONTROLLER_REQUESTS : Sized read/write activity.
+
+# Crossbar events
+event:0x1e0 counters:0,1,2,3 um:cpu_dram_req minimum:500 name:CPU_DRAM_REQUEST_TO_NODE : CPU to DRAM requests to target node
+event:0x1e1 counters:0,1,2,3 um:io_dram_req minimum:500 name:IO_DRAM_REQUEST_TO_NODE : IO to DRAM requests to target node
+event:0x1e2 counters:0,1,2,3 um:cpu_read_lat_0_3 minimum:500 name:CPU_READ_COMMAND_LATENCY_NODE_0_3 : Latency between the local node and remote node
+event:0x1e3 counters:0,1,2,3 um:cpu_read_lat_0_3 minimum:500 name:CPU_READ_COMMAND_REQUEST_NODE_0_3 : Number of requests that a latency measurement is made for Event 0x1E2
+event:0x1e4 counters:0,1,2,3 um:cpu_read_lat_4_7 minimum:500 name:CPU_READ_COMMAND_LATENCY_NODE_4_7 : Latency between the local node and remote node
+event:0x1e5 counters:0,1,2,3 um:cpu_read_lat_4_7 minimum:500 name:CPU_READ_COMMAND_REQUEST_NODE_4_7 : Number of requests that a latency measurement is made for Event 0x1E2
+event:0x1e6 counters:0,1,2,3 um:cpu_comm_lat minimum:500 name:CPU_COMMAND_LATENCY_TARGET : Determine latency between the local node and a remote node.
+event:0x1e7 counters:0,1,2,3 um:cpu_comm_lat minimum:500 name:CPU_REQUEST_TARGET : Number of requests that a latency measurement is made for Event 0x1E6
+
+# Link events
+event:0xf6 counters:0,1,2,3 um:httransmit minimum:500 name:HYPERTRANSPORT_LINK0_TRANSMIT_BANDWIDTH : HyperTransport(tm) link 0 transmit bandwidth
+event:0xf7 counters:0,1,2,3 um:httransmit minimum:500 name:HYPERTRANSPORT_LINK1_TRANSMIT_BANDWIDTH : HyperTransport(tm) link 1 transmit bandwidth
+event:0xf8 counters:0,1,2,3 um:httransmit minimum:500 name:HYPERTRANSPORT_LINK2_TRANSMIT_BANDWIDTH : HyperTransport(tm) link 2 transmit bandwidth
+event:0x1f9 counters:0,1,2,3 um:httransmit minimum:500 name:HYPERTRANSPORT_LINK3_TRANSMIT_BANDWIDTH : HyperTransport(tm) link 3 transmit bandwidth
+
+# L3 Cache events
+event:0x4e0 counters:0,1,2,3 um:l3_cache minimum:500 name:READ_REQUEST_L3_CACHE : Number of read requests from each core to L3 cache
+event:0x4e1 counters:0,1,2,3 um:l3_cache minimum:500 name:L3_CACHE_MISSES : Number of L3 cache misses from each core
+event:0x4e2 counters:0,1,2,3 um:l3_fill minimum:500 name:L3_FILLS_CAUSED_BY_L2_EVICTIONS : Number of L3 fills caused by L2 evictions per core
+event:0x4e3 counters:0,1,2,3 um:l3_evict minimum:500 name:L3_EVICTIONS : Number of L3 cache line evictions by cache state
+event:0x4ed counters:0,1,2,3 um:non_cancelled_l3_read_requests minimum:500 name:NON_CANCELLED_L3_READ_REQUESTS : Non-cancelled L3 Read Requests (Rev D)
+
+###############################
+# IBS FETCH EVENTS
+###############################
+event:0xf000 ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_ALL : All IBS fetch samples
+event:0xf001 ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_KILLED : IBS fetch killed
+event:0xf002 ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_ATTEMPTED : IBS fetch attempted
+event:0xf003 ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_COMPLETED : IBS fetch completed
+event:0xf004 ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_ABORTED : IBS fetch aborted
+event:0xf005 ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_ITLB_HITS : IBS ITLB hit
+event:0xf006 ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_L1_ITLB_MISSES_L2_ITLB_HITS : IBS L1 ITLB misses (and L2 ITLB hits)
+event:0xf007 ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_L1_ITLB_MISSES_L2_ITLB_MISSES : IBS L1 L2 ITLB miss
+event:0xf008 ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_ICACHE_MISSES : IBS Instruction cache misses
+event:0xf009 ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_ICACHE_HITS : IBS Instruction cache hit
+event:0xf00A ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_4K_PAGE : IBS 4K page translation
+event:0xf00B ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_2M_PAGE : IBS 2M page translation
+#
+event:0xf00E ext:ibs_fetch um:zero minimum:50000 name:IBS_FETCH_LATENCY : IBS fetch latency
+
+###############################
+# IBS OP EVENTS
+###############################
+event:0xf100 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_ALL : All IBS op samples
+event:0xf101 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_TAG_TO_RETIRE : IBS tag-to-retire cycles
+event:0xf102 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_COMP_TO_RET : IBS completion-to-retire cycles
+event:0xf103 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_BRANCH_RETIRED : IBS branch op
+event:0xf104 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_MISPREDICTED_BRANCH : IBS mispredicted branch op
+event:0xf105 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_TAKEN_BRANCH : IBS taken branch op
+event:0xf106 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_MISPREDICTED_BRANCH_TAKEN : IBS mispredicted taken branch op
+event:0xf107 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_RETURNS : IBS return op
+event:0xf108 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_MISPREDICTED_RETURNS : IBS mispredicted return op
+event:0xf109 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_RESYNC : IBS resync op
+event:0xf200 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_ALL_LOAD_STORE : IBS all load store ops
+event:0xf201 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_LOAD : IBS load ops
+event:0xf202 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_STORE : IBS store ops
+event:0xf203 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_L1_DTLB_HITS : IBS L1 DTLB hit
+event:0xf204 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_L1_DTLB_MISS_L2_DTLB_HIT : IBS L1 DTLB misses L2 hits
+event:0xf205 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_L1_L2_DTLB_MISS : IBS L1 and L2 DTLB misses
+event:0xf206 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_DATA_CACHE_MISS : IBS data cache misses
+event:0xf207 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_DATA_HITS : IBS data cache hits
+event:0xf208 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_MISALIGNED_DATA_ACC : IBS misaligned data access
+event:0xf209 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_BANK_CONF_LOAD : IBS bank conflict on load op
+event:0xf20A ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_BANK_CONF_STORE : IBS bank conflict on store op
+event:0xf20B ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_FORWARD : IBS store-to-load forwarded
+event:0xf20C ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_CANCELLED : IBS store-to-load cancelled
+event:0xf20D ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_DCUC_MEM_ACC : IBS UC memory access
+event:0xf20E ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_DCWC_MEM_ACC : IBS WC memory access
+event:0xf20F ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_LOCKED : IBS locked operation
+event:0xf210 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_MAB_HIT : IBS MAB hit
+event:0xf211 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_L1_DTLB_4K : IBS L1 DTLB 4K page
+event:0xf212 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_L1_DTLB_2M : IBS L1 DTLB 2M page
+event:0xf213 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_L1_DTLB_1G : IBS L1 DTLB 1G page
+event:0xf215 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_L2_DTLB_4K : IBS L2 DTLB 4K page
+event:0xf216 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_L2_DTLB_2M : IBS L2 DTLB 2M page
+event:0xf217 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_L2_DTLB_1G : IBS L2 DTLB 1G page
+event:0xf219 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_DC_LOAD_LAT : IBS data cache miss load latency
+event:0xf240 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_LOCAL_ONLY : IBS northbridge local
+event:0xf241 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_REMOTE_ONLY : IBS northbridge remote
+event:0xf242 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_LOCAL_L3 : IBS northbridge local L3
+event:0xf243 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_LOCAL_CACHE : IBS northbridge local core L1 or L2 cache
+event:0xf244 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_REMOTE_CACHE : IBS northbridge local core L1, L2, L3 cache
+event:0xf245 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_LOCAL_DRAM : IBS northbridge local DRAM
+event:0xf246 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_REMOTE_DRAM : IBS northbridge remote DRAM
+event:0xf247 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_LOCAL_OTHER : IBS northbridge local APIC MMIO Config PCI
+event:0xf248 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_REMOTE_OTHER : IBS northbridge remote APIC MMIO Config PCI
+event:0xf249 ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_CACHE_MODIFIED : IBS northbridge cache modified state
+event:0xf24A ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_CACHE_OWNED : IBS northbridge cache owned state
+event:0xf24B ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_LOCAL_CACHE_LAT : IBS northbridge local cache latency
+event:0xf24C ext:ibs_op um:ibs_op minimum:50000 name:IBS_OP_NB_REMOTE_CACHE_LAT : IBS northbridge remote cache latency

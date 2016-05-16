@@ -1,0 +1,13 @@
+# Pentium Pro possible unit masks
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask
+name:mesi type:bitmask default:0x0f
+	0x08 (M)odified cache state
+	0x04 (E)xclusive cache state
+	0x02 (S)hared cache state
+	0x01 (I)nvalid cache state
+	0x0f All cache states
+name:ebl type:exclusive default:0x20
+	0x00 self-generated transactions
+	0x20 any transactions

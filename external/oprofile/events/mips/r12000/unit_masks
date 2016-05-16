@@ -1,0 +1,7 @@
+#
+# MIPS R12000 possible unit masks
+#
+# We don't support the R12000 conditional count feature yet.
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask

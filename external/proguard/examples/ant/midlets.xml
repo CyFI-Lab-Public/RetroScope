@@ -1,0 +1,45 @@
+<!-- This Ant build file illustrates how to process J2ME midlets.
+     Usage: ant -f midlets.xml -->
+
+<project name="Midlets" default="obfuscate" basedir="../..">
+
+<target name="obfuscate">
+  <taskdef resource="proguard/ant/task.properties"
+           classpath="lib/proguard.jar" />
+
+  <proguard microedition="on"
+            overloadaggressively="on"
+            repackageclasses=""
+            allowaccessmodification="on"
+            printseeds="on">
+
+            <!-- On Windows, you can't use mixed case class names,
+                 for the sake of the preverify tool.
+            usemixedcaseclassnames="false">
+            -->
+
+    <!-- Specify the input jars, output jars, and library jars. -->
+
+    <injar  file="in.jar" />
+    <outjar file="out.jar" />
+
+    <libraryjar file="/usr/local/java/wtk2.1/lib/midpapi20.jar" />
+    <libraryjar file="/usr/local/java/wtk2.1/lib/cldcapi11.jar" />
+
+    <!-- Preserve all public midlets. -->
+
+    <keep access="public" extends="javax.microedition.midlet.MIDlet" />
+
+    <!-- Preserve all native method names and the names of their classes. -->
+
+    <keepclasseswithmembernames>
+      <method access="native" />
+    </keepclasseswithmembernames>
+    
+    <!-- Your application may contain more items that need to be preserved;
+         typically classes that are dynamically created using Class.forName -->
+
+   </proguard>
+</target>
+
+</project>

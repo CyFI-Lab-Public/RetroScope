@@ -1,0 +1,73 @@
+#
+# Sibyte SB1 events
+#
+
+event:0x10 counters:0,1,2,3 um:zero minimum:500 name:CYCLES :Elapsed cycles
+
+# Execution Counts and Instruction Slotting
+event:0x28 counters:1,2,3 um:zero minimum:500 name:ISSUE_L0 :Issue to L0
+event:0x29 counters:1,2,3 um:zero minimum:500 name:ISSUE_L1 :Issue to L0
+event:0x2a counters:1,2,3 um:zero minimum:500 name:ISSUE_E0 :Issue to E0
+event:0x2b counters:1,2,3 um:zero minimum:500 name:ISSUE_E1 :Issue to E1
+
+# Explaining Sub-Peak Performance: Pipeline Traps
+event:0x2f counters:1,2,3 um:zero minimum:500 name:BRANCH_MISSPREDICTS :Branch mispredicts
+event:0x1d counters:1,2,3 um:zero minimum:500 name:MBOX_REPLAY :MBOX replay
+event:0x1c counters:1,2,3 um:zero minimum:500 name:DCFIFO :DCFIFO
+event:0x1e counters:1,2,3 um:zero minimum:500 name:DATA_DEPENDENCY_REPLAY :Data dependency replay
+event:0x1b counters:1,2,3 um:zero minimum:500 name:DCACHE_FILL_REPLAY :Dcache fill replay
+event:0x1f counters:1,2,3 um:zero minimum:500 name:ANY_REPLAY :Any replay except mispredict
+
+
+# Explaining Sub-Peak Performance: static and dynamic stalls
+event:0x20 counters:1,2,3 um:zero minimum:500 name:MAX_ISSUE :Max issue
+event:0x21 counters:1,2,3 um:zero minimum:500 name:NO_VALID_INSN :No valid instr to issue
+event:0x22 counters:1,2,3 um:zero minimum:500 name:CONSUMER_WAITING_FOR_LOAD :load consumer waiting for dfill
+event:0x23 counters:1,2,3 um:zero minimum:500 name:NOT_DATA_READY :Not data ready
+event:0x24 counters:1,2,3 um:zero minimum:500 name:RESOURCE_CONSTRAINT :Resource (L0/1 E0/1) constraint
+event:0x25 counters:1,2,3 um:zero minimum:500 name:ISSUE_CONFLICT_DUE_IMISS :issue conflict due to imiss using LS0
+event:0x26 counters:1,2,3 um:zero minimum:500 name:ISSUE_CONFLICT_DUE_DFILL :issue conflict due to dfill using LS0/1
+
+# Grouping Co-issued Instructions
+event:0x27 counters:1,2,3 um:zero minimum:500 name:INSN_STAGE4 :One or more instructions survives stage 4
+
+# Branch information
+event:0x2c counters:1,2,3 um:zero minimum:500 name:BRANCH_STAGE4 :Branch survived stage 4
+event:0x2d counters:1,2,3 um:zero minimum:500 name:BRANCH_REALLY_TAKEN :Conditional branch was really taken
+event:0x2e counters:1,2,3 um:zero minimum:500 name:BRANCH_PREDICTED_TAKEN :Predicted taken conditional branch
+
+# Cache access
+event:0x1 counters:1,2,3 um:zero minimum:500 name:RQ_LENGTH :Read queue length
+event:0x2 counters:1,2,3 um:zero minimum:500 name:UNCACHED_RQ_LENGTH :Number of valid uncached entries in read queue
+event:0x3 counters:1,2,3 um:zero minimum:500 name:DCACHE_READ_MISS :Dcache read results in a miss
+
+event:0xa counters:1,2,3 um:zero minimum:500 name:DCACHE_FILLED_SHD_NONC_EXC :Dcache is filled (shared, nonc, exclusive)
+event:0xb counters:1,2,3 um:zero minimum:500 name:DCACHE_FILL_SHARED_LINE :Dcache is filled with shared line
+event:0xc counters:1,2,3 um:zero minimum:500 name:DCACHE_READ_MISS :Dcache read results in a miss
+event:0xf counters:1,2,3 um:zero minimum:500 name:WRITEBACK_RETURNS :Number of instruction returns
+event:0xd counters:1,2,3 um:zero minimum:500 name:VICTIM_WRITEBACK :A writeback occurs due to replacement
+event:0x7 counters:1,2,3 um:zero minimum:500 name:UPGRADE_SHARED_TO_EXCLUSIVE :A line is upgraded from shared to exclusive
+event:0x6 counters:1,2,3 um:zero minimum:500 name:LD_ST_HITS_PREFETCH_IN_QUEUE :Load/store hits prefetch in read queue
+event:0x5 counters:1,2,3 um:zero minimum:500 name:PREFETCH_HITS_CACHE_OR_READ_Q :Prefetch hits in cache or read queue
+event:0x4 counters:1,2,3 um:zero minimum:500 name:READ_HITS_READ_Q :Read hits in read queue
+
+# BIU
+
+event:0x11 counters:1,2,3 um:zero minimum:500 name:BIU_STALLS_ON_ZB_ADDR_BUS :BIU stalls on ZB addr bus
+event:0x12 counters:1,2,3 um:zero minimum:500 name:BIU_STALLS_ON_ZB_DATA_BUS :BIU stalls on ZB data bus
+event:0x13 counters:1,2,3 um:zero minimum:500 name:READ_RQ_SENT_TO_ABUS :Requests sent to ZB Abus
+event:0x14 counters:1,2,3 um:zero minimum:500 name:READ_RQ_NOPS_SENT_TO_ABUS :Read requests and NOPs sent to ZB Abus
+event:0x15 counters:1,2,3 um:zero minimum:500 name:READ_RQ_SENT_TO_ABUS :Read requests sent to ZB Abus
+event:0x16 counters:1,2,3 um:zero minimum:500 name:MBOX_RQ_WHEN_BIU_BUSY :MBOX requests to BIU when BIU busy
+
+# Multiprocessor
+event:0x1a counters:1,2,3 um:zero minimum:500 name:STORE_COND_FAILED :Failed store conditional
+event:0x16 counters:1,2,3 um:zero minimum:500 name:SNOOP_RQ_HITS :Snoop request hits anywhere
+event:0x17 counters:1,2,3 um:zero minimum:500 name:SNOOP_ADDR_Q_FULL :Snoop address queue is full
+event:0x18 counters:1,2,3 um:zero minimum:500 name:R_RESP_OTHER_CORE :Read response comes from the other core
+event:0x19 counters:1,2,3 um:zero minimum:500 name:R_RESP_OTHER_CORE_D_MOD :Read response comes from the other core with D_MOD set
+
+# Instruction Counts
+event:0x8 counters:1,2,3 um:zero minimum:500 name:LOAD_SURVIVED_STAGE4 :Load survived stage 4
+event:0x9 counters:1,2,3 um:zero minimum:500 name:STORE_SURVIVED_STAGE4  :Store survived stage 4
+event:0x0 counters:1,2,3 um:zero minimum:500 name:INSN_SURVIVED_STAGE7 :Instruction survived stage 7

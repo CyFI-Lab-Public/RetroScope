@@ -1,0 +1,301 @@
+#   Autoconf script for oprofile
+#
+#   Copyright 1999 Olaf Titz <olaf@bigred.inka.de>
+#   Adapted for oprofile
+#
+#   This program is free software; you can redistribute it and/or
+#   modify it under the terms of the GNU General Public License
+#   as published by the Free Software Foundation; either version
+#   2 of the License, or (at your option) any later version.
+#
+
+AC_PREREQ(2.13)
+
+AC_INIT(libop/op_config.h)
+AM_INIT_AUTOMAKE(oprofile, 0.9.7cvs)
+AM_CONFIG_HEADER(config.h)
+
+AC_CHECK_DECLS([basename], [], [], [[#include <libgen.h>]])
+AC_PROG_RANLIB
+AC_PROG_LIBTOOL
+
+dnl for the man page
+DATE="`date '+%a %d %B %Y'`"
+AC_SUBST(DATE)
+
+dnl needed for module build
+OPROFILE_DIR=`pwd`
+AC_SUBST(OPROFILE_DIR)
+ 
+# this needs to come before --with-gcc so we link with binutil's version
+# of libiberty ... sigh
+AC_ARG_WITH(binutils,
+[  --with-binutils=dir		Path to binutils installation to use], BINUTILSDIR=$withval)
+
+if test "$BINUTILSDIR" != ""; then
+	LD="$BINUTILSDIR/ld"
+	if test "$CFLAGS" = ""; then
+		CFLAGS="-g -O2"
+	fi
+	if test "$CXXFLAGS" = ""; then
+		CXXFLAGS="-g -O2"
+	fi
+	CFLAGS="$CFLAGS -I$BINUTILSDIR/include"
+	CXXFLAGS="$CXXFLAGS -I$BINUTILSDIR/include"
+	AC_ARG_WITH(binutils-libname,
+		[  --with-binutils-libname       Lib dir name under binutils installation; @<:@lib@:>@]],
+		BINUTILSLIB=$withval)
+	if test "$BINUTILSLIB" = ""; then
+		BINUTILSLIB="lib"
+	fi
+	LDFLAGS="$LDFLAGS -L$BINUTILSDIR/$BINUTILSLIB -Xlinker -R -Xlinker $BINUTILSDIR/$BINUTILSLIB"
+fi
+
+AC_ARG_WITH(gcc,
+[  --with-gcc=dir		Path to GCC installation to use], GCCDIR=$withval)
+
+if test "$GCCDIR" != ""; then
+	CC="$GCCDIR/bin/gcc"
+	CXX="$GCCDIR/bin/g++"
+	LDFLAGS="$LDFLAGS -L$GCCDIR/lib -Xlinker -R -Xlinker $GCCDIR/lib"
+fi
+
+AC_PROG_CC
+AC_PROG_CPP
+AC_PROG_CXX
+AC_CHECK_PROG(LD,ld,ld,)
+test "$LD" || AC_ERROR(ld not found)
+
+AX_FIND_KERNEL
+
+if test "$OPROFILE_26" = "no"; then
+	AX_CONFIG_MODULE
+fi
+
+AC_ARG_WITH(module-dir,
+[  --with-module-dir=dir        Path to module installation directory], MODINSTALLDIR=$withval)
+AC_SUBST(MODINSTALLDIR)
+
+AC_ARG_WITH(java,
+[  --with-java=java-home        Path to Java home directory], JAVA_HOMEDIR=$withval)
+AC_SUBST(JAVA_HOMEDIR)
+
+if test -n "$JAVA_HOMEDIR"; then
+	AC_CHECK_FILE("$JAVA_HOMEDIR/include/jvmti.h",JVMTI_H_EXISTS="yes",)
+	AC_CHECK_FILE("$JAVA_HOMEDIR/include/jvmpi.h",JVMPI_H_EXISTS="yes",)
+fi
+
+AM_CONDITIONAL(BUILD_JVMTI_AGENT, test -n "$JVMTI_H_EXISTS")
+AM_CONDITIONAL(BUILD_JVMPI_AGENT, test -n "$JVMPI_H_EXISTS")
+
+AX_MALLOC_ATTRIBUTE
+AX_BUILTIN_EXPECT
+
+AC_SUBST(EXTRA_CFLAGS_MODULE)
+
+topdir=`pwd`
+AC_SUBST(topdir)
+ 
+AX_EXTRA_DIRS
+
+ORIG_SAVE_LIBS="$LIBS"
+
+dnl advanced glibc features which we need but may not be present
+AC_CHECK_FUNCS(sched_setaffinity perfmonctl)
+
+AC_CHECK_LIB(popt, poptGetContext,, AC_MSG_ERROR([popt library not found]))
+AX_BINUTILS
+AX_CELL_SPU
+
+# C++ tests
+ 
+AC_LANG_CPLUSPLUS
+
+AX_POPT_CONST
+AX_CHECK_SSTREAM
+
+dnl bfd.h pre 1998 check only for gnu 2.xx series, so gcc 3.0 can't compile it
+AC_MSG_CHECKING([whether bfd defines bool])
+AC_TRY_COMPILE([#include <bfd.h>], [], 
+AC_MSG_RESULT([no]);,
+AC_MSG_RESULT([yes]); AC_DEFINE(TRUE_FALSE_ALREADY_DEFINED, 1, [whether bfd.h defines bool values]))
+
+dnl smart demangler need to know what are the underlined type for some typedef
+AX_TYPEDEFED_NAME(size_t, "unsigned" "unsigned long", SIZE_T_TYPE)
+AC_SUBST(SIZE_T_TYPE)
+AX_TYPEDEFED_NAME(ptrdiff_t, "int" "long", PTRDIFF_T_TYPE)
+AC_SUBST(PTRDIFF_T_TYPE)
+
+AC_PATH_XTRA
+ORIG_X_SAVE_LIBS="$LIBS"
+LIBS="$X_PRE_LIBS $LIBS $X_LIBS -lX11 $X_EXTRA_LIBS"
+X_LIBS="$LIBS"
+AC_SUBST(X_LIBS)
+QT_DO_IT_ALL
+LIBS="$ORIG_X_SAVE_LIBS"
+
+dnl enable pch for c++
+AC_ARG_ENABLE(pch,
+	[  --enable-pch                 enable precompiled header (default is disabled)],
+	enable_pch=$enableval, enable_pch=no)
+if test "$enable_pch" = yes; then
+	AX_CHECK_PRECOMPILED_HEADER(OP_CXXFLAGS)
+fi
+
+AX_CHECK_DOCBOOK
+
+dnl finally restore the original libs setting
+LIBS="$ORIG_SAVE_LIBS"
+LIBERTY_LIBS="-liberty $DL_LIB $INTL_LIB"
+BFD_LIBS="-lbfd -liberty $DL_LIB $INTL_LIB $Z_LIB"
+POPT_LIBS="-lpopt"
+AC_SUBST(LIBERTY_LIBS)
+AC_SUBST(BFD_LIBS)
+AC_SUBST(POPT_LIBS)
+
+# do NOT put tests here, they will fail in the case X is not installed !
+ 
+AM_CONDITIONAL(have_qt, test -n "$QT_LIB")
+
+AX_CFLAGS_OPTION(OP_CFLAGS,[-W])
+AX_CXXFLAGS_OPTION(OP_CXXFLAGS,[-W])
+AX_CFLAGS_OPTION(OP_CFLAGS,[-Wall])
+AX_CXXFLAGS_OPTION(OP_CXXFLAGS,[-Wall])
+AX_CFLAGS_OPTION(OP_CFLAGS,[-fno-common])
+AX_CXXFLAGS_OPTION(OP_CXXFLAGS,[-fno-common])
+AX_CXXFLAGS_OPTION(OP_CXXFLAGS,[-ftemplate-depth-50])
+AX_CFLAGS_OPTION(OP_CFLAGS,[-Wdeclaration-after-statement])
+
+dnl enable option to use GCC test coverage
+AC_ARG_ENABLE(gcov,
+	[  --enable-gcov                enable option for gcov coverage testing (default is disabled)],
+	enable_gcov=$enableval, enable_gcov=no)
+if test "$enable_gcov" = yes; then
+	AX_CFLAGS_OPTION(OP_CFLAGS,[-fprofile-arcs])
+	AX_CXXFLAGS_OPTION(OP_CXXFLAGS,[-fprofile-arcs])
+	AX_CFLAGS_OPTION(OP_CFLAGS,[-ftest-coverage])
+	AX_CXXFLAGS_OPTION(OP_CXXFLAGS,[-ftest-coverage])
+fi
+
+AC_ARG_ENABLE(werror,
+	[  --disable-werror            disable -Werror flag (default is enabled for non-release)],
+        enable_werror=$enableval, enable_werror=yes)
+if test "$enable_werror" = yes; then
+	# enable -Werror for non-release versions.
+	if echo "$VERSION" | grep cvs >/dev/null; then
+		AX_CFLAGS_OPTION(OP_CFLAGS,[-Werror])
+		AX_CXXFLAGS_OPTION(OP_CXXFLAGS,[-Werror])
+	fi
+fi
+
+AC_ARG_ENABLE(optimization,
+	[  --disable-optimization      disable optimization flags (default is enabled)],
+	enable_optimization=$enableval, enable_optimisation=yes)
+if test "$enable_optimization" = "no"; then
+	CFLAGS=`echo $CFLAGS | sed 's/-O2//g'`
+	CXXFLAGS=`echo $CXXFLAGS | sed 's/-O2//g'`
+fi
+
+AC_ARG_ENABLE(account-check,
+	[  --disable-account-check     disable account check (default is enabled)],
+	enable_account_check=$enableval, enable_account_check=yes)
+
+AM_CONDITIONAL(CHECK_ACCOUNT, test "x$enable_account_check" = "xyes")
+
+AC_SUBST(OP_CFLAGS)
+AC_SUBST(OP_CXXFLAGS)
+
+# fixups for config.h
+if test "$prefix" = "NONE"; then
+	my_op_prefix="$ac_default_prefix"
+else
+	my_op_prefix="$prefix"
+fi
+my_op_datadir="$my_op_prefix/share"
+
+if test "$exec_prefix" = "NONE"; then
+	my_op_exec_prefix="$my_op_prefix"
+else
+	my_op_exec_prefix="$exec_prefix"
+fi
+my_op_bindir="$my_op_exec_prefix/bin"
+
+OP_DATADIR=`eval echo "$my_op_datadir/$PACKAGE/"`
+AC_DEFINE_UNQUOTED(OP_DATADIR, "$OP_DATADIR", [package data directory])
+OP_BINDIR=`eval echo "$my_op_bindir/"`
+AC_DEFINE_UNQUOTED(OP_BINDIR, "$OP_BINDIR", [package binary directory])
+OP_DOCDIR=`eval echo "${my_op_prefix}/share/doc/$PACKAGE/"`
+AC_SUBST(OP_DOCDIR)
+
+AC_OUTPUT(Makefile \
+	m4/Makefile \
+	libutil/Makefile \
+	libutil/tests/Makefile \
+	libutil++/Makefile \
+	libutil++/tests/Makefile \
+	libop/Makefile \
+	libop/tests/Makefile \
+	libopagent/Makefile \
+	libopt++/Makefile \
+	libdb/Makefile \
+	libdb/tests/Makefile \
+	libabi/Makefile \
+	libabi/tests/Makefile \
+	libregex/Makefile \
+	libregex/tests/Makefile \
+	libregex/stl.pat \
+	libregex/tests/mangled-name \
+	daemon/Makefile \
+	daemon/liblegacy/Makefile \
+	events/Makefile \
+	utils/Makefile \
+	doc/Makefile \
+	doc/xsl/catalog-1.xml \
+	doc/oprofile.1 \
+	doc/opcontrol.1 \
+	doc/ophelp.1 \
+	doc/opreport.1 \
+	doc/opannotate.1 \
+	doc/opgprof.1 \
+	doc/oparchive.1 \
+	doc/opimport.1 \
+	doc/srcdoc/Doxyfile \
+	libpp/Makefile \
+	opjitconv/Makefile \
+	pp/Makefile \
+	gui/Makefile \
+	gui/ui/Makefile \
+	module/Makefile \
+	module/x86/Makefile \
+	module/ia64/Makefile \
+	agents/Makefile \
+	agents/jvmti/Makefile \
+	agents/jvmpi/Makefile)
+
+AX_COPY_IF_CHANGE(doc/xsl/catalog-1.xml, doc/xsl/catalog.xml)
+
+if test -z "$QT_LIB"; then
+	echo "Warning: a working Qt not found; no GUI will be built"
+fi
+
+if ! test "x$enable_account_check" = "xyes"; then
+	:
+elif test "`getent passwd oprofile 2>/dev/null`" == "" || \
+     test "`getent group oprofile 2>/dev/null`" == ""; then
+	if test `id -u` != "0"; then
+		echo "Warning: The user account 'oprofile:oprofile' does not exist on the system."
+		echo "         To profile JITed code, this special user account must exist."
+		echo "         Please ask your system administrator to add the following user and group:"
+		echo "             user name : 'oprofile'"
+		echo "             group name: 'oprofile'"
+		echo "         The 'oprofile' group must be the default group for the 'oprofile' user."
+	else
+		echo "Warning: The user account 'oprofile:oprofile' does not exist on the system."
+		echo "         To profile JITed code, this special user account must exist."
+		echo "         Please add the following user and group:"
+		echo "             user name : 'oprofile'"
+		echo "             group name: 'oprofile'"
+		echo "         The 'oprofile' group must be the default group for the 'oprofile' user."
+	fi
+fi
+

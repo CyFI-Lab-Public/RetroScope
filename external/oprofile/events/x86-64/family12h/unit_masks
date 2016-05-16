@@ -1,0 +1,30 @@
+# AMD Generic unit masks
+#
+# Copyright OProfile authors
+# Copyright (c) 2006-2010 Advanced Micro Devices
+# Contributed by Ray Bryant <raybry at amd.com>,
+#		Jason Yeh <jason.yeh at amd.com>
+#		Suravee Suthikulpanit <suravee.suthikulpanit at amd.com>
+#
+# Revision: 1.0
+#
+# ChangeLog: 
+#	1.0: 30 August 2010.
+#	- Initial revision
+#
+name:zero type:mandatory default:0x0
+	0x0 No unit mask
+name:moesi type:bitmask default:0x1f
+	0x01 (I)nvalid cache state
+	0x02 (S)hared cache state
+	0x04 (E)xclusive cache state
+	0x08 (O)wner cache state
+	0x10 (M)odified cache state
+	0x1f All cache states
+name:moess type:bitmask default:0x1e
+	0x01 Refill from northbridge
+	0x02 Shared-state line from L2
+	0x04 Exclusive-state line from L2
+	0x08 Owner-state line from L2
+	0x10 Modified-state line from L2
+	0x1e All cache states except refill from northbridge

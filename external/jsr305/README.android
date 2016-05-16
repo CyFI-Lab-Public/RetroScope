@@ -1,0 +1,7 @@
+URL: http://code.google.com/p/jsr-305/
+Version: r49
+License: BSD
+Description: "Annotations for Software Defect Detection." ie. @Nullable and friends
+Local Modifications: No local modifications
+
+This code is built as a static library.

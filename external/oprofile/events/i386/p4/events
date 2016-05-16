@@ -1,0 +1,44 @@
+# Pentium IV events
+#
+# NOTE: events cannot currently be 0x00 due to event binding checks in
+# driver
+#
+event:0x1d counters:0,4 um:global_power_events minimum:3000 name:GLOBAL_POWER_EVENTS : time during which processor is not stopped
+event:0x01 counters:3,7 um:branch_retired minimum:3000 name:BRANCH_RETIRED : retired branches
+event:0x02 counters:3,7 um:mispred_branch_retired minimum:3000 name:MISPRED_BRANCH_RETIRED : retired mispredicted branches
+event:0x04 counters:0,4 um:bpu_fetch_request minimum:3000 name:BPU_FETCH_REQUEST : instruction fetch requests from the branch predict unit
+event:0x05 counters:0,4 um:itlb_reference minimum:3000 name:ITLB_REFERENCE : translations using the instruction translation lookaside buffer
+event:0x06 counters:2,6 um:memory_cancel minimum:3000 name:MEMORY_CANCEL : cancelled requesets in data cache address control unit
+event:0x07 counters:2,6 um:memory_complete minimum:3000 name:MEMORY_COMPLETE : completed split
+event:0x08 counters:2,6 um:load_port_replay minimum:3000 name:LOAD_PORT_REPLAY : replayed events at the load port
+event:0x09 counters:2,6 um:store_port_replay minimum:3000 name:STORE_PORT_REPLAY : replayed events at the store port
+event:0x0a counters:0,4 um:mob_load_replay minimum:3000 name:MOB_LOAD_REPLAY : replayed loads from the memory order buffer
+event:0x0c counters:0,4 um:bsq_cache_reference minimum:3000 name:BSQ_CACHE_REFERENCE : cache references seen by the bus unit
+# intel doc vol 3 table A-1 P4 and xeon with cpuid signature < 0xf27 doen't allow MSR_FSB_ESCR1 so on only counter 0 is available
+event:0x0d counters:0 um:ioq minimum:3000 name:IOQ_ALLOCATION : bus transactions
+# FIXME the unit mask associated is known to get different behavior between cpu
+# step id, it need to be documented in P4 events doc
+event:0x0e counters:4 um:ioq minimum:3000 name:IOQ_ACTIVE_ENTRIES : number of entries in the IOQ which are active
+event:0x10 counters:0 um:bsq minimum:3000 name:BSQ_ALLOCATION : allocations in the bus sequence unit
+event:0x12 counters:3,7 um:x87_assist minimum:3000 name:X87_ASSIST : retired x87 instructions which required special handling
+event:0x1c counters:3,7 um:machine_clear minimum:3000 name:MACHINE_CLEAR : cycles with entire machine pipeline cleared
+event:0x1e counters:1,5 um:tc_ms_xfer minimum:3000 name:TC_MS_XFER : number of times uops deliver changed from TC to MS ROM
+event:0x1f counters:1,5 um:uop_queue_writes minimum:3000 name:UOP_QUEUE_WRITES : number of valid uops written to the uop queue
+event:0x23 counters:3,7 um:instr_retired minimum:3000 name:INSTR_RETIRED : retired instructions
+event:0x24 counters:3,7 um:uops_retired minimum:3000 name:UOPS_RETIRED : retired uops
+event:0x25 counters:3,7 um:uop_type minimum:3000 name:UOP_TYPE : type of uop tagged by front-end tagging
+event:0x26 counters:1,5 um:branch_type minimum:3000 name:RETIRED_MISPRED_BRANCH_TYPE : retired mispredicted branched, selected by type
+event:0x27 counters:1,5 um:branch_type minimum:3000 name:RETIRED_BRANCH_TYPE : retired branches, selected by type
+event:0x03 counters:1,5 um:tc_deliver_mode minimum:3000 name:TC_DELIVER_MODE : duration (in clock cycles) in the trace cache and decode engine
+event:0x0b counters:0,4 um:page_walk_type minimum:3000 name:PAGE_WALK_TYPE : page walks by the page miss handler
+event:0x0f counters:0,4 um:fsb_data_activity minimum:3000 name:FSB_DATA_ACTIVITY : DRDY or DBSY events on the front side bus
+event:0x11 counters:4 um:bsq minimum:3000 name:BSQ_ACTIVE_ENTRIES : number of entries in the bus sequence unit which are active
+event:0x13 counters:2,6 um:flame_uop minimum:3000 name:SSE_INPUT_ASSIST : input assists requested for SSE or SSE2 operands
+event:0x14 counters:2,6 um:flame_uop minimum:3000 name:PACKED_SP_UOP : packed single precision uops
+event:0x15 counters:2,6 um:flame_uop minimum:3000 name:PACKED_DP_UOP : packed double precision uops
+event:0x16 counters:2,6 um:flame_uop minimum:3000 name:SCALAR_SP_UOP : scalar single precision uops
+event:0x17 counters:2,6 um:flame_uop minimum:3000 name:SCALAR_DP_UOP : scalar double presision uops
+event:0x18 counters:2,6 um:flame_uop minimum:3000 name:64BIT_MMX_UOP : 64 bit integer SIMD MMX uops
+event:0x19 counters:2,6 um:flame_uop minimum:3000 name:128BIT_MMX_UOP : 128 bit integer SIMD SSE2 uops
+event:0x1a counters:2,6 um:flame_uop minimum:3000 name:X87_FP_UOP : x87 floating point uops
+event:0x1b counters:2,6 um:x87_simd_moves_uop minimum:3000 name:X87_SIMD_MOVES_UOP : x87 FPU, MMX, SSE, or SSE2 loads, stores and reg-to-reg moves

@@ -1,0 +1,267 @@
+# IA-64 Itanium 2 events
+
+# IA64_2 Basic Events, Table 11-1
+event:0x12 counters:0,1,2,3 um:zero minimum:500 name:CPU_CYCLES : CPU Cycles
+event:0x08 counters:0,1,2,3 um:zero minimum:500 name:IA64_INST_RETIRED : IA-64 Instructions Retired
+event:0x59 counters:0,1,2,3 um:zero minimum:5000 name:IA32_INST_RETIRED : IA-32 Instructions Retired
+event:0x07 counters:0,1,2,3 um:zero minimum:500 name:IA32_ISA_TRANSITIONS : Itanium to/from IA-32 ISA Transitions
+
+# IA64_2 Instruction Disperal Events, Table 11-3
+event:0x49 counters:0,1,2,3 um:zero minimum:5000 name:DISP_STALLED : Number of cycles dispersal stalled
+event:0x4d counters:0,1,2,3 um:zero minimum:5000 name:INST_DISPERSED : Syllables Dispersed from REN to REG stage
+event:0x4e counters:0,1,2,3 um:syll_not_dispersed minimum:5000 name:SYLL_NOT_DISPERSED : Syllables not dispersed
+event:0x4f counters:0,1,2,3 um:syll_overcount minimum:5000 name:SYLL_OVERCOUNT : Syllables overcounted
+
+# IA64_2 Instruction Execution Events, Table 11-4
+event:0x58 counters:0,1,2,3 um:alat_capacity_miss minimum:5000 name:ALAT_CAPACITY_MISS : ALAT Entry Replaced
+event:0x06 counters:0,1,2,3 um:zero minimum:5000 name:FP_FAILED_FCHKF : Failed fchkf
+event:0x05 counters:0,1,2,3 um:zero minimum:5000 name:FP_FALSE_SIRSTALL : SIR stall without a trap
+event:0x0b counters:0,1,2,3 um:zero minimum:5000 name:FP_FLUSH_TO_ZERO : Result Flushed to Zero
+event:0x09 counters:0,1,2,3 um:zero minimum:5000 name:FP_OPS_RETIRED : Retired FP operations
+event:0x03 counters:0,1,2,3 um:zero minimum:5000 name:FP_TRUE_SIRSTALL : SIR stall asserted and leads to a trap
+event:0x08 counters:0,1,2,3 um:tagged_inst_retired minimum:5000 name:IA64_TAGGED_INST_RETIRED : Retired Tagged Instructions
+event:0x56 counters:0,1,2,3 um:alat_capacity_miss minimum:5000 name:INST_CHKA_LDC_ALAT : Advanced Check Loads
+event:0x57 counters:0,1,2,3 um:alat_capacity_miss minimum:5000 name:INST_FAILED_CHKA_LDC_ALAT : Failed Advanced Check Loads
+event:0x55 counters:0,1,2,3 um:alat_capacity_miss minimum:5000 name:INST_FAILED_CHKS_RETIRED : Failed Speculative Check Loads
+# To avoid duplication from other tables the following events commented out
+#event:0xcd counters:0,1,2,3 um:zero minimum:5000 name:LOADS_RETIRED : Retired Loads
+#event:0xce counters:0,1,2,3 um:zero minimum:5000 name:MISALIGNED_LOADS_RETIRED : Retired Misaligned Load Instructions
+#event:0xcf counters:0,1,2,3 um:zero minimum:5000 name:UC_LOADS_RETIRED : Retired Uncacheable Loads
+#event:0xd1 counters:0,1,2,3 um:zero minimum:5000 name:STORES_RETIRED : Retired Stores
+#event:0xd2 counters:0,1,2,3 um:zero minimum:5000 name:MISALIGNED_STORES_RETIRED : Retired Misaligned Store Instructions
+#event:0xd0 counters:0,1,2,3 um:zero minimum:5000 name:UC_STORES_RETIRED : Retired Uncacheable Stores
+event:0x50 counters:0,1,2,3 um:zero minimum:5000 name:NOPS_RETIRED : Retired NOP Instructions
+event:0x51 counters:0,1,2,3 um:zero minimum:5000 name:PREDICATE_SQUASHED_RETIRED : Instructions Squashed Due to Predicate Off`
+
+# IA64_2 Stall Events, Table 11-6
+event:0x00 counters:0,1,2,3 um:back_end_bubble minimum:5000 name:BACK_END_BUBBLE : Full pipe bubbles in main pipe
+event:0x02 counters:0,1,2,3 um:be_exe_bubble minimum:5000 name:BE_EXE_BUBBLE : Full pipe bubbles in main pipe due to Execution unit stalls
+event:0x04 counters:0,1,2,3 um:be_flush_bubble minimum:5000 name:BE_FLUSH_BUBBLE : Full pipe bubbles in main pipe due to flushes
+event:0xca counters:0,1,2,3 um:be_l1d_fpu_bubble minimum:5000 name:BE_L1D_FPU_BUBBLE : Full pipe bubbles in main pipe due to FP or L1 dcache
+# To avoid duplication from other tables the following events commented out
+#event:0x72 counters:0,1,2,3 um:be_lost_bw_due_to_fe minimum:5000 name:BE_LOST_BW_DUE_TO_FE : Invalid bundles if BE not stalled for other reasons
+event:0x01 counters:0,1,2,3 um:be_rse_bubble minimum:5000 name:BE_RSE_BUBBLE : Full pipe bubbles in main pipe due to RSE stalls
+event:0x71 counters:0,1,2,3 um:fe_bubble minimum:5000 name:FE_BUBBLE : Bubbles seen by FE
+event:0x70 counters:0,1,2,3 um:fe_lost minimum:5000 name:FE_LOST_BW : Invalid bundles at the entrance to IB
+event:0x73 counters:0,1,2,3 um:fe_lost minimum:5000 name:IDEAL_BE_LOST_BW_DUE_TO_FE : Invalid bundles at the exit from IB
+
+# IA64_2 Branch Events, Table 11-7
+event:0x61 counters:0,1,2,3 um:be_br_mispredict_detail minimum:5000 name:BE_BR_MISPRED_DETAIL : BE branch misprediction detail
+event:0x11 counters:0,1,2,3 um:zero minimum:5000 name:BRANCH_EVENT : Branch Event Captured
+event:0x5b counters:0,1,2,3 um:br_mispred_detail minimum:5000 name:BR_MISPRED_DETAIL : Branch Mispredict Detail
+event:0x68 counters:0,1,2,3 um:br_mispredict_detail2 minimum:5000 name:BR_MISPRED_DETAIL2 : FE Branch Mispredict Detail (Unknown path component)
+event:0x54 counters:0,1,2,3 um:br_path_pred minimum:5000 name:BR_PATH_PRED : FE Branch Path Prediction Detail
+event:0x6a counters:0,1,2,3 um:br_path_pred2 minimum:5000 name:BR_PATH_PRED2 : FE Branch Path Prediction Detail (Unknown prediction component)
+event:0x63 counters:0,1,2,3 um:encbr_mispred_detail minimum:5000 name:ENCBR_MISPRED_DETAIL : Number of encoded branches retired
+
+# IA64_2 L1 Instruction Cache and Prefetch Events, Table 11-8
+event:0x46 counters:0,1,2,3 um:zero minimum:5000 name:ISB_BUNPAIRS_IN : Bundle pairs written from L2 into FE
+event:0x43 counters:0,1,2,3 um:zero minimum:5000 name:L1I_EAR_EVENTS : Instruction EAR Events
+event:0x66 counters:0,1,2,3 um:zero minimum:5000 name:L1I_FETCH_ISB_HIT : "\"Just-in-time\" instruction fetch hitting in and being bypassed from ISB
+event:0x65 counters:0,1,2,3 um:zero minimum:5000 name:L1I_FETCH_RAB_HIT : Instruction fetch hitting in RAB
+event:0x41 counters:0,1,2,3 um:zero minimum:5000 name:L1I_FILLS : L1 Instruction Cache Fills
+event:0x44 counters:0,1,2,3 um:zero minimum:5000 name:L1I_PREFETCHES : Instruction Prefetch Requests
+event:0x42 counters:0,1,2,3 um:zero minimum:5000 name:L2_INST_DEMAND_READS : L1 Instruction Cache and ISB Misses
+event:0x67 counters:0,1,2,3 um:l1i_prefetch_stall minimum:5000 name:L1I_PREFETCH_STALL : Why prefetch pipeline is stalled?
+event:0x4b counters:0,1,2,3 um:zero minimum:5000 name:L1I_PURGE : L1ITLB purges handled by L1I
+event:0x69 counters:0,1,2,3 um:zero minimum:5000 name:L1I_PVAB_OVERFLOW : PVAB overflow
+event:0x64 counters:0,1,2,3 um:zero minimum:5000 name:L1I_RAB_ALMOST_FULL : Is RAB almost full?
+event:0x60 counters:0,1,2,3 um:zero minimum:500 name:L1I_RAB_FULL : Is RAB full?
+event:0x40 counters:0,1,2,3 um:zero minimum:5000 name:L1I_READS : L1 Instruction Cache Read
+event:0x4a counters:0,1,2,3 um:zero minimum:5000 name:L1I_SNOOP : Snoop requests handled by L1I
+event:0x5f counters:0,1,2,3 um:zero minimum:5000 name:L1I_STRM_PREFETCHES : L1 Instruction Cache line prefetch requests
+event:0x45 counters:0,1,2,3 um:zero minimum:5000 name:L2_INST_PREFETCHES : Instruction Prefetch Requests
+
+# IA64_2 L1 Data Cache Events, Table 11-10
+event:0xc8 counters:0,1,2,3 um:zero minimum:5000 name:DATA_EAR_EVENTS : Data Cache EAR Events
+# To avoid duplication from other tables the following events commented out
+#event:0xc2 counters:0,1,2,3 um:zero minimum:5000 name:L1D_READS_SET0 : L1 Data Cache Reads
+#event:0xc3 counters:0,1,2,3 um:zero minimum:5000 name:DATA_REFERENCES_SET0 : Data memory references issued to memory pipeline
+#event:0xc4 counters:0,1,2,3 um:zero minimum:5000 name:L1D_READS_SET1 : L1 Data Cache Reads
+#event:0xc5 counters:0,1,2,3 um:zero minimum:5000 name:DATA_REFERENCES_SET1 : Data memory references issued to memory pipeline
+#event:0xc7 counters:0,1,2,3 um:l1d_read_misses minimum:5000 name:L1D_READ_MISSES : L1 Data Cache Read Misses
+
+# IA64_2 L1 Data Cache Set 0 Events, Table 11-11
+event:0xc0 counters:1 um:zero minimum:5000 name:L1DTLB_TRANSFER : L1DTLB misses that hit in the L2DTLB for accesses counted in L1D_READS
+event:0xc1 counters:1 um:zero minimum:5000 name:L2DTLB_MISSES : L2DTLB Misses
+event:0xc2 counters:1 um:zero minimum:5000 name:L1D_READS_SET0 : L1 Data Cache Reads
+event:0xc3 counters:1 um:zero minimum:5000 name:DATA_REFERENCES_SET0 : Data memory references issued to memory pipeline
+
+# IA64_2 L1 Data Cache Set 1 Events, Table 11-12
+event:0xc4 counters:1 um:zero minimum:5000 name:L1D_READS_SET1 : L1 Data Cache Reads
+event:0xc5 counters:1 um:zero minimum:5000 name:DATA_REFERENCES_SET1 : Data memory references issued to memory pipeline
+event:0xc7 counters:1 um:l1d_read_misses minimum:5000 name:L1D_READ_MISSES : L1 Data Cache Read Misses
+
+# IA64_2 L1 Data Cache Set 2 Events, Table 11-13
+event:0xca counters:1 um:be_l1d_fpu_bubble minimum:5000 name:BE_L1D_FPU_BUBBLE : Full pipe bubbles in main pipe due to FP or L1 dcache
+
+# IA64_2 L1 Data Cache Set 3 Events, Table 11-14
+event:0xcd counters:1 um:zero minimum:5000 name:LOADS_RETIRED : Retired Loads
+event:0xce counters:1 um:zero minimum:5000 name:MISALIGNED_LOADS_RETIRED : Retired Misaligned Load Instructions
+event:0xcf counters:1 um:zero minimum:5000 name:UC_LOADS_RETIRED : Retired Uncacheable Loads
+
+# IA64_2 L1 Data Cache Set 4 Events, Table 11-15
+event:0xd1 counters:1 um:zero minimum:5000 name:STORES_RETIRED : Retired Stores
+event:0xd2 counters:1 um:zero minimum:5000 name:MISALIGNED_STORES_RETIRED : Retired Misaligned Store Instructions
+event:0xd0 counters:1 um:zero minimum:5000 name:UC_STORES_RETIRED : Retired Uncacheable Stores
+
+# IA64_2 L2 Unified Cache Events, Table 11-16
+# To avoid duplication from other tables the following events commented out
+#event:0xb9 counters:0,1,2,3 um:zero minimum:5000 name:L2_BAD_LINES_SELECTED : Valid line replaced when invalid line is available
+#event:0xb8 counters:0,1,2,3 um:l2_bypass minimum:5000 name:L2_BYPASS : Count bypass
+#event:0xb2 counters:0,1,2,3 um:l2_data_references minimum:5000 name:L2_DATA_REFERENCES : Data read/write access to L2
+event:0xbf counters:0,1,2,3 um:zero minimum:5000 name:L2_FILLB_FULL : L2D Fill buffer is full
+#event:0xb4 counters:0,1,2,3 um:l2_force_recirc minimum:5000 name:L2_FORCE_RECIRC : Forced recirculates
+event:0xba counters:0,1,2,3 um:recirc_ifetch minimum:5000 name:L2_GOT_RECIRC_IFETCH : Instruction fetch recirculates received by L2D
+#event:0xb6 counters:0,1,2,3 um:zero minimum:5000 name:L2_GOT_RECIRC_OZQ_ACC : Counts number of OZQ accesses recirculated back to L1D
+#event:0xa1 counters:0,1,2,3 um:l2_ifet_cancels minimum:5000 name:L2_IFET_CANCELS : Instruction fetch cancels by the L2.
+#event:0xa5 counters:0,1,2,3 um:l2_ifet_cancels minimum:5000 name:L2_IFET_CANCELS : Instruction fetch cancels by the L2.
+#event:0xa9 counters:0,1,2,3 um:l2_ifet_cancels minimum:5000 name:L2_IFET_CANCELS : Instruction fetch cancels by the L2.
+#event:0xad counters:0,1,2,3 um:l2_ifet_cancels minimum:5000 name:L2_IFET_CANCELS : Instruction fetch cancels by the L2.
+event:0xb9 counters:0,1,2,3 um:recirc_ifetch minimum:5000 name:L2_ISSUED_RECIRC_IFETCH : Instruction fetch recirculates issued by L2D
+#event:0xb5 counters:0,1,2,3 um:zero minimum:5000 name:L2_ISSUED_RECIRC_OZQ_ACC : Count number of times a recirculate issue was attempted and not preempted
+#event:0xb0 counters:0,1,2,3 um:l2_l3_access_cancel minimum:5000 name:L2_L3ACCESS_CANCEL : Canceled L3 accesses
+event:0xcb counters:0,1,2,3 um:zero minimum:5000 name:L2_MISSES : L2 Misses
+event:0xb8 counters:0,1,2,3 um:l2_ops_issued minimum:5000 name:L2_OPS_ISSUED : Different operations issued by L2D
+#event:0xbd counters:0,1,2,3 um:zero minimum:5000 name:L2_OZDB_FULL : L2D OZQ is full
+#event:0xa2 counters:0,1,2,3 um:zero minimum:5000 name:L2_OZQ_ACQUIRE : Clocks with acquire ordering attribute existed in L2 OZQ
+#event:0xa6 counters:0,1,2,3 um:zero minimum:5000 name:L2_OZQ_ACQUIRE : Clocks with acquire ordering attribute existed in L2 OZQ
+#event:0xaa counters:0,1,2,3 um:zero minimum:5000 name:L2_OZQ_ACQUIRE : Clocks with acquire ordering attribute existed in L2 OZQ
+#event:0xae counters:0,1,2,3 um:zero minimum:5000 name:L2_OZQ_ACQUIRE : Clocks with acquire ordering attribute existed in L2 OZQ
+#event:0xa0 counters:0,1,2,3 um:l2_ozq_cancels0 minimum:5000 name:L2_OZQ_CANCELS0 : L2 OZQ cancels
+#event:0xac counters:0,1,2,3 um:l2_ozq_cancels1 minimum:5000 name:L2_OZQ_CANCELS1 : L2 OZQ cancels
+#event:0xa8 counters:0,1,2,3 um:l2_ozq_cancels2 minimum:5000 name:L2_OZQ_CANCELS2 : L2 OZQ cancels
+#event:0xbc counters:0,1,2,3 um:zero minimum:5000 name:L2_OZQ_FULL : L2D OZQ is full
+#event:0xa3 counters:0,1,2,3 um:zero minimum:5000 name:L2_OZQ_RELEASE : Clocks with release ordering attribute existed in L2 OZQ
+#event:0xa7 counters:0,1,2,3 um:zero minimum:5000 name:L2_OZQ_RELEASE : Clocks with release ordering attribute existed in L2 OZQ
+#event:0xab counters:0,1,2,3 um:zero minimum:5000 name:L2_OZQ_RELEASE : Clocks with release ordering attribute existed in L2 OZQ
+#event:0xaf counters:0,1,2,3 um:zero minimum:5000 name:L2_OZQ_RELEASE : Clocks with release ordering attribute existed in L2 OZQ
+#event:0xb1 counters:0,1,2,3 um:zero minimum:5000 name:L2_REFERENCES : Requests made from L2
+#event:0xba counters:0,1,2,3 um:zero minimum:5000 name:L2_STORE_HIT_SHARED : Store hit a shared line
+#event:0xb7 counters:0,1,2,3 um:zero minimum:5000 name:L2_SYNTH_PROBE : Synthesized Probe
+#event:0xbe counters:0,1,2,3 um:zero minimum:5000 name:L2_VICTIMB_FULL : L2D victim buffer is full
+
+# IA64_2 L2 Cache Events Set 0, Table 11-18
+# FIXME all sorts of restrictions on how these can be combined
+event:0xa1 counters:0 um:l2_ifet_cancels minimum:5000 name:L2_IFET_CANCELS : Instruction fetch cancels by the L2.
+event:0xa5 counters:0 um:l2_ifet_cancels minimum:5000 name:L2_IFET_CANCELS : Instruction fetch cancels by the L2.
+event:0xa9 counters:0 um:l2_ifet_cancels minimum:5000 name:L2_IFET_CANCELS : Instruction fetch cancels by the L2.
+event:0xad counters:0 um:l2_ifet_cancels minimum:5000 name:L2_IFET_CANCELS : Instruction fetch cancels by the L2.
+event:0xa2 counters:0 um:zero minimum:5000 name:L2_OZQ_ACQUIRE : Clocks with acquire ordering attribute existed in L2 OZQ
+event:0xa6 counters:0 um:zero minimum:5000 name:L2_OZQ_ACQUIRE : Clocks with acquire ordering attribute existed in L2 OZQ
+event:0xaa counters:0 um:zero minimum:5000 name:L2_OZQ_ACQUIRE : Clocks with acquire ordering attribute existed in L2 OZQ
+event:0xae counters:0 um:zero minimum:5000 name:L2_OZQ_ACQUIRE : Clocks with acquire ordering attribute existed in L2 OZQ
+event:0xa0 counters:0 um:l2_ozq_cancels0 minimum:5000 name:L2_OZQ_CANCELS0 : L2 OZQ cancels
+event:0xac counters:0 um:l2_ozq_cancels1 minimum:5000 name:L2_OZQ_CANCELS1 : L2 OZQ cancels
+event:0xa8 counters:0 um:l2_ozq_cancels2 minimum:5000 name:L2_OZQ_CANCELS2 : L2 OZQ cancels
+event:0xa3 counters:0 um:zero minimum:5000 name:L2_OZQ_RELEASE : Clocks with release ordering attribute existed in L2 OZQ
+event:0xa7 counters:0 um:zero minimum:5000 name:L2_OZQ_RELEASE : Clocks with release ordering attribute existed in L2 OZQ
+event:0xab counters:0 um:zero minimum:5000 name:L2_OZQ_RELEASE : Clocks with release ordering attribute existed in L2 OZQ
+event:0xaf counters:0 um:zero minimum:5000 name:L2_OZQ_RELEASE : Clocks with release ordering attribute existed in L2 OZQ
+
+# IA64_2 L2 Cache Events Set 1, Table 11-19
+# manual states that L2_L3ACCESS_CANCEL must be measured in PMD4.
+# FIXME Don't have any way of enforcing the constraints
+# so only l2_l3_access_cancel allowed.
+event:0xb0 counters:0 um:l2_l3_access_cancel minimum:5000 name:L2_L3ACCESS_CANCEL : Canceled L3 accesses
+#event:0xb2 counters:0,1,2,3 um:l2_data_references minimum:5000 name:L2_DATA_REFERENCES : Data read/write access to L2
+#event:0xb1 counters:0,1,2,3 um:zero minimum:5000 name:L2_REFERENCES : Requests made from L2
+
+# IA64_2 L2 Cache Events Set 2, Table 11-20
+# manual states that L2_FORCE_RECIRC must be measured in PMD4.
+# FIXME Don't have anyway of enforcing thes constraint
+# so only L2_FORCE_RECIRC allowed.
+event:0xb4 counters:0 um:l2_force_recirc minimum:5000 name:L2_FORCE_RECIRC : Forced recirculates
+#event:0xb5 counters:0,1,2,3 um:zero minimum:5000 name:L2_ISSUED_RECIRC_OZQ_ACC : Count number of times a recirculate issue was attempted and not preempted
+#event:0xb6 counters:0,1,2,3 um:zero minimum:5000 name:L2_GOT_RECIRC_OZQ_ACC : Counts number of OZQ accesses recirculated back to L1D
+#event:0xb7 counters:0,1,2,3 um:zero minimum:5000 name:L2_SYNTH_PROBE : Synthesized Probe
+
+# IA64_2 L2 Cache Events Set 3, Table 11-21
+# The manual states that all events in this set share the same umask.
+event:0xb9 counters:0 um:zero minimum:5000 name:L2_BAD_LINES_SELECTED : Valid line replaced when invalid line is available
+event:0xb8 counters:0 um:l2_bypass minimum:5000 name:L2_BYPASS : Count bypass
+event:0xba counters:0 um:zero minimum:5000 name:L2_STORE_HIT_SHARED : Store hit a shared line
+
+# IA64_2 L2 Cache Events Set 4, Table 11-22
+# The manual states one of the following needs to be in pmd4 and these events
+# share the same umask.
+event:0xba counters:0 um:recirc_ifetch minimum:5000 name:L2_GOT_RECIRC_IFETCH : Instruction fetch recirculates received by L2D
+event:0xb9 counters:0 um:recirc_ifetch minimum:5000 name:L2_ISSUED_RECIRC_IFETCH : Instruction fetch recirculates issued by L2D
+event:0xb8 counters:0 um:l2_ops_issued minimum:5000 name:L2_OPS_ISSUED : Different operations issued by L2D
+
+# IA64_2 L2 Cache Events Set 5, Table 11-23
+# manual states one of the following needs to be in pmd4 and
+#       these events share the same umask
+event:0xbc counters:0 um:zero minimum:5000 name:L2_OZQ_FULL : L2D OZQ is full
+event:0xbd counters:0 um:zero minimum:5000 name:L2_OZDB_FULL : L2D OZQ is full
+event:0xbe counters:0 um:zero minimum:5000 name:L2_VICTIMB_FULL : L2D victim buffer is full
+event:0xbf counters:0 um:zero minimum:5000 name:L2_FILLB_FULL : L2D Fill buffer is full
+
+# IA64_2 L3 Cache Events, Table 11-24
+event:0xdf counters:0,1,2,3 um:zero minimum:5000 name:L3_LINES_REPLACED : Cache Lines Replaced
+event:0xdc counters:0,1,2,3 um:zero minimum:5000 name:L3_MISSES : L3 Misses
+event:0xdb counters:0,1,2,3 um:zero minimum:5000 name:L3_REFERENCES : L3 References
+event:0xdd counters:0,1,2,3 um:l3_reads minimum:5000 name:L3_READS : L3 Reads
+event:0xde counters:0,1,2,3 um:l3_writes minimum:5000 name:L3_WRITES : L3 Writes
+
+# IA64_2 System Events, Table 11-26
+event:0x13 counters:0,1,2,3 um:zero minimum:5000 name:CPU_CPL_CHANGES : Privilege Level Changes
+event:0x52 counters:0,1,2,3 um:zero minimum:5000 name:DATA_DEBUG_REGISTER_FAULT : Fault due to data debug reg. Match to load/store instruction
+event:0xc6 counters:0,1,2,3 um:zero minimum:5000 name:DATA_DEBUG_REGISTER_MATCHES : Data debug register matches data address of memory reference
+event:0x9e counters:0,1,2,3 um:extern_dp_pins_0_to_3 minimum:5000 name:EXTERN_DP_PINS_0_TO_3 : DP pins 0-3 asserted
+event:0x9f counters:0,1,2,3 um:extern_dp_pins_4_to_5 minimum:5000 name:EXTERN_DP_PINS_4_TO_5 : DP pins 4-5 asserted
+event:0x53 counters:0,1,2,3 um:zero minimum:5000 name:SERIALIZATION_EVENTS : Number of srlz.I instructions
+
+# IA64_2 TLB Events, Table 11-28
+event:0xc9 counters:0,1,2,3 um:zero minimum:5000 name:DTLB_INSERTS_HPW : Hardware Page Walker Installs to DTLB"
+event:0x2c counters:0,1,2,3 um:zero minimum:500 name:DTLB_INSERTS_HPW_RETIRED : VHPT entries inserted into DTLB by HW PW
+event:0x2d counters:0,1,2,3 um:zero minimum:500 name:HPW_DATA_REFERENCES : Data memory references to VHPT
+#event:0xc1 counters:1 um:zero minimum:5000 name:L2DTLB_MISSES : L2DTLB Misses
+event:0x48 counters:0,1,2,3 um:zero minimum:5000 name:L1ITLB_INSERTS_HPW : L1ITLB Hardware Page Walker Inserts
+event:0x47 counters:0,1,2,3 um:itlb_misses_fetch minimum:5000 name:ITLB_MISSES_FETCH : ITLB Misses Demand Fetch
+#event:0xc0 counters:1 um:zero minimum:5000 name:L1DTLB_TRANSFER : L1DTLB misses that hit in the L2DTLB for accesses counted in L1D_READS
+
+# IA64_2 System Bus Events, Table 11-30
+event:0x87 counters:0,1,2,3 um:bus minimum:5000 name:BUS_ALL : Bus Transactions
+event:0x9c counters:0,1,2,3 um:zero minimum:5000 name:BUS_BRQ_LIVE_REQ_HI : BRQ Live Requests (two most-significant-bit of the 5-bit outstanding BRQ request count)
+event:0x9b counters:0,1,2,3 um:zero minimum:5000 name:BUS_BRQ_LIVE_REQ_LO : BRQ Live Requests (three least-significant-bit of the 5-bit outstanding BRQ request count
+event:0x9d counters:0,1,2,3 um:zero minimum:5000 name:BUS_BRQ_REQ_INSERTED : BRQ Requests Inserted
+event:0x88 counters:0,1,2,3 um:zero minimum:5000 name:BUS_DATA_CYCLE : Valid data cycle on the Bus
+event:0x84 counters:0,1,2,3 um:zero minimum:5000 name:BUS_HITM : Bus Hit Modified Line Transactions
+event:0x90 counters:0,1,2,3 um:bus minimum:5000 name:BUS_IO : IA-32 Compatible IO Bus Transactions
+event:0x98 counters:0,1,2,3 um:zero minimum:5000 name:BUS_IOQ_LIVE_REQ_HI : Inorder Bus Queue Requests (two most-significant-bit of the 4-bit outstanding IOQ request count)
+event:0x97 counters:0,1,2,3 um:zero minimum:5000 name:BUS_IOQ_LIVE_REQ_LO : Inorder Bus Queue Requests (two least-significant-bit of the 4-bit outstanding IOQ request count)
+event:0x93 counters:0,1,2,3 um:bus_lock minimum:5000 name:BUS_LOCK : IA-32 Compatible Bus Lock Transactions
+event:0x8e counters:0,1,2,3 um:bus_backsnp_req minimum:5000 name:BUS_BACKSNP_REQ : Bus Back Snoop Requests
+event:0x8a counters:0,1,2,3 um:bus_memory minimum:5000 name:BUS_MEMORY : Bus Memory Transactions
+event:0x8b counters:0,1,2,3 um:bus_mem_read minimum:5000 name:BUS_MEM_READ : Full Cache line D/I memory RD, RD invalidate, and BRIL
+event:0x94 counters:0,1,2,3 um:zero minimum:5000 name:BUS_MEM_READ_OUT_HI : Outstanding memory RD transactions
+event:0x95 counters:0,1,2,3 um:zero minimum:5000 name:BUS_MEM_READ_OUT_LO : Outstanding memory RD transactions
+event:0x9a counters:0,1,2,3 um:zero minimum:5000 name:BUS_OOQ_LIVE_REQ_HI : Out-of-order Bus Queue Requests (two most-significant-bit of the 4-bit outstanding OOQ request count)
+event:0x99 counters:0,1,2,3 um:zero minimum:5000 name:BUS_OOQ_LIVE_REQ_LO : Out-of-order Bus Queue Requests (three least-significant-bit of the 4-bit outstanding OOQ request count)
+event:0x8c counters:0,1,2,3 um:bus minimum:5000 name:BUS_RD_DATA : Bus Read Data Transactions
+event:0x80 counters:0,1,2,3 um:zero minimum:5000 name:BUS_RD_HIT : Bus Read Hit Clean Non-local Cache Transactions
+event:0x81 counters:0,1,2,3 um:zero minimum:5000 name:BUS_RD_HITM : Bus Read Hit Modified Non-local Cache Transactions
+event:0x83 counters:0,1,2,3 um:zero minimum:5000 name:BUS_RD_INVAL_ALL_HITM : Bus BIL or BRIL Transaction Results in HITM
+event:0x82 counters:0,1,2,3 um:zero minimum:5000 name:BUS_RD_INVAL_HITM : Bus BIL Transaction Results in HITM
+event:0x91 counters:0,1,2,3 um:bus minimum:5000 name:BUS_RD_IO : IA-32 Compatible IO Read Transactions
+event:0x8d counters:0,1,2,3 um:bus minimum:5000 name:BUS_RD_PRTL : Bus Read Partial Transactions
+event:0x96 counters:0,1,2,3 um:zero minimum:5000 name:BUS_SNOOPQ_REQ : Bus Snoop Queue Requests
+event:0x86 counters:0,1,2,3 um:bus minimum:5000 name:BUS_SNOOPS : Bus Snoops Total
+event:0x85 counters:0,1,2,3 um:bus_snoop minimum:5000 name:BUS_SNOOPS_HITM : Bus Snoops HIT Modified Cache Line
+event:0x8f counters:0,1,2,3 um:bus_snoop minimum:5000 name:BUS_SNOOP_STALL_CYCLES : Bus Snoop Stall Cycles (from any agent)
+event:0x92 counters:0,1,2,3 um:bus_wr_wb minimum:5000 name:BUS_WR_WB : Bus Write Back Transactions
+event:0x89 counters:0,1,2,3 um:mem_read_current minimum:5000 name:MEM_READ_CURRENT : Current Mem Read Transactions On Bus
+
+# RSE Events, Table 11-34
+event:0x2b counters:0,1,2,3 um:zero minimum:500 name:RSE_CURRENT_REGS_2_TO_0 : Current RSE registers
+event:0x2a counters:0,1,2,3 um:zero minimum:500 name:RSE_CURRENT_REGS_5_TO_3 : Current RSE registers
+event:0x26 counters:0,1,2,3 um:zero minimum:500 name:RSE_CURRENT_REGS_6 : Current RSE registers
+event:0x29 counters:0,1,2,3 um:zero minimum:500 name:RSE_DIRTY_REGS_2_TO_0 : Dirty RSE registers
+event:0x28 counters:0,1,2,3 um:zero minimum:500 name:RSE_DIRTY_REGS_5_TO_3 : Dirty RSE registers
+event:0x24 counters:0,1,2,3 um:zero minimum:500 name:RSE_DIRTY_REGS_6 : Dirty RSE registers
+event:0x32 counters:0,1,2,3 um:zero minimum:500 name:RSE_EVENT_RETIRED : Retired RSE operations
+event:0x20 counters:0,1,2,3 um:rse_references_retired minimum:500 name:RSE_REFERENCES_RETIRED : RSE Accesses
+
+# IA64 Performance Monitors Ordered by Code, Table 11-36
+event:0xbb counters:0,1,2,3 um:zero minimum:5000 name:TAGGED_L2_DATA_RETURN_POR : Tagged L2 Data Return Ports 0/1

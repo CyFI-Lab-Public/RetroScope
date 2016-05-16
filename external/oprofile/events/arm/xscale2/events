@@ -1,0 +1,23 @@
+# XScale 2 events
+#
+event:0x00 counters:1,2,3,4 um:zero minimum:500 name:IFU_IFETCH_MISS : number of instruction fetch misses
+event:0x01 counters:1,2,3,4 um:zero minimum:500 name:CYCLES_IFU_MEM_STALL : cycles instruction fetch pipe is stalled
+event:0x02 counters:1,2,3,4 um:zero minimum:500 name:CYCLES_DATA_STALL : cycles stall occurs for due to data dependency
+event:0x03 counters:1,2,3,4 um:zero minimum:500 name:ITLB_MISS : number of ITLB misses
+event:0x04 counters:1,2,3,4 um:zero minimum:500 name:DTLB_MISS : number of DTLB misses
+event:0x05 counters:1,2,3,4 um:zero minimum:500 name:BR_INST_EXECUTED : branch instruction executed w/ or w/o program flow change
+event:0x06 counters:1,2,3,4 um:zero minimum:500 name:BR_INST_MISS_PRED : branch mispredicted
+event:0x07 counters:1,2,3,4 um:zero minimum:500 name:INSN_EXECUTED : instruction executed
+event:0x08 counters:1,2,3,4 um:zero minimum:500 name:CYCLES_DCACHE_FULL_STALL : cycles in stall due to full dcache
+event:0x09 counters:1,2,3,4 um:zero minimum:500 name:DCACHE_FULL_STALL_CNT : number of stalls due to dcache full condition
+event:0x0a counters:1,2,3,4 um:zero minimum:500 name:DCACHE_ACCESS : data cache access
+event:0x0b counters:1,2,3,4 um:zero minimum:500 name:DCACHE_MISS : data cache miss
+event:0x0c counters:1,2,3,4 um:zero minimum:500 name:DCACHE_WB : data cache writeback, 1 event for every half cacheline
+event:0x0d counters:1,2,3,4 um:zero minimum:500 name:PC_CHANGE : number of times the program counter was changed without a mode switch
+event:0x10 counters:1,2,3,4 um:zero minimum:500 name:BCU_REQUEST : number of time the BCU received a new memory request from the core
+event:0x11 counters:1,2,3,4 um:zero minimum:500 name:BCU_FULL : number of cycles the BCUs request queue is full
+event:0x12 counters:1,2,3,4 um:zero minimum:500 name:BCU_DRAIN : number of times the BCU queues were drained due to a Drain Write Buffer command or an I/O transaction on a non-cacheable and non-bufferable page
+event:0x14 counters:1,2,3,4 um:zero minimum:500 name:BCU_ECC_NO_ELOG : number of times the BCU detected an ECC error, but no ELOG register was available in which to log the error
+event:0x15 counters:1,2,3,4 um:zero minimum:500 name:BCU_1_BIT_ERR : number of times the BCU detected a 1-bit error while reading data from the bus
+event:0x16 counters:1,2,3,4 um:zero minimum:500 name:RMW : number of times an RMW cycle occurred due to narrow write on ECC-protected memory
+event:0xfe counters:0 um:zero minimum:500 name:CPU_CYCLES : clock cycles counter

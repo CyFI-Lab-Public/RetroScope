@@ -1,0 +1,131 @@
+== Notes on {kddi,docomo,softbank}-*.ucm mappings.
+
+kddi-jisx-208 is a variant of JIS X 208 used by KDDI, a Japanese cell
+phone carrier.
+
+kddi-shift_jis, docomo-shift_jis, and softbank-shift_jis are variants
+of Shift_JIS used by KDDI, DoCoMo and SoftBank.
+
+  - kddi-jisx-208 contains Emoji (emoticon) code points in
+    0x75xx, 0x76xx, 0x77xx, 0x78xx, 0x79xx, 0x7Axx, 0x7Bxx,
+    where xx means 21-7E.
+
+  - kddi-shift_jis contains Emoji code points in
+    0xEBxx, 0xECxx, 0xEDxx, and 0xEExx, 0xF3xx, 0xF4xx, 0xF6xx, 0xF7xx,
+    where xx means 40-7E, 80-FC.
+
+  - docomo-shift_jis contains Emoji code points in
+    0xF8xx, and 0xF9xx, where xx means 40-7E, 80-FC.
+
+  - softbank-shift_jis contains Emoji code points in
+    0xF7xx, 0xF9xx, and 0xFBxx, where xx means 40-7E, 80-FC.
+
+  - softbank-jisx-208 contains Emoji code points in
+    0x75xx, 0x76xx, 0x77xx, 0x78xx, 0x79xx, 0x7Axx, 0x7Bxx, 0x7Dxx
+    where xx means 21-7E.
+
+
+== How the -2012.ucm tables were modified in April 2013
+
+The -2012 versions were created by
+    http://code.google.com/p/emoji4unicode/source/browse/trunk/src/gen_conversion_files.py
+
+using each of the older 2012 versions as the base table files
+to avoid non-Emoji changes:
+
+# gen_google_ucm.sh
+icu_mappings=/google/src/cloud/mscherer/icubranch/google_vendor_src_branch/icu/source/data/mappings
+dest=/home/mscherer/www/no_crawl/emoji
+./gen_conversion_files.py $icu_mappings/docomo-shift_jis-2012.ucm
+cp ../generated/docomo-shift_jis-2012.ucm $dest
+./gen_conversion_files.py $icu_mappings/kddi-shift_jis-2012.ucm
+cp ../generated/kddi-shift_jis-2012.ucm $dest
+./gen_conversion_files.py $icu_mappings/softbank-shift_jis-2012.ucm
+cp ../generated/softbank-shift_jis-2012.ucm $dest
+./gen_conversion_files.py
+
+The only differences from 2012-sep are in mappings for symbols
+that have Unicode Variation Selector (VS) sequences.
+
+The older tables relied on a hack in the ICU conversion code that
+ignored the "use fallback" flag for fallbacks from sequences with VS.
+
+The new tables rely on a new feature in ICU4C 51:
+For the relevant symbols that have roundtrip mappings,
+- the mappings with Emoji Variation Selector
+  use the |0 roundtrip precision
+- the other mappings (no VS & text VS)
+  use the |4 "good one-way" precision
+
+See http://bugs.icu-project.org/trac/ticket/9602
+
+== How the -2012.ucm tables were created in September 2012
+
+The 2012 versions were created by
+    http://code.google.com/p/emoji4unicode/source/browse/trunk/src/gen_conversion_files.py
+
+using each of the 2007 versions as the base table files
+to avoid non-Emoji changes:
+
+icu_mappings=~/p4/emoji/google_vendor_src_branch/icu/source/data/mappings
+dest=~/www/no_crawl/emoji
+./gen_conversion_files.py $icu_mappings/docomo-shift_jis-2007.ucm
+cp ../generated/docomo-shift_jis-2012.ucm $dest
+./gen_conversion_files.py $icu_mappings/kddi-shift_jis-2007.ucm
+cp ../generated/kddi-shift_jis-2012.ucm $dest
+./gen_conversion_files.py $icu_mappings/softbank-shift_jis-2007.ucm
+cp ../generated/softbank-shift_jis-2012.ucm $dest
+./gen_conversion_files.py
+
+The emoji4unicode code uses the mappings that were established during the
+Unicode Emoji standardization process.
+The new conversion tables round-trip carrier Emoji symbol codes
+to and from Unicode 6 standard code points
+and also include fallback mappings from the Google PUA code points
+to the carrier codes.
+
+The trailing "|0" etc. on the mapping table lines specify the mapping type:
+    |0  round-trip              Unicode <-> charset
+    |1  fallback                Unicode  -> charset
+    |3  "reverse fallback"      Unicode <-  charset
+
+For details about the .ucm file format see
+http://userguide.icu-project.org/conversion/data#TOC-.ucm-File-Format
+
+== How the -2007.ucm tables were created
+
+So far, we haven't obtained "official" conversion tables from the cell
+phone carriers.  However, we empirically know their clients support
+VDCs in MS932, like U2460 (CIRCLED DIGIT ONE), etc.  Hence we use
+MS932 as the base table for them.
+
+kddi-jisx-208-2007.ucm is based on jisx-208.ucm in this directory.
+The original table's mappings to codes 0x75xx to 0x7Bxx are excluded
+to avoid collisions with emoji.
+
+kddi-shift_jis-2007.ucm is based on windows-932-2000.ucm.
+The original table's mappings to codes 0xEBxx to 0xEExx, and 0xF0xx to
+0xF90xx (EUDC block), are excluded to avoid collisions with emoji.
+
+docomo-shift_jis-2007.ucm is based on windows-932-2000.ucm.
+The original table's mappings to codes 0xF0xx to 0xF90xx (EUDC block)
+are excluded to avoid collisions with emoji.
+
+softbank-shift_jis-2007.ucm is based on windows-932-2000.ucm.
+The original table's mappings to codes 0xF0xx to 0xF90xx (EUDC block),
+and 0xFBxx, are excluded to avoid collisions with emoji.
+
+softbank-jisx-208-2007.ucm is based on jisx-208.ucm in this directory.
+The original table's mappings to codes 0x75xx to 0x7Bxx, and 0x7Dxx
+are excluded to avoid collisions with emoji.
+
+== Google Standard Emoji Unicode Mapping
+
+The Google standard emoji Unicode mapping can be found at:
+
+  /home/build/google3/i18n/encodings/emoji/emoji_unicode_mapping.txt
+
+
+
+TODO(mscherer): Use <icu:base> to share most standard JIS mappings
+among *-shift_jis-2007.ucm files.

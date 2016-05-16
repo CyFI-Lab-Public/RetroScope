@@ -1,0 +1,39 @@
+# 745x Events
+#
+event:0x1 counters:0,1,2,3 um:zero minimum:3000 name:CYCLES : Processor cycles
+event:0x2 counters:0,1,2,3 um:zero minimum:3000 name:COMPLETED_INSNS : Completed Instructions
+event:0x3 counters:0,1,2,3 um:zero minimum:3000 name:TBL_BIT_TRANSTNS : TBL Bit Transitions
+event:0x4 counters:0,1,2,3 um:zero minimum:3000 name:DISPATCHED_INSNS : Dispatched Instructions
+event:0x5 counters:0,1,2,3 um:zero minimum:3000 name:PROC_PERFMON_EXC : Process Performance Monitor Exception
+event:0x8 counters:0,1,3 um:zero minimum:3000 name:VPU_INSNS : VPU Instructions Completed
+event:0x9 counters:0,1,3 um:zero minimum:3000 name:VFPU_INSNS : VFPU Instructions Completed
+event:0xa counters:0,1,3 um:zero minimum:3000 name:VIU1_INSNS : VIU1 Instructions Completed
+event:0xb counters:0,1,3 um:zero minimum:3000 name:VIU2_INSNS : VIU2 Instructions Completed
+event:0xe counters:0,1 um:zero minimum:3000 name:VPU_CYCLES : Cycles a VPU Instruction
+event:0xf counters:0,1 um:zero minimum:3000 name:VFPU_CYCLES : Cycles a VFPU Instruction
+event:0x10 counters:0,1 um:zero minimum:3000 name:VIU1_CYCLES : Cycles a VIU1 Instruction
+event:0x11 counters:0,1 um:zero minimum:3000 name:VIU2_CYCLES : Cycles a VIU2 Instruction
+event:0x12 counters:2 um:zero minimum:3000 name:DTLB_MISSES : DTLB misses
+event:0x14 counters:0,1 um:zero minimum:3000 name:STORE_INSNS : Store Instructions
+event:0x15 counters:0,1 um:zero minimum:3000 name:L1_ICACHE_MISSES : L1 Instruction Cache Misses
+event:0x16 counters:0,1 um:zero minimum:3000 name:L1_DATA_SNOOPS : L1 Data Snoops
+event:0x17 counters:0,1 um:zero minimum:3000 name:UNRESOLVED_BRANCHES : Unresolved Branches
+event:0x1c counters:3 um:zero minimum:3000 name:MISPREDICTED_BRANCHES : Mispredicted branches
+event:0x1d counters:3 um:zero minimum:3000 name:FOLDED_BRANCHES : Folded branches
+event:0x1f counters:2 um:zero minimum:3000 name:BR_LN_STACK_MIS : Branch Link Stack Mispredicted
+event:0x27 counters:0 um:zero minimum:3000 name:ITLB_TABLE_CYCLES : ITLM Hardware Table Search Cycles
+event:0x29 counters:0 um:zero minimum:3000 name:L1_ICACHE_ACCESSES : L1 Instruction Cache Accesses
+event:0x2a counters:0 um:zero minimum:3000 name:INSN_BP_MATCHES : Instruction Breakpoint Matches
+event:0x32 counters:0 um:zero minimum:3000 name:L1_DSNOOP_HITS : L1 data snoop hits
+event:0x33 counters:0 um:zero minimum:3000 name:WRITETHRU_STORES : Write-through stores
+event:0x34 counters:0 um:zero minimum:3000 name:CACHEINH_STORES : Cache-inhibited stores
+event:0x35 counters:0 um:zero minimum:3000 name:L1_DLOAD_HIT : L1 data load hit
+event:0x36 counters:0 um:zero minimum:3000 name:L1_DTOUCH_HIT : L1 data touch hit
+event:0x37 counters:0 um:zero minimum:3000 name:L1_DSTORE_HIT : L1 data store hit
+event:0x38 counters:0 um:zero minimum:3000 name:L1_DATA_HITS : L1 data total hits
+event:0x40 counters:0 um:zero minimum:3000 name:ALTIVEC_LD_INSNS_COMPLETED : Altivec load instructions completed
+event:0x41 counters:0 um:zero minimum:3000 name:FP_STORE_INSNS_COMPLETED_LSU : Floating point store instructions completed in LSU
+event:0x4f counters:0 um:zero minimum:3000 name:FP_LOAD_INSNS_COMPLETED_LSU : Floating point load instructions completed in LSU
+event:0x50 counters:0 um:zero minimum:3000 name:FP_LDSINGLE_INSNS_COMPLETED_LSU : Floating point load single instructions completed in LSU
+event:0x5e counters:0 um:zero minimum:3000 name:FP_DENORMALIZED_RESULT : Floating point denormalized result
+

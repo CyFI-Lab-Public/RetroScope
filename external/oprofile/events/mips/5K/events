@@ -1,0 +1,36 @@
+#
+# MIPS 5K
+#
+# As standard the CPU supports 2 performance counters.  Event 0, 2, 3 and 4
+# are available on both counters; the INSNS_EXECED is available on counter 0
+# as event 0 and on counter 1 as event 1; the remaining are counter-specific.
+#
+event:0x0 counters:0,1 um:zero minimum:500 name:CYCLES : Cycles
+event:0x2 counters:0,1 um:zero minimum:500 name:LOADS_EXECED : Load/pref(x)/sync/cache-ops executed
+event:0x3 counters:0,1 um:zero minimum:500 name:STORES_EXECED : Stores (including conditional stores) executed
+event:0x4 counters:0,1 um:zero minimum:500 name:COND_STORES_EXECED : Conditional stores executed
+
+#
+# Events specific to counter 0
+#
+event:0x1 counters:0 um:zero minimum:500 name:INSN_FETCHED : Instructions fetched
+event:0x5 counters:0 um:zero minimum:500 name:FAILED_COND_STORES : Failed conditional stores
+event:0x6 counters:0 um:zero minimum:500 name:BRANCHES_EXECED : Branches executed
+event:0x7 counters:0 um:zero minimum:500 name:ITLB_MISSES : ITLB miss
+event:0x8 counters:0 um:zero minimum:500 name:DTLB_MISSES : DTLB miss
+event:0x9 counters:0 um:zero minimum:500 name:ICACHE_MISS : Instruction cache miss
+event:0xa counters:0 um:zero minimum:500 name:INSN_SCHEDULED : Instruction scheduled
+event:0xe counters:0 um:zero minimum:500 name:DUAL_ISSUED_INSNS : Dual issued instructions executed
+event:0xf counters:0 um:zero minimum:500 name:INSNS_EXECED : Instructions executed
+
+#
+# Events specific to counter 1
+#
+event:0x1 counters:1 um:zero minimum:500 name:INSNS_EXECED : Instructions executed
+event:0x5 counters:1 um:zero minimum:500 name:FP_INSNS_EXECED : Floating-point instructions executed
+event:0x6 counters:1 um:zero minimum:500 name:DCACHE_LINE_EVICTED : Data cache line evicted
+event:0x7 counters:1 um:zero minimum:500 name:TLB_MISS_EXCEPTIONS : TLB miss exceptions
+event:0x8 counters:1 um:zero minimum:500 name:BRANCHES_MISSPREDICTED : Branch mispredicted
+event:0x9 counters:1 um:zero minimum:500 name:DCACHE_MISS : Data cache miss
+event:0xa counters:1 um:zero minimum:500 name:CONFLICT_STALL_M_STAGE : Instruction stall in M stage due to scheduling conflicts
+event:0xf counters:1 um:zero minimum:500 name:COP2_INSNS_EXECED : COP2 instructions executed

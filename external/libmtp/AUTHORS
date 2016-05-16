@@ -1,0 +1,40 @@
+libmtp was invented by:
+
+Richard Low <richard@wentnet.com>
+Linus Walleij <triad@df.lth.se>
+
+We both came to do libmtp after working on the libnjb
+project, which was all about Creative Technology devices
+implementing the OASiS and PDE protocols.
+
+libmtp is however largely based on libptp2, which was created by
+Mariusz Woloszyn <emsi@ipartners.pl> as part of gPhoto2 then
+derived into its own project.
+
+We later started to use libgphoto2 which is also based on the same
+code as libptp2 but with large contributions from
+Marcus Meissner <marcus@jet.franken.de>. Marcus is also a
+contributor on libmtp from time to time and we're great friends.
+
+Other contributors to libmtp include:
+
+Andy Kelk <andy@mopoke.co.uk>
+Chris A. Debenham <chris@adebenham.com>
+Daniel Williams <danielw@iinet.net.au>
+Dave Kelly <libmtp@ravelox.co.uk>
+Matthew Wilcox <matthew@wil.cx>
+Robert Reardon <rreardon@monkshatch.vispa.com>
+Orson Teodoro <orsonteodoro@yahoo.com>
+Ted Bullock <tbullock@canada.com>
+Sean Kellogg <skellogg@gmail.com>
+Tero Saarni <tero.saarni@gmail.com>
+Jeff Mitchell <kde-dev@emailgoeshere.com>
+Johannes Huber <johub1180@gmx.at>
+Alistair Boyle <alistair.js.boyle@gmail.com>
+Chris Bagwell <chris@cnpbagwell.com>
+Joseph Nahmias <joe@nahmias.net>
+Florent Mertens <flomertens@gmail.com>
+Alvin <alvinbeach@gmail.com>
+James Ravenscroft <ravenscroftj@gmail.com>
+Thomas Schweitzer <thomas_-_s@users.sourceforge.net>
+Nyall Dawson <nyall@zombiepigs.net>

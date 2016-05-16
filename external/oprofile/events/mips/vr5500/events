@@ -1,0 +1,16 @@
+#
+# VR5500, VR5532 and VR7701 events
+#
+# Very similar to what the VR5432 provides.
+#
+event:0x0 counters:0,1 um:zero minimum:500 name:CYCLES : Processor clock cycles
+event:0x1 counters:0,1 um:zero minimum:500 name:INSTRUCTIONS_EXECUTED : Instructions executed
+event:0x2 counters:0,1 um:zero minimum:500 name:LOAD_PREF_CACHE_INSTRUCTIONS : Execution of load/prefetch/cache instruction
+event:0x3 counters:0,1 um:zero minimum:500 name:STORES : Execution of store instruction
+event:0x4 counters:0,1 um:zero minimum:500 name:BRANCHES : Execution of branch instruction
+event:0x5 counters:0,1 um:zero minimum:500 name:FP_INSTRUCTIONS : Execution of floating-point instruction
+event:0x6 counters:0,1 um:zero minimum:500 name:DOUBLEWORDS_FLUSHED : Doubleword flush to main memory
+event:0x7 counters:0,1 um:zero minimum:500 name:JTLB_REFILLS : TLB refill
+event:0x8 counters:0,1 um:zero minimum:500 name:DCACHE_MISSES : Data cache miss
+event:0x9 counters:0,1 um:zero minimum:500 name:ICACHE_MISSES : Instruction cache miss
+event:0xa counters:0,1 um:zero minimum:500 name:BRANCHES_MISPREDICTED : Branch prediction miss

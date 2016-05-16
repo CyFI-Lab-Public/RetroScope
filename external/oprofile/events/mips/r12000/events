@@ -1,0 +1,35 @@
+#
+# R12000 events
+#
+event:0x0 counters:0,1,2,3 um:zero minimum:500 name:CYCLES : Cycles
+event:0x1 counters:0,1,2,3 um:zero minimum:500 name:DECODED_INSTRUCTIONS : Decoded instructions
+event:0x2 counters:0,1,2,3 um:zero minimum:500 name:DECODED_LOADS : Decoded loads
+event:0x3 counters:0,1,2,3 um:zero minimum:500 name:DECODED_STORES : Decoded stores
+event:0x4 counters:0,1,2,3 um:zero minimum:500 name:MISS_TABLE_OCCUPANCY : Miss Handling Table Occupancy
+event:0x5 counters:0,1,2,3 um:zero minimum:500 name:FAILED_STORE_CONDITIONAL : Failed store conditional
+event:0x6 counters:0,1,2,3 um:zero minimum:500 name:RESOLVED_BRANCH_CONDITIONAL : Resolved conditional branches
+event:0x7 counters:0,1,2,3 um:zero minimum:500 name:QUADWORRDS_WRITEBACK_FROM_SC : Quadwords written back from secondary cache
+event:0x8 counters:0,1,2,3 um:zero minimum:500 name:CORRECTABLE_ECC_ERRORS : Correctable ECC errors on secondary cache data
+event:0x9 counters:0,1,2,3 um:zero minimum:500 name:ICACHE_MISSES : Instruction cache misses
+event:0xa counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTION_SECONDARY_CACHE_MISSES : Secondary cache misses (instruction)
+event:0xb counters:0,1,2,3 um:zero minimum:500 name:SECONDARY_CACHE_WAY_MISSPREDICTED : Secondary cache way mispredicted (instruction)
+event:0xc counters:0,1,2,3 um:zero minimum:500 name:INTERVENTION_REQUESTS : External intervention requests
+event:0xd counters:0,1,2,3 um:zero minimum:500 name:EXTERNAL_REQUESTS : External invalidate requests
+
+event:0xf counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTIONS_GRADUATED : Instructions graduated
+event:0x10 counters:0,1,2,3 um:zero minimum:500 name:PREFETCH_INSTRUCTIONS_EXECUTED : Executed prefetch instructions
+event:0x11 counters:0,1,2,3 um:zero minimum:500 name:PREFETCH_MISSES_IN_DCACHE : Primary data cache misses by prefetch instructions
+event:0x12 counters:0,1,2,3 um:zero minimum:500 name:GRADUATED_LOADS : Graduated loads
+event:0x13 counters:0,1,2,3 um:zero minimum:500 name:GRADUATED_STORES : Graduated stores
+event:0x14 counters:0,1,2,3 um:zero minimum:500 name:GRADUATED_STORE_CONDITIONALS : Graduated store conditionals
+event:0x15 counters:0,1,2,3 um:zero minimum:500 name:GRADUATED_FP_INSTRUCTIONS : Graduated floating point instructions
+event:0x16 counters:0,1,2,3 um:zero minimum:500 name:QUADWORDS : Quadwords written back from primary data cache
+event:0x17 counters:0,1,2,3 um:zero minimum:500 name:TLB_MISSES : TLB misses
+event:0x18 counters:0,1,2,3 um:zero minimum:500 name:MISPREDICTED_BRANCHES : Mispredicted branches
+event:0x19 counters:0,1,2,3 um:zero minimum:500 name:DCACHE_MISSES : Primary data cache misses
+event:0x1a counters:0,1,2,3 um:zero minimum:500 name:SCACHE_MISSES : Secondary cache misses (data)
+event:0x1b counters:0,1,2,3 um:zero minimum:500 name:SCACHE_WAY_MISPREDICTION : Misprediction from scache way prediction table (data)
+event:0x1c counters:0,1,2,3 um:zero minimum:500 name:STATE_OF_SCACHE_INTERVENTION_HIT : State of external intervention hit in secondary cache
+event:0x1d counters:0,1,2,3 um:zero minimum:500 name:STATE_OF_EXTERNAL_INVALIDATION_HIT : State of external invalidation hits in secondary cache
+event:0x1e counters:0,1,2,3 um:zero minimum:500 name:STORE_PREFETCH_EXCLUSIVE_TO_CLEAN_SC_BLOCK : Store/prefetch exclusive to clean block in secondary cache
+event:0x1f counters:0,1,2,3 um:zero minimum:500 name:STORE_PREFETCH_EXCLUSIVE_SHARED_SC_BLOCK : Store/prefetch exclusive to shared block in secondary

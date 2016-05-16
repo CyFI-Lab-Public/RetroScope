@@ -1,0 +1,25 @@
+# Pentium IV HyperThreading events
+#
+# NOTE: events cannot currently be 0x00 due to event binding checks in
+# driver
+#
+event:0x1d counters:0 um:global_power_events minimum:6000 name:GLOBAL_POWER_EVENTS : time during which processor is not stopped
+event:0x01 counters:3 um:branch_retired minimum:6000 name:BRANCH_RETIRED : retired branches
+event:0x02 counters:3 um:mispred_branch_retired minimum:6000 name:MISPRED_BRANCH_RETIRED : retired mispredicted branches
+event:0x04 counters:0 um:bpu_fetch_request minimum:6000 name:BPU_FETCH_REQUEST : instruction fetch requests from the branch predict unit
+event:0x05 counters:0 um:itlb_reference minimum:6000 name:ITLB_REFERENCE : translations using the instruction translation lookaside buffer
+event:0x06 counters:2 um:memory_cancel minimum:6000 name:MEMORY_CANCEL : cancelled requesets in data cache address control unit
+event:0x07 counters:2 um:memory_complete minimum:6000 name:MEMORY_COMPLETE : completed split
+event:0x08 counters:2 um:load_port_replay minimum:6000 name:LOAD_PORT_REPLAY : replayed events at the load port
+event:0x09 counters:2 um:store_port_replay minimum:6000 name:STORE_PORT_REPLAY : replayed events at the store port
+event:0x0a counters:0 um:mob_load_replay minimum:6000 name:MOB_LOAD_REPLAY : replayed loads from the memory order buffer
+event:0x0c counters:0 um:bsq_cache_reference minimum:6000 name:BSQ_CACHE_REFERENCE : cache references seen by the bus unit
+event:0x12 counters:3 um:x87_assist minimum:6000 name:X87_ASSIST : retired x87 instructions which required special handling
+event:0x1c counters:3 um:machine_clear minimum:6000 name:MACHINE_CLEAR : cycles with entire machine pipeline cleared
+event:0x1e counters:1 um:tc_ms_xfer minimum:6000 name:TC_MS_XFER : number of times uops deliver changed from TC to MS ROM
+event:0x1f counters:1 um:uop_queue_writes minimum:6000 name:UOP_QUEUE_WRITES : number of valid uops written to the uop queue
+event:0x23 counters:3 um:instr_retired minimum:6000 name:INSTR_RETIRED : retired instructions
+event:0x24 counters:3 um:uops_retired minimum:6000 name:UOPS_RETIRED : retired uops
+event:0x25 counters:3 um:uop_type minimum:6000 name:UOP_TYPE : type of uop tagged by front-end tagging
+event:0x26 counters:1 um:branch_type minimum:6000 name:RETIRED_MISPRED_BRANCH_TYPE : retired mispredicted branched, selected by type
+event:0x27 counters:1 um:branch_type minimum:6000 name:RETIRED_BRANCH_TYPE : retired branches, selected by type

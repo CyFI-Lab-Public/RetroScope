@@ -1,0 +1,10 @@
+URL: https://github.com/square/okhttp
+License: Apache 2
+Description: "OkHttp: An HTTP+SPDY client for Android and Java applications."
+
+Local patches
+-------------
+- Changes to libcore/util/Libcore.java to remove OpenJDK / Jetty dependencies.
+- Change SpdyWriter.java to call Libcore#newDeflaterOutputStream instead
+  of using a hidden constructor.
+

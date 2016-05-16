@@ -1,0 +1,1034 @@
+2004-12-25  Will Cohen  <wcohen@redhat.com>
+
+	* events/Makefile.am: Corrected type for events_files.
+
+2004-12-12  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: expand list of supported CPU types.
+
+2004-12-12  Ralf Baechle  <ralf@linux-mips.org>
+
+	* daemon/opd_cookie.c: Define __NR_lookup_dcookie for all three
+	  supported MIPS ABIs.
+
+	* events/mips/r10000/events:
+	* events/mips/r10000/unit_masks:
+	* events/mips/r12000/events:
+	* events/mips/r12000/unit_masks:
+	* events/mips/r5432/events:
+	* events/mips/r5432/unit_masks:
+	* events/mips/r5500/events:
+	* events/mips/r5500/unit_masks:
+	* events/mips/rm7000/events:
+	* events/mips/rm7000/unit_masks:
+	* events/mips/rm9000/events:
+	* events/mips/rm9000/unit_masks:
+	* events/mips/sb1/events:
+	* events/mips/sb1/unit_masks:
+	* events/Makefile.am:
+	* libop/op_events.c:
+	* utils/op_help.c:
+	* libop/op_cpu_type.h:
+	* libop/op_cpu_type.c: Add support for the MIPS R10000 and R12000,
+	  QED RM7000 and PMC-Sierra RM9000, NEC VR5432 and VR5500 and Sibyte SB1
+	   processors.
+
+	* README: List myself as the caretaker of the MIPS bits.
+
+2004-11-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events.c: simplify a bit get_mapping()
+
+2004-11-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_stats.c: some statistics are useless, don't print them
+	  if we can't read the oprofilefs files.
+
+2004-11-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_sfile.c: sfile_clear_kenel() : clear also callgraph
+	  file depending on module.
+
+2004-11-19  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_sfile.h:
+	* daemon/opd_sfile.c: fix #971487, daemon was unable to retrieve
+	  correctly callgraph sample file for kernel space samples. Fixed by
+	  adding relevant information to cg_hash_entry.
+
+	* libpp/callgraph_container.cpp: more verbosity
+
+2004-11-19  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: Fix AMD link (noticed by Emmanuel Araman).
+
+2004-11-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opgprof.cpp: ensure we load all callgraph file
+
+2004-11-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/locate_images.cpp: ensure error is always set,
+	  callgraph_container was using an uninitialized value.
+
+2004-11-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: improve a bit the symbol chosen when
+	  multiple symbol live at same vma
+
+2004-11-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/oprofile.xml: some words about UP kernel > 2.6.9 and the need of
+	  lapic at boot.
+
+2004-11-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/common_option.h:
+	* pp/common_option.cpp: move threshold option from here ...
+	* pp/opannotate_options.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport_options.cpp:
+	* pp/opstack_options.cpp: to each of these file using it. Side effect
+	  is to remove this option from oparchive which didn't handle it.
+	
+	* doc/oparchive.1.in:
+	* doc/oprofile.xml: there isn't any --threshold option to oparchive
+
+2004-11-07  Kristis Makris  <kristis.makris@asu.edu>
+
+	* doc/internals.xml: fix typo
+
+2004-11-01  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* events/ppc64/970/events: Make min count 10000 for all PM_INST_CMPL;
+	  and remove redundant event in group 2
+	* events/ppc64/power4/event_mappings: Set LSB of MMCRA so kernel kludge
+	  can be removed at some later date
+	* events/ppc64/power4/events: Make min counts consistent with ppc970
+	* events/ppc64/power5/events: Make min counts consistent with ppc970	  
+
+2004-11-01  Greg Banks  <gnb@melbourne.sgi.com>
+
+	* libop/op_events.c: Make the default sample rate for
+	  IA64 sensible (i.e. 10 times smaller).
+
+2004-10-15  Will Cohen  <wcohen@redhat.com>
+
+	* events/ppc64/power4/events: Corrected group 4 counter assignments.
+
+2004-10-15  Maynard Johnson  <maynardj@us.ibm.com>
+
+	* events/Makefile.am:
+	* events/ppc64/970/event_mappings:
+	* events/ppc64/970/events:
+	* events/ppc64/970/unit_masks:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/op_help.c:
+	* utils/opcontrol: Added ppc64/970 support.
+
+2004-10-14  Greg Banks  <gnb@melbourne.sgi.com>
+
+	* configure.in:
+	* daemon/opd_perfmon.c: autoconf for sched_setaffinity
+	  and perfmonctl, fix sched_setaffinity call for early
+	  2.6 kernels
+
+2004-10-07  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: Correct ppc64 check that events are in same group.
+
+2004-09-21  Will Cohen  <wcohen@redhat.com>
+
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: Add logic to use the preferred symbol name.
+
+2004-09-17  John Levon  <levon@movementarian.org>
+
+	* utils/op_help.c: don't deref a NULL pointer
+	  on failure to read /dev/oprofile/cpu_type
+
+2004-09-17  Anton Blanchard  <anton@samba.org>
+
+	* libop/op_events.c: fix compile warnings
+
+2004-09-16  John Levon  <levon@movementarian.org>
+
+	* m4/configmodule.m4: disable x86-64 on 2.4
+
+2004-09-15  Maynard P. Johnson  <maynardj@us.ibm.com>
+
+	* events/Makefile.am:
+	* libop/op_cpu_type.h:
+	* libop/op_events.h:
+	* libop/op_events.c:
+	* utils/op_help.c:
+	* utils/opcontrol: PPC64 support
+	
+2004-09-13  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.8.2cvs
+
+2004-09-11  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.8.1
+
+2004-09-11  John Levon  <levon@movementarian.org>
+
+	* libpp/locate_images.h: doxygen for archive_path
+
+2004-08-18  Will Cohen  <wcohen@redhat.com>
+
+	* doc/oprofile.xml: List default events in documentation.
+
+2004-08-12  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.cpp: we need to verify
+	functionname is non-NULL in *both* places
+
+2004-08-12  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.cpp: add a hack to support
+	Objective C
+
+2004-07-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db_manage.c: thinko in #931871 bug fix.
+
+2004-07-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/arrange_profiles.cpp: fix opreport -m lib, broken in 0.8
+	  when using opcontrol --separate=kernel with message
+	  "add_to_profile_sample_files(): sample file parsed twice"
+
+2004-07-18  John Levon  <levon@movementarian.org>
+
+	* libop/op_mangling.c: dep image always used
+	'{root}' token
+
+2004-07-15  John Levon  <levon@movementarian.org>
+
+	* doc/internals.xml: document some more
+
+2004-07-09  John Levon  <levon@movementarian.org>
+
+	* libpp/populate.cpp: quash timestamp warnings
+	 when using archive: profile specifier
+
+2004-07-09  John Levon  <levon@movementarian.org>
+
+	* pp/opstack_options.cpp: include call-graph
+	  files in archive.
+
+2004-07-06  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.1.in:
+	* doc/oprofile.xml:
+	* libpp/profile_spec.h:
+	* libpp/profile_spec.cpp: remove sample-file
+	  and binary profile specifiers
+
+	* doc/opcontrol.1.in:
+	* doc/oprofile.xml:
+	* pp/common_option.cpp:
+	* utils/opcontrol: allow either "lib" or "library"
+	 for merge/separate option. Document "lib"
+
+2004-07-06  Will Cohen <wcohen@redhat.com>
+
+	* doc/oprofile.xml:
+	* doc/Makefile.am:
+	* doc/oparchive.1.in:
+	* doc/oprofile.1.in:
+	* libpp/profile_spec.cpp:
+	* libpp/profile_spec.h:
+	* libpp/populate.h:
+	* libpp/populate.cpp:
+	* libpp/callgraph_container.cpp:
+	* libpp/callgraph_container.h:
+	* libpp/arrange_profiles.cpp:
+	* libpp/arrange_profiles.h:
+	* libpp/locate_images.cpp:
+	* libpp/locate_images.h:
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp:
+	* libutil++/file_manip.cpp:
+	* libutil++/file_manip.h:
+	* pp/Makefile.am:
+	* pp/oparchive.cpp:
+	* pp/oparchive_options.cpp:
+	* pp/oparchive_options.h:
+	* pp/opreport.cpp:
+	* pp/opreport_options.h:
+	* pp/opreport_options.cpp:
+	* pp/opstack.cpp:
+	* pp/opstack_options.h:
+	* pp/opstack_options.cpp:
+	* pp/opannotate_options.cpp:
+	* pp/opannotate_options.h:
+	* pp/opgprof.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opgprof_options.h:
+	* pp/opannotate.cpp:
+	* configure.in: Support for oparchive.
+
+2004-07-05  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.1.in: add opstack(1) to SEE ALSO
+
+2004-06-21  John Levon  <levon@movementarian.org>
+
+	* events/i386/p4/events:
+	* events/i386/p4-ht/events:
+	* module/x86/op_model_athlon.c:
+	* module/x86/op_model_p4.c:
+	* module/x86/op_model_ppro.c:
+	* module/ia64/op_pmu.c: fix bug 964097 (event
+	code of 0x00 doesn't work) by relying consistently
+	on "enabled" not "event"
+
+2004-05-29  John Levon  <levon@movementarian.org>
+
+	* libdb/tests/Makefile.am: fix build
+
+	* daemon/opd_mangling.c:
+	* daemon/opd_mangling.h:
+	* daemon/opd_sfile.c:
+	* daemon/opd_sfile.h:
+	* daemon/liblegacy/opd_sample_files.h:
+	* libabi/abi.cpp:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp:
+	* libdb/Makefile.am:
+	* libdb/db_debug.c:
+	* libdb/db_insert.c:
+	* libdb/db_manage.c:
+	* libdb/db_stat.c:
+	* libdb/db_travel.c:
+	* libdb/odb.h:
+	* libdb/odb_hash.h:
+	* libdb/tests/db_test.c:
+	* libpp/op_header.cpp:
+	* libpp/profile.cpp:
+	* libpp/profile.h: s/samples_odb_t/odb_t/, move
+	odb_hash.h to odb.h
+
+2004-05-28  John Levon  <levon@movementarian.org>
+
+	* daemon/opd_mangling.cpp:
+	* daemon/opd_sfile.cpp:
+	* daemon/liblegacy/opd_proc.c:
+	* daemon/liblegacy/opd_sample_files.c:
+	* libabi/abi_test.cpp:
+	* libabi/op_import.cpp:
+	* libdb/db_manage.cpp:
+	* libdb/odb_hash.h:
+	* libpp/profile.cpp: introduce and use odb_get_data(),
+	odb_open_count()
+
+2004-05-28  John Levon  <levon@movementarian.org>
+
+	* libpp/callgraph_container.cpp:
+	* libpp/arrange_profiles.cpp: trivialities
+
+2004-05-28  Bin Ren  <bin.ren@cl.cam.ac.uk>
+
+	* daemon/opd_mangling.c:
+	* daemon/opd_sfile.c:
+	* daemon/oprofiled.c:
+	* daemon/liblegacy/opd_image.c:
+	* daemon/liblegacy/opd_proc.c:
+	* daemon/liblegacy/opd_sample_files.c:
+	* libdb/db_debug.c:
+	* libdb/db_insert.c:
+	* libdb/db_manage.c:
+	* libdb/db_stat.c:
+	* libdb/odb_hash.h:
+	* libdb/db_travel.c:
+	* libpp/op_header.cpp:
+	* libpp/profile.cpp:
+	* libutil/op_string.c:
+	* libutil/op_string.h: fix dcookie alias bug by
+	  introducing one level of indirection and hash
+	  sample files by path names (bug #931871)
+
+2004-05-11  John Levon  <levon@movementarian.org>
+
+	* libutil++/file_manip.h: clarify behaviour of
+	  op_realpath()
+
+	* libpp/opannotate.cpp: add some checks to avoid
+	  creating files outside of the output directory
+
+2004-05-11  Andi Kleen  <ak@suse.de>
+
+	* libpp/callgraph_container.cpp:
+	* libpp/profile_container.cpp:
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: use unsigned long in various
+	  places - u32 was breaking 64-bit usage
+
+2004-05-11  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.8.1cvs
+
+2004-05-07  John Levon  <levon@movementarian.org>
+
+	* configure.in: bump to 0.8
+
+2004-05-07  John Levon  <levon@movementarian.org>
+
+	* libpp/filename_spec.h:
+	* libpp/filename_spec.cpp:
+	* libpp/profile_spec.cpp: "dependant" not "dependent"
+
+2004-04-19  Will Cohen  <wcohen@redhat.com>
+
+	* events/i386/p4/unit_masks:
+	* events/i386/p4-ht/unit_masks: Correct machine_clear unit mask.
+
+2004-04-04  Will Cohen  <wcohen@redhat.com>
+
+	* m4/builtinexpect.m4:
+	* m4/compileroption.m4:
+	* m4/configmodule.m4:
+	* m4/copyifchange.m4:
+	* m4/docbook.m4:
+	* m4/extradirs.m4:
+	* m4/findkernel.m4:
+	* m4/kerneloption.m4:
+	* m4/kernelversion.m4:
+	* m4/mallocattribute.m4:
+	* m4/poptconst.m4:
+	* m4/precompiledheader.m4:
+	* m4/qt.m4:
+	* m4/resultyn.m4:
+	* m4/sstream.m4:
+	* m4/typedef.m4: Add quotes as required for automake 1.8. 
+
+2004-04-04  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.xml: improvements to the call-graph
+	* documentation.
+
+2004-03-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: remove spurious cerr <<; fix a potential memory
+	  leak
+
+2004-03-28  John Levon  <levon@movementarian.org>
+
+	* libutil++/op_bfd.cpp: fix a BFD leak on format failure. Fix a
+	  small race when the binary changes, and we error fatally
+	  instead of recovering.
+
+2004-03-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/x86/hammer_op_syscalls.c: use the first map with VM_EXECUTABLE
+	  bit to do the exec notification, this fix a 32 bits application
+	  profiling regression. We dunno exactly what is this second mmap ...
+	  but we must ignore one of these. Fix #921243
+
+2004-03-22  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/ia64/op_pmu.c: the way to set pfm_syst_wide and
+	  pfm_dcr_pp changed between 2.4.19 and 2.4.20
+
+2004-03-22  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: Correct order of do_init_daemon_vars and
+	decide_orofile_devices.
+	
+2004-03-22  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: Tweak error messages and factor out common code.
+
+2004-03-19  Anton Blanchard  <anton@samba.org>
+
+	* daemon/opd_sfile.c: Add function name to some error messages
+
+2004-03-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/opcontrol: tweak a bit error message.
+
+2004-03-03  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: Support --dump for normal users.
+
+2004-02-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/callgraph_container.cpp: make g++ -D_GLIBCXX_DEBUG happy, see
+	  http://gcc.gnu.org/PR14340
+
+	* module/op_dcache.h:
+	* module/op_dname.c: some gcc version are confused by extern
+	  declaration followed by later static.
+
+2004-02-28  Zwane Mwaikambo  <zwane@linuxpower.ca>
+
+	* libutil++/op_bfd.cpp:
+	* utils/opcontrol: This patch fixes the listing of symbols within the
+	  kernel image on ARM i was having. The problem was due to the fact
+	  that ARM/Linux kernel text starts with a section called .init unlike
+	  all the currently supported Linux architectures. So the solution is
+	  to start at section 0
+
+2004-02-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/x86/op_syscalls.c: warning fix
+
+2004-02-23  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/Makefile.am:
+	* daemon/liblegacy/Makefile.am: force daemon build with frame pointer.
+	  If daemon is built w/o frame pointer we get random arc, some of them
+	  go in the vma used by an existing mmaped sample file, so cookie
+	  lookup return a sample filename which is used as a from or to
+	  component, this break pptools by creating invalid filename.  Note
+	  this doesn't protect agaisnt a make CFLAGS=-fomit-frame-pointer.
+
+	* libpp/callgraph_container.cpp: use the right {cg_}image_name for
+	  verbose output.
+
+2004-02-21  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_flags.h:
+	* libpp/format_output.cpp:
+	* libpp/format_output.h:
+	* pp/opstack.cpp: alternate output format.
+
+2004-02-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/srcdoc/Doxyfile.in: Fix for doxygen 1.3.6
+	* libpp/profile_spec.h:
+	* libutil++/op_bfd.h: minor Doxygen comments fix
+
+2004-02-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/tests/string_manip_tests.cpp: fix a $ make check failure
+	  from the last format_percent() change
+
+2004-02-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.cpp: change output spacing.
+
+2004-02-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opstack_options.h:
+	* pp/opstack.cpp: pass mege_options::lib to callgraph_container
+	* libpp/callgraph_container.cpp:
+	* libpp/callgraph_container.h: handle merge_options::lib
+
+2004-02-17  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/format_output.cpp: use "self/child" for header
+	* libutil++/string_manip.cpp: format_percent() return "0" if
+	  value == 0.0
+	* libpp/callgraph_container.cpp: remove some dead code.
+
+2004-02-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* module/compat24.h:
+	* module/x86/cpu_type.c:
+	* module/x86/op_apic.c:
+	* module/x86/op_model_p4.c:
+	* module/x86/op_nmi.c:
+	* module/x86/op_x86_model.h: backport P4 HyperThreading support from
+	   2.6 to 2.4.
+
+2004-02-16  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/i386/p4/events:
+	* events/i386/p4/unit_masks:
+	* events/i386/p4-ht/events:
+	* events/i386/p4-ht/unit_masks: fix MEMORY_COMPLETE unit mask
+
+2004-02-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/profile.cpp: samples_range() throw if start > end
+
+2004-02-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/ia64/itanium2/unit_masks: comments
+	* utils/op_help.c: add --callgraph to sanitize min events count
+	* utils/opcontrol: pass --callgraph to op_help
+
+2004-02-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/oprofiled.c: send alarm() after fork not before, behavior
+	  changed between 2.4 and 2.6 and according to posix 2.6 is right.
+
+2004-02-15  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* utils/op_help.c: output the default unit mask. when querying the
+	  default mask output it in decimal not hexadecimal
+	* libpp/op_header.cpp: event number must be output as integer not as
+	  unsigned char type
+	* libop/op_parse_event.c: clarify error message
+
+	* libop/op_events.c: better validation of unit mask
+	* events/ia64/itanium2/unit_masks:
+	* events/x86-64/hammer/unit_masks: fix so make check pass, done through
+	  documentation reading.
+
+
+2004-02-13  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/i386/p4-ht/events: multiply all minimum count by two
+
+2004-02-12  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_stats.c: handle new statistics added in callgraph patch
+
+2004-02-11  Will Cohen  <wcohen@redhat.com>
+
+	* utils/opcontrol: fix normalise_events for default event.
+
+2004-02-10  Will Cohen  <wcohen@redhat.com>
+
+	* events/i386/p6_mobile/events:
+	* events/i386/p6_mobile/unit_masks:
+	* events/Makefile.am:
+	* libop/op_cpu_type.c:
+	* libop/op_cpu_type.h:
+	* libop/op_events.c:
+	* utils/op_help.c: Add support for Pentium M (Centrino).
+
+2004-02-10  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/i386/p4/events: s/instructions/uops/ when appropriate
+	* events/i386/p4/unit_masks: change many bitmask to mandatory,
+	  fix invalid default value, remove mask only used with HyperThreading
+	* events/i386/p4-ht/unit_masks: s/bitmask/mandatory. Remove unused
+	  unit mask
+
+	* libop/op_events.h:
+	* libop/op_events.c: warn if an unit mask is not used (this add a
+	  warning for Itanium2, added in TODO)
+
+	* libop/op_parse_event.c: don't silently accept invalid value as zero
+	  (e.g FOO:3000:0xx21 was accepted as FOO:3000:0x0)
+
+	* utils/opcontrol: mandatory default value was rejected because we
+	  checked the events before getting the default unit mask.
+
+2004-02-08  Zwane Mwaikambo  <zwane@arm.linux.org.uk>
+
+	* daemon/opd_cookie.c: Fix syscall base number.
+
+2004-02-08  Zwane Mwaikambo  <zwane@arm.linux.org.uk>
+
+	* daemon/opd_cookie.c: arm support for timer interrupt
+
+2004-02-08  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/liblegacy/opd_sample_files.c: op_mangle_filename() presume
+	  mangle_values::dep_name is never NULL, this fix a daemon segfault
+	  with 2.4 kernel
+
+2004-02-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* events/i386/p4/unit_masks:
+	* events/i386/p4-ht/unit_masks: global_power_events need mandatory
+	 unit mask
+
+2004-02-07  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/arrange_profiles.cpp: re-order function to fix a build problem
+	  with gcc 3.3.1
+
+2004-02-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/callgraph_container.cpp: tweak computation of callee_counts
+
+2004-02-05  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/callgraph_container.cpp: Big Thinko (tm), callee samples offset
+	  are unordered
+
+2004-02-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/callgraph_container.cpp:
+	* libpp/format_output.cpp: arc_recorder::get_caller()/get_callee() name
+	  was reversed (caught by Will Cohen)
+
+2004-02-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/callgraph_container.cpp:
+	* libpp/callgraph_container.h:
+	* pp/opreport_options.h:
+	* pp/opstack.cpp: implement --threshold
+
+2004-02-02  Will Cohen  <wcohen@redhat.com>
+
+	* libpp/callgraph_container.h:
+	* libpp/format_output.h: missing std:: in header.
+
+2004-02-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/callgraph_container.h:
+	* libpp/callgraph_container.cpp: rewrite populate() and ehance
+	  caller_callee_recorder to support multiple profile classes.
+	* pp/opstack_options.cpp: accept multiple profile class
+
+2004-02-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/callgraph_container.cpp: get correct source filenname liner
+	* libpp/format_output.cpp: re-factorize a bit by moving anon
+	  namespace from format_output:: to ::
+
+2004-02-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/oprofile.xml:
+	* doc/opstack.1.in: document new options
+
+	* libpp/callgraph_container.h:
+	* libpp/callgraph_container.cpp: improve readability, add linenr
+	  debug information recording partially, see TODO
+
+	* libpp/format_output.h: s/formatter/opreport_formatter, define
+	  cg_formatter
+	* libpp/format_output.cpp: implement cg_formatter, factorize some code
+	  in formatter base class
+
+	* pp/opreport.cpp: s/formatter/opreport_formatter
+	* pp/opstack_options.h:
+	* pp/opstack_options.cpp: implement output selection/formatting options
+	* pp/opstack.cpp: use cg_formatter for output.
+
+2004-01-30  Philippe Elie  <phil.el@wanadoo.fr>
+
+	commit not itended but tree is stable so add a ChangeLog ...
+	* libpp/Makefile.am:
+	* libpp/symbol.cpp: new file for output_hint()
+	* libpp/profile_container.cpp: use output_hint()
+	* libpp/callgraph_container.cpp:
+	* libpp/callgraph_container.h:
+	* libpp/symbol.h:
+	* pp/opstack.cpp: get output hint from the callgraph container.
+
+2004-01-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/init.c:
+	* daemon/opd_events.c:
+	* daemon/opd_kernel.c:
+	* daemon/opd_mangling.c:
+	* daemon/opd_printf.h:
+	* daemon/opd_sfile.c:
+	* daemon/opd_trans.c:
+	* daemon/oprofiled.c:
+	* daemon/oprofiled.h:
+	* daemon/liblegacy/init.c:
+	* daemon/liblegacy/opd_image.c:
+	* daemon/liblegacy/opd_kernel.c:
+	* daemon/liblegacy/opd_mapping.c:
+	* daemon/liblegacy/opd_parse_proc.c:
+	* daemon/liblegacy/opd_proc.c:
+	* daemon/liblegacy/opd_sample_files.c:
+	* utils/opcontrol: split daemon --verbose, w/o argument it's synonymous
+	  to --verbose=all. Better splitting is welcome
+
+	* daemon/opd_sfile.c: Fix thinko, opcontrol --reset coredump'ed
+
+2004-01-29  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_events.c:
+	* utils/op_help.c: don't use default in switch (cpu_type) to ensure
+	  adding a cpu type will issue a warning where we forget to handle it.
+
+2004-01-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_sfile.c: invert from/to start offset for kernel samples
+
+	* pp/opstack.cpp:
+	* libpp/callgraph_container.h:
+	* libpp/callgraph_container.cpp: if we can't bfd_open a binary and
+	  the sample file show it's a kernel sample file we must ignore
+	  completely the it. (Added to TODO, there is something fragile here)
+
+2004-01-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/image_errors.cpp: typo, warn at first error not from second
+
+2004-01-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/tests/utility_tests.cpp:
+	* libopt++/popt_options.cpp: s/template <class/template <typename/
+
+2004-01-28  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/init.c: show buffer read only when --verbose
+
+	* libpp/image_errors.cpp:
+	* libpp/image_errors.h: add needed API for callgraph image error
+	* libpp/callgraph_container.cpp: use it.
+	* pp/opstack.cpp: report_image_errors()
+
+2004-01-27  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: Fix bfd_find_nearest_line() and separate
+	  debug info, please test it.
+
+2004-01-27  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/opcontrol.1.in:
+	* doc/oprofile.xml:
+	* utils/opcontrol: add --cpu-buffer-size and document it.
+
+2004-01-27  Will Cohen  <wcohen@redhat.com>
+
+	* events/i386/p4/unit_masks:
+	* events/i386/p4-ht/unit_masks: correct branch_type unit mask.
+	
+2004-01-25  John Levon  <levon@movementarian.org>
+
+	* doc/Makefile.am: fix make chunk
+
+	* doc/buffers.dia: add editable source
+
+	* doc/buffers.png: fix stupid typos
+
+	* doc/internals.xml: add some more text
+
+2004-01-25  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/parse_filename.h:
+	* libpp/parse_filename.cpp: profile_spec_equal() new predicate
+	* libpp/arrange_profiles.cpp: use it to ensure we create a new
+	  profile_samples_file when needed.
+
+2004-01-24  John Levon  <levon@movementarian.org>
+
+	* doc/oprofile.1.in:
+	* doc/opstack.1.in: some cleanups
+
+	* libop/tests/load_events_files_tests.c:
+	* libop/tests/alloc_counter_tests.c:
+	* libop/op_events.c: rename env var to OPROFILE_EVENTS_DIR
+
+2004-01-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* daemon/opd_sfile.c: (getfile()) avoid out of bound sf->files[] access
+
+2004-01-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/callgraph_container.cpp: tweak comparator to sort arcs.
+	* pp/common_option.cpp: typo.
+
+2004-01-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/opannotate.1.in:
+	* doc/opgprof.1.in:
+	* doc/opreport.1.in:
+	* doc/oprofile.xml:
+	* doc/opstack.1.in: document --verbose options a bit
+	* libutil++/cverb.cpp:
+	* libutil++/cverb.h:
+	* pp/common_option.cpp: remove vlevel2 verbose object
+
+2004-01-20  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/cverb.h:
+	* libutil++/cverb.cpp: new cverb handling. most interresting are
+	  --verbose=sfile,bfd,level1 resp. sample filename handling bfd
+	  handling and more verbosity (only for bfd actually)
+
+	* pp/opgprof.cpp: controlled by --verbose==bfd, add level1 to get
+	  verbose symbols.
+	* libpp/callgraph_container.cpp:
+	* libutil++/op_bfd.cpp:
+	* pp/common_option.cpp:
+	* pp/opannotate_options.cpp:
+	* pp/opgprof_options.cpp:
+	* pp/opreport_options.cpp:
+	* pp/opstack_options.cpp: use it
+
+2004-01-19  John Levon  <levon@movementarian.org>
+
+	* libpp/callgraph_container.h:
+	* libpp/callgraph_container.cpp: rename caller_callee_recorder
+	to arc_recorder.
+
+	* doc/CodingStyle: mention trailing comments
+
+	* utils/opcontrol: fix formatting. Error if --note-table-size
+	is passed on 2.6 kernels.
+
+2004-01-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libdb/db_debug.c: fix build on alpha
+	* libpp/callgraph_container.cpp: missing std:: in header
+
+2004-01-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libpp/callgraph_container.cpp: Obviously not2(weak_ordering_function)
+	  is not a weak_ordering function leading to mysterious segfault
+	  during sort.
+
+2004-01-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* doc/opstack.1.in: new file, describe opstack usage
+	* doc/oprofile.xml: describe opstack
+
+2004-01-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil++/op_bfd.cpp: Don't fix symbol offset for symbol definition
+	  coming from the original file. A corner case remain broken: symbols
+	  definition coming from debug file and belonging to another section
+	  than .text are incorrecttly offseted.
+
+2004-01-18  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libop/op_sample_file.h: with cg file we need two field is_kernel.
+	* daemon/opd_events.c:
+	* daemon/opd_events.h:
+	* daemon/opd_mangling.c:
+	* daemon/liblegacy/opd_sample_files.c: handle cg_to_is_kernel
+
+	* pp/populate.cpp:
+	* pp/populate.h:
+	* pp/image_errors.cpp:
+	* pp/image_errors.h: move this four files to libpp
+
+	* libpp/populate.cpp: we can get empty filename now, ignore them.
+	* libpp/image_error.h: remove this file by moving its contents ...
+	* libpp/image_errors.h here (this two filenames was confusing)
+
+	* libpp/Makefile.am: update according to files move.
+
+	* libpp/arrange_profiles.h:
+	* libpp/arrange_profiles.cpp: Fix find_profile_sample_files(), I was
+	  creating to many profile_sample_files. Add a bunch of operator<<.
+
+	* libpp/callgraph_container.h:
+	* libpp/callgraph_container.cpp:
+
+	* libpp/filename_spec.h: add cg_filename member
+	* libpp/filename_spec.cpp: handle cg_filename, Fix an error in
+	  is_dependant(), I'm a bit nervous about this predicate...
+
+	* libpp/locate_images.h:
+	* libpp/locate_images.cpp: #include fix
+
+	* libpp/parse_filename.cpp: Fix cg filename handling to not trigger
+	  some invalid_filename error with cg filename.
+
+	* libpp/profile.h:
+	* libpp/profile.cpp: we can no longer assume we use u32, so use
+	  odb_key_t in public interface. Add operator== acting on iterator
+
+	* libpp/symbol_container.cpp:
+	* libpp/symbol_container.h: add find(symbol const &);
+	* libpp/profile_container.h:
+	* libpp/profile_container.cpp: add a public interface to iterate over
+	  all smybols and to find a specific symbol
+
+	* libpp/symbol.h: typo, missing include
+
+	* pp/Makefile.am: handle opstack various new files and files move to
+	  libpp.
+
+	* pp/opreport.cpp:
+	* pp/opannotate.cpp: pass symbol_filter as params to populate()
+
+	* pp/opannotate_options.cpp: add verbose output of profile_classes
+	* pp/opgprof_options.cpp:
+	* pp/opreport_options.cpp:
+
+	* pp/opstack.cpp:
+	* pp/opstack_options.cpp:
+	* pp/opstack_options.h: new callgraph utility far to be complete but
+	  enough to start to play with callgraph.
+
+2004-01-04  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libutil/op_fileio.c: op_write_file(): allow to write zero byte.
+	* libutil/op_fileio.h: add fatal error for opd_read_int_from_file()
+	* daemon/init.c: add fatal error for opd_read_fs_int
+	* daemon/oprofiled.c:
+	* daemon/oprofiled.h:
+	* daemon/liblegacy/init.c:
+	* daemon/liblegacy/opd_24_stats.c: use this new fatal parameter
+	* daemon/opd_stats.c: dump /dev/oprofile/stats/*
+
+	* daemon/opd_sfile.c:
+	* daemon/opd_sfile.h: augment opd_sfile with an hash table of related
+	  call graph file
+	
+	* daemon/opd_mangling.c:
+	* daemon/opd_mangling.h:
+	* daemon/liblegacy/opd_sample_files.c:
+	* libop/op_mangle.c:
+	* libop/op_mangle.h: use new mangling name scheme, in short word:
+	  {dep} part is no longer optionnal, a {cg}/binary_name can optionnally
+	  follow the {dep} part
+	* libop/tests/mangle_tests.c: update test according to sample filename
+	  change
+
+	* libpp/filename_spec.cpp:
+	* libpp/filename_spec.h: filename_spec::is_dependant() new function
+	* libpp/parse_filename.h: add a cg_image member
+	* libpp/parse_filename.cpp: handle callgraph filename
+
+	* libpp/arrange_profiles.cpp:
+	* libpp/arrange_profiles.h: rather to use string for sample files, use
+	  a { string sample_filename, list<string> cg_files }, if {dep} part
+	  != {cg} part it's a cross-call binary.
+	  Note the sample_filename string can be empty (callgraph file w/o any
+	  samples into a binary)
+
+	* libpp/profile_spec.h:
+	* libpp/profile_spec.cpp: fix filtering of callgraph filename (this fix
+	  Carlo problem where opreport die with an invalid_filename error)
+
+	* pp/opgprof.cpp: use the new arrange_profiles.h API to acquire
+	  callgraph filename associated with a binary
+	* pp/opgprof_options.cpp: don't filter callgraph filename
+
+	* pp/opreport.cpp:
+	* pp/populate.cpp: update according arrange_profile API change
+
+	* utils/opcontrol: add --callgraph=#depth parameter
+	* doc/opcontrol.1.in:
+	* doc/oprofile.xml: document opcontrol --callgraph=#depth
+
+2004-01-16  Will Cohen  <wcohen@redhat.com>
+
+	* libutil++/op_bfd.cpp: Always use filepos of original file.
+
+2004-01-16  Will Cohen  <wcohen@redhat.com>
+
+	* libop/op_config.h (DEBUGDIR): New.
+	* libutil/op_fileio.h:
+	* libutil/op_fileio.c: New function calc_crc32
+	* libutil++/Makefile.am: Add libop to include directory.
+	* libutil++/op_bfd.h:
+	* libutil++/op_bfd.cpp: New functions separate_debug_file_exists,
+	  get_debug_link_info, find_separate_debug_file, open_bfd, and
+	  get_symbols_from_file to support separate debug files. 
+
+2004-01-02  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* pp/opgprof_options.cpp: use the proper type for options::demangle
+
+2004-01-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libregex/op_regex.cpp:
+	* libregex/op_regex.h: tidy a bit private interface
+
+2004-01-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* gui/oprof_start_config.h:
+	* gui/oprof_start_util.h:
+	* libpp/symbol.h:
+	* libutil++/cverb.cpp:
+	* libutil++/cverb.h:
+	* pp/opannotate_options.cpp:
+	* pp/opgprof_options.cpp: move some #include <> from .h to .cpp
+
+2004-01-01  Philippe Elie  <phil.el@wanadoo.fr>
+
+	* libregex/op_regex.cpp: don't assume int('a') > int('0')
+
+See ChangeLog-2004 for earlier changelogs.

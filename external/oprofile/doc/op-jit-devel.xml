@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding='ISO-8859-1'?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "http://www.oasis-open.org/docbook/xml/4.1.2/docbookx.dtd">
+
+<book id="oprofile-devel-guide">
+<bookinfo>
+	<title>OProfile JIT agent developer guide</title>
+ 
+	<authorgroup>
+		<author>
+			<firstname>Maynard</firstname>
+			<surname>Johnson</surname>
+			<affiliation>
+				<address><email>maynardj@us.ibm.com</email></address>
+			</affiliation>
+		</author>
+	</authorgroup>
+
+	<copyright>
+		<year>2007</year>
+		<holder>IBM Corporation</holder>
+	</copyright>
+</bookinfo>
+
+<toc></toc>
+
+<chapter id="developing">
+	<title>Developing a new JIT agent</title>
+	<para>
+	OProfile includes a header file and library that are intended to be used by
+	developers who wish to extend OProfile's JIT support to other non-supported
+	virtual machines.  This developer guide describes these development files and how
+	to use them.
+	</para>
+<sect1 id="jit-devel-overview">
+<title>Overview</title>
+	<para>
+	OProfile already includes some implementations that use the JIT support,
+	e.g., the Java Virtual Machine Toolkit Interface (JVMTI) library,
+	libjvmti_oprofile.so.  In developing a new implementation, you will
+	likely follow a similar (if not identical) procedure as was used in
+	developing the JVMTI library.  Following are the high level steps to follow:
+	<orderedlist>
+	<listitem>Ensure your virtual machine provides an API that, at minimum,
+	can provide the following information about dynamically compiled code:
+		<itemizedlist>
+		<listitem>Notification when compilation occurs</listitem>
+		<listitem>Name of the symbol (i.e., function or class/method, etc.)</listitem>
+		<listitem>Address in anonymous memory where the compiled code was loaded</listitem>
+		<listitem>Length of the compiled code segment</listitem>
+		</itemizedlist>
+	</listitem>
+	<listitem>Write an agent library that communicates with your VM to obtain
+	compiled code notifications.  Invoke the required functions from opagent.h
+	(<xref linkend="jit-interface" />) and link your library with libopagent.so
+	(installed at <filename>&lt;oprofile_install_dir&gt;/lib/oprofile</filename>).
+	</listitem>
+	</orderedlist>
+
+	</para>
+</sect1>
+<sect1 id="jit-interface">
+<title>Implementing JIT support for a new virtual machine</title>
+	<para>
+	The JIT support API for OProfile is defined 
+	in <filename>&lt;oprofile-install-dir&gt;/include/opagent.h</filename>.
+	Some parts of the API are mandatory for an agent library to use; other
+	parts are optional.  The mandatory functions are shown below.
+	</para>
+<screen>
+op_agent_t op_open_agent(void);
+
+void op_close_agent(op_agent_t hdl);
+
+int op_write_native_code(op_agent_t hdl, char const * symbol_name,
+                         uint64_t vma, const void * code,
+                         const unsigned int code_size);
+</screen>
+
+	<para>
+	To implement this part of your library, you must perform the
+	following steps:
+	<orderedlist>
+        <listitem>Implement a function to set up initial communication with the VM.
+	Once communication to the VM is established, your agent library should call
+	<function>op_op_agent()</function> and cache the returned <code>op_agent_t</code> handle for use in
+	future calls.</listitem>
+        <listitem>Perform any necessary steps to register with the VM to be notified of
+	compiled code load events.  Registration must include a callback function you
+	will implement in the library to handle the compiled code load events.</listitem>
+        <listitem>The callback function mentioned above must obtain all required
+	information from the VM to pass to libopagent via <function>op_write_native_code()</function>.</listitem>
+        <listitem>When disconnecting from the VM, your library should call
+	<function>op_agent_close()</function>.</listitem>
+	</orderedlist>
+	</para>
+
+	<para>Use of the functions below are optional, depending on the kinds of information your VM
+	can provide to your agent library.  See the JVMTI agent library for an example of how to use
+	these functions.
+<screen>
+int op_unload_native_code(op_agent_t hdl, uint64_t vma);
+
+int op_write_debug_line_info(op_agent_t hdl, void const * code,
+                             size_t nr_entry,
+                             struct debug_line_info const * compile_map);
+</screen>
+	</para>
+	<note>While the libopagent functions are thread-safe, you should not use them in
+	signal handlers.
+	</note>
+</sect1>
+</chapter>
+
+
+<chapter id="jit-api">
+	<title>The JIT support API</title>
+	<para>
+	This chapter describes the JIT support API.  See opagent.h for more details.
+        </para>
+        
+<sect1 id="op_open_agent">
+<title>op_open_agent</title>
+
+<funcsynopsis>Initializes the agent library.
+<funcsynopsisinfo>#include &lt;opagent.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef>op_agent_t <function>op_open_agent</function></funcdef>
+<paramdef>void</paramdef>
+</funcprototype>
+</funcsynopsis>
+<note>
+<title>Description</title>
+This function must be called by agents before any other function.
+Creates and opens a JIT dump file in <filename>/var/lib/oprofile/jitdump</filename>
+using the naming convention <filename>&lt;process_id&gt;.dump</filename>.
+</note>
+<note>
+<title>Parameters</title>
+None
+</note>
+<note>
+<title>Return value</title>
+<para>Returns a valid <code>op_agent_t</code> handle or NULL.
+If NULL is returned, <code>errno</code> is set to indicate the nature of the error. For a list
+of possible <code>errno</code> values, see the man pages for:</para>
+<code>
+stat, creat, gettimeofday, fdopen, fwrite
+</code>
+</note>
+</sect1>
+
+<sect1 id="op_close_agent">
+<title>op_close_agent</title>
+<funcsynopsis>Uninitialize the agent library.
+<funcsynopsisinfo>#include &lt;opagent.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef>int <function>op_close_agent</function></funcdef>
+<paramdef>op_agent_t <parameter>hdl</parameter></paramdef>
+</funcprototype>
+</funcsynopsis>
+<note>
+<title>Description</title>
+Frees all resources and closes open file handles.
+</note>
+<note>
+<title>Parameters</title>
+<parameter>hdl : </parameter>Handle returned from an earlier call to
+<function>op_open_agent()</function>
+</note>
+<note>
+<title>Return value</title>
+<para>Returns 0 on success; -1 otherwise. If -1 is returned, <code>errno</code> is set
+to indicate the nature of the error. 
+<code>errno</code> is set to EINVAL if an invalid <code>op_agent_t</code>
+handle is passed. For a list of other possible <code>errno</code> values, see the man pages for:</para>
+<code>gettimeofday, fwrite</code>
+</note>
+</sect1>
+
+<sect1 id="op_write_native_code">
+<title>op_write_native_code</title>
+<funcsynopsis>Write information about compiled code to a JIT dump file.
+<funcsynopsisinfo>#include &lt;opagent.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef>int <function>op_write_native_code</function></funcdef>
+<paramdef>op_agent_t<parameter>hdl</parameter></paramdef>
+<paramdef>char const *<parameter>symbol_name</parameter></paramdef>
+<paramdef>uint64_t<parameter>vma</parameter></paramdef>
+<paramdef>void const *<parameter>code</parameter></paramdef>
+<paramdef>const unsigned int<parameter>code_size</parameter></paramdef>
+</funcprototype>
+</funcsynopsis>
+<note>
+<title>Description</title>
+Signal the dynamic generation of native code from a virtual machine.
+Writes a JIT dump record to the open JIT dump file using the passed information.
+</note>
+<note>
+<title>Parameters</title>
+<para>
+<parameter>hdl : </parameter>Handle returned from an earlier call to
+<function>op_open_agent()</function>
+</para>
+<para>
+<parameter>symbol_name : </parameter>The name of the symbol being dynamically compiled.
+ This name can (and should) contain all necessary information to disambiguate it from
+ symbols of the same name; e.g., class, method signature.
+</para>
+<para>
+<parameter>vma : </parameter>Virtual memory address of the executable code
+</para>
+<para>
+<parameter>code : </parameter>Pointer to the location of the compiled code.
+	Theoretically, this may be a different location from
+	that given by the vma argument.  For some JIT compilers,
+	obtaining the code may be impractical.  For this (or any other)
+	reason, the agent can choose to pass NULL for this paraemter.
+	If NULL is passed, no code will be copied into the JIT dump
+	file.
+</para>
+<para>
+<parameter>code_size : </parameter>Size of the compiled code
+</para>
+</note>
+<note>
+<title>Return value</title>
+<para>Returns 0 on success; -1 otherwise. If -1 is returned, <code>errno</code> is set
+to indicate the nature of the error. 
+<code>errno</code> is set to EINVAL if an invalid <code>op_agent_t</code>
+handle is passed. For a list of other possible <code>errno</code> values, see the man pages for:</para>
+<code>gettimeofday, fwrite</code>
+</note>
+</sect1>
+
+
+<sect1 id="op_write_debug_line_info">
+<title>op_write_debug_line_info</title>
+<funcsynopsis>Write debug information about compiled code to a JIT dump file.
+<funcsynopsisinfo>#include &lt;opagent.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef>int <function>op_write_debug_line_info</function></funcdef>
+<paramdef>op_agent_t<parameter>hdl</parameter></paramdef>
+<paramdef>void const *<parameter>code</parameter></paramdef>
+<paramdef>size_t<parameter>nr_entry</parameter></paramdef>
+<paramdef>struct debug_line_info const *<parameter>compile_map</parameter></paramdef>
+</funcprototype>
+</funcsynopsis>
+<note>
+<title>Description</title>
+Add debug line information to a piece of code. An <function>op_write_native_code()</function>
+with the same code pointer should have occurred before this call. It's not
+necessary to provide one lineno information entry per machine instruction;
+the array can contain hole.
+</note>
+<note>
+<title>Parameters</title>
+<para>
+<parameter>hdl : </parameter>Handle returned from an earlier call to
+<function>op_open_agent()</function>
+</para>
+<para>
+<parameter>code : </parameter>Pointer to the location of the code with debug info
+</para>
+<para>
+<parameter>nr_entry : </parameter>Number of entries in compile_map
+</para>
+<para>
+<parameter>compile_map : </parameter>Array of struct debug_line_info.  See the JVMTI agent
+library implementation for an example of what information should be retrieved
+from a VM to fill out this data structure.
+</para>
+</note>
+<note>
+<title>Return value</title>
+<para>Returns 0 on success; -1 otherwise. If -1 is returned, <code>errno</code> is set
+to indicate the nature of the error. 
+<code>errno</code> is set to EINVAL if an invalid <code>op_agent_t</code>
+handle is passed. For a list of other possible <code>errno</code> values, see the man pages for:</para>
+<code>gettimeofday, ftell, fwrite</code>
+</note>
+</sect1>
+
+<sect1 id="op_unload_native_code">
+<title>op_unload_native_code</title>
+<funcsynopsis>Write information to the JIT dump file about invalidated compiled code.
+<funcsynopsisinfo>#include &lt;opagent.h&gt;</funcsynopsisinfo>
+<funcprototype>
+<funcdef>int <function>op_unload_native_code</function></funcdef>
+<paramdef>op_agent_t<parameter>hdl</parameter></paramdef>
+<paramdef>uint64_t<parameter>vma</parameter></paramdef>
+</funcprototype>
+</funcsynopsis>
+<note>
+<title>Description</title>
+Signal the invalidation of native code from a virtual machine.</note>
+<note>
+<title>Parameters</title>
+<para>
+<parameter>hdl : </parameter>Handle returned from an earlier call to
+<function>op_open_agent()</function> 
+</para>
+<para>
+<parameter>vma : </parameter>Virtual memory address of the compiled code being unloaded.
+An <function>op_write_native_code()</function> with the same vma should have occurred before this call.
+</para>
+</note>
+<note>
+<title>Return value</title>
+<para>Returns 0 on success; -1 otherwise. If -1 is returned, <code>errno</code> is set
+to indicate the nature of the error. 
+<code>errno</code> is set to EINVAL if an invalid <code>op_agent_t</code>
+handle is passed. For a list of other possible <code>errno</code> values, see the man pages for:</para>
+<code>gettimeofday, fwrite</code>
+</note>
+</sect1>
+
+</chapter>
+
+</book>

@@ -1,0 +1,519 @@
+diff --git a/Android.mk b/Android.mk
+index 9da2083..9d5fc12 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -16,11 +16,9 @@ LOCAL_PATH := $(call my-dir)
+ 
+ include $(CLEAR_VARS)
+ 
+-LOCAL_C_INCLUDES += $(LOCAL_PATH)/lib/marisa
+-LOCAL_CFLAGS += -fexceptions
+-LOCAL_CPP_EXTENSION := .cc
++LOCAL_C_INCLUDES += $(LOCAL_PATH)/lib/marisa external/stlport
+ 
+-LOCAL_NDK_STL_VARIANT := gnustl_static
++LOCAL_CPP_EXTENSION := .cc
+ 
+ LOCAL_SRC_FILES := lib/marisa/base.cc \
+ 	lib/marisa/intvector.cc \
+@@ -36,7 +34,7 @@ LOCAL_SRC_FILES := lib/marisa/base.cc \
+ 	lib/marisa/writer.cc
+ 
+ LOCAL_MODULE := libmarisa-trie
++LOCAL_MODULE_TAGS := optional
+ 
+-LOCAL_SDK_VERSION := 14
+-
++include external/stlport/libstlport.mk
+ include $(BUILD_STATIC_LIBRARY)
+diff --git a/lib/marisa/base.h b/lib/marisa/base.h
+index c2b2b07..731b24a 100644
+--- a/lib/marisa/base.h
++++ b/lib/marisa/base.h
+@@ -13,6 +13,10 @@
+ #include <stddef.h>
+ #endif  // __cplusplus
+ 
++#if defined(__ANDROID__)
++#include <android/log.h>
++#endif  // __ANDROID__
++
+ #ifdef __cplusplus
+ extern "C" {
+ #endif  // __cplusplus
+@@ -183,8 +187,22 @@ class Exception {
+ };
+ 
+ // MARISA_THROW adds a filename and a line number to an exception.
++#if !defined(__ANDROID__)
+ #define MARISA_THROW(status) \
+   (throw Exception(__FILE__, __LINE__, status))
++#else
++
++inline int android_log_exception(int status) {
++  char tmpbuf[100];
++  snprintf(tmpbuf, sizeof(tmpbuf), "marisa exception: %d", status);
++  __android_log_write(ANDROID_LOG_ERROR, "marisa-trie", tmpbuf);
++  return 0;
++}
++
++#define MARISA_THROW(status) \
++  (android_log_exception(status))
++
++#endif  // __ANDROID__
+ 
+ // MARISA_THROW_IF throws an exception with `status' if `cond' is true.
+ #define MARISA_THROW_IF(cond, status) \
+diff --git a/lib/marisa/reader.cc b/lib/marisa/reader.cc
+index 6ecc797..df144ef 100644
+--- a/lib/marisa/reader.cc
++++ b/lib/marisa/reader.cc
+@@ -80,11 +80,7 @@ void Reader::read_data(void *buf, std::size_t size) {
+       MARISA_THROW(MARISA_IO_ERROR);
+     }
+   } else if (stream_ != NULL) {
+-    try {
+-      if (!stream_->read(static_cast<char *>(buf), size)) {
+-        MARISA_THROW(MARISA_IO_ERROR);
+-      }
+-    } catch (const std::ios_base::failure &) {
++    if (!stream_->read(static_cast<char *>(buf), size)) {
+       MARISA_THROW(MARISA_IO_ERROR);
+     }
+   } else {
+diff --git a/lib/marisa/trie-build.cc b/lib/marisa/trie-build.cc
+index 4421432..fb7f072 100644
+--- a/lib/marisa/trie-build.cc
++++ b/lib/marisa/trie-build.cc
+@@ -63,15 +63,9 @@ void Trie::build_trie(Vector<Key<String> > &keys,
+     build_trie(keys, static_cast<UInt32 *>(NULL), flags);
+     return;
+   }
+-  try {
+-    std::vector<UInt32> temp_key_ids(keys.size());
+-    build_trie(keys, temp_key_ids.empty() ? NULL : &temp_key_ids[0], flags);
+-    key_ids->swap(temp_key_ids);
+-  } catch (const std::bad_alloc &) {
+-    MARISA_THROW(MARISA_MEMORY_ERROR);
+-  } catch (const std::length_error &) {
+-    MARISA_THROW(MARISA_SIZE_ERROR);
+-  }
++  std::vector<UInt32> temp_key_ids(keys.size());
++  build_trie(keys, temp_key_ids.empty() ? NULL : &temp_key_ids[0], flags);
++  key_ids->swap(temp_key_ids);
+ }
+ 
+ void Trie::build_trie(Vector<Key<String> > &keys,
+@@ -168,7 +162,7 @@ void Trie::build_trie(Vector<Key<T> > &keys,
+ 
+ template <typename T>
+ void Trie::build_cur(Vector<Key<T> > &keys,
+-    Vector<UInt32> *terminals, Progress &progress) try {
++    Vector<UInt32> *terminals, Progress &progress) {
+   num_keys_ = sort_keys(keys);
+   louds_.push_back(true);
+   louds_.push_back(false);
+@@ -261,10 +255,6 @@ void Trie::build_cur(Vector<Key<T> > &keys,
+ 
+   build_terminals(keys, terminals);
+   keys.swap(&rest_keys);
+-} catch (const std::bad_alloc &) {
+-  MARISA_THROW(MARISA_MEMORY_ERROR);
+-} catch (const std::length_error &) {
+-  MARISA_THROW(MARISA_SIZE_ERROR);
+ }
+ 
+ void Trie::build_next(Vector<Key<String> > &keys,
+diff --git a/lib/marisa/trie-c.cc b/lib/marisa/trie-c.cc
+index 00ebe80..9e11405 100644
+--- a/lib/marisa/trie-c.cc
++++ b/lib/marisa/trie-c.cc
+@@ -79,106 +79,88 @@ marisa_status marisa_end(marisa_trie *h) {
+ 
+ marisa_status marisa_build(marisa_trie *h, const char * const *keys,
+     size_t num_keys, const size_t *key_lengths, const double *key_weights,
+-    marisa_uint32 *key_ids, int flags) try {
++    marisa_uint32 *key_ids, int flags) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   }
+   h->trie.build(keys, num_keys, key_lengths, key_weights, key_ids, flags);
+   h->mapper.clear();
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+ marisa_status marisa_mmap(marisa_trie *h, const char *filename,
+-    long offset, int whence) try {
++    long offset, int whence) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   }
+   h->trie.mmap(&h->mapper, filename, offset, whence);
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+-marisa_status marisa_map(marisa_trie *h, const void *ptr, size_t size) try {
++marisa_status marisa_map(marisa_trie *h, const void *ptr, size_t size) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   }
+   h->trie.map(ptr, size);
+   h->mapper.clear();
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+ marisa_status marisa_load(marisa_trie *h, const char *filename,
+-    long offset, int whence) try {
++    long offset, int whence) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   }
+   h->trie.load(filename, offset, whence);
+   h->mapper.clear();
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+-marisa_status marisa_fread(marisa_trie *h, FILE *file) try {
++marisa_status marisa_fread(marisa_trie *h, FILE *file) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   }
+   h->trie.fread(file);
+   h->mapper.clear();
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+-marisa_status marisa_read(marisa_trie *h, int fd) try {
++marisa_status marisa_read(marisa_trie *h, int fd) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   }
+   h->trie.read(fd);
+   h->mapper.clear();
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+ marisa_status marisa_save(const marisa_trie *h, const char *filename,
+-    int trunc_flag, long offset, int whence) try {
++    int trunc_flag, long offset, int whence) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   }
+   h->trie.save(filename, trunc_flag != 0, offset, whence);
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+-marisa_status marisa_fwrite(const marisa_trie *h, FILE *file) try {
++marisa_status marisa_fwrite(const marisa_trie *h, FILE *file) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   }
+   h->trie.fwrite(file);
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+-marisa_status marisa_write(const marisa_trie *h, int fd) try {
++marisa_status marisa_write(const marisa_trie *h, int fd) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   }
+   h->trie.write(fd);
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+ marisa_status marisa_restore(const marisa_trie *h, marisa_uint32 key_id,
+-    char *key_buf, size_t key_buf_size, size_t *key_length) try {
++    char *key_buf, size_t key_buf_size, size_t *key_length) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   } else if (key_length == NULL) {
+@@ -186,12 +168,10 @@ marisa_status marisa_restore(const marisa_trie *h, marisa_uint32 key_id,
+   }
+   *key_length = h->trie.restore(key_id, key_buf, key_buf_size);
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+ marisa_status marisa_lookup(const marisa_trie *h,
+-    const char *ptr, size_t length, marisa_uint32 *key_id) try {
++    const char *ptr, size_t length, marisa_uint32 *key_id) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   } else if (key_id == NULL) {
+@@ -203,14 +183,12 @@ marisa_status marisa_lookup(const marisa_trie *h,
+     *key_id = h->trie.lookup(ptr, length);
+   }
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+ marisa_status marisa_find(const marisa_trie *h,
+     const char *ptr, size_t length,
+     marisa_uint32 *key_ids, size_t *key_lengths,
+-    size_t max_num_results, size_t *num_results) try {
++    size_t max_num_results, size_t *num_results) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   } else if (num_results == NULL) {
+@@ -223,8 +201,6 @@ marisa_status marisa_find(const marisa_trie *h,
+         key_ids, key_lengths, max_num_results);
+   }
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+ marisa_status marisa_find_first(const marisa_trie *h,
+@@ -262,7 +238,7 @@ marisa_status marisa_find_last(const marisa_trie *h,
+ marisa_status marisa_find_callback(const marisa_trie *h,
+     const char *ptr, size_t length,
+     int (*callback)(void *, marisa_uint32, size_t),
+-    void *first_arg_to_callback) try {
++    void *first_arg_to_callback) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   } else if (callback == NULL) {
+@@ -276,8 +252,6 @@ marisa_status marisa_find_callback(const marisa_trie *h,
+         ::FindCallback(callback, first_arg_to_callback));
+   }
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+ marisa_status marisa_predict(const marisa_trie *h,
+@@ -289,7 +263,7 @@ marisa_status marisa_predict(const marisa_trie *h,
+ 
+ marisa_status marisa_predict_breadth_first(const marisa_trie *h,
+     const char *ptr, size_t length, marisa_uint32 *key_ids,
+-    size_t max_num_results, size_t *num_results) try {
++    size_t max_num_results, size_t *num_results) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   } else if (num_results == NULL) {
+@@ -303,13 +277,11 @@ marisa_status marisa_predict_breadth_first(const marisa_trie *h,
+         ptr, length, key_ids, NULL, max_num_results);
+   }
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+ marisa_status marisa_predict_depth_first(const marisa_trie *h,
+     const char *ptr, size_t length, marisa_uint32 *key_ids,
+-    size_t max_num_results, size_t *num_results) try {
++    size_t max_num_results, size_t *num_results) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   } else if (num_results == NULL) {
+@@ -323,14 +295,12 @@ marisa_status marisa_predict_depth_first(const marisa_trie *h,
+         ptr, length, key_ids, NULL, max_num_results);
+   }
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+ marisa_status marisa_predict_callback(const marisa_trie *h,
+     const char *ptr, size_t length,
+     int (*callback)(void *, marisa_uint32, const char *, size_t),
+-    void *first_arg_to_callback) try {
++    void *first_arg_to_callback) {
+   if (h == NULL) {
+     return MARISA_HANDLE_ERROR;
+   } else if (callback == NULL) {
+@@ -344,8 +314,6 @@ marisa_status marisa_predict_callback(const marisa_trie *h,
+         ::PredictCallback(callback, first_arg_to_callback));
+   }
+   return MARISA_OK;
+-} catch (const marisa::Exception &ex) {
+-  return ex.status();
+ }
+ 
+ size_t marisa_get_num_tries(const marisa_trie *h) {
+diff --git a/lib/marisa/trie-inline.h b/lib/marisa/trie-inline.h
+index 6b1e502..2c9218c 100644
+--- a/lib/marisa/trie-inline.h
++++ b/lib/marisa/trie-inline.h
+@@ -179,7 +179,7 @@ inline bool Trie::find_child(UInt32 &node, T query,
+ }
+ 
+ template <typename T, typename U>
+-std::size_t Trie::find_callback_(T query, U callback) const try {
++std::size_t Trie::find_callback_(T query, U callback) const {
+   std::size_t count = 0;
+   UInt32 node = 0;
+   std::size_t pos = 0;
+@@ -192,10 +192,6 @@ std::size_t Trie::find_callback_(T query, U callback) const try {
+     }
+   } while (!query.ends_at(pos) && find_child<T>(node, query, pos));
+   return count;
+-} catch (const std::bad_alloc &) {
+-  MARISA_THROW(MARISA_MEMORY_ERROR);
+-} catch (const std::length_error &) {
+-  MARISA_THROW(MARISA_SIZE_ERROR);
+ }
+ 
+ template <typename T>
+@@ -235,7 +231,7 @@ inline bool Trie::predict_child(UInt32 &node, T query, std::size_t &pos,
+ }
+ 
+ template <typename T, typename U>
+-std::size_t Trie::predict_callback_(T query, U callback) const try {
++std::size_t Trie::predict_callback_(T query, U callback) const {
+   std::string key;
+   UInt32 node = 0;
+   std::size_t pos = 0;
+@@ -299,10 +295,6 @@ std::size_t Trie::predict_callback_(T query, U callback) const try {
+     ++stack_pos;
+   }
+   return count;
+-} catch (const std::bad_alloc &) {
+-  MARISA_THROW(MARISA_MEMORY_ERROR);
+-} catch (const std::length_error &) {
+-  MARISA_THROW(MARISA_SIZE_ERROR);
+ }
+ 
+ inline UInt32 Trie::key_id_to_node(UInt32 key_id) const {
+diff --git a/lib/marisa/trie-search.cc b/lib/marisa/trie-search.cc
+index 1f35681..098e0b3 100644
+--- a/lib/marisa/trie-search.cc
++++ b/lib/marisa/trie-search.cc
+@@ -247,30 +247,22 @@ std::size_t Trie::predict_depth_first(
+ 
+ void Trie::restore_(UInt32 key_id, std::string *key) const {
+   const std::size_t start_pos = key->length();
+-  try {
+-    UInt32 node = key_id_to_node(key_id);
+-    while (node != 0) {
+-      if (has_link(node)) {
+-        const std::size_t prev_pos = key->length();
+-        if (has_trie()) {
+-          trie_->trie_restore(get_link(node), key);
+-        } else {
+-          tail_restore(node, key);
+-        }
+-        std::reverse(key->begin() + prev_pos, key->end());
++  UInt32 node = key_id_to_node(key_id);
++  while (node != 0) {
++    if (has_link(node)) {
++      const std::size_t prev_pos = key->length();
++      if (has_trie()) {
++        trie_->trie_restore(get_link(node), key);
+       } else {
+-        *key += labels_[node];
++        tail_restore(node, key);
+       }
+-      node = get_parent(node);
+-    }
+-    std::reverse(key->begin() + start_pos, key->end());
+-  } catch (const std::bad_alloc &) {
+-    key->resize(start_pos);
+-    MARISA_THROW(MARISA_MEMORY_ERROR);
+-  } catch (const std::length_error &) {
+-    key->resize(start_pos);
+-    MARISA_THROW(MARISA_SIZE_ERROR);
++      std::reverse(key->begin() + prev_pos, key->end());
++    } else {
++      *key += labels_[node];
++    }
++    node = get_parent(node);
+   }
++  std::reverse(key->begin() + start_pos, key->end());
+ }
+ 
+ void Trie::trie_restore(UInt32 node, std::string *key) const {
+@@ -468,7 +460,7 @@ template std::size_t Trie::tail_match<const Query &>(UInt32 node,
+ 
+ template <typename T, typename U, typename V>
+ std::size_t Trie::find_(T query, U key_ids, V key_lengths,
+-    std::size_t max_num_results) const try {
++    std::size_t max_num_results) const {
+   if (max_num_results == 0) {
+     return 0;
+   }
+@@ -489,10 +481,6 @@ std::size_t Trie::find_(T query, U key_ids, V key_lengths,
+     }
+   } while (!query.ends_at(pos) && find_child<T>(node, query, pos));
+   return count;
+-} catch (const std::bad_alloc &) {
+-  MARISA_THROW(MARISA_MEMORY_ERROR);
+-} catch (const std::length_error &) {
+-  MARISA_THROW(MARISA_SIZE_ERROR);
+ }
+ 
+ template <typename T>
+@@ -533,7 +521,7 @@ UInt32 Trie::find_last_(T query, std::size_t *key_length) const {
+ 
+ template <typename T, typename U, typename V>
+ std::size_t Trie::predict_breadth_first_(T query, U key_ids, V keys,
+-    std::size_t max_num_results) const try {
++    std::size_t max_num_results) const {
+   if (max_num_results == 0) {
+     return 0;
+   }
+@@ -596,15 +584,11 @@ std::size_t Trie::predict_breadth_first_(T query, U key_ids, V keys,
+     node_end = louds_pos_to_node(get_child(node_end), node_end);
+   }
+   return count;
+-} catch (const std::bad_alloc &) {
+-  MARISA_THROW(MARISA_MEMORY_ERROR);
+-} catch (const std::length_error &) {
+-  MARISA_THROW(MARISA_SIZE_ERROR);
+ }
+ 
+ template <typename T, typename U, typename V>
+ std::size_t Trie::predict_depth_first_(T query, U key_ids, V keys,
+-    std::size_t max_num_results) const try {
++    std::size_t max_num_results) const {
+   if (max_num_results == 0) {
+     return 0;
+   } else if (keys.is_valid()) {
+@@ -665,10 +649,6 @@ std::size_t Trie::predict_depth_first_(T query, U key_ids, V keys,
+     ++stack_pos;
+   }
+   return count;
+-} catch (const std::bad_alloc &) {
+-  MARISA_THROW(MARISA_MEMORY_ERROR);
+-} catch (const std::length_error &) {
+-  MARISA_THROW(MARISA_SIZE_ERROR);
+ }
+ 
+ template <typename T>
+diff --git a/lib/marisa/writer.cc b/lib/marisa/writer.cc
+index 2256f59..55dcb97 100644
+--- a/lib/marisa/writer.cc
++++ b/lib/marisa/writer.cc
+@@ -92,11 +92,7 @@ void Writer::write_data(const void *data, std::size_t size) {
+       MARISA_THROW(MARISA_IO_ERROR);
+     }
+   } else if (stream_ != NULL) {
+-    try {
+-      if (!stream_->write(static_cast<const char *>(data), size)) {
+-        MARISA_THROW(MARISA_IO_ERROR);
+-      }
+-    } catch (const std::ios_base::failure &) {
++    if (!stream_->write(static_cast<const char *>(data), size)) {
+       MARISA_THROW(MARISA_IO_ERROR);
+     }
+   } else {

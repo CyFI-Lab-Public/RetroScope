@@ -1,0 +1,453 @@
+# test for stl beautifier, do op_regex_test < mangled-name.txt
+# line go by couple mangled name then expected name after run, line
+# starting by # and blank line are ignored. The test must output nothing if
+# successfull
+
+# before removing tests think it take time to write them. This is intended
+# to be a coverage test of all pattern in stl.pat.
+
+# g++ 2.95 stl mangled name
+
+basic_string<char, string_char_traits<char>, __default_alloc_template<true, 0> >
+string
+
+prefix_basic_string<char, string_char_traits<char>, __default_alloc_template<true, 0> >
+prefix_basic_string<char, string_char_traits<char>, __default_alloc_template<true, 0>>
+
+vector<basic_string<char, string_char_traits<char>, __default_alloc_template<true, 0> >, allocator<basic_string<char, string_char_traits<char>, __default_alloc_template<true, 0> > > >
+vector<string>
+
+map<int, image_name, less<int>, allocator<image_name> >
+map<int, image_name>
+
+map<basic_string<char, string_char_traits<char>, __default_alloc_template<true, 0> >, image_name, less<basic_string<char, string_char_traits<char>, __default_alloc_template<true, 0> > >, allocator<image_name> >
+map<string, image_name>
+
+multimap<int, long, less<int>, allocator<long> >
+multimap<int, long>
+
+prefix_multimap<int, long, less<int>, allocator<long> >
+prefix_multimap<int, long, less<int>, allocator<long>>
+
+map<int, long, compare, allocator<long> >
+map<int, long, compare>
+
+bitset<33, unsigned long>
+bitset<33>
+
+istream_iterator<char, @PTRDIFF_T_TYPE@>
+istream_iterator<char>
+
+ostream_iterator<char, @PTRDIFF_T_TYPE@>
+ostream_iterator<char>
+
+# shared between all supported gcc version
+deque<int, allocator<int>, 0>
+deque<int>
+
+std::deque<int, std::allocator<int>, 0>
+deque<int>
+
+prefix_deque<int, allocator<int>, 0>
+prefix_deque<int, allocator<int>, 0>
+
+list<int, allocator<int> >
+list<int>
+
+list<op_bfd_symbol, allocator<op_bfd_symbol> >
+list<op_bfd_symbol>
+
+_List_iterator<int, int const &, int const *>
+list<int>::const_iterator
+
+_List_iterator<int, int &, int *>
+list<int>::iterator
+
+prefix_list<int, allocator<int> >
+prefix_list<int, allocator<int>>
+
+std::list<int, std::allocator<int> >
+list<int>
+
+queue<int, deque<int, allocator<int>, 0> >
+queue<int>
+
+prefix_queue<int, deque<int, allocator<int>, 0> >
+prefix_queue<int, deque<int>>
+
+std::queue<int, std::deque<int, allocator<int>, 0> >
+queue<int>
+
+# get ride of _Rb_tree typedef, these are also mapped by map/set but we can't
+# distinguish a set<pair<int, int>>::iterator and a  map<int, int>::iterator
+# as they decay to an identical typedef so we don't try to be clever here.
+_Rb_tree_iterator<T, T const &, T const *>
+_Rb_tree<T>::const_iterator
+
+_Rb_tree_iterator<T, T &, T *>
+_Rb_tree<T>::iterator
+
+# this run through special case pattern
+_Rb_tree_iterator<pair<string const, image_name>, pair<string const, image_name> const &, pair<string const, image_name> const *>
+_Rb_tree<pair<string const, image_name>>::const_iterator
+
+_Rb_tree_iterator<pair<string const, image_name>, pair<string const, image_name> &, pair<string const, image_name> *>
+_Rb_tree<pair<string const, image_name>>::iterator
+
+_Rb_tree<int, int, _Identity<int>, less<int>, allocator<int> >
+_Rb_tree<int, int, int>
+
+_Rb_tree<string, pair<string const, int const>, _Select1st<pair<string const, int const>>, less<string>, allocator<int const>>
+_Rb_tree<string, pair<string const, int const>, string const>
+
+_Select1st<pair<int const, long> >
+int const
+
+_Select1st<pair<int const, long const> >
+int const
+
+_Select1st<pair<string const, split_sample_filename const>>
+string const
+
+_Identity<int>
+int
+
+# this test fail since pair<> is not recognized as a type
+# _Select1st<pair<pair<symbol_entry const *, unsigned long long> const, sample_entry>>
+# pair<symbol_entry const *, unsigned long long> const
+
+# 2.95 map/multimap
+_Rb_tree<int, pair<int const, long>, _Select1st<pair<int const, long> >, less<int>, allocator<long> >
+_Rb_tree<int, pair<int const, long>, int const>
+# 3.2 map/multimap
+_Rb_tree<int, pair<int const, long>, _Select1st<pair<int const, long> >, less<int>, allocator<pair<int const, long> > >
+_Rb_tree<int, pair<int const, long>, int const>
+
+_List_base<string, allocator<string>>
+_List_base<string>
+
+# strictly speaking 3rd parameters is less<ContainerType::value_type>
+priority_queue<int, vector<int, allocator<int> >, less<int> >
+priority_queue<int>
+
+prefix_priority_queue<int, vector<int, allocator<int> >, less<int> >
+prefix_priority_queue<int, vector<int>, less<int>>
+
+std::priority_queue<int, std::vector<int, std::allocator<int> >, std::less<int> >
+priority_queue<int>
+
+vector<int, allocator<int> >
+vector<int>
+
+vector<bool, allocator<bool> >
+vector<bool>
+
+vector<block1::block2, allocator<block1::block2> >
+vector<block1::block2>
+
+stack<int, deque<int, allocator<int>, 0> >
+stack<int>
+
+prefix_stack<int, deque<int, allocator<int>, 0> >
+prefix_stack<int, deque<int>>
+
+std::stack<int, std::deque<int, std::allocator<int>, 0> >
+stack<int>
+
+# test complex typename, we don't support more than one level of nesting
+vector<list<int, allocator<int> >, allocator<list<int, allocator<int> > > >
+vector<list<int>>
+
+std::vector<std::list<int, std::allocator<int> >, std::allocator<list<int, std::allocator<int> > > >
+vector<list<int>>
+
+set<int, less<int>, allocator<int> >
+set<int>
+
+set<basic_string<char, string_char_traits<char>, __default_alloc_template<true, 0> >, less<basic_string<char, string_char_traits<char>, __default_alloc_template<true, 0> > >, allocator<basic_string<char, string_char_traits<char>, __default_alloc_template<true, 0> > > >
+set<string>
+
+set<int, less_by_file_loc, allocator<int> >
+set<int, less_by_file_loc>
+
+prefix_set<int, less<int>, allocator<int> >
+prefix_set<int, less<int>, allocator<int>>
+
+prefix_set<int, less<int>, allocator<int> >
+prefix_set<int, less<int>, allocator<int>>
+
+multiset<int, less<int>, allocator<int> >
+multiset<int>
+
+# test than pointer and reference to pointer are handled
+vector<int *, allocator<int *> >
+vector<int *>
+
+vector<unsigned int *, allocator<unsigned int *> >
+vector<unsigned int *>
+
+# algorithm, will work for 3.2 too.
+int * find<int *, int>(int *, int *, int const &, random_access_iterator_tag)
+int * find(int *, int *, int const &, random_access_iterator_tag)
+char const * find_if<char const *, compare>(char const *, char const *, compare, random_access_iterator_tag)
+char const * find_if(char const *, char const *, compare, random_access_iterator_tag)
+
+# gcc 3.2
+std::basic_string<char, std::char_traits<char>, std::allocator<char> >
+string
+
+std::basic_string<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >
+wstring
+
+# __normal_iterator are treated a part
+__gnu_cxx::__normal_iterator<char const*, string>
+string::const_iterator
+__gnu_cxx::__normal_iterator<char*, string>
+string::iterator
+__gnu_cxx::__normal_iterator<wchar_t*, wstring>
+wstring::iterator
+__gnu_cxx::__normal_iterator<wchar_t const*, wstring>
+wstring::const_iterator
+std::reverse_iterator<__gnu_cxx::__normal_iterator<char*, string>>
+reverse_iterator<string::iterator>
+
+__gnu_cxx::__normal_iterator<int const*, vector<int>>
+vector<int>::const_iterator
+__gnu_cxx::__normal_iterator<int*, vector<int>>
+vector<int>::iterator
+std::reverse_iterator<__gnu_cxx::__normal_iterator<int const*, vector<int>>
+reverse_iterator<vector<int>::const_iterator
+
+std::map<int, long, std::less<int>, std::allocator<std::pair<int const, long> > >
+map<int, long>
+
+std::multimap<int, long, std::less<int>, std::allocator<std::pair<int const, long> > >
+multimap<int, long>
+
+std::map<int, long, compare, std::allocator<std::pair<int const, long> > >
+map<int, long, compare>
+
+# parameter is size_t on x86 it's an unsigned
+bitset<(@SIZE_T_TYPE@)33>
+bitset<33>
+
+# 3, 4, 5th params are ptrdiff_t it's an int on x86
+std::iterator<std::input_iterator_tag, int, @PTRDIFF_T_TYPE@, @PTRDIFF_T_TYPE@*, @PTRDIFF_T_TYPE@&>
+iterator<input_iterator_tag, int>
+
+std::iterator<std::output_iterator_tag, int, @PTRDIFF_T_TYPE@, @PTRDIFF_T_TYPE@*, @PTRDIFF_T_TYPE@&>
+iterator<output_iterator_tag, int>
+
+std::iterator<std::forward_iterator_tag, int, @PTRDIFF_T_TYPE@, @PTRDIFF_T_TYPE@*, @PTRDIFF_T_TYPE@&>
+iterator<forward_iterator_tag, int>
+
+std::iterator<std::bidirectional_iterator_tag, int, @PTRDIFF_T_TYPE@, @PTRDIFF_T_TYPE@*, @PTRDIFF_T_TYPE@&>
+iterator<bidirectional_iterator_tag, int>
+
+std::iterator<std::random_iterator_tag, int, @PTRDIFF_T_TYPE@, @PTRDIFF_T_TYPE@*, @PTRDIFF_T_TYPE@&>
+iterator<random_iterator_tag, int>
+
+# 4th parms is ptrdiff_t
+std::istream_iterator<long, char, std::char_traits<char>, @PTRDIFF_T_TYPE@>
+istream_iterator<long>
+
+std::ostream_iterator<long, char, std::char_traits<char>, @PTRDIFF_T_TYPE@>
+ostream_iterator<long>
+
+# simple enough, it's just <iosfwd>
+std::basic_ios<int, std::char_traits<int> >
+basic_ios<int>
+
+std::basic_streambuf<int, std::char_traits<int> >
+basic_streambuf<int>
+
+std::basic_istream<int, std::char_traits<int> >
+basic_istream<int>
+
+std::basic_ostream<int, std::char_traits<int> >
+basic_ostream<int>
+
+std::basic_iostream<int, std::char_traits<int> >
+basic_iostream<int>
+
+std::basic_filebuf<int, std::char_traits<int> >
+basic_filebuf<int>
+
+std::basic_ifstream<int, std::char_traits<int> >
+basic_ifstream<int>
+
+std::basic_ofstream<int, std::char_traits<int> >
+basic_ofstream<int>
+
+std::basic_fstream<int, std::char_traits<int> >
+basic_fstream<int>
+
+std::istreambuf_iterator<long, std::char_traits<long> >
+istreambuf_iterator<long>
+
+std::ostreambuf_iterator<long, std::char_traits<long> >
+ostreambuf_iterator<long>
+
+std::basic_stringbuf<long, std::char_traits<long>, std::allocator<long> >
+basic_stringbuf<long>
+
+std::basic_istringstream<long, std::char_traits<long>, std::allocator<long> >
+basic_istringstream<long>
+
+std::basic_ostringstream<long, std::char_traits<long>, std::allocator<long> >
+basic_ostringstream<long>
+
+std::basic_stringstream<long, std::char_traits<long>, std::allocator<long> >
+basic_stringstream<long>
+
+# all the above intantiated with char and wchar_t fallback to standardised
+# typedef except istreambuf_iterator and ostreambuf_iterator
+
+std::basic_ios<char, std::char_traits<char> >
+ios
+std::basic_ios<wchar_t, std::char_traits<wchar_t> >
+wios
+
+std::basic_streambuf<char, std::char_traits<char> >
+streambuf
+std::basic_streambuf<wchar_t, std::char_traits<wchar_t> >
+wstreambuf
+
+std::basic_istream<char, std::char_traits<char> >
+istream
+std::basic_istream<wchar_t, std::char_traits<wchar_t> >
+wistream
+
+std::basic_ostream<char, std::char_traits<char> >
+ostream
+std::basic_ostream<wchar_t, std::char_traits<wchar_t> >
+wostream
+
+std::basic_iostream<char, std::char_traits<char> >
+iostream
+std::basic_iostream<wchar_t, std::char_traits<wchar_t> >
+wiostream
+
+std::basic_filebuf<char, std::char_traits<char> >
+filebuf
+std::basic_filebuf<wchar_t, std::char_traits<wchar_t> >
+wfilebuf
+
+std::basic_ifstream<char, std::char_traits<char> >
+ifstream
+std::basic_ifstream<wchar_t, std::char_traits<wchar_t> >
+wifstream
+
+std::basic_ofstream<char, std::char_traits<char> >
+ofstream
+std::basic_ofstream<wchar_t, std::char_traits<wchar_t> >
+wofstream
+
+std::basic_fstream<char, std::char_traits<char> >
+fstream
+std::basic_fstream<wchar_t, std::char_traits<wchar_t> >
+wfstream
+
+std::basic_stringbuf<char, std::char_traits<char>, std::allocator<char> >
+stringbuf
+std::basic_stringbuf<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >
+wstringbuf
+
+std::basic_istringstream<char, std::char_traits<char>, std::allocator<char> >
+istringstream
+std::basic_istringstream<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >
+wistringstream
+
+std::basic_ostringstream<char, std::char_traits<char>, std::allocator<char> >
+ostringstream
+std::basic_ostringstream<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >
+wostringstream
+
+std::basic_stringstream<char, std::char_traits<char>, std::allocator<char> >
+stringstream
+std::basic_stringstream<wchar_t, std::char_traits<wchar_t>, std::allocator<wchar_t> >
+wstringstream
+
+# these two are also in iosfw, namely
+# typedef fpos<char_traits<char>::state_type>  streampos;
+# typedef fpos<char_traits<wchar_t>::state_type> wstreampos;
+# but twice decay to fpos<__mbstate>, we choosed to translate to streampos
+std::fpos<__mbstate_t>
+streampos
+
+# locale
+std::num_put<char, std::ostreambuf_iterator<char> >
+num_put<char>
+std::num_put<wchar_t, std::ostreambuf_iterator<wchar_t> >
+num_put<wchar_t>
+std::num_get<char, std::istreambuf_iterator<char> >
+num_get<char>
+std::num_get<wchar_t, std::istreambuf_iterator<wchar_t> >
+num_get<wchar_t>
+
+std::time_put<char, std::ostreambuf_iterator<char> >
+time_put<char>
+std::time_put<wchar_t, std::ostreambuf_iterator<wchar_t> >
+time_put<wchar_t>
+std::time_get<char, std::istreambuf_iterator<char> >
+time_get<char>
+std::time_get<wchar_t, std::istreambuf_iterator<wchar_t> >
+time_get<wchar_t>
+
+std::money_put<char, std::ostreambuf_iterator<char> >
+money_put<char>
+std::money_put<wchar_t, std::ostreambuf_iterator<wchar_t> >
+money_put<wchar_t>
+std::money_get<char, std::istreambuf_iterator<char> >
+money_get<char>
+std::money_get<wchar_t, std::istreambuf_iterator<wchar_t> >
+money_get<wchar_t>
+
+std::moneypunct<char, (bool)0>
+moneypunct<char>
+std::moneypunct<wchar_t, (bool)0>
+moneypunct<wchar_t>
+std::moneypunct_byname<char, (bool)0>
+moneypunct_byname<char>
+std::moneypunct_byname<wchar_t, (bool)0>
+moneypunct_byname<wchar_t>
+
+# algorithm
+vector<string>::iterator find<vector<string>::iterator, string>(vector<string>::iterator, vector<string>::iterator, string const&, random_access_iterator_tag)
+vector<string>::iterator find(vector<string>::iterator, vector<string>::iterator, string const&, random_access_iterator_tag)
+
+string::iterator find<string::iterator, int>(string::iterator, string::iterator, int const&, random_access_iterator_tag)
+string::iterator find(string::iterator, string::iterator, int const&, random_access_iterator_tag)
+
+vector<int>::iterator find<vector<int>::iterator, int>(vector<int>::iterator, vector<int>::iterator, int const&, random_access_iterator_tag)
+vector<int>::iterator find(vector<int>::iterator, vector<int>::iterator, int const&, random_access_iterator_tag)
+
+char const * find<char const *, int>(char const *, char const *, int const &, random_access_iterator_tag)
+char const * find(char const *, char const *, int const &, random_access_iterator_tag)
+
+string::const_iterator find<string::const_iterator, int>(string::const_iterator, string::const_iterator, int const&, random_access_iterator_tag)
+string::const_iterator find(string::const_iterator, string::const_iterator, int const&, random_access_iterator_tag)
+
+string::const_iterator find_if<string::const_iterator, compare>(string::const_iterator, string::const_iterator, compare, random_access_iterator_tag)
+string::const_iterator find_if(string::const_iterator, string::const_iterator, compare, random_access_iterator_tag)
+
+vector<int>::iterator find_if<vector<int>::iterator, compare>(vector<int>::iterator, vector<int>::iterator, compare, random_access_iterator_tag)
+vector<int>::iterator find_if(vector<int>::iterator, vector<int>::iterator, compare, random_access_iterator_tag)
+
+ostream & operator<<<char, string_char_traits<char>, __default_alloc_template<true, 0>>(ostream &, string const &)
+ostream & operator<<(ostream &, string const &)
+
+istream & operator>><char, string_char_traits<char>, __default_alloc_template<true, 0>>(istream &, string &)
+istream & operator>>(istream &, string &)
+
+istream & getline<char, string_char_traits<char>, __default_alloc_template<true, 0>>(istream &, string &)
+istream & getline(istream &, string &)
+
+ostream& operator<< <char, char_traits<char>, allocator<char>>(ostream&, string const&)
+ostream & operator<<(ostream &, string const &)
+
+istream& operator>> <char, char_traits<char>, allocator<char>>(istream&, string&)
+istream & operator>>(istream &, string &)
+
+std::basic_ostream<char, std::char_traits<char> >::operator<<(long)
+ostream::operator<<(long)

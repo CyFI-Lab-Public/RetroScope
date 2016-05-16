@@ -1,0 +1,21 @@
+#
+# MIPS 20K
+#
+# The 20K supports only one performance counter.
+#
+event:0x0 counters:0 um:zero minimum:500 name:CYCLES : CPU cycles
+event:0x1 counters:0 um:zero minimum:500 name:INSN_ISSUED : Dispatched/issued instructions
+event:0x2 counters:0 um:zero minimum:500 name:FETCH_GROUPS : Fetch groups entering CPU execution pipes
+event:0x3 counters:0 um:zero minimum:500 name:FP_INSNS_COMPLETED : Instructions completed in FPU datapath (computational event:instructions only)
+event:0x4 counters:0 um:zero minimum:500 name:TLB_REFILLS_TAKEN : Taken TLB refill exceptions
+event:0x5 counters:0 um:zero minimum:500 name:BRANCHES_MISSPREDICTED : Branches that mispredicted before completing execution
+event:0x6 counters:0 um:zero minimum:500 name:BRANCHES_COMPLETED : Branches that completed execution
+event:0x7 counters:0 um:zero minimum:500 name:JTLB_EXCEPTIONS : Taken Joint-TLB exceptions
+event:0x8 counters:0 um:zero minimum:500 name:REPLAY_DUE_TO_LOAD_DEPENDENT_SPEC_DISPATCH : Replays due to load-dependent speculative dispatch
+event:0x9 counters:0 um:zero minimum:500 name:INSN_REQ_FROM_IFU_TO_BIU : Instruction requests from the IFU to the BIU
+event:0xa counters:0 um:zero minimum:500 name:FPU_EXCEPTIONS_TAKEN : Taken FPU exceptions
+event:0xb counters:0 um:zero minimum:500 name:REPLAYS : Total number of LSU requested replays, Load-dependent speculative dispatch or FPU exception prediction replays.
+event:0xc counters:0 um:zero minimum:500 name:RPS_MISSPREDICTS : JR instructions that mispredicted using the Return Prediction Stack (RPS)
+event:0xd counters:0 um:zero minimum:500 name:JR_INSNS_COMPLETED : JR instruction that completed execution
+event:0xe counters:0 um:zero minimum:500 name:LSU_REPLAYS : LSU requested replays
+event:0xf counters:0 um:zero minimum:500 name:INSNS_COMPLETED : Instruction that completed execution (with or without exception)

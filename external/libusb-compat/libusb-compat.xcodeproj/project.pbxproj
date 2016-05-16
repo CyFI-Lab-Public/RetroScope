@@ -1,0 +1,270 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5A726C7E138D82D500E748DE /* libusb.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A726C22138D81BA00E748DE /* libusb.dylib */; };
+		B0B3C5B61277AD310086FE9A /* core.c in Sources */ = {isa = PBXBuildFile; fileRef = B0B3C5B31277AD310086FE9A /* core.c */; };
+		B0B3C5B71277AD310086FE9A /* usb.h in Headers */ = {isa = PBXBuildFile; fileRef = B0B3C5B41277AD310086FE9A /* usb.h */; };
+		B0B3C5B81277AD310086FE9A /* usbi.h in Headers */ = {isa = PBXBuildFile; fileRef = B0B3C5B51277AD310086FE9A /* usbi.h */; };
+		D7D0FF8B1124E29800E01FE7 /* config.h in Headers */ = {isa = PBXBuildFile; fileRef = D7D0FF621124E29800E01FE7 /* config.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5A726C21138D81BA00E748DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B0B3C6AD1277AE4B0086FE9A /* libusb.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC0630554660B00DB518D;
+			remoteInfo = libusb;
+		};
+		5A726E87138DA17400E748DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B0B3C6AD1277AE4B0086FE9A /* libusb.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC0620554660B00DB518D;
+			remoteInfo = libusb;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B0B3C5B31277AD310086FE9A /* core.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = core.c; path = libusb/core.c; sourceTree = SOURCE_ROOT; };
+		B0B3C5B41277AD310086FE9A /* usb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = usb.h; path = libusb/usb.h; sourceTree = SOURCE_ROOT; };
+		B0B3C5B51277AD310086FE9A /* usbi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = usbi.h; path = libusb/usbi.h; sourceTree = SOURCE_ROOT; };
+		B0B3C6AD1277AE4B0086FE9A /* libusb.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = libusb.xcodeproj; path = ../libusb/libusb.xcodeproj; sourceTree = SOURCE_ROOT; };
+		D2AAC0630554660B00DB518D /* libusb-compat.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "libusb-compat.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D71350461124D56600E2C1DA /* MacConfigExternalDebug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = MacConfigExternalDebug.xcconfig; sourceTree = "<group>"; };
+		D71350471124D56600E2C1DA /* MacConfigExternalRelease.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = MacConfigExternalRelease.xcconfig; sourceTree = "<group>"; };
+		D7D0FF621124E29800E01FE7 /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D289988505E68E00004EDB86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A726C7E138D82D500E748DE /* libusb.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* libusb-compat */ = {
+			isa = PBXGroup;
+			children = (
+				D71350461124D56600E2C1DA /* MacConfigExternalDebug.xcconfig */,
+				D71350471124D56600E2C1DA /* MacConfigExternalRelease.xcconfig */,
+				B0B3C6AD1277AE4B0086FE9A /* libusb.xcodeproj */,
+				08FB7795FE84155DC02AAC07 /* Source */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = "libusb-compat";
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B0B3C5B31277AD310086FE9A /* core.c */,
+				B0B3C5B41277AD310086FE9A /* usb.h */,
+				B0B3C5B51277AD310086FE9A /* usbi.h */,
+				D7D0FF621124E29800E01FE7 /* config.h */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D2AAC0630554660B00DB518D /* libusb-compat.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5A726C1E138D81BA00E748DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5A726C22138D81BA00E748DE /* libusb.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		D2AAC0600554660B00DB518D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D7D0FF8B1124E29800E01FE7 /* config.h in Headers */,
+				B0B3C5B71277AD310086FE9A /* usb.h in Headers */,
+				B0B3C5B81277AD310086FE9A /* usbi.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		D2AAC0620554660B00DB518D /* libusb-compat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB914A08733D8E0010E9CD /* Build configuration list for PBXNativeTarget "libusb-compat" */;
+			buildPhases = (
+				D2AAC0600554660B00DB518D /* Headers */,
+				D2AAC0610554660B00DB518D /* Sources */,
+				D289988505E68E00004EDB86 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5A726E88138DA17400E748DE /* PBXTargetDependency */,
+			);
+			name = "libusb-compat";
+			productName = "libusb-compat";
+			productReference = D2AAC0630554660B00DB518D /* libusb-compat.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 1DEB914E08733D8E0010E9CD /* Build configuration list for PBXProject "libusb-compat" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* libusb-compat */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 5A726C1E138D81BA00E748DE /* Products */;
+					ProjectRef = B0B3C6AD1277AE4B0086FE9A /* libusb.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				D2AAC0620554660B00DB518D /* libusb-compat */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		5A726C22138D81BA00E748DE /* libusb.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = libusb.dylib;
+			remoteRef = 5A726C21138D81BA00E748DE /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D2AAC0610554660B00DB518D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B0B3C5B61277AD310086FE9A /* core.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5A726E88138DA17400E748DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = libusb;
+			targetProxy = 5A726E87138DA17400E748DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB914B08733D8E0010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				HEADER_SEARCH_PATHS = ../libusb/libusb/;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-Wall",
+					"-Wundef",
+					"-Wunused",
+					"-Wstrict-prototypes",
+					"-Werror-implicit-function-declaration",
+					"-Wno-pointer-sign",
+					"-Wshadow",
+				);
+				PRODUCT_NAME = "usb-compat";
+			};
+			name = Debug;
+		};
+		1DEB914C08733D8E0010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				EXECUTABLE_PREFIX = lib;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				HEADER_SEARCH_PATHS = ../libusb/libusb/;
+				OTHER_CFLAGS = (
+					"$(inherited)",
+					"-Wall",
+					"-Wundef",
+					"-Wunused",
+					"-Wstrict-prototypes",
+					"-Werror-implicit-function-declaration",
+					"-Wno-pointer-sign",
+					"-Wshadow",
+				);
+				PRODUCT_NAME = "usb-compat";
+			};
+			name = Release;
+		};
+		1DEB914F08733D8E0010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D71350461124D56600E2C1DA /* MacConfigExternalDebug.xcconfig */;
+			buildSettings = {
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+			};
+			name = Debug;
+		};
+		1DEB915008733D8E0010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D71350471124D56600E2C1DA /* MacConfigExternalRelease.xcconfig */;
+			buildSettings = {
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB914A08733D8E0010E9CD /* Build configuration list for PBXNativeTarget "libusb-compat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB914B08733D8E0010E9CD /* Debug */,
+				1DEB914C08733D8E0010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB914E08733D8E0010E9CD /* Build configuration list for PBXProject "libusb-compat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB914F08733D8E0010E9CD /* Debug */,
+				1DEB915008733D8E0010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

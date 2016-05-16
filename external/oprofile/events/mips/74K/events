@@ -1,0 +1,159 @@
+#
+# MIPS 74K
+#
+
+# The 74K CPUs have four performance counters.
+#
+# Even/odd counters are distinguished by setting bit 10 in the event
+# mask. The kernel masks this bit out before writing the control
+# register.
+
+#
+# Events specific to all counters
+#
+event:0x0 counters:0,1,2,3 um:zero minimum:500 name:CYCLES : 0-0 Cycles
+event:0x1 counters:0,1,2,3 um:zero minimum:500 name:INSTRUCTIONS : 1-0 Instructions graduated
+
+#
+# Events specific to counters 0 and 2
+#
+event:0x2 counters:0,2 um:zero minimum:500 name:PREDICTED_JR_31 : 2-0 JR $31 (return) instructions predicted including speculative instructions
+event:0x3 counters:0,2 um:zero minimum:500 name:REDIRECT_STALLS : 3-0 Stall cycles due to register indirect jumps (including non-predicted JR $31), ERET/WAIT instructions, and IFU determined exception
+event:0x4 counters:0,2 um:zero minimum:500 name:ITLB_ACCESSES : 4-0 Instruction micro-TLB accesses
+
+event:0x6 counters:0,2 um:zero minimum:500 name:ICACHE_ACCESSES : 6-0 Instruction cache accesses including speculative instructions
+event:0x7 counters:0,2 um:zero minimum:500 name:ICACHE_MISS_STALLS : 7-0 Instruction cache miss stall cycles
+event:0x8 counters:0,2 um:zero minimum:500 name:UNCACHED_IFETCH_STALLS : 8-0 Uncached instruction fetch stall cycles
+event:0x9 counters:0,2 um:zero minimum:500 name:IFU_REPLAYS : 9-0 Replays within the IFU due to full Instruction Buffer
+
+event:0xb counters:0,2 um:zero minimum:500 name:IFU_IDU_MISS_PRED_UPSTREAM_CYCLES : 11-0 Cycles IFU-IDU gate is closed (to prevent upstream from getting ahead) due to mispredicted branch 
+event:0xc counters:0,2 um:zero minimum:500 name:IFU_IDU_CLOGED_DOWNSTREAM_CYCLES : 12-0 Cycles IFU-IDU gate is closed (waiting for downstream to unclog) due to MTC0/MFC0 sequence in pipe, EHB, or blocked DD, DR, or DS
+event:0xd counters:0,2 um:zero minimum:500 name:DDQ0_FULL_DR_STALLS : 13-0 DR stage stall cycles due to DDQ0 (ALU out-of-order dispatch queue) full
+event:0xe counters:0,2 um:zero minimum:500 name:ALCB_FULL_DR_STALLS : 14-0 DR stage stall cycles due to ALCB (ALU completion buffers) full
+event:0xf counters:0,2 um:zero minimum:500 name:CLDQ_FULL_DR_STALLS : 15-0 DR stage stall cycles due to CLDQ (data comming back from FPU) full
+event:0x10 counters:0,2 um:zero minimum:500 name:ALU_EMPTY_CYCLES : 16-0 DDQ0 (ALU out-of-order dispatch queue) empty cycles
+event:0x11 counters:0,2 um:zero minimum:500 name:ALU_OPERANDS_NOT_READY_CYCLES : 17-0 DDQ0 (ALU out-of-order dispatch queue) no issue cycles with valid instructions but operands not ready
+event:0x12 counters:0,2 um:zero minimum:500 name:ALU_NO_ISSUES_CYCLES : 18-0 DDQ0 (ALU out-of-order dispatch queue) no issue cycles with valid instructions due to operand(s) not available, MDU busy, or CorExt resource busy
+event:0x13 counters:0,2 um:zero minimum:500 name:ALU_BUBBLE_CYCLES : 19-0 DDQ0 (ALU out-of-order dispatch queue) bubbles due to MFC1 data write
+event:0x14 counters:0,2 um:zero minimum:500 name:SINGLE_ISSUE_CYCLES : 20-0 Either DDQ0 (ALU out-of-order dispatch queue) or DDQ1 (AGEN out-of-order dispatch queue) valid instruction issue cycles
+event:0x15 counters:0,2 um:zero minimum:500 name:OOO_ALU_ISSUE_CYCLES : 21-0 Out-of-order ALU issue cycles (issued instruction is not the oldest in the pool)
+event:0x16 counters:0,2 um:zero minimum:500 name:JALR_JALR_HB_INSNS : 22-0  Graduated JALR/JALR.HB instructions
+event:0x17 counters:0,2 um:zero minimum:500 name:DCACHE_LOAD_ACCESSES : 23-0 Counts all accesses to the data cache caused by load instructions
+event:0x18 counters:0,2 um:zero minimum:500 name:DCACHE_WRITEBACKS : 24-0 Data cache writebacks
+event:0x19 counters:0,2 um:zero minimum:500 name:JTLB_DATA_ACCESSES : 25-0 Joint TLB data (non-instruction) accesses
+event:0x1a counters:0,2 um:zero minimum:500 name:LOAD_STORE_REPLAYS : 26-0 Load/store generated replays - load/store follows too closely a matching CACHEOP
+event:0x1b counters:0,2 um:zero minimum:500 name:LOAD_STORE_BLOCKED_CYCLES : 27-0 Load/store graduation blocked cycles due to CP1/2 store data not ready, SYNC/SYNCI/SC/CACHEOP at the head, or FSB/LDQ/WBB/ITU FIFO full
+event:0x1c counters:0,2 um:zero minimum:500 name:L2_CACHE_WRITEBACKS : 28-0 L2 Cache Writebacks
+event:0x1d counters:0,2 um:zero minimum:500 name:L2_CACHE_MISSES : 29-0 L2 Cache Misses
+event:0x1e counters:0,2 um:zero minimum:500 name:FSB_FULL_STALLS : 30-0 Pipe stall cycles due to FSB full
+event:0x1f counters:0,2 um:zero minimum:500 name:LDQ_FULL_STALLS : 31-0 Pipe stall cycles due to LDQ full
+event:0x20 counters:0,2 um:zero minimum:500 name:WBB_FULL_STALLS : 32-0 Pipe stall cycles due to WBB full
+
+event:0x23 counters:0,2 um:zero minimum:500 name:LOAD_MISS_CONSUMER_REPLAYS : 35-0 Replays following optimistic issue of instruction dependent on load which missed, counted only when the dependent instruction graduates
+event:0x24 counters:0,2 um:zero minimum:500 name:JR_NON_31_INSNS : 36-0 jr $xx (not $31) instructions graduated (at same cost as a mispredict)
+event:0x25 counters:0,2 um:zero minimum:500 name:BRANCH_INSNS : 37-0 Branch instructions graduated, excluding CP1/CP2 conditional branches
+event:0x26 counters:0,2 um:zero minimum:500 name:BRANCH_LIKELY_INSNS : 38-0 Branch likely instructions graduated including CP1 and CP2 branch likely instructions
+event:0x27 counters:0,2 um:zero minimum:500 name:COND_BRANCH_INSNS : 39-0 Conditional branches graduated
+event:0x28 counters:0,2 um:zero minimum:500 name:INTEGER_INSNS : 40-0 Integer instructions graduated including NOP, SSNOP, MOVCI, and EHB
+event:0x29 counters:0,2 um:zero minimum:500 name:LOAD_INSNS : 41-0 Loads graduated including CP1 ans CP2 loads 
+event:0x2a counters:0,2 um:zero minimum:500 name:J_JAL_INSNS : 42-0 J/JAL graduated
+event:0x2b counters:0,2 um:zero minimum:500 name:NOP_INSNS : 43-0 NOP instructions graduated - SLL 0, NOP, SSNOP, and EHB
+event:0x2c counters:0,2 um:zero minimum:500 name:DSP_INSNS : 44-0 DSP instructions graduated
+event:0x2d counters:0,2 um:zero minimum:500 name:DSP_BRANCH_INSNS : 45-0 DSP branch instructions graduated
+event:0x2e counters:0,2 um:zero minimum:500 name:UNCACHED_LOAD_INSNS : 46-0 Uncached loads graduated
+
+event:0x31 counters:0,2 um:zero minimum:500 name:EJTAG_INSN_TRIGGERS : 49-0 EJTAG instruction triggerpoints
+event:0x32 counters:0,2 um:zero minimum:500 name:CP1_BRANCH_MISPREDICTIONS : 50-0 CP1 branches mispredicted
+event:0x33 counters:0,2 um:zero minimum:500 name:SC_INSNS : 51-0 SC instructions graduated
+event:0x34 counters:0,2 um:zero minimum:500 name:PREFETCH_INSNS : 52-0 Prefetch instructions graduated
+event:0x35 counters:0,2 um:zero minimum:500 name:NO_INSN_CYCLES : 53-0 No instructions graduated cycles
+event:0x36 counters:0,2 um:zero minimum:500 name:ONE_INSN_CYCLES : 54-0 One instruction graduated cycles
+event:0x37 counters:0,2 um:zero minimum:500 name:GFIFO_BLOCKED_CYCLES : 55-0 GFIFO blocked cycles
+event:0x38 counters:0,2 um:zero minimum:500 name:MISPREDICTION_STALLS : 56-0 Cycles from the time of a pipe kill due to mispredict until the first new instruction graduates
+event:0x39 counters:0,2 um:zero minimum:500 name:MISPREDICTED_BRANCH_INSNS_CYCLES : 57-0 Mispredicted branch instruction graduation cycles without the delay slot 
+event:0x3a counters:0,2 um:zero minimum:500 name:EXCEPTIONS_TAKEN : 58-0 Exceptions taken
+event:0x3b counters:0,2 um:zero minimum:500 name:COREEXTEND_EVENTS : 59-0 Implementation specific CorExtend events
+
+event:0x3e counters:0,2 um:zero minimum:500 name:ISPRAM_EVENTS : 62-0 Implementation specific ISPRAM events
+event:0x3f counters:0,2 um:zero minimum:500 name:L2_CACHE_SINGLE_BIT_ERRORS : 63-0 Single bit errors corrected in L2
+event:0x40 counters:0,2 um:zero minimum:500 name:SYSTEM_EVENT_0 : 64-0 Implementation specific system event 0
+event:0x41 counters:0,2 um:zero minimum:500 name:SYSTEM_EVENT_2 : 65-0 Implementation specific system event 2
+event:0x42 counters:0,2 um:zero minimum:500 name:SYSTEM_EVENT_4 : 66-0 Implementation specific system event 4
+event:0x43 counters:0,2 um:zero minimum:500 name:SYSTEM_EVENT_6 : 67-0 Implementation specific system event 6
+event:0x44 counters:0,2 um:zero minimum:500 name:OCP_ALL_REQUESTS : 68-0 All OCP requests accepted
+event:0x45 counters:0,2 um:zero minimum:500 name:OCP_READ_REQUESTS : 69-0 OCP read requests accepted
+event:0x46 counters:0,2 um:zero minimum:500 name:OCP_WRITE_REQUESTS : 70-0 OCP write requests accepted
+
+event:0x4a counters:0,2 um:zero minimum:500 name:FSB_LESS_25_FULL : 74-0 FSB < 25% full
+event:0x4b counters:0,2 um:zero minimum:500 name:LDQ_LESS_25_FULL : 75-0 LDQ < 25% full
+event:0x4c counters:0,2 um:zero minimum:500 name:WBB_LESS_25_FULL : 76-0 WBB < 25% full
+
+
+#
+# Events specific to counters 1 and 3
+#
+
+event:0x402 counters:1,3 um:zero minimum:500 name:JR_31_MISPREDICTIONS : 2-1 JR $31 (return) instructions mispredicted
+event:0x403 counters:1,3 um:zero minimum:500 name:JR_31_NO_PREDICTIONS : 3-1 JR $31 (return) instructions not predicted
+event:0x404 counters:1,3 um:zero minimum:500 name:ITLB_MISSES : 4-1 Instruction micro-TLB misses
+event:0x405 counters:1,3 um:zero minimum:500 name:JTLB_INSN_MISSES : 5-1 Joint TLB instruction misses
+event:0x406 counters:1,3 um:zero minimum:500 name:ICACHE_MISSES : 6-1 Instruction cache misses, includes misses from fetch-ahead and speculation
+
+event:0x408 counters:1,3 um:zero minimum:500 name:PDTRACE_BACK_STALLS : 8-1 PDtrace back stalls
+event:0x409 counters:1,3 um:zero minimum:500 name:KILLED_FETCH_SLOTS : 9-1 Valid fetch slots killed due to taken branches/jumps or stalling instructions
+
+event:0x40b counters:1,3 um:zero minimum:500 name:IFU_IDU_NO_FETCH_CYCLES : 11-1 Cycles IFU-IDU gate open but no instructions fetched by IFU
+
+event:0x40d counters:1,3 um:zero minimum:500 name:DDQ1_FULL_DR_STALLS : 13-1 DR stage stall cycles due to DDQ1 (AGEN out-of-order dispatch queue) full
+event:0x40e counters:1,3 um:zero minimum:500 name:AGCB_FULL_DR_STALLS : 14-1 DR stage stall cycles due to AGCB (AGEN completion buffers) full
+event:0x40f counters:1,3 um:zero minimum:500 name:IODQ_FULL_DR_STALLS : 15-1 DR stage stall cycles due to IODQ (data comming back from IO) full
+event:0x410 counters:1,3 um:zero minimum:500 name:AGEN_EMPTY_CYCLES : 16-1 DDQ1 (AGEN out-of-order dispatch queue) empty cycles
+event:0x411 counters:1,3 um:zero minimum:500 name:AGEN_OPERANDS_NOT_READY_CYCLES : 17-1 DDQ1 (AGEN out-of-order dispatch queue) no issue cycles with valid instructions but operands not ready
+event:0x412 counters:1,3 um:zero minimum:500 name:AGEN_NO_ISSUES_CYCLES : 18-1 DDQ1 (AGEN out-of-order dispatch queue) no issue cycles with valid instructions due to operand(s) not available, non-issued stores blocking ready to issue loads, or non-issued CACHEOPs blocking ready to issue loads
+event:0x413 counters:1,3 um:zero minimum:500 name:AGEN_BUBBLE_CYCLES : 19-1 DDQ1 (AGEN out-of-order dispatch queue) bubbles due to MFC2 data write or cache access from FSB
+event:0x414 counters:1,3 um:zero minimum:500 name:DUAL_ISSUE_CYCLES : 20-1 Both DDQ0 (ALU out-of-order dispatch queue) and DDQ1 (AGEN out-of-order dispatch queue) valid instruction issue cycles
+event:0x415 counters:1,3 um:zero minimum:500 name:OOO_AGEN_ISSUE_CYCLES : 21-1 Out-of-order AGEN issue cycles (issued instruction is not the oldest in the pool)
+event:0x416 counters:1,3 um:zero minimum:500 name:DCACHE_LINE_REFILL_REQUESTS : 22-1 Data cache line loads (line refill requests)
+event:0x417 counters:1,3 um:zero minimum:500 name:DCACHE_ACCESSES : 23-1 Data cache accesses
+event:0x418 counters:1,3 um:zero minimum:500 name:DCACHE_MISSES : 24-1 Data cache misses
+event:0x419 counters:1,3 um:zero minimum:500 name:JTLB_DATA_MISSES : 25-1 Joint TLB data (non-instruction) misses
+event:0x41a counters:1,3 um:zero minimum:500 name:VA_TRANSALTION_CORNER_CASES : 26-1 Virtual memory address translation synonyms, homonyms, and aliases (loads/stores treated as miss in the cache)
+event:0x41b counters:1,3 um:zero minimum:500 name:LOAD_STORE_NO_FILL_REQUESTS : 27-1 Load/store graduations not resulting in a bus request because misses at integer pipe graduation turn into hit or merge with outstanding fill request
+event:0x41c counters:1,3 um:zero minimum:500 name:L2_CACHE_ACCESSES : 28-1 Accesses to the L2 cache
+event:0x41d counters:1,3 um:zero minimum:500 name:L2_CACHE_MISS_CYCLES : 29-1 Cycles a L2 miss is outstanding, but not necessarily stalling the pipeline
+event:0x41e counters:1,3 um:zero minimum:500 name:FSB_OVER_50_FULL : 30-1 FSB > 50% full
+event:0x41f counters:1,3 um:zero minimum:500 name:LDQ_OVER_50_FULL : 31-1 LDQ > 50% full
+event:0x420 counters:1,3 um:zero minimum:500 name:WBB_OVER_50_FULL : 32-1 WBB > 50% full
+
+event:0x423 counters:1,3 um:zero minimum:500 name:CP1_CP2_LOAD_INSNS : 35-1 CP1/CP2 load instructions graduated
+event:0x424 counters:1,3 um:zero minimum:500 name:MISPREDICTED_JR_31_INSNS : 36-1 jr $31 instructions graduated after mispredict
+event:0x425 counters:1,3 um:zero minimum:500 name:CP1_CP2_COND_BRANCH_INSNS : 37-1 CP1/CP2 conditional branch instructions graduated
+event:0x426 counters:1,3 um:zero minimum:500 name:MISPREDICTED_BRANCH_LIKELY_INSNS : 38-1 Mispredicted branch likely instructions graduated
+event:0x427 counters:1,3 um:zero minimum:500 name:MISPREDICTED_BRANCH_INSNS : 39-1 Mispredicted branches graduated
+event:0x428 counters:1,3 um:zero minimum:500 name:FPU_INSNS : 40-1 FPU instructions graduated
+event:0x429 counters:1,3 um:zero minimum:500 name:STORE_INSNS : 41-1 Store instructions graduated including CP1 ans CP2 stores
+event:0x42a counters:1,3 um:zero minimum:500 name:MIPS16_INSNS : 42-1 MIPS16 instructions graduated
+event:0x42b counters:1,3 um:zero minimum:500 name:NT_MUL_DIV_INSNS : 43-1 Integer multiply/divide instructions graduated
+event:0x42c counters:1,3 um:zero minimum:500 name:ALU_DSP_SATURATION_INSNS : 44-1 ALU-DSP graduated, result was saturated
+event:0x42d counters:1,3 um:zero minimum:500 name:MDU_DSP_SATURATION_INSNS : 45-1 MDU-DSP graduated, result was saturated
+event:0x42e counters:1,3 um:zero minimum:500 name:UNCACHED_STORE_INSNS : 46-1 Uncached stores graduated
+
+event:0x433 counters:1,3 um:zero minimum:500 name:FAILED_SC_INSNS : 51-1 SC instructions failed
+event:0x434 counters:1,3 um:zero minimum:500 name:CACHE_HIT_PREFETCH_INSNS : 52-1 PREFETCH instructions which did nothing, because they hit in the cache
+event:0x435 counters:1,3 um:zero minimum:500 name:LOAD_MISS_INSNS : 53-1 Cacheable load instructions that miss in the cache graduated
+event:0x436 counters:1,3 um:zero minimum:500 name:TWO_INSNS_CYCLES : 54-1 Two instructions graduated cycles
+event:0x437 counters:1,3 um:zero minimum:500 name:CP1_CP2_STORE_INSNS : 55-1 CP1/CP2 Store graduated
+event:0x43a counters:1,3 um:zero minimum:500 name:GRADUATION_REPLAYS : 58-1 Replays initiated from graduation
+event:0x43e counters:1,3 um:zero minimum:500 name:DSPRAM_EVENTS : 62-1 Implementation specific events from the DSPRAM block
+
+event:0x440 counters:0,2 um:zero minimum:500 name:SYSTEM_EVENT_1 : 64-1 Implementation specific system event 1
+event:0x441 counters:0,2 um:zero minimum:500 name:SYSTEM_EVENT_3 : 65-1 Implementation specific system event 3
+event:0x442 counters:0,2 um:zero minimum:500 name:SYSTEM_EVENT_5 : 66-1 Implementation specific system event 5
+event:0x443 counters:0,2 um:zero minimum:500 name:SYSTEM_EVENT_7 : 67-1 Implementation specific system event 7
+event:0x444 counters:0,2 um:zero minimum:500 name:OCP_ALL_CACHEABLE_REQUESTS : 68-1 All OCP cacheable requests accepted
+event:0x445 counters:0,2 um:zero minimum:500 name:OCP_READ_CACHEABLE_REQUESTS : 69-1 OCP cacheable read request accepted
+event:0x446 counters:0,2 um:zero minimum:500 name:OCP_WRITE_CACHEABLE_REQUESTS : 70-1 OCP cacheable write request accepted
+
+event:0x44a counters:0,2 um:zero minimum:500 name:FSB_25_50_FULL : 74-1 FSB 25-50% full
+event:0x44b counters:0,2 um:zero minimum:500 name:LDQ_25_50_FULL : 75-1 LDQ 25-50% full
+event:0x44c counters:0,2 um:zero minimum:500 name:WBB_25_50_FULL : 76-1 WBB 25-50% full

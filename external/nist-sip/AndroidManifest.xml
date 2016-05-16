@@ -1,0 +1,85 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.android.settings.sip">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"></uses-permission>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
+    <uses-permission android:name="android.permission.READ_CONTACTS"></uses-permission>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"></uses-permission>
+    <uses-permission android:name="android.permission.CAMERA"></uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE" ></uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" ></uses-permission>
+    <uses-sdk android:minSdkVersion="7"
+              android:targetSdkVersion="8"/>
+
+    <application android:label="Sip Joy 3">
+        <activity android:label="Sip Settings"
+                  android:name=".SipSettings"
+                  android:launchMode="singleTop"
+                  android:configChanges="orientation|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.net.sip.NOTIFY" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SipEditor"
+                android:configChanges="orientation|keyboardHidden">
+        </activity>
+
+        <activity android:name="com.android.sip.demo.SipCallSetup"
+                  android:launchMode="singleTop"
+                  android:configChanges="orientation|keyboardHidden">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name="com.android.sip.demo.SipCallUi"
+                  android:configChanges="orientation|keyboardHidden">
+        </activity>
+
+        <receiver
+            android:name="com.android.sip.demo.IncomingCallReceiver">
+            <intent-filter>
+                <action android:name="com.android.sip.demo.SipMain" />
+            </intent-filter>
+        </receiver>
+
+        <receiver
+            android:name="com.android.settings.sip.BootCompletedReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.net.sip.START_AUTO" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.android.settings.sip.SipAutoRegistration" android:process=":remote">
+            <intent-filter>
+                <action android:name="android.net.sip.AUTO_REGISTRATOIN" />
+            </intent-filter>
+        </service>
+
+        <service android:name="com.android.sip.SipServiceBinder" android:process=":remote">
+            <intent-filter>
+                <!-- These are the interfaces supported by the service, which
+                     you can bind to. -->
+                <action android:name="android.net.sip.ISipService" />
+                <!-- This is an action code you can use to select the service
+                     without explicitly supplying the implementation class. -->
+                <action android:name="android.net.sip.SERVICE" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

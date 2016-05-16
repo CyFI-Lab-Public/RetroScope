@@ -1,0 +1,60 @@
+<project name="JSilver" default="jar"> 
+  <property name="jar.dir" value="build/dist" />
+  <property name="jar.file" value="${jar.dir}/jsilver.jar"/>
+	
+  <property name="src" value="src" />
+  <property name="gen" value="build/gen" />
+ 
+	<property name="lib.guava" value="lib/guava-r06.jar" />
+	
+  <target name="gen" description="Code generation" >
+    <mkdir dir="${gen}" />
+    <exec executable="java">
+      <arg value="-jar" />
+      <arg value="sablecc/sablecc.jar" />
+      <arg value="src/com/google/clearsilver/jsilver/syntax/jsilver.sablecc" />
+      <arg value="-d" />
+      <arg value="${gen}" />
+    </exec>
+    
+    <copy file="sablecc/optimizations/AOptimizedMultipleCommand.java"
+          todir="${gen}/com/google/clearsilver/jsilver/syntax/node" />
+  </target>
+ 
+  <target name="compile" description="Compile Java source." depends="gen"> 
+    <mkdir dir="build/classes"/> 
+
+    <javac srcdir="${src}:${gen}"
+         debug="on"
+         destdir="build/classes"
+         source="1.5"
+         target="1.5"
+         extdirs=""
+    	> 
+      <compilerarg value="-Xlint:all"/> 
+      <classpath> 
+        <fileset dir="lib/">
+          <include name="*.jar"/>
+        </fileset>
+      </classpath> 
+    	<exclude name="com/google/clearsilver/jsilver/benchmark/*.java"/>
+    </javac> 
+  </target> 
+ 
+  <target name="jar" depends="compile" description="Build jar."> 
+    <mkdir dir="${jar.dir}"/> 
+    <jar jarfile="${jar.file}"> 
+      <fileset dir="build/classes"/> 
+    	<zipfileset src="${lib.guava}" />
+    	<fileset dir="${gen}">
+         <include name="**/*.dat"/>
+     </fileset>
+    </jar> 
+  </target> 
+
+  <target name="clean"
+      description="Remove generated files."> 
+    <delete dir="build" />
+  </target> 
+ 
+</project> 

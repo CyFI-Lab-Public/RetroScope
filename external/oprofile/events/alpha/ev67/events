@@ -1,0 +1,27 @@
+# Alpha EV-67 Events
+#
+event:0x00 counters:0 um:zero minimum:500 name:CYCLES : Total cycles
+event:0x01 counters:1 um:zero minimum:500 name:DELAYED_CYCLES : Cycles of delayed retire pointer advance
+# FIXME: bug carried over
+event:0x00 counters:0,1 um:zero minimum:500 name:RETIRED : Retired instructions
+event:0x02 counters:1 um:zero minimum:500 name:BCACHE_MISS : Bcache misses/long probe latency
+event:0x03 counters:1 um:zero minimum:500 name:MBOX_REPLAY : Mbox replay traps
+# FIXME: all the below used PM_CTR
+event:0x04 counters:0 um:zero minimum:500 name:STALLED_0 : PCTR0 triggered; stalled between fetch and map stages
+event:0x05 counters:0 um:zero minimum:500 name:TAKEN_0 : PCTR0 triggered; branch was not mispredicted and taken
+event:0x06 counters:0 um:zero minimum:500 name:MISPREDICT_0 : PCTR0 triggered; branch was mispredicted
+event:0x07 counters:0 um:zero minimum:500 name:ITB_MISS_0 : PCTR0 triggered; ITB miss
+event:0x08 counters:0 um:zero minimum:500 name:DTB_MISS_0 : PCTR0 triggered; DTB miss
+event:0x09 counters:0 um:zero minimum:500 name:REPLAY_0 : PCTR0 triggered; replay trap
+event:0x0a counters:0 um:zero minimum:500 name:LOAD_STORE_0 : PCTR0 triggered; load-store order replay trap
+event:0x0b counters:0 um:zero minimum:500 name:ICACHE_MISS_0 : PCTR0 triggered; Icache miss
+event:0x0c counters:0 um:zero minimum:500 name:UNALIGNED_0 : PCTR0 triggered; unaligned load/store trap
+event:0x0d counters:0 um:zero minimum:500 name:STALLED_1 : PCTR1 triggered; stalled between fetch and map stages
+event:0x0e counters:0 um:zero minimum:500 name:TAKEN_1 : PCTR1 triggered; branch was not mispredicted and taken
+event:0x0f counters:0 um:zero minimum:500 name:MISPREDICT_1 : PCTR1 triggered; branch was mispredicted
+event:0x10 counters:0 um:zero minimum:500 name:ITB_MISS_1 : PCTR1 triggered; ITB miss
+event:0x11 counters:0 um:zero minimum:500 name:DTB_MISS_1 : PCTR1 triggered; DTB miss
+event:0x12 counters:0 um:zero minimum:500 name:REPLAY_1 : PCTR1 triggered; replay trap
+event:0x13 counters:0 um:zero minimum:500 name:LOAD_STORE_1 : PCTR1 triggered; load-store order replay trap
+event:0x14 counters:0 um:zero minimum:500 name:ICACHE_MISS_1 : PCTR1 triggered; Icache miss
+event:0x15 counters:0 um:zero minimum:500 name:UNALIGNED_1 : PCTR1 triggered; unaligned load/store trap

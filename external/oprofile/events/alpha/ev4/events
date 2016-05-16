@@ -1,0 +1,18 @@
+# Alpha EV4 events.
+#
+event:0x00 counters:0 um:zero minimum:4096 name:ISSUES : Total issues divided by 2
+event:0x02 counters:0 um:zero minimum:4096 name:PIPELINE_DRY : Nothing issued, no valid I-stream data
+event:0x04 counters:0 um:zero minimum:4096 name:LOAD_INSNS : All load instructions
+event:0x06 counters:0 um:zero minimum:4096 name:PIPELINE_FROZEN : Nothing issued, resource conflict
+event:0x08 counters:0 um:zero minimum:4096 name:BRANCH_INSNS : All branches (conditional, unconditional, jsr, hw_rei)
+event:0x0a counters:0 um:zero minimum:4096 name:CYCLES : Total cycles
+event:0x0b counters:0 um:zero minimum:4096 name:PAL_MODE : Cycles while in PALcode environment
+event:0x0c counters:0 um:zero minimum:4096 name:NON_ISSUES : Total nonissues divided by 2
+event:0x10 counters:0 um:zero minimum:256 name:DCACHE_MISSES : Total D-cache misses
+event:0x11 counters:0 um:zero minimum:256 name:ICACHE_MISSES : Total I-cache misses
+event:0x12 counters:0 um:zero minimum:256 name:DUAL_ISSUE_CYCLES : Cycles of dual issue
+event:0x13 counters:0 um:zero minimum:256 name:BRANCH_MISPREDICTS : Branch mispredicts (conditional, jsr, hw_rei)
+event:0x14 counters:0 um:zero minimum:256 name:FP_INSNS : FP operate instructions (not br, load, store)
+event:0x15 counters:0 um:zero minimum:256 name:INTEGER_OPERATE : Integer operate instructions
+event:0x16 counters:0 um:zero minimum:256 name:STORE_INSNS : Store instructions
+# There's also EXTERNAL, by which we could monitor the 21066/21068 bus controller.

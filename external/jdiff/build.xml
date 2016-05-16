@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="jdiff" default="jar" basedir=".">
+
+<description>
+Builds Android's jdiff.jar and places it in device/extlibs/jdiff-1.1.0/. 
+</description>
+	 
+
+<target name="init" description="Properties used by other targets">
+  <property name="extlibs.dir" value="${basedir}/../../extlibs/jdiff-1.1.0/" />
+  <property name="src.dir" value="${basedir}/src" />
+  <property name="build.dir" value="build" />
+  <property name="classes.dir" value="${build.dir}/classes" />
+  <property name="lib.dir" value="${build.dir}/lib" />
+  <property name="version" value="1.1.0" />
+  <path id="class.path">
+    <pathelement location="{basedir}/../../extlibs/xerces.jar" />
+  </path>
+  <property name="debug" value="true" />
+  <property name="JDIFF_HOME" value="${extlibs.dir}" />
+</target>
+
+<target name="create.dirs" depends="init">
+  <mkdir dir="${build.dir}" />
+  <mkdir dir="${lib.dir}" />
+  <mkdir dir="${classes.dir}" />
+</target>
+
+<target	name="clean" depends="init">
+  <delete includeEmptyDirs="true"
+          verbose="false"
+          quiet="true">
+    <fileset dir="${build.dir}" />
+  </delete>
+</target>
+
+<target name="compile" depends="create.dirs" description="Compile everything except the Ant task">
+  <javac srcdir="${src.dir}"
+         destdir="${classes.dir}"
+         debug="${debug}"
+         excludes="jdiff/JDiffAntTask.java"
+         includeJavaRuntime="yes">
+    <classpath>
+      <path refid="class.path" />
+    </classpath>
+<!--<compilerarg value="-Xlint:unchecked"/>   -->
+  </javac>
+</target>	
+
+<!-- Place the jdiff.jar file in <branch-root>/device/extlibs/jdiff-.1.0/ (under version control) -->
+	<target name="jar" depends="compile">
+  <jar jarfile="${basedir}/jdiff.jar" 
+       basedir="${classes.dir}"
+       includes="*jdiff/*.class"
+       excludes="*jdiff/JDiffAntTask*.class" />
+</target>
+
+</project>

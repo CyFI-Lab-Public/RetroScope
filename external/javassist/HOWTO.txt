@@ -1,0 +1,4 @@
+In order to update the code, simply export it from svn with the regenerate_from_source.sh.
+If you want to run the tests, remember to do it from master or a branch that
+includes junit.jar and that has been compiled. The command is:
+ant -propertyfile build.properties test

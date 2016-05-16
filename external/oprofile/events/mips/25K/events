@@ -1,0 +1,81 @@
+#
+# MIPS 25Kf
+#
+# The 25Kf has two performance counters
+#
+event:0x0 counters:0,1 um:zero minimum:500 name:CYCLES : CPU cycles
+event:0x1 counters:0,1 um:zero minimum:500 name:INSN_ISSUED : Dispatched/issued instructions
+event:0x2 counters:0,1 um:zero minimum:500 name:FP_INSNS_ISSUED : FPU instructions issued
+event:0x3 counters:0,1 um:zero minimum:500 name:INT_INSNS_ISSUED : Integer instructions issued
+event:0x4 counters:0,1 um:zero minimum:500 name:LOAD_INSNS_ISSUED : Load instructions issued
+event:0x5 counters:0,1 um:zero minimum:500 name:STORE_INSNS_ISSUED : Store instructions issued
+event:0x6 counters:0,1 um:zero minimum:500 name:BRANCHES_JUMPS_ISSUED : Branch/Jump instructions issued
+event:0x7 counters:0,1 um:zero minimum:500 name:DUAL_ISSUED_PAIRS : Dual-issued pairs
+event:0x8 counters:0,1 um:zero minimum:500 name:INSNS_COMPLETE : Instruction that completed execution (with or without exception)
+event:0x9 counters:0,1 um:zero minimum:500 name:FETCH_GROUPS_IN_PIPE : Fetch groups entering CPU execution pipes
+
+#
+# FPU:
+#
+event:0xa counters:0,1 um:zero minimum:500 name:INSN_FP_DATAPATH_COMPLETED : Instructions completed in FPU datapath (computational instructions only)
+event:0xb counters:0,1 um:zero minimum:500 name:FP_EXCEPTIONS_TAKEN : Taken FPU exceptions
+event:0xc counters:0,1 um:zero minimum:500 name:FP_EXCEPTION_PREDICTED : Predicted FPU exceptions
+
+#
+# Branch/Jump Prediction:
+#
+event:0xd counters:0,1 um:zero minimum:500 name:BRANCHES_MISSPREDICTED : Branches that mispredicted before completing execution
+event:0xe counters:0,1 um:zero minimum:500 name:BRANCHES_COMPLETED : Branches that completed execution
+event:0xf counters:0,1 um:zero minimum:500 name:JR_RPD_MISSPREDICTED : JR instructions that mispredicted using the Return Prediction Stack
+event:0x10 counters:0,1 um:zero minimum:500 name:JR_COMPLETED : JR instruction that completed execution
+
+#
+# Memory Management:
+#
+event:0x11 counters:0,1 um:zero minimum:500 name:UTLB_MISSES : U-TLB misses
+event:0x12 counters:0,1 um:zero minimum:500 name:JTLB_MISSES_IFETCH : Raw count of Joint-TLB misses for instruction fetch
+event:0x13 counters:0,1 um:zero minimum:500 name:JTLB_MISSES_LOADS_STORES : Raw count of Joint-TLB misses for loads/stores
+event:0x14 counters:0,1 um:zero minimum:500 name:JTLB_EXCEPTIONS : Refill, Invalid and Modified TLB exceptions
+
+#
+# Machine Check
+#
+event:0x15 counters:0,1 um:zero minimum:500 name:JTLB_IFETCH_REFILL_EXCEPTIONS : Joint-TLB refill exceptions due to instruction fetch
+event:0x16 counters:0,1 um:zero minimum:500 name:JTLB_DATA_ACCESS_REFILL_EXCEPTIONS : Joint-TLB refill exceptions due to data access
+event:0x17 counters:0,1 um:zero minimum:500 name:JTLB_REFILL_EXCEPTIONS : total Joint-TLB Instruction exceptions (refill)
+
+#
+# I-Cache Efficiency:
+#
+event:0x18 counters:0,1 um:zero minimum:500 name:INSNS_FETCHED_FROM_ICACHE : Total number of instructions fetched from the I-Cache
+event:0x19 counters:0,1 um:zero minimum:500 name:INSN_REQ_FROM_IFU_BIU : instruction requests from the IFU to the BIU
+event:0x1a counters:0,1 um:zero minimum:500 name:ICACHE_MISSES : I-Cache miss
+
+#
+# D-Cache Efficiency:
+#
+event:0x1b counters:0,1 um:zero minimum:500 name:DCACHE_MISSES : D-Cache miss
+event:0x1c counters:0,1 um:zero minimum:500 name:DCACHE_WRITEBACKS : D-Cache number of write-backs
+event:0x1d counters:0,1 um:zero minimum:500 name:CACHEABLE_DCACHE_REQUEST : number of cacheable requests to D-Cache
+
+#
+# Level 2 Cache Efficiency:
+#
+event:0x1e counters:0,1 um:zero minimum:500 name:L2_MISSES : L2 Cache miss
+event:0x1f counters:0,1 um:zero minimum:500 name:L2_WBACKS : L2 Cache number of write-backs
+event:0x20 counters:0,1 um:zero minimum:500 name:CACHEABLE_L2_REQS : Number of cacheable requests to L2
+
+#
+# Replays:
+#
+event:0x21 counters:0,1 um:zero minimum:500 name:REPLAYS_LSU_LOAD_DEP_FPU : LSU requested replays, load-dependent speculative dispatch, FPU exception prediction
+event:0x22 counters:0,1 um:zero minimum:500 name:LSU_REQ_REPLAYS : LSU requested replays
+event:0x23 counters:0,1 um:zero minimum:500 name:REPLAYS_LOAD_DEP_DISPATCH : replays due to load-dependent speculative dispatch
+event:0x24 counters:0,1 um:zero minimum:500 name:REPLAYS_WBB_FULL : replays due to WBB full
+event:0x25 counters:0,1 um:zero minimum:500 name:FSB_FULL_REPLAYS : replays due to FSB full
+
+#
+# Misc:
+#
+event:0x26 counters:0,1 um:zero minimum:500 name:ICACHE_PSEUDO_HITS : I-Cache pseudo-hits
+event:0x27 counters:0,1 um:zero minimum:500 name:LOAD_STORE_ISSUED : Load/store instructions issued

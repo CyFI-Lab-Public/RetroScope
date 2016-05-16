@@ -1,0 +1,10 @@
+# 
+# Intel Architectural events as of arch perfmon v2
+# 
+event:0x3c counters:cpuid um:zero minimum:6000 filter:0 name:CPU_CLK_UNHALTED : Clock cycles when not halted
+event:0x3c counters:cpuid um:one minimum:6000 filter:2 name:UNHALTED_REFERENCE_CYCLES : Unhalted reference cycles
+event:0xc0 counters:cpuid um:zero minimum:6000 filter:1 name:INST_RETIRED : number of instructions retired
+event:0x2e counters:cpuid um:x41 minimum:6000 filter:4 name:LLC_MISSES : Last level cache demand requests from this core that missed the LLC
+event:0x2e counters:cpuid um:x4f minimum:6000 filter:3 name:LLC_REFS : Last level cache demand requests from this core
+event:0xc4 counters:cpuid um:zero minimum:500 filter:5 name:BR_INST_RETIRED : number of branch instructions retired
+event:0xc5 counters:cpuid um:zero minimum:500 filter:6 name:BR_MISS_PRED_RETIRED : number of mispredicted branches retired (precise)

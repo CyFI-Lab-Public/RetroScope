@@ -1,0 +1,79 @@
+# Pentium IV HyperThreading possible unit masks
+#
+name:branch_retired type:bitmask default:0x0c
+	0x01 branch not-taken predicted
+	0x02 branch not-taken mispredicted
+	0x04 branch taken predicted
+	0x08 branch taken mispredicted
+name:mispred_branch_retired type:bitmask default:0x01
+	0x01 retired instruction is non-bogus
+# FIXME: 0 count nothing, 0xff count more than 0x01, docs says it's a bitmask:
+# something wrong in documentation ?
+name:bpu_fetch_request type:bitmask default:0x01
+	0x01 trace cache lookup miss
+name:itlb_reference type:bitmask default:0x07
+	0x01 ITLB hit
+	0x02 ITLB miss
+	0x04 uncacheable ITLB hit
+name:memory_cancel type:bitmask default:0x08
+	0x04 replayed because no store request buffer available
+	0x08 conflicts due to 64k aliasing
+name:memory_complete type:bitmask default:0x03
+	0x01 load split completed, excluding UC/WC loads
+	0x02 any split stores completed
+	0x04 uncacheable load split completed
+	0x08 uncacheable store split complete
+name:load_port_replay type:mandatory default:0x02
+	0x02 split load
+name:store_port_replay type:mandatory default:0x02
+	0x02 split store
+name:mob_load_replay type:bitmask default:0x3a
+	0x02 replay cause: unknown store address
+	0x08 replay cause: unknown store data
+	0x10 replay cause: partial overlap between load and store
+	0x20 replay cause: mismatched low 4 bits between load and store addr
+name:bsq_cache_reference type:bitmask default:0x073f
+	0x01 read 2nd level cache hit shared
+	0x02 read 2nd level cache hit exclusive
+	0x04 read 2nd level cache hit modified
+	0x08 read 3rd level cache hit shared
+	0x10 read 3rd level cache hit exclusive
+	0x20 read 3rd level cache hit modified
+	0x100 read 2nd level cache miss
+	0x200 read 3rd level cache miss
+	0x400 writeback lookup from DAC misses 2nd level cache
+name:x87_assist type:bitmask default:0x1f
+	0x01 handle FP stack underflow
+	0x02 handle FP stack overflow
+	0x04 handle x87 output overflow
+	0x08 handle x87 output underflow
+	0x10 handle x87 input assist
+name:machine_clear type:bitmask default:0x01
+	0x01 count a portion of cycles the machine is cleared for any cause
+	0x04 count each time the machine is cleared due to memory ordering issues
+	0x40 count each time the machine is cleared due to self modifying code
+name:global_power_events type:mandatory default:0x01
+	0x01 mandatory
+name:tc_ms_xfer type:mandatory default:0x01
+	0x01 count TC to MS transfers
+name:uop_queue_writes type:bitmask default:0x07
+	0x01 count uops written to queue from TC build mode
+	0x02 count uops written to queue from TC deliver mode
+	0x04 count uops written to queue from microcode ROM
+name:instr_retired type:bitmask default:0x01
+	0x01 count non-bogus instructions which are not tagged
+	0x02 count non-bogus instructions which are tagged
+	0x04 count bogus instructions which are not tagged
+	0x08 count bogus instructions which are tagged
+name:uops_retired type:bitmask default:0x01
+	0x01 count marked uops which are non-bogus
+	0x02 count marked uops which are bogus
+name:uop_type type:bitmask default:0x02
+	0x02 count uops which are load operations
+	0x04 count uops which are store operations
+name:branch_type type:bitmask default:0x1f
+	0x01 count unconditional jumps
+	0x02 count conditional jumps
+	0x04 count call branches
+	0x08 count return branches
+	0x10 count indirect jumps
