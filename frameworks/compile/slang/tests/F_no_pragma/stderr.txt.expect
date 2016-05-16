@@ -1,0 +1,1 @@
+second.rs:3:1: error: missing "#pragma rs java_package_name(com.foo.bar)" in source file

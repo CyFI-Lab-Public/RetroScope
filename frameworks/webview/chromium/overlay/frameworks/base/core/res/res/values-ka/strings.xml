@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (c) 2012 The Chromium Authors. All rights reserved.
+
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="webviewchromium_actionbar_share" msgid="8265707764014979342">"გაზიარება"</string>
+    <string name="webviewchromium_actionbar_web_search" msgid="539283440381511128">"ვებზე ძიება"</string>
+    <string name="webviewchromium_accessibility_content_view" msgid="4892710761369744296">"ვებ-ხედი"</string>
+    <string name="webviewchromium_date_picker_dialog_set" msgid="1106446820088863527">"დაყენება"</string>
+    <string name="webviewchromium_date_picker_dialog_clear" msgid="6439296286509386196">"გასუფთავება"</string>
+    <string name="webviewchromium_date_picker_dialog_title" msgid="2526916586861043590">"თარიღის დაყენება"</string>
+    <string name="webviewchromium_date_time_picker_dialog_title" msgid="1993749766330125085">"თარიღისა და დროის დაყენება"</string>
+    <string name="webviewchromium_month_picker_dialog_title" msgid="4740794532390369330">"თვის დაყენება"</string>
+    <string name="webviewchromium_week_picker_dialog_title" msgid="7510337683315786995">"კვირის დაყენება"</string>
+    <string name="webviewchromium_accessibility_datetime_picker_date" msgid="3048311035284429477">"თარიღი"</string>
+    <string name="webviewchromium_accessibility_datetime_picker_time" msgid="7658727779659492209">"დრო"</string>
+    <string name="webviewchromium_accessibility_date_picker_month" msgid="3073851955733780910">"თვე"</string>
+    <string name="webviewchromium_accessibility_date_picker_week" msgid="3705851794085779778">"კვირა"</string>
+    <string name="webviewchromium_accessibility_date_picker_year" msgid="1016706432863812811">"წელი"</string>
+    <string name="webviewchromium_media_player_error_title" msgid="1520808434237404056">"ვიდეოს დაკვრა ვერ ხერხდება"</string>
+    <string name="webviewchromium_media_player_error_text_invalid_progressive_playback" msgid="7520069921018550187">"უკაცრავად, ეს ვიდეო არ გამოდგება ამ მოწყობილობაზე სტრიმინგისთვის."</string>
+    <string name="webviewchromium_media_player_error_text_unknown" msgid="7167964728541888883">"უკაცრავად, ამ ვიდეოს ვერ ჩართავთ."</string>
+    <string name="webviewchromium_media_player_error_button" msgid="3693971589377075815">"კარგი"</string>
+    <string name="webviewchromium_media_player_loading_video" msgid="2617709614462333117">"მიმდინარეობს ვიდეოს ჩატვირთვა"</string>
+    <string name="webviewchromium_color_picker_button_more" msgid="4501948174158855274">"მეტი"</string>
+    <string name="webviewchromium_color_picker_hue" msgid="3167662698702871296">"ფერადოვნება"</string>
+    <string name="webviewchromium_color_picker_saturation" msgid="4190681539297946213">"ინტენსივობა"</string>
+    <string name="webviewchromium_color_picker_value" msgid="2922652345694917211">"მნიშვნელობა"</string>
+    <string name="webviewchromium_color_picker_button_set" msgid="6981883782092158499">"დაყენება"</string>
+    <string name="webviewchromium_color_picker_button_cancel" msgid="11751988208172211">"გაუქმება"</string>
+    <string name="webviewchromium_color_picker_dialog_title" msgid="709749370892752246">"აირჩიეთ ფერი"</string>
+    <string name="webviewchromium_low_memory_error" msgid="1191433008801322695">"მცირე მეხსიერების გამო წინა ოპეარციის დასრულება ვერ მოხერხდა."</string>
+    <string name="webviewchromium_opening_file_error" msgid="1717251611908883964">"არჩეული ფაილის გახსნა ვერ მოხერხდა"</string>
+    <string name="webviewchromium_private_browsing_warning" msgid="5444325116504635857">"Android-ის ამ ვერსიაში ეს ფუნქცია მხარდაჭერილი არ არის."</string>
+</resources>

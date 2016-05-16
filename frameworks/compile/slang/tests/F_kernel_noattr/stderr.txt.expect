@@ -1,0 +1,4 @@
+kernel_noattr.rs:4:5: error: Compute kernel root() is required to return a void type
+kernel_noattr.rs:4:5: error: Compute kernel root() must have at least one parameter for in or out
+kernel_noattr.rs:11:5: error: invokable non-static functions are required to return void
+kernel_noattr.rs:15:5: error: invokable non-static functions are required to return void

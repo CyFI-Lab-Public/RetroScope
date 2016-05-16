@@ -1,0 +1,9 @@
+BEGIN:VCARD
+VERSION:2.1
+N:Ando;Roid;
+ADR;X-custom:pobox;street
+TEL;X-CuStoMpRop:1
+TEL;custompropertywithoutx:2
+EMAIL;X-cUstomPrOperty:email@example.com
+EMAIL;CUSTOMPROPERTYWITHOUTX:email2@example.com
+END:VCARD

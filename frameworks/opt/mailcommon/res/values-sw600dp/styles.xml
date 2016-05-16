@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+ * Copyright (C) 2011 Google Inc.
+ * Licensed to The Android Open Source Project.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<resources>
+
+    <style name="RecipientEditTextViewStyle" parent="@style/RecipientEditTextView">
+        <item name="android:minHeight">42dip</item>
+        <item name="android:gravity">bottom</item>
+    </style>
+
+    <style name="ComposeEditTextView">
+        <item name="android:minHeight">44dip</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="ComposeBodyStyle">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:inputType">textLongMessage|textMultiLine|textAutoCorrect|textCapSentences</item>
+        <item name="android:imeOptions">flagNoExtractUi|actionDone|flagNoEnterAction</item>
+        <item name="android:textColorHint">@color/compose_label_text</item>
+        <item name="android:background">@null</item>
+        <item name="android:minHeight">42dip</item>
+    </style>
+
+    <style name="RecipientComposeFieldSpacer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">4dip</item>
+    </style>
+
+    <style name="ComposeHeading">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceMedium</item>
+        <item name="android:textColor">@color/compose_label_text</item>
+        <item name="android:layout_gravity">center_vertical</item>
+     </style>
+
+    <style name="RecipientComposeHeading" parent="@style/ComposeHeading">
+        <item name="android:layout_marginRight">4dip</item>
+        <item name="android:layout_marginTop">4dip</item>
+        <item name="android:paddingLeft">0dip</item>
+        <item name="android:layout_marginLeft">0dip</item>
+     </style>
+
+    <style name="ComposeFieldLayout" parent="android:Widget.Holo.Light.EditText">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:addStatesFromChildren">true</item>
+        <item name="android:focusable">false</item>
+        <item name="android:focusableInTouchMode">false</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:paddingTop">0dip</item>
+    </style>
+
+    <style name="RecipientComposeFieldLayout" parent="@style/ComposeFieldLayout">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="AccountSwitchSpinnerItem">
+        <item name="android:layout_width">308dip</item>
+    </style>
+
+    <style name="AccountSpinnerAnchorTextPrimary" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+    </style>
+
+    <style name="unreadCountActionBarTablet" parent="@style/unreadCountActionBar">
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_width">wrap_content</item>
+    </style>
+</resources>

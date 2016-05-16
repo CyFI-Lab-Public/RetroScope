@@ -1,0 +1,16 @@
+page.title=Web Apps
+page.landing=true
+page.landing.intro=Android has always been about connectivity and providing a great web browsing experience, so building your app with web technologies can be a great opportunity. Not only can you build an app on the web and still optimize your designs for Android's various screen sizes and densities, but you can also embed web-based content into your Android app using WebView.
+page.landing.image=
+
+@jd:body
+
+<div class="landing-docs">
+
+  <div class="col-6">
+  </div>
+
+  <div class="col-6">
+  </div>
+
+</div>

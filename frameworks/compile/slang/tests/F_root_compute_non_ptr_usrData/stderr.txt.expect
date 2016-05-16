@@ -1,0 +1,1 @@
+root_compute_non_ptr_usrData.rs:4:48: error: Unexpected kernel root() parameter 'usrData' of type 'const int'

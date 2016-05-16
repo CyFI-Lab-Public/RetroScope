@@ -1,0 +1,2 @@
+redefine_RS_VERSION.rs:4:9: warning: 'RS_VERSION' macro redefined
+<built-in>:1:9: note: previous definition is here

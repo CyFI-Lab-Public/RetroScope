@@ -1,0 +1,36 @@
+apply plugin: 'android-library'
+
+buildDir = "$project.rootBuildDir/android-$project.name"
+
+android {
+    compileSdkVersion 17
+    buildToolsVersion = 17
+
+    logtags {
+        srcDirs = ['java']
+        genDir = "$buildDir/source/generated"
+    }
+
+    sourceSets {
+        main {
+            manifest {
+                srcFile "AndroidManifest.xml"
+            }
+            java {
+                srcDirs = [
+                    'java',
+                    "$buildDir/source/generated"
+                ]
+            }
+            resources.srcDirs = ['src']
+            aidl.srcDirs = ['src']
+            renderscript.srcDirs = ['src']
+            res.srcDirs = ['res']
+            assets.srcDirs = ['assets']
+        }
+    }
+}
+
+android.libraryVariants.each { variant ->
+    variant.packageLibrary.baseName = "android-common"
+}

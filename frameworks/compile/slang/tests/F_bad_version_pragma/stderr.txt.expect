@@ -1,0 +1,4 @@
+bad_version_pragma.rs:1:17: error: pragma for version in source file must be set to 1
+bad_version_pragma.rs:2:16: error: pragma for version in source file must be set to 1
+bad_version_pragma.rs:3:18: error: expected a ')'
+bad_version_pragma.rs:4:18: error: invalid digit 'a' in decimal constant

@@ -1,0 +1,1 @@
+root_graphics_13.rs:5:23: error: invalid parameter type for legacy graphics root() function: 'unsigned int'

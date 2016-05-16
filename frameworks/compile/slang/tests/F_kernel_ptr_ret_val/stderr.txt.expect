@@ -1,0 +1,1 @@
+kernel_ptr_ret_val.rs:4:1: error: Compute kernel root() cannot return a pointer type: 'int *'

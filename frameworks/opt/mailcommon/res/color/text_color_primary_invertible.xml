@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 Google Inc. All Rights Reserved. -->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_enabled="false"
+        android:color="#ff999999"/>
+    <item android:state_activated="true"
+        android:color="@android:color/white" />
+    <item
+        android:color="@android:color/black" />
+</selector>

@@ -1,0 +1,19 @@
+This is an (almost) empty test, it serves as a prototype to create new UI
+Automator tests that can be compiled inside the Android build tree. The single
+test case included performs a key press, and send out some information about
+the test device.
+
+Steps to run this test:
+* have a fully built Android source tree
+* build the test:
+  mmm frameworks/testing/uiautomator/samples/SkeletonTest
+* deploy the test:
+  adb push ${OUT}/data/local/tmp/uiautomator.skeletontest.jar /data/local/tmp/
+* run the test:
+  adb shell uiautomator runtest uiautomator.skeletontest.jar \
+    -e class com.android.uiautomator.samples.skeleton.DemoTestCase
+
+Steps to create new tests off it:
+* cp -r frameworks/testing/uiautomator/samples/SkeletonTest /new/location
+* modify Android.mk, replace LOCAL_MODULE_NAME, change LOCAL_MODULE_TAGS if
+  necessary, add new dependecies if needed

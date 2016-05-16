@@ -1,0 +1,1 @@
+v15_non_root_kernel.rs:5:6: error: Non-root compute kernel foo() is not supported in SDK levels 11-15

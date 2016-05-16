@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      android:versionCode="1"
+      android:versionName="1.0" package="android.bordeaux">
+    <uses-sdk android:minSdkVersion="4" android:targetSdkVersion="14" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <application android:label="@string/bordeaux_app"
+                 android:debuggable="true"
+                 android:hardwareAccelerated="true">
+<!-- BEGIN_INCLUDE(remote_service_declaration) -->
+        <service android:name=".services.BordeauxService"
+                android:icon="@drawable/ic_bordeaux"
+                android:process=":remote" >
+            <intent-filter>
+                <action android:name="android.bordeaux.services.IBordeauxService" />
+                <!-- This is an action code you can use to select the service
+                     without explicitly supplying the implementation class. -->
+                <action android:name="android.bordeaux.services.BORDEAUX_SERVICE" />
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

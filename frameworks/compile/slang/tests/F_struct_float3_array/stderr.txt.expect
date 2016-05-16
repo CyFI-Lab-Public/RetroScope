@@ -1,0 +1,1 @@
+struct_float3_array.rs:4:8: error: arrays of width 3 vector types cannot be exported: 'float3_array'

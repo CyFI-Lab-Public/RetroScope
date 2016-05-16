@@ -1,0 +1,1667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/* //device/apps/common/assets/res/any/strings.xml
+**
+** Copyright 2006, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="byteShort" msgid="8340973892742019101">"B"</string>
+    <string name="kilobyteShort" msgid="5973789783504771878">"KB"</string>
+    <string name="megabyteShort" msgid="6355851576770428922">"MB"</string>
+    <string name="gigabyteShort" msgid="3259882455212193214">"GB"</string>
+    <string name="terabyteShort" msgid="231613018159186962">"TB"</string>
+    <string name="petabyteShort" msgid="5637816680144990219">"PB"</string>
+    <string name="fileSizeSuffix" msgid="9164292791500531949">"<xliff:g id="NUMBER">%1$s</xliff:g><xliff:g id="UNIT">%2$s</xliff:g>"</string>
+    <string name="untitled" msgid="4638956954852782576">"&lt;ርዕስ አልባ&gt;"</string>
+    <string name="ellipsis" msgid="7899829516048813237">"…"</string>
+    <string name="ellipsis_two_dots" msgid="1228078994866030736">"‥"</string>
+    <string name="emptyPhoneNumber" msgid="7694063042079676517">"(ምንም ስልክ ቁጥር የለም)"</string>
+    <string name="unknownName" msgid="2277556546742746522">"(ያልታወቀ)"</string>
+    <string name="defaultVoiceMailAlphaTag" msgid="2660020990097733077">"የድምፅ መልዕክት"</string>
+    <string name="defaultMsisdnAlphaTag" msgid="2850889754919584674">"MSISDN1"</string>
+    <string name="mmiError" msgid="5154499457739052907">"የተያያዥ ችግር ወይም  ትክከል ያልሆነየMMI ኮድ ባህሪ።"</string>
+    <string name="mmiFdnError" msgid="5224398216385316471">"ክዋኔ ለቋሚ መደወያ ቁጥሮች ብቻ ተገድቧል።"</string>
+    <string name="serviceEnabled" msgid="8147278346414714315">"አገልግሎት ነቅቶ ነበር።"</string>
+    <string name="serviceEnabledFor" msgid="6856228140453471041">"ለ፡ አገልግሎት ነቅቶ ነበር"</string>
+    <string name="serviceDisabled" msgid="1937553226592516411">"አገልግሎቱ ቦዝኗል።"</string>
+    <string name="serviceRegistered" msgid="6275019082598102493">"ምዝገባ የተሳካ ነበር።"</string>
+    <string name="serviceErased" msgid="1288584695297200972">"መሰረዝ የተሳካ ነበር።"</string>
+    <string name="passwordIncorrect" msgid="7612208839450128715">"የተሳሳተ የይለፍ ቃል።"</string>
+    <string name="mmiComplete" msgid="8232527495411698359">"MMI ተጠናቋል።"</string>
+    <string name="badPin" msgid="9015277645546710014">"የተየበከው የድሮ ፒን ትክክል አይደለም።"</string>
+    <string name="badPuk" msgid="5487257647081132201">"የተየብከው PUK ትክክል  አይደለም።"</string>
+    <string name="mismatchPin" msgid="609379054496863419">"ያስገባሃቸው ፒኖች አይዛመዱም"</string>
+    <string name="invalidPin" msgid="3850018445187475377">"ከ4 እስከ 8 ቁጥሮች የያዘ PIN ተይብ"</string>
+    <string name="invalidPuk" msgid="8761456210898036513">"8 ወይም ከዛ በላይ የሆኑ ቁጥሮችንPUK ተይብ።"</string>
+    <string name="needPuk" msgid="919668385956251611">"SIM ካርድዎ PUK-የተቆለፈ ነው።የPUK ኮዱን በመተየብ ይክፈቱት።"</string>
+    <string name="needPuk2" msgid="4526033371987193070">" SIM ለመክፈት PUK2 ተይብ።"</string>
+    <string name="enablePin" msgid="209412020907207950">"አልተሳካም፣ የሲም/RUIM ቁልፍን አንቃ።"</string>
+  <plurals name="pinpuk_attempts">
+    <item quantity="one" msgid="6596245285809790142">"ሲምዎ ከመቆለፉ በፊት <xliff:g id="NUMBER">%d</xliff:g> ሙከራ ይቀርዎታል።"</item>
+    <item quantity="other" msgid="7530597808358774740">"ሲምዎ ከመቆለፉ በፊት <xliff:g id="NUMBER">%d</xliff:g> ሙከራዎች ይቀሩዎታል።"</item>
+  </plurals>
+    <string name="imei" msgid="2625429890869005782">"IMEI"</string>
+    <string name="meid" msgid="4841221237681254195">"MEID"</string>
+    <string name="ClipMmi" msgid="6952821216480289285">"የገቢ ደዋይID"</string>
+    <string name="ClirMmi" msgid="7784673673446833091">"የወጪ ጥሪID"</string>
+    <string name="CfMmi" msgid="5123218989141573515">"ጥሪ ማስተላለፍ"</string>
+    <string name="CwMmi" msgid="9129678056795016867">"ጥሪ በመጠበቅ ላይ"</string>
+    <string name="BaMmi" msgid="455193067926770581">"ጥሪ ከልክል"</string>
+    <string name="PwdMmi" msgid="7043715687905254199">"የይለፍ ቃል ለውጥ"</string>
+    <string name="PinMmi" msgid="3113117780361190304">"የPIN ለውጥ"</string>
+    <string name="CnipMmi" msgid="3110534680557857162">"መደወያ ቁጥርአለ"</string>
+    <string name="CnirMmi" msgid="3062102121430548731">"መደወያ ቁጥር ተገድቧል"</string>
+    <string name="ThreeWCMmi" msgid="9051047170321190368">"የሦስትዮሽ ጥሪ"</string>
+    <string name="RuacMmi" msgid="7827887459138308886">"የሚያበሳጭ የማይፈለጉ ጥሪዎች አለመቀበል።"</string>
+    <string name="CndMmi" msgid="3116446237081575808">"መደወያ ቁጥር አስረከበ"</string>
+    <string name="DndMmi" msgid="1265478932418334331">"አትረብሽ"</string>
+    <string name="CLIRDefaultOnNextCallOn" msgid="429415409145781923">"የደዋይID  ወደ ተከልክሏል ነባሪዎች።ጥሪ ቀጥሎ ተከልክሏል፡"</string>
+    <string name="CLIRDefaultOnNextCallOff" msgid="3092918006077864624">"የደዋይ  ID  ወደ ተከልክሏል ነባሪዎች።ቀጥሎ ጥሪ፡ አልተከለከለም"</string>
+    <string name="CLIRDefaultOffNextCallOn" msgid="6179425182856418465">"የደዋይ  ID  ወደ አልተከለከለም ነባሪዎች።ቀጥሎ ጥሪ፡ ተከልክሏል"</string>
+    <string name="CLIRDefaultOffNextCallOff" msgid="2567998633124408552">"የደዋይ ID ነባሪዎች ወደአልተከለከለም። ቀጥሎ ጥሪ፡አልተከለከለም"</string>
+    <string name="serviceNotProvisioned" msgid="8614830180508686666">"አገልግሎት አልቀረበም።"</string>
+    <string name="CLIRPermanent" msgid="3377371145926835671">"የደዋይ መታወቂያ ቅንብሮች  መለወጥ አትችልም፡፡"</string>
+    <string name="RestrictedChangedTitle" msgid="5592189398956187498">"ክልክል ድረስተለውጧል"</string>
+    <string name="RestrictedOnData" msgid="8653794784690065540">"የውሂብ አገልግሎት የታገደ ነው።"</string>
+    <string name="RestrictedOnEmergency" msgid="6581163779072833665">"የአደጋ ጊዜአገልግሎት የታገደ ነው።"</string>
+    <string name="RestrictedOnNormal" msgid="4953867011389750673">"የድምፅ አገልግሎት ታግዷል።"</string>
+    <string name="RestrictedOnAllVoice" msgid="3396963652108151260">"ሁሉም የድምጽ አገልግሎቶች ታግደዋል።"</string>
+    <string name="RestrictedOnSms" msgid="8314352327461638897">"SMS አገልግሎት ታግዷል"</string>
+    <string name="RestrictedOnVoiceData" msgid="996636487106171320">"ድምፅ/ውሂብ አገልግሎቶች ታግደዋል።"</string>
+    <string name="RestrictedOnVoiceSms" msgid="1888588152792023873">"ድምፅ/SMS አገልግሎቶች ታግደዋል።"</string>
+    <string name="RestrictedOnAll" msgid="5643028264466092821">"ሁሉም ድምጽ/ውሂብ/ኤስ ኤም ኤስ  አገልግሎቶች ታግደዋል።"</string>
+    <string name="serviceClassVoice" msgid="1258393812335258019">"ድምፅ"</string>
+    <string name="serviceClassData" msgid="872456782077937893">"ውሂብ"</string>
+    <string name="serviceClassFAX" msgid="5566624998840486475">"ፋክስ"</string>
+    <string name="serviceClassSMS" msgid="2015460373701527489">"SMS"</string>
+    <string name="serviceClassDataAsync" msgid="4523454783498551468">"በተለያየ ጊዜ"</string>
+    <string name="serviceClassDataSync" msgid="7530000519646054776">"ሥምሪያ"</string>
+    <string name="serviceClassPacket" msgid="6991006557993423453">"ፓኬት"</string>
+    <string name="serviceClassPAD" msgid="3235259085648271037">"PAD"</string>
+    <string name="roamingText0" msgid="7170335472198694945">"በዝውውር ላይ አመላካች በርቷል"</string>
+    <string name="roamingText1" msgid="5314861519752538922">"በዝውውር ላይ አመልካች ጠፍቷል"</string>
+    <string name="roamingText2" msgid="8969929049081268115">"በዝውውር ላይ አመልካች ብልጭ ብልጭ ይላል"</string>
+    <string name="roamingText3" msgid="5148255027043943317">"ከጎረቤት ውጪ"</string>
+    <string name="roamingText4" msgid="8808456682550796530">"ከህንፃ ውጪ"</string>
+    <string name="roamingText5" msgid="7604063252850354350">"የዝውውር- ተመራጭ ስርዓት"</string>
+    <string name="roamingText6" msgid="2059440825782871513">"ዝውውር- ዝግጁ የሆነ ስርዓት"</string>
+    <string name="roamingText7" msgid="7112078724097233605">" የዝውውር- አጋር ስምምነት"</string>
+    <string name="roamingText8" msgid="5989569778604089291">"የዝውውር- ከፍተኛ ደረጃአጋር"</string>
+    <string name="roamingText9" msgid="7969296811355152491">"የዝውውር- ሙሉ አገልግሎት ተግባራት"</string>
+    <string name="roamingText10" msgid="3992906999815316417">"የዝውውር- ከፊል አገልግሎት ተግባራት"</string>
+    <string name="roamingText11" msgid="4154476854426920970">"የዝውውር ሰንደቅ በርቷል"</string>
+    <string name="roamingText12" msgid="1189071119992726320">"የዝውውር ሰንደቅ ጠፍቷል"</string>
+    <string name="roamingTextSearching" msgid="8360141885972279963">"አገልግሎት ፍለጋ"</string>
+    <string name="cfTemplateNotForwarded" msgid="1683685883841272560">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>፡አልተላለፈም"</string>
+    <string name="cfTemplateForwarded" msgid="1302922117498590521">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>: <xliff:g id="DIALING_NUMBER">{1}</xliff:g>"</string>
+    <string name="cfTemplateForwardedTime" msgid="9206251736527085256">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>፡<xliff:g id="DIALING_NUMBER">{1}</xliff:g> ከ<xliff:g id="TIME_DELAY">{2}</xliff:g> ሰከንዶች በኋላ"</string>
+    <string name="cfTemplateRegistered" msgid="5073237827620166285">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>፡አልተላለፈም"</string>
+    <string name="cfTemplateRegisteredTime" msgid="6781621964320635172">"<xliff:g id="BEARER_SERVICE_CODE">{0}</xliff:g>፡አልተላለፈም"</string>
+    <string name="fcComplete" msgid="3118848230966886575">"  ኮድ  ባህሪይ ተጠናቋል።"</string>
+    <string name="fcError" msgid="3327560126588500777">"የተያያዥ ችግር ወይም  ትክከል ያልሆነኮድ ባህሪ።"</string>
+    <string name="httpErrorOk" msgid="1191919378083472204">"እሺ"</string>
+    <string name="httpError" msgid="7956392511146698522">"የአውታረ መረብ ስህተት ነበር።"</string>
+    <string name="httpErrorLookup" msgid="4711687456111963163">"ዩ አር ኤል ማግኘት አልተቻለም።"</string>
+    <string name="httpErrorUnsupportedAuthScheme" msgid="6299980280442076799">"የድረገፁ ማረጋገጫ ሙሉ ምስርት አይደገፍም።"</string>
+    <string name="httpErrorAuth" msgid="1435065629438044534">"ማረጋገጥ አልተቻለም።"</string>
+    <string name="httpErrorProxyAuth" msgid="1788207010559081331">"ማረጋገጫ በእጅ አዙር አገልጋይ በኩል አልተሳካም።"</string>
+    <string name="httpErrorConnect" msgid="8714273236364640549">"ከአገልጋዩ ጋር ማገናኘት አልተቻለም።"</string>
+    <string name="httpErrorIO" msgid="2340558197489302188">"ከአገልጋዩ ጋር መግባባት አልተቻለም። ቆይተህ እንደገና ሞክር።"</string>
+    <string name="httpErrorTimeout" msgid="4743403703762883954">"የአገልጋዩ ወደ ተያያዡ ጊዜ አልቋል።"</string>
+    <string name="httpErrorRedirectLoop" msgid="8679596090392779516">"ገፁ በጣም ብዙ የአገልጋይ አዛውሮች ይዟል።"</string>
+    <string name="httpErrorUnsupportedScheme" msgid="5015730812906192208">"ፕሮቶኮሉ አይደገፍም"</string>
+    <string name="httpErrorFailedSslHandshake" msgid="96549606000658641">"ደህንነቱ የተጠበቀ ግንኙነት መፍጠር አልተቻለም።"</string>
+    <string name="httpErrorBadUrl" msgid="3636929722728881972">"ዩአርኤሉ ትክክለኛ ስላልሆነ ገጹን መክፈት አልተቻለም።"</string>
+    <string name="httpErrorFile" msgid="2170788515052558676">"ፋይሉን መድረስ አልተቻለም።"</string>
+    <string name="httpErrorFileNotFound" msgid="6203856612042655084">"የተጠየቀውን ፋይል ማግኘት አልተቻለም።"</string>
+    <string name="httpErrorTooManyRequests" msgid="1235396927087188253">"እጅግ ብዙ ጥየቃዎች ተካሂደዋል። ትንሽ ቆይተው እንደገና ይሞክሩ።"</string>
+    <string name="notification_title" msgid="8967710025036163822">"ለ <xliff:g id="ACCOUNT">%1$s</xliff:g> በመለያ መግባት ስህተት"</string>
+    <string name="contentServiceSync" msgid="8353523060269335667">"ሥምሪያ"</string>
+    <string name="contentServiceSyncNotificationTitle" msgid="397743349191901458">"ሥምሪያ"</string>
+    <string name="contentServiceTooManyDeletesNotificationDesc" msgid="8100981435080696431">"በጣም ብዙ <xliff:g id="CONTENT_TYPE">%s</xliff:g> ስርዞች።"</string>
+    <string name="low_memory" product="tablet" msgid="6494019234102154896">"የጡባዊ ተኮ ማከማቻ ሙሉ ነው! ቦታ ነፃ ለማድረግ አንዳንድ ፋይሎች ሰርዝ።"</string>
+    <string name="low_memory" product="default" msgid="3475999286680000541">"የስልክ ማከማቻ ሙሉ ነው! ቦታ ነፃ ለማድረግ አንዳንድ ፋይሎች ሰርዝ።"</string>
+    <string name="ssl_ca_cert_warning" msgid="5848402127455021714">"አውታረ መረብ በክትትል ውስጥ ሊሆን ይችላል"</string>
+    <string name="ssl_ca_cert_noti_by_unknown" msgid="4475437862189850602">"ባልታወቀ ሶስተኛ ወገን"</string>
+    <string name="ssl_ca_cert_noti_managed" msgid="4030263497686867141">"በ<xliff:g id="MANAGING_DOMAIN">%s</xliff:g>"</string>
+    <string name="me" msgid="6545696007631404292">"እኔ"</string>
+    <string name="power_dialog" product="tablet" msgid="8545351420865202853">"የጡባዊ አማራጮች"</string>
+    <string name="power_dialog" product="default" msgid="1319919075463988638">"የስልክ አማራጮች"</string>
+    <string name="silent_mode" msgid="7167703389802618663">"የፀጥታ ሁነታ"</string>
+    <string name="turn_on_radio" msgid="3912793092339962371">"ገመድ አልባ አብራ"</string>
+    <string name="turn_off_radio" msgid="8198784949987062346">"ገመድ አልባ አጥፋ"</string>
+    <string name="screen_lock" msgid="799094655496098153">"ማያ ቆልፍ"</string>
+    <string name="power_off" msgid="4266614107412865048">"ኃይል አጥፋ"</string>
+    <string name="silent_mode_silent" msgid="319298163018473078">"መጥሪያ ጠፍቷል"</string>
+    <string name="silent_mode_vibrate" msgid="7072043388581551395">"ነዛሪ መጥሪያ"</string>
+    <string name="silent_mode_ring" msgid="8592241816194074353">"መጥሪያ በርቷል"</string>
+    <string name="shutdown_progress" msgid="2281079257329981203">"በመዝጋት ላይ..."</string>
+    <string name="shutdown_confirm" product="tablet" msgid="3385745179555731470">"ጡባዊዎ ይዘጋል።"</string>
+    <string name="shutdown_confirm" product="default" msgid="649792175242821353">"ስልክዎ ይዘጋል።"</string>
+    <string name="shutdown_confirm_question" msgid="2906544768881136183">"ዘግተህ መውጣት  ትፈልጋለህ?"</string>
+    <string name="reboot_safemode_title" msgid="7054509914500140361">"በአስተማማኝ ኹነታ ውስጥ ዳግም አስጀምር"</string>
+    <string name="reboot_safemode_confirm" msgid="55293944502784668">"በአስተማማኝ ኹነታ ውስጥ ዳግም ማስጀመር ትፈልጋለህ? ይሄ ሁሉንም የጫንካቸው የሶስተኛ ወገን መተግበሪያዎችን ያሰናክላል።  እንደገና ዳግም ስታስጀምር ይመለስሉሃል።"</string>
+    <string name="recent_tasks_title" msgid="3691764623638127888">"የቅርብ ጊዜ"</string>
+    <string name="no_recent_tasks" msgid="8794906658732193473">"ምንም የቅርብ ጊዜ ትግበራዎች የሉም"</string>
+    <string name="global_actions" product="tablet" msgid="408477140088053665">"የጡባዊ አማራጮች"</string>
+    <string name="global_actions" product="default" msgid="2406416831541615258">"የስልክ አማራጮች"</string>
+    <string name="global_action_lock" msgid="2844945191792119712">"ማያ ቆልፍ"</string>
+    <string name="global_action_power_off" msgid="4471879440839879722">"ኃይል አጥፋ"</string>
+    <string name="global_action_bug_report" msgid="7934010578922304799">"የሳንካ ሪፖርት"</string>
+    <string name="bugreport_title" msgid="2667494803742548533">"የሳንካ ሪፖርት ውሰድ"</string>
+    <string name="bugreport_message" msgid="398447048750350456">"ይሄ እንደ የኢሜይል መልዕክት አድርጎ የሚልከውን ስለመሣሪያዎ የአሁኑ ሁኔታ መረጃ ይሰበስባል። የሳንካ ሪፖርቱን ከመጀመር ጀምሮ እስኪላክ ድረስ ትንሽ ጊዜ ይወስዳል፤ እባክዎ ይታገሱ።"</string>
+    <string name="global_action_toggle_silent_mode" msgid="8219525344246810925">"የፀጥታ ሁነታ"</string>
+    <string name="global_action_silent_mode_on_status" msgid="3289841937003758806">"ድምፅ ጠፍቷል"</string>
+    <string name="global_action_silent_mode_off_status" msgid="1506046579177066419">"ድምፅ በርቷል"</string>
+    <string name="global_actions_toggle_airplane_mode" msgid="5884330306926307456">"የአውሮፕላን ሁነታ"</string>
+    <string name="global_actions_airplane_mode_on_status" msgid="2719557982608919750">"የአውሮፕላንሁነታ በርቷል"</string>
+    <string name="global_actions_airplane_mode_off_status" msgid="5075070442854490296">"የአውሮፕላንሁነታ ጠፍቷል"</string>
+    <string name="status_bar_notification_info_overflow" msgid="5301981741705354993">"999+"</string>
+    <string name="safeMode" msgid="2788228061547930246">"የሚያስተማምን ሁነታ"</string>
+    <string name="android_system_label" msgid="6577375335728551336">"Android ስርዓት"</string>
+    <string name="permgrouplab_costMoney" msgid="5429808217861460401">"ገንዘብ የሚያስወጥዎ አገልግሎቶች"</string>
+    <string name="permgroupdesc_costMoney" msgid="3293301903409869495">"ገንዘብ የሚያስወጡህን ነገሮች አድርግ።"</string>
+    <string name="permgrouplab_messages" msgid="7521249148445456662">"መልዕክቶችዎ"</string>
+    <string name="permgroupdesc_messages" msgid="7821999071003699236">"ኤስ ኤም ኤስህን፣ ኢሜይልህን እና ሌላ መልዕክቶችህን አንብብና ፃፍ።"</string>
+    <string name="permgrouplab_personalInfo" msgid="3519163141070533474">"የግል መረጃዎ"</string>
+    <string name="permgroupdesc_personalInfo" msgid="8426453129788861338">"በእውቂያ ካርድህ ላይ ወደተከማቸ የአንተ መረጃ ቀጥተኛ መዳረሻ።"</string>
+    <string name="permgrouplab_socialInfo" msgid="5799096623412043791">"ማህበራዊ መረጃዎ"</string>
+    <string name="permgroupdesc_socialInfo" msgid="7129842457611643493">"ወደ የእውቂያዎችህና የማህበራዊ ግንኙነቶችህ መረጃ ቀጥተኛ መዳረሻ።"</string>
+    <string name="permgrouplab_location" msgid="635149742436692049">"ስፍራዎ"</string>
+    <string name="permgroupdesc_location" msgid="5704679763124170100">"ያለህበትን አካባቢ ተቆጣጠር።"</string>
+    <string name="permgrouplab_network" msgid="5808983377727109831">"የአውታረ መረብ ግኑኙነት"</string>
+    <string name="permgroupdesc_network" msgid="4478299413241861987">"የተለያዩ የአውታረ መረብ ባህሪያትን ድረስ።"</string>
+    <string name="permgrouplab_bluetoothNetwork" msgid="1585403544162128109">"ብሉቱዝ"</string>
+    <string name="permgroupdesc_bluetoothNetwork" msgid="5625288577164282391">"መሳሪያዎችን እና አውታረ መረቦችን በብሉቱዝ በኩል አግኝ።"</string>
+    <string name="permgrouplab_audioSettings" msgid="8329261670151871235">"የድምጽ ቅንብሮች"</string>
+    <string name="permgroupdesc_audioSettings" msgid="2641515403347568130">"የድምጽ ቅንብሮችን ቀይር።"</string>
+    <string name="permgrouplab_affectsBattery" msgid="6209246653424798033">"ባትሪ ላይ ተፅዕኖ ያሳርፋል"</string>
+    <string name="permgroupdesc_affectsBattery" msgid="6441275320638916947">"ባትሪ ቶሎ ሊጨርሱ የሚችሉ ባህርያትን ተጠቀም።"</string>
+    <string name="permgrouplab_calendar" msgid="5863508437783683902">"ቀን መቁጠሪያ"</string>
+    <string name="permgroupdesc_calendar" msgid="5777534316982184416">"ወደ ቀን መቁጠሪያና ክስተቶች ቀጥተኛ መዳረሻ።"</string>
+    <string name="permgrouplab_dictionary" msgid="4148597128843641379">"የተጠቃሚ መዝገበ ቃላት አንብብ"</string>
+    <string name="permgroupdesc_dictionary" msgid="7921166355964764490">"ቃላትን በተጠቃሚ መዝገበ ቃላት አንብብ።"</string>
+    <string name="permgrouplab_writeDictionary" msgid="8090237702432576788">"የተጠቃሚ መዝገበ ቃላት ጻፍ"</string>
+    <string name="permgroupdesc_writeDictionary" msgid="2711561994497361646">"ቃላትን የተጠቃሚ መዝገበ ቃላትህ ላይ አክል።"</string>
+    <string name="permgrouplab_bookmarks" msgid="1949519673103968229">"ዕልባቶች እና ታሪክ"</string>
+    <string name="permgroupdesc_bookmarks" msgid="4169771606257963028">"ወደ ዕልባቶችና የአሳሽ ታሪክ ቀጥተኛ መዳረሻ።"</string>
+    <string name="permgrouplab_deviceAlarms" msgid="6117704629728824101">"ማንቂያ"</string>
+    <string name="permgroupdesc_deviceAlarms" msgid="4769356362251641175">"የማንቂያ ሰዓቱን አዘጋጅ።"</string>
+    <string name="permgrouplab_voicemail" msgid="4162237145027592133">"የድምጽ መልዕክት"</string>
+    <string name="permgroupdesc_voicemail" msgid="2498403969862951393">"ወደ የድምጽ መልዕክት ቀጥተኛ መዳረሻ።"</string>
+    <string name="permgrouplab_microphone" msgid="171539900250043464">"ማይክሮፎን"</string>
+    <string name="permgroupdesc_microphone" msgid="7106618286905738408">"ድምጽ ለመቅረጽ ወደ ማይክሮፎኑ ቀጥተኛ መዳረሻ።"</string>
+    <string name="permgrouplab_camera" msgid="4820372495894586615">"ካሜራ"</string>
+    <string name="permgroupdesc_camera" msgid="2933667372289567714">"ለካሜራ ምስል ወይም ቪዲዮ ለመቅረጽ ቀጥተኛ መዳረሻ።"</string>
+    <string name="permgrouplab_screenlock" msgid="8275500173330718168">"ማያ ገጽ ቆልፍ"</string>
+    <string name="permgroupdesc_screenlock" msgid="7067497128925499401">"በመሣሪያዎ ላይ ያለውን የመቆለፊያ ማያ ገጽ ባህሪያት ላይ ተጽዕኖ የመፍጠር ችሎታ።"</string>
+    <string name="permgrouplab_appInfo" msgid="8028789762634147725">"የመተግበሪያዎችዎ መረጃ"</string>
+    <string name="permgroupdesc_appInfo" msgid="3950378538049625907">"በመሣሪያህ ላይ ያሉ የሌሎች መተግበሪያዎች ባህሪዎች ላይ ተፅዕኖ የማሳረፍ ችሎታ።"</string>
+    <string name="permgrouplab_wallpaper" msgid="3850280158041175998">"ልጣፍ"</string>
+    <string name="permgroupdesc_wallpaper" msgid="5630417854750540154">"የመሣሪያውን ልጣፍ ቅንብሮች ቀይር።"</string>
+    <string name="permgrouplab_systemClock" msgid="406535759236612992">"ሰዓት"</string>
+    <string name="permgroupdesc_systemClock" msgid="3944359833624094992">"የመሣሪያውን ሰዓት ወይም የሰዓት ሰቁን ቀይር።"</string>
+    <string name="permgrouplab_statusBar" msgid="2095862568113945398">"የሁኔታ አሞሌ"</string>
+    <string name="permgroupdesc_statusBar" msgid="6242593432226807171">"የመሣሪያ ሁኔታ አሞሌ ቅንብሮቹን ቀይር።"</string>
+    <string name="permgrouplab_syncSettings" msgid="3341990986147826541">"የማመሳሰል ቅንብሮች"</string>
+    <string name="permgroupdesc_syncSettings" msgid="7603195265129031797">"ወደ የማመሳሰል ቅንብሮች መዳረሻ።"</string>
+    <string name="permgrouplab_accounts" msgid="3359646291125325519">"መለያዎችዎ"</string>
+    <string name="permgroupdesc_accounts" msgid="4948732641827091312">" ለተገኙት መለያዎች ድረስ"</string>
+    <string name="permgrouplab_hardwareControls" msgid="7998214968791599326">"የሃርድዌር ቁጥጥሮች"</string>
+    <string name="permgroupdesc_hardwareControls" msgid="4357057861225462702">"ወደስልኩ ቀፎ ሀርድዌርላይ በቀጥታ ድረስ።"</string>
+    <string name="permgrouplab_phoneCalls" msgid="9067173988325865923">"የስልክ ጥሪዎች"</string>
+    <string name="permgroupdesc_phoneCalls" msgid="7489701620446183770">"ማሳያ፣መዝገብ እና የስልክ ጥሪዎች ሂደት"</string>
+    <string name="permgrouplab_systemTools" msgid="4652191644082714048">"የስርዓት መሳሪያዎች"</string>
+    <string name="permgroupdesc_systemTools" msgid="8162102602190734305">"የስርዓቱ ዝቅተኛ-ደረጃ ድረስ እና ጠብቅ"</string>
+    <string name="permgrouplab_developmentTools" msgid="3446164584710596513">"የግንባታ  መሣሪያዎች"</string>
+    <string name="permgroupdesc_developmentTools" msgid="7058828032358142018">"ባህሪያት ለመተግበሪያ ገንቢዎች ብቻ ያስፈልጋሉ።"</string>
+    <string name="permgrouplab_display" msgid="4279909676036402636">"የሌላ መተግበሪያ ተጠቃሚ በይነገጽ"</string>
+    <string name="permgroupdesc_display" msgid="6051002031933013714">"የሌሎች መተግበሪያዎች ተጠቃሚ በይነገጽ ተግብር።"</string>
+    <string name="permgrouplab_storage" msgid="1971118770546336966">"ማከማቻ"</string>
+    <string name="permgroupdesc_storage" product="nosdcard" msgid="7442318502446874999">"የUSB ማከማቻ ድረስ።"</string>
+    <string name="permgroupdesc_storage" product="default" msgid="9203302214915355774">"SD ካርድ ድረስ"</string>
+    <string name="permgrouplab_accessibilityFeatures" msgid="7919025602283593907">"የተደራሽነት ባህሪያት"</string>
+    <string name="permgroupdesc_accessibilityFeatures" msgid="4205196881678144335">"አጋዥ ቴክኖሎጂ ሊጠይቃቸው የሚችላቸው ባህሪያት።"</string>
+    <string name="capability_title_canRetrieveWindowContent" msgid="3901717936930170320">"የመስኮት ይዘት ሰርስረው ያውጡ"</string>
+    <string name="capability_desc_canRetrieveWindowContent" msgid="3772225008605310672">"መስተጋበር የሚፈጥሩት የመስኮት ይዘት ይመርምሩ።"</string>
+    <string name="capability_title_canRequestTouchExploration" msgid="3108723364676667320">"በመንካት ያስሱን ያብሩ"</string>
+    <string name="capability_desc_canRequestTouchExploration" msgid="5800552516779249356">"የተነኩ ንጥሎች ጮክ ተብለው ይነገሩና የጣት ምልክቶችን በመጠቀም ማያ ገጹ ሊታሰስ ይችላል።"</string>
+    <string name="capability_title_canRequestEnhancedWebAccessibility" msgid="1739881766522594073">"የተሻሻለ የድር ተደራሽነት ያብሩ"</string>
+    <string name="capability_desc_canRequestEnhancedWebAccessibility" msgid="7881063961507511765">"የመተግበሪያ ይዘት ይበልጥ የሚገኙ ለማድረግ ስክሪፕቶች ሊጫኑ ይችላሉ።"</string>
+    <string name="capability_title_canRequestFilterKeyEvents" msgid="2103440391902412174">"የሚተይቡት ጽሑፍ ይመልከቱ"</string>
+    <string name="capability_desc_canRequestFilterKeyEvents" msgid="7463135292204152818">"እንደ የክሬዲት ካርድ ቁጥሮች እና የይለፍ ቃላት ያሉ የግል ውሂብ ያካትታል።"</string>
+    <string name="permlab_statusBar" msgid="7417192629601890791">"የሁኔቴ አሞሌ አቦዝን ወይም ቀይር"</string>
+    <string name="permdesc_statusBar" msgid="8434669549504290975">"የስርዓት አዶዎችን ወደ ሁኔታ አሞሌ ላለማስቻል ወይም ለማከል እና ለማስወገድ ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_statusBarService" msgid="7247281911387931485">"ኹናቴ አሞሌ"</string>
+    <string name="permdesc_statusBarService" msgid="716113660795976060">"የኹናቴ አሞሌ እንዲሆን ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_expandStatusBar" msgid="1148198785937489264">"የሁኔታ አሞሌ ዘርጋ/ሰብስብ"</string>
+    <string name="permdesc_expandStatusBar" msgid="6917549437129401132">"የሁኔታ አሞሌን ለመዝረጋት እና ለመሰብሰብ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_install_shortcut" msgid="4279070216371564234">"አቋራጮችን ይጭናል"</string>
+    <string name="permdesc_install_shortcut" msgid="8341295916286736996">"አንድ መተግበሪያ ያለተጠቃሚ ጣልቃ-ገብነት የመነሻ ማያ ገጽ አቋራጮችን እንዲያክል ያስችለዋል።"</string>
+    <string name="permlab_uninstall_shortcut" msgid="4729634524044003699">"አቋራጮችን ያራግፋል"</string>
+    <string name="permdesc_uninstall_shortcut" msgid="6745743474265057975">"መተግበሪያው ያለተጠቃሚ ጣልቃ-ገብነት የመነሻ ማያ ገጽ አቋራጮችን እንዲያስወግድ ያስችለዋል።"</string>
+    <string name="permlab_processOutgoingCalls" msgid="3906007831192990946">"የወጪ ጥሪዎች አቅጣጫ ቀይር"</string>
+    <string name="permdesc_processOutgoingCalls" msgid="5331318931937402040">"መተግበሪያው ወጪ ጥሪዎችን እንዲያስኬድና የሚደወለውን ቁጥር እንዲቀይር ይፈቅድለታል። ይህ ፈቃድ መተግበሪያው ወጪ ጥሪዎችን እንዲቆጣጠር፣ አቅጣጫ እንዲየስቀይር ወይም እንዲያግድ ይፈቅድለታል።"</string>
+    <string name="permlab_receiveSms" msgid="8673471768947895082">"የፅሁፍ መልዕክቶችን ተቀበል (ኤስ.ኤም.ኤስ.)"</string>
+    <string name="permdesc_receiveSms" msgid="6424387754228766939">"መተግበሪያው የኤስ.ኤም.ኤስ. መልእክቶችን እንዲያነብ እና እንዲያካሂድ ይፈቅዳል። ይህ ማለት መተግበሪያው ወደ መሳሪያህ የተላኩ መልእክቶችን ላንተ ሳያሳይህ ሊቆጣጠር ወይም ሊሰርዝ ይችላል።"</string>
+    <string name="permlab_receiveMms" msgid="1821317344668257098">"የፅሁፍ መልዕክቶችን ተቀበል (ኤም.ኤም.ኤስ.)"</string>
+    <string name="permdesc_receiveMms" msgid="533019437263212260">"መተግበሪያው የኤም.ኤም.ኤስ. መልእክቶችን እንዲያነብ እና እንዲያካሂድ ይፈቅዳል። ይህ ማለት መተግበሪያው ወደ መሳሪያህ የተላኩ መልእክቶችን ላንተ ሳያሳይህ ሊቆጣጠር ወይም ሊሰርዝ ይችላል።"</string>
+    <string name="permlab_receiveEmergencyBroadcast" msgid="1803477660846288089">"የአደጋ ጊዜ ስርጭቶችን ተቀበል"</string>
+    <string name="permdesc_receiveEmergencyBroadcast" msgid="848524070262431974">"ድንገተኛ የስርጭት መልዕክቶችን ለመቀበል እና ለማስኬድ ለመተግበሪያው ይፈቅዳሉ፡፡ ይሄ ፍቃድ ለስርዓት መተግበሪዎች ብቻ ነው የሚገኘው፡፡"</string>
+    <string name="permlab_readCellBroadcasts" msgid="1598328843619646166">"የህዋስ ስርጭት መልዕክቶችን አንብብ"</string>
+    <string name="permdesc_readCellBroadcasts" msgid="6361972776080458979">"መሣሪያህ የህዋስ ስርጭት መልዕክቶች ሲቀበል መተግበሪያው እንዲያነበው ይፈቅድለታል። የህዋስ ስርጭት ማንቂያዎች አስቸኳይ ሁኔታዎች ሲያጋጥሙ አንዳንድ አካባቢዎች ላይ የሚላኩ ናቸው። የህዋስ ስርጭት ሲደርስ ተንኮል አዘል መተግበሪያዎች በመሣሪያህ አፈጻጸም ወይም አሰራር ላይ ጣልቃ ሊገቡ ይችላሉ።"</string>
+    <string name="permlab_sendSms" msgid="5600830612147671529">"የSMS መልዕክቶች ላክ"</string>
+    <string name="permdesc_sendSms" msgid="7094729298204937667">"መተግበሪያው የኤስ.ኤም.ኤስ. መልዕክቶችን እንዲልክ ይፈቅድለታል። ይህ ያልተጠበቁ ወጪዎችን ሊያስከትል ይችላል። ተንኮል አዘል መተግበሪያዎች ያላንተ ማረጋገጫ መልዕክቶችን በመላክ ገንዘብ ሊያስወጡህ ይችላሉ።"</string>
+    <string name="permlab_sendRespondViaMessageRequest" msgid="8713889105305943200">"የበመልዕክት-በኩል-ምላሽ-ስጥ ክስተቶችን ይላኩ"</string>
+    <string name="permdesc_sendRespondViaMessageRequest" msgid="7107648548468778734">"መተግበሪያው ሌሎች የመልዕክት መላኪያ መተግበሪያዎች ለመጪ ጥሪዎች በመልዕክት-በኩል-ምላሽ-መስጠት ስራን እንዲይዙ ጥያቄዎች እንዲልክላቸው ያስችለዋል።"</string>
+    <string name="permlab_readSms" msgid="8745086572213270480">"የጽሑፍ መልዕክቶችዎን ያንብቡ (ኤስ.ኤም.ኤስ. ወይም ኤም.ኤም.ኤስ.)"</string>
+    <string name="permdesc_readSms" product="tablet" msgid="2467981548684735522">"መገለጫው በጡባዊ ቱኮህ ወይም በSIM ካርድህ የተከማቹ የኤስ.ኤም.ኤስ. መልእክቶችን እንዲያነብ ይፈቅድለታል። ይህ መተግበሪያው ይዘት ወይም ሚስጥራዊነትን ከግምት ሳያስገባ ሁሉንም የኤስ.ኤም.ኤስ. መልእክቶች እንዲያነብ ይፈቅድለታል።"</string>
+    <string name="permdesc_readSms" product="default" msgid="3695967533457240550">"መገለጫው በስልክህ ወይም በSIM ካርድህ የተከማቹ የኤስ.ኤም.ኤስ. መልእክቶችን እንዲያነብ ይፈቅድለታል። ይህ መተግበሪያው ይዘት ወይም ሚስጥራዊነትን ከግምት ሳያስገባ ሁሉንም የኤስ.ኤም.ኤስ. መልእክቶች እንዲያነብ ይፈቅድለታል።"</string>
+    <string name="permlab_writeSms" msgid="3216950472636214774">"የጽሑፍ መልዕክቶችህን አርትዕ (ኤስ.ኤም.ኤስ. ወይም ኤም.ኤም.ኤስ.)"</string>
+    <string name="permdesc_writeSms" product="tablet" msgid="5160413947794501538">"በጡባዊ ተኮህ ወይም ሲም ካርድህ ላይ ኤስ ኤም ኤስ መልዕክቶችን ለመፃፍ ለመተግበሪያው ይፈቅዳሉ፡፡መልዕክቶችህን ተንኮል አዘል መተግበሪያዎች ሊሰርዙ ይችላሉ፡፡"</string>
+    <string name="permdesc_writeSms" product="default" msgid="7268668709052328567">"በስልክህ ወይም ሲም ካርድህ ላይ ኤስ ኤም ኤስ መልዕክቶችን ለመፃፍ ለመተግበሪያው ይፈቅዳሉ፡፡መልዕክቶችህን ተንኮል አዘል መተግበሪያዎች ሊሰርዙ ይችላሉ፡፡"</string>
+    <string name="permlab_receiveWapPush" msgid="5991398711936590410">"የፅሁፍ መልዕክቶችን ተቀበል (WAP)"</string>
+    <string name="permdesc_receiveWapPush" msgid="748232190220583385">"መተግበሪያው የWAP መልእክቶችን እንዲያነብ እና እንዲያካሂድ ይፈቅዳል። ይህ ፈቃድ የተላኩልህን መልእክቶች ላንተ ሳያሳይህ የመቆጣጠር ወይም የመሰረዝ ብቃትን ያጠቃልላል።"</string>
+    <string name="permlab_getTasks" msgid="6466095396623933906">"አሂድ መተግበሪያዎችን ሰርስረው ያውጡ"</string>
+    <string name="permdesc_getTasks" msgid="7454215995847658102">"መተግበሪያው በአሁኑ ጊዜና በቅርቡ እየተካሄዱ ስላሉ ተግባሮችን መረጃ ሰርስሮ እንዲያወጣ ይፈቅድለታል። ይህ መተግበሪያው በመሳሪያው ላይ የትኛዎቹ መተግበሪያዎች ጥቅም ላይ ስለመዋላቸው መረጃ እንዲያገኝ ሊፈቅድለት ይችላል።"</string>
+    <string name="permlab_interactAcrossUsers" msgid="7114255281944211682">"በተለያዩ ተጠቃሚዎች መካከል መስተጋብር መፍጠር"</string>
+    <string name="permdesc_interactAcrossUsers" msgid="364670963623385786">"መተግበሪያው በመሣሪያው ላይ በተለያዩ ተጠቃሚዎች ላይ እርምጃዎችን እንዲፈጽም ይፈቅድለታል። ተንኮል-አዘል መተግበሪያዎች ይህንን ተጠቅመው በተጠቃሚዎች መካከል ያለውን ጥበቃ ሊጥሱ ይችላሉ።"</string>
+    <string name="permlab_interactAcrossUsersFull" msgid="2567734285545074105">"በተለያዩ ተጠቃሚዎች መካከል መስተጋብር ለመፍጠር ሙሉ ፍቃድ"</string>
+    <string name="permdesc_interactAcrossUsersFull" msgid="376841368395502366">"በተለያዩ ተጠቃሚዎች ላይ ሊኖሩ የሚችሉ መስተጋብሮችን ሁሉ ይፈቅዳል።"</string>
+    <string name="permlab_manageUsers" msgid="1676150911672282428">"ተጠቃሚዎችን ያስተዳድሩ"</string>
+    <string name="permdesc_manageUsers" msgid="8409306667645355638">"መተግበሪያዎች በመሣሪያው ላይ ያሉ ተጠቃሚዎችን እንዲያቀናብር ያስችለዋል፣ መጠየቅን፣ መፍጠርንና መሰረዝን ጨምሮ።"</string>
+    <string name="permlab_getDetailedTasks" msgid="6229468674753529501">"እየሄዱ ስላሉ የመተግበሪያዎች ዝርዝሮች አምጣ"</string>
+    <string name="permdesc_getDetailedTasks" msgid="153824741440717599">"መተግበሪያው በአሁኑ ጊዜ እየተካሄዱ ስላሉና በቅርብ ጊዜ ስለተካሄዱ ተግባሮች መረጃ ዝርዝር እንዲያወጣ ይፈቅድለታል። ተንኮል-አዘል መተግበሪያዎች ስለ ሌሎች መተግበሪያዎች የግል መረጃ ሊያገኙ ይችላሉ።"</string>
+    <string name="permlab_reorderTasks" msgid="2018575526934422779">"አሂድ ትግበራዎችን ድጋሚ ደርድር"</string>
+    <string name="permdesc_reorderTasks" msgid="7734217754877439351">"መተግበሪያው ተግባሮችን ወደ ቅድመ ገጹ እና ወደ ዳራው እንዲያንቀሳቅስ ይፈቅድለታል። መተግበሪያው ይህንን ያላንተ ግብዓት ሊያደርግ ይችላል።"</string>
+    <string name="permlab_removeTasks" msgid="6821513401870377403">"የአሂድ ትግበራዎች አቁም"</string>
+    <string name="permdesc_removeTasks" msgid="1394714352062635493">"ተግባሮችን ለማስወገድ እና መተግበሪያዎቻቸውን ለመግደል ለመተግበሪያ ይፈቅዳል። ጎጂ የሆኑ መተግበሪያዎች የሌሎችን መተግበሪያዎችን ባህሪ ሊያውኩ ይችላሉ።"</string>
+    <string name="permlab_manageActivityStacks" msgid="7391191384027303065">"የእንቅስቃሴ ቁልሎችን ማቀናበር"</string>
+    <string name="permdesc_manageActivityStacks" msgid="1615881933034084440">"መተግበሪያው ሌሎች መተግበሪያዎች በሚያሄዱበት የእንቅስቃሴዎች ቁልሎችን እንዲያክል፣ እንዲያስወግድ እና እንዲቀይር ያስችለዋል። ተንኮል-አዘል መተግበሪያዎች የሌሎች መተግበሪያዎች ባህሪን ሊበጠብጡ ይችላሉ።"</string>
+    <string name="permlab_startAnyActivity" msgid="2918768238045206456">"ማንኛውም እንቅስቃሴ ጀምር"</string>
+    <string name="permdesc_startAnyActivity" msgid="997823695343584001">"መተግበሪያው ማንኛውም እንቅስቃሴ፣ የፍቃድ ጥበቃም ሆነ ወደ ውጭ የተላከበት ሁኔታ ሳይታይ፣ እንዲጀምር ይፈቅድለታል።"</string>
+    <string name="permlab_setScreenCompatibility" msgid="6975387118861842061">"የማያ ገጽ ተኳኋኝነት መድብ"</string>
+    <string name="permdesc_setScreenCompatibility" msgid="692043618693917374">"መተግበሪያው የሌሎች መተግበሪያዎች የማያ ገጽ ተኳኋኝነት ሁናቴ እንዲቆጣጠር ይፈቅዳል። ተንኮለኛ መተግበሪያዎች የሌሎች መተግበሪያዎች ባህሪ ሊሰብሩ ይችላሉ።"</string>
+    <string name="permlab_setDebugApp" msgid="3022107198686584052">"የትግበራ ማረሚያ አንቃ"</string>
+    <string name="permdesc_setDebugApp" msgid="4474512416299013256">"ለሌላ መተግበሪያ አርምን አብራ ለመተግበሪያው ይፈቅዳሉ። ሌሎች መተግበሪያዎች ለመግደል ተንኮል አዘል መተግበሪያዎች ይሄንን ሊጠቀሙት ይችላሉ።"</string>
+    <string name="permlab_changeConfiguration" msgid="4162092185124234480">"የስርዓት ማሳያ ቅንብሮችን ቀይር"</string>
+    <string name="permdesc_changeConfiguration" msgid="4372223873154296076">" እንደ አካባቢው ሁኔታ ወይም ማጠቃለያ ቅርፀ ቁምፊ መጠን የአሁኑን ውቅር ለመለወጥ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_enableCarMode" msgid="5684504058192921098">"የመኪና ሁነታ አንቃ"</string>
+    <string name="permdesc_enableCarMode" msgid="4853187425751419467">"የመኪና ሁኔታ ለማንቃት ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_killBackgroundProcesses" msgid="3914026687420177202">"ሌሎች መተግበሪያዎችን ዝጋ"</string>
+    <string name="permdesc_killBackgroundProcesses" msgid="4593353235959733119">"መተግበሪያው የሌሎች መተግበሪያዎችን የጀርባ ሂደት እንዲያቆም ይፈቅድለታል። ይህ ሌሎች መተግበሪያዎች መሄድ እንዲያቆሙ ሊያደርግ ይችላል።"</string>
+    <string name="permlab_forceStopPackages" msgid="2329627428832067700">"ሌሎች መተግበሪያዎችን ለማቆም አስገድድ"</string>
+    <string name="permdesc_forceStopPackages" msgid="5253157296183940812">"ሌላ ትግበራዎችን በግድ ሊያቆም ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_forceBack" msgid="652935204072584616">"ትግበራ እንዲዘጋ አስገድድ"</string>
+    <string name="permdesc_forceBack" msgid="3892295830419513623">"ማንኛውንም እንቅስቃሴ ለማስገደድ ማለትም በግንባር ዋይ ወስጥ ለመዝጋት እና ለመመለስ ለመተግበሪያው ይፈቅዳሉ፡፡ ለመደበኛ መተግበሪያዎች አያስፈልግም፡፡"</string>
+    <string name="permlab_dump" msgid="1681799862438954752">"የስርዓት የውስጥ ሁኔታን ሰርስረህ አውጣ"</string>
+    <string name="permdesc_dump" msgid="1778299088692290329">"የስርዓቱን ውስጣዊ ሁናቴ ለመበርበር ለመተግበሪያው ይፈቅዳሉ፡፡ በተለምዶ የማያስፈልጋቸውን ብዙ አይነት የግል እና የደህንነት መረጃዎችን ተንኮል አዘል  መተግበሪያዎች ሊበረብሩ ይችላሉ፡፡"</string>
+    <string name="permlab_retrieve_window_content" msgid="8022588608994589938">"የማያ ይዘት ሰርስረህ አውጣ"</string>
+    <string name="permdesc_retrieve_window_content" msgid="3193269069469700265">"የነቃ መስኮት ይዘትን ለመበርበር ለመተግበሪያው ይፈቅዳሉ፡፡ ጠቅላላውን የመስኮት ይዘት ለመበርበር እና ከይለፍ ቃል በስተቀር ሁሉንም ጽሑፉን ለማየት ጎጂ መተግበሪያዎች ይችላሉ፡፡"</string>
+    <string name="permlab_temporary_enable_accessibility" msgid="2312612135127310254">"ተደራሽነት በጊዜያዊነት ያነቃል"</string>
+    <string name="permdesc_temporary_enable_accessibility" msgid="8079456293182975464">"አንድ መተግበሪያ በጊዜያዊነት በመሣሪያው ላይ ተደራሽነትን እንዲያነቃ ያስችለዋል። ተንኮል-አዘል መተግበሪያዎች ያለተጠቃሚው ፍቃድ ተደራሽነትን ሊያነቁ ይችላሉ።"</string>
+    <string name="permlab_retrieve_window_info" msgid="8532295199112519378">"የመስኮት መረጃን አምጣ"</string>
+    <string name="permdesc_retrieve_window_info" msgid="4998836370424186849">"አንድ መተግበሪያ ከመስኮት አቀናባሪው ሆኖ ስለመስኮቱ መረጃ እንዲያመጣ ያስችለዋል። ተንኮል-አዘል መተግበሪያዎች ለውስጣዊ ስርዓት ጥቅም የታሰበ መረጃን ሊወስዱ ይችላሉ።"</string>
+    <string name="permlab_filter_events" msgid="8675535648807427389">"ክስተቶችን አጣራ"</string>
+    <string name="permdesc_filter_events" msgid="8006236315888347680">"አንድ መተግበሪያ የሁሉንም ተጠቃሚዎች ክስተቶች ከመላካቸው በፊት እነሱን የሚያጣራ የግቤት ማጣሪያ እንዲመዘግብ ያስችለዋል። ተንኮል-አዘል መተግበሪያዎች ተጠቃሚው ጣልቃ ሳይገባ የስርዓቱን በይነገጽ ሊቆጣጠሩት ይችላሉ።"</string>
+    <string name="permlab_magnify_display" msgid="5973626738170618775">"ማሳያን አጉላ"</string>
+    <string name="permdesc_magnify_display" msgid="7121235684515003792">"አንድ መተግበሪያ የአንድ ማሳያ ይዘት እንዲያጎላ ይፈቅድለታል። ተንኮል-አዘል መተግበሪያዎች መሣሪያውን ከጥቅም ውጪ በሚያደርገው ሁኔታ የማሳያ ይዘቱ ሊለውጡት ይችላሉ።"</string>
+    <string name="permlab_shutdown" msgid="7185747824038909016">"ከፊል ዝጋ"</string>
+    <string name="permdesc_shutdown" msgid="7046500838746291775">"የእንቅስቃሴውን አደራጅ ወደ ዝጋ ሁነታ አስቀምጥ።ሙሉ ለሙሉ ዝጋ አያከናውንም።"</string>
+    <string name="permlab_stopAppSwitches" msgid="4138608610717425573">"የትግበራ መቀያየርን ተከላከል"</string>
+    <string name="permdesc_stopAppSwitches" msgid="8262195802582255021">"ተጠቃሚው ከሌላ መተግበሪያ ከመቀየር ይከላከላል።"</string>
+    <string name="permlab_getTopActivityInfo" msgid="2537922311411546016">"የአሁኑ የመተግበሪያ መረጃ ያግኙ"</string>
+    <string name="permdesc_getTopActivityInfo" msgid="2512448855496067131">"ያዢው በማያ ገጹ ፊት ላይ ስላለው የአሁኑ መተግበሪያ የግል መረጃ እንዲያመጣ ያስችለዋል።"</string>
+    <string name="permlab_runSetActivityWatcher" msgid="892239094867182656">"ሁሉንም መተግበሪያ ማስነሻ አሳይ እና ተቆጣጠር"</string>
+    <string name="permdesc_runSetActivityWatcher" msgid="6003603162578577406">"እንቅስቃሴዎችን ስርዓቱ እንዴት እንደሚያስጀምር ለመከታተል እና ለመቆጣጠር ለመተግበሪያው ይፈቅዳሉ፡፡ ተንኮል አዘል መተግበሪያዎች የስርዓቱን ክብረ ገመና ሙሉለሙሉ ሊያጋልጡ ይችላሉ፡፡ ይህ ፍቃድ የሚያስፈልገው ለግንባታ ብቻ ነው፤ ለመደበኛ አጠቃቀም ፈጽሞ አይደለም፡፡"</string>
+    <string name="permlab_broadcastPackageRemoved" msgid="2576333434893532475">"አካታች የተወገደለት ስርጭት ላክ"</string>
+    <string name="permdesc_broadcastPackageRemoved" msgid="6621901216207931089">"የመተግበሪያ ፓኬጅ መወገዱን ማሳወቂያዎችን ለማሰራጨት ለመተግበሪያው ይፈቅዳሉ፡፡ ማንኛውንም እየሄደ ያለን ሌላ መተግበሪያ ለመግደል ተንኮል አዘል መተግበሪያዎች ይሄንን ሊጠቀሙት ይችላሉ፡፡"</string>
+    <string name="permlab_broadcastSmsReceived" msgid="5689095009030336593">"የ SMS ደርስዋል ስርጭት ላክ"</string>
+    <string name="permdesc_broadcastSmsReceived" msgid="4152037720034365492">"ኤስ ኤም ኤስ መልዕክት መቀበሉን ማሳወቂያ እንዲያሰራጭ ለመተግበሪያው ይፈቅዳሉ፡፡ መጪ ኤስ ኤም ኤስ መልዕክቶችን አመሳስሎ በማቅረብ  ተንኮል አዘል መተግበሪያዎች ይሄንን ሊጠቀሙበት ይችላሉ፡፡"</string>
+    <string name="permlab_broadcastWapPush" msgid="3145347413028582371">"የWAP-PUSH ደርስዋል ስርጭት ላክ"</string>
+    <string name="permdesc_broadcastWapPush" msgid="4783402525039442729">"የWAP PUSH መልዕክት እንደተቀበለ ማሳወቂያ ለማሰራጨት ለመተግበሪያው ይፈቅዳሉ፡፡ ኤም ኤም ኤስ መልዕክት መቀበልን ለማስመሰል ወይም በተንኮል አዘል መሰሎች ለማንኛውም የድር ገፅ ይዘት በዝምታ ለመተካት ተንኮል አዘል መተግበሪያዎች ሊጠቀሙበት ይችላሉ፡፡"</string>
+    <string name="permlab_setProcessLimit" msgid="2451873664363662666">"የአሂድ ሂደቶችን ቁጥር ወስን"</string>
+    <string name="permdesc_setProcessLimit" msgid="7318061314040879542">"የሚሄዱ ሂደቶችን የመጨረሻ ቁጥር ለመቆጣጠር ለመተግበሪያው ይፈቅዳሉ፡፡ ለመደበኛ መተግበሪያዎች መቼም አያስፈልግም፡፡"</string>
+    <string name="permlab_setAlwaysFinish" msgid="550958507798796965">"የጀርባ መተግበሪያዎች እንዲዘጉ አስገድዳቸው"</string>
+    <string name="permdesc_setAlwaysFinish" msgid="7471310652868841499">"ወዲያውኑ ወደ ዳራው እንደሄዱ እንቅስቃሴዎች ሁልጊዜ እንደተጨረሱ ለመቆጣጠር ለመተግበሪያው ይፈቅዳሉ፡፡ ለመደበኛ መተግበሪያዎች መቼም አያስፈልጉም፡፡"</string>
+    <string name="permlab_batteryStats" msgid="2789610673514103364">"የባትሪ ስታቲስቲክስን ያነባል"</string>
+    <string name="permdesc_batteryStats" msgid="5897346582882915114">"አንድ መተግበሪያ የአሁኑን የዝቅተኛ-ደረጃ ባትሪ አጠቃቀም ውሂብን እንዲያነብ ያስችላል። መተግበሪያው ስለሚጠቀሟቸው መተግበሪያዎች ዝርዝር መረጃ እንዲያገኝ ሊያስችለው ይችላል።"</string>
+    <string name="permlab_updateBatteryStats" msgid="3719689764536379557">"የባትሪ ስታስቲክስን ይቀይራል"</string>
+    <string name="permdesc_updateBatteryStats" msgid="6862817857178025002">"የተሰበሰቡ የባትሪ  ስታስቲክሶችን እንዲቀይር ለመተግበሪያው ያስችለዋል። ለመደበኛ መተግበሪያዎች ጥቅም አይደለም።"</string>
+    <string name="permlab_getAppOpsStats" msgid="1508779687436585744">"የመተግበሪያ ክወናዎች ስታቲስቲክስን ሰርስረህ አውጣ"</string>
+    <string name="permdesc_getAppOpsStats" msgid="6243887041577912877">"መተግበሪያው የተሰበሰቡ የክወና ስታስቲክሶችን ሰርስሮ እንዲያወጣ ይፈቅድለታል። ለመደበኛ መተግበሪያዎች ጥቅም ያልሆነ።"</string>
+    <string name="permlab_updateAppOpsStats" msgid="8829097373851521505">"የመተግበሪያ ክወናዎች ስታቲስቲክስን ይቀይሩ"</string>
+    <string name="permdesc_updateAppOpsStats" msgid="50784596594403483">"መተግበሪያው የተሰበሰቡ የክወና ስታስቲክሶችን እንዲቀይር ይፈቅድሎታል። ለመደበኛ መተግበሪያዎች ጥቅም ያልሆነ።"</string>
+    <string name="permlab_backup" msgid="470013022865453920">"የስርዓት መጠባበቂያን ተቆጣጠር እናእነበረበት መልስ"</string>
+    <string name="permdesc_backup" msgid="6912230525140589891">"የስርዓቱን ምትኬ  እና እንደነበር መልስ መንገዶችን ለመቆጣጠር ለመተግበሪያው ይፈቅዳሉ፡፡ በመደበኛ መተግበሪያዎች ለመጠቀም አይሆንም፡፡"</string>
+    <string name="permlab_confirm_full_backup" msgid="5557071325804469102">"የሙሉ መጠበቂያ ወይም እነበረበት መልስ ከዋኝ አረጋግጥ"</string>
+    <string name="permdesc_confirm_full_backup" msgid="1748762171637699562">"ትግበራ ሙሉ የመጠባበቂያ ማረጋገጫ UI ለማስነሳት ይፈቅዳል። በሌላ በማንኛውም እንዳይገለገል።"</string>
+    <string name="permlab_internalSystemWindow" msgid="2148563628140193231">"ያልተፈቀደ Windows አሳይ"</string>
+    <string name="permdesc_internalSystemWindow" msgid="7458387759461466397">"በውስጣዊ የስርዓት የተጠቃሚ በይነገፅ ለመጠቀም የተዘጋጁ መስኮቶችን ለመፍጠር ለመተግበሪያው ይፈቅዳሉ። ለመደበኛ መተግበሪያዎች አገልግሎት አይደለም።"</string>
+    <string name="permlab_systemAlertWindow" msgid="3543347980839518613">"በሌሎች መተግበሪያዎች ላይ ሳል"</string>
+    <string name="permdesc_systemAlertWindow" msgid="8584678381972820118">"መተግበሪያው በሌሎች መተግበሪያዎች ወይም አንዳንድ የበይነገጽ ክፍሎች ላይ እንዲስል ያስችለዋል። በማንኛውም የመተግበሪያ በይነገጽ ላይ በሚሰሩት ስራ ላይ ጣልቃ ሊገቡ ወይም በሌሎች መተግበሪያዎች ላይ ምን እንደሚያዩ የሚመስልዎት ነገር ሊቀይሩ ይችላሉ።"</string>
+    <string name="permlab_setAnimationScale" msgid="2805103241153907174">"የሁሉንም እነማ ፍጥነት ቀይር"</string>
+    <string name="permdesc_setAnimationScale" msgid="7690063428924343571">"የአለም አቀፍ ተልወስዋሽ ምስሎች ፍጥነት(ፈጣን ወይም ቀርፋፋ ተልወስዋሽ ምስሎችን) በማንኛውም ጊዜ ለመለወጥ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_manageAppTokens" msgid="1286505717050121370">"የትግበራ የምስጋና የምስክር ወረቀት አደራጅ"</string>
+    <string name="permdesc_manageAppTokens" msgid="8043431713014395671">"መደበኛውን Z-አደራደራቸውን  በመተላለፍ፤ የራሳቸውን የምስጋና ምስክር ወረቀት ለመፍጠር እና ለማደራጀት ለመተግበሪያው ይፈቅዳሉ፡፡ለመደበኛ መተግበሪያዎች መቼም ቢሆን አያስፈልግም፡፡"</string>
+    <string name="permlab_freezeScreen" msgid="4708181184441880175">"ማያ ገጹን እሰር"</string>
+    <string name="permdesc_freezeScreen" msgid="8558923789222670064">"መተግበሪያው ለሙሉ ማያ ገጽ ሽግግር ብሎ ማያ ገጹን በጊዜያዊነት እንዲያስር ይፈቅድለታል።"</string>
+    <string name="permlab_injectEvents" msgid="1378746584023586600">"ቁልፎች እና መቆጣጠሪያ አዝራሮች ተጫን"</string>
+    <string name="permdesc_injectEvents" product="tablet" msgid="206352565599968632">"ለሌሎች መተግበሪያዎች የራሱን የግቤት ክስተቶችን( ቁልፍ መጫኖችን፣ የመሳሰሉት) ለማቅረብ ለመተግበሪያው ይፈቅዳሉ፡፡ ጡባዊ ተኮውን ለመቆጣጠር ተንኮል አዘል መተግበሪያዎች ይሄንን ሊጠቀሙበት ይችላሉ፡፡"</string>
+    <string name="permdesc_injectEvents" product="default" msgid="653128057572326253">"ለሌሎች መተግበሪያዎች የራሱን የግቤት ክስተቶችን( ቁልፍ መጫኖችን፣ የመሳሰሉት) ለማቅረብ ለመተግበሪያው ይፈቅዳሉ፡፡ ስልኩን ለመቆጣጠር ተንኮል አዘል መተግበሪያዎች ይሄንን ሊጠቀሙበት ይችላሉ፡፡"</string>
+    <string name="permlab_readInputState" msgid="469428900041249234">"የሚተይቡትን እና የሚወስዱትን እርምጃ ይመዝግቡ"</string>
+    <string name="permdesc_readInputState" msgid="8387754901688728043">"ከሌላ መተግበሪያ( ልክ እንደ የይለፍ ቃል መጫን) ጋር በምትገናኝበት ጊዜ እንኳን የተጫንካቸውን ቁልፎች ለማየት ለመተግበሪያው ይፈቅዳሉ፡፡ ለመደበኛ መተግበሪያዎች መቼም ቢሆን አያስፈልግም፡፡"</string>
+    <string name="permlab_bindInputMethod" msgid="3360064620230515776">"በግቤት ስልት ጠርዝ"</string>
+    <string name="permdesc_bindInputMethod" msgid="3250440322807286331">"ያዡ ግቤት ስልቱን ወደ ከፍተኛ-ደረጃ በይነገጽ ለመጠረዝ ይፈቅዳሉ። ለመደበኛ ትግበራዎች በፍፁም አያስፈልግም።"</string>
+    <string name="permlab_bindAccessibilityService" msgid="5357733942556031593">"ከአንድ የተደራሽነት አገልግሎት ጋር እሰር"</string>
+    <string name="permdesc_bindAccessibilityService" msgid="7034615928609331368">"ያዢው ወደ የአንድ ተደራሽነት አገልግሎት ከፍተኛ-ደረጃ በይነገጽ እንዲያስር ይፈቅድለታል። ለመደበኛ መተግበሪያዎች መቼም ቢሆን ሊያስፈልግ አይገባም።"</string>
+    <string name="permlab_bindPrintService" msgid="8462815179572748761">"ከአንድ የህትመት አገልግሎት ጋር ማያያዝ"</string>
+    <string name="permdesc_bindPrintService" msgid="7960067623209111135">"ያዢው የህትመት አገልግሎቱን ወደ ከፍተኛ-ደረጃ በይነገጽ እንዲጠርዝ ይፈቅድለታል። ለመደበኛ መተግበሪያዎች በጭራሽ አያስፈልግም።"</string>
+    <string name="permlab_bindPrintSpoolerService" msgid="6807762783744125954">"ከአንድ የህትመት አስተላላፊ አገልግሎት ጋር ይሰሩ"</string>
+    <string name="permdesc_bindPrintSpoolerService" msgid="3680552285933318372">"ያዢው የህትመት አስተላላፊ አገልግሎቱን ከከፍተኛ-ደረጃ በይነገጽ ጋር እንዲያስር ያስችለዋል። ለመደበኛ መተግበሪያዎች በጭራሽ አያስፈልግም።"</string>
+    <string name="permlab_bindNfcService" msgid="2752731300419410724">"ከNFC አገልግሎት ጋር ይሰሩ"</string>
+    <string name="permdesc_bindNfcService" msgid="6120647629174066862">"ያዢው የNFC ካርዶችን የሚያስመስሉ መተግበሪያዎችን እንዲያስር ያስችለዋል። ለመደበኛ መተግበሪያዎች በጭራሽ ሊያስፈልግ አይገባም።"</string>
+    <string name="permlab_bindTextService" msgid="7358378401915287938">"ለፅሁፍ አገልግሎት አሰረ"</string>
+    <string name="permdesc_bindTextService" msgid="8151968910973998670">"ያዡ ግቤት ለከፍተኛ-ደረጃ የፅሁፍ አገልግሎት ገፅታ ለመጠረዝ ይፈቅዳል። ለመደበኛ ትግበራዎች በፍፁም አያስፈልግም።"</string>
+    <string name="permlab_bindVpnService" msgid="4708596021161473255">"ለVPN አገልግሎት ተገዛ"</string>
+    <string name="permdesc_bindVpnService" msgid="2067845564581693905">"የVPN ግልጋሎትን ወደ ከፍተኛ-ደረጃ በየነ ገጽ ለማሳር ለመያዣው ይፈቅዳሉ፡፡ለተለመዱ መተግበሪያዎች አያስፈልግም፡፡"</string>
+    <string name="permlab_bindWallpaper" msgid="8716400279937856462">"በልጣፍ ጠርዝ"</string>
+    <string name="permdesc_bindWallpaper" msgid="7108428692595491668">"ያዡ ግቤት ስልቱን ወደ ከፍተኛ-ደረጃ ልጣፍ ለመጠረዝ ይፈቅዳሉ። ለመደበኛ ትግበራዎች በፍፁም አያስፈልግም።"</string>
+    <string name="permlab_bindRemoteDisplay" msgid="1782923938029941960">"ከአንድ የርቀት ማሳያ ጋር ይጠርዛል"</string>
+    <string name="permdesc_bindRemoteDisplay" msgid="1261242718727295981">"ያዢው ከአንድ የርቀት ማሳያ ከፍተኛ-ደረጃ በይነገጽ ጋር እንዲጠርዝ ይፈቅድለታል። ለመደበኛ መተግበሪያዎች በጭራሽ አያስፈልግም።"</string>
+    <string name="permlab_bindRemoteViews" msgid="5697987759897367099">"ወደ ፍርግም አገልግሎት አያይዝ"</string>
+    <string name="permdesc_bindRemoteViews" msgid="4717987810137692572">"ያዡ ግቤት ስልቱን ወደ ከፍተኛ-ደረጃ ፍርግም አገልግሎት ለመጠረዝ  ይፈቅዳሉ። ለመደበኛ ትግበራዎች በፍፁም አያስፈልግም።"</string>
+    <string name="permlab_bindDeviceAdmin" msgid="8704986163711455010">"ከመሣሪያ አስተዳደር ጋር ተገናኝ"</string>
+    <string name="permdesc_bindDeviceAdmin" msgid="569715419543907930">"ያዡ በይነመረብን ለመሣሪያ አስተዳዳሪ ለመላክ ይፈቅዳሉ። ለመደበኛ መተግበሪያዎች በፍፁም አያስፈልግም።"</string>
+    <string name="permlab_manageDeviceAdmins" msgid="4248828900045808722">"የመሣሪያ አስተዳዳሪ ያክሉ ወይም ያስወግዱ"</string>
+    <string name="permdesc_manageDeviceAdmins" msgid="5025608167709942485">"ያዢው ንቁ የመሣሪያ አስተዳዳሪዎች እንዲያክል ወይም እንዲያስወግድ ያስችለዋል። ለመደበኛ መተግበሪያዎች ጭራሽ ሊያስፈልግ አይገባም።"</string>
+    <string name="permlab_setOrientation" msgid="3365947717163866844">"የማያ ገፀ አቀማመጥን ለውጥ"</string>
+    <string name="permdesc_setOrientation" msgid="3046126619316671476">"በማንኛውም ጊዜ  የማሳያውን መሽከርከር ለመለወጥ ለመተግበሪያው ይፈቅዳሉ፡፡ ለተለመዱ መተግበሪያዎች አያስፈልግም፡፡"</string>
+    <string name="permlab_setPointerSpeed" msgid="9175371613322562934">"የጠቋሚ ፍጥነት ለውጥ"</string>
+    <string name="permdesc_setPointerSpeed" msgid="6866563234274104233">"መዳፊት ወይም ዱካ መከተያ ጠቋሚ ፍጥነትን በማንኛውም ጊዜ ለመለወጥ ለመተግበሪያው ይፈቅዳሉ፡፡ ለመደበኛ መተግበሪያዎች መቼም ቢሆን አያስፈልግም፡፡"</string>
+    <string name="permlab_setKeyboardLayout" msgid="4778731703600909340">"የቁልፍ ሰሌዳ አቀማመጥ ቀይር"</string>
+    <string name="permdesc_setKeyboardLayout" msgid="8480016771134175879">"መተግበሪያው የቁልፍ ሰሌዳ አቀማመጡን እንዲቀይር ይፈቅድለታል። ለመደበኛ መተግበሪያዎች መቼም ቢሆን ሊያስፈልግ አይገባም።"</string>
+    <string name="permlab_signalPersistentProcesses" msgid="4539002991947376659">"ወደ መተግበሪያዎችን የLinux ምልክቶች ላክ"</string>
+    <string name="permdesc_signalPersistentProcesses" msgid="4896992079182649141">"ለሁሉም ተከታታይ ሂደቶች ልከው የሚያቀርቧቸው ሲግናሎችን ለመጠየቅ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_persistentActivity" msgid="8841113627955563938">"ትግበራ ሁልጊዜ አሂድ ላይ አድርግ"</string>
+    <string name="permdesc_persistentActivity" product="tablet" msgid="8525189272329086137">"መተግበሪያው የራሱን ክፍሎች በማህደረ ትውስታ ውስጥ በቋሚነት የሚቀጥሉ እንዲያደርግ ይፈቅድለታል። ይህ ለሌላ መተግበሪያዎች ያለውን ማህደረ ትውስታ በመገደብ ጡባዊ ተኮውን ሊያንቀራፍፈው ይችላል።"</string>
+    <string name="permdesc_persistentActivity" product="default" msgid="4384760047508278272">"መተግበሪያው የራሱን ክፍሎች በማህደረ ትውስታ ውስጥ በቋሚነት የሚቀጥሉ እንዲያደርግ ይፈቅድለታል። ይህ ለሌላ መተግበሪያዎች ያለውን ማህደረ ትውስታ በመገደብ ስልኩን ያንቀራፍፈዋል።"</string>
+    <string name="permlab_deletePackages" msgid="184385129537705938">"መተግበሪያዎችን ሰርዝ"</string>
+    <string name="permdesc_deletePackages" msgid="7411480275167205081">"የAndroid ፓኬጆችን ለማጥፋት ለመተግበሪያው ይፈቅዳሉ፡፡ እሰፈላጊ መተግበሪያዎችን ለማሰረዝ ተንኮል አዘል መተግበሪያዎች ይሄንን ሊጠቀሙት ይችላሉ፡፡"</string>
+    <string name="permlab_clearAppUserData" msgid="274109191845842756">"የሌላ  መተግበሪያዎችን ውሂብ ሰርዝ"</string>
+    <string name="permdesc_clearAppUserData" msgid="4625323684125459488">"የተጠቃሚን ውሂብ ለማጥራት ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_deleteCacheFiles" msgid="3128665571837408675">"የሌላ መተግበሪያዎችን መሸጎጫዎች ሰርዝ"</string>
+    <string name="permdesc_deleteCacheFiles" msgid="3812998599006730196">"መሸጎጫ ፋይሎችን ለመሰረዝ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_getPackageSize" msgid="7472921768357981986">"የመተግበሪያ ማከማቻ ቦታ ለካ"</string>
+    <string name="permdesc_getPackageSize" msgid="3921068154420738296">"የራሱን ኮድ ፣ውሂብ እና መሸጎጫ መጠኖች ሰርስሮ ለማውጣት ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_installPackages" msgid="2199128482820306924">"በቀጥታ ትግበራዎች ጫን"</string>
+    <string name="permdesc_installPackages" msgid="5628530972548071284">"Android ፓኬጆችንለማዘመን ወይም አዲስ ለመጫን ለመተግበሪያው ይፈቅዳሉ፡፡ በዘፈቀደ ሀይለኛ ፍቃዶች ጋር ተንኮል አዘል መተግበሪያዎች አዲስ መተግበሪያዎችን ለማከል ሊጠቀሙበት ይችላሉ፡፡"</string>
+    <string name="permlab_clearAppCache" msgid="7487279391723526815">"ሁሉንም የትግበራዎች መሸጎጫ ውሂብ ሰርዝ"</string>
+    <string name="permdesc_clearAppCache" product="tablet" msgid="8974640871945434565">"በሌሎች መተግበሪያዎች የመሸጎጫ ማውጫዎች ውስጥ ያሉትን ፋይሎች በመሰረዝ መተግበሪያው የጡባዊ ማከማቻ ቦታ ነጻ እንዲያስለቅቅ ያስችለዋል። ይሄ ሌሎች መተግበሪያዎች ውሂባቸውን ዳግም ማምጣት ስላለባቸው ይበልጥ ዘግየት ብለው እንዲጀምሩ ሊያደርጋቸው ይችላል።"</string>
+    <string name="permdesc_clearAppCache" product="default" msgid="2459441021956436779">"በሌሎች መተግበሪያዎች የመሸጎጫ ማውጫዎች ውስጥ ያሉትን ፋይሎች በመሰረዝ መተግበሪያው የስልክ ማከማቻ ቦታ ነጻ እንዲያስለቅቅ ያስችለዋል። ይሄ ሌሎች መተግበሪያዎች ውሂባቸውን ዳግም ማምጣት ስላለባቸው ይበልጥ ዘግየት ብለው እንዲጀምሩ ሊያደርጋቸው ይችላል።"</string>
+    <string name="permlab_movePackage" msgid="3289890271645921411">"የመተግበሪያ ሃብቶችን አንቀሳቅስ"</string>
+    <string name="permdesc_movePackage" msgid="319562217778244524">"ከውስጣዊ ወደ  ውጫዊ ማህደረ  መረጃ  እና በተገላቢጦሽ የመተግበሪያ ሃብቶችን ለማንቀሳቀስ ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_readLogs" msgid="6615778543198967614">"ወሳኝ የማስታወሻ ውሂብ አንብብ"</string>
+    <string name="permdesc_readLogs" product="tablet" msgid="82061313293455151">" ከስርዓቱ የተለያዩ የማስታወሻ ፋይሎች ውስጥ ለማንበብ ለመተግበሪያ ይፈቅዳሉ። ይህ ስለ ጡባዊ ተኮህ ምን እያደረክበት እንደሆነ የግላዊ  ወይም የግል መረጃን ጨምሮ ጠቅላላ መረጃ ለማግኘት ይፈቅዳል።"</string>
+    <string name="permdesc_readLogs" product="default" msgid="2063438140241560443">" ከስርዓቱ የተለያዩ የማስታወሻ ፋይሎች ውስጥ ለማንበብ ለመተግበሪያይፈቅዳሉ። ይህ ስለ ስልክህ ምን እያደረክበት እንደሆነ የግላዊ  ወይም የግል መረጃን ጨምሮ ጠቅላላ መረጃ ለማግኘት ይፈቅዳል።"</string>
+    <string name="permlab_anyCodecForPlayback" msgid="715805555823881818">"ለመልሰህ አጫውት ማንኛውምንም የማህደረ መረጃ ዲኮደር ተጠቀም"</string>
+    <string name="permdesc_anyCodecForPlayback" msgid="8283912488433189010">"ለመልሰህ አጫውት ፍታን በማንኛውም የተጫኑ በማህደረ መረጃ ዲኮደር ለመጠቀም  ለመተግበሪያ ይፈቅዳል።"</string>
+    <string name="permlab_manageCaCertificates" msgid="1678391896786882014">"የታመኑ ምስክርነቶችን ያስተዳድሩ"</string>
+    <string name="permdesc_manageCaCertificates" msgid="4015644047196937014">"መተግበሪያው CA የምስክር ወረቀቶችን እንደሚታመኑ ምስክርነቶች አንዲጭን እና እንዲያራግፍ ይፍቀዱ።"</string>
+    <string name="permlab_diagnostic" msgid="8076743953908000342">"በdiag ባለቤትነት ያሉ ንብረቶችን አንብብ/ፃፍ"</string>
+    <string name="permdesc_diagnostic" msgid="6608295692002452283">"በዲያግ ቡድን ባለቤትነት ወደ አለ ማንኛውም ንብረት ለምሳሌ በ/dev ያሉ ፋይሎች ለማንበብ እና ለመፃፍ ለመተግበሪያው ይፈቅዳሉ። ይህ በመሰረቱ የስርዓት መረጋጋትን እና ደህንነትን ሊጎዳ ይችላል። ይህ ውስን የሀርድዌር-ተኮር ዲያግኖስቲክስ በአምራቹ ወይም ከዋኙ ብቻ መሆን አለበት።"</string>
+    <string name="permlab_changeComponentState" msgid="6335576775711095931">"የመተግበሪያ ምንዝሮችን አንቃ ወይም አቦዝን"</string>
+    <string name="permdesc_changeComponentState" product="tablet" msgid="8887435740982237294">"የሌላ መተግበሪያ ክፍለ አካል እንደነቃ ወይም እንዳልነቃ መተግበሪያው እንዲለውጥ ይፈቅዳል፡፡ አስፈላጊ የጡባዊ ተኮ አቅሞችን ለማስወገድ ጎጂ መተግበሪያዎች ይሄንን ሊጠቀሙበት ይችላሉ፡፡ ከፍቃድ ጋር ጥንቃቄ መወሰድ ይገባል፤ ልክ የማያገለግል፣ ወጥ ያልሆነ፣ ወይም ያልተረጋጋ ሁኔታ ወደ የመተግበሪያ ክፍለ አካል ማግኘት እንደሚቻል ሁሉ፡፡"</string>
+    <string name="permdesc_changeComponentState" product="default" msgid="1827232484416505615">"የሌላ መተግበሪያ ክፍለ አካል እንደነቃ ወይም እንዳልነቃ መተግበሪያው እንዲለውጥ ይፈቅዳል፡፡ አስፈላጊ የስልክ አቅሞችን ለማስወገድ ተንኮል አዘል መተግበሪያዎች ይሄንን ሊጠቀሙበት ይችላሉ፡፡ ከፍቃድ ጋር ጥንቃቄ መወሰድ ይገባል፤ ልክ የማያገለግል፣ ወጥ ያልሆነ፣ ወይም ያልተረጋጋ ሁኔታ ወደ የመተግበሪያ ክፍለ አካል ማግኘት እንደሚቻል ሁሉ፡፡"</string>
+    <string name="permlab_grantRevokePermissions" msgid="4627315351093508795">"ፍቃዶች ስጥ ወይም ከልክል"</string>
+    <string name="permdesc_grantRevokePermissions" msgid="4088642654085850662">"የተወሰነ ፍቃዶች እንዲሰጥ ወይም እንዲከለክል ለመተግበሪያ ይፈቅዳል ወይም ሌላ መተግበሪያዎች። ተንኮል አዘል መተግበሪያዎች ያልፈቀድክላቸውን ባህሪያት ላይ ለመድረስ ይሄንን ሊጠቀሙት ይችላሉ።"</string>
+    <string name="permlab_setPreferredApplications" msgid="8463181628695396391">"ተመራጭ መተግበሪያዎች አዘጋጅ"</string>
+    <string name="permdesc_setPreferredApplications" msgid="4973986762241783712">"ተመራጭ መተግበሪያዎችህን ለመቀየር ለመተግበሪያው ይፈቅዳሉ፡፡ ከአንተ የግል ውሂብ ለመሰብሰብ ያሉትን መተግበሪያዎች በመላክ፤ በመሄድ ላይ ያሉ መተግበሪያዎችን  ተንኮል አዘል መተግበሪያዎች በዝምታ ሊለውጡ ይችላሉ፡፡"</string>
+    <string name="permlab_writeSettings" msgid="2226195290955224730">"የስርዓት ቅንብሮችን አስተካክል"</string>
+    <string name="permdesc_writeSettings" msgid="7775723441558907181">"የስርዓት ቅንብሮችን ውሂብ ለመቀየር ለመተግበሪያው ይፈቅዳሉ። ተንኮል አዘል መተግበሪያዎች የስርዓትዎን አወቃቀር ብልሹ ሊያደርጉት ይችላሉ።"</string>
+    <string name="permlab_writeSecureSettings" msgid="204676251876718288">"የስርዓት ቅንብሮችንደህንነት ቀይር"</string>
+    <string name="permdesc_writeSecureSettings" msgid="8159535613020137391">"የስርዓቱን ደህንነቱ የተጠበቀ ቅንብሮችን ውሂብ ለመቀየር ለመተግበሪያው ይፈቅዳሉ። ለመደበኛ ትግበራዎች አያስፈልግም።"</string>
+    <string name="permlab_writeGservices" msgid="2149426664226152185">"የGoogle አገልግሎቶች ካርታን ቀይር"</string>
+    <string name="permdesc_writeGservices" msgid="1287309437638380229">"ትግበራ የGoogle ካርታ አገልግሎቶችን ለመቀየር ይፈቅዳል።ለመደበኛ ትግበራዎች ጥቅም አይደለም።"</string>
+    <string name="permlab_receiveBootCompleted" msgid="5312965565987800025">"መነሻ ላይ አሂድ"</string>
+    <string name="permdesc_receiveBootCompleted" product="tablet" msgid="7390304664116880704">"ስርዓቱ  ማስጀመር  እንደጨረሰ ወዲያውኑ እራሱን እንዲያስጀምር ለመተግበሪያው ይፈቅዳሉ፡፡ ይሄ ጡባዊ ተኮን ለማስጀመር ብዙ ጊዜ ሊፈጅ ይችላል እና ሁልጊዜ በማስኬድ ጠቅላላውን ጡባዊ ተኮን እንዲቀራፈፍ ለመተግበሪያው ይፈቅዳል፡፡"</string>
+    <string name="permdesc_receiveBootCompleted" product="default" msgid="513950589102617504">"ወዲያውኑ ስርዓቱ ማስነሳት ሲጨርስ ራሱን እንዲያስጀምር ለመተግበሪያው ይፈቅዳሉ፡፡ ይሄ ስልኩን ለማስጀመር ብዙ ጊዜ እንዲወስድ ሊያደርገው ይችላል እና  ሁልጊዜ በማስኬድ ሁሉንም ስልክ ለማንቀራፈፍ ለመተግበሪያው ይፈቅዳል፡፡"</string>
+    <string name="permlab_broadcastSticky" msgid="7919126372606881614">"ልጥፍ ዝርዝር ላክ"</string>
+    <string name="permdesc_broadcastSticky" product="tablet" msgid="7749760494399915651">"መተግበሪያው ስርጭቱ ከተጠናቀቀ በኋላ የሚቀሩ አጣባቂ ስርጭቶችን እንዲልክ ይፈቅድለታል። ከልክ በላይ መጠቀም ጡባዊ ተኮው ብዙ ማህደረ ትውስታን እንዲጠቀም በማድረግ ቀርፋፋ ወይም ያልተረጋጋ ሊያደርገው ይችላል።"</string>
+    <string name="permdesc_broadcastSticky" product="default" msgid="2825803764232445091">"መተግበሪያው ስርጭቱ ከተጠናቀቀ በኋላ የሚቀሩ አጣባቂ ስርጭቶችን እንዲልክ ይፈቅድለታል። ከልክ በላይ መጠቀም ስልኩ ብዙ ማህደረ ትውስታን እንዲጠቀም በማድረግ ቀርፋፋ ወይም ያልተረጋጋ ሊያደርገው ይችላል።"</string>
+    <string name="permlab_readContacts" msgid="8348481131899886131">"እውቂያዎችህን አንብብ"</string>
+    <string name="permdesc_readContacts" product="tablet" msgid="5294866856941149639">"መተግበሪያው በጡባዊ ተኮህ ስለተከማቹ ዕውቂያዎች ያሉትን ውሂቦች በሙሉ፤ ጥሪ ያደረግክበትን፣ ኢሜይል የላክበትን ወይም ከተወሰኑ ግለሰቦች ጋር በሌላ መንገድ የተገናኘህበትን ድግምግሞሽ ጨምሮ፣ እንዲያነብ ይፈቅድለታል። ይህ ፈቃድ መተግበሪያዎች የእውቂያ ውሂብህን እንዲያስቀምጡ የሚፈቅድላቸው ሲሆን ተንኮል አዘል መተግበሪያዎች የእውቂያህን ውሂብ ሳታውቀው ሊያጋሩት ይችላሉ።"</string>
+    <string name="permdesc_readContacts" product="default" msgid="8440654152457300662">"መተግበሪያው በስልክህ ስለተከማቹ ዕውቂያዎች ያሉትን ውሂቦች በሙሉ፤ ጥሪ ያደረግክበትን፣ ኢሜይል የላክበትን ወይም ከተወሰኑ ግለሰቦች ጋር በሌላ መንገድ የተገናኘህበትን ድግምግሞሽ ጨምሮ፣ እንዲያነብ ይፈቅድለታል። ይህ ፈቃድ መተግበሪያዎች የእውቂያ ውሂብህን እንዲያስቀምጡ የሚፈቅድላቸው ሲሆን ተንኮል አዘል መተግበሪያዎች የእውቂያህን ውሂብ ሳታውቀው ሊያጋሩት ይችላሉ።"</string>
+    <string name="permlab_writeContacts" msgid="5107492086416793544">"ዕውቂያዎችዎን ያስተካክሉ"</string>
+    <string name="permdesc_writeContacts" product="tablet" msgid="897243932521953602">"መተግበሪያው በጡባዊ ቱኮህ ስለተከማቹ የዕውቂያዎችህ ውሂብ በሙሉ፤ ጥሪ ያደረግክበትን፣ ኢሜይል የላክበትን ወይም ከተወሰኑ እውቂያዎች ጋር በሌላ መንገድ የተገናኘህበትን ድግምግሞሽ ጨምሮ፣ እንዲያስተካክል ይፈቅድለታል። ይህ ፈቃድ መተግበሪያዎች የእውቂያ ውሂብ እንዲሰርዙ ይፈቅድላቸዋል።"</string>
+    <string name="permdesc_writeContacts" product="default" msgid="589869224625163558">"መተግበሪያው በስልክህ ስለተከማቹ የዕውቂያዎችህ ውሂብ በሙሉ፤ ጥሪ ያደረግክበትን፣ ኢሜይል የላክበትን ወይም ከተወሰኑ እውቂያዎች ጋር በሌላ መንገድ የተገናኘህበትን ድግምግሞሽ ጨምሮ፣ እንዲያስተካክል ይፈቅድለታል። ይህ ፈቃድ መተግበሪያዎች የእውቂያ ውሂብ እንዲሰርዙ ይፈቅድላቸዋል።"</string>
+    <string name="permlab_readCallLog" msgid="3478133184624102739">"የጥሪ ምዝግብ ማስታወሻን አንብብ"</string>
+    <string name="permdesc_readCallLog" product="tablet" msgid="3700645184870760285">"መተግበሪያው ስለገቢና ወጪ ጥሪዎች ያለ ውሂብን ጨምሮ የጡባዊ ተኮህን የጥሪ ምዝግብ ማስታወሻ እንዲያነብ ይፈቅድለታል። ይህ ፈቃድ መተግበሪያው የጥሪ ምዝግብ ማስታወሻ ውሂብህን እንዲያስቀምጥ የሚፈቅድለት ሲሆን ተንኮል አዘል መተግበሪያዎች ሳታውቀው የጥሪ ምዝግብ ማስታወሻ ውሂብህን ሊያጋሩት ይችላሉ።"</string>
+    <string name="permdesc_readCallLog" product="default" msgid="5777725796813217244">"መተግበሪያው ስለገቢና ወጪ ጥሪዎች ያለ ውሂብን ጨምሮ የስልክህን የጥሪ ምዝግብ ማስታወሻ እንዲያነብ ይፈቅድለታል። ይህ ፈቃድ መተግበሪያው የጥሪ ምዝግብ ማስታወሻ ውሂብህን እንዲያስቀምጥ የሚፈቅድለት ሲሆን ተንኮል አዘል መተግበሪያዎች ሳታውቀው የጥሪ ምዝግብ ማስታወሻ ውሂብህን ሊያጋሩት ይችላሉ።"</string>
+    <string name="permlab_writeCallLog" msgid="8552045664743499354">"የጥሪ ምዝግብ ማስታወሻን ፃፍ"</string>
+    <string name="permdesc_writeCallLog" product="tablet" msgid="6661806062274119245">"ስለ ገቢ እና ወጪ ጥሪዎችን ውሂብ ጨምሮ፣ የጡባዊተኮህን ምዝግብ ማስታወሻ ለመቀየር ለመተግበሪያው ይፈቅዳል። ይሄንን ተንኮል አዘል መተግበሪያዎች የስልክህን ምዝግብ ማስታወሻ ለመሰረዝ ወይም ለመለወጥ ሊጠቀሙበት ይችላሉ።"</string>
+    <string name="permdesc_writeCallLog" product="default" msgid="683941736352787842">"ስለ ገቢ እና ወጪ ጥሪዎችን ውሂብ ጨምሮ፣ የስልክህን ምዝግብ ማስታወሻ ለመቀየር ለመተግበሪያው ይፈቅዳል። ይሄንን ተንኮል አዘል መተግበሪያዎች የስልክህን ምዝግብ ማስታወሻ ለመሰረዝ ወይም ለመለወጥ ሊጠቀሙበት ይችላሉ።"</string>
+    <string name="permlab_readProfile" msgid="4701889852612716678">"የራስህን የእውቂያ ካርድ አንብብ"</string>
+    <string name="permdesc_readProfile" product="default" msgid="5462475151849888848">"መተግበሪያው ልክ እንደ ስምዎ እና የእውቂያ መረጃዎ ያሉ በመሳሪያዎ ላይ የተከማቹ የግል መገለጫ መረጃዎችን እንዲያነብ ይፈቅድለታል። ይህም ማለት መተግበሪያው ለይቶ ሊያውቁዎ እና የመገለጫ መረጃዎን ለሌሎች ሊልክ ይችላል።"</string>
+    <string name="permlab_writeProfile" msgid="907793628777397643">"የራስህን የዕውቂያ ካርድ አስተካክል"</string>
+    <string name="permdesc_writeProfile" product="default" msgid="5552084294598465899">"መተግበሪያው ልክ እንደ ስምዎ እና የእውቂያ መረጃዎ ያሉ በመሳሪያዎ ላይ የተከማቹ የግል መገለጫ መረጃዎችን እንዲቀይር ወይም እንዲያክልባቸው ይፈቅድለታል። ይህም ማለት መተግበሪያው ለይቶ ሊያውቅዎ እና የመገለጫ መረጃዎን ለሌሎች ሊልክ ይችላል።"</string>
+    <string name="permlab_readSocialStream" product="default" msgid="1268920956152419170">"የአንተን ማህበራዊ የውይይት ክፍሎች አንብብ"</string>
+    <string name="permdesc_readSocialStream" product="default" msgid="4255706027172050872">"መተግበሪያው የአንተንና የጓኞችህን ማህበራዊ ዝማኔዎችን እንዲደርስባቸው እና እንዲያመሳስላቸው ይፈቅድለታል። መረጃ ስታጋራ ተጠንቀቅ -- ይህ መተግበሪያው ሚስጥራዊነትን ከግምት ሳያስገባ በማህበራዊ አውታረ መረቦች በአንተ እና በጓደኞችህ መካከል የሚደረጉ ግንኙነቶችን እንዲያነብ ይፈቅድለታል። ማስታወሻ፦ ይህ ፈቃድ ለሁሉም ማህበራዊ አውታር መረቦች ላይ ላይፈጸም ይችላል።"</string>
+    <string name="permlab_writeSocialStream" product="default" msgid="3504179222493235645">"ወደ የአንተ  ማህበራዊ የውይይት ክፍሎች ጻፍ"</string>
+    <string name="permdesc_writeSocialStream" product="default" msgid="3086557552204114849">"መተግበሪያው ከጓኞችህን ማህበራዊ ዝማኔዎችን እንዲያሳይ ይፈቅድለታል። መረጃ ስታጋራ ተጠንቀቅ -- ይህ መተግበሪያው ከጓደኛ የመጡ የሚመስሉ መልእክቶችን እንዲያዘጋጅ ይፈቅድለታል። ማስታወሻ፦ ይህ ፈቃድ በሁሉም ማህበራዊ አውታረ መረቦች ላይ ላይፈጸም ይችላል።"</string>
+    <string name="permlab_readCalendar" msgid="5972727560257612398">"የቀን መቁጠሪያ ክስተቶች ተጨማሪ ሚስጥራዊ መረጃ አንብብ"</string>
+    <string name="permdesc_readCalendar" product="tablet" msgid="4216462049057658723">"መተግበሪያው የጓደኞችን ወይም የስራ ባልደረቦችን ጨምሮ ሁሉንም በጡባዊ ቱኮህ ላይ የተከማቹ የቀን መቁጠሪያ ክስተቶች እንዲያነብ ይፈቅድለታል። ይህ መተግበሪያው የቀን መቁጠሪያ ውሂብህን ሚስጥራዊቱን ከግምት ሳያስገባ እንዲያጋራ ወይም እንዲያስቀምጥ ሊፈቅድለት ይችላል።"</string>
+    <string name="permdesc_readCalendar" product="default" msgid="7434548682470851583">"መተግበሪያው የጓደኞችን ወይም የስራ ባልደረቦችን ጨምሮ ሁሉንም በስልክህ ላይ የተከማቹ የቀን መቁጠሪያ ክስተቶች እንዲያነብ ይፈቅድለታል። ይህ መተግበሪያው የቀን መቁጠሪያ ውሂብህን ሚስጥራዊቱን ከግምት ሳያስገባ እንዲያጋራ ወይም እንዲያስቀምጥ ሊፈቅድለት ይችላል።"</string>
+    <string name="permlab_writeCalendar" msgid="8438874755193825647">"የቀን መቁጠሪያ ክስተቶችን ቀይር ወይም አክል እና ለእንግዶች ከባለቤቱ ዕውቅና ውጪ ላክ።"</string>
+    <string name="permdesc_writeCalendar" product="tablet" msgid="6679035520113668528">"መተግበሪያው የጓደኞችህን እና የስራ ባልደረቦችህን ጨምሮ በጡባዊ ተኮህ ላይ ልታስተካክላቸው የምትችላቸውን ክስተቶች እንዲያክል፣ እንዲያስወግድ፣ እንዲለውጥ ይፈቅድለታል። ይህ መተግበሪያው ከቀን መቁጠሪያ ባለቤቶች የመጡ የሚመስሉ መልእክቶችን እንዲልክ ወይም ያለባለቤቱ እውቀት ክስተቶችን እንዲያስተካክል ሊፈቅድለት ይችላል።"</string>
+    <string name="permdesc_writeCalendar" product="default" msgid="2324469496327249376">"መተግበሪያው የጓደኞችህን እና የስራ ባልደረቦችህን ጨምሮ በስልክህ ላይ ልታስተካክላቸው የምትችላቸውን ክስተቶች እንዲያክል፣ እንዲያስወግድ፣ እንዲለውጥ ይፈቅድለታል። ይህ መተግበሪያው ከቀን መቁጠሪያ ባለቤቶች የመጡ የሚመስሉ መልእክቶችን እንዲልክ ወይም ያለባለቤቱ እውቀት ክስተቶችን እንዲያስተካክል ሊፈቅድለት ይችላል።"</string>
+    <string name="permlab_accessMockLocation" msgid="8688334974036823330">"ለሙከራ ጊዜያዊ ሥፍራ ፍጠር።"</string>
+    <string name="permdesc_accessMockLocation" msgid="5808711039482051824">"ለሙከራ የማስመሰል የመነሻ ምንጮችን ፍጠር ወይም አዲስ የአካባቢ አቅራቢ ጫን። ይህ መተግበሪያው አካባቢውን እና/ወይም እንደ GPS ወይም የአካባቢ አቅራቢዎች ባሉ ሌላ የመነሻ ምንጮች የተመለሱ ሁኔታዎችን ችላ እንዲል ይፈቅድለታል።"</string>
+    <string name="permlab_accessLocationExtraCommands" msgid="2836308076720553837">"ተጨማሪ ሥፍራ አቅራቢ ትዕዛዞችን ድረስ።"</string>
+    <string name="permdesc_accessLocationExtraCommands" msgid="5945166642335800763">"መተግበሪያው ተጨማሪ የአካባቢ አቅራቢ ትእዛዞችን እንዲደርስ ይፈቅድለታል። ይህ መተግበሪያው በGPS ወይም ሌላ የመነሻ ምንጮች ክወና ላይ ጣልቃ እንዲገባ ሊፈቅድለት ይችላል።"</string>
+    <string name="permlab_installLocationProvider" msgid="6578101199825193873">"የሥፍራ አቅራቢ ለመጫን ፍቀድ"</string>
+    <string name="permdesc_installLocationProvider" msgid="9066146120470591509">"ለሙከራ የማስመሰል የመነሻ ምንጮችን ፍጠር ወይም አዲስ የአካባቢ አቅራቢ ጫን። ይህ መተግበሪያው አካባቢውን እና/ወይም እንደ GPS ወይም የአካባቢ አቅራቢዎች ባሉ ሌላ የመነሻ ምንጮች የተመለሱ ሁኔታዎችን ችላ እንዲል ይፈቅድለታል።"</string>
+    <string name="permlab_accessFineLocation" msgid="1191898061965273372">"ትክክለኛ አካባቢ (በጂ ፒ ኤስ እና አውታረ መረብ ላይ የተመሠረተ)"</string>
+    <string name="permdesc_accessFineLocation" msgid="5295047563564981250">"መተግበሪያው የእርስዎን አለምአቀፍ የመሬት አቀማመጥ ስርዓትን (ጂ ፒ ኤስ) ወይም እንደ የተንቀሳቃሽ ስልክ ማማዎች እና Wi-Fi ያሉ የአውታረ መረብ አካባቢ ምንጮችን ተጠቅሞ ትክክለኛ አካባቢዎትን እንዲያውቅ ያስችለዋል። መተግበሪያው እነዚህ የአካባቢ አገልግሎቶችን እንዲጠቀምባቸው እነሱ ሊበሩ እና ለመሣሪያዎ የሚገኙ መሆን አለባቸው። መተግበሪያዎች እርስዎ የት እንዳሉ ለማወቅ ይህንን ሊጠቀሙበት ይችላሉ፣ እና ተጨማሪ ባትሪ ሊፈጁ ይችላሉ።"</string>
+    <string name="permlab_accessCoarseLocation" msgid="4887895362354239628">"ግምታዊ አካባቢ (በአውታረ መረብ ላይ የተመሰረተ)"</string>
+    <string name="permdesc_accessCoarseLocation" msgid="2538200184373302295">"መተግበሪያው ግምታዊ አካባቢዎትን እንዲያገኝ ያሽችለዋል። ይህ አካባቢ እንደ የተንቀሳቃሽ ስልክ ማማዎች እና Wi-Fi ያሉ የአውታረ መረብ አካባቢ ምንጮችን በመጠቀም የሚገኝ ነው። መተግበሪያው እነዚህ የአካባቢ አገልግሎቶችን እንዲጠቀምባቸው እነሱ ሊበሩ እና ለመሣሪያዎ የሚገኙ መሆን አለባቸው። መተግበሪያዎች እርስዎ የት እንዳሉ ለማወቅ ይህንን ሊጠቀሙበት ይችላሉ።"</string>
+    <string name="permlab_accessSurfaceFlinger" msgid="2363969641792388947">"SurfaceFlinger ድረስ።"</string>
+    <string name="permdesc_accessSurfaceFlinger" msgid="1041619516733293551">"መተግበሪያውን የSurfaceFlinger ዝቅተኛ ደረጃ ባህሪያትን ለመጠቀም ይፈቅዳል።"</string>
+    <string name="permlab_readFrameBuffer" msgid="6690504248178498136">"የንዑስ ክፈፍ ቋት አንብብ"</string>
+    <string name="permdesc_readFrameBuffer" msgid="4937405521809454680">"የክፈፍ ቋት ይዘት ለማንበብ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_configureWifiDisplay" msgid="5595661694746742168">"የWifi ማሳያዎችን አዋቅር"</string>
+    <string name="permdesc_configureWifiDisplay" msgid="7916815158690218065">"መተግበሪያው የWifi ማሳያዎችን እንዲያዋቅርና ከእነሱ ጋር እንዲገናኝ ይፈቅድለታል።"</string>
+    <string name="permlab_controlWifiDisplay" msgid="393641276723695496">"የWifi ማሳያዎችን ተቆጣጠር"</string>
+    <string name="permdesc_controlWifiDisplay" msgid="4543912292681826986">"መተግበሪያው በዝቅተኛ ደረጃ ላይ ያሉ የWifi ማሳያዎችን እንዲቆጣጠር ይፈቅድለታል።"</string>
+    <string name="permlab_captureAudioOutput" msgid="6857134498402346708">"የድምጽ ውጽዓት ይቅረጹ"</string>
+    <string name="permdesc_captureAudioOutput" msgid="6210597754212208853">"መተግበሪያው የድምጽ ውጽዓት እንዲቀርጽ እና አቅጣጫውን እንዲያዞር ያስችለዋል።"</string>
+    <string name="permlab_captureAudioHotword" msgid="1890553935650349808">"ትኩስ ቃል ማወቅ"</string>
+    <string name="permdesc_captureAudioHotword" msgid="9151807958153056810">"ትኩስ ቃል ለይቶ ለማወቅ ድምጽ እንዲቀርጽ ለመተግበሪያው ይፈቅድለታል። ቀረጻው በጀርባ ሊካሄድ ይችላል ነገር ግን ሌላ የድምጽ ቀረጻዎችን አይከለክልም (ለምሳሌ፣  የካሜራ መቅረጫ)።"</string>
+    <string name="permlab_captureVideoOutput" msgid="2246828773589094023">"የቪዲዮ ውጽዓት ይቅረጹ"</string>
+    <string name="permdesc_captureVideoOutput" msgid="359481658034149860">"መተግበሪያው የቪዲዮ ውጽዓት እንዲቀርጽ እና አቅጣጫውን እንዲያዞር ያስችለዋል።"</string>
+    <string name="permlab_captureSecureVideoOutput" msgid="7815398969303382016">"ደህንነቱ የተጠበቀ የቪዲዮ ውጽዓት ይቅረጹ"</string>
+    <string name="permdesc_captureSecureVideoOutput" msgid="2779793064709350289">"መተግበሪያው ደህንነቱ የተጠበቀ የቪዲዮ ውጽዓት እንዲቀርጽ እና አቅጣጫውን እንዲያዞር ያስችለዋል።"</string>
+    <string name="permlab_mediaContentControl" msgid="8749790560720562511">"ሚዲያ መልሰህ አጫውት እና የዲበ ውሂብ መዳረሻን ይቆጣጠር"</string>
+    <string name="permdesc_mediaContentControl" msgid="1637478200272062">"መተግበሪያው የሚዲያ መልሰህ አጫውትን እንዲቆጣጠር እና የሚዲያ መረጃውን (ርእስ፣ ደራሲ...) እንዲደርስ ይፈቅድለታል።"</string>
+    <string name="permlab_modifyAudioSettings" msgid="6095859937069146086">"የድምፅ ቅንብሮችን ለውጥ"</string>
+    <string name="permdesc_modifyAudioSettings" msgid="3522565366806248517">"መተግበሪያው አንደ የድምጽ መጠን እና ለውጽአት የትኛውን የድምጽ ማጉያ ጥቅም ላይ እንደዋለ የመሳሰሉ ሁለንተናዊ የድምጽ ቅንብሮችን እንዲያስተካክል ይፈቅድለታል።"</string>
+    <string name="permlab_recordAudio" msgid="3876049771427466323">"ኦዲዮ ይቅዱ"</string>
+    <string name="permdesc_recordAudio" msgid="4906839301087980680">"መተግበሪያው ድምጽን በማይክሮፎን እንዲቀዳ ይፈቅድለታል። ይህ ፈቃድ መተግበሪያው ያላንተ ማረጋገጫ በማንኛውም ጊዜ ድምጽ እንዲቀዳ ይፈቅድለታል።"</string>
+    <string name="permlab_camera" msgid="3616391919559751192">"ፎቶዎች እና ቪዲዮዎች ያንሱ"</string>
+    <string name="permdesc_camera" msgid="8497216524735535009">"መተግበሪያው በካሜራው ፎቶዎችንና ቪዲዮዎችን እንዲያነሳ ይፈቅድለታል። ይህ ፈቃድ መተግበሪያው ካሜራውን በማንኛውም ጊዜ ያላንተ ማረጋገጫ እንዲጠቀም ይፈቅድለታል።"</string>
+    <string name="permlab_cameraDisableTransmitLed" msgid="2651072630501126222">"ካሜራው ስራ ላይ ሲሆን የማስተላለፍ አመልካች ኤል ኢ ዲን ያሰናክሉ"</string>
+    <string name="permdesc_cameraDisableTransmitLed" msgid="4764585465480295341">"ቀድሞ የተጫነ የስርዓት መተግበሪያ ካሜራውን አመላካች ኤል ኢ ዲ እንዳይጠቀም እንዲያሰናክል ያስችለዋል።"</string>
+    <string name="permlab_brick" product="tablet" msgid="2961292205764488304">"በቋሚነት ጡባዊ አቦዝን"</string>
+    <string name="permlab_brick" product="default" msgid="8337817093326370537">"በቋሚነት ስልኩን አቦዝን"</string>
+    <string name="permdesc_brick" product="tablet" msgid="4334818808001699530">"ትግበራው ጡባዊ ተኮውን በቋሚነት ማቦዘን ይፈቅዳል። ይህ በጣም አደገኛ ነው።"</string>
+    <string name="permdesc_brick" product="default" msgid="5788903297627283099">"ስልኩን በቋሚነት አለማስቻል ለመተግበሪያው ይፈቅዳሉ። ይህ በጣም አደገኛ ነው።"</string>
+    <string name="permlab_reboot" product="tablet" msgid="3436634972561795002">"ጡባዊ ዳግም እንዲነሳ አስገድድ"</string>
+    <string name="permlab_reboot" product="default" msgid="2898560872462638242">"የስልክ በግድ ዳግም አስነሳ"</string>
+    <string name="permdesc_reboot" product="tablet" msgid="8172056180063700741">"ጡባዊውን በዳግም አስነሳ ለማስገደድ ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permdesc_reboot" product="default" msgid="5326008124289989969">"ስልኩ በዳግም አስነሳ ለማስገደድ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_mount_unmount_filesystems" product="nosdcard" msgid="2927361537942591841">"የUSB ማከማቻ ስርዓተ ፋይል ድረስበት"</string>
+    <string name="permlab_mount_unmount_filesystems" product="default" msgid="4402305049890953810">"የSD ካርድ ስርዓተ ፋይል ድረስበት"</string>
+    <string name="permdesc_mount_unmount_filesystems" msgid="1829290701658992347">"መወገድ ለሚችል ማከማቻ ስርዓተ ፋይል ለመሰካት እና ለመንቀል ለመተግበሪያ ይፈቅዳል።"</string>
+    <string name="permlab_mount_format_filesystems" product="nosdcard" msgid="6227819582624904972">"የUSB ማከማቻ አጥፋ"</string>
+    <string name="permlab_mount_format_filesystems" product="default" msgid="262582698639274056">"የSD ካርድ አጥፋ"</string>
+    <string name="permdesc_mount_format_filesystems" msgid="8784268246779198627">"መወገድ የሚችል ማከማቻ ለመቅረጽ ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_asec_access" msgid="3411338632002193846">"በውስጥ ማከማቻ ላይ መረጃ አግኝ"</string>
+    <string name="permdesc_asec_access" msgid="3094563844593878548">"መተግበሪያ በውስጥ ማከማቻ መረጃ ለማግኘት ይፈቅዳሉ።"</string>
+    <string name="permlab_asec_create" msgid="6414757234789336327">"የውስጥ ማከማቻ ፍጠር"</string>
+    <string name="permdesc_asec_create" msgid="4558869273585856876">" የውስጥ ማከማቻ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_asec_destroy" msgid="526928328301618022">"የውስጥ ማከማቻ አጥፋ"</string>
+    <string name="permdesc_asec_destroy" msgid="7218749286145526537">"የውስጥ ማከማቻ ለማጥፋት ለመተግበሪያው ይፈቅዳሉ ።"</string>
+    <string name="permlab_asec_mount_unmount" msgid="8877998101944999386">"የውስጥ ማከማቻ ሰካ/ንቀል"</string>
+    <string name="permdesc_asec_mount_unmount" msgid="3451360114902490929">" በውስጥ ማከማቻ ለመሰካት/ለመንቀል ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_asec_rename" msgid="7496633954080472417">"የውስጥ ማከማቻ ድጋሚ  ሰይም"</string>
+    <string name="permdesc_asec_rename" msgid="1794757588472127675">"መተግበሪያ  የውስጥ ማከማቻ ዳግም ለመሰየም ይፈቅዳል።"</string>
+    <string name="permlab_vibrate" msgid="7696427026057705834">"ነዛሪ ተቆጣጠር"</string>
+    <string name="permdesc_vibrate" msgid="6284989245902300945">"ነዛሪውን ለመቆጣጠር ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_flashlight" msgid="2155920810121984215">"የብርሃንብልጭታ ተቆጣጠር"</string>
+    <string name="permdesc_flashlight" msgid="6522284794568368310">"የብልጭታ ብርሃኑን ለመቆጣጠር ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_manageUsb" msgid="1113453430645402723">"ለUSB መሣሪያዎች ምርጫዎችን እና ፈቃዶችን አደራጅ"</string>
+    <string name="permdesc_manageUsb" msgid="7776155430218239833">"ምርጫዎችን እና ፈቃዶችን ለUSB መሣሪያዎች ለማደራጀት ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_accessMtp" msgid="4953468676795917042">"MTP ፕሮቶኮል ተግብር"</string>
+    <string name="permdesc_accessMtp" msgid="6532961200486791570">"መድረስ የMTP USB ፕሮቶኮልንወደ ከርነልMTP አንቀሳቃሽ ለመተግበር ይፈቅዳል።"</string>
+    <string name="permlab_hardware_test" msgid="4148290860400659146">"ሀርድዌር ፈትሽ"</string>
+    <string name="permdesc_hardware_test" msgid="6597964191208016605">"ለተለያዩ የሃርድዌር ተቀጥላዎች ሙከራ ለመቆጣጠር አላማ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_callPhone" msgid="3925836347681847954">"በቀጥታ ስልክ ቁጥሮች ደውል"</string>
+    <string name="permdesc_callPhone" msgid="3740797576113760827">"መተግበሪያው ያላንተ ጣልቃ ገብነት የስልክ ቁጥሮች ላይ እንዲደውል ይፈቅድለታል። ይህ ያልተጠበቁ ክፍያዎችን ወይም ጥሪዎችን ሊያስከትል ይችላል። ይህ መተግበሪያው የድንገተኛ ስልክ ቁጥሮችን እንዲደውል እንደማይፈቅድለት ልብ በል። ተንኮል አዘል መተግበሪያዎች ያላንተ ማረጋገጫ ጥሪዎችን በማድረግ ገንዘብ ሊያስወጡህ ይችላሉ።"</string>
+    <string name="permlab_callPrivileged" msgid="4198349211108497879">"በቀጥታ ማንኛውም ስልክ ቁጥሮች ላይደውል"</string>
+    <string name="permdesc_callPrivileged" msgid="1689024901509996810">"ማንኛውንም ስልክ ቁጥር ለመደወል ለመተግበሪያው ይፈቅዳሉ፤ የድንገተኛ ጊዜ ቁጥሮችን ጨምሮ፤ ያለአንተ ተሳታፊነት፡፡ ለድንገተኛ አገልግሎቶች አላስፈላጊ እና ሕገ ወጥ ጥሪዎችን ተንኮል አዘል መተግበሪያዎች ሊያስቀምጡ ይችላሉ፡፡"</string>
+    <string name="permlab_performCdmaProvisioning" product="tablet" msgid="4842576994144604821">"በቀጥታየCDMA ጡባዊ መዋቅር አስጀምር"</string>
+    <string name="permlab_performCdmaProvisioning" product="default" msgid="5604848095315421425">"የCDMA ስልክ ጫን በቀጥታ አስጀምር"</string>
+    <string name="permdesc_performCdmaProvisioning" msgid="1994193538802314186">"መተግበሪያው የCDMA ዝግጅት ለመጀመር ይፈቅዳሉ ። ተንኮል አዘል መተግበሪያዎች አላስፈላጊ የCDMA ዝግጅት ይጀምራሉ።"</string>
+    <string name="permlab_locationUpdates" msgid="7785408253364335740">"የሥፍራ አዘምን ማሳወቂያዎችን ተቆጣጠር"</string>
+    <string name="permdesc_locationUpdates" msgid="1120741557891438876">"ከሬድዮ የአከባቢ አዘምን ማሳወቂያዎችን ለማንቃት/ለማስወገድ ለመተግበሪያው ይፈቅዳል፡፡ ለመደበኛ ትግበራዎች ጥቅም አይደለም፡፡"</string>
+    <string name="permlab_checkinProperties" msgid="7855259461268734914">"የድረስባህሪያት ምልከታ"</string>
+    <string name="permdesc_checkinProperties" msgid="4024526968630194128">"በገቢር ጀምር አገልግሎት ወደ ተሰቀሉት ባህሪያት አንብብ/ ፃፍ እንዲደርስ ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_bindGadget" msgid="776905339015863471">"ፍርግሞች ምረጥ"</string>
+    <string name="permdesc_bindGadget" msgid="8261326938599049290">"የትኛው መተግበሪያ በየትኛው ፍርግሞች መጠቀም እንደሚቻል ለስርዓቱ ለመንገር ለመተግበሪያው ይፈቅዳሉ። መተግበሪያ በእዚህ ፍቃድ ሌሎች መተግበሪያዎች ከግል ውሂብ ለመዳረስ እንዲቻል ያስችላል። ለመደበኛ መተግበሪያዎች አጠቃቀም አይሆንም።"</string>
+    <string name="permlab_modifyPhoneState" msgid="8423923777659292228">"የስልክ ሁኔታን ቀይር"</string>
+    <string name="permdesc_modifyPhoneState" msgid="1029877529007686732">"የመገልገያ መሳሪያውን የስልክ ባህሪያት ለመቆጣጠር ለመተግበሪያው ይፈቅዳል፡፡ ከዚህ ፍቃድ ጋር መተግበሪያ አውታረ መረቦችን ሊለውጥ ይችላል፤አንተን ምንም ሳያሳውቅ የስልኩን ሬድዮ አብራ እና አጥፋ እና የመሳሰሉትን ሊያበራ ይችላል፡፡"</string>
+    <string name="permlab_readPhoneState" msgid="9178228524507610486">"የስልክ ሁኔታና ማንነት አንብብ"</string>
+    <string name="permdesc_readPhoneState" msgid="1639212771826125528">"መተግበሪያው የመሳሪያውን የስልክ ባህሪያት ላይ እንዲደርስ ይፈቅድለታል። ይህ ፈቃድ መተግበሪያው የስልክ ቁጥሩን እና የመሳሪያውን መታወቂያዎች፣ ጥሪ የነቃ እንደሆነ፣ እና በጥሪ የተገናኘውን የሩቅ ቁጥር እንዲወስን ይፈቅድለታል።"</string>
+    <string name="permlab_wakeLock" product="tablet" msgid="1531731435011495015">"ጡባዊ ከማንቀላፋት ተከላከል"</string>
+    <string name="permlab_wakeLock" product="default" msgid="573480187941496130">"ስልክ ከማንቀላፋት ተከላከል"</string>
+    <string name="permdesc_wakeLock" product="tablet" msgid="7311319824400447868">"ጡባዊውን ከመተኛት መከልከል ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permdesc_wakeLock" product="default" msgid="8559100677372928754">"ስልኩን ከመተኛት መከልከል ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_transmitIr" msgid="7545858504238530105">"ኢንፍራርድ አስተላልፍ"</string>
+    <string name="permdesc_transmitIr" product="tablet" msgid="5358308854306529170">"የጡባዊውን የኢንፍራሪድ አስተላላፊ እንዲጠቀም ለመተግበሪያው ይፈቅድለታል።"</string>
+    <string name="permdesc_transmitIr" product="default" msgid="7957763745020300725">"የስልኩን የኢንፍራሪድ አስተላላፊ እንዲጠቀም ለመተግበሪያው ይፈቅድለታል።"</string>
+    <string name="permlab_devicePower" product="tablet" msgid="2787034722616350417">"ጡባዊ አብራ ወይም አጥፋ"</string>
+    <string name="permlab_devicePower" product="default" msgid="4928622470980943206">"ስልክ አብራ ወይም አጥፋ"</string>
+    <string name="permdesc_devicePower" product="tablet" msgid="6689862878984631831">"ጡባዊ ተኮውን ለማብራት እና ለማጥፋት ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permdesc_devicePower" product="default" msgid="6037057348463131032">"ስልኩን ለማብራት እና ለማጥፋት ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_factoryTest" msgid="3715225492696416187">"የፋብሪካ ሙከራ ሁነታ አሂድ"</string>
+    <string name="permdesc_factoryTest" product="tablet" msgid="3952059318359653091">"ለመሣሪያው ሀርድዌር ሙሉ ድረስበመፍቀድ እንደ ዝቅተኛ-ደረጃ አምራች ሙከራ አሂድ። የሚገኘው መሣሪያው በአምራች ሙከራ ሁነታ ላይ ሲአሄድ ብቻ ነው።"</string>
+    <string name="permdesc_factoryTest" product="default" msgid="8136644990319244802">"ለስልኩ ሀርድዌር ሙሉመድረስበመፍቀድእንደ ዝቅተኛ-ደረጃ አምራች ሙከራ አሂድ። የሚገኘው ስልኩ በአምራች ሙከራ ሁነታ ላይ ሲአሄድ ብቻ ነው።"</string>
+    <string name="permlab_setWallpaper" msgid="6627192333373465143">"ልጣፍአዘጋጅ"</string>
+    <string name="permdesc_setWallpaper" msgid="7373447920977624745">"የስረዓቱን ልጥፍ ለማዘጋጀት ለመተግበሪያው ይፈቅዳሉ ።"</string>
+    <string name="permlab_setWallpaperHints" msgid="3278608165977736538">"የልጣፍህን መጠን አስተካክል"</string>
+    <string name="permdesc_setWallpaperHints" msgid="8235784384223730091">"የስርዓቱን ልጥፍ መጠንለማዘጋጀት ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_masterClear" msgid="2315750423139697397">"ስርዓትን ወደ ፋብሪካ ነባሪዎች ዳግም አስጀምር"</string>
+    <string name="permdesc_masterClear" msgid="3665380492633910226">"ወደ ፋብሪካው ቅንብሮች  ሙሉ በሙሉ ስርዓቱን ዳግም ለማስጀመር ለመተግበሪያው ይፈቅዳሉ ፤ ሁሉንም ውሂብ፣ አወቃቀር፣ እና የተጫኑ መተግበሪያዎችን በማጥፈት፡፡"</string>
+    <string name="permlab_setTime" msgid="2021614829591775646">"ሰዓት ሙላ"</string>
+    <string name="permdesc_setTime" product="tablet" msgid="1896341438151152881">"መተግበሪያውን የጡባዊ ተኮን ሰዓት ለመለወጥ ይፈቅዳሉ።"</string>
+    <string name="permdesc_setTime" product="default" msgid="1855702730738020">"መተግበሪያውን የስልኩን ሰዓት ለመለወጥ ይፈቅዳሉ።"</string>
+    <string name="permlab_setTimeZone" msgid="2945079801013077340">"ሰዓት ሰቅ አዘጋጅ"</string>
+    <string name="permdesc_setTimeZone" product="tablet" msgid="1676983712315827645">" የየጡባዊ ተኮን   ሰዓት ለመለወጥ ለመተግበሪያውን ይፈቅዳል።"</string>
+    <string name="permdesc_setTimeZone" product="default" msgid="4499943488436633398">" የስልኩን ሰዓት መለወጥ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_accountManagerService" msgid="4829262349691386986">"እንደ አውርድአዸራጅአገልግሎት"</string>
+    <string name="permdesc_accountManagerService" msgid="1948455552333615954">" ወደ መለያ አረጋጋጮች ጥሪ ለማድረግ ለመተግበሪያ ይፈቅዳሉ።"</string>
+    <string name="permlab_getAccounts" msgid="1086795467760122114">"መሣሪያው ላይ ያሉ መለያዎችን ያግኙ"</string>
+    <string name="permdesc_getAccounts" product="tablet" msgid="2741496534769660027">"መተግበሪያው በጡባዊ ተኮው የሚታወቁትን መለያዎች ዝርዝር እንዲያገኝ ይፈቅድለታል። ይህ በጫንዋቸው ማናቸውም መተግበሪያዎች የተፈጠሩ መለያዎችን ሊያጠቃልል ይችላል።"</string>
+    <string name="permdesc_getAccounts" product="default" msgid="3448316822451807382">"መተግበሪያው በስልኩ የሚታወቁትን መለያዎች ዝርዝር እንዲያገኝ ይፈቅድለታል። ይህ በጫንዋቸው ማናቸውም መተግበሪያዎች የተፈጠሩ መለያዎችን ሊያጠቃልል ይችላል።"</string>
+    <string name="permlab_authenticateAccounts" msgid="5265908481172736933">"መለያዎችን ፍጠርና የይለፍ ቃላትን አስቀምጥ"</string>
+    <string name="permdesc_authenticateAccounts" msgid="5472124296908977260">"የመለያ አረጋጋጭ መለያ መናጅ ችሎታን ለመጠቀም፣ መለያ መፍጠር እና የይለፍ ቃሎችን ለማግኘት እና ለማቀናጀት አክሎ ለመተግበሪያው ይፈቅዳሉ ።"</string>
+    <string name="permlab_manageAccounts" msgid="4983126304757177305">"መለያዎችን ያክሉ ወይም ያስወግዱ"</string>
+    <string name="permdesc_manageAccounts" msgid="8698295625488292506">"መለያዎችን እንደ ማከል እና ማስወገድ ክወናዎችን እና የይለፍ ቃልን መሰረዝ ለማከናወን ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_useCredentials" msgid="235481396163877642">"በመሣሪያው ላይ ያሉ መለያዎችን ይጠቀሙ"</string>
+    <string name="permdesc_useCredentials" msgid="7984227147403346422">"የማረጋገጫ የምስጋና የምስክር ወረቀትን ለመጠየቅ ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_accessNetworkState" msgid="4951027964348974773">"የአውታረ መረብ ግንኙነቶችን ይመልከቱ"</string>
+    <string name="permdesc_accessNetworkState" msgid="8318964424675960975">"መተግበሪያው እንደ የትኛዎቹ አውታረ መረቦች እንዳሉ እና እንደተገናኙ ያሉ የአውታረ መረብ ግንኙነቶች መረጃዎችን እንዲያይ ይፈቅድለታል።"</string>
+    <string name="permlab_createNetworkSockets" msgid="8018758136404323658">"ሙሉ የአውታረ መረብ መዳረሻ"</string>
+    <string name="permdesc_createNetworkSockets" msgid="3403062187779724185">"መተግበሪያው የአውታረ መረብ መሰኪያዎችን እንዲፈጥር እና ብጁ የአውታረ መረብ ፕሮቶኮሎችን እንዲጠቀም ይፈቅድለታል። አሳሹ እና ሌሎች መተግበሪያዎች ውሂብ ወደ በይነመረብ የመላኪያ መንገዶችን ስለሚያቀርቡውሂብ ወደ በይነመረብ ለመላክ ይህ ፍቃድ አያስፈልግም።"</string>
+    <string name="permlab_writeApnSettings" msgid="505660159675751896">"የአውታረ መረብ ቅንብሮች እና ትራፊክ ለውጥ/ አቋርጥ"</string>
+    <string name="permdesc_writeApnSettings" msgid="5333798886412714193">"የአውታረ መረብ ቅንብሮችን ለመለወጥ እና ለማቋረጥ እና ሁሉንም የአውታረ መረብ ትራፊክ ለመመርመር፤ለምሳሌ ወኪል እና የማንኛውም APN ወደብ ለመለወጥ ለመተግበሪያው ይፈቅዳሉ። ተንኮል አዘል መተግበሪያዎች ሊቆጣጠሩ፣ አቅጣጫ ሊያስቀይሩ ፣ ወይም ያለእርስዎ እውቅና የአውታረ መረብ ፓኬቶችን ሊቀይሩ ይችላሉ።"</string>
+    <string name="permlab_changeNetworkState" msgid="958884291454327309">"የአውታረ መረብ ተያያዥነትን ለውጥ"</string>
+    <string name="permdesc_changeNetworkState" msgid="6789123912476416214">"የእውታረ መረቡን ግንኙነት  ሁኔታ ለመለወጥ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_changeTetherState" msgid="5952584964373017960">"የተያያዘ ግንኙነት ለውጥ"</string>
+    <string name="permdesc_changeTetherState" msgid="1524441344412319780">"መተግበሪያ የእውታረ መረቡን ግንኙነት ትይይዝ ሁኔታ ለመለወጥ ይፈቅዳል።"</string>
+    <string name="permlab_changeBackgroundDataSetting" msgid="1400666012671648741">"የዳራ ውሂብ አጠቃቀም ቅንብር ለውጥ"</string>
+    <string name="permdesc_changeBackgroundDataSetting" msgid="5347729578468744379">"የዳራ ውሂብ አጠቃቀም ቅንብሮች  ለመለወጥ ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_accessWifiState" msgid="5202012949247040011">"የWi-Fi ግኑኝነቶችን እይ"</string>
+    <string name="permdesc_accessWifiState" msgid="5002798077387803726">"መተግበሪያው አንደ Wi-Fi እንደነቃ እና የተገናኙ የWi-Fi መሳሪያዎችን ስም የመሳሰሉ የWi-Fi አውታረ መረብ መረጃዎችን እንዲያይ ይፈቅድለታል።"</string>
+    <string name="permlab_changeWifiState" msgid="6550641188749128035">"ከWi-Fi ጋር ተገናኝና ተላቀቅ"</string>
+    <string name="permdesc_changeWifiState" msgid="7137950297386127533">"መተግበሪያው ከWi-Fi መዳረሻ ነጥቦች ጋር እንዲገናኝና እንዲለያይ እንዲሁም ለWi-Fi አውታረ መረቦች የመሳሪያ ውቅር ለውጦች እንዲያደርግ ይፈቅድለታል።"</string>
+    <string name="permlab_changeWifiMulticastState" msgid="1368253871483254784">"የWi-Fi ብዙስምሪትተቀባይፍቀድ"</string>
+    <string name="permdesc_changeWifiMulticastState" product="tablet" msgid="7969774021256336548">"መተግበሪያው ባለብዙ ስምሪት አድራሻዎችን በመጠቀም ጡባዊ ቱኮህን ብቻ ሳይሆን በWi-Fi አውታረ መረብ ላሉ መሳሪያዎች በሙሉ የተላኩ እሽጎችን እንዲቀበል ይፈቅድለታል። ባለብዙ ስምሪት ካልሆነው ሁኔታ የበለጠ ሃይል ይጠቀማል።"</string>
+    <string name="permdesc_changeWifiMulticastState" product="default" msgid="6851949706025349926">"መተግበሪያው ባለብዙ ስምሪት አድራሻዎችን በመጠቀም ስልክህን ብቻ ሳይሆን በWi-Fi አውታረ መረብ ላሉ መሳሪያዎች በሙሉ የተላኩ እሽጎችን እንዲቀበል ይፈቅድለታል። ባለብዙ ስምሪት ካልሆነው ሁኔታ የበለጠ ሃይል ይጠቀማል።"</string>
+    <string name="permlab_bluetoothAdmin" msgid="6006967373935926659">"የብሉቱዝ ቅንብሮችን ድረስባቸው"</string>
+    <string name="permdesc_bluetoothAdmin" product="tablet" msgid="6921177471748882137">"የአካባቢውን ብሉቱዝ ጡባዊ ለማዋቀር እና አግኝቶ ከሩቅ መሣሪያዎች ጋር ለማጣመር ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permdesc_bluetoothAdmin" product="default" msgid="8931682159331542137">"የአካባቢውን ብሉቱዝ ጡባዊ ለማዋቀር እና አግኝቶ ከሩቅ መሣሪያዎች ጋር ለማጣመር ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_bluetoothPriv" msgid="4009494246009513828">"በመተግበሪያ የብሉቱዝ ማጣመር ይፍቀዱ"</string>
+    <string name="permdesc_bluetoothPriv" product="tablet" msgid="8045735193417468857">"መተግበሪያው ያለተጠቃሚ ጣልቃ-ገብነት ከርቀት መሣሪያዎች ጋር እንዲጣመር ያስችለዋል።"</string>
+    <string name="permdesc_bluetoothPriv" product="default" msgid="8045735193417468857">"መተግበሪያው ያለተጠቃሚ ጣልቃ-ገብነት ከርቀት መሣሪያዎች ጋር እንዲጣመር ያስችለዋል።"</string>
+    <string name="permlab_accessWimaxState" msgid="4195907010610205703">"ከWiMAX ጋር ይገናኙ እና ያላቅቁ"</string>
+    <string name="permdesc_accessWimaxState" msgid="6360102877261978887">"መተግበሪያው WiMAX እንደነቃ እና ስለማናቸውም የተገናኙ የWiMAX አውታረ መረቦች መረጃ እንዲወስን ይፈቅድለታል።"</string>
+    <string name="permlab_changeWimaxState" msgid="2405042267131496579">"የWiMAX ሁኔታ ለውጥ"</string>
+    <string name="permdesc_changeWimaxState" product="tablet" msgid="3156456504084201805">"መተግበሪያው ጡባዊ ተኮውን ከWiMAX አውታረ መረብ ጋር እንዲያገናኝና እንዲያለያይ ይፈቅድለታል።"</string>
+    <string name="permdesc_changeWimaxState" product="default" msgid="697025043004923798">"መተግበሪያው ስልኩን ከWiMAX አውታረ መረብ ጋር እንዲያገናኝና እንዲያለያይ ይፈቅድለታል።"</string>
+    <string name="permlab_bluetooth" msgid="6127769336339276828">"ከብሉቱዝ መሣሪያዎች ጋር ተጣመር"</string>
+    <string name="permdesc_bluetooth" product="tablet" msgid="3480722181852438628">"መተግበሪያው በጡባዊ ተኮው ላይ ያለውን የብሉቱዝ ውቅር እንዲያይ እና ከተጣመሩ መሳሪያዎች ጋር ግንኙነቶችን እንዲያደርግና እንዲቀበል ይፈቅድለታል።"</string>
+    <string name="permdesc_bluetooth" product="default" msgid="3207106324452312739">"መተግበሪያው በስልኩ ላይ ያለውን የብሉቱዝ ውቅር እንዲያይ እና ከተጣመሩ መሳሪያዎች ጋር ግንኙነቶችን እንዲያደርግና እንዲቀበል ይፈቅድለታል።"</string>
+    <string name="permlab_nfc" msgid="4423351274757876953">"ቅርብ የግኑኙነትመስክ (NFC) ተቆጣጠር"</string>
+    <string name="permdesc_nfc" msgid="7120611819401789907">"ከቅርብ ግኑኙነት መስክ (NFC) መለያዎች፣ ካርዶች እና አንባቢ ጋር ለማገናኘት ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_disableKeyguard" msgid="3598496301486439258">"የማያ ገጽህን መቆለፊያ አሰናክል"</string>
+    <string name="permdesc_disableKeyguard" msgid="6034203065077122992">"መተግበሪያው መቆለፊያውና ማንኛውም የተጎዳኘ የይለፍ ቃል ደህንነት እንዲያሰናክል ይፈቅድለታል። ለምሳሌ ስልኩ ገቢ የስልክ ጥሪ በሚቀበልበት ጊዜ መቆለፊያውን ያሰናክልና ከዚያም ጥሪው ሲጠናቀቅ መቆለፊያውን በድጋሚ ያነቃዋል።"</string>
+    <string name="permlab_readSyncSettings" msgid="6201810008230503052">"የሥምሪያ ቅንብሮች አንብብ"</string>
+    <string name="permdesc_readSyncSettings" msgid="2706745674569678644">"መተግበሪያው የአንድ መለያ የማመሳሰል ቅንብሮችን እንዲያነብ ይፈቅድለታል። ለምሳሌ ይህ የሰዎች መተግበሪያ ከመለያ ጋር መመሳሰሉን አለመመሳሰሉን ሊወስን ይችላል።"</string>
+    <string name="permlab_writeSyncSettings" msgid="5408694875793945314">"ማመሳሰያ በማብራትና በማጥፋት መካከል ቀያይር"</string>
+    <string name="permdesc_writeSyncSettings" msgid="8956262591306369868">"መተግበሪያው የመለያ ማመሳሰል ቅንብሮችን እንዲያስተካክል ይፈቅድለታል። ለምሳሌ ይህ የሰዎች መተግበሪያን ከመለያ መመሳሰልን ለማንቃት ጥቅም ላይ ሊውል ይችላል።"</string>
+    <string name="permlab_readSyncStats" msgid="7396577451360202448">"የሥምሪያ ስታስቲክስ አንብብ"</string>
+    <string name="permdesc_readSyncStats" msgid="1510143761757606156">"መተግበሪያው የማመሳሰል ክስተቶችን ታሪክ እና የተመሳሰለውን የውሂብ መጠን ጨምሮ የመለያን የማመሳሰል ስታትስቲክስ እንዲያነብ ይፈቅድለታል።"</string>
+    <string name="permlab_subscribedFeedsRead" msgid="4756609637053353318">"የምዝገባ መግቦች አንበብ"</string>
+    <string name="permdesc_subscribedFeedsRead" msgid="5557058907906144505">"ስለ አሁኑ ጊዜ አስምር ምላሾች ዝርዝሮች ለማግኘት ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_subscribedFeedsWrite" msgid="9015246325408209296">"የተመዝጋቢዎች ምላሾች ፃፍ"</string>
+    <string name="permdesc_subscribedFeedsWrite" msgid="6928930188826089413">"በአሁኑ ጊዜ  የተመሳሰሉ ምግቦችን ለመቀየር ለመተግበሪያው ይፈቅዳሉ፡፡ የተመሳሰሉ ምግቦችህን ተንኮል አዘል መተግበሪያዎች ሊለውጡ ይችላሉ፡፡"</string>
+    <string name="permlab_readDictionary" msgid="4107101525746035718">"መዝገበ ቃላቱ ላይ ያከልካቸውን ቃላት አንብብ"</string>
+    <string name="permdesc_readDictionary" msgid="659614600338904243">"መተግበሪያው ተጠቃሚው በተጠቃሚው መዝገበ-ቃላት አከማችቷቸው ሊሆኑ የሚችሉ ሁሉንም ቃላት፣ ስሞችና ሐረጋት እንዲያነባቸው ይፈቅድለታል።"</string>
+    <string name="permlab_writeDictionary" msgid="2183110402314441106">"በተጠቃሚ በተገለጸ መዝገበ ቃላት ላይ ቃላትን ያክላል"</string>
+    <string name="permdesc_writeDictionary" msgid="8185385716255065291">"በተጠቃሚ መዝገበ ቃላት ውስጥ አዲስ ቃል እንዲጽፍ ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_sdcardRead" product="nosdcard" msgid="367275095159405468">"የUSB ማከማቻዎን ይዘቶች ያንብቡ"</string>
+    <string name="permlab_sdcardRead" product="default" msgid="2188156462934977940">"የSD ካርድህን ይዘቶች አንብብ"</string>
+    <string name="permdesc_sdcardRead" product="nosdcard" msgid="3446988712598386079">"መተግበሪያው የእርስዎ USB ማከማቻ ይዘቶችን እንዲያነብ ያስችለዋል።"</string>
+    <string name="permdesc_sdcardRead" product="default" msgid="2607362473654975411">"መተግበሪያው የእርስዎ SD ካርድ ይዘቶችን እንዲያነብ ያስችለዋል።"</string>
+    <string name="permlab_sdcardWrite" product="nosdcard" msgid="8485979062254666748">"የUSB ማከማቻዎን ይዘቶች ይቀይሩ ወይም ይሰርዙ"</string>
+    <string name="permlab_sdcardWrite" product="default" msgid="8805693630050458763">"የSD ካርድህን ይዘቶች ቀይር ወይም ሰርዝ"</string>
+    <string name="permdesc_sdcardWrite" product="nosdcard" msgid="6175406299445710888">"ወደ USB ማህደረ ትውስታው ለመፃፍ ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permdesc_sdcardWrite" product="default" msgid="4337417790936632090">"መተግበሪያውን ወደ SD ካርድ ለመፃፍ ይፈቅዳል።"</string>
+    <string name="permlab_mediaStorageWrite" product="default" msgid="6859839199706879015">"የውስጥ ማህደረ መረጃ ማከማቻ ይዘቶችን ቀይር/ሰርዝ"</string>
+    <string name="permdesc_mediaStorageWrite" product="default" msgid="8189160597698529185">"የውስጥ ማህደረ መረጃ ማከማቻ ይዘትን ለመቀየር ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_manageDocs" product="default" msgid="5778318598448849829">"የሰነድ ማከማቻን ያስተዳድሩ"</string>
+    <string name="permdesc_manageDocs" product="default" msgid="8704323176914121484">"መተግበሪያው የሰነድ ማከማቻን እንዲያስተዳድር ይፈቅድለታል።"</string>
+    <string name="permlab_sdcardAccessAll" msgid="8150613823900460576">"የሁሉም ተጠቃሚዎች ውጫዊ ማከማቻውን ይደርስበታል"</string>
+    <string name="permdesc_sdcardAccessAll" msgid="3215208357415891320">"መተግበሪያውን የሁሉም ተጠቃሚዎች ውጫዊ ማከማቻውን እንዲደርስ ይፈቅድለታል።"</string>
+    <string name="permlab_cache_filesystem" msgid="5656487264819669824">"የመሸጎጫ ስርዓተ ፋይል ድረስ"</string>
+    <string name="permdesc_cache_filesystem" msgid="5578967642265550955">"መሸጎጫ ስርዓተ ፋይል ለማንበብ እና ለመፃፍ ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_use_sip" msgid="5986952362795870502">"የበይነ መረብ ጥሪዎች አድርግ/ተቀበል"</string>
+    <string name="permdesc_use_sip" msgid="4717632000062674294">" ለSIP ግልጋሎት  የበይነ መረብ ጥሪዎች አድርግ/ተቀበል ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_bind_call_service" msgid="6724009726671246551">"ከጥሪ ውስጥ ማያ ገጽ ጋር ይገናኝ"</string>
+    <string name="permdesc_bind_call_service" msgid="8732547662442572435">"መተግበሪያው ተጠቃሚው በጥሪ ውስጥ ያለውን ማያ ገጽ መቼ እና እንዴት ማየት እንደሚችል እንዲቆጣጠር ይፈቅድለታል።"</string>
+    <string name="permlab_readNetworkUsageHistory" msgid="7862593283611493232">"የታሪካዊ አውታረመረብ አጠቃቀም አንብብ"</string>
+    <string name="permdesc_readNetworkUsageHistory" msgid="7689060749819126472">"የተወሰኑ የአውታረ መረቦች እና ትግበራዎችን ታሪካዊ የአውታረመረብ አጠቃቀም ለማንበብ ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_manageNetworkPolicy" msgid="2562053592339859990">"የአውታረ መረብ መምሪያ አደራጅ"</string>
+    <string name="permdesc_manageNetworkPolicy" msgid="7537586771559370668">"የአውታረመረብ ቋሚ መመሪያዎችን እና ትግበራ ተኮር ደንቦችን ለማደራጀት ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_modifyNetworkAccounting" msgid="5088217309088729650">"የአውታረ መረብ አጠቃቀም"</string>
+    <string name="permdesc_modifyNetworkAccounting" msgid="5443412866746198123">"ከመተግበሪያዎች በተለየ መልኩ እንዴት የአውታረ መረብ አጠቃቀም እንደተመዘገበ ለመቀየር ለመተግበሪያው ይፈቅዳሉ።ለመደበኛ መተግበሪያዎች አገልግሎት አይውልም።"</string>
+    <string name="permlab_markNetworkSocket" msgid="3658527214914959749">"የሶኬት ምልክቶችን መቀየር"</string>
+    <string name="permdesc_markNetworkSocket" msgid="7655568433696356578">"መተግበሪያው መንገድ እንዲፈልግ የሶኬት ምልክቶቹን እንዲቀይር ያስችለዋል"</string>
+    <string name="permlab_accessNotifications" msgid="7673416487873432268">"ማሳወቂያዎችን ይድረሱ"</string>
+    <string name="permdesc_accessNotifications" msgid="458457742683431387">"መተግበሪያው ማሳወቂያዎችን እንዲያስመጣ፣ እንዲመረምር እና እንዲያጸዳ ያስችለዋል፣ በሌሎች መተግበሪያዎች የተለጠፉትንም ጨምሮ።"</string>
+    <string name="permlab_bindNotificationListenerService" msgid="7057764742211656654">"ከአንድ የማሳወቂያ አዳማጭ አገልግሎት ጋር ይሰሩ"</string>
+    <string name="permdesc_bindNotificationListenerService" msgid="985697918576902986">"ያዢው የማሳወቂያ አዳማጭ አገልግሎቱን ከከፍተኛ-ደረጃ በይነገጹ ጋር እንዲያስር ያስችለዋል። ለመደበኛ መተግበሪያዎች በጭራሽ አያስፈልግም።"</string>
+    <string name="permlab_invokeCarrierSetup" msgid="3699600833975117478">"በድምጸ-ተያያዥ ሞደም የቀረበው የውቅር መተግበሪያውን መጥራት"</string>
+    <string name="permdesc_invokeCarrierSetup" msgid="4159549152529111920">"ያዢው በድምጸ-ተያያዥ ሞደም የቀረበው የውቅር መተግበሪያውን እንዲጠራው ያስችለዋል። ለመደበኛ መተግበሪያዎች በጭራሽ አያስፈልግም።"</string>
+    <string name="permlab_accessNetworkConditions" msgid="8206077447838909516">"በአውታረ መረብ ሁኔታዎች ላይ የተስተዋሉ ነገሮችን ያዳምጣል"</string>
+    <string name="permdesc_accessNetworkConditions" msgid="6899102075825272211">"አንድ መተግበሪያ በአውታረ መረብ ሁኔታዎች ላይ የተስተዋሉ ነገሮችን እንዲያዳምጥ ያስችለዋል። ለመደበኛ መተግበሪያዎች በጭራሽ አስፈላጊ ሊሆን አይገባም።"</string>
+    <string name="policylab_limitPassword" msgid="4497420728857585791">"የይለፍ ቃል ደንቦች አዘጋጅ"</string>
+    <string name="policydesc_limitPassword" msgid="3252114203919510394">"በማያ-መክፈት የተፈቀዱ የይለፍ ቃል ርዝመት እና ቁምፊዎች ተቆጣጠር።"</string>
+    <string name="policylab_watchLogin" msgid="914130646942199503">"የማሳያ-ክፈት ሙከራዎችን አሳይ"</string>
+    <string name="policydesc_watchLogin" product="tablet" msgid="3215729294215070072">"ማሳያውን በምትከፍትበት ጊዜ በስህተት የተተየቡ የይለፍ ቃሎችን ቁጥር ተቆጣጠር፤ እና ጡባዊ ተኮውን ቆልፍ  ወይም በጣም ብዙ የተሳሳቱ የይለፍ ቃሎች ከተተየቡ የጡባዊ ተኮን ውሂብ አጥፋ፡፡"</string>
+    <string name="policydesc_watchLogin" product="default" msgid="5712323091846761073">"የተተየቡ ልክ ያልሆኑ የይለፍ ቃሎችን ቁጥር ተቆጣጠር፡፡ማሳያውን በምትከፍትበት ጊዜ፤ እና በጣም ብዙ ልክ ያልሆኑ የይለፍ ቃሎች ከተተየቡ ስልኩን ቆልፈው ወይም ሁሉንም የስልኩን ውሂብ ደምስሰው፡፡"</string>
+    <string name="policylab_resetPassword" msgid="2620077191242688955">"የማያ-መክፈቻ ይለፍ ቃል ለውጥ"</string>
+    <string name="policydesc_resetPassword" msgid="605963962301904458">"የማያ-መክፈቻ የይለፍ ቃል ለውጥ።"</string>
+    <string name="policylab_forceLock" msgid="2274085384704248431">"ማያ ቆልፍ"</string>
+    <string name="policydesc_forceLock" msgid="1141797588403827138">"ማያው እንዴት እና መቼ እንደሚቆልፍ ተቆጣጠር።"</string>
+    <string name="policylab_wipeData" msgid="3910545446758639713">"ሁሉንም ውሂብ ሰርዝ"</string>
+    <string name="policydesc_wipeData" product="tablet" msgid="4306184096067756876">"የፋብሪካው ውሂብ ዳግም አስጀምርን በማከናወን፣ያለ ማስጠንቀቂያ የጡባዊውን ውሂብ አጥፋ።"</string>
+    <string name="policydesc_wipeData" product="default" msgid="5096895604574188391">"የፋብሪካ ውሂብ ድጋሚ አስጀምር በማከናወን ያለ ማሰጠንቀቂያ የስልኩን ውሂብ ደምስስ።"</string>
+    <string name="policylab_setGlobalProxy" msgid="2784828293747791446">"የመሣሪያውን ሁሉንም ፕሮክሲ አዘጋጅ"</string>
+    <string name="policydesc_setGlobalProxy" msgid="6387497466660154931">"መምሪያ እስኪነቃ ድረስ ለመጠቀም የመሣሪያውን ሁሉንም ፕሮክሲ አዘጋጅ። የመጀመሪያው የመሣሪያ አስተዳደር ብቻ የሁሉንም ፕሮክሲ ያዘጋጃል።"</string>
+    <string name="policylab_expirePassword" msgid="885279151847254056">"የማያቆልፍ ይለፍ ቃል ማብቂያ ጊዜ አዘጋጅ"</string>
+    <string name="policydesc_expirePassword" msgid="1729725226314691591">"የማያ ቆልፍ ይለፍ ቃል በምን ያህል ጊዜ ተደጋግሞ መለወጥ እንዳለበት ተቆጣጠር።"</string>
+    <string name="policylab_encryptedStorage" msgid="8901326199909132915">"ማከማቻ ማመስጠር አዘጋጅ"</string>
+    <string name="policydesc_encryptedStorage" msgid="2637732115325316992">"የተከማቸ ትግበራ ውሂብ የተመሰጠረ እንዲሆን ጠይቅ።"</string>
+    <string name="policylab_disableCamera" msgid="6395301023152297826">"ካሜራዎችን አቦዝን"</string>
+    <string name="policydesc_disableCamera" msgid="2306349042834754597">"የሁሉንም መሣሪያ ካሜራዎች መጠቀም ከልክል።"</string>
+    <string name="policylab_disableKeyguardFeatures" msgid="266329104542638802">"በቁልፍ ጠባቂ ውስጥ ባህሪያትን ያሰናክሉ"</string>
+    <string name="policydesc_disableKeyguardFeatures" msgid="3467082272186534614">"በቁልፍ ጠባቂ ውስጥ የአንዳንድ ባህሪያትን መጠቀም ያግዱ።"</string>
+  <string-array name="phoneTypes">
+    <item msgid="8901098336658710359">"መነሻ"</item>
+    <item msgid="869923650527136615">"ተንቀሳቃሽ"</item>
+    <item msgid="7897544654242874543">"ስራ"</item>
+    <item msgid="1103601433382158155">"የስራ ፋክስ"</item>
+    <item msgid="1735177144948329370">"የቤት ፋክስ"</item>
+    <item msgid="603878674477207394">"ምልክት  ማድረጊያ"</item>
+    <item msgid="1650824275177931637">"ሌላ"</item>
+    <item msgid="9192514806975898961">"ብጁ"</item>
+  </string-array>
+  <string-array name="emailAddressTypes">
+    <item msgid="8073994352956129127">"መነሻ"</item>
+    <item msgid="7084237356602625604">"ስራ"</item>
+    <item msgid="1112044410659011023">"ሌላ"</item>
+    <item msgid="2374913952870110618">"ብጁ"</item>
+  </string-array>
+  <string-array name="postalAddressTypes">
+    <item msgid="6880257626740047286">"መነሻ"</item>
+    <item msgid="5629153956045109251">"ስራ"</item>
+    <item msgid="4966604264500343469">"ሌላ"</item>
+    <item msgid="4932682847595299369">"ብጁ"</item>
+  </string-array>
+  <string-array name="imAddressTypes">
+    <item msgid="1738585194601476694">"መነሻ"</item>
+    <item msgid="1359644565647383708">"ስራ"</item>
+    <item msgid="7868549401053615677">"ሌላ"</item>
+    <item msgid="3145118944639869809">"ብጁ"</item>
+  </string-array>
+  <string-array name="organizationTypes">
+    <item msgid="7546335612189115615">"ስራ"</item>
+    <item msgid="4378074129049520373">"ሌላ"</item>
+    <item msgid="3455047468583965104">"ብጁ"</item>
+  </string-array>
+  <string-array name="imProtocols">
+    <item msgid="8595261363518459565">"AIM"</item>
+    <item msgid="7390473628275490700">"ዊንዶውዝ ቀጥታ ስርጭት"</item>
+    <item msgid="7882877134931458217">"Yahoo"</item>
+    <item msgid="5035376313200585242">"Skype"</item>
+    <item msgid="7532363178459444943">"QQ"</item>
+    <item msgid="3713441034299660749">"Google Talk"</item>
+    <item msgid="2506857312718630823">"ICQ"</item>
+    <item msgid="1648797903785279353">"Jabber"</item>
+  </string-array>
+    <string name="phoneTypeCustom" msgid="1644738059053355820">"ብጁ"</string>
+    <string name="phoneTypeHome" msgid="2570923463033985887">"መነሻ"</string>
+    <string name="phoneTypeMobile" msgid="6501463557754751037">"ተንቀሳቃሽ"</string>
+    <string name="phoneTypeWork" msgid="8863939667059911633">"ስራ"</string>
+    <string name="phoneTypeFaxWork" msgid="3517792160008890912">"የስራ ፋክስ"</string>
+    <string name="phoneTypeFaxHome" msgid="2067265972322971467">"የቤት ፋክስ"</string>
+    <string name="phoneTypePager" msgid="7582359955394921732">"ምልክት  ማድረጊያ"</string>
+    <string name="phoneTypeOther" msgid="1544425847868765990">"ሌላ"</string>
+    <string name="phoneTypeCallback" msgid="2712175203065678206">"የጥሪ መልስ"</string>
+    <string name="phoneTypeCar" msgid="8738360689616716982">"መኪና"</string>
+    <string name="phoneTypeCompanyMain" msgid="540434356461478916">"ዋና ኩባንያ"</string>
+    <string name="phoneTypeIsdn" msgid="8022453193171370337">"ISDN"</string>
+    <string name="phoneTypeMain" msgid="6766137010628326916">"ዋና"</string>
+    <string name="phoneTypeOtherFax" msgid="8587657145072446565">"ሌላፋክስ"</string>
+    <string name="phoneTypeRadio" msgid="4093738079908667513">"ራድዮ"</string>
+    <string name="phoneTypeTelex" msgid="3367879952476250512">"ቴሌክስ"</string>
+    <string name="phoneTypeTtyTdd" msgid="8606514378585000044">"TTY/TDD"</string>
+    <string name="phoneTypeWorkMobile" msgid="1311426989184065709">"የስራ ተንቀሳቃሸ ስልክ"</string>
+    <string name="phoneTypeWorkPager" msgid="649938731231157056">"የስራ ምልክት  ማድረጊያ"</string>
+    <string name="phoneTypeAssistant" msgid="5596772636128562884">"ረዳት"</string>
+    <string name="phoneTypeMms" msgid="7254492275502768992">"MMS"</string>
+    <string name="eventTypeCustom" msgid="7837586198458073404">"ብጁ"</string>
+    <string name="eventTypeBirthday" msgid="2813379844211390740">"የልደት ቀን"</string>
+    <string name="eventTypeAnniversary" msgid="3876779744518284000">"ዓመታዊ በዓል"</string>
+    <string name="eventTypeOther" msgid="7388178939010143077">"ሌላ"</string>
+    <string name="emailTypeCustom" msgid="8525960257804213846">"ብጁ"</string>
+    <string name="emailTypeHome" msgid="449227236140433919">"መነሻ"</string>
+    <string name="emailTypeWork" msgid="3548058059601149973">"ስራ"</string>
+    <string name="emailTypeOther" msgid="2923008695272639549">"ሌላ"</string>
+    <string name="emailTypeMobile" msgid="119919005321166205">"ተንቀሳቃሽ"</string>
+    <string name="postalTypeCustom" msgid="8903206903060479902">"ብጁ"</string>
+    <string name="postalTypeHome" msgid="8165756977184483097">"መነሻ"</string>
+    <string name="postalTypeWork" msgid="5268172772387694495">"ስራ"</string>
+    <string name="postalTypeOther" msgid="2726111966623584341">"ሌላ"</string>
+    <string name="imTypeCustom" msgid="2074028755527826046">"ብጁ"</string>
+    <string name="imTypeHome" msgid="6241181032954263892">"መነሻ"</string>
+    <string name="imTypeWork" msgid="1371489290242433090">"ስራ"</string>
+    <string name="imTypeOther" msgid="5377007495735915478">"ሌላ"</string>
+    <string name="imProtocolCustom" msgid="6919453836618749992">"ብጁ"</string>
+    <string name="imProtocolAim" msgid="7050360612368383417">"AIM"</string>
+    <string name="imProtocolMsn" msgid="144556545420769442">"ዊንዶውዝ ቀጥታ ስርጭት"</string>
+    <string name="imProtocolYahoo" msgid="8271439408469021273">"Yahoo"</string>
+    <string name="imProtocolSkype" msgid="9019296744622832951">"Skype"</string>
+    <string name="imProtocolQq" msgid="8887484379494111884">"QQ"</string>
+    <string name="imProtocolGoogleTalk" msgid="493902321140277304">"Hangouts"</string>
+    <string name="imProtocolIcq" msgid="1574870433606517315">"ICQ"</string>
+    <string name="imProtocolJabber" msgid="2279917630875771722">"Jabber"</string>
+    <string name="imProtocolNetMeeting" msgid="8287625655986827971">"NetMeeting"</string>
+    <string name="orgTypeWork" msgid="29268870505363872">"ስራ"</string>
+    <string name="orgTypeOther" msgid="3951781131570124082">"ሌላ"</string>
+    <string name="orgTypeCustom" msgid="225523415372088322">"ብጁ"</string>
+    <string name="relationTypeCustom" msgid="3542403679827297300">"ብጁ"</string>
+    <string name="relationTypeAssistant" msgid="6274334825195379076">"ረዳት"</string>
+    <string name="relationTypeBrother" msgid="8757913506784067713">"ወንድም"</string>
+    <string name="relationTypeChild" msgid="1890746277276881626">"ልጅ"</string>
+    <string name="relationTypeDomesticPartner" msgid="6904807112121122133">"የኑሮ አጋር"</string>
+    <string name="relationTypeFather" msgid="5228034687082050725">"አባት"</string>
+    <string name="relationTypeFriend" msgid="7313106762483391262">"ጓደኛ"</string>
+    <string name="relationTypeManager" msgid="6365677861610137895">"መናጅ"</string>
+    <string name="relationTypeMother" msgid="4578571352962758304">"እናት"</string>
+    <string name="relationTypeParent" msgid="4755635567562925226">"ወላጅ"</string>
+    <string name="relationTypePartner" msgid="7266490285120262781">"አጋር"</string>
+    <string name="relationTypeReferredBy" msgid="101573059844135524">"በ ተጠቅሷል"</string>
+    <string name="relationTypeRelative" msgid="1799819930085610271">"ዘመድ"</string>
+    <string name="relationTypeSister" msgid="1735983554479076481">"እህት"</string>
+    <string name="relationTypeSpouse" msgid="394136939428698117">"የትዳር ጓደኛ"</string>
+    <string name="sipAddressTypeCustom" msgid="2473580593111590945">"ብጁ"</string>
+    <string name="sipAddressTypeHome" msgid="6093598181069359295">"መነሻ"</string>
+    <string name="sipAddressTypeWork" msgid="6920725730797099047">"ስራ"</string>
+    <string name="sipAddressTypeOther" msgid="4408436162950119849">"ሌላ"</string>
+    <string name="keyguard_password_enter_pin_code" msgid="3037685796058495017">"ፒን ኮድ ተይብ"</string>
+    <string name="keyguard_password_enter_puk_code" msgid="4800725266925845333">"PUK እና አዲስ ፒን ተይብ"</string>
+    <string name="keyguard_password_enter_puk_prompt" msgid="1341112146710087048">"የPUK ኮድ"</string>
+    <string name="keyguard_password_enter_pin_prompt" msgid="8027680321614196258">"አዲስ Pin ኮድ"</string>
+    <string name="keyguard_password_entry_touch_hint" msgid="7858547464982981384"><font size="17">"የይለፍ ቃል ለመተየብ ንካ"</font></string>
+    <string name="keyguard_password_enter_password_code" msgid="1054721668279049780">"ለመክፈት የይለፍ ቃል ተይብ"</string>
+    <string name="keyguard_password_enter_pin_password_code" msgid="6391755146112503443">"ለመክፈት ፒን ተይብ"</string>
+    <string name="keyguard_password_wrong_pin_code" msgid="2422225591006134936">"ትክክል ያልሆነ PIN ኮድ።"</string>
+    <string name="keyguard_label_text" msgid="861796461028298424">"ለመክፈት፣ምናሌ ተጫን ከዛ 0"</string>
+    <string name="emergency_call_dialog_number_for_display" msgid="696192103195090970">"የአደጋ ጊዜቁጥር"</string>
+    <string name="lockscreen_carrier_default" msgid="8963839242565653192">"ከአገልግሎት መስጫ ክልል ውጪ"</string>
+    <string name="lockscreen_screen_locked" msgid="7288443074806832904">"ማሳያ መቆለፊያ።"</string>
+    <string name="lockscreen_instructions_when_pattern_enabled" msgid="46154051614126049">"ለመክፈት ምናሌ ተጫንወይም የአደጋ ጊዜ ጥሪ አድርግ።"</string>
+    <string name="lockscreen_instructions_when_pattern_disabled" msgid="686260028797158364">"ለመክፈት ምናሌ ተጫን"</string>
+    <string name="lockscreen_pattern_instructions" msgid="7478703254964810302">"ለመክፈት ስርዓተ ጥለት ሳል"</string>
+    <string name="lockscreen_emergency_call" msgid="5347633784401285225">"የአደጋ ጊዜ ጥሪ"</string>
+    <string name="lockscreen_return_to_call" msgid="5244259785500040021">"ወደ ጥሪ ተመለስ"</string>
+    <string name="lockscreen_pattern_correct" msgid="9039008650362261237">"ትክክል!"</string>
+    <string name="lockscreen_pattern_wrong" msgid="4317955014948108794">"እንደገና ሞክር"</string>
+    <string name="lockscreen_password_wrong" msgid="5737815393253165301">"እንደገና ሞክር"</string>
+    <string name="faceunlock_multiple_failures" msgid="754137583022792429">"የመጨረሻውን  የገጽ ክፈት ሙከራዎችን አልፏል"</string>
+    <string name="lockscreen_plugged_in" msgid="8057762828355572315">"ኃይል በመሙላት ላይ፣ <xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+    <string name="lockscreen_charged" msgid="321635745684060624">"ባትሪ ሞልቷል።"</string>
+    <string name="lockscreen_battery_short" msgid="4477264849386850266">"<xliff:g id="NUMBER">%d</xliff:g><xliff:g id="PERCENT">%%</xliff:g>"</string>
+    <string name="lockscreen_low_battery" msgid="1482873981919249740">"ኃይል መሙያዎን ያያይዙ"</string>
+    <string name="lockscreen_missing_sim_message_short" msgid="5099439277819215399">"ምንም ሲም ካርድ የለም"</string>
+    <string name="lockscreen_missing_sim_message" product="tablet" msgid="151659196095791474">"በጡባዊ ውስጥ ምንም SIM ካርድ የለም።"</string>
+    <string name="lockscreen_missing_sim_message" product="default" msgid="2186920585695169078">"በስልክ ውስጥ ምንም SIM ካርድ የለም።"</string>
+    <string name="lockscreen_missing_sim_instructions" msgid="5372787138023272615">"ሲም ካርድ አስገባ፡፡"</string>
+    <string name="lockscreen_missing_sim_instructions_long" msgid="3526573099019319472">"SIM ካርዱ ጠፍቷል ወይም መነበብ አይችልም።እባክህ SIM ካርድ አስገባ።"</string>
+    <string name="lockscreen_permanent_disabled_sim_message_short" msgid="5096149665138916184">"የማይሰራ ሲም ካርድ።"</string>
+    <string name="lockscreen_permanent_disabled_sim_instructions" msgid="910904643433151371">"SIM ካርድህ በቋሚነት ቦዝኗል።\n  ለሌላ SIM ካርድ  የገመድ አልባ አገልግሎት አቅራቢህ ጋር ተገናኝ።"</string>
+    <string name="lockscreen_transport_prev_description" msgid="201594905152746886">"የቀድሞ ዝርዝር አዝራር"</string>
+    <string name="lockscreen_transport_next_description" msgid="6089297650481292363">"ቀጣይ ዝርዝር አዝራር"</string>
+    <string name="lockscreen_transport_pause_description" msgid="7659088786780128001">"ለአፍታ አቁም አዝራር"</string>
+    <string name="lockscreen_transport_play_description" msgid="5888422938351019426">"ማጫወቻ አዝራር።"</string>
+    <string name="lockscreen_transport_stop_description" msgid="4562318378766987601">"አቁም አዝራር"</string>
+    <string name="emergency_calls_only" msgid="6733978304386365407">"የአደጋ ጊዜ ጥሪ ብቻ"</string>
+    <string name="lockscreen_network_locked_message" msgid="143389224986028501">"አውታረመረብ ተሸንጉሯል"</string>
+    <string name="lockscreen_sim_puk_locked_message" msgid="7441797339976230">"SIM ካርድበPUK ተዘግቷል።"</string>
+    <string name="lockscreen_sim_puk_locked_instructions" msgid="8127916255245181063">"እባክህ የተጠቃሚ መመሪያን ተመልከት ወይም የደንበኞች አገልግሎትአግኝ።"</string>
+    <string name="lockscreen_sim_locked_message" msgid="8066660129206001039">"SIM ካርድ ተዘግቷል።"</string>
+    <string name="lockscreen_sim_unlock_progress_dialog_message" msgid="595323214052881264">"የSIM  ካርድ በመክፈት ላይ..."</string>
+    <string name="lockscreen_too_many_failed_attempts_dialog_message" msgid="6481623830344107222">"የመክፈቻ ስርዓተ ጥለቱን <xliff:g id="NUMBER_0">%d</xliff:g>ጊዜ በስህተት ስለውታል።\n\nእባክህ እንደገና ከ<xliff:g id="NUMBER_1">%d</xliff:g>ሰከንዶች በኋላ ሞክር።"</string>
+    <string name="lockscreen_too_many_failed_password_attempts_dialog_message" msgid="2725973286239344555">"<xliff:g id="NUMBER_0">%d</xliff:g>ጊዚያቶች የይለፍ ቃልህን በስህተት ተይበኻል፡፡በ<xliff:g id="NUMBER_1">%d</xliff:g> ሰኮንዶች ውስጥ \n\nእንደገና ሞክር፡፡"</string>
+    <string name="lockscreen_too_many_failed_pin_attempts_dialog_message" msgid="6216672706545696955">"<xliff:g id="NUMBER_0">%d</xliff:g>ጊዚያቶች ፒንህን በስህተት ተይበኻል፡፡በ\nሰኮንዶች ውስጥ \n<xliff:g id="NUMBER_1">%d</xliff:g>እንደገና ሞክር፡፡"</string>
+    <string name="lockscreen_failed_attempts_almost_glogin" product="tablet" msgid="9191611984625460820">"የመክፈቻ ስርዓተ ጥለቱን <xliff:g id="NUMBER_0">%d</xliff:g>ጊዜ በስህተት ስለውታል።ከ<xliff:g id="NUMBER_1">%d</xliff:g>የበለጠ ያልተሳካ ሙከራ በኋላ፣ የGoogle መግቢያዎን ተጠቅመው ስልኩን እንዲከከፍቱ ይጠየቃሉ።\n\nእባክዎ እንደገና <xliff:g id="NUMBER_2">%d</xliff:g>ከሰከንዶች በኋላ ይሞክሩ።"</string>
+    <string name="lockscreen_failed_attempts_almost_glogin" product="default" msgid="2590227559763762751">"የመክፈቻ ስርዓተ ጥለቱን<xliff:g id="NUMBER_0">%d</xliff:g>ጊዜ በስህተት ስለውታል።ከ<xliff:g id="NUMBER_1">%d</xliff:g> የበለጠ ያልተሳካ ሙከራ በኋላ፣ የGoogle መግቢያዎን ተጠቅመው ስልኩን እንዲከፍቱ ይጠየቃሉ።\n\nእባክዎ እንደገና ከ<xliff:g id="NUMBER_2">%d</xliff:g> ሰከንዶች በኋላ ይሞክሩ።"</string>
+    <string name="lockscreen_failed_attempts_almost_at_wipe" product="tablet" msgid="6128106399745755604">"ይህን tablet <xliff:g id="NUMBER_0">%d</xliff:g> ጊዜ ያህል በስህተት ለማስከፈት ሞክረሃል፡፡ ከ <xliff:g id="NUMBER_1">%d</xliff:g> በላይ ያልተሳኩ ሙከራዎች በኋላ፣ ይህ tablet አሁን በፋብሪካ ነባሪ ቅንጅት ዳግም ይቀናበርና ሁሉም የተጠቃሚው ውሂብ ይጠፋል፡፡"</string>
+    <string name="lockscreen_failed_attempts_almost_at_wipe" product="default" msgid="8603565142156826565">"ይህን ስልክ <xliff:g id="NUMBER_0">%d</xliff:g> ጊዜ ያህል በስህተት ለማስከፈት ሞክረሃል፡፡ ከ <xliff:g id="NUMBER_1">%d</xliff:g> በላይ ያልተሳኩ ሙከራዎች በኋላ፣ ይህ ስልክ በፋብሪካ ነባሪ ቅንጅት ዳግም ይቀናበርና ሁሉም የተጠቃሚው ውሂብ ይጠፋል፡፡"</string>
+    <string name="lockscreen_failed_attempts_now_wiping" product="tablet" msgid="280873516493934365">"ይህን tablet <xliff:g id="NUMBER">%d</xliff:g> ጊዜ ያህል በስህተት ለማስከፈት ሞክረሃል፡፡ ይህ tablet አሁን በፋብሪካ ነባሪ ቅንጅት ዳግም ይቀናበራል፡፡"</string>
+    <string name="lockscreen_failed_attempts_now_wiping" product="default" msgid="3025504721764922246">"ስልኩን <xliff:g id="NUMBER">%d</xliff:g> ጊዜ ያህል በስህተት ለማስከፈት ሞክረሃል፡፡ ስልኩ አሁን በፋብሪካ ነባሪ ቅንጅት ዳግም ይቀናበራል፡፡"</string>
+    <string name="lockscreen_too_many_failed_attempts_countdown" msgid="6251480343394389665">"በ<xliff:g id="NUMBER">%d</xliff:g> ሰከንዶች ውስጥ እንደገና ሞክር።"</string>
+    <string name="lockscreen_forgot_pattern_button_text" msgid="2626999449610695930">"ስርዓተ ጥለት ረሱ?"</string>
+    <string name="lockscreen_glogin_forgot_pattern" msgid="2588521501166032747">"መለያ ክፈት"</string>
+    <string name="lockscreen_glogin_too_many_attempts" msgid="2751368605287288808">"በጣም ብዙ የስርዓተ ጥለት ሙከራዎች"</string>
+    <string name="lockscreen_glogin_instructions" msgid="3931816256100707784">"ለመክፈት በGoogle መለያህ ግባ።"</string>
+    <string name="lockscreen_glogin_username_hint" msgid="8846881424106484447">"የተጠቃሚ ስም(ኢ-ሜይል)"</string>
+    <string name="lockscreen_glogin_password_hint" msgid="5958028383954738528">"የይለፍ ቃል"</string>
+    <string name="lockscreen_glogin_submit_button" msgid="7130893694795786300">"ግባ"</string>
+    <string name="lockscreen_glogin_invalid_input" msgid="1364051473347485908">"ትክክል ያልሆነየተጠቃሚ ሰም ወይም ይለፍቃል።"</string>
+    <string name="lockscreen_glogin_account_recovery_hint" msgid="1696924763690379073">"የተጠቃሚ ስምህን እና የይለፍ ቃልህን ረሳህ?\n"<b>"google.com/accounts/recovery"</b>"ጎብኝ።"</string>
+    <string name="lockscreen_glogin_checking_password" msgid="7114627351286933867">"በማረጋገጥ ላይ..."</string>
+    <string name="lockscreen_unlock_label" msgid="737440483220667054">"ክፈት"</string>
+    <string name="lockscreen_sound_on_label" msgid="9068877576513425970">"ድምፅ አብራ"</string>
+    <string name="lockscreen_sound_off_label" msgid="996822825154319026">"ድምፅ አጥፋ"</string>
+    <string name="lockscreen_access_pattern_start" msgid="3941045502933142847">"ንድፍ ተጀምሯል"</string>
+    <string name="lockscreen_access_pattern_cleared" msgid="5583479721001639579">"ንድፍ ጸድቷል"</string>
+    <string name="lockscreen_access_pattern_cell_added" msgid="6756031208359292487">"ሕዋስ ታክሏል"</string>
+    <string name="lockscreen_access_pattern_detected" msgid="4988730895554057058">"ንድፍ ተጠናቋል"</string>
+    <string name="keyguard_accessibility_widget_changed" msgid="5678624624681400191">"%1$s። ምግብር %2$d ከ%3$d።"</string>
+    <string name="keyguard_accessibility_add_widget" msgid="8273277058724924654">"ንዑስ ፕሮግራም አክል"</string>
+    <string name="keyguard_accessibility_widget_empty_slot" msgid="1281505703307930757">"ባዶ"</string>
+    <string name="keyguard_accessibility_unlock_area_expanded" msgid="2278106022311170299">"የመክፈቻ አካባቢ ተስፋፍቷል።"</string>
+    <string name="keyguard_accessibility_unlock_area_collapsed" msgid="6366992066936076396">"የመክፈቻ አካባቢ ተሰብስቧል።"</string>
+    <string name="keyguard_accessibility_widget" msgid="6527131039741808240">"የ<xliff:g id="WIDGET_INDEX">%1$s</xliff:g> ንዑስ ፕሮግራም።"</string>
+    <string name="keyguard_accessibility_user_selector" msgid="1226798370913698896">"ተጠቃሚ መራጭ"</string>
+    <string name="keyguard_accessibility_status" msgid="8008264603935930611">"ሁኔታ"</string>
+    <string name="keyguard_accessibility_camera" msgid="8904231194181114603">"ካሜራ"</string>
+    <string name="keygaurd_accessibility_media_controls" msgid="262209654292161806">"የሚዲያ መቆጣጠሪያዎች"</string>
+    <string name="keyguard_accessibility_widget_reorder_start" msgid="8736853615588828197">"የንዑስ ፕሮግራም ዳግም መደርደር ተጀምሯል።"</string>
+    <string name="keyguard_accessibility_widget_reorder_end" msgid="7170190950870468320">"የንዑስ ፕሮግራም ዳግም መደርደር አብቅቷል።"</string>
+    <string name="keyguard_accessibility_widget_deleted" msgid="4426204263929224434">"ንዑስ ፕሮግራም <xliff:g id="WIDGET_INDEX">%1$s</xliff:g> ተሰርዟል።"</string>
+    <string name="keyguard_accessibility_expand_lock_area" msgid="519859720934178024">"የመክፈቻ አካባቢውን አስፋፋ።"</string>
+    <string name="keyguard_accessibility_slide_unlock" msgid="2959928478764697254">"በማንሸራተት ክፈት።"</string>
+    <string name="keyguard_accessibility_pattern_unlock" msgid="1490840706075246612">"በስርዓተ-ጥለት መክፈት።"</string>
+    <string name="keyguard_accessibility_face_unlock" msgid="4817282543351718535">"በፊት መክፈት።"</string>
+    <string name="keyguard_accessibility_pin_unlock" msgid="2469687111784035046">"በፒን መክፈት።"</string>
+    <string name="keyguard_accessibility_password_unlock" msgid="7675777623912155089">"በይለፍ ቃል መክፈት።"</string>
+    <string name="keyguard_accessibility_pattern_area" msgid="7679891324509597904">"የስርዓተ-ጥለት አካባቢ።"</string>
+    <string name="keyguard_accessibility_slide_area" msgid="6736064494019979544">"የማንሸራተቻ አካባቢ።"</string>
+    <string name="password_keyboard_label_symbol_key" msgid="992280756256536042">"?123"</string>
+    <string name="password_keyboard_label_alpha_key" msgid="8001096175167485649">"ABC"</string>
+    <string name="password_keyboard_label_alt_key" msgid="1284820942620288678">"ALT"</string>
+    <string name="granularity_label_character" msgid="7336470535385009523">"ቁምፊ"</string>
+    <string name="granularity_label_word" msgid="7075570328374918660">"ቃል"</string>
+    <string name="granularity_label_link" msgid="5815508880782488267">"አገናኝ"</string>
+    <string name="granularity_label_line" msgid="5764267235026120888">"መስመር"</string>
+    <string name="hour_ampm" msgid="4584338083529355982">"<xliff:g id="HOUR">%-l</xliff:g><xliff:g id="AMPM">%P</xliff:g>"</string>
+    <string name="hour_cap_ampm" msgid="2083465992940444366">"<xliff:g id="HOUR">%-l</xliff:g><xliff:g id="AMPM">%p</xliff:g>"</string>
+    <string name="factorytest_failed" msgid="5410270329114212041">"የፋብሪካሙከራ ተስኗል"</string>
+    <string name="factorytest_not_system" msgid="4435201656767276723">"የፋብሪካ_ ሙከራ ርምጃበ/system/app አካታች ውስጥ የተጫነ ብቻ ተደግፏል።"</string>
+    <string name="factorytest_no_action" msgid="872991874799998561">"የፋብሪካ_ሙከራ ርምጃ የሚያቀርብምንም አካታች አልተገኘም።"</string>
+    <string name="factorytest_reboot" msgid="6320168203050791643">"ድጋሚ አስነሳ"</string>
+    <string name="js_dialog_title" msgid="1987483977834603872">"በ«<xliff:g id="TITLE">%s</xliff:g>» ያለው ገጽ ይህን ይላል፦"</string>
+    <string name="js_dialog_title_default" msgid="6961903213729667573">"ጃቫስክሪፕት"</string>
+    <string name="js_dialog_before_unload_title" msgid="2619376555525116593">"አሰሳን አረጋግጥ"</string>
+    <string name="js_dialog_before_unload_positive_button" msgid="3112752010600484130">"ከዚህ ገጽ ውጣ"</string>
+    <string name="js_dialog_before_unload_negative_button" msgid="5614861293026099715">"እዚህ ገፅ ላይ ቆይ"</string>
+    <string name="js_dialog_before_unload" msgid="3468816357095378590">"<xliff:g id="MESSAGE">%s</xliff:g>\n\nእርግጠኛ ነዎት ከዚህ ገጽ ወደ ሌላ ቦታ መሄድ ይፈልጋሉ?"</string>
+    <string name="save_password_label" msgid="6860261758665825069">"አረጋግጥ"</string>
+    <string name="double_tap_toast" msgid="4595046515400268881">"ጠቃሚ ምክር፦ ለማጉላት እና ለማሳነስ ሁለቴ-መታ አድርግ።"</string>
+    <string name="autofill_this_form" msgid="4616758841157816676">"ራስ ሙላ"</string>
+    <string name="setup_autofill" msgid="7103495070180590814">"በራስ ሰር ሙላ አዘጋጅ"</string>
+    <string name="autofill_address_name_separator" msgid="6350145154779706772">" "</string>
+    <string name="autofill_address_summary_name_format" msgid="3268041054899214945">"$1$2$3"</string>
+    <string name="autofill_address_summary_separator" msgid="7483307893170324129">"፣ "</string>
+    <string name="autofill_address_summary_format" msgid="4874459455786827344">"$1$2$3"</string>
+    <string name="autofill_province" msgid="2231806553863422300">"ክልል"</string>
+    <string name="autofill_postal_code" msgid="4696430407689377108">"የፖስታ ኮድ"</string>
+    <string name="autofill_state" msgid="6988894195520044613">"ክልል፡"</string>
+    <string name="autofill_zip_code" msgid="8697544592627322946">"ዚፕ ኮድ"</string>
+    <string name="autofill_county" msgid="237073771020362891">"ወረዳ"</string>
+    <string name="autofill_island" msgid="4020100875984667025">"ደሴት"</string>
+    <string name="autofill_district" msgid="8400735073392267672">"ወረዳ"</string>
+    <string name="autofill_department" msgid="5343279462564453309">"ክፍል"</string>
+    <string name="autofill_prefecture" msgid="2028499485065800419">"ሥራ አስፈፃሚ"</string>
+    <string name="autofill_parish" msgid="8202206105468820057">"ፓሪሽ"</string>
+    <string name="autofill_area" msgid="3547409050889952423">"አካባቢ"</string>
+    <string name="autofill_emirate" msgid="2893880978835698818">"ኢሚሬት"</string>
+    <string name="permlab_readHistoryBookmarks" msgid="3775265775405106983">"የድር ዕልባቶችህንና ታሪክህን አንብብ"</string>
+    <string name="permdesc_readHistoryBookmarks" msgid="8462378226600439658">"መተግበሪያው አሳሹ የጎበኛቸውን የሁሉንም URL ታሪኮች እና የአሳሹን እልባቶች ሁሉ እንዲያነብ ይፈቅድለታል። ማስታወሻ፦ይህ ፈቃድ በሶስተኛ ወገን አሳሾች ወይም ድር የማሰስ ችሎታ ባላቸው ሌሎች መተግበሪያዎች ላይፈፀሙ ይችላሉ።"</string>
+    <string name="permlab_writeHistoryBookmarks" msgid="3714785165273314490">"የድር ዕልባቶችንና ታሪክ ጻፍ"</string>
+    <string name="permdesc_writeHistoryBookmarks" product="tablet" msgid="6825527469145760922">"መተግበሪያው ጡባዊ ተኮህ ላይ የተከማቹ የአሳሹን ታሪክ ወይም ዕልባቶችን እንዲቀይር ይፈቅድለታል። ይህ መተግበሪያው የአሳሽ ውሂብ እንዲያጠፋ ወይም እንዲያስተካክል ሊፈቅድለት ይችላል። ማስታወሻ፦ ይህ ፈቃድ በሶስተኛ ወገን አሳሾች ወይም በሌላ የድር አሳሽነት አቅም ባላቸው መተግበሪያዎች ላይፈጸም ይችላል።"</string>
+    <string name="permdesc_writeHistoryBookmarks" product="default" msgid="8497389531014185509">"መተግበሪያው ስልክህ ላይ የተከማቹ የአሳሹን ታሪክ ወይም ዕልባቶችን እንዲቀይር ይፈቅድለታል። ይህ መተግበሪያው የአሳሽ ውሂብ እንዲያጠፋ ወይም እንዲያስተካክል ሊፈቅድለት ይችላል። ማስታወሻ፦ ይህ ፈቃድ በሶስተኛ ወገን አሳሾች ወይም በሌላ የድር አሳሽነት አቅም ባላቸው መተግበሪያዎች ላይፈጸም ይችላል።"</string>
+    <string name="permlab_setAlarm" msgid="1379294556362091814">"ማንቂያ አስቀምጥ"</string>
+    <string name="permdesc_setAlarm" msgid="316392039157473848">"በተጫነው የማንቂያ ሰዓት መተግበሪያ ውስጥ ማንቅያን ለማደራጀት ለመተግበሪያው ይፈቅዳሉ፡፡አንዳንድ የማንቂያ ሰዓት መተግበሪያዎች ይሄንን ባህሪ ላይፈፅሙ ይችላሉ፡፡"</string>
+    <string name="permlab_addVoicemail" msgid="5525660026090959044">"የድምፅ መልዕክት አክል"</string>
+    <string name="permdesc_addVoicemail" msgid="6604508651428252437">"ወደ ድምፅ መልዕክት የገቢ መልዕክትህ መልዕክቶች ለማከል ለመተግበሪያው ይፈቅዳሉ።"</string>
+    <string name="permlab_writeGeolocationPermissions" msgid="5962224158955273932">"የአሳሽ ገፀ ሥፍራ ፍቃዶችን ቀይር"</string>
+    <string name="permdesc_writeGeolocationPermissions" msgid="1083743234522638747">"የአሳሹን የጂኦ-አካባቢ ፍቃዶችን እንዲለውጥ ለመተግበሪያው ይፈቅዳል፡፡ተንኮል አዘል መተግበሪያዎች የመላኪያ አከባቢን መረጃ ወደ አጠራጣሪ የድር ጣቢያዎች ለመፍቀድ ይሄንን ሊጠቀሙበት ይችላሉ፡፡"</string>
+    <string name="permlab_packageVerificationAgent" msgid="5568139100645829117">"ፓኬጆችን አረጋግጥ"</string>
+    <string name="permdesc_packageVerificationAgent" msgid="8437590190990843381">"ፓኬጅ መጫን የሚችል መሆኑን ለማረጋገጥ ለመተግበሪያው ይፈቅዳሉ፡፡"</string>
+    <string name="permlab_bindPackageVerifier" msgid="4187786793360326654">"በፓኬጅ አረጋጋጭ የተወሰነ"</string>
+    <string name="permdesc_bindPackageVerifier" msgid="3180741773233862126">"የፓኬጅ አረጋጋጮችን ጥየቃ ለማድረግ ያዡ ይፈቅዳሉ። ለመደበኛ ትግበራዎች በፍፁም አያስፈልግም።"</string>
+    <string name="permlab_serialPort" msgid="546083327654631076">"ተከታታይ ወደቦችን ድረስ"</string>
+    <string name="permdesc_serialPort" msgid="2991639985224598193">"Allows the holder to access serial ports using the SerialManager API. የተከታታይ አደራጅ APIን በመጠቀም ያዡ የተከታታይ ወደቦችን እንዲደርስ ይፈቅዳል።"</string>
+    <string name="permlab_accessContentProvidersExternally" msgid="5077774297943409285">"ይዘት አቅራቢዎችን በውጭ በኩል ድረስባቸው"</string>
+    <string name="permdesc_accessContentProvidersExternally" msgid="4544346486697853685">"ያዢውን ከቀፎው ወደሚመጡ የይዘት አቅራቢዎች እንዲደርስ ይፈቅድለታል። ለመደበኛ መተግበሪያዎች በፍጹም ማስፈለግ የለባቸውም።"</string>
+    <string name="permlab_updateLock" msgid="3527558366616680889">"ራስ-ሰር የመሳሪያ መሻሻሎች አታበረታታ"</string>
+    <string name="permdesc_updateLock" msgid="1655625832166778492">"ያዢው መሳሪያው ለማሻሻል መቼ መስተጋብራዊ ያልሆነ ዳግም ማስጀመር ቢደረግ ጥሩ ጊዜ እንደሆነ መረጃ ለስርዓቱ መረጃ እንዲያቀርብለት ያስችለዋል።"</string>
+    <string name="save_password_message" msgid="767344687139195790">"አሳሹ ይህን ይለፍ ቃል እንዲያስታወስ ይፈልጋሉ?"</string>
+    <string name="save_password_notnow" msgid="6389675316706699758">"አሁን አይደለም"</string>
+    <string name="save_password_remember" msgid="6491879678996749466">"አስታውስ"</string>
+    <string name="save_password_never" msgid="8274330296785855105">"በፍፁም"</string>
+    <string name="open_permission_deny" msgid="7374036708316629800">"ይህን ገጽ  ለመክፈት ፈቃድ የለህም።"</string>
+    <string name="text_copied" msgid="4985729524670131385">"ፅሁፍ ወደ ቅንጥብ ሰሌዳ ተገልብጧል።"</string>
+    <string name="more_item_label" msgid="4650918923083320495">"ተጨማሪ"</string>
+    <string name="prepend_shortcut_label" msgid="2572214461676015642">"ምናሌ+"</string>
+    <string name="menu_space_shortcut_label" msgid="2410328639272162537">"ቦታ"</string>
+    <string name="menu_enter_shortcut_label" msgid="2743362785111309668">"አሰገባ"</string>
+    <string name="menu_delete_shortcut_label" msgid="3658178007202748164">"ሰርዝ"</string>
+    <string name="search_go" msgid="8298016669822141719">"ፍለጋ"</string>
+    <string name="searchview_description_search" msgid="6749826639098512120">"ፍለጋ"</string>
+    <string name="searchview_description_query" msgid="5911778593125355124">"ጥያቄ ፍለጋ"</string>
+    <string name="searchview_description_clear" msgid="1330281990951833033">"ጥያቄ አጥራ"</string>
+    <string name="searchview_description_submit" msgid="2688450133297983542">"ጥያቄ አስረክብ"</string>
+    <string name="searchview_description_voice" msgid="2453203695674994440">"የድምፅ ፍለጋ"</string>
+    <string name="enable_explore_by_touch_warning_title" msgid="7460694070309730149">"በመንካት አስስ ይንቃ?"</string>
+    <string name="enable_explore_by_touch_warning_message" product="tablet" msgid="8655887539089910577">"<xliff:g id="ACCESSIBILITY_SERVICE_NAME">%1$s</xliff:g>  ማሰስን በንኪ ማንቃት ይፈልጋል። አስስ በንኪ በሚበራበት ጊዜ፣ ከጡባዊ ተኮው ጋር ለመግባባት ምን በጣትህ ስር ወይም ምልክቶችን ማከናወን እንዳለብህ ማብራሪያ ልታይ ወይም ልትሰማ ትችላለህ።"</string>
+    <string name="enable_explore_by_touch_warning_message" product="default" msgid="2708199672852373195">"<xliff:g id="ACCESSIBILITY_SERVICE_NAME">%1$s</xliff:g>  ማሰስን በንኪ ማንቃት ይፈልጋል። አስስ በንኪ በሚበራበት ጊዜ፣ ከስልኩ ጋር ለመግባባት ምን በጣትህ ስር ወይም ምልክቶችን ማከናወን እንዳለብህ ማብራሪያ ልታይ ወይም ልትሰማ ትችላለህ።"</string>
+    <string name="oneMonthDurationPast" msgid="7396384508953779925">"ከ1 ወር በፊት"</string>
+    <string name="beforeOneMonthDurationPast" msgid="909134546836499826">"ከ1 ወር በፊት"</string>
+  <plurals name="num_seconds_ago">
+    <item quantity="one" msgid="4869870056547896011">"ከ1 ሴኮንድ በፊት"</item>
+    <item quantity="other" msgid="3903706804349556379">"<xliff:g id="COUNT">%d</xliff:g> ሰኮንዶች በፊት"</item>
+  </plurals>
+  <plurals name="num_minutes_ago">
+    <item quantity="one" msgid="3306787433088810191">"ከ 1 ደቂቃ በፊት"</item>
+    <item quantity="other" msgid="2176942008915455116">"<xliff:g id="COUNT">%d</xliff:g> ደቂቃዎች በፊት"</item>
+  </plurals>
+  <plurals name="num_hours_ago">
+    <item quantity="one" msgid="9150797944610821849">"ከ1 ሰዓት በፊት"</item>
+    <item quantity="other" msgid="2467273239587587569">"ከ <xliff:g id="COUNT">%d</xliff:g> ሰዓት በፊት"</item>
+  </plurals>
+  <plurals name="last_num_days">
+    <item quantity="other" msgid="3069992808164318268">"ቀኖች <xliff:g id="COUNT">%d</xliff:g> ያልቃል"</item>
+  </plurals>
+    <string name="last_month" msgid="3959346739979055432">" ያለፈው ወር"</string>
+    <string name="older" msgid="5211975022815554840">"የድሮ"</string>
+  <plurals name="num_days_ago">
+    <item quantity="one" msgid="861358534398115820">"ትላንትና"</item>
+    <item quantity="other" msgid="2479586466153314633">"ከ <xliff:g id="COUNT">%d</xliff:g>ቀን በፊት"</item>
+  </plurals>
+  <plurals name="in_num_seconds">
+    <item quantity="one" msgid="2729745560954905102">"በ1 ሴኮንድ"</item>
+    <item quantity="other" msgid="1241926116443974687">"በ<xliff:g id="COUNT">%d</xliff:g> ሰከንዶች ውስጥ"</item>
+  </plurals>
+  <plurals name="in_num_minutes">
+    <item quantity="one" msgid="8793095251325200395">"በ1 ደቂቃ ውስጥ"</item>
+    <item quantity="other" msgid="3330713936399448749">"በ<xliff:g id="COUNT">%d</xliff:g> ደቂቃዎች ውስጥ"</item>
+  </plurals>
+  <plurals name="in_num_hours">
+    <item quantity="one" msgid="7164353342477769999">"በ  1 ሰዓት"</item>
+    <item quantity="other" msgid="547290677353727389">"በ <xliff:g id="COUNT">%d</xliff:g> ሰዓቶች"</item>
+  </plurals>
+  <plurals name="in_num_days">
+    <item quantity="one" msgid="5413088743009839518">"ነገ"</item>
+    <item quantity="other" msgid="5109449375100953247">"በ<xliff:g id="COUNT">%d</xliff:g> ቀናት"</item>
+  </plurals>
+  <plurals name="abbrev_num_seconds_ago">
+    <item quantity="one" msgid="1849036840200069118">"1 ሴኮንድ በፊት"</item>
+    <item quantity="other" msgid="3699169366650930415">"<xliff:g id="COUNT">%d</xliff:g> ሰከንዶች በፊት"</item>
+  </plurals>
+  <plurals name="abbrev_num_minutes_ago">
+    <item quantity="one" msgid="6361490147113871545">"ከ 1 ደቂቃ በፊት"</item>
+    <item quantity="other" msgid="851164968597150710">"ከ <xliff:g id="COUNT">%d</xliff:g> ደቂቃዎች በፊት"</item>
+  </plurals>
+  <plurals name="abbrev_num_hours_ago">
+    <item quantity="one" msgid="4796212039724722116">"ከ1 ሰዓት በፊት"</item>
+    <item quantity="other" msgid="6889970745748538901">"ከ <xliff:g id="COUNT">%d</xliff:g> ሰዓት በፊት"</item>
+  </plurals>
+  <plurals name="abbrev_num_days_ago">
+    <item quantity="one" msgid="8463161711492680309">"ትላንትና"</item>
+    <item quantity="other" msgid="3453342639616481191">"ከ <xliff:g id="COUNT">%d</xliff:g>ቀን በፊት"</item>
+  </plurals>
+  <plurals name="abbrev_in_num_seconds">
+    <item quantity="one" msgid="5842225370795066299">"በ1 ሴኮንድ"</item>
+    <item quantity="other" msgid="5495880108825805108">"በ<xliff:g id="COUNT">%d</xliff:g> ሰከንዶች ውስጥ"</item>
+  </plurals>
+  <plurals name="abbrev_in_num_minutes">
+    <item quantity="one" msgid="562786149928284878">"በ1 ደቂቃ ውስጥ"</item>
+    <item quantity="other" msgid="4216113292706568726">"በ<xliff:g id="COUNT">%d</xliff:g> ደቂቃዎች ውስጥ"</item>
+  </plurals>
+  <plurals name="abbrev_in_num_hours">
+    <item quantity="one" msgid="3274708118124045246">"በ  1 ሰዓት"</item>
+    <item quantity="other" msgid="3705373766798013406">"በ <xliff:g id="COUNT">%d</xliff:g> ሰዓቶች"</item>
+  </plurals>
+  <plurals name="abbrev_in_num_days">
+    <item quantity="one" msgid="2178576254385739855">"ነገ"</item>
+    <item quantity="other" msgid="2973062968038355991">"በ<xliff:g id="COUNT">%d</xliff:g> ቀናት"</item>
+  </plurals>
+    <string name="preposition_for_date" msgid="9093949757757445117">"በ <xliff:g id="DATE">%s</xliff:g>"</string>
+    <string name="preposition_for_time" msgid="5506831244263083793">"በ <xliff:g id="TIME">%s</xliff:g>"</string>
+    <string name="preposition_for_year" msgid="5040395640711867177">"ውስጥ <xliff:g id="YEAR">%s</xliff:g>"</string>
+    <string name="day" msgid="8144195776058119424">"ቀን"</string>
+    <string name="days" msgid="4774547661021344602">"ቀኖች"</string>
+    <string name="hour" msgid="2126771916426189481">"ሰዓት"</string>
+    <string name="hours" msgid="894424005266852993">"ሰዓቶች"</string>
+    <string name="minute" msgid="9148878657703769868">"ደቂቃ"</string>
+    <string name="minutes" msgid="5646001005827034509">" ደቂቃዎች"</string>
+    <string name="second" msgid="3184235808021478">"ሴኮንድ"</string>
+    <string name="seconds" msgid="3161515347216589235">"ሰከንዶች"</string>
+    <string name="week" msgid="5617961537173061583">"ሳምንት"</string>
+    <string name="weeks" msgid="6509623834583944518">"ሳምንቶች"</string>
+    <string name="year" msgid="4001118221013892076">"ዓመት"</string>
+    <string name="years" msgid="6881577717993213522">"ዓመታት"</string>
+  <plurals name="duration_seconds">
+    <item quantity="one" msgid="6962015528372969481">"1 ሴኮንድ"</item>
+    <item quantity="other" msgid="1886107766577166786">"<xliff:g id="COUNT">%d</xliff:g> ሰከንዶች"</item>
+  </plurals>
+  <plurals name="duration_minutes">
+    <item quantity="one" msgid="4915414002546085617">"1 ደቂቃ"</item>
+    <item quantity="other" msgid="3165187169224908775">"<xliff:g id="COUNT">%d</xliff:g> ደቂቃዎች"</item>
+  </plurals>
+  <plurals name="duration_hours">
+    <item quantity="one" msgid="8917467491248809972">"1 ሰዓት"</item>
+    <item quantity="other" msgid="3863962854246773930">"<xliff:g id="COUNT">%d</xliff:g> ሰዓቶች"</item>
+  </plurals>
+    <string name="VideoView_error_title" msgid="3534509135438353077">"የቪዲዮ ችግር"</string>
+    <string name="VideoView_error_text_invalid_progressive_playback" msgid="3186670335938670444">"ይቅርታ፣ ይህ ቪዲዮ በዚህ መሣሪያ ለመልቀቅ ትክክል አይደለም።"</string>
+    <string name="VideoView_error_text_unknown" msgid="3450439155187810085">"ይሄን ቪዲዮ ማጫወት አልተቻለም።"</string>
+    <string name="VideoView_error_button" msgid="2822238215100679592">"እሺ"</string>
+    <string name="relative_time" msgid="1818557177829411417">"<xliff:g id="DATE">%1$s</xliff:g>, <xliff:g id="TIME">%2$s</xliff:g>"</string>
+    <string name="noon" msgid="7245353528818587908">"ቀትር"</string>
+    <string name="Noon" msgid="3342127745230013127">"ቀትር"</string>
+    <string name="midnight" msgid="7166259508850457595">"እኩለ ሌሊት"</string>
+    <string name="Midnight" msgid="5630806906897892201">"እኩለ ሌሊት"</string>
+    <string name="elapsed_time_short_format_mm_ss" msgid="4431555943828711473">"<xliff:g id="MINUTES">%1$02d</xliff:g>:<xliff:g id="SECONDS">%2$02d</xliff:g>"</string>
+    <string name="elapsed_time_short_format_h_mm_ss" msgid="1846071997616654124">"<xliff:g id="HOURS">%1$d</xliff:g>:<xliff:g id="MINUTES">%2$02d</xliff:g>:<xliff:g id="SECONDS">%3$02d</xliff:g>"</string>
+    <string name="selectAll" msgid="6876518925844129331">"ሁሉንም ምረጥ"</string>
+    <string name="cut" msgid="3092569408438626261">"ቁረጥ"</string>
+    <string name="copy" msgid="2681946229533511987">"ግላባጭ"</string>
+    <string name="paste" msgid="5629880836805036433">"ለጥፍ"</string>
+    <string name="replace" msgid="5781686059063148930">"ተካ..."</string>
+    <string name="delete" msgid="6098684844021697789">"ሰርዝ"</string>
+    <string name="copyUrl" msgid="2538211579596067402">"የURL ቅጂ"</string>
+    <string name="selectTextMode" msgid="1018691815143165326">"ፅሁፍ ምረጥ"</string>
+    <string name="textSelectionCABTitle" msgid="5236850394370820357">"የፅሁፍ ምርጫ"</string>
+    <string name="addToDictionary" msgid="4352161534510057874">"ወደ መዝገበ ቃላት አክል"</string>
+    <string name="deleteText" msgid="6979668428458199034">"ሰርዝ"</string>
+    <string name="inputMethod" msgid="1653630062304567879">"ግቤት ስልት"</string>
+    <string name="editTextMenuTitle" msgid="4909135564941815494">"የፅሁፍ እርምጃዎች"</string>
+    <string name="low_internal_storage_view_title" msgid="5576272496365684834">"የማከማቻ ቦታ እያለቀ ነው"</string>
+    <string name="low_internal_storage_view_text" msgid="6640505817617414371">"አንዳንድ የስርዓት ተግባራት ላይሰሩ ይችላሉ"</string>
+    <string name="app_running_notification_title" msgid="8718335121060787914">"<xliff:g id="APP_NAME">%1$s</xliff:g> እያሄደ ነው"</string>
+    <string name="app_running_notification_text" msgid="4653586947747330058">"ተጨማሪ መረጃ ለማግኘት ወይም መተግበሪያውን ለማቆም ይንኩ።"</string>
+    <string name="ok" msgid="5970060430562524910">"እሺ"</string>
+    <string name="cancel" msgid="6442560571259935130">"ሰርዝ"</string>
+    <string name="yes" msgid="5362982303337969312">"እሺ"</string>
+    <string name="no" msgid="5141531044935541497">"ሰርዝ"</string>
+    <string name="dialog_alert_title" msgid="2049658708609043103">"ትኩረት"</string>
+    <string name="loading" msgid="7933681260296021180">"በመጫን ላይ…"</string>
+    <string name="capital_on" msgid="1544682755514494298">"በ"</string>
+    <string name="capital_off" msgid="6815870386972805832">"ውጪ"</string>
+    <string name="whichApplication" msgid="4533185947064773386">"... በመጠቀም ድርጊቱን አጠናቅ"</string>
+    <string name="whichHomeApplication" msgid="4616420172727326782">"የመነሻ መተግበሪያ ይምረጡ"</string>
+    <string name="alwaysUse" msgid="4583018368000610438">"ለዕርምጃ ነባሪ ተጠቀም።"</string>
+    <string name="clearDefaultHintMsg" msgid="3252584689512077257">"ነባሪ አጽዳ በስርዓት ቅንብሮች  ውስጥ  &gt; Apps &amp;gt፤ወርዷል፡፡"</string>
+    <string name="chooseActivity" msgid="7486876147751803333">"ድርጊት ምረጥ"</string>
+    <string name="chooseUsbActivity" msgid="6894748416073583509">"ለUSB መሳሪያ መተግበሪያ ምረጥ"</string>
+    <string name="noApplications" msgid="2991814273936504689">"ምንም ትግበራዎች ይህን ድርጊት ማከናወን አይችሉም።"</string>
+    <string name="aerr_title" msgid="1905800560317137752"></string>
+    <string name="aerr_application" msgid="932628488013092776">"መጥፎ ዕድል ሆኖ፣ <xliff:g id="APPLICATION">%1$s</xliff:g> አቁሞዋል፡፡"</string>
+    <string name="aerr_process" msgid="4507058997035697579">"መጥፎ ዕድል ሆኖ፣ ይሄ ሂደት <xliff:g id="PROCESS">%1$s</xliff:g> ቆሞዋል፡፡"</string>
+    <string name="anr_title" msgid="4351948481459135709"></string>
+    <string name="anr_activity_application" msgid="1904477189057199066">"<xliff:g id="APPLICATION">%2$s</xliff:g>ምላሽ እየሰጠ አይደለም።\n\nመዝጋት ትፈልጋለህ?"</string>
+    <string name="anr_activity_process" msgid="5776209883299089767">"እንቅስቃሴ <xliff:g id="ACTIVITY">%1$s</xliff:g>ምላሽ እየሰጠ አይደለም።\n\nመዝጋት ትፈልጋለህ?"</string>
+    <string name="anr_application_process" msgid="8941757607340481057">"<xliff:g id="APPLICATION">%1$s</xliff:g>ምላሽ እየሰጠ አይደለም።መዝጋት ትፈልጋለህ?"</string>
+    <string name="anr_process" msgid="6513209874880517125">" ሂደት<xliff:g id="PROCESS">%1$s</xliff:g> ምላሽ እየሰጠ አይደለም።\n\nመዝጋት ትፈልጋለህ?"</string>
+    <string name="force_close" msgid="8346072094521265605">"ይሁን"</string>
+    <string name="report" msgid="4060218260984795706">"ሪፖርት"</string>
+    <string name="wait" msgid="7147118217226317732">"ቆይ"</string>
+    <string name="webpage_unresponsive" msgid="3272758351138122503">"ገጹ ምላሽ የማይሰጥ ሆኗል።\n\nልትዘጋው ትፈልጋለህ?"</string>
+    <string name="launch_warning_title" msgid="1547997780506713581">"መተግበሪያ አቅጣጫው ተቀይሯል"</string>
+    <string name="launch_warning_replace" msgid="6202498949970281412">"<xliff:g id="APP_NAME">%1$s</xliff:g> እየሄደ ነው።"</string>
+    <string name="launch_warning_original" msgid="188102023021668683">"<xliff:g id="APP_NAME">%1$s</xliff:g> በዋናነት የተነሳው።"</string>
+    <string name="screen_compat_mode_scale" msgid="3202955667675944499">"የልኬት ለውጥ"</string>
+    <string name="screen_compat_mode_show" msgid="4013878876486655892">"ሁልጊዜ አሳይ"</string>
+    <string name="screen_compat_mode_hint" msgid="1064524084543304459">"በስርዓት ቅንብሮች  ውስጥ ይሄንን ዳግም አንቃ&gt; Apps &amp;gt፤ወርዷል፡፡"</string>
+    <string name="smv_application" msgid="3307209192155442829">"መተግበሪያው <xliff:g id="APPLICATION">%1$s</xliff:g>( ሂደት<xliff:g id="PROCESS">%2$s</xliff:g>) በራስ ተነሳሺ StrictMode ደንብን ይተላለፋል።"</string>
+    <string name="smv_process" msgid="5120397012047462446">"ሂደቱ <xliff:g id="PROCESS">%1$s</xliff:g> በራስ ተነሳሺ StrictMode ፖሊሲን ይተላለፋል።"</string>
+    <string name="android_upgrading_title" msgid="1584192285441405746">"Android እያሻሻለ ነው..."</string>
+    <string name="android_upgrading_apk" msgid="7904042682111526169">"መተግበሪያዎች በአግባቡ በመጠቀም ላይ <xliff:g id="NUMBER_0">%1$d</xliff:g> ከ <xliff:g id="NUMBER_1">%2$d</xliff:g> ፡፡"</string>
+    <string name="android_upgrading_starting_apps" msgid="451464516346926713">"መተግበሪያዎችን በማስጀመር ላይ፡፡"</string>
+    <string name="android_upgrading_complete" msgid="1405954754112999229">"አጨራረስ ማስነሻ፡፡"</string>
+    <string name="heavy_weight_notification" msgid="9087063985776626166">"<xliff:g id="APP">%1$s</xliff:g> አሂድ"</string>
+    <string name="heavy_weight_notification_detail" msgid="1721681741617898865">"መተግበሪያውን ለመለወጥ ዳስ"</string>
+    <string name="heavy_weight_switcher_title" msgid="7153167085403298169">"መተግበሪያዎችን ለውጥ?"</string>
+    <string name="heavy_weight_switcher_text" msgid="7022631924534406403">"አዲስ ከመጀመርህ በፊት መቆም ያለበት ሌላ መተግበሪያ እየሄደ ነው።"</string>
+    <string name="old_app_action" msgid="493129172238566282">"ወደ <xliff:g id="OLD_APP">%1$s</xliff:g> ተመለስ"</string>
+    <string name="old_app_description" msgid="2082094275580358049">"አዲሱን መተግበሪያ አትጀምር።"</string>
+    <string name="new_app_action" msgid="5472756926945440706">"ጀምር <xliff:g id="OLD_APP">%1$s</xliff:g>"</string>
+    <string name="new_app_description" msgid="1932143598371537340">"የድሮውን ትግበራ ሳታስቀምጥ አቁም።"</string>
+    <string name="sendText" msgid="5209874571959469142">"ለፅሁፍ ድርጊት ምረጥ"</string>
+    <string name="volume_ringtone" msgid="6885421406845734650">"የስልክ ጥሪ ድምፅ"</string>
+    <string name="volume_music" msgid="5421651157138628171">" ማህደረ መረጃ  ክፍልፍል"</string>
+    <string name="volume_music_hint_playing_through_bluetooth" msgid="9165984379394601533">"በብሉቱዝ በኩል ማጫወት"</string>
+    <string name="volume_music_hint_silent_ringtone_selected" msgid="8310739960973156272">"የፀጥታ የስልክ የደውል ድምፅ ተዘጋጅቷል"</string>
+    <string name="volume_call" msgid="3941680041282788711">"የጥሪ ላይ ድም ፅ መጨመሪያ/መቀነሻ"</string>
+    <string name="volume_bluetooth_call" msgid="2002891926351151534">"የብሉቱዝ  የጥሪ ድምፅ"</string>
+    <string name="volume_alarm" msgid="1985191616042689100">"የማንቂያ ድምፅ መጠን"</string>
+    <string name="volume_notification" msgid="2422265656744276715">"ማሳወቂያ ክፍልፍል"</string>
+    <string name="volume_unknown" msgid="1400219669770445902">"የድምፅመጠን"</string>
+    <string name="volume_icon_description_bluetooth" msgid="6538894177255964340">"የብሉቱዝ ድምፅ መጠን"</string>
+    <string name="volume_icon_description_ringer" msgid="3326003847006162496">"የስልክ ጥሪ ድምፅ መጠን"</string>
+    <string name="volume_icon_description_incall" msgid="8890073218154543397">"የስልክ ጥሪ ድምፅ መጠን"</string>
+    <string name="volume_icon_description_media" msgid="4217311719665194215">"የማህደረ መረጃ ክፍልፍል"</string>
+    <string name="volume_icon_description_notification" msgid="7044986546477282274">"የማሳወቂያ ክፍልፍል"</string>
+    <string name="ringtone_default" msgid="3789758980357696936">"ነባሪ የስልክ ላይ ጥሪ"</string>
+    <string name="ringtone_default_with_actual" msgid="8129563480895990372">"(<xliff:g id="ACTUAL_RINGTONE">%1$s</xliff:g>) ነባሪ የስልክ ላይ ጥሪ"</string>
+    <string name="ringtone_silent" msgid="7937634392408977062">"ምንም"</string>
+    <string name="ringtone_picker_title" msgid="3515143939175119094">"ጥሪ ድምፆች"</string>
+    <string name="ringtone_unknown" msgid="5477919988701784788">"ያልታወቀ የስልክ ጥሪ ድምፅ"</string>
+  <plurals name="wifi_available">
+    <item quantity="one" msgid="6654123987418168693">"የWi-Fi አውታረ መረብ አለ"</item>
+    <item quantity="other" msgid="4192424489168397386">"የWi-Fi አውታረ መረቦች አሉ"</item>
+  </plurals>
+  <plurals name="wifi_available_detailed">
+    <item quantity="one" msgid="1634101450343277345">"አውታረ መረብ ሲኖር Wi-Fi ክፈት"</item>
+    <item quantity="other" msgid="7915895323644292768">"አውታረ መረቦች ሲኖሩ Wi-Fi ክፈት"</item>
+  </plurals>
+    <string name="wifi_available_sign_in" msgid="4029489716605255386">"ወደ Wi-Fi አውታረ መረብ በመለያ ግባ"</string>
+    <string name="network_available_sign_in" msgid="8495155593358054676">"ወደ አውታረ መረብ ይግቡ"</string>
+    <!-- no translation found for network_available_sign_in_detailed (8000081941447976118) -->
+    <skip />
+    <string name="wifi_watchdog_network_disabled" msgid="7904214231651546347">"ወደ Wi-Fi ለማያያዝ አልተቻለም"</string>
+    <string name="wifi_watchdog_network_disabled_detailed" msgid="5548780776418332675">" ደካማ የበይነመረብ ግንኙነት ኣለው።"</string>
+    <string name="wifi_p2p_dialog_title" msgid="97611782659324517">"Wi-Fi ቀጥታ"</string>
+    <string name="wifi_p2p_turnon_message" msgid="2909250942299627244">"የWi-Fi በቀጥታ  ጀምር።ይህ የWi-Fi ደንበኛ /ድረስ ነጥብ  ያጠፋል።"</string>
+    <string name="wifi_p2p_failed_message" msgid="3763669677935623084">"በቀጥታ Wi-Fi ማስጀመር አልተቻለም።"</string>
+    <string name="wifi_p2p_enabled_notification_title" msgid="2068321881673734886">"የWi-Fi ቀጥታ በርቷል"</string>
+    <string name="wifi_p2p_enabled_notification_message" msgid="1638949953993894335">"ለቅንብሮች ንካ"</string>
+    <string name="accept" msgid="1645267259272829559">"ተቀበል"</string>
+    <string name="decline" msgid="2112225451706137894">"ውድቅ አድርግ"</string>
+    <string name="wifi_p2p_invitation_sent_title" msgid="1318975185112070734">"ግብዣ ተልኳል"</string>
+    <string name="wifi_p2p_invitation_to_connect_title" msgid="4958803948658533637">"ለማገናኘት ግብዣ"</string>
+    <string name="wifi_p2p_from_message" msgid="570389174731951769">"ከ፦"</string>
+    <string name="wifi_p2p_to_message" msgid="248968974522044099">"ለ፦"</string>
+    <string name="wifi_p2p_enter_pin_message" msgid="5920929550367828970">"የሚፈለገውን ፒን ተይብ፦"</string>
+    <string name="wifi_p2p_show_pin_message" msgid="8530563323880921094">"ፒን፦"</string>
+    <string name="wifi_p2p_frequency_conflict_message" product="tablet" msgid="8012981257742232475">"ጡባዊው ከ<xliff:g id="DEVICE_NAME">%1$s</xliff:g> ጋር ተገናኝቶ ባለበት ጊዜ በጊዜያዊነት ከWi-Fi ጋር ይላቀቃል"</string>
+    <string name="wifi_p2p_frequency_conflict_message" product="default" msgid="7363907213787469151">"ስልኩ ከ<xliff:g id="DEVICE_NAME">%1$s</xliff:g> ጋር ተገናኝቶ ባለበት ጊዜ በጊዜያዊነት ከWi-Fi ጋር ያለው ግንኙነት ይቋረጣል"</string>
+    <string name="select_character" msgid="3365550120617701745">"ቁምፊ አስገባ"</string>
+    <string name="sms_control_title" msgid="7296612781128917719">"የSMS መልዕክቶች መበላክ ላይ"</string>
+    <string name="sms_control_message" msgid="3867899169651496433">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ቁጥራቸው ብዙ የሆኑ የኤስ.ኤም.ኤስ. መልዕክቶችን እየላከ ነው። ይሄ መተግበሪያ መልዕክቶችን መላኩን እንዲቀጥል መፍቀድ ትፈልጋለህ?"</string>
+    <string name="sms_control_yes" msgid="3663725993855816807">"ፍቀድ"</string>
+    <string name="sms_control_no" msgid="625438561395534982">"ከልክል"</string>
+    <string name="sms_short_code_confirm_message" msgid="1645436466285310855">"&lt;b&gt;<xliff:g id="APP_NAME">%1$s</xliff:g>&lt;/b&gt; ለ&lt;b&gt;<xliff:g id="DEST_ADDRESS">%2$s</xliff:g>&lt;/b&gt; መልዕክት ለመላክ ይፈልጋል።"</string>
+    <string name="sms_short_code_details" msgid="3492025719868078457">"ይሄ በተንቀሳቃሽ ስልክ መለያዎ ላይ "<font fgcolor="#ffffb060">"ክፍያዎችን ሊያስከትል ይችላል"</font>"።"</string>
+    <string name="sms_premium_short_code_details" msgid="5523826349105123687"><font fgcolor="#ffffb060">"ይሄ በተንቀሳቃሽ ስልክ መለያዎ ላይ ክፍያዎችን ያስከትላል።"</font></string>
+    <string name="sms_short_code_confirm_allow" msgid="4458878637111023413">"ላክ"</string>
+    <string name="sms_short_code_confirm_deny" msgid="2927389840209170706">"ሰርዝ"</string>
+    <string name="sms_short_code_remember_choice" msgid="5289538592272218136">"ምርጫዬን አስታውስ"</string>
+    <string name="sms_short_code_remember_undo_instruction" msgid="4960944133052287484">"ይሄንን በኋላ ላይ በቅንብሮች &gt; መተግበሪያዎች ውስጥ ሊቀይሩት ይችላሉ"</string>
+    <string name="sms_short_code_confirm_always_allow" msgid="3241181154869493368">"ሁልጊዜ ፍቀድ"</string>
+    <string name="sms_short_code_confirm_never_allow" msgid="446992765774269673">"በጭራሽ አትፍቀድ"</string>
+    <string name="sim_removed_title" msgid="6227712319223226185">"SIM ካርድ ተወግዷል"</string>
+    <string name="sim_removed_message" msgid="2333164559970958645">"በትክክል የገባ SIM ካርድ ድጋሚ እስኪያስጀምሩ የተንቀሳቃሽ ስልክ አውታረመረብ አይገኝም።"</string>
+    <string name="sim_done_button" msgid="827949989369963775">"ተከናውኗል"</string>
+    <string name="sim_added_title" msgid="3719670512889674693">"SIM ካርድ አክል"</string>
+    <string name="sim_added_message" msgid="6599945301141050216">"የተንቀሳቃሽ አውታረ መረብን ለመድረስ መሣሪያህን ድጋሚ አስነሳ።"</string>
+    <string name="sim_restart_button" msgid="4722407842815232347">"ዳግም ጀምር"</string>
+    <string name="time_picker_dialog_title" msgid="8349362623068819295">"ጊዜ አዘጋጅ"</string>
+    <string name="date_picker_dialog_title" msgid="5879450659453782278">"ውሂብ አዘጋጅ"</string>
+    <string name="date_time_set" msgid="5777075614321087758">"አዘጋጅ"</string>
+    <string name="date_time_done" msgid="2507683751759308828">"ተጠናቋል"</string>
+    <string name="perms_new_perm_prefix" msgid="8257740710754301407"><font size="12" fgcolor="#ff33b5e5">"አዲስ፦ "</font></string>
+    <string name="perms_description_app" msgid="5139836143293299417">"በ<xliff:g id="APP_NAME">%1$s</xliff:g> የቀረበ።"</string>
+    <string name="no_permissions" msgid="7283357728219338112">"ምንም ፍቃዶች አይጠየቁም"</string>
+    <string name="perm_costs_money" msgid="4902470324142151116">"ይህ ገንዘብ ሊያስወጣዎት ይችላል"</string>
+    <string name="usb_storage_activity_title" msgid="4465055157209648641">"USB ብዙ ማከማቻ"</string>
+    <string name="usb_storage_title" msgid="5901459041398751495">"USB ተያይዟል"</string>
+    <string name="usb_storage_message" product="nosdcard" msgid="3308538094316477839">"ከኮምፒዩተርህ ጋር በUSB በኩል አገናኝተሃል። በኮምፒዩተርህ እና በAndroid SD ማከማቻህ መካከል ፋይሎች ለመቅዳት ከፈለግህ ከዚህ በታች ያለውን አዝራር ንካ።"</string>
+    <string name="usb_storage_message" product="default" msgid="805351000446037811">"ከኮምፒዩተርህ ጋር በUSB በኩል አገናኝተሃል። በኮምፒዩተርህ እና በAndroid SD ማከማቻህ መካከል ፋይሎች ለመቅዳት ከፈለግህ ከዚህ በታች ያለውን አዝራር ንካ።"</string>
+    <string name="usb_storage_button_mount" msgid="1052259930369508235">"የUSB ማከማቻ አብራ"</string>
+    <string name="usb_storage_error_message" product="nosdcard" msgid="3017045217365540658">"የUSB ማከማቻዎን ለUSB ብዙ ማከማቻ መጠቀም ችግር አለ።"</string>
+    <string name="usb_storage_error_message" product="default" msgid="2876018512716970313">"የ SD ካርድህን ለUSB ብዙማከማቻ መጠቀም ችግር አለ።"</string>
+    <string name="usb_storage_notification_title" msgid="8175892554757216525">"USB ተያይዟል"</string>
+    <string name="usb_storage_notification_message" msgid="939822783828183763">"ፋይሎችን ከ/ወደ ኮምፒዩተርህ ለመቅዳት ንካ።"</string>
+    <string name="usb_storage_stop_notification_title" msgid="2336058396663516017">"የUSB ማከማቻ አጥፋ"</string>
+    <string name="usb_storage_stop_notification_message" msgid="1656852098555623822">"የUSB ማከማቻ ለማጥፋት ንካ።"</string>
+    <string name="usb_storage_stop_title" msgid="660129851708775853">"USB ማከማቻ በጥቅም ላይ"</string>
+    <string name="usb_storage_stop_message" product="nosdcard" msgid="4264025280777219521">"USB ማከማቻን ከማጥፋትዎ በፊት፤ የAndroid USB ማከማቻዎን ከኮምውተርዎ ይንቀሉ (\"ያውጡ\")።"</string>
+    <string name="usb_storage_stop_message" product="default" msgid="8043969782460613114">"የUSB ማከማቻ ከማጥፋት በፊት የAndroid SD ካርድህን ከኮምፒዩተርህ ላይ ንቀል(“አውጣ”)።"</string>
+    <string name="usb_storage_stop_button_mount" msgid="7060218034900696029">"USB ማከማቻ አጥፋ"</string>
+    <string name="usb_storage_stop_error_message" msgid="1970374898263063836">"የ USB ማከማቻ ለማጥፋት ችግር ነበር። USB አስተናጋጅ መንቀልህን አረጋግጥ፤ ከዛም እንደገና ሞክር።"</string>
+    <string name="dlg_confirm_kill_storage_users_title" msgid="963039033470478697">"የUSB ማከማቻ አብራ"</string>
+    <string name="dlg_confirm_kill_storage_users_text" msgid="5100428757107469454">"USB ማህደረ ትውስታ ካበራህ፤የምትጠቀማቸው አንዳንድ መተግበሪያዎች ይቆማሉ እና የUSB ማህደረ ትውስታ እስክታጠፋ ድረስ ላይገኙ ይችላሉ።"</string>
+    <string name="dlg_error_title" msgid="7323658469626514207">"USB ክወና ስኬታማ አልነበረም"</string>
+    <string name="dlg_ok" msgid="7376953167039865701">"እሺ"</string>
+    <string name="usb_mtp_notification_title" msgid="3699913097391550394">"እንደ ማህደረ መረጃ መሣሪያ ተያይዟል"</string>
+    <string name="usb_ptp_notification_title" msgid="1960817192216064833">"እንደካሜራ ተያይዟል"</string>
+    <string name="usb_cd_installer_notification_title" msgid="6774712827892090754">"እንደ ጫኝ ተያይዟል"</string>
+    <string name="usb_accessory_notification_title" msgid="7848236974087653666">"ለUSB ተቀጥላ ተያይዟል"</string>
+    <string name="usb_notification_message" msgid="2290859399983720271">"ለሌላ የUSB አማራጮች ንካ።"</string>
+    <string name="extmedia_format_title" product="nosdcard" msgid="9020092196061007262">"የUSB ማከማቻ ቅረፅ"</string>
+    <string name="extmedia_format_title" product="default" msgid="3648415921526526069">"SD ካርድ ቅረፅ"</string>
+    <string name="extmedia_format_message" product="nosdcard" msgid="3934016853425761078">"በUSB ማህደረ ትውስታህ ውስጥ የተከማቹ ሁሉም ፋይሎች ይጠፋሉ፡፡ ይህ እርምጃ አይቀለበስም!"</string>
+    <string name="extmedia_format_message" product="default" msgid="14131895027543830">"በካርድ ውስጥ ያለው ሁሉም ውሂብ ይጠፋል፡፡"</string>
+    <string name="extmedia_format_button_format" msgid="4131064560127478695">"ቅርጸት"</string>
+    <string name="adb_active_notification_title" msgid="6729044778949189918">"USB አድስ ተያይዟል"</string>
+    <string name="adb_active_notification_message" msgid="1016654627626476142">"USB ማረሚያ ላለማንቃት ዳስስ።"</string>
+    <string name="select_input_method" msgid="4653387336791222978">"የግቤት ስልት ምረጥ"</string>
+    <string name="configure_input_methods" msgid="9091652157722495116">"የግቤት ስልቶችን አዘጋጅ"</string>
+    <string name="use_physical_keyboard" msgid="6203112478095117625">"የሚዳሰስ የቁልፍ ሰሌዳ"</string>
+    <string name="hardware" msgid="7517821086888990278">"ሃርድዌር"</string>
+    <string name="select_keyboard_layout_notification_title" msgid="1407367017263030773">"የቁልፍ ሰሌዳ አቀማመጥ ምረጥ"</string>
+    <string name="select_keyboard_layout_notification_message" msgid="4465907700449257063">"የቁልፍ ሰሌዳ አቀማመጥ ለመምረጥ ንካ።"</string>
+    <string name="fast_scroll_alphabet" msgid="5433275485499039199">" ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="fast_scroll_numeric_alphabet" msgid="4030170524595123610">" 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"</string>
+    <string name="candidates_style" msgid="4333913089637062257"><u>"ዕጩዎች"</u></string>
+    <string name="ext_media_checking_notification_title" product="nosdcard" msgid="3449816005351468560">"USB ማከማቻ በማዘጋጀት ላይ"</string>
+    <string name="ext_media_checking_notification_title" product="default" msgid="5457603418970994050">"SD ካርድ ማዘጋጀት"</string>
+    <string name="ext_media_checking_notification_message" msgid="8287319882926737053">"ስህተቶችን መመልከት።"</string>
+    <string name="ext_media_nofs_notification_title" product="nosdcard" msgid="7788040745686229307">"ባዶ የUSB ማከማቻ"</string>
+    <string name="ext_media_nofs_notification_title" product="default" msgid="780477838241212997">"ባዶ SD  ካርድ"</string>
+    <string name="ext_media_nofs_notification_message" product="nosdcard" msgid="7840121067427269500">"USB ማህደረ ትውስታ  ባዶ ነው ወይም የማይደገፍ ስርዓተ ፋይል አለው።"</string>
+    <string name="ext_media_nofs_notification_message" product="default" msgid="8641065641786923604">"SD ካርድ ባዶ ነው ወይም የማይደገፍ ፋይል ስርዓት አለው።"</string>
+    <string name="ext_media_unmountable_notification_title" product="nosdcard" msgid="2090046769532713563">"የተበላሸ የUSB  ማከማቻ"</string>
+    <string name="ext_media_unmountable_notification_title" product="default" msgid="6410723906019100189">"የወደመ SD ካርድ"</string>
+    <string name="ext_media_unmountable_notification_message" product="nosdcard" msgid="1795917578395333280">"USB ማከማቻ ተጎድቷል። ዳግም ለመቅረጽ ሞክር።"</string>
+    <string name="ext_media_unmountable_notification_message" product="default" msgid="1753898567525568253">"SD ካርድ ተጎድቷል። ዳግም ለመቅረጽ ሞክር።"</string>
+    <string name="ext_media_badremoval_notification_title" product="nosdcard" msgid="1661683031330951073">"USB ማከማቻ በድንገት ተወግዷል"</string>
+    <string name="ext_media_badremoval_notification_title" product="default" msgid="6872152882604407837">"SD ካርድ ሳይጠበቅ ተወግዷል"</string>
+    <string name="ext_media_badremoval_notification_message" product="nosdcard" msgid="4329848819865594241">"የውሂብ መጥፋት ለማስቀረትከመወገዱ በፊት የUSB  ማከማቻ ንቀል"</string>
+    <string name="ext_media_badremoval_notification_message" product="default" msgid="7260183293747448241">"የውሂብ መጥፋትንከማስወደገድ በፊት የ SD ካርድ ንቀል።"</string>
+    <string name="ext_media_safe_unmount_notification_title" product="nosdcard" msgid="3967973893270360230">"የUSB ማከማቻ ለማስወገድ ደህና ነው"</string>
+    <string name="ext_media_safe_unmount_notification_title" product="default" msgid="6729801130790616200">"SD ካርድበደህናለማውጣት"</string>
+    <string name="ext_media_safe_unmount_notification_message" product="nosdcard" msgid="6142195361606493530">"USB ማከማቻ በደህና ማስወገድ ይችላሉ።"</string>
+    <string name="ext_media_safe_unmount_notification_message" product="default" msgid="568841278138377604">"SD ካርድ በደህናማስወገድ ይችላሉ።"</string>
+    <string name="ext_media_nomedia_notification_title" product="nosdcard" msgid="4486377230140227651">"USB ማከማቻ ተወግዷል"</string>
+    <string name="ext_media_nomedia_notification_title" product="default" msgid="8902518030404381318">"የተወገደ SD ካርድ"</string>
+    <string name="ext_media_nomedia_notification_message" product="nosdcard" msgid="6921126162580574143">"USB ማከማቻ ተወግዷል። አዲስ ማህደረ መረጃ አስገባ።"</string>
+    <string name="ext_media_nomedia_notification_message" product="default" msgid="3870120652983659641">"SD ካርድተወግዷል።አዲስ አስገባ።"</string>
+    <string name="activity_list_empty" msgid="1675388330786841066">"ምንም ተመሳሳይ እንቅስቃሴዎች አልተገኙም።"</string>
+    <string name="permlab_pkgUsageStats" msgid="8787352074326748892">"የስታስቲክስ አጠቃቀም ምንዝርን አዘምን"</string>
+    <string name="permdesc_pkgUsageStats" msgid="1106612424254277630">"የተሰበሰቡ የዕቃ አጠቃቃም ስታስቲክሶችን ለመለወጥ ለመተግበሪያው ይፈቅዳል፡፡ለመደበኛ ትግበራዎች ጥቅም አይደለም፡፡"</string>
+    <string name="permlab_copyProtectedData" msgid="4341036311211406692">"ይዘትን ቅዳ"</string>
+    <string name="permdesc_copyProtectedData" msgid="4390697124288317831">"ይዘትን ለመቅዳት ነባሪ መያዣ አገልግሎት እንዲያስነሳ ለመተግበሪው ይፈቅዳሉ፡፡ ለመደበኛ መተግበሪያዎች ለመጠቀም አይሆንም፡፡"</string>
+    <string name="permlab_route_media_output" msgid="1642024455750414694">"የሚዲያ ውፅአት መንገድ"</string>
+    <string name="permdesc_route_media_output" msgid="4932818749547244346">"አንድ መተግበሪያ የሚዲያ ውፅአትን ወደ ሌላ ውጫዊ መሳሪያ እንዲመራ ይፈቅድለታል።"</string>
+    <string name="permlab_access_keyguard_secure_storage" msgid="7565552237977815047">"ደህንነቱ በቁልፍ የተጠበቀ ማከማቻን ይድረሱ"</string>
+    <string name="permdesc_access_keyguard_secure_storage" msgid="5866245484303285762">"አንድ መተግበሪያ ደህንነቱ በቁልፍ የተጠበቀ ማከማቻ እንዲደርስ ያስችለዋል።"</string>
+    <string name="permlab_control_keyguard" msgid="172195184207828387">"የቁልፍ መጠበቂያውን ማሳየት እና መደበቅ ይቆጣጠሩ"</string>
+    <string name="permdesc_control_keyguard" msgid="3043732290518629061">"አንድ መተግበሪያ የቁልፍ መጠበቂያውን እንዲቆጣጠር ያስችለዋል።"</string>
+    <string name="tutorial_double_tap_to_zoom_message_short" msgid="4070433208160063538">"ለአጉላ መቆጣጠሪያ ሁለት ጊዜ ነካ አድርግ"</string>
+    <string name="gadget_host_error_inflating" msgid="4882004314906466162">"ምግብር ማከል አልተቻለም።"</string>
+    <string name="ime_action_go" msgid="8320845651737369027">"ሂድ"</string>
+    <string name="ime_action_search" msgid="658110271822807811">"ፍለጋ"</string>
+    <string name="ime_action_send" msgid="2316166556349314424">" ይላኩ"</string>
+    <string name="ime_action_next" msgid="3138843904009813834">"በመቀጠል"</string>
+    <string name="ime_action_done" msgid="8971516117910934605">"ተከናውኗል"</string>
+    <string name="ime_action_previous" msgid="1443550039250105948">"ያለፈው"</string>
+    <string name="ime_action_default" msgid="2840921885558045721">"አከናውን"</string>
+    <string name="dial_number_using" msgid="5789176425167573586">"<xliff:g id="NUMBER">%s</xliff:g>ን በመጠቀም \n ደውል"</string>
+    <string name="create_contact_using" msgid="4947405226788104538">"<xliff:g id="NUMBER">%s</xliff:g>ን በመጠቀም \n ዕውቂያ ፍጠር"</string>
+    <string name="grant_credentials_permission_message_header" msgid="2106103817937859662">"የሚከተለው ወይም ተጨማሪ መተግበሪያዎች ወደ መለያህ ለመድረስ አሁን እና ወደፊት ፈቃድ ትጠይቃለህ።"</string>
+    <string name="grant_credentials_permission_message_footer" msgid="3125211343379376561">"ይህን ጥየቃ መፍቀድ ይፈልጋሉ?"</string>
+    <string name="grant_permissions_header_text" msgid="6874497408201826708">"የመድረሻ ጥያቄ"</string>
+    <string name="allow" msgid="7225948811296386551">"ይፍቀዱ"</string>
+    <string name="deny" msgid="2081879885755434506">"ያስተባብሉ"</string>
+    <string name="permission_request_notification_title" msgid="6486759795926237907">"ፈቃድ ተጠይቋል"</string>
+    <string name="permission_request_notification_with_subtitle" msgid="8530393139639560189">\n" ለ<xliff:g id="ACCOUNT">%s</xliff:g> መለያ ፈቃድ ተጠይቋል"</string>
+    <string name="input_method_binding_label" msgid="1283557179944992649">"ግቤት ስልት"</string>
+    <string name="sync_binding_label" msgid="3687969138375092423">"አስምር"</string>
+    <string name="accessibility_binding_label" msgid="4148120742096474641">"ተደራሽነት"</string>
+    <string name="wallpaper_binding_label" msgid="1240087844304687662">"ልጣፍ"</string>
+    <string name="chooser_wallpaper" msgid="7873476199295190279">"ልጣፍ ለውጥ"</string>
+    <string name="notification_listener_binding_label" msgid="2014162835481906429">"ማሳወቂያ አዳማጭ"</string>
+    <string name="vpn_title" msgid="19615213552042827">"VPN ነቅቷል።"</string>
+    <string name="vpn_title_long" msgid="6400714798049252294">"VPN በ<xliff:g id="APP">%s</xliff:g>ገብሯል"</string>
+    <string name="vpn_text" msgid="3011306607126450322">"አውታረመረብ ለማደራጀት  ንካ።"</string>
+    <string name="vpn_text_long" msgid="6407351006249174473">"ለ<xliff:g id="SESSION">%s</xliff:g>የተገናኘ። አውታረመረቡን ለማደራጀት  ንካ።"</string>
+    <string name="vpn_lockdown_connecting" msgid="6443438964440960745">"ሁልጊዜ የበራ VPN በመገናኘት ላይ…"</string>
+    <string name="vpn_lockdown_connected" msgid="8202679674819213931">"ሁልጊዜ የበራ VPN ተገናኝቷል"</string>
+    <string name="vpn_lockdown_error" msgid="6009249814034708175">"ሁልጊዜ የበራ VPN ስህተት"</string>
+    <string name="vpn_lockdown_config" msgid="6415899150671537970">"ለማዋቀር ይንኩ"</string>
+    <string name="upload_file" msgid="2897957172366730416">"ፋይል ምረጥ"</string>
+    <string name="no_file_chosen" msgid="6363648562170759465">"ምንም ፋይል አልተመረጠም"</string>
+    <string name="reset" msgid="2448168080964209908">"ዳግም አስጀምር"</string>
+    <string name="submit" msgid="1602335572089911941">"አስረክብ"</string>
+    <string name="car_mode_disable_notification_title" msgid="3164768212003864316">"የመኪና ሁነታ ነቅቷል"</string>
+    <string name="car_mode_disable_notification_message" msgid="8035230537563503262">"ከመኪና ሁናቴ ለመውጣት ንካ።"</string>
+    <string name="tethered_notification_title" msgid="3146694234398202601">"መሰካት ወይም ገባሪ ድረስ ነጥብ"</string>
+    <string name="tethered_notification_message" msgid="6857031760103062982">"ለማዘጋጀት ንካ።"</string>
+    <string name="back_button_label" msgid="2300470004503343439">"ተመለስ"</string>
+    <string name="next_button_label" msgid="1080555104677992408">"ቀጥሎ"</string>
+    <string name="skip_button_label" msgid="1275362299471631819">"ዝለል"</string>
+    <string name="throttle_warning_notification_title" msgid="4890894267454867276">"ከፍተኛ የተንቀሳቃሽ ውሂብ ጥቅም"</string>
+    <string name="throttle_warning_notification_message" msgid="3340822228599337743">"ስለ ተንቀሳቃሽ ስልክ ውሂብ አጠቃቀም የበለጠ ለመረዳት ንካ።"</string>
+    <string name="throttled_notification_title" msgid="6269541897729781332">"የተንቀሳቃሽ ውሂብ ወሰን አልፏል"</string>
+    <string name="throttled_notification_message" msgid="5443457321354907181">"ስለ ተንቀሳቃሽ ስልክ ውሂብ አጠቃቀም የበለጠ ለመረዳት ንካ።"</string>
+    <string name="no_matches" msgid="8129421908915840737">"ምንም ተመሳሳይ የለም።"</string>
+    <string name="find_on_page" msgid="1946799233822820384">"በገፅ ላይ አግኝ"</string>
+  <plurals name="matches_found">
+    <item quantity="one" msgid="8167147081136579439">"1 ጨዋታ"</item>
+    <item quantity="other" msgid="4641872797067609177">"<xliff:g id="INDEX">%d</xliff:g> ከ <xliff:g id="TOTAL">%d</xliff:g>"</item>
+  </plurals>
+    <string name="action_mode_done" msgid="7217581640461922289">"ተከናውኗል"</string>
+    <string name="progress_unmounting" product="nosdcard" msgid="3923810448507612746">"የUSB ማከማቻ በመንቀል ላይ...."</string>
+    <string name="progress_unmounting" product="default" msgid="1327894998409537190">"የSD ካርድ በመንቀል ላይ...."</string>
+    <string name="progress_erasing" product="nosdcard" msgid="4521573321524340058">"USB ማከማቻ በማጥፋት ላይ..."</string>
+    <string name="progress_erasing" product="default" msgid="6596988875507043042">"SD ካርድ በማጥፋት ላይ..."</string>
+    <string name="format_error" product="nosdcard" msgid="6299769563624776948">"USB ማከማቻ መሰረዝ አልተቻለም፡፡"</string>
+    <string name="format_error" product="default" msgid="7315248696644510935">"SD ካርድ መሰረዝ አልተቻለም፡፡"</string>
+    <string name="media_bad_removal" msgid="7960864061016603281">"ከመነቀሉ በፊት SD ካርድ ተወግዶ ነበር።"</string>
+    <string name="media_checking" product="nosdcard" msgid="418188720009569693">"USB ማከማቻ በአሁኑ ጊዜ ታይቷል።"</string>
+    <string name="media_checking" product="default" msgid="7334762503904827481">"SD ካርድ በአሁኑ ጊዜ ታይቷል።"</string>
+    <string name="media_removed" msgid="7001526905057952097">"SD ካርድ ተወግዷል።"</string>
+    <string name="media_shared" product="nosdcard" msgid="5830814349250834225">"USB ማከማቻ በአሁኑ ጊዜ በኮምፒዩተርላይ በመገልገል ላይ ነው።"</string>
+    <string name="media_shared" product="default" msgid="5706130568133540435">"SD ካርድ በአሁኑ ጊዜ በኮምፒዩተር ጥቅም ላይ ነው።"</string>
+    <string name="media_unknown_state" msgid="729192782197290385">"የውጭ  ማህደረ ትውስታ በማይታወቅ ሁነታ ውስጥ።"</string>
+    <string name="share" msgid="1778686618230011964">"አጋራ"</string>
+    <string name="find" msgid="4808270900322985960">"አግኝ"</string>
+    <string name="websearch" msgid="4337157977400211589">"ድረ ፍለጋ"</string>
+    <string name="find_next" msgid="5742124618942193978">"ቀጣዩን አግኝ"</string>
+    <string name="find_previous" msgid="2196723669388360506">"ቀዳሚውን አግኝ"</string>
+    <string name="gpsNotifTicker" msgid="5622683912616496172">"የስፍራ ጥየቃ ቅፅ<xliff:g id="NAME">%s</xliff:g>"</string>
+    <string name="gpsNotifTitle" msgid="5446858717157416839">"የስፍራ ጥየቃ"</string>
+    <string name="gpsNotifMessage" msgid="1374718023224000702">" በ፡<xliff:g id="NAME">%1$s</xliff:g>(<xliff:g id="SERVICE">%2$s</xliff:g>) ተጠየቀ"</string>
+    <string name="gpsVerifYes" msgid="2346566072867213563">"አዎ"</string>
+    <string name="gpsVerifNo" msgid="1146564937346454865">"አይ"</string>
+    <string name="sync_too_many_deletes" msgid="5296321850662746890">"የሰርዝ ወሰን ከመጠን አልፏል"</string>
+    <string name="sync_too_many_deletes_desc" msgid="496551671008694245">"<xliff:g id="NUMBER_OF_DELETED_ITEMS">%1$d</xliff:g> የተሰረዙ ንጥሎች ለ<xliff:g id="TYPE_OF_SYNC">%2$s</xliff:g>፣ <xliff:g id="ACCOUNT_NAME">%3$s</xliff:g> መለያ አሉ። ምን ማድረግ ትፈልጋለህ?"</string>
+    <string name="sync_really_delete" msgid="2572600103122596243">"ንጥሎቹን ሰርዝ"</string>
+    <string name="sync_undo_deletes" msgid="2941317360600338602">"ስርዞቹን ቀልብስ"</string>
+    <string name="sync_do_nothing" msgid="3743764740430821845">"ለአሁን ምንም አታድርግ"</string>
+    <string name="choose_account_label" msgid="5655203089746423927">"መለያ ምረጥ"</string>
+    <string name="add_account_label" msgid="2935267344849993553">"መለያ አክል"</string>
+    <string name="add_account_button_label" msgid="3611982894853435874">"መለያ አክል"</string>
+    <string name="number_picker_increment_button" msgid="2412072272832284313">"ጨምር"</string>
+    <string name="number_picker_decrement_button" msgid="476050778386779067">"ቀንስ"</string>
+    <string name="number_picker_increment_scroll_mode" msgid="3073101067441638428">"<xliff:g id="VALUE">%s</xliff:g> ንካ እና ያዝ።"</string>
+    <string name="number_picker_increment_scroll_action" msgid="9101473045891835490">"ለመጨመር ወደ ላይ እና ለመቀነስ ወደ ታች አንሸራትት።"</string>
+    <string name="time_picker_increment_minute_button" msgid="8865885114028614321">"ደቂቃ ጨምር"</string>
+    <string name="time_picker_decrement_minute_button" msgid="6246834937080684791">"ደቂቃ ቀንስ"</string>
+    <string name="time_picker_increment_hour_button" msgid="3652056055810223139">"ሰዓት ጨምር"</string>
+    <string name="time_picker_decrement_hour_button" msgid="1377479863429214792">"ሰዓት ቀንስ"</string>
+    <string name="time_picker_increment_set_pm_button" msgid="4147590696151230863">"PM አዘጋጅ"</string>
+    <string name="time_picker_decrement_set_am_button" msgid="8302140353539486752">"AM አዘጋጅ"</string>
+    <string name="date_picker_increment_month_button" msgid="5369998479067934110">"ወር ጨምር"</string>
+    <string name="date_picker_decrement_month_button" msgid="1832698995541726019">"ወር ቀንስ"</string>
+    <string name="date_picker_increment_day_button" msgid="7130465412308173903">"ቀን ጨምር"</string>
+    <string name="date_picker_decrement_day_button" msgid="4131881521818750031">"ቀን ቀንስ"</string>
+    <string name="date_picker_increment_year_button" msgid="6318697384310808899">"ዓመት ጨምር"</string>
+    <string name="date_picker_decrement_year_button" msgid="4482021813491121717">"ዓመት ቀንስ"</string>
+    <string name="keyboardview_keycode_alt" msgid="4856868820040051939">"Alt"</string>
+    <string name="keyboardview_keycode_cancel" msgid="1203984017245783244">"ተወው"</string>
+    <string name="keyboardview_keycode_delete" msgid="3337914833206635744">"ሰርዝ"</string>
+    <string name="keyboardview_keycode_done" msgid="1992571118466679775">"ተከናውኗል"</string>
+    <string name="keyboardview_keycode_mode_change" msgid="4547387741906537519">"ሞድ ለውጥ"</string>
+    <string name="keyboardview_keycode_shift" msgid="2270748814315147690">"ቀይር"</string>
+    <string name="keyboardview_keycode_enter" msgid="2985864015076059467">"አስገባ"</string>
+    <string name="activitychooserview_choose_application" msgid="2125168057199941199">"መተግበሪያ ምረጥ"</string>
+    <string name="activitychooserview_choose_application_error" msgid="8624618365481126668">"<xliff:g id="APPLICATION_NAME">%s</xliff:g>ን ማስጀመር አልተቻለም"</string>
+    <string name="shareactionprovider_share_with" msgid="806688056141131819">"ተጋራ ከ"</string>
+    <string name="shareactionprovider_share_with_application" msgid="5627411384638389738">"ከ <xliff:g id="APPLICATION_NAME">%s</xliff:g> ጋር ተጋራ"</string>
+    <string name="content_description_sliding_handle" msgid="415975056159262248">"ባለስላይድ መያዣ፡፡ ዳስ&amp;ያዝ፡፡"</string>
+    <string name="description_direction_up" msgid="7169032478259485180">"ለ<xliff:g id="TARGET_DESCRIPTION">%s</xliff:g> ወደ ላይ አንሸራትት።"</string>
+    <string name="description_direction_down" msgid="5087739728639014595">"ለ<xliff:g id="TARGET_DESCRIPTION">%s</xliff:g> ወደ ታች አንሸራትት።"</string>
+    <string name="description_direction_left" msgid="7207478719805562165">"ለ<xliff:g id="TARGET_DESCRIPTION">%s</xliff:g> ወደ ግራ አንሸራትት።"</string>
+    <string name="description_direction_right" msgid="8034433242579600980">"ለ<xliff:g id="TARGET_DESCRIPTION">%s</xliff:g> ወደ ቀኝ አንሸራትት።"</string>
+    <string name="description_target_unlock" msgid="2228524900439801453">"ክፈት"</string>
+    <string name="description_target_camera" msgid="969071997552486814">"ካሜራ"</string>
+    <string name="description_target_silent" msgid="893551287746522182">"ፀጥታ"</string>
+    <string name="description_target_soundon" msgid="30052466675500172">"ድምፅ አብራ"</string>
+    <string name="description_target_search" msgid="3091587249776033139">"ፍለጋ"</string>
+    <string name="description_target_unlock_tablet" msgid="3833195335629795055">"ላለመቆለፍ አንሸራት፡፡"</string>
+    <string name="keyboard_headset_required_to_hear_password" msgid="7011927352267668657">"የይለፍ ቃል ቁልፎች  ሲነገሩ ለመስማት የጆሮ ማዳመጫ ሰካ።"</string>
+    <string name="keyboard_password_character_no_headset" msgid="2859873770886153678">"ነጥብ."</string>
+    <string name="action_bar_home_description" msgid="5293600496601490216">"መነሻ ዳስስ"</string>
+    <string name="action_bar_up_description" msgid="2237496562952152589">"አስስ"</string>
+    <string name="action_menu_overflow_description" msgid="2295659037509008453">"ተጨማሪ አማራጮች"</string>
+    <string name="action_bar_home_description_format" msgid="7965984360903693903">"%1$s፣ %2$s"</string>
+    <string name="action_bar_home_subtitle_description_format" msgid="6985546530471780727">"%1$s፣ %2$s፣ %3$s"</string>
+    <string name="storage_internal" msgid="4891916833657929263">"ውስጣዊ ማከማቻ"</string>
+    <string name="storage_sd_card" msgid="3282948861378286745">"SD ካርድ"</string>
+    <string name="storage_usb" msgid="3017954059538517278">"የUSB  ማከማቻ"</string>
+    <string name="extract_edit_menu_button" msgid="8940478730496610137">"አርትዕ"</string>
+    <string name="data_usage_warning_title" msgid="1955638862122232342">"የውሂብ አጠቃቀም ማስጠንቀቂየ"</string>
+    <string name="data_usage_warning_body" msgid="2814673551471969954">"ቅንብሮችን እና አጠቃቀምን ለማየት ይንኩ።"</string>
+    <string name="data_usage_3g_limit_title" msgid="7093334419518706686">"2G-3G ውሂብ ቦዝኗል"</string>
+    <string name="data_usage_4g_limit_title" msgid="7636489436819470761">"4G ውሂብ ቦዝኗል"</string>
+    <string name="data_usage_mobile_limit_title" msgid="7869402519391631884">"የተንቀሳቃሽ ውሂብ ቦዝኗል"</string>
+    <string name="data_usage_wifi_limit_title" msgid="8992154736441284865">"Wi-Fi ውሂብ ቦዝኗል"</string>
+    <string name="data_usage_limit_body" msgid="3317964706973601386">"ለማንቃት ንካ።"</string>
+    <string name="data_usage_3g_limit_snoozed_title" msgid="7026739121138005231">"2G-3G የውሂብ ወሰን አልፏል"</string>
+    <string name="data_usage_4g_limit_snoozed_title" msgid="1106562779311209039">"4G ውሂብ ወሰን አልፏል"</string>
+    <string name="data_usage_mobile_limit_snoozed_title" msgid="279240572165412168">"የተንቀሳቃሽ ውሂብ ወሰን አልፏል"</string>
+    <string name="data_usage_wifi_limit_snoozed_title" msgid="8743856006384825974">"Wi-Fi ውሂብ ገደብ ታልፏል"</string>
+    <string name="data_usage_limit_snoozed_body" msgid="7035490278298441767">"<xliff:g id="SIZE">%s</xliff:g> ከተወሰነለት በላይ።"</string>
+    <string name="data_usage_restricted_title" msgid="5965157361036321914">"ዳራ ውሂብ የተገደበ ነው"</string>
+    <string name="data_usage_restricted_body" msgid="6741521330997452990">"ገደብ ለማስወገድ ንካ።"</string>
+    <string name="ssl_certificate" msgid="6510040486049237639">"የደህንነት ዕውቅና ማረጋገጫ"</string>
+    <string name="ssl_certificate_is_valid" msgid="6825263250774569373">"ይህ የዐዕውቅና ማረጋገጫ ትክክል ነው።"</string>
+    <string name="issued_to" msgid="454239480274921032">"ለ፡ ተዘጋጀ"</string>
+    <string name="common_name" msgid="2233209299434172646">"መጠሪያ ስም፡"</string>
+    <string name="org_name" msgid="6973561190762085236">"መስርያ ቤት:"</string>
+    <string name="org_unit" msgid="7265981890422070383">"ድርጅታዊ አሃድ፡"</string>
+    <string name="issued_by" msgid="2647584988057481566">"በ፡ የተዘጋጀ"</string>
+    <string name="validity_period" msgid="8818886137545983110">"ትክክለኝነት፡"</string>
+    <string name="issued_on" msgid="5895017404361397232">"በ፡ ተዘጋጀ"</string>
+    <string name="expires_on" msgid="3676242949915959821">"በ፡ ጊዜው ያልፋል"</string>
+    <string name="serial_number" msgid="758814067660862493">"መለያ ቁጥር"</string>
+    <string name="fingerprints" msgid="4516019619850763049">"የጣት አሻራዎች፡"</string>
+    <string name="sha256_fingerprint" msgid="4391271286477279263">"SHA-256 የጣት አሻራ፡"</string>
+    <string name="sha1_fingerprint" msgid="7930330235269404581">"SHA-1 የጣት አሻራ፡"</string>
+    <string name="activity_chooser_view_see_all" msgid="4292569383976636200">"ሁሉንም ተመልከት"</string>
+    <string name="activity_chooser_view_dialog_title_default" msgid="4710013864974040615">"እንቅስቃሴ ምረጥ"</string>
+    <string name="share_action_provider_share_with" msgid="5247684435979149216">"ተጋራ ከ"</string>
+    <string name="list_delimeter" msgid="3975117572185494152">"፣ "</string>
+    <string name="sending" msgid="3245653681008218030">"በመላክ ላይ…"</string>
+    <string name="launchBrowserDefault" msgid="2057951947297614725">"ማሰሺያን አስነሳ?"</string>
+    <string name="SetupCallDefault" msgid="5834948469253758575">"ጥሪ ተቀበል?"</string>
+    <string name="activity_resolver_use_always" msgid="8017770747801494933">"ዘወትር"</string>
+    <string name="activity_resolver_use_once" msgid="2404644797149173758">"አንዴ ብቻ"</string>
+    <string name="default_audio_route_name" product="tablet" msgid="4617053898167127471">"ጡባዊ ተኮ"</string>
+    <string name="default_audio_route_name" product="default" msgid="4239291273420140123">"ስልክ"</string>
+    <string name="default_audio_route_name_headphones" msgid="8119971843803439110">"የጆሮ ማዳመጫዎች"</string>
+    <string name="default_audio_route_name_dock_speakers" msgid="6240602982276591864">"የትከል ድምፅ ማጉያዎች"</string>
+    <string name="default_media_route_name_hdmi" msgid="2450970399023478055">"HDMI"</string>
+    <string name="default_audio_route_category_name" msgid="3722811174003886946">"ስርዓት"</string>
+    <string name="bluetooth_a2dp_audio_route_name" msgid="8575624030406771015">"የብሉቱዝ ድምጽ"</string>
+    <string name="wireless_display_route_description" msgid="9070346425023979651">"ገመድ አልባ ማሳያ"</string>
+    <string name="media_route_button_content_description" msgid="5758553567065145276">"የሚዲያ ውጽዓት"</string>
+    <string name="media_route_chooser_title" msgid="1751618554539087622">"ከመሳሪያ ጋር ያገናኙ"</string>
+    <string name="media_route_chooser_title_for_remote_display" msgid="3395541745872017583">"ማያ ገጽን ወደ መሣሪያ ይውሰዱ"</string>
+    <string name="media_route_chooser_searching" msgid="4776236202610828706">"መሳሪያዎችን በመፈለግ ላይ…"</string>
+    <string name="media_route_chooser_extended_settings" msgid="87015534236701604">"ቅንብሮች"</string>
+    <string name="media_route_controller_disconnect" msgid="8966120286374158649">"ግንኙነት አቋርጥ"</string>
+    <string name="media_route_status_scanning" msgid="7279908761758293783">"በመቃኘት ላይ..."</string>
+    <string name="media_route_status_connecting" msgid="6422571716007825440">"በማገናኘት ላይ..."</string>
+    <string name="media_route_status_available" msgid="6983258067194649391">"የሚገኙ"</string>
+    <string name="media_route_status_not_available" msgid="6739899962681886401">"አይገኝም"</string>
+    <string name="media_route_status_in_use" msgid="4533786031090198063">"በጥቅም ላይ"</string>
+    <string name="display_manager_built_in_display_name" msgid="2583134294292563941">"ውስጥ የተሰራ ማያ ገጽ"</string>
+    <string name="display_manager_hdmi_display_name" msgid="1555264559227470109">"HDMI ማያ ገጽ"</string>
+    <string name="display_manager_overlay_display_name" msgid="5142365982271620716">"ተደራቢ #<xliff:g id="ID">%1$d</xliff:g>"</string>
+    <string name="display_manager_overlay_display_title" msgid="652124517672257172">"<xliff:g id="NAME">%1$s</xliff:g>፦ <xliff:g id="WIDTH">%2$d</xliff:g>x<xliff:g id="HEIGHT">%3$d</xliff:g>፣ <xliff:g id="DPI">%4$d</xliff:g> dpi"</string>
+    <string name="display_manager_overlay_display_secure_suffix" msgid="6022119702628572080">"፣ የተጠበቀ"</string>
+    <string name="wifi_display_notification_connecting_title" msgid="2838646471050359706">"ማያ ገጽን በመውሰድ ላይ"</string>
+    <string name="wifi_display_notification_connecting_message" msgid="5837350993752841389">"ከ<xliff:g id="NAME">%1$s</xliff:g> ጋር በመገናኘት ላይ"</string>
+    <string name="wifi_display_notification_connected_title" msgid="8567308065912676285">"ማያ ገጽን በመውሰድ ላይ"</string>
+    <string name="wifi_display_notification_connected_message" msgid="2587209325701109715">"ከ<xliff:g id="NAME">%1$s</xliff:g> ጋር ተገናኝቷል"</string>
+    <string name="wifi_display_notification_disconnect" msgid="6183754463561153372">"ግንኙነት አቋርጥ"</string>
+    <string name="kg_emergency_call_label" msgid="684946192523830531">"የአደጋ ጊዜ ጥሪ"</string>
+    <string name="kg_forgot_pattern_button_text" msgid="8852021467868220608">"ስርዓተ ጥለቱን እርሳ"</string>
+    <string name="kg_wrong_pattern" msgid="1850806070801358830">"የተሳሳተ ስርዓተ ጥለት"</string>
+    <string name="kg_wrong_password" msgid="2333281762128113157">"የተሳሳተ ይለፍ ቃል"</string>
+    <string name="kg_wrong_pin" msgid="1131306510833563801">"የተሳሳተ ፒን"</string>
+    <string name="kg_too_many_failed_attempts_countdown" msgid="6358110221603297548">"በ<xliff:g id="NUMBER">%1$d</xliff:g> ሰከንዶች ውስጥ እንደገና ይሞክሩ።"</string>
+    <string name="kg_pattern_instructions" msgid="398978611683075868">"ስርዓተ ጥለትዎን ይሳሉ"</string>
+    <string name="kg_sim_pin_instructions" msgid="2319508550934557331">"የሲም ፒን ያስገቡ"</string>
+    <string name="kg_pin_instructions" msgid="2377242233495111557">"ፒን ያስገቡ"</string>
+    <string name="kg_password_instructions" msgid="5753646556186936819">"የይለፍ ቃል ያስገቡ"</string>
+    <string name="kg_puk_enter_puk_hint" msgid="453227143861735537">"ሲም አሁን ተሰናክሏል። ለመቀጠል የPUK ኮድ ያስገቡ። ለዝርዝር ድምጸ ተያያዥ ሞደምን ያግኙ።"</string>
+    <string name="kg_puk_enter_pin_hint" msgid="7871604527429602024">"የተፈለገውን የፒን ኮድ ያስገቡ"</string>
+    <string name="kg_enter_confirm_pin_hint" msgid="325676184762529976">"የተፈለገውን የፒን ኮድ ያረጋግጡ"</string>
+    <string name="kg_sim_unlock_progress_dialog_message" msgid="8950398016976865762">"ሲም ካርዱን በመክፈት ላይ…"</string>
+    <string name="kg_password_wrong_pin_code" msgid="1139324887413846912">"ትክክል ያልሆነ ፒን ኮድ።"</string>
+    <string name="kg_invalid_sim_pin_hint" msgid="8795159358110620001">"ከ4 እስከ 8 ቁጥሮች የያዘ ፒን ይተይቡ።"</string>
+    <string name="kg_invalid_sim_puk_hint" msgid="7553388325654369575">"የPUK ኮድ 8 ወይም ከዚያ በላይ ቁጥሮች ሊኖረው ይገባል።"</string>
+    <string name="kg_invalid_puk" msgid="3638289409676051243">"ትክክለኛውን የPUK ኮድ እንደገና ያስገቡ። ተደጋጋሚ ሙከራዎች ሲም ካርዱን እስከመጨረሻው ያሰናክሉታል።"</string>
+    <string name="kg_invalid_confirm_pin_hint" product="default" msgid="7003469261464593516">"ፒን ኮዶች አይገጣጠሙም"</string>
+    <string name="kg_login_too_many_attempts" msgid="6486842094005698475">"በጣም ብዙ የስርዓተ ጥለት ሙከራዎች"</string>
+    <string name="kg_login_instructions" msgid="1100551261265506448">"ለመክፈት በGoogle መለያዎ ይግቡ።"</string>
+    <string name="kg_login_username_hint" msgid="5718534272070920364">"የተጠቃሚ ስም (ኢሜይል)"</string>
+    <string name="kg_login_password_hint" msgid="9057289103827298549">"የይለፍ ቃል"</string>
+    <string name="kg_login_submit_button" msgid="5355904582674054702">"ግባ"</string>
+    <string name="kg_login_invalid_input" msgid="5754664119319872197">"ልክ ያልሆነ የተጠቃሚ ስም ወይም የይለፍ ቃል።"</string>
+    <string name="kg_login_account_recovery_hint" msgid="5690709132841752974">"የተጠቃሚ ስምዎን ወይም የይለፍ ቃልዎን ረሱት?\n"<b>"google.com/accounts/recovery"</b>"ይጎብኙ።"</string>
+    <string name="kg_login_checking_password" msgid="1052685197710252395">"መለያውን በማረጋገጥ ላይ…"</string>
+    <string name="kg_too_many_failed_pin_attempts_dialog_message" msgid="8276745642049502550">"ፒንዎን <xliff:g id="NUMBER_0">%d</xliff:g> ጊዜ በትክክል አልተየቡም። \n\nበ<xliff:g id="NUMBER_1">%d</xliff:g> ሰኮንዶች ውስጥ እንደገና ይሞክሩ።"</string>
+    <string name="kg_too_many_failed_password_attempts_dialog_message" msgid="7813713389422226531">"የይለፍ ቃልዎን <xliff:g id="NUMBER_0">%d</xliff:g> ጊዜ ትክክል ባልሆነ መንገድ ተይበዋል።\n\nበ<xliff:g id="NUMBER_1">%d</xliff:g> ሰኮንዶች ውስጥ እንደገና ይሞክሩ።"</string>
+    <string name="kg_too_many_failed_pattern_attempts_dialog_message" msgid="74089475965050805">"የመክፈቻ ስርዓተ ጥለትዎን <xliff:g id="NUMBER_0">%d</xliff:g> ጊዜ በትክክል አልሳሉትም። \n\n ከ<xliff:g id="NUMBER_1">%d</xliff:g> ሰከንዶች በኋላ እንደገና ይሞክሩ።"</string>
+    <string name="kg_failed_attempts_almost_at_wipe" product="tablet" msgid="1575557200627128949">"ጡባዊ ቱኮውን <xliff:g id="NUMBER_0">%d</xliff:g> ጊዜ ትክክል ባልሆነ መንገድ ለመክፈት ሞክረዋል። ከ<xliff:g id="NUMBER_1">%d</xliff:g> ተጨማሪ ያልተሳኩ ሙከራዎች በኋላ ጡባዊ ቱኮው በፋብሪካ ነባሪ ቅንብር ዳግም ይጀመርና ሁሉም የተጠቃሚ ውሂብ ይጠፋል።"</string>
+    <string name="kg_failed_attempts_almost_at_wipe" product="default" msgid="4051015943038199910">"ስልኩን <xliff:g id="NUMBER_0">%d</xliff:g> ጊዜ ትክክል ባልሆነ መንገድ ለመክፈት ሞክረዋል። ከ<xliff:g id="NUMBER_1">%d</xliff:g> ተጨማሪ ያልተሳኩ ሙከራዎች በኋላ ስልኩ በፋብሪካ ነባሪ ቅንብር ዳግም ይጀመርና ሁሉም የተጠቃሚ ውሂብ ይጠፋል።"</string>
+    <string name="kg_failed_attempts_now_wiping" product="tablet" msgid="2072996269148483637">"ጡባዊ ቱኮዎን <xliff:g id="NUMBER">%d</xliff:g> ጊዜ ትክክል ባልሆነ መንገድ ለመክፈት ሞክረዋል። ጡባዊ ቱኮዎ አሁን በፋብሪካ ነባሪ ቅንብር ዳግም ይጀመራል።"</string>
+    <string name="kg_failed_attempts_now_wiping" product="default" msgid="4817627474419471518">"ስልኩን <xliff:g id="NUMBER">%d</xliff:g> ጊዜ ትክክል ባልሆነ መንገድ ለመክፈት ሞክረዋል። ስልኩ አሁን በፋብሪካ ነባሪ ቅንብር ዳግም ይጀመራል።"</string>
+    <string name="kg_failed_attempts_almost_at_login" product="tablet" msgid="3253575572118914370">"የመክፈቻ ስርዓተ ጥለቱን <xliff:g id="NUMBER_0">%d</xliff:g> ጊዜ በትክክል አልሳሉትም። ከ<xliff:g id="NUMBER_1">%d</xliff:g> ተጨማሪ ያልተሳኩ ሙከራዎች በኋላ የኢሜይል መለያ ተጠቅመው ጡባዊ ቱኮዎን እንዲከፍቱ ይጠየቃሉ።\n\n ከ<xliff:g id="NUMBER_2">%d</xliff:g> ከሰከንዶች በኋላ እንደገና ይሞክሩ።"</string>
+    <string name="kg_failed_attempts_almost_at_login" product="default" msgid="1437638152015574839">"የመክፈቻ ስርዓተ ጥለቱን <xliff:g id="NUMBER_0">%d</xliff:g> ጊዜ በትክክል አልሳሉትም። ከ<xliff:g id="NUMBER_1">%d</xliff:g> ተጨማሪ ያልተሳኩ ሙከራዎች በኋላ የኢሜይል መለያ ተጠቅመው ስልክዎን እንዲከፍቱ ይጠየቃሉ።\n\nእባክዎ ከ<xliff:g id="NUMBER_2">%d</xliff:g> ሰከንዶች በኋላ እንደገና ይሞክሩ።"</string>
+    <string name="kg_text_message_separator" product="default" msgid="4160700433287233771">" — "</string>
+    <string name="kg_reordering_delete_drop_target_text" msgid="7899202978204438708">"አስወግድ"</string>
+    <string name="safe_media_volume_warning" product="default" msgid="7324161939475478066">"ድምጽ ከሚመከረው መጠን በላይ ይጨመር?\nለረጅም ጊዜ በከፍተኛ ድምጽ መስማት የመስማት ችሎታዎን ሊጎዳ ይችላል።"</string>
+    <string name="continue_to_enable_accessibility" msgid="1626427372316070258">"ተደራሽነትን ለማንቃት ሁለት ጣቶችዎን ባሉበት ያቆዩዋቸው።"</string>
+    <string name="accessibility_enabled" msgid="1381972048564547685">"ተደራሽነት ነቅቷል።"</string>
+    <string name="enable_accessibility_canceled" msgid="3833923257966635673">"ተደራሽነት ተሰርዟል።"</string>
+    <string name="user_switched" msgid="3768006783166984410">"የአሁኑ ተጠቃሚ <xliff:g id="NAME">%1$s</xliff:g>።"</string>
+    <string name="owner_name" msgid="2716755460376028154">"ባለቤት"</string>
+    <string name="error_message_title" msgid="4510373083082500195">"ስህተት"</string>
+    <string name="app_no_restricted_accounts" msgid="5739463249673727736">"ይህ መተግበሪያ የተገደቡ መገለጫዎች መለያዎችን አይደግፍም"</string>
+    <string name="app_not_found" msgid="3429141853498927379">"ይህን እርምጃ የሚያከናውን ምንም መተግበሪያ አልተገኘም"</string>
+    <string name="revoke" msgid="5404479185228271586">"ሻር"</string>
+    <string name="mediasize_iso_a0" msgid="1994474252931294172">"አይ ኤስ ኦ ኤ0"</string>
+    <string name="mediasize_iso_a1" msgid="3333060421529791786">"አይ ኤስ ኦ ኤ1"</string>
+    <string name="mediasize_iso_a2" msgid="3097535991925798280">"አይ ኤስ ኦ ኤ2"</string>
+    <string name="mediasize_iso_a3" msgid="3023213259314236123">"አይ ኤስ ኦ ኤ3"</string>
+    <string name="mediasize_iso_a4" msgid="231745325296873764">"አይ ኤስ ኦ ኤ4"</string>
+    <string name="mediasize_iso_a5" msgid="3484327407340865411">"አይ ኤስ ኦ ኤ5"</string>
+    <string name="mediasize_iso_a6" msgid="4861908487129577530">"አይ ኤስ ኦ ኤ6"</string>
+    <string name="mediasize_iso_a7" msgid="5890208588072936130">"አይ ኤስ ኦ ኤ7"</string>
+    <string name="mediasize_iso_a8" msgid="4319425041085816612">"አይ ኤስ ኦ ኤ8"</string>
+    <string name="mediasize_iso_a9" msgid="4882220529506432008">"አይ ኤስ ኦ ኤ9"</string>
+    <string name="mediasize_iso_a10" msgid="2382866026365359391">"አይ ኤስ ኦ ኤ10"</string>
+    <string name="mediasize_iso_b0" msgid="3651827147402009675">"አይ ኤስ ኦ ቢ0"</string>
+    <string name="mediasize_iso_b1" msgid="6072859628278739957">"አይ ኤስ ኦ ቢ1"</string>
+    <string name="mediasize_iso_b2" msgid="1348731852150380378">"አይ ኤስ ኦ ቢ2"</string>
+    <string name="mediasize_iso_b3" msgid="2612510181259261379">"አይ ኤስ ኦ ቢ3"</string>
+    <string name="mediasize_iso_b4" msgid="695151378838115434">"አይ ኤስ ኦ ቢ4"</string>
+    <string name="mediasize_iso_b5" msgid="4863754285582212487">"አይ ኤስ ኦ ቢ5"</string>
+    <string name="mediasize_iso_b6" msgid="5305816292139647241">"አይ ኤስ ኦ ቢ6"</string>
+    <string name="mediasize_iso_b7" msgid="531673542602786624">"አይ ኤስ ኦ ቢ7"</string>
+    <string name="mediasize_iso_b8" msgid="9164474595708850034">"አይ ኤስ ኦ ቢ8"</string>
+    <string name="mediasize_iso_b9" msgid="282102976764774160">"አይ ኤስ ኦ ቢ9"</string>
+    <string name="mediasize_iso_b10" msgid="4517141714407898976">"አይ ኤስ ኦ ቢ10"</string>
+    <string name="mediasize_iso_c0" msgid="3103521357901591100">"አይ ኤስ ኦ ሲ0"</string>
+    <string name="mediasize_iso_c1" msgid="1231954105985048595">"አይ ኤስ ኦ ሲ1"</string>
+    <string name="mediasize_iso_c2" msgid="927702816980087462">"አይ ኤስ ኦ ሲ2"</string>
+    <string name="mediasize_iso_c3" msgid="835154173518304159">"አይ ኤስ ኦ ሲ3"</string>
+    <string name="mediasize_iso_c4" msgid="5095951985108194011">"አይ ኤስ ኦ ሲ4"</string>
+    <string name="mediasize_iso_c5" msgid="1985397450332305739">"አይ ኤስ ኦ ሲ5"</string>
+    <string name="mediasize_iso_c6" msgid="8147421924174693013">"አይ ኤስ ኦ ሲ6"</string>
+    <string name="mediasize_iso_c7" msgid="8993994925276122950">"አይ ኤስ ኦ ሲ7"</string>
+    <string name="mediasize_iso_c8" msgid="6871178104139598957">"አይ ኤስ ኦ ሲ8"</string>
+    <string name="mediasize_iso_c9" msgid="7983532635227561362">"አይ ኤስ ኦ ሲ9"</string>
+    <string name="mediasize_iso_c10" msgid="5040764293406765584">"አይ ኤስ ኦ ሲ10"</string>
+    <string name="mediasize_na_letter" msgid="2841414839888344296">"ደብዳቤ"</string>
+    <string name="mediasize_na_gvrnmt_letter" msgid="5295836838862962809">"የመንግስት ደብዳቤ"</string>
+    <string name="mediasize_na_legal" msgid="8621364037680465666">"የሕግ"</string>
+    <string name="mediasize_na_junior_legal" msgid="3309324162155085904">"ጁኒየር ህጋዊ"</string>
+    <string name="mediasize_na_ledger" msgid="5567030340509075333">"የሒሳብ መዝገብ"</string>
+    <string name="mediasize_na_tabloid" msgid="4571735038501661757">"ታብሎይድ"</string>
+    <string name="mediasize_na_index_3x5" msgid="5182901917818625126">"መረጃ ጠቋሚ ካርድ 3x5"</string>
+    <string name="mediasize_na_index_4x6" msgid="7687620625422312396">"መረጃ ጠቋሚ ካርድ 4x6"</string>
+    <string name="mediasize_na_index_5x8" msgid="8834215284646872800">"መረጃ ጠቋሚ ካርድ 5x8"</string>
+    <string name="mediasize_na_monarch" msgid="213639906956550754">"ሞናርክ"</string>
+    <string name="mediasize_na_quarto" msgid="835778493593023223">"ኳርቶ"</string>
+    <string name="mediasize_na_foolscap" msgid="1573911237983677138">"ፉልስካፕ"</string>
+    <string name="mediasize_chinese_roc_8k" msgid="3626855847189438896">"አር ኦ ሲ 8ኬ"</string>
+    <string name="mediasize_chinese_roc_16k" msgid="9182191577022943355">"አር ኦ ሲ 16ኬ"</string>
+    <string name="mediasize_chinese_prc_1" msgid="4793232644980170500">"ፒ አር ሲ 1"</string>
+    <string name="mediasize_chinese_prc_2" msgid="5404109730975720670">"ፒ አር ሲ 2"</string>
+    <string name="mediasize_chinese_prc_3" msgid="1335092253339363526">"ፒ አር ሲ 3"</string>
+    <string name="mediasize_chinese_prc_4" msgid="9167997800486569834">"ፒ አር ሲ 4"</string>
+    <string name="mediasize_chinese_prc_5" msgid="845875168823541497">"ፒ አር ሲ 5"</string>
+    <string name="mediasize_chinese_prc_6" msgid="3220325667692648789">"ፒ አር ሲ 6"</string>
+    <string name="mediasize_chinese_prc_7" msgid="1776792138507038527">"ፒ አር ሲ 7"</string>
+    <string name="mediasize_chinese_prc_8" msgid="1417176642687456692">"ፒ አር ሲ 8"</string>
+    <string name="mediasize_chinese_prc_9" msgid="4785983473123798365">"ፒ አር ሲ 9"</string>
+    <string name="mediasize_chinese_prc_10" msgid="7847982299391851899">"ፒ አር ሲ 10"</string>
+    <string name="mediasize_chinese_prc_16k" msgid="262793383539980677">"ፒ አር ሲ 16ኬ"</string>
+    <string name="mediasize_chinese_om_pa_kai" msgid="5256815579447959814">"ፓ ካይ"</string>
+    <string name="mediasize_chinese_om_dai_pa_kai" msgid="7336412963441354407">"ዳይ ፓ ካይ"</string>
+    <string name="mediasize_chinese_om_jurro_ku_kai" msgid="6324465444100490742">"ጁሮ ኩ ካይ"</string>
+    <string name="mediasize_japanese_jis_b10" msgid="1787262845627694376">"ጄ አይ ኤስ ቢ10"</string>
+    <string name="mediasize_japanese_jis_b9" msgid="3336035783663287470">"ጄ አይ ኤስ ቢ9"</string>
+    <string name="mediasize_japanese_jis_b8" msgid="6195398299104345731">"ጄ አይ ኤስ ቢ8"</string>
+    <string name="mediasize_japanese_jis_b7" msgid="1674621886902828884">"ጄ አይ ኤስ ቢ7"</string>
+    <string name="mediasize_japanese_jis_b6" msgid="4170576286062657435">"ጄ አይ ኤስ ቢ6"</string>
+    <string name="mediasize_japanese_jis_b5" msgid="4899297958100032533">"ጄ አይ ኤስ ቢ5"</string>
+    <string name="mediasize_japanese_jis_b4" msgid="4213158129126666847">"ጄ አይ ኤስ ቢ4"</string>
+    <string name="mediasize_japanese_jis_b3" msgid="8513715307410310696">"ጄ አይ ኤስ ቢ3"</string>
+    <string name="mediasize_japanese_jis_b2" msgid="4777690211897131190">"ጄ አይ ኤስ ቢ2"</string>
+    <string name="mediasize_japanese_jis_b1" msgid="4608142385457034603">"ጄ አይ ኤስ ቢ1"</string>
+    <string name="mediasize_japanese_jis_b0" msgid="7587108366572243991">"ጄ አይ ኤስ ቢ0"</string>
+    <string name="mediasize_japanese_jis_exec" msgid="5244075432263649068">"ጄ አይ ኤስ Exec"</string>
+    <string name="mediasize_japanese_chou4" msgid="4941652015032631361">"ቹ4"</string>
+    <string name="mediasize_japanese_chou3" msgid="6387319169263957010">"ቹ3"</string>
+    <string name="mediasize_japanese_chou2" msgid="1299112025415343982">"ቹ2"</string>
+    <string name="mediasize_japanese_hagaki" msgid="8070115620644254565">"ሃጋኪ"</string>
+    <string name="mediasize_japanese_oufuku" msgid="6049065587307896564">"ኦፉኩ"</string>
+    <string name="mediasize_japanese_kahu" msgid="6872696027560065173">"ካሁ"</string>
+    <string name="mediasize_japanese_kaku2" msgid="2359077233775455405">"ካኩ2"</string>
+    <string name="mediasize_japanese_you4" msgid="2091777168747058008">"ዩ4"</string>
+    <string name="mediasize_unknown_portrait" msgid="3088043641616409762">"የማይታወቅ የቁም"</string>
+    <string name="mediasize_unknown_landscape" msgid="4876995327029361552">"የማይታወቅ የወርድ"</string>
+    <string name="write_fail_reason_cancelled" msgid="7091258378121627624">"ተትቷል"</string>
+    <string name="write_fail_reason_cannot_write" msgid="8132505417935337724">"ይዘት መጻፍ ላይ ስህተት"</string>
+    <string name="reason_unknown" msgid="6048913880184628119">"አይታወቅም"</string>
+    <string name="reason_service_unavailable" msgid="7824008732243903268">"የህትመት አገልግሎት አልነቃም"</string>
+    <string name="print_service_installed_title" msgid="2246317169444081628">"የ<xliff:g id="NAME">%s</xliff:g> አገልግሎት ተጭኗል"</string>
+    <string name="print_service_installed_message" msgid="5897362931070459152">"ለማንቃት መታ ያድርጉ"</string>
+    <string name="restr_pin_enter_admin_pin" msgid="783643731895143970">"የአስተዳዳሪ ፒን ያስገቡ"</string>
+    <string name="restr_pin_enter_pin" msgid="3395953421368476103">"ፒን ያስገቡ"</string>
+    <string name="restr_pin_incorrect" msgid="8571512003955077924">"ትክክል አይደለም"</string>
+    <string name="restr_pin_enter_old_pin" msgid="1462206225512910757">"የአሁኑ ፒን"</string>
+    <string name="restr_pin_enter_new_pin" msgid="5959606691619959184">"አዲስ ፒን"</string>
+    <string name="restr_pin_confirm_pin" msgid="8501523829633146239">"አዲስ ፒን ያረጋግጡ"</string>
+    <string name="restr_pin_create_pin" msgid="8017600000263450337">"ገደቦችን ለመቀየር ፒን ይፍጠሩ"</string>
+    <string name="restr_pin_error_doesnt_match" msgid="2224214190906994548">"ፒኖች አይዛመዱም። እንደገና ይሞክሩ።"</string>
+    <string name="restr_pin_error_too_short" msgid="8173982756265777792">"ፒን በጣም አጭር ነው። ቢያንስ 4 አኃዝ መሆን አለበት።"</string>
+  <plurals name="restr_pin_countdown">
+    <item quantity="one" msgid="311050995198548675">"በ1 ሰከንድ ውስጥ እንደገና ይሞክሩ"</item>
+    <item quantity="other" msgid="4730868920742952817">"በ<xliff:g id="COUNT">%d</xliff:g> ሰከንዶች ውስጥ እንደገና ይሞክሩ"</item>
+  </plurals>
+    <string name="restr_pin_try_later" msgid="973144472490532377">"ቆይተው እንደገና ይሞክሩ"</string>
+    <string name="immersive_mode_confirmation" msgid="7227416894979047467">"ከሙሉ ገጽ ማያ ለመውጣት ጣትዎን ከላይ ወደታች ያንሸራትቱ።"</string>
+</resources>

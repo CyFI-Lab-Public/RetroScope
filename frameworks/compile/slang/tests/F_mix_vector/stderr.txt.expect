@@ -1,0 +1,3 @@
+mix_vector.rs:6:13: error: illegal vector component name 'g'
+mix_vector.rs:7:13: error: illegal vector component name 'y'
+mix_vector.rs:8:7: error: illegal vector component name 'r'

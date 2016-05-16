@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+* Copyright (C) 2009 The Android Open Source Project
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*      http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*/
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="music_demo_activity_label" msgid="4382090808250495841">"MusicCarousel"</string>
+    <string name="carousel_test_activity_label" msgid="6014624482213318747">"CarouselTest"</string>
+    <string name="carousel_test_activity_description" msgid="1632693812604375483">"Un\'applicazione per mostrare l\'uso della sequenza"</string>
+    <string name="task_switcher_activity_label" msgid="714620143340933546">"TaskSwitcher"</string>
+    <string name="recent_tasks_title" msgid="1030287226205477117">"Applicazioni recenti"</string>
+    <string name="no_recent_tasks" msgid="6884096266670555780">"Nessuna attività recente"</string>
+</resources>

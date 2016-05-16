@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2006 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+  
+          http://www.apache.org/licenses/LICENSE-2.0
+  
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="RecentsStyle" parent="@android:style/Theme.Holo.Wallpaper.NoTitleBar">
+        <item name="android:windowAnimationStyle">@style/Animation.RecentsActivity</item>
+    </style>
+
+    <!-- Animations for a non-full-screen window or activity. -->
+    <style name="Animation.RecentsActivity" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/recents_launch_from_launcher_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/recents_launch_from_launcher_exit</item>
+        <item name="android:taskOpenEnterAnimation">@anim/recents_launch_from_launcher_enter</item>
+        <item name="android:taskOpenExitAnimation">@anim/recents_launch_from_launcher_exit</item>
+        <item name="android:taskToFrontEnterAnimation">@anim/recents_launch_from_launcher_enter</item>
+        <item name="android:taskToFrontExitAnimation">@anim/recents_launch_from_launcher_exit</item>
+        <item name="android:wallpaperOpenEnterAnimation">@anim/recents_launch_from_launcher_enter</item>
+        <item name="android:wallpaperOpenExitAnimation">@anim/recents_launch_from_launcher_exit</item>
+        <item name="android:wallpaperIntraOpenEnterAnimation">@anim/wallpaper_recents_launch_from_launcher_enter</item>
+        <item name="android:wallpaperIntraOpenExitAnimation">@anim/wallpaper_recents_launch_from_launcher_exit</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.HeadsUp"
+        parent="@*android:style/TextAppearance.StatusBar">
+    </style>
+
+    <style name="TextAppearance.StatusBar.SystemPanel"
+        parent="@*android:style/TextAppearance.StatusBar">
+        <item name="android:textAppearance">?android:attr/textAppearance</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#FF808080</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.TextButton"
+        parent="@*android:style/TextAppearance.StatusBar">
+        <item name="android:textAppearance">?android:attr/textAppearance</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#FFFFFFFF</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Clock" parent="@*android:style/TextAppearance.StatusBar.Icon">
+        <!-- Note: must be dp to fit in status bar -->
+        <item name="android:textSize">16dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">@color/status_bar_clock_color</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Expanded" parent="@*android:style/TextAppearance.StatusBar" />
+
+    <style name="TextAppearance.StatusBar.Expanded.Clock">
+        <item name="android:textSize">32dp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Expanded.Date">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#cccccc</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.Expanded.Network" parent="@style/TextAppearance.StatusBar.Expanded.Date">
+        <item name="android:textColor">#999999</item>
+	</style>
+
+    <style name="TextAppearance.StatusBar.Expanded.Network.EmergencyOnly">
+    </style>
+
+    <style name="TextAppearance" />
+    <style name="TextAppearance.QuickSettings" />
+
+    <style name="TextAppearance.QuickSettings.TileView">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#CCCCCC</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingEnd">6dp</item>
+    </style>
+
+    <style name="TextAppearance.QuickSettings.TileView.AllInOne" parent="@style/TextAppearance.QuickSettings.TileView">
+        <item name="android:lines">2</item>
+        <item name="android:gravity">top</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:drawablePadding">8dp</item>
+    </style>
+
+    <style name="TextAppearance.QuickSettings.Clock" parent="@style/TextAppearance.QuickSettings.TileView">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@android:color/holo_blue_light</item>
+    </style>
+
+    <style name="TextAppearance.QuickSettings.Date" parent="@style/TextAppearance.QuickSettings.TileView">
+        <item name="android:textSize">14dp</item>
+    </style>
+
+    <style name="TextAppearance.QuickSettings.Alarm" parent="@style/TextAppearance.QuickSettings.TileView">
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">#ff3a3b39</item>
+    </style>
+
+    <style name="TextAppearance.QuickSettings.CaCertWarning" parent="@style/TextAppearance.QuickSettings.TileView">
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="TextAppearance.QuickSettings.TileView.User" parent="@style/TextAppearance.QuickSettings.TileView">
+        <item name="android:background">#CC000000</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:fadingEdge">horizontal</item>
+    </style>
+
+    <style name="BaseBrightnessDialogContainer">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+        <item name="android:padding">16dp</item>
+    </style>
+    <style name="BrightnessDialogContainer" parent="@style/BaseBrightnessDialogContainer" />
+
+    <style name="Animation" />
+
+    <style name="Animation.ShirtPocketPanel">
+        <item name="android:windowEnterAnimation">@*android:anim/grow_fade_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@*android:anim/shrink_fade_out_from_bottom</item>
+    </style>
+
+    <style name="Animation.RecentPanel">
+        <item name="android:windowEnterAnimation">@*android:anim/grow_fade_in_from_bottom</item>
+        <item name="android:windowExitAnimation">@*android:anim/shrink_fade_out_from_bottom</item>
+    </style>
+
+    <!-- Standard animations for hiding and showing the status bar. -->
+    <style name="Animation.StatusBar">
+    </style>
+
+    <style name="Animation.StatusBar.HeadsUp">
+        <item name="android:windowEnterAnimation">@anim/heads_up_enter</item>
+        <item name="android:windowExitAnimation">@anim/heads_up_exit</item>
+    </style>
+
+    <style name="TextAppearance.StatusBar.PhoneTicker"
+        parent="@*android:style/TextAppearance.StatusBar.Ticker">
+        <!-- Note: must be dp to fit in status bar -->
+        <item name="android:textSize">14dp</item>
+    </style>
+    
+</resources>

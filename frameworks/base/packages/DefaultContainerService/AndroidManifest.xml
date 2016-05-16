@@ -1,0 +1,24 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+        package="com.android.defcontainer" coreApp="true">
+    <uses-permission android:name="android.permission.ACCESS_DOWNLOAD_MANAGER"/>
+    <uses-permission android:name="android.permission.ACCESS_ALL_DOWNLOADS"/>
+    <uses-permission android:name="android.permission.ASEC_ACCESS"/>
+    <uses-permission android:name="android.permission.ASEC_CREATE"/>
+    <uses-permission android:name="android.permission.ASEC_DESTROY"/>
+    <uses-permission android:name="android.permission.ASEC_MOUNT_UNMOUNT"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- Used to improve MeasureUtils performance on emulated storage -->
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_CACHE_FILESYSTEM" />
+    <uses-permission android:name="android.permission.ACCESS_ALL_EXTERNAL_STORAGE" />
+
+    <application android:label="@string/service_name"
+                 android:allowBackup="false">
+
+        <service android:name=".DefaultContainerService"
+                 android:enabled="true"
+                 android:exported="true"
+                 android:permission="android.permission.COPY_PROTECTED_DATA"/>
+    </application>
+
+</manifest>

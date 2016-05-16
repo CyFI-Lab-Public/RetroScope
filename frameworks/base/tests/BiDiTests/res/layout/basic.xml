@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2011 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/basic"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+    <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent">
+
+        <LinearLayout android:orientation="vertical"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+
+            <TextView android:id="@+id/textview_password_default"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="32dip"
+                    android:text="@string/textview_password_default_text"
+            />
+
+            <EditText android:id="@+id/edittext_password_default"
+                      android:layout_height="wrap_content"
+                      android:layout_width="match_parent"
+                      android:textSize="32dip"
+                      android:password="true"
+                    />
+
+            <TextView android:id="@+id/textview_default"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:textSize="32dip"
+                    android:text="@string/textview_default_text"
+            />
+
+            <EditText android:id="@+id/edittext_default"
+                      android:layout_height="wrap_content"
+                      android:layout_width="match_parent"
+                      android:textSize="32dip"
+                    />
+
+            <TextView android:id="@+id/textview_ltr"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:textSize="32dip"
+                      android:text="@string/textview_ltr_text"
+                    />
+
+            <EditText android:id="@+id/edittext_ltr"
+                      android:layout_height="wrap_content"
+                      android:layout_width="match_parent"
+                      android:textSize="32dip"
+                      android:textDirection="ltr"
+                    />
+
+            <TextView android:id="@+id/textview_rtl"
+                      android:layout_height="wrap_content"
+                      android:layout_width="wrap_content"
+                      android:textSize="32dip"
+                      android:text="@string/textview_rtl_text"
+                    />
+
+            <EditText android:id="@+id/edittext_rtl"
+                      android:layout_height="wrap_content"
+                      android:layout_width="match_parent"
+                      android:textSize="32dip"
+                      android:textDirection="rtl"
+                    />
+
+        </LinearLayout>
+
+        <Button android:id="@+id/button_alert_dialog"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="@string/button_alert_dialog_text"
+                android:textSize="32dip"
+                />
+
+        <EditText xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/edittext_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:textSize="32dip"
+            android:scrollHorizontally="true"
+            android:ellipsize="end"
+            android:text="@string/url"
+            />
+
+        <LinearLayout
+            android:layout_width="600dip"
+            android:layout_height="128dip"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            style="@android:style/Widget.Holo.Spinner"
+            >
+            <LinearLayout
+                android:layout_width="0dip"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical"
+                >
+                <TextView
+                    android:id="@+id/spinner_line_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"
+                    android:textSize="16dip"
+                    android:singleLine="true"
+                    android:ellipsize="end"
+                    android:gravity="left|center_vertical"
+                    android:text="@string/button_text"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

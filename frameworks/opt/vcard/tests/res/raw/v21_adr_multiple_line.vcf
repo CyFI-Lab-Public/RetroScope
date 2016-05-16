@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:2.1
+N:bogus
+URL:http://bogus.com/
+ADR;HOME:;;Grindelberg 999;Hamburg;;99999;Deutschland
+ADR;HOME:;;Hermann v. Brevern\
+9999999\
+Packstation 999;Hamburg;;99999;Deutschland
+BDAY;VALUE=DATE:20081203
+END:VCARD

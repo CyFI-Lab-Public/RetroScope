@@ -1,0 +1,1 @@
+root_compute_non_void_ret.rs:4:5: error: Compute kernel root() is required to return a void type

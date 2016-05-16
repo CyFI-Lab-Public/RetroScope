@@ -1,0 +1,5 @@
+BEGIN:VCARD
+VERSION:3.0
+FN:Android
+IMPP;TYPE=personal:sip:android@android.example.com
+END:VCARD

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (c) 2012 The Chromium Authors. All rights reserved.
+
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="webviewchromium_actionbar_share" msgid="8265707764014979342">"Del"</string>
+    <string name="webviewchromium_actionbar_web_search" msgid="539283440381511128">"Websøgning"</string>
+    <string name="webviewchromium_accessibility_content_view" msgid="4892710761369744296">"Webvisning"</string>
+    <string name="webviewchromium_date_picker_dialog_set" msgid="1106446820088863527">"Angiv"</string>
+    <string name="webviewchromium_date_picker_dialog_clear" msgid="6439296286509386196">"Ryd"</string>
+    <string name="webviewchromium_date_picker_dialog_title" msgid="2526916586861043590">"Indstil dato"</string>
+    <string name="webviewchromium_date_time_picker_dialog_title" msgid="1993749766330125085">"Indstil dato og tid"</string>
+    <string name="webviewchromium_month_picker_dialog_title" msgid="4740794532390369330">"Indstil måned"</string>
+    <string name="webviewchromium_week_picker_dialog_title" msgid="7510337683315786995">"Indstil uge"</string>
+    <string name="webviewchromium_accessibility_datetime_picker_date" msgid="3048311035284429477">"Dato"</string>
+    <string name="webviewchromium_accessibility_datetime_picker_time" msgid="7658727779659492209">"Klokkeslæt"</string>
+    <string name="webviewchromium_accessibility_date_picker_month" msgid="3073851955733780910">"Måned"</string>
+    <string name="webviewchromium_accessibility_date_picker_week" msgid="3705851794085779778">"Uge"</string>
+    <string name="webviewchromium_accessibility_date_picker_year" msgid="1016706432863812811">"År"</string>
+    <string name="webviewchromium_media_player_error_title" msgid="1520808434237404056">"Video kan ikke afspilles"</string>
+    <string name="webviewchromium_media_player_error_text_invalid_progressive_playback" msgid="7520069921018550187">"Beklager! Denne video er ikke gyldig til streaming på denne enhed."</string>
+    <string name="webviewchromium_media_player_error_text_unknown" msgid="7167964728541888883">"Beklager! Denne video kan ikke afspilles."</string>
+    <string name="webviewchromium_media_player_error_button" msgid="3693971589377075815">"OK"</string>
+    <string name="webviewchromium_media_player_loading_video" msgid="2617709614462333117">"Indlæser video"</string>
+    <string name="webviewchromium_color_picker_button_more" msgid="4501948174158855274">"Mere"</string>
+    <string name="webviewchromium_color_picker_hue" msgid="3167662698702871296">"Farvetone"</string>
+    <string name="webviewchromium_color_picker_saturation" msgid="4190681539297946213">"Mætning"</string>
+    <string name="webviewchromium_color_picker_value" msgid="2922652345694917211">"Værdi"</string>
+    <string name="webviewchromium_color_picker_button_set" msgid="6981883782092158499">"Indstil"</string>
+    <string name="webviewchromium_color_picker_button_cancel" msgid="11751988208172211">"Annuller"</string>
+    <string name="webviewchromium_color_picker_dialog_title" msgid="709749370892752246">"Vælg farve"</string>
+    <string name="webviewchromium_low_memory_error" msgid="1191433008801322695">"Den foregående handling kunne ikke fuldføres på grund af manglende hukommelse"</string>
+    <string name="webviewchromium_opening_file_error" msgid="1717251611908883964">"Den valgte fil kunne ikke åbnes"</string>
+    <string name="webviewchromium_private_browsing_warning" msgid="5444325116504635857">"Denne funktion understøttes ikke i denne version af Android."</string>
+</resources>

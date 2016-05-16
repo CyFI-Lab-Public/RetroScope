@@ -1,0 +1,85 @@
+# Most of the flags in this file are duplicated to refer to both the pre- and
+# post-jarjar remapping versions of the class names. This enables the same
+# config file to be used whether jarjar is enabled or not.
+
+
+# Keep the factory and its public members; it's the main entry point used by the
+# framework.
+-keep class com.android.webview.chromium.WebViewChromiumFactoryProvider {
+    public *;
+}
+
+# Keep the native methods bound to plat_support.
+-keepclasseswithmembers class com.android.webview.chromium.** {
+  native <methods>;
+}
+
+# Keep everything related to the org.chromium JNI interface.
+-keepclasseswithmembers class org.chromium.** {
+  @**.AccessedByNative <fields>;
+}
+-keepclasseswithmembers class org.chromium.** {
+  @**.CalledByNative <methods>;
+}
+-keepclasseswithmembers class org.chromium.** {
+  @**.CalledByNativeUnchecked <methods>;
+}
+-keepclasseswithmembers class org.chromium.** {
+  native <methods>;
+}
+-keepclasseswithmembers class com.android.org.chromium.** {
+  @**.AccessedByNative <fields>;
+}
+-keepclasseswithmembers class com.android.org.chromium.** {
+  @**.CalledByNative <methods>;
+}
+-keepclasseswithmembers class com.android.org.chromium.** {
+  @**.CalledByNativeUnchecked <methods>;
+}
+-keepclasseswithmembers class com.android.org.chromium.** {
+  native <methods>;
+}
+
+# Keep methods which get bound to JS interfaces via reflection.
+-keepclasseswithmembers class org.chromium.** {
+  @**.JavascriptInterface <methods>;
+}
+-keepclasseswithmembers class com.android.org.chromium.** {
+  @**.JavascriptInterface <methods>;
+}
+
+# Silence notes caused by use of @VisibleForTesting inside guava. This doesn't
+# happen when using jarjar because @VisibleForTesting gets renamed as well.
+-dontnote com.google.common.cache.LocalCache$ReferenceEntry
+-dontnote com.google.common.collect.MapMakerInternalMap$ReferenceEntry
+
+# MediaPlayerBridge uses reflection to access internal metadata.
+-dontnote org.chromium.media.MediaPlayerBridge
+-dontnote com.android.org.chromium.media.MediaPlayerBridge
+
+# AndroidKeyStore uses reflection to access internal OpenSSL state.
+-dontnote org.chromium.net.AndroidKeyStore
+-dontnote com.android.org.chromium.net.AndroidKeyStore
+
+# TraceEvent uses reflection to access internal trace info.
+-dontnote org.chromium.content.common.TraceEvent
+-dontnote com.android.org.chromium.content.common.TraceEvent
+
+# We need to keep these explicitly as they are parameters to methods which
+# are entry points via @calledByNative.
+-keep class com.android.org.chromium.ui.autofill.AutofillSuggestion
+-keep class com.android.org.chromium.content.browser.ContentVideoViewClient
+
+# Keep finalizer stuff from google-common used via reflection
+-keepclassmembers class com.google.common.** {
+  *** finalizeReferent();
+}
+-keepclassmembers class com.google.common.** {
+  *** startFinalizer(java.lang.Class,java.lang.Object);
+}
+-keepclassmembers class com.android.org.chromium.com.google.common.** {
+  *** finalizeReferent();
+}
+-keepclassmembers class com.android.org.chromium.com.google.common.** {
+  *** startFinalizer(java.lang.Class,java.lang.Object);
+}

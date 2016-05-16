@@ -1,0 +1,1 @@
+ptr_in_struct.rs:4:8: error: structures containing pointers cannot be exported: 's'

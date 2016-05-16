@@ -1,0 +1,1 @@
+kernel_badsig.rs:4:30: error: Compute kernel root() must have at least one input parameter or a non-void return type

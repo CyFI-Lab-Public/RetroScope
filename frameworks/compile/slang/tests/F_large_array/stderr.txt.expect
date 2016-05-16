@@ -1,0 +1,1 @@
+large_array.rs:5:15: error: array is too large (4294967296 elements)

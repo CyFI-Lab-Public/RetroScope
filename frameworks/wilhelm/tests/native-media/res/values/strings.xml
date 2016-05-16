@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello, Android, using native media!</string>
+    <string name="app_name">NativeMedia</string>
+
+    <string name="start_java">Start/Pause Java MediaPlayer</string>
+    <string name="start_native">Start/Pause native MediaPlayer</string>
+
+    <string name="rewind_java">Rewind Java MediaPlayer</string>
+    <string name="rewind_native">Rewind native MediaPlayer</string>
+
+    <string name="source_select">Please select the media source</string>
+    <string name="source_prompt">Media source</string>
+    <string-array name="source_array">
+        <item>/sdcard/Videos/bar.ts</item>
+        <item>http://iphoned5.akamai.com.edgesuite.net/mhbarron/nasatv/nasatv_1500.m3u8</item>
+        <item>http://iphone.video.hsn.com/iPhone_high.m3u8</item>
+        <item>http://mlbsegqa.mlb.com/mlbam/dev/build84/2010/10/29/test1/master_wired.m3u8</item>
+        <item>/sdcard/Videos/mpeg4_qvga_24fps.3gp</item>
+        <item>/sdcard/Videos/burnAfterReading.m4v</item>
+    </string-array>
+
+    <string name="sink_select">Please select the video sink</string>
+    <string name="sink_prompt">Video sink</string>
+    <string-array name="sink_array">
+        <item>Surface 1</item>
+        <item>Surface 2</item>
+        <item>SurfaceTexture 1</item>
+        <item>SurfaceTexture 2</item>
+    </string-array>
+
+</resources>

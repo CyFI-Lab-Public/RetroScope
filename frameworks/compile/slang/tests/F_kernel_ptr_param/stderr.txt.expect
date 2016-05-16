@@ -1,0 +1,1 @@
+kernel_ptr_param.rs:4:40: error: Compute kernel root() cannot have parameter 'i' of pointer type: 'int *'

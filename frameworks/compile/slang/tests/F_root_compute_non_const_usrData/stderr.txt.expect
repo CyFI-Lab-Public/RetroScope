@@ -1,0 +1,1 @@
+root_compute_non_const_usrData.rs:4:44: error: Unexpected kernel root() parameter 'usrData' of type 'void *'

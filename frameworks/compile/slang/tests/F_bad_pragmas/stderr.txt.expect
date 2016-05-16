@@ -1,0 +1,5 @@
+bad_pragmas.rs:7:8: error: no pragma name or value
+bad_pragmas.rs:8:18: error: expected value after '#pragma onlyLeft('
+bad_pragmas.rs:9:27: error: missing ')' after '#pragma missingRight(paren'
+bad_pragmas.rs:10:16: error: missing ')' after '#pragma ok(not'
+bad_pragmas.rs:10:18: error: expected identifier or '('

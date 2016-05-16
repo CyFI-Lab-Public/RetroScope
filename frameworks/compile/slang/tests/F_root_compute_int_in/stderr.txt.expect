@@ -1,0 +1,2 @@
+root_compute_int_in.rs:4:6: error: Compute kernel root() must have at least one parameter for in or out
+root_compute_int_in.rs:4:21: error: Unexpected kernel root() parameter 'in' of type 'const int'

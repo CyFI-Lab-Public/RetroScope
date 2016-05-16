@@ -1,0 +1,3 @@
+fs_ptr.fs:4:6: error: Pointers are forbidden in Filterscript: 'i'
+fs_ptr.fs:16:9: error: Pointers are forbidden in Filterscript: 'c'
+fs_ptr.fs:33:17: error: Pointers are forbidden in Filterscript: 'ain'

@@ -1,0 +1,18 @@
+fs_types.fs:4:8: error: Builtin types > 32 bits in size are forbidden in Filterscript: 'd'
+fs_types.fs:13:10: error: Builtin types > 32 bits in size are forbidden in Filterscript: 'myS'
+fs_types.fs:15:12: error: Builtin types > 32 bits in size are forbidden in Filterscript: 'd'
+fs_types.fs:16:12: error: Builtin types > 32 bits in size are forbidden in Filterscript: 'e'
+fs_types.fs:17:15: error: Builtin types > 32 bits in size are forbidden in Filterscript
+fs_types.fs:18:7: error: Builtin types > 32 bits in size are forbidden in Filterscript
+fs_types.fs:21:12: error: Builtin types > 32 bits in size are forbidden in Filterscript: 'l'
+fs_types.fs:22:10: error: Builtin types > 32 bits in size are forbidden in Filterscript: 'm'
+fs_types.fs:23:13: error: Builtin types > 32 bits in size are forbidden in Filterscript
+fs_types.fs:24:7: error: Builtin types > 32 bits in size are forbidden in Filterscript
+fs_types.fs:27:13: error: Builtin types > 32 bits in size are forbidden in Filterscript: 'l'
+fs_types.fs:28:15: error: Builtin types > 32 bits in size are forbidden in Filterscript: 'm'
+fs_types.fs:29:13: error: Builtin types > 32 bits in size are forbidden in Filterscript
+fs_types.fs:30:7: error: Builtin types > 32 bits in size are forbidden in Filterscript
+fs_types.fs:33:13: error: Builtin types > 32 bits in size are forbidden in Filterscript: 'l'
+fs_types.fs:34:17: error: Builtin types > 32 bits in size are forbidden in Filterscript: 'm'
+fs_types.fs:35:15: error: Builtin types > 32 bits in size are forbidden in Filterscript
+fs_types.fs:36:7: error: Builtin types > 32 bits in size are forbidden in Filterscript

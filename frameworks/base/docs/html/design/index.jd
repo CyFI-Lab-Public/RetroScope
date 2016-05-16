@@ -1,0 +1,34 @@
+page.title=Design
+header.hide=1
+footer.hide=1
+@jd:body
+
+<style>
+#landing-graphic-container {
+  position: relative;
+}
+
+#text-overlay {
+  position: absolute;
+  left: 36px;
+  top: 42px;
+  width: 266px;
+
+}
+#hero-image {
+  padding-left:68px;
+}
+</style>
+
+<div id="landing-graphic-container">
+  <div id="text-overlay">
+    Welcome to <strong>Android Design</strong>, your place for learning how to design exceptional Android apps.
+    <br><br>
+    Want to know what <strong>Android 4.4 KitKat</strong> has for designers? See <a href="{@docRoot}design/patterns/new.html">New in Android</a>.<br><br>
+    <a href="/design/get-started/creative-vision.html" class="landing-page-link">Creative Vision</a>
+  </div>
+  <a id="hero-image" href="/design/get-started/creative-vision.html">
+    <img src="/design/media/index_landing_page.png">
+  </a>
+</div>
+

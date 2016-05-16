@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  Copyright (c) 2012 The Chromium Authors. All rights reserved.
+
+     Use of this source code is governed by a BSD-style license that can be
+     found in the LICENSE file.
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="webviewchromium_actionbar_share" msgid="8265707764014979342">"Ibahagi"</string>
+    <string name="webviewchromium_actionbar_web_search" msgid="539283440381511128">"Paghahanap sa web"</string>
+    <string name="webviewchromium_accessibility_content_view" msgid="4892710761369744296">"View sa Web"</string>
+    <string name="webviewchromium_date_picker_dialog_set" msgid="1106446820088863527">"Itakda"</string>
+    <string name="webviewchromium_date_picker_dialog_clear" msgid="6439296286509386196">"I-clear"</string>
+    <string name="webviewchromium_date_picker_dialog_title" msgid="2526916586861043590">"Itakda ang petsa"</string>
+    <string name="webviewchromium_date_time_picker_dialog_title" msgid="1993749766330125085">"Itakda ang petsa at oras"</string>
+    <string name="webviewchromium_month_picker_dialog_title" msgid="4740794532390369330">"Itakda ang buwan"</string>
+    <string name="webviewchromium_week_picker_dialog_title" msgid="7510337683315786995">"Itakda ang linggo"</string>
+    <string name="webviewchromium_accessibility_datetime_picker_date" msgid="3048311035284429477">"Petsa"</string>
+    <string name="webviewchromium_accessibility_datetime_picker_time" msgid="7658727779659492209">"Oras"</string>
+    <string name="webviewchromium_accessibility_date_picker_month" msgid="3073851955733780910">"Buwan"</string>
+    <string name="webviewchromium_accessibility_date_picker_week" msgid="3705851794085779778">"Linggo"</string>
+    <string name="webviewchromium_accessibility_date_picker_year" msgid="1016706432863812811">"Taon"</string>
+    <string name="webviewchromium_media_player_error_title" msgid="1520808434237404056">"Hindi mape-play ang video"</string>
+    <string name="webviewchromium_media_player_error_text_invalid_progressive_playback" msgid="7520069921018550187">"Paumanhin, ang video na ito ay hindi wasto para sa streaming sa device na ito."</string>
+    <string name="webviewchromium_media_player_error_text_unknown" msgid="7167964728541888883">"Paumanhin, hindi mape-play ang video na ito."</string>
+    <string name="webviewchromium_media_player_error_button" msgid="3693971589377075815">"OK"</string>
+    <string name="webviewchromium_media_player_loading_video" msgid="2617709614462333117">"Nilo-load ang video"</string>
+    <string name="webviewchromium_color_picker_button_more" msgid="4501948174158855274">"Higit pa"</string>
+    <string name="webviewchromium_color_picker_hue" msgid="3167662698702871296">"Hue"</string>
+    <string name="webviewchromium_color_picker_saturation" msgid="4190681539297946213">"Saturation"</string>
+    <string name="webviewchromium_color_picker_value" msgid="2922652345694917211">"Value"</string>
+    <string name="webviewchromium_color_picker_button_set" msgid="6981883782092158499">"Itakda"</string>
+    <string name="webviewchromium_color_picker_button_cancel" msgid="11751988208172211">"Kanselahin"</string>
+    <string name="webviewchromium_color_picker_dialog_title" msgid="709749370892752246">"Pumili ng kulay"</string>
+    <string name="webviewchromium_low_memory_error" msgid="1191433008801322695">"Hindi magawang kumpletuhin ang nakaraang operasyon dahil sa mababang memory"</string>
+    <string name="webviewchromium_opening_file_error" msgid="1717251611908883964">"Hindi mabuksan ang napiling file"</string>
+    <string name="webviewchromium_private_browsing_warning" msgid="5444325116504635857">"Hindi sinusuportahan ang pagpapaganang ito sa bersyong ito ng Android."</string>
+</resources>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+/*
+ * Copyright (C) 2011 Google Inc.
+ * Licensed to The Android Open Source Project.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+ -->
+
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="choosertitle_sharevia" msgid="8695355711548636633">"Delen via"</string>
+    <string name="contextmenu_openlink" msgid="9094161900484295513">"Openen in browser"</string>
+    <string name="contextmenu_copy" msgid="4258345137871253670">"Kopiëren"</string>
+    <string name="contextmenu_copylink" msgid="7835182758054080051">"Link-URL kopiëren"</string>
+    <string name="contextmenu_dial_dot" msgid="1698333388313807445">"Bellen..."</string>
+    <string name="contextmenu_sms_dot" msgid="8870563605004576194">"Sms\'en…"</string>
+    <string name="contextmenu_add_contact" msgid="2720492380383163909">"Contact toevoegen"</string>
+    <string name="contextmenu_send_mail" msgid="1599521001277247614">"E-mail verzenden"</string>
+    <string name="contextmenu_map" msgid="827724648429662327">"Kaart"</string>
+    <string name="contextmenu_sharelink" msgid="3043834627204106149">"Link delen"</string>
+    <string name="contextmenu_help" msgid="3599842914619249472">"Help"</string>
+    <string name="contextmenu_feedback" msgid="1118327808484223675">"Feedback verzenden"</string>
+</resources>

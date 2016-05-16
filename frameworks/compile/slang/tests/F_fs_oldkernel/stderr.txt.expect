@@ -1,0 +1,3 @@
+fs_oldkernel.fs:4:17: error: Pointers are forbidden in Filterscript: 'ain'
+fs_oldkernel.fs:7:1: error: Pointers are forbidden in Filterscript: 'bad_kernel'
+fs_oldkernel.fs:7:22: error: Pointers are forbidden in Filterscript: 'ain'

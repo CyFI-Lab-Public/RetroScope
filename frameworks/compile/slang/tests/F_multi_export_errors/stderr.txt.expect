@@ -1,0 +1,3 @@
+multi_export_errors.rs:4:5: error: init(void) is required to have a void return type
+multi_export_errors.rs:8:6: error: root() is required to return an int for graphics usage
+multi_export_errors.rs:11:5: error: invokable non-static functions are required to return void

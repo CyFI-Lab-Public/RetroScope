@@ -1,0 +1,1 @@
+struct_bitfield.rs:5:9: error: bit fields are not able to be exported: 's.x'

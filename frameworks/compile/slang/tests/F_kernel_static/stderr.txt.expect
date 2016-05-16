@@ -1,0 +1,2 @@
+kernel_static.rs:14:14: error: Non-const static variables are not allowed in kernels: 'i'
+kernel_static.rs:18:36: error: Invalid use of attribute kernel with static function declaration: static_kernel

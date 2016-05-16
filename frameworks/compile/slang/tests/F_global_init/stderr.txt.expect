@@ -1,0 +1,1 @@
+global_init.rs:19:10: error: Reflection of initializer to variable 'myS' (of type 's') is unsupported currently.

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+/*
+** Copyright 2013, The Android Open Source Project
+**
+** Licensed under the Apache License, Version 2.0 (the "License");
+** you may not use this file except in compliance with the License.
+** You may obtain a copy of the License at
+**
+**     http://www.apache.org/licenses/LICENSE-2.0
+**
+** Unless required by applicable law or agreed to in writing, software
+** distributed under the License is distributed on an "AS IS" BASIS,
+** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+** See the License for the specific language governing permissions and
+** limitations under the License.
+**/
+-->
+
+<resources>
+  <add-resource type="attr" name="webviewchromium_select_dialog_multichoice" />
+  <add-resource type="attr" name="webviewchromium_select_dialog_singlechoice" />
+
+  <add-resource type="color" name="webviewchromium_color_picker_border_color" />
+
+  <add-resource type="dimen" name="webviewchromium_color_picker_gradient_margin" />
+  <add-resource type="dimen" name="webviewchromium_link_preview_overlay_radius" />
+
+  <add-resource type="drawable" name="webviewchromium_color_advanced_select_handle" />
+  <add-resource type="drawable" name="webviewchromium_color_picker_border" />
+  <add-resource type="drawable" name="webviewchromium_ondemand_overlay" />
+
+  <add-resource type="layout" name="webviewchromium_autofill_text" />
+  <add-resource type="layout" name="webviewchromium_color_picker_advanced_component" />
+  <add-resource type="layout" name="webviewchromium_color_picker_dialog_content" />
+  <add-resource type="layout" name="webviewchromium_color_picker_dialog_title" />
+  <add-resource type="layout" name="webviewchromium_date_time_picker_dialog" />
+  <add-resource type="layout" name="webviewchromium_two_field_date_picker" />
+
+  <add-resource type="menu" name="webviewchromium_iselect_action_menu" />
+
+  <add-resource type="id" name="webviewchromium_autofill_popup_window" />
+
+  <add-resource type="string" name="webviewchromium_accessibility_content_view" />
+  <add-resource type="string" name="webviewchromium_accessibility_date_picker_month" />
+  <add-resource type="string" name="webviewchromium_accessibility_date_picker_week" />
+  <add-resource type="string" name="webviewchromium_accessibility_date_picker_year" />
+  <add-resource type="string" name="webviewchromium_accessibility_datetime_picker_date" />
+  <add-resource type="string" name="webviewchromium_accessibility_datetime_picker_time" />
+  <add-resource type="string" name="webviewchromium_actionbar_share" />
+  <add-resource type="string" name="webviewchromium_actionbar_web_search" />
+  <add-resource type="string" name="webviewchromium_color_picker_button_cancel" />
+  <add-resource type="string" name="webviewchromium_color_picker_button_more" />
+  <add-resource type="string" name="webviewchromium_color_picker_button_set" />
+  <add-resource type="string" name="webviewchromium_color_picker_dialog_title" />
+  <add-resource type="string" name="webviewchromium_color_picker_hue" />
+  <add-resource type="string" name="webviewchromium_color_picker_saturation" />
+  <add-resource type="string" name="webviewchromium_color_picker_value" />
+  <add-resource type="string" name="webviewchromium_date_picker_dialog_clear" />
+  <add-resource type="string" name="webviewchromium_date_picker_dialog_set" />
+  <add-resource type="string" name="webviewchromium_date_picker_dialog_title" />
+  <add-resource type="string" name="webviewchromium_date_time_picker_dialog_title" />
+  <add-resource type="string" name="webviewchromium_low_memory_error" />
+  <add-resource type="string" name="webviewchromium_media_player_error_button" />
+  <add-resource type="string" name="webviewchromium_media_player_error_text_invalid_progressive_playback" />
+  <add-resource type="string" name="webviewchromium_media_player_error_text_unknown" />
+  <add-resource type="string" name="webviewchromium_media_player_error_title" />
+  <add-resource type="string" name="webviewchromium_media_player_loading_video" />
+  <add-resource type="string" name="webviewchromium_month_picker_dialog_title" />
+  <add-resource type="string" name="webviewchromium_opening_file_error" />
+  <add-resource type="string" name="webviewchromium_private_browsing_warning" />
+  <add-resource type="string" name="webviewchromium_week_picker_dialog_title" />
+
+  <add-resource type="style" name="webviewchromium_AutofillPopupWindow" />
+  <add-resource type="style" name="webviewchromium_SelectPopupDialog" />
+</resources>

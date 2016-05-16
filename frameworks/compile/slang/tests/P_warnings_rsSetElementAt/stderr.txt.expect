@@ -1,0 +1,12 @@
+setelementat.rs:21:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_float() instead.
+setelementat.rs:22:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_double() instead.
+setelementat.rs:23:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_float2() instead.
+setelementat.rs:24:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_float3() instead.
+setelementat.rs:25:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_float4() instead.
+setelementat.rs:26:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_char() instead.
+setelementat.rs:27:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_uchar() instead.
+setelementat.rs:28:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_short() instead.
+setelementat.rs:29:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_ushort() instead.
+setelementat.rs:30:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_int() instead.
+setelementat.rs:31:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_uint() instead.
+setelementat.rs:32:5: warning: untyped rsSetElementAt() can reduce performance. Use rsSetElementAt_long() instead.

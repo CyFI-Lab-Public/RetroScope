@@ -1,0 +1,1 @@
+no_java_package_name.rs:7:1: error: missing "#pragma rs java_package_name(com.foo.bar)" in source file

@@ -1,0 +1,1 @@
+kernel_16.rs:5:30: error: Compute kernel root() targeting SDK levels 11-16 may not use pass-by-value with __attribute__((kernel))

@@ -1,0 +1,1 @@
+invoke_return.rs:4:5: error: invokable non-static functions are required to return void

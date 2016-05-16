@@ -1,0 +1,7 @@
+BEGIN:VCARD
+VERSION:4.0
+FN:安藤 ロイド
+N:安藤;ロイド;;;
+TEL;TYPE=HOME:tel:1
+TEL;TYPE=HOME:sip:example@example.com
+END:VCARD

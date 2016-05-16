@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="src" path="dexmaker-java-src"/>
+	<classpathentry kind="src" path="dexmaker-dx-src"/>
+	<classpathentry kind="src" path="hamcrest-src"/>
+	<classpathentry kind="src" path="junit4-src"/>
+	<classpathentry kind="src" path="android-test-lib-src"/>
+	<classpathentry kind="src" path="objenesis-src"/>
+	<classpathentry kind="src" path="mockito-src"/>
+	<classpathentry kind="src" path="dexmaker-mockito"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

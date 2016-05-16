@@ -1,0 +1,2 @@
+root_compute_too_many_args.rs:6:20: error: Unexpected kernel root() parameter 'extra1' of type 'uint32_t'
+root_compute_too_many_args.rs:6:37: error: Unexpected kernel root() parameter 'extra2' of type 'uint32_t'

@@ -1,0 +1,4 @@
+root_compute_non_uint32_t_xyzar.rs:5:15: error: Unexpected kernel root() parameter 'x' of type 'int'
+root_compute_non_uint32_t_xyzar.rs:5:24: error: Unexpected kernel root() parameter 'y' of type 'float'
+root_compute_non_uint32_t_xyzar.rs:5:34: error: Unexpected kernel root() parameter 'z' of type 'double'
+root_compute_non_uint32_t_xyzar.rs:5:43: error: Unexpected kernel root() parameter 'ar' of type 'uchar'

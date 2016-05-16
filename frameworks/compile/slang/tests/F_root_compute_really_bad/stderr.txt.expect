@@ -1,0 +1,10 @@
+root_compute_really_bad.rs:4:5: error: Compute kernel root() is required to return a void type
+root_compute_really_bad.rs:4:5: error: Compute kernel root() must have at least one parameter for in or out
+root_compute_really_bad.rs:4:14: error: Unexpected kernel root() parameter 'ain' of type 'int'
+root_compute_really_bad.rs:4:23: error: Unexpected kernel root() parameter 'aout' of type 'int'
+root_compute_really_bad.rs:4:33: error: Unexpected kernel root() parameter 'usrData' of type 'int'
+root_compute_really_bad.rs:4:48: error: Unexpected kernel root() parameter 'x1' of type 'float'
+root_compute_really_bad.rs:4:59: error: Unexpected kernel root() parameter 'y1' of type 'double'
+root_compute_really_bad.rs:5:31: error: Duplicate parameter entry (by position/name): 'x'
+root_compute_really_bad.rs:6:19: error: Unexpected kernel root() parameter 'extra1' of type 'uint32_t'
+root_compute_really_bad.rs:6:36: error: Unexpected kernel root() parameter 'extra2' of type 'uint32_t'

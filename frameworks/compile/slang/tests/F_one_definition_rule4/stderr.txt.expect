@@ -1,0 +1,1 @@
+error: type 'DifferentDefinition4' in different translation unit (def2.rs v.s. def1.rs) has incompatible type definition

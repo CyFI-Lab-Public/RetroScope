@@ -1,0 +1,1 @@
+float3_v13.rs:9:10: error: structs containing vectors of dimension 3 cannot be exported at this API level: 'myStruct'
