@@ -1,0 +1,8 @@
+# mediaserver - multimedia daemon
+type mediaserver, domain;
+permissive mediaserver;
+type mediaserver_exec, exec_type, file_type;
+
+net_domain(mediaserver)
+init_daemon_domain(mediaserver)
+unconfined_domain(mediaserver)

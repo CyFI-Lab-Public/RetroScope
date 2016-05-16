@@ -1,0 +1,6 @@
+{
+   fun:ThisFunctionShouldBeSuppressed
+   ThreadSanitizer:Race
+   fun:*ThisFunctionShouldBeSuppressed*
+}
+

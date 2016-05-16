@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog>
+
+<conversation>
+
+<page
+  image="@drawable/wanda_sad"
+  text = "@string/Wanda_4_2_1_1" 
+  title = "@string/Wanda"
+/>
+
+<page
+  image="@drawable/wanda_sad"
+  text = "@string/Wanda_4_2_1_2" 
+  title = "@string/Wanda"
+/>
+
+</conversation>
+
+</dialog>

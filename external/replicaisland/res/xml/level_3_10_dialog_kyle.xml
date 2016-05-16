@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog>
+
+<conversation>
+
+<page
+  image="@drawable/kyle_closeup_angry"
+  text = "@string/Kyle_3_10_1_1" 
+  title = "@string/Kyle"
+/>
+
+</conversation>
+
+</dialog>

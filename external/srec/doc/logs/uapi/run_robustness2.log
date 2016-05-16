@@ -1,0 +1,1321 @@
+# cd /system/usr/srec
+# ./run_robustness2.sh
+Robustness2: ESRSDK = /system/usr/srec
+Initialising...
+android.speech.recognition.test.contacts.CLRecognizer:before EmbeddedRecognizer.getInstance()
+android.speech.recognition.test.contacts.CLRecognizer:after EmbeddedRecognizer.getInstance(): android.speech.recognition.impl.EmbeddedRecognizerImpl android.speech.recognition.impl.EmbeddedRecognizerImpl@4001e990
+android.speech.recognition.test.contacts.CLRecognizer:before EmbeddedRecognizer.configure(/system/usr/srec/config/en.us/baseline11k.par)
+android.speech.recognition.test.contacts.CLRecognizer:after EmbeddedRecognizer.configure()
+android.speech.recognition.test.contacts.CLRecognizer:before recognizer.createGrammar(/system/usr/srec/config/en.us/grammars/dynamic-test.g2g)
+android.speech.recognition.test.contacts.CLRecognizer:after recognizer.createGrammar(/system/usr/srec/config/en.us/grammars/dynamic-test.g2g)
+android.speech.recognition.test.contacts.CLRecognizer:before grammar.load()
+android.speech.recognition.test.contacts.CLRecognizer:onLoaded
+android.speech.recognition.test.contacts.CLRecognizer:Adding words to grammar slot
+android.speech.recognition.test.contacts.CLRecognizer:item 0: Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:after grammar.load()
+android.speech.recognition.test.contacts.CLRecognizer:item 1: Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:item 2: Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:onCompileAllSlots
+GrammarAction:onGrammarSuccess
+
+-----------------------------------
+Iteration: 0
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:67
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 1
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:76
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 2
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:83
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 3
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:79
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 4
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:88
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 5
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:80
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 6
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:81
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 7
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:85
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 8
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:90
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 9
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:85
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 10
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:88
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 11
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:81
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 12
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:83
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 13
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:89
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 14
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:88
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+writerListener: onStopped()
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+File was saved
+Woke up
+
+-----------------------------------
+Iteration: 15
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:68
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+writerListener: onStopped()
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 16
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:79
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 17
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:86
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 18
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:83
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 19
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:81
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 20
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:86
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 21
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:66
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 22
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:84
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 23
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:87
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 24
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:78
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 25
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:Dennis Velasco score:88
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 26
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:81
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 27
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:82
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 28
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:84
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 29
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:85
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 30
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:81
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 31
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:84
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 32
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:85
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 33
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:85
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 34
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:88
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 35
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:86
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 36
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:82
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 37
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:85
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 38
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:88
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 39
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:83
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 40
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:81
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 41
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:82
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 42
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:82
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 43
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:87
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 44
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:84
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 45
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:78
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 46
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:85
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 47
+Recording from microphone...
+SAY: LOOKUP Jen Parker
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:83
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 48
+Recording from microphone...
+SAY: LOOKUP Andy Wyatt
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Andy Wyatt literal:lookup Andy Wyatt score:82
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+
+-----------------------------------
+Iteration: 49
+Recording from microphone...
+SAY: LOOKUP Dennis Velasco
+
+-----------------------------------
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Dennis Velasco literal:lookup Dennis Velasco score:64
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+Woke up
+----- PASS -----
+# exit

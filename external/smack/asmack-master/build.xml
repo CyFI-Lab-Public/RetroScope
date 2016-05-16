@@ -1,0 +1,80 @@
+<project name="asmack" default="compile" basedir=".">
+
+<property name="jar.suffix" value="" />
+<property name="jingle" value="" />
+<property file="local.properties" />
+<property name="android.version" value="" />
+<target name="compile-jse"  description="Compile for java se">
+    <delete dir="build/classes" failonerror="false" />
+    <mkdir dir="build/classes" />
+    <mkdir dir="build/classes/trunk" />
+    <javac
+      target="6"
+      source="6"
+      srcdir="build/src/trunk"
+      destdir="build/classes/trunk"
+      classpath="lib/xpp3-1.1.4c.jar:lib/httpclient-4.1.3.jar:lib/httpcore-4.1.4.jar"
+      debug="true"
+      debuglevel="source,lines"
+      excludes="**/de/measite/smack/AndroidDebugger.java"
+    />
+    <copy todir="build/classes/trunk"><fileset dir="build/src/trunk" includes="META-INF/**" /></copy>
+    <jar
+      basedir="build/classes/trunk"
+      destfile="build/asmack-jse${jar.suffix}.jar"
+      filesonly="true"
+      level="9"
+    />
+    <zip
+      basedir="build/src/trunk"
+      destfile="build/asmack-jse-source${jar.suffix}.zip"
+      excludes="**/de/measite/smack/AndroidDebugger.java"
+      filesonly="true"
+      level="9"
+    />
+</target>
+
+<target name="check-android-exists" >
+    <available property="android.exists" file="${sdk-location}/platforms/${android.version}/android.jar" />
+    <fail unless="${android.exists}" message="Android version ${android.version} does not is not available : ${sdk-location}/platforms/${android.version}/android.jar is not found" />
+</target>
+
+<target name="compile-android" description="Compile for android" depends="check-android-exists" >
+    <delete dir="build/classes/${android.version}" failonerror="false" />
+    <mkdir dir="build/classes/${android.version}" />
+    <mkdir dir="build/classes/${android.version}/trunk" />
+    <javac
+      target="6"
+      source="6"
+      srcdir="build/src/trunk"
+      destdir="build/classes/${android.version}/trunk"
+      bootclasspath="${sdk-location}/platforms/${android.version}/android.jar:${jingle}"
+      debug="true"
+      debuglevel="source,lines"
+    />
+    <copy todir="build/classes/${android.version}/trunk">
+      <fileset dir="build/src/trunk" includes="META-INF/**" />
+    </copy>
+    <jar
+      basedir="build/classes/${android.version}/trunk"
+      destfile="build/asmack-${android.version}${jar.suffix}.jar"
+      filesonly="true"
+      level="9"
+    />
+    <zip
+      basedir="build/src/trunk"
+      destfile="build/asmack-${android.version}-source${jar.suffix}.zip"
+      filesonly="true"
+      level="9"
+    />
+</target>
+
+
+<target
+  name="compile"
+  description="Compile for jse targets"
+  depends="compile-jse"
+/>
+
+</project>
+

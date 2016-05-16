@@ -1,0 +1,107 @@
+==== //depot/google3/third_party/libsrtp/README.google#8 - None ====
+# action=edit type=text
+--- google3/third_party/libsrtp/README.google	2011-02-22 19:05:30.000000000 -0800
++++ google3/third_party/libsrtp/README.google	2011-05-27 17:56:49.000000000 -0700
+@@ -21,4 +21,6 @@
+ - all patches are stored individually in the googlepatches subdirectory
+ - iOS related changes.
+   undefine HAVE_BYTESWAP_H in config.h
+-  Fix debug build compile errors: added static keyword to inline methods and undefined DEBUG before #define DEBUG
+\ No newline at end of file
++  Fix debug build compile errors: added static keyword to inline methods and undefined DEBUG before #define DEBUG
++- Fixed a bug related to replay detection when sequence number rolls back
++  arround 0. (Currently contacting libsrtp developers for upstream.)
+==== //depot/google3/third_party/libsrtp/crypto/replay/rdbx.c#5 - None ====
+# action=edit type=text
+--- google3/third_party/libsrtp/crypto/replay/rdbx.c	2010-02-25 06:36:30.000000000 -0800
++++ google3/third_party/libsrtp/crypto/replay/rdbx.c	2011-05-27 17:56:49.000000000 -0700
+@@ -145,7 +145,16 @@
+   if (local_seq < seq_num_median) {
+     if (s - local_seq > seq_num_median) {
+       guess_roc = local_roc - 1;
+-      difference = seq_num_max - s + local_seq;
++      // The return value is the relative difference from local_seq to s.
++      // The original value is negation of its purpose.  According to document
++      // http://www.ietf.org/rfc/rfc3711.txt, when this condition is true, the
++      // resulting new index should be (local_roc-1, s).  But original logic
++      // will end up positive difference and rdbx_check would pass.  Hence after
++      // rdbx_add_index would make local index to be the wrong value because
++      // local index should not be updated in this case.  For example, when
++      // local index is (1, 100) and next sequence is 65530, the wrong updated
++      // index would be (1, 205).
++      difference = s - local_seq - seq_num_max;
+     } else {
+       guess_roc = local_roc;
+       difference = s - local_seq;
+==== //depot/google3/third_party/libsrtp/test/rdbx_driver.c#5 - None ====
+# action=edit type=text
+--- google3/third_party/libsrtp/test/rdbx_driver.c	2010-02-25 06:36:30.000000000 -0800
++++ google3/third_party/libsrtp/test/rdbx_driver.c	2011-05-27 17:56:49.000000000 -0700
+@@ -226,7 +226,7 @@
+    *  test sequential insertion 
+    */
+   printf("\ttesting sequential insertion...");
+-  for (idx=0; idx < num_trials; idx++) {
++  for (idx=0; idx < (uint32_t)num_trials; idx++) {
+     status = rdbx_check_add(&rdbx, idx);
+     if (status)
+       return status;
+@@ -245,7 +245,7 @@
+     printf("warning: no false positive tests performed\n");
+   }
+   printf("\ttesting for false positives...");
+-  for (idx=0; idx < num_fp_trials; idx++) {
++  for (idx=0; idx < (uint32_t)num_fp_trials; idx++) {
+     status = rdbx_check_expect_failure(&rdbx, idx);
+     if (status)
+       return status;
+@@ -269,12 +269,34 @@
+   ut_init(&utc);
+ 
+   printf("\ttesting non-sequential insertion...");  
+-  for (idx=0; idx < num_trials; idx++) {
++  for (idx=0; idx < (uint32_t)num_trials; idx++) {
+     ircvd = ut_next_index(&utc);
+     status = rdbx_check_unordered(&rdbx, ircvd);
+     if (status)
+       return status;
+   }
++  printf("passed\n");
++
++  /*
++   * test a replay condition close to zero.
++   */
++  rdbx_uninit(&rdbx);
++
++  if (rdbx_init(&rdbx, ws) != err_status_ok) {
++    printf("replay_init failed\n");
++    return err_status_init_fail;
++  }
++
++  printf("\ttesting replay close to zero...");
++  status = rdbx_check_add(&rdbx, 1);
++  if (status)
++    return status;
++  status = rdbx_check_expect_failure(&rdbx, 64500);
++  if (status)
++    return status;
++  status = rdbx_check_add(&rdbx, 2);
++  if (status)
++    return status;
+   printf("passed\n");
+ 
+   rdbx_uninit(&rdbx);
+@@ -303,7 +325,7 @@
+ 
+   failures = 0;
+   timer = clock();
+-  for(i=0; i < num_trials; i++) {
++  for(i=0; i < (uint32_t)num_trials; i++) {
+     
+     delta = index_guess(&rdbx.index, &est, i);
+     
+@@ -321,4 +343,3 @@
+ 
+   return (double) CLOCKS_PER_SEC * num_trials / timer;
+ }
+-

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+		
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:orientation="horizontal"
+		    android:layout_height="fill_parent" android:layout_width="wrap_content" android:layout_gravity="center_horizontal" android:paddingLeft="20dp" android:paddingRight="20dp">
+		    
+			<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			    android:orientation="vertical"
+			    android:layout_height="fill_parent" android:paddingTop="20dp" android:layout_width="wrap_content">
+			    
+			    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			    	android:orientation="horizontal"
+			    	android:layout_height="wrap_content" 
+			    	android:layout_gravity="center_horizontal" 
+			    	android:layout_width="wrap_content" 
+			    	android:paddingBottom="10dp">
+			    	<TextView android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="@string/preference_key_config_left" android:layout_width="50dp"/>
+			    	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    		android:layout_height="wrap_content"
+				    		android:layout_gravity="center_vertical" 
+				    		android:gravity="center" 
+				    		android:background="@drawable/key_config_border"
+				    		android:id="@+id/left_border" android:layout_width="120dp">
+			    		<TextView android:layout_height="wrap_content" 
+			    			android:layout_gravity="center" 
+			    			android:layout_width="wrap_content" 
+                            android:text="@string/k_A"
+			    			android:id="@+id/key_left"/>
+			   		</LinearLayout>
+			   	</LinearLayout>
+			   	
+			   	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			    	android:orientation="horizontal"
+			    	android:layout_height="wrap_content" 
+			    	android:layout_gravity="center_horizontal" 
+			    	android:layout_width="wrap_content" 
+			    	android:paddingBottom="10dp">
+			    	<TextView android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="@string/preference_key_config_right" android:layout_width="50dp"/>
+			    	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    		android:layout_height="wrap_content"
+				    		android:background="@drawable/key_config_border" 
+				    		android:layout_gravity="center_vertical" 
+				    		android:gravity="center"
+				    		android:id="@+id/right_border" android:layout_width="120dp">
+			    		<TextView android:layout_height="wrap_content" 
+			    				android:layout_gravity="center" 
+			    				android:layout_width="wrap_content" 
+                                android:text="@string/k_A"
+			    				android:id="@+id/key_right"/>
+			   		</LinearLayout>
+				</LinearLayout>
+		   	</LinearLayout>
+		   	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		    android:orientation="vertical"
+		    android:layout_height="fill_parent" android:paddingTop="20dp" android:layout_width="wrap_content">
+			   	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			    	android:orientation="horizontal"
+			    	android:layout_height="wrap_content" 
+			    	android:layout_gravity="center_horizontal" 
+			    	android:layout_width="wrap_content" 
+			    	android:paddingBottom="10dp">
+			    	<TextView android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="@string/preference_key_config_jump" android:layout_marginLeft="50dp" android:layout_width="50dp"/>
+			    	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    		android:layout_height="wrap_content"
+				    		android:background="@drawable/key_config_border" 
+				    		android:layout_gravity="center_vertical" 
+				    		android:gravity="center"
+				    		android:id="@+id/jump_border" android:layout_width="120dp">
+			    		<TextView android:layout_height="wrap_content" 
+			    				android:layout_gravity="center" 
+			    				android:layout_width="wrap_content" 
+                                android:text="@string/k_A"
+			    				android:id="@+id/key_jump"/>
+			   		</LinearLayout>
+			   	</LinearLayout>
+			   	
+			   	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			    	android:orientation="horizontal"
+			    	android:layout_height="wrap_content" 
+			    	android:layout_gravity="center_horizontal" 
+			    	android:layout_width="wrap_content" 
+			    	android:paddingBottom="10dp">
+			    	<TextView android:layout_height="wrap_content" android:layout_gravity="center_vertical" android:text="@string/preference_key_config_attack" android:layout_marginLeft="50dp" android:layout_width="50dp"/>
+			    	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				    		android:layout_height="wrap_content"
+				    		android:background="@drawable/key_config_border" 
+				    		android:layout_gravity="center_vertical"
+				    		android:gravity="center"
+				    		android:id="@+id/attack_border" android:layout_width="120dp">
+			    		<TextView android:layout_height="wrap_content" 
+			    				android:layout_gravity="center" 
+			    				android:layout_width="wrap_content" 
+                                android:text="@string/k_A"
+			    				android:id="@+id/key_attack"/>
+			   		</LinearLayout>
+			   	</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+	</ScrollView>
+</FrameLayout>
+	

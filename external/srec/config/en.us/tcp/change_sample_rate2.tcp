@@ -1,0 +1,78 @@
+###########################################################
+#
+# setup, this is a test of sample rate switching
+#
+context_load  grammars/digits.g2g Digits trash not_ve
+############################################################
+#
+# 11kHz tests
+#
+context_use   Digits
+acousticstate_reset
+recognize_nist  dallas/0000/S072.nwf 0 0 oh eight four zero nine two five one eight five
+recognize_nist  dallas/0000/S074.nwf 0 0 eight six one oh five six six two six two
+recognize_nist  dallas/0000/S075.nwf 0 0 zero seven six five nine oh zero two five two
+recognize_nist  dallas/0000/S076.nwf 0 0 five zero two seven four nine three three zero zero
+recognize_nist  dallas/0000/S077.nwf 0 0 six nine five zero two eight seven seven three six
+recognize_nist  dallas/0000/S079.nwf 0 0 seven one one five six zero oh six five nine
+recognize_nist  dallas/0000/S080.nwf 0 0 seven oh three seven nine zero six eight five seven
+recognize_nist  dallas/0000/S083.nwf 0 0 zero nine nine five seven two oh one zero six
+recognize_nist  dallas/0000/S086.nwf 0 0 six eight seven two one oh eight five zero seven
+recognize_nist  dallas/0000/S088.nwf 0 0 four two zero eight five nine oh nine four zero
+acousticstate_reset
+recognize_nist  dallas/0300/S052.nwf 0 0 zero seven nine five two five seven six nine eight
+recognize_nist  dallas/0300/S053.nwf 0 0 eight three five seven nine zero three five two oh
+recognize_nist  dallas/0300/S057.nwf 0 0 eight four zero five six five four one four six
+recognize_nist  dallas/0300/S063.nwf 0 0 oh nine seven three one three zero five five zero
+recognize_nist  dallas/0300/S065.nwf 0 0 one three three three zero zero five oh oh six
+context_free    Digits
+############################################################
+#
+# 8kHz tests 
+#
+change_sample_rate 8000
+context_use   Digits
+acousticstate_reset
+recognize_nist  dallas-8kHz/0301/S078.nwf 0 0 six seven five seven zero zero two six seven zero
+recognize_nist  dallas-8kHz/0301/S079.nwf 0 0 zero seven nine six five one four eight one eight
+recognize_nist  dallas-8kHz/0301/S080.nwf 0 0 three eight eight seven oh nine one seven five two
+recognize_nist  dallas-8kHz/0301/S082.nwf 0 0 eight one two six three six two five one oh
+recognize_nist  dallas-8kHz/0301/S083.nwf 0 0 seven six zero eight three three zero five nine four
+recognize_nist  dallas-8kHz/0301/S089.nwf 0 0 nine seven zero six five nine six oh six five
+acousticstate_reset
+recognize_nist  dallas-8kHz/0302/S051.nwf 0 0 four nine seven eight four five eight two zero zero
+recognize_nist  dallas-8kHz/0302/S052.nwf 0 0 nine oh one one five oh oh seven five zero
+recognize_nist  dallas-8kHz/0302/S053.nwf 0 0 five zero nine two four four six two two three
+recognize_nist  dallas-8kHz/0302/S054.nwf 0 0 four nine three zero three oh five seven two three
+recognize_nist  dallas-8kHz/0302/S065.nwf 0 0 five six five four five five three eight six seven
+recognize_nist  dallas-8kHz/0302/S070.nwf 0 0 oh six two nine one five two nine five oh
+recognize_nist  dallas-8kHz/0302/S071.nwf 0 0 two zero five oh four nine two six five eight
+context_free    Digits
+############################################################
+#
+# back to 11kHz
+#
+change_sample_rate 11025
+context_use   Digits
+acousticstate_reset
+recognize_nist  dallas/0303/S080.nwf 0 0 six eight five four oh one six two seven three
+recognize_nist  dallas/0303/S083.nwf 0 0 three four three four eight four eight five six eight
+recognize_nist  dallas/0303/S084.nwf 0 0 one two eight five zero seven eight six seven one
+recognize_nist  dallas/0303/S087.nwf 0 0 oh five six eight eight nine five five one eight
+recognize_nist  dallas/0303/S088.nwf 0 0 five four four oh two one four four zero nine
+recognize_nist  dallas/0303/S089.nwf 0 0 oh five one oh six eight seven one zero nine
+recognize_nist  dallas/0303/S090.nwf 0 0 five nine zero two eight seven three three four three
+acousticstate_reset
+recognize_nist  dallas/0304/S052.nwf 0 0 nine five eight one eight five eight seven five
+recognize_nist  dallas/0304/S054.nwf 0 0 one zero nine two five four seven seven six seven
+recognize_nist  dallas/0304/S055.nwf 0 0 oh seven four five four oh seven three oh oh
+recognize_nist  dallas/0304/S074.nwf 0 0 eight six one oh five six six two six two
+recognize_nist  dallas/0304/S075.nwf 0 0 zero seven six five nine oh zero two five two
+recognize_nist  dallas/0304/S076.nwf 0 0 five zero two seven four nine three three zero zero
+recognize_nist  dallas/0304/S077.nwf 0 0 six nine five zero two eight seven seven three six
+context_free    Digits
+###########################################################
+#
+# wrap-up, this was a test of sample rate switching
+#
+context_unload  Digits

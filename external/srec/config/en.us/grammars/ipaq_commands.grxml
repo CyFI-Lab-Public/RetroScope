@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="ISO8859-1" ?>
+<grammar xml:lang="en-us" version="1.0" root="ROOT">
+<!-- 
+	ipaq_commands.grxml ... this is a sample which shows how to use 
+	natural numbers in a grammar.  It allows phrases such as
+	go to step $N .. where $N can range from 0 to 99
+-->
+ 
+<rule id="ROOT" scope="public">
+  <one-of>
+	<item>
+	    <item>center</item>
+	    <item repeat="0-1">
+	      <one-of>
+		<item>here <tag>MEANING='CTR'</tag></item>
+		<item>of this <tag>MEANING='CTR'</tag></item>
+		<item>on this <tag>MEANING='CTR'</tag></item>
+		<item>on this point <tag>MEANING='CTR'</tag></item>
+	      </one-of>
+	    </item>
+	</item>
+	<item>
+	    <item>get</item>
+	    <one-of>
+		<item>a map <tag>MEANING='MAP'</tag> </item>
+		<item>directions <tag>MEANING='DIR'</tag></item>
+		<item>map <tag>MEANING='MAP'</tag></item>
+		<item>maps <tag>MEANING='MAP'</tag></item>
+	    </one-of>
+	</item>
+	<item>
+	    <one-of> 
+	      <item>
+      	        <item repeat="0-1">go to</item>
+	        <item>
+	         <one-of>
+		  <item>step</item>
+		  <item>steps</item>
+	         </one-of>
+	        </item>
+	      </item>
+              <item>go to</item>
+	    </one-of>
+	    <ruleref uri="#NUMBER"/>
+	    <tag>MEANING='STEP' + NUMBER.X;</tag>
+	</item>
+	<item>map <tag>V='MAP'</tag> </item>
+	<item>
+            <item> <one-of>
+	      <item>map <tag>V='MAP'</tag> </item>
+	      <item>map of<tag>V='MAP'</tag> </item>
+	      <item>map of the<tag>V='MAP'</tag> </item>
+	      <item>map the<tag>V='MAP'</tag> </item>
+	    </one-of> </item>
+            <item>
+	       <one-of>
+		<item> arrival             <tag>V=V+' AP';</tag></item>
+		<item> destination         <tag>V=V+' DP';</tag></item>
+		<item> end                 <tag>V=V+' EP';</tag></item>
+		<item> ending              <tag>V=V+' EP';</tag></item>
+		<item> origin              <tag>V=V+' SP';</tag></item>
+		<item> start               <tag>V=V+' SP';</tag></item>
+		<item> starting            <tag>V=V+' SP';</tag></item>
+	       </one-of>
+             </item>
+	     <item repeat="0-1"> point </item>
+	</item>
+
+	<item>
+	  <item>move</item>
+	  <one-of>
+		<item>down</item>
+		<item>left</item>
+		<item>right</item>
+		<item>up</item>
+	  </one-of>
+	</item>
+
+	<item>next step</item>
+
+	<item>route map</item>
+
+	<item>
+	  <item>zoom <tag>V='ZOOM'</tag></item>
+	  <one-of>
+		<item>in               <tag>V=' IN'</tag></item>
+		<item>in here          <tag>V=' INH'</tag></item>
+		<item>in on this       <tag>V=' INH'</tag></item>
+		<item>in on this point <tag>V=' INH'</tag></item>
+		<item>on this          <tag>V=' ONH'</tag></item>
+		<item>out              <tag>V=' OUT'</tag></item>
+	  </one-of>
+	</item>
+
+  </one-of>
+</rule>
+
+   <rule id="NUMBER">
+     <one-of>
+      <item repeat="1-">
+          <ruleref uri="#DIGIT"/>
+	  <tag>X=X?X:'';X=X+DIGIT.V;</tag>
+      </item>
+      <item>
+	  <ruleref uri="#TEEN"/>
+	  <tag>X=X?X:'';X=X+TEEN.V;</tag>
+      </item>
+      <item>
+	  <ruleref uri="#TY"/>
+	  <ruleref uri="#NZ_DIGIT"/>
+	  <tag>X=X?X:'';X=X+TY.V+NZ_DIGIT.V;</tag>
+      </item>
+      <item>
+	  <ruleref uri="#TY"/>
+	  <tag>X=X?X:'';X=X+TY.V+'0';</tag>
+      </item>
+     </one-of>
+   </rule>
+
+   <rule id="DIGIT">
+      <one-of>
+         <item>            oh              <tag>V='0'</tag>         </item>
+         <item>            zero            <tag>V='0'</tag>         </item>
+         <item>            one             <tag>V='1'</tag>         </item>
+         <item>            two             <tag>V='2'</tag>         </item>
+         <item>            three           <tag>V='3'</tag>         </item>
+         <item>            four            <tag>V='4'</tag>         </item>
+         <item>            five            <tag>V='5'</tag>         </item>
+         <item>            six             <tag>V='6'</tag>         </item>
+         <item>            seven           <tag>V='7'</tag>         </item>
+         <item>            eight           <tag>V='8'</tag>         </item>
+         <item>            nine            <tag>V='9'</tag>         </item>
+      </one-of>   
+   </rule>
+
+   <rule id="NZ_DIGIT">
+      <one-of>
+         <item>            one             <tag>V='1'</tag>         </item>
+         <item>            two             <tag>V='2'</tag>         </item>
+         <item>            three           <tag>V='3'</tag>         </item>
+         <item>            four            <tag>V='4'</tag>         </item>
+         <item>            five            <tag>V='5'</tag>         </item>
+         <item>            six             <tag>V='6'</tag>         </item>
+         <item>            seven           <tag>V='7'</tag>         </item>
+         <item>            eight           <tag>V='8'</tag>         </item>
+         <item>            nine            <tag>V='9'</tag>         </item>
+      </one-of>   
+   </rule>
+
+  <rule id="TEEN">
+    <one-of>
+	<item>		nineteen		<tag>V='19'</tag>	</item>
+	<item>		eighteen                <tag>V='18'</tag>	</item>
+	<item>		seventeen               <tag>V='17'</tag>	</item>
+	<item>		sixteen                 <tag>V='16'</tag>	</item>
+	<item>		fifteen                 <tag>V='15'</tag>	</item>
+	<item>		fourteen                <tag>V='14'</tag>	</item>
+	<item>		thirteen                <tag>V='13'</tag>	</item>
+	<item>		twelve                  <tag>V='12'</tag>	</item>
+	<item>		eleven                  <tag>V='11'</tag>	</item>
+	<item>		ten                     <tag>V='10'</tag>	</item>
+    </one-of>
+  </rule>
+
+  <rule id="TY">
+    <one-of>
+	<item>		ninety               <tag>V='9'</tag>	</item>
+	<item>		eighty               <tag>V='8'</tag>	</item>
+	<item>		seventy              <tag>V='7'</tag>	</item>
+	<item>		sixty                <tag>V='6'</tag>	</item>
+	<item>		fifty                <tag>V='5'</tag>	</item>
+	<item>		forty                <tag>V='4'</tag>	</item>
+	<item>		thirty               <tag>V='3'</tag>	</item>
+	<item>		twenty               <tag>V='2'</tag>	</item>
+    </one-of>
+  </rule>
+
+
+</grammar>

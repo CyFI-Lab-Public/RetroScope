@@ -1,0 +1,93 @@
+context_load  grammars/bothtags5.g2g  BothTags   trash  not_ve
+##context_load  grammars/bothtags5,addWords=100  BothTags   trash  not_ve
+context_load  grammars/enroll.g2g VoiceEnroll ROOT ve
+##context_load  grammars/enroll VoiceEnroll ROOT ve
+context_use  VoiceEnroll
+recognize_nist  v139/v139_024.nwv 0 0 VCE_Pete_Gonzalez
+context_free  VoiceEnroll
+
+context_use  BothTags
+addword_from_last_nametag  @Names VCE_Pete_Gonzalez 0
+context_free  BothTags
+context_use VoiceEnroll
+recognize_nist  v139/v139_254.nwv 0 0 VCE_Andrew_Evans
+context_free  VoiceEnroll
+context_use  BothTags
+addword_from_last_nametag  @Names VCE_Andrew_Evans 0
+context_free  BothTags
+context_use VoiceEnroll
+recognize_nist  v139/v139_127.nwv 0 0 VCE_Peter_Wilson
+context_free  VoiceEnroll
+context_use  BothTags
+addword_from_last_nametag  @Names VCE_Peter_Wilson 0
+context_free  BothTags
+context_use  VoiceEnroll
+recognize_nist  v139/v139_107.nwv 0 0 VCE_Edgar_Young
+context_free  VoiceEnroll
+context_use BothTags
+addword_from_last_nametag  @Names VCE_Edgar_Young 0
+context_free  BothTags
+context_use VoiceEnroll
+recognize_nist  v139/v139_248.nwv 0 0 VCE_John_Martinez
+context_free  VoiceEnroll
+context_use  BothTags
+addword_from_last_nametag  @Names VCE_John_Martinez 0
+#
+# TEXTTAGS
+# The pattern for texttags is that we just add the texttag
+# since pronunciation guessing is not always available we're specifying
+# the pronunciation to be used for this text tag.
+# If NULL appears in the transcription field (immediately after the name)
+# then the phonetic transcription will be requested from the G2P
+# (Grapheme-to-Phoneme) module at runtime.
+#
+addword  @Names Jen_Parker NULL 0 V='Jen_Parker'
+addword  @Names Jennifer_Hernandez NULL 0 V='Jennifer_Hernandez'
+addword  @Names Barb_Baker NULL 0 V='Barb_Baker'
+addword  @Names Elaine NULL 0 V='Elaine'
+addword  @Names David NULL 0 V='David'
+
+#
+# RECOGNITION
+# prepare the recognition context for recognition
+context_save bothtags5_saved.g2g
+# trouble starts
+context_free BothTags
+context_unload BothTags
+context_load bothtags5_saved.g2g BothTagsNew trash not_ve
+# trouble ends
+
+context_use BothTagsNew 
+context_compile
+
+#
+# ACTUAL RECOGNITION UTTERANCES
+#
+# These utterance test that we're able to recognize the voicetags
+recognize_nist  v139/v139_077.nwv 0 0 phone delete VCE_Pete_Gonzalez
+recognize_nist  v139/v139_040.nwv 0 0 phone delete VCE_Peter_Wilson
+recognize_nist  v139/v139_021.nwv 0 0 phone delete VCE_Edgar_Young
+recognize_nist  v139/v139_206.nwv 0 0 phone delete VCE_Andrew_Evans
+recognize_nist  v139/v139_103.nwv 0 0 phone delete VCE_John_Martinez
+#
+# CMD: context_reset
+# These utterances test that we're able to recognize the texttags
+recognize_nist  v139/v139_113.nwv 0 0 phone delete Jen_Parker
+recognize_nist  v139/v139_067.nwv 0 0 phone delete Jennifer_Hernandez
+recognize_nist  v139/v139_202.nwv 0 0 phone delete Barb_Baker
+recognize_nist  v139/v139_007.nwv 0 0 phone delete Elaine
+recognize_nist  v139/v139_189.nwv 0 0 phone delete David
+#
+#
+acousticstate_reset
+recognize_nist  m252/m252a12e.nwv 0 0 forward
+recognize_nist  m252/m252a22e.nwv 0 0 traffic
+recognize_nist  m252/m252a10e.nwv 0 0 changer
+recognize_nist  m252/m252a3fe.nwv 0 0 cd player
+recognize_nist  m252/m252a11e.nwv 0 0 traffic information
+recognize_nist  m252/m252a21e.nwv 0 0 traffic memory
+recognize_nist  m252/m252a24e.nwv 0 0 fahrenheit
+context_free  BothTagsNew 
+context_unload  BothTagsNew 
+
+context_unload  VoiceEnroll

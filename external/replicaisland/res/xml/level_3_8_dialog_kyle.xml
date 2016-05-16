@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog>
+
+<conversation>
+
+<page
+  image="@drawable/kyle_closeup_neutral"
+  text = "@string/Kyle_3_8_1_1" 
+  title = "@string/Kyle"
+/>
+
+<page
+  image="@drawable/kyle_closeup_neutral"
+  text = "@string/Kyle_3_8_1_2" 
+  title = "@string/Kyle"
+/>
+
+<page
+  image="@drawable/kyle_closeup_neutral"
+  text = "@string/Kyle_3_8_1_3" 
+  title = "@string/Kyle"
+/>
+
+</conversation>
+
+<conversation>
+
+<page
+  image="@drawable/kyle_closeup_neutral"
+  text = "@string/Kyle_3_8_2_1" 
+  title = "@string/Kyle"
+/>
+
+</conversation>
+
+
+</dialog>

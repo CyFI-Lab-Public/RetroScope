@@ -1,0 +1,310 @@
+diff -r -u -d /tmp/strace-4.6/bjm.c ./bjm.c
+--- /tmp/strace-4.6/bjm.c	2009-11-06 09:27:46.000000000 -0800
++++ ./bjm.c	2013-01-04 12:26:34.977221825 -0800
+@@ -39,7 +39,9 @@
+ #include <sys/wait.h>
+ #include <sys/resource.h>
+ #include <sys/utsname.h>
++#ifndef HAVE_ANDROID_OS
+ #include <sys/user.h>
++#endif
+ #include <sys/syscall.h>
+ #include <signal.h>
+ 
+diff -r -u -d /tmp/strace-4.6/defs.h ./defs.h
+--- /tmp/strace-4.6/defs.h	2011-03-15 10:19:09.000000000 -0700
++++ ./defs.h	2013-01-04 12:26:34.977221825 -0800
+@@ -33,10 +33,6 @@
+ #include "config.h"
+ #endif
+ 
+-#ifdef MIPS
+-#include <sgidefs.h>
+-#endif
+-
+ #ifdef linux
+ #include <features.h>
+ #endif
+diff -r -u -d /tmp/strace-4.6/file.c ./file.c
+--- /tmp/strace-4.6/file.c	2011-03-03 18:08:02.000000000 -0800
++++ ./file.c	2013-01-04 12:26:34.977221825 -0800
+@@ -45,6 +45,60 @@
+ # define kernel_dirent dirent
+ #endif
+ 
++#ifdef HAVE_ANDROID_OS
++#include <linux/fadvise.h>
++
++// ANDROID: From linux/dirent.h
++
++struct dirent64 {
++ __u64 d_ino;
++ __s64 d_off;
++ unsigned short d_reclen;
++ unsigned char d_type;
++ char d_name[256];
++};
++
++// ANDROID: From kernel_headers/asm/statfs.h
++
++#if !defined(MIPS)
++/*
++ * With EABI there is 4 bytes of padding added to this structure.
++ * Let's pack it so the padding goes away to simplify dual ABI support.
++ * Note that user space does NOT have to pack this structure.
++ */
++struct statfs64 {
++        __u32 f_type;
++        __u32 f_bsize;
++        __u64 f_blocks;
++        __u64 f_bfree;
++        __u64 f_bavail;
++        __u64 f_files;
++        __u64 f_ffree;
++        __kernel_fsid_t f_fsid;
++        __u32 f_namelen;
++        __u32 f_frsize;
++        __u32 f_spare[5];
++} __attribute__ ((packed,aligned(4)));
++#else
++struct statfs64 {
++	__u32 f_type;
++	__u32 f_bsize;
++	__u32 f_frsize;
++	__u32 __pad;
++	__u64 f_blocks;
++	__u64 f_bfree;
++	__u64 f_files;
++	__u64 f_ffree;
++	__u64 f_bavail;
++	__kernel_fsid_t f_fsid;
++	__u32 f_namelen;
++	__u32 f_spare[6];
++};
++#endif
++
++
++#endif /* HAVE_ANDROID_OS */
++
+ #ifdef LINUX
+ #  ifdef LINUXSPARC
+ struct stat {
+@@ -1732,11 +1786,19 @@
+ 		(unsigned long)statbuf.f_bsize,
+ 		(unsigned long)statbuf.f_blocks,
+ 		(unsigned long)statbuf.f_bfree);
++#ifdef MIPS
++	tprintf("f_bavail=%lu, f_files=%lu, f_ffree=%lu, f_fsid={%ld, %ld}",
++		(unsigned long)statbuf.f_bavail,
++		(unsigned long)statbuf.f_files,
++		(unsigned long)statbuf.f_ffree,
++		statbuf.f_fsid.val[0], statbuf.f_fsid.val[1]);
++#else
+ 	tprintf("f_bavail=%lu, f_files=%lu, f_ffree=%lu, f_fsid={%d, %d}",
+ 		(unsigned long)statbuf.f_bavail,
+ 		(unsigned long)statbuf.f_files,
+ 		(unsigned long)statbuf.f_ffree,
+ 		statbuf.f_fsid.__val[0], statbuf.f_fsid.__val[1]);
++#endif
+ #ifdef LINUX
+ 	tprintf(", f_namelen=%lu", (unsigned long)statbuf.f_namelen);
+ #endif /* LINUX */
+@@ -1790,11 +1852,19 @@
+ 		(unsigned long long)statbuf.f_bsize,
+ 		(unsigned long long)statbuf.f_blocks,
+ 		(unsigned long long)statbuf.f_bfree);
++#ifdef MIPS
++	tprintf("f_bavail=%llu, f_files=%llu, f_ffree=%llu, f_fsid={%ld, %ld}",
++		(unsigned long long)statbuf.f_bavail,
++		(unsigned long long)statbuf.f_files,
++		(unsigned long long)statbuf.f_ffree,
++		statbuf.f_fsid.val[0], statbuf.f_fsid.val[1]);
++#else
+ 	tprintf("f_bavail=%llu, f_files=%llu, f_ffree=%llu, f_fsid={%d, %d}",
+ 		(unsigned long long)statbuf.f_bavail,
+ 		(unsigned long long)statbuf.f_files,
+ 		(unsigned long long)statbuf.f_ffree,
+ 		statbuf.f_fsid.__val[0], statbuf.f_fsid.__val[1]);
++#endif
+ 	tprintf(", f_namelen=%lu", (unsigned long)statbuf.f_namelen);
+ #ifdef _STATFS_F_FRSIZE
+ 	tprintf(", f_frsize=%llu", (unsigned long long)statbuf.f_frsize);
+diff -r -u -d /tmp/strace-4.6/ioctl.c ./ioctl.c
+--- /tmp/strace-4.6/ioctl.c	2011-01-15 12:15:31.000000000 -0800
++++ ./ioctl.c	2013-01-04 12:26:34.977221825 -0800
+@@ -155,9 +155,11 @@
+ 	case 0x03:
+ 	case 0x12:
+ 		return block_ioctl(tcp, code, arg);
++#ifndef HAVE_ANDROID_OS
+ 	case 0x22:
+ 		return scsi_ioctl(tcp, code, arg);
+ #endif
++#endif
+ 	default:
+ 		break;
+ 	}
+diff -r -u -d /tmp/strace-4.6/ipc.c ./ipc.c
+--- /tmp/strace-4.6/ipc.c	2010-03-31 15:22:01.000000000 -0700
++++ ./ipc.c	2013-01-04 12:26:34.977221825 -0800
+@@ -40,9 +40,15 @@
+ 
+ #include <fcntl.h>
+ #include <sys/ipc.h>
++#ifdef HAVE_ANDROID_OS
++#include <linux/sem.h>
++#include <linux/msg.h>
++#include <linux/shm.h>
++#else
+ #include <sys/sem.h>
+ #include <sys/msg.h>
+ #include <sys/shm.h>
++#endif
+ 
+ #ifndef MSG_STAT
+ #define MSG_STAT 11
+diff -r -u -d /tmp/strace-4.6/process.c ./process.c
+--- /tmp/strace-4.6/process.c	2011-03-14 14:58:59.000000000 -0700
++++ ./process.c	2013-01-04 12:26:34.987221830 -0800
+@@ -45,7 +45,11 @@
+ #include <sys/wait.h>
+ #include <sys/resource.h>
+ #include <sys/utsname.h>
++#ifdef HAVE_ANDROID_OS
++#include <asm/user.h>
++#else
+ #include <sys/user.h>
++#endif
+ #include <sys/syscall.h>
+ #include <signal.h>
+ #ifdef SUNOS4
+@@ -114,6 +118,10 @@
+ #define GETGROUPS32_T __kernel_gid32_t
+ #endif /* LINUX */
+ 
++#ifdef HAVE_ANDROID_OS
++#define __sched_priority sched_priority
++#endif
++
+ #if defined(LINUX) && defined(IA64)
+ # include <asm/ptrace_offsets.h>
+ # include <asm/rse.h>
+diff -r -u -d /tmp/strace-4.6/signal.c ./signal.c
+--- /tmp/strace-4.6/signal.c	2011-03-10 15:14:47.000000000 -0800
++++ ./signal.c	2013-01-04 12:26:34.987221830 -0800
+@@ -37,9 +37,17 @@
+ 
+ #include <stdint.h>
+ #include <signal.h>
++#ifndef HAVE_ANDROID_OS
+ #include <sys/user.h>
++#endif
+ #include <fcntl.h>
+ 
++#ifdef HAVE_ANDROID_OS
++//FIXME use "sigprocmask" or something
++#define sigmask(sig)    (1UL << ((sig) - 1))
++#define sigcontext_struct sigcontext
++#endif
++
+ #ifdef SVR4
+ #include <sys/ucontext.h>
+ #endif /* SVR4 */
+@@ -455,7 +463,7 @@
+ 
+ #endif /* LINUX */
+ 
+-#if __GLIBC_MINOR__ < 1
++#if __GLIBC_MINOR__ < 1 && !defined(HAVE_ANDROID_OS)
+ /* Type for data associated with a signal.  */
+ typedef union sigval
+ {
+@@ -1492,6 +1500,7 @@
+ 		tcp->u_arg[0] = 0;
+ 		sp = regs.regs[29];
+ 		if (umove(tcp, sp, &si) < 0)
++			return 0;
+ 		tcp->u_arg[0] = 1;
+ 		tcp->u_arg[1] = si.si_mask;
+ 	} else {
+diff -r -u -d /tmp/strace-4.6/syscall.c ./syscall.c
+--- /tmp/strace-4.6/syscall.c	2011-02-18 16:02:27.000000000 -0800
++++ ./syscall.c	2013-03-21 17:57:17.999238040 -0700
+@@ -38,7 +38,9 @@
+ #include <signal.h>
+ #include <time.h>
+ #include <errno.h>
++#ifndef HAVE_ANDROID_OS
+ #include <sys/user.h>
++#endif
+ #include <sys/syscall.h>
+ #include <sys/param.h>
+ 
+@@ -2600,6 +2602,7 @@
+ 	}
+ 
+ 	switch (known_scno(tcp)) {
++#ifndef __ARM_EABI__
+ #ifdef SYS_socket_subcall
+ 	case SYS_socketcall:
+ 		decode_subcall(tcp, SYS_socket_subcall,
+@@ -2612,6 +2615,7 @@
+ 			SYS_ipc_nsubcalls, shift_style);
+ 		break;
+ #endif
++#endif
+ #ifdef SVR4
+ #ifdef SYS_pgrpsys_subcall
+ 	case SYS_pgrpsys:
+diff -r -u -d /tmp/strace-4.6/system.c ./system.c
+--- /tmp/strace-4.6/system.c	2011-02-22 02:22:13.000000000 -0800
++++ ./system.c	2013-03-21 17:27:34.050083824 -0700
+@@ -32,6 +32,11 @@
+ 
+ #include "defs.h"
+ 
++#ifdef HAVE_ANDROID_OS
++#undef __unused
++#include <linux/socket.h>
++#endif
++
+ #ifdef LINUX
+ #define _LINUX_SOCKET_H
+ #define _LINUX_FS_H
+@@ -83,7 +88,7 @@
+ #include <linux/utsname.h>
+ #endif
+ 
+-#ifdef HAVE_ASM_SYSMIPS_H
++#ifdef MIPS
+ #include <asm/sysmips.h>
+ #endif
+ 
+diff -r -u -d /tmp/strace-4.6/time.c ./time.c
+--- /tmp/strace-4.6/time.c	2011-03-03 18:08:02.000000000 -0800
++++ ./time.c	2013-01-04 12:26:34.987221830 -0800
+@@ -33,7 +33,11 @@
+ 
+ #ifdef LINUX
+ #include <linux/version.h>
++#ifdef HAVE_ANDROID_OS
++#include <linux/timex.h>
++#else
+ #include <sys/timex.h>
++#endif
+ #include <linux/ioctl.h>
+ #include <linux/rtc.h>
+ 
+diff -r -u -d /tmp/strace-4.6/util.c ./util.c
+--- /tmp/strace-4.6/util.c	2011-03-03 18:08:02.000000000 -0800
++++ ./util.c	2013-03-21 17:57:25.519150107 -0700
+@@ -37,7 +37,9 @@
+ 
+ #include <signal.h>
+ #include <sys/syscall.h>
++#ifndef HAVE_ANDROID_OS
+ #include <sys/user.h>
++#endif
+ #include <sys/param.h>
+ #include <fcntl.h>
+ #if HAVE_SYS_UIO_H

@@ -1,0 +1,971 @@
+# cd /system/usr/srec
+# ./run_robustness1.sh
+Robustness1: ESRSDK = /system/usr/srec
+Initialising...
+android.speech.recognition.test.contacts.CLRecognizer:before EmbeddedRecognizer.getInstance()
+android.speech.recognition.test.contacts.CLRecognizer:after EmbeddedRecognizer.getInstance(): android.speech.recognition.impl.EmbeddedRecognizerImpl android.speech.recognition.impl.EmbeddedRecognizerImpl@4001e968
+android.speech.recognition.test.contacts.CLRecognizer:before EmbeddedRecognizer.configure(/system/usr/srec/config/en.us/baseline11k.par)
+android.speech.recognition.test.contacts.CLRecognizer:after EmbeddedRecognizer.configure()
+android.speech.recognition.test.contacts.CLRecognizer:before recognizer.createGrammar(/system/usr/srec/config/en.us/grammars/dynamic-test.g2g)
+android.speech.recognition.test.contacts.CLRecognizer:after recognizer.createGrammar(/system/usr/srec/config/en.us/grammars/dynamic-test.g2g)
+android.speech.recognition.test.contacts.CLRecognizer:before grammar.load()
+android.speech.recognition.test.contacts.CLRecognizer:onLoaded
+android.speech.recognition.test.contacts.CLRecognizer:Adding words to grammar slot
+android.speech.recognition.test.contacts.CLRecognizer:item 0: Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:item 1: Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:item 2: Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:after grammar.load()
+android.speech.recognition.test.contacts.CLRecognizer:onCompileAllSlots
+GrammarAction:onGrammarSuccess
+Iteration: 1
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:24
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 2
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:25
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 3
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:27
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 4
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:18
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 5
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:15
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 6
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:16
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+Iteration: 7
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:16
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 8
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:16
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 9
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:16
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 10
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:17
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 11
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:18
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 12
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:18
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 13
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 14
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:20
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 15
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:20
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+writerListener: onStopped()
+File was saved
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+Iteration: 16
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 17
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:21
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 18
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 19
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+writerListener: onStopped()
+File was saved
+Iteration: 20
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 21
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 22
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 23
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+writerListener: onStopped()
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+File was saved
+Iteration: 24
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 25
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 26
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 27
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 28
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 29
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 30
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 31
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+writerListener: onStopped()
+File was saved
+Iteration: 32
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 33
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 34
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 35
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 36
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 37
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 38
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 39
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 40
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 41
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 42
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 43
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 44
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 45
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 46
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 47
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 48
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 49
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+Iteration: 50
+Recognizing with: /system/usr/srec/config/en.us/audio/v139/v139_113.nwv
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:19
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+File was saved
+
+<< test continues on until it is manually stopped >>

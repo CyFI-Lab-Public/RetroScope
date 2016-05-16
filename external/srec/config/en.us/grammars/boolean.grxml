@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<grammar version="1.0" xml:lang="en-US" mode="voice" root="_boolean">
+<!-- 
+	Boolean yes/no grammar, alternatives for yes and no can be added
+	to the grammar in the ROOT slot but this should be done carefully
+	to avoid confusions.
+ -->
+
+ <rule id="_boolean" scope="public">
+    <one-of>
+      <item>yes <tag>MEANING='1'</tag></item>
+      <item>no <tag>MEANING='0'</tag></item>
+    </one-of>
+ </rule>
+
+</grammar>
+
+
+
+
+
+
+
+
+
+

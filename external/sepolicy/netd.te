@@ -1,0 +1,85 @@
+# network manager
+type netd, domain;
+type netd_exec, exec_type, file_type;
+
+init_daemon_domain(netd)
+allow netd self:capability { net_admin net_raw kill fsetid };
+allow netd self:netlink_kobject_uevent_socket *;
+allow netd self:netlink_route_socket *;
+allow netd self:netlink_nflog_socket *;
+allow netd self:rawip_socket *;
+allow netd self:{ tcp_socket udp_socket } *;
+allow netd node:{ tcp_socket udp_socket } node_bind;
+allow netd port:{ tcp_socket udp_socket } name_bind;
+allow netd port:tcp_socket name_connect;
+allow netd self:unix_stream_socket *;
+allow netd shell_exec:file rx_file_perms;
+allow netd system_file:file x_file_perms;
+allow netd devpts:chr_file rw_file_perms;
+
+# For /proc/sys/net/ipv[46]/route/flush.
+# XXX Split /proc/sys/net into its own type.
+allow netd proc:file write;
+
+# For /sys/modules/bcmdhd/parameters/firmware_path
+# XXX Split into its own type.
+allow netd sysfs:file write;
+
+# Set dhcp lease for PAN connection
+unix_socket_connect(netd, property, init)
+allow netd system_prop:property_service set;
+
+# Connect to PAN
+domain_auto_trans(netd, dhcp_exec, dhcp)
+allow netd dhcp:process signal;
+
+# Needed to update /data/misc/wifi/hostapd.conf
+# TODO: See what we can do to reduce the need for
+# these capabilities
+allow netd self:capability { dac_override chown fowner };
+allow netd wifi_data_file:file create_file_perms;
+allow netd wifi_data_file:dir rw_dir_perms;
+
+# Allow netd to spawn hostapd in it's own domain
+domain_auto_trans(netd, hostapd_exec, hostapd)
+allow netd hostapd:process signal;
+
+# Allow netd to spawn dnsmasq in it's own domain
+domain_auto_trans(netd, dnsmasq_exec, dnsmasq)
+allow netd dnsmasq:process signal;
+
+# Allow netd to start clatd in its own domain
+domain_auto_trans(netd, clatd_exec, clatd)
+allow netd clatd:process signal;
+
+# Support netd running mdnsd
+# TODO: prune this back further
+allow netd ctl_default_prop:property_service set;
+allow netd device:sock_file write;
+
+###
+### Neverallow rules
+###
+### netd should NEVER do any of this
+
+# Block device access.
+neverallow netd dev_type:blk_file { read write };
+
+# Kernel memory access.
+neverallow netd kmem_device:chr_file { read write };
+
+# Setting SELinux enforcing status or booleans.
+# Conditionally allowed to system_app for SEAndroidManager.
+neverallow netd kernel:security { setenforce setbool };
+
+# Load security policy.
+neverallow netd kernel:security load_policy;
+
+# ptrace any other app
+neverallow netd { domain }:process ptrace;
+
+# Write to /system.
+neverallow netd system_file:dir_file_class_set write;
+
+# Write to files in /data/data or system files on /data
+neverallow netd { app_data_file system_data_file }:dir_file_class_set write;

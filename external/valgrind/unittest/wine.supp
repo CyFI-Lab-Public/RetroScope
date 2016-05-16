@@ -1,0 +1,26 @@
+{
+  wine_clone
+  ThreadSanitizer:Race
+  fun:clone
+}
+
+{
+  wine_destroy_static_lock
+  ThreadSanitizer:InvalidLock
+  fun:AnnotateRWLockDestroy
+  fun:RtlDeleteCriticalSection
+  fun:WINMM_DeleteIData
+  fun:DllMain
+  fun:__wine_spec_dll_entry
+}
+
+# WARNING: this is a temporary suppression for a false race report in Wine
+# semaphore implementation.
+# TODO(eugenis): annotate semaphores in Wine.
+{
+  wine_unimplemented_semaphore
+  ThreadSanitizer:Race
+  ...
+  fun:WindowsSemaphoreTests::Waiter
+}
+

@@ -1,0 +1,116 @@
+# this is the telematics grammar test, grammar is fixed
+# default models
+cmdline.modelfiles       = models/generic_f.swimdl models/generic_m.swimdl
+cmdline.arbfile	     = models/generic.swiarb
+cmdline.tcp          = CMDLINE.TCPFILE
+cmdline.lda		= models/generic11.lda
+#
+cmdline.modelfiles11       = models/generic11_f.swimdl models/generic11_m.swimdl
+cmdline.modelfiles8       = models/generic8_f.swimdl models/generic8_m.swimdl
+cmdline.lda11		= models/generic11.lda
+cmdline.lda8		= models/generic8.lda
+#
+cmdline.vocabulary	= dictionary/large.ok
+#
+cmdline.datapath     = \\silicon2\D\\visteon_en_us\\train\\wave
+cmdline.results	     = recog4.res;
+cmdline.use_image	= 2;
+cmdline.detail_res	 = YES;
+cmdline.bgsniff      = 25;
+
+# beginning of speech detection stuff
+cmdline.bgsniff_min     = 4;
+cmdline.silence_duration_in_frames = 100;
+cmdline.end_of_utterance_hold_off_in_frames = 30;
+# 1 means yes do start-pointing
+cmdline.gatedmode    = 1;
+
+cmdline.DataCaptureDirectory = logs
+# OSI Log levels (bit set indicates level is ON)
+# 0 no logging
+# BIT 0 -> BASIC logging
+# BIT 1 -> AUDIO waveform logging
+# BIT 2 -> ADD WORD logging
+# e.g. value is 3 = BASIC+AUDIO logging, no ADDWORD
+SREC.Recognizer.osi_log_level = 0
+SREC.Recognizer.utterance_timeout = 400
+
+CREC.ParVersion         	= 1.0 ;
+CREC.useCREClogger = 1;
+
+CREC.Acoustic.dimen     	= 36 ;
+CREC.Acoustic.skip      	= 5 ;
+CREC.Acoustic.stay      	= 5 ;
+CREC.Acoustic.durscale  	= 5 ;
+CREC.Acoustic.minvar    	= 2860 ;
+CREC.Acoustic.maxvar    	= 2860 ;
+CREC.Acoustic.frame_period = 20 ;
+CREC.Acoustic.load_models	= non_generic;
+
+CREC.Frontend.mel_dim             = 12 ;
+CREC.Frontend.samplerate          = 11025 ;
+CREC.Frontend.premel              = 0.9 ;
+CREC.Frontend.lowcut              = 125 ;
+CREC.Frontend.highcut             = 5500 ;
+CREC.Frontend.window_factor       = 2 ;
+CREC.Frontend.offset		  = 0 ;
+CREC.Frontend.ddmel               = YES ;
+CREC.Frontend.peakdecayup         = 0.3 ;
+CREC.Frontend.peakdecaydown       = 0.7 ;
+CREC.Frontend.do_skip_even_frames = YES ;
+CREC.Frontend.melA 	= 14 45 60 70 95 115 115 135 135 155 160 180 ;
+CREC.Frontend.melB	= 42 110 105 110 140 140 150 120 150 130 140 130 ;
+CREC.Frontend.dmelA	= 50 150 290 320 400 500 500 600 600 700 720 750 ;
+CREC.Frontend.dmelB	= 127 127 127 127 127 127 127 127 127 127 127 127 ;
+CREC.Frontend.ddmelA 	= 4 12 22 27 32 35 35 45 45 55 57 62 ;
+CREC.Frontend.ddmelB	= 127 127 127 127 127 127 127 127 127 127 127 127 ;
+CREC.Frontend.speech_detect	  = 14 ;
+CREC.Frontend.ambient_within	  = 7 ;
+CREC.Frontend.speech_above	  = 18 ;
+CREC.Frontend.start_windback      = 50 ;
+CREC.Frontend.utterance_allowance = 40 ;
+
+CREC.Frontend.swicms.forget_factor = 400 ;
+CREC.Frontend.swicms.sbindex       = 100 ;
+
+CREC.Pattern.dimen              = 28 ;
+CREC.Pattern.mix_score_scale    =  0.46 ;
+CREC.Pattern.imelda_scale	= 14 ;
+
+CREC.Recognizer.max_frames = 1000;
+CREC.Recognizer.eou_threshold     = 120 ;
+CREC.Recognizer.terminal_timeout  = 30 ;
+CREC.Recognizer.optional_terminal_timeout = 45 ;
+CREC.Recognizer.non_terminal_timeout     = 90 ;
+
+# no endpointing!!
+CREC.silenceDurationInFrames 	  = 200;
+
+CREC.Recognizer.max_fsm_arcs           = 25000;
+CREC.Recognizer.max_fsm_nodes          = 14500;
+
+CREC.Recognizer.max_hmm_tokens         = 400
+CREC.Recognizer.max_word_tokens        = 2000;
+CREC.Recognizer.max_altword_tokens     = 400;
+CREC.Recognizer.max_fsmnode_tokens     = 400
+CREC.Recognizer.viterbi_prune_thresh   = 400
+CREC.Recognizer.num_wordends_per_frame = 10
+CREC.Recognizer.max_model_states       = 3600
+## C:/users/dahan/esr/baseline/bin/srectestD.exe -parfile ./expr_large.par -grammar recog_nm/namesnnumsSC_dyn,addWords=1000 
+
+SREC.Confidence.sigmoid_param.gdiff.one_nbest    =  0.003    -3.15  0.05
+SREC.Confidence.sigmoid_param.gdiff.many_nbest   =  0.001    -2.21  0.2105
+SREC.Confidence.sigmoid_param.sd.one_nbest       =  0.0       0.0   0.0
+SREC.Confidence.sigmoid_param.sd.many_nbest      = -0.0161    0.9   0.0526
+SREC.Confidence.sigmoid_param.sd13.one_nbest     =  0.0       0.0   0.0 
+SREC.Confidence.sigmoid_param.sd13.many_nbest    = -0.0141    1.5   0.0526
+SREC.Confidence.sigmoid_param.spf.one_nbest      = -0.002     0.4   0.05
+SREC.Confidence.sigmoid_param.spf.many_nbest     =  0.02     -8.63  0.3157
+SREC.Confidence.sigmoid_param.abs.one_nbest      =  0.0001   -4.5   0.05
+SREC.Confidence.sigmoid_param.abs.many_nbest     =  0.000031 -1.67  0.0526
+SREC.Confidence.sigmoid_param.gdiffpf.one_nbest  =  0.33     -5.5   0.85
+SREC.Confidence.sigmoid_param.gdiffpf.many_nbest =  0.24     -3.59  0.3157
+
+# for G2P module
+G2P.Available   = YES
+G2P.Data        = g2p/en-US-ttp.data

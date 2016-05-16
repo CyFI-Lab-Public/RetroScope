@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+		android:layout_width="fill_parent"
+  		android:layout_height="fill_parent" 
+  		xmlns:android="http://schemas.android.com/apk/res/android">
+	<ImageView 
+          android:id="@+id/mainMenuBackground"
+          android:src="@drawable/title_background"
+          android:adjustViewBounds="true"
+          android:gravity="center_vertical"
+          android:scaleType="fitXY"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"/>
+
+	
+	<ImageView 
+	      android:id="@+id/mainMenuTitle"
+	      android:src="@drawable/title"
+	      android:adjustViewBounds="true"
+	      android:layout_width="336dp" 
+	      android:layout_height="153dp" 
+	      android:layout_gravity="center_horizontal" 
+	      android:layout_marginTop="20dp"/>
+	      
+	   <LinearLayout
+	     	android:layout_width="fill_parent"
+			android:layout_height="fill_parent" 
+			xmlns:android="http://schemas.android.com/apk/res/android"
+	     	android:orientation="vertical"
+	     	android:gravity="bottom"
+	     	android:id="@+id/mainSectionMenu">
+	    
+	    
+	    <ImageView 
+	        android:id="@+id/startButton"
+	        android:src="@drawable/ui_button_start"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:layout_gravity="center_horizontal"
+	        android:clickable="true" />
+	
+	    <ImageView 
+	        android:id="@+id/extrasButton"
+	        android:src="@drawable/ui_button_extras"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:layout_gravity="center_horizontal"
+	       	android:paddingTop="10dp"
+			android:clickable="true" />
+	        
+	        
+	        
+		<ImageView 
+		    android:id="@+id/optionButton"
+		    android:src="@drawable/ui_button_options"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:layout_gravity="center_horizontal"
+		    android:paddingTop="10dp"
+		    android:clickable="true" />
+	       
+		
+	 
+		<TextView 
+			android:layout_width="fill_parent" 
+			android:layout_height="wrap_content" 
+			android:ellipsize="marquee" 
+			android:background="#99000000" 
+			android:textColor= "#FFFFFF" 
+			android:textColorHighlight="#FFFFFF" 
+			android:text="@string/whats_new_ticker" 
+			android:lines="1" 
+			android:marqueeRepeatLimit="marquee_forever" 
+			android:textSize="14sp" 
+			android:fadingEdge="horizontal" 
+			android:fadingEdgeLength="5dp" 
+			android:focusable="false" 
+			android:id="@+id/ticker"
+			android:singleLine="true" android:layout_gravity="bottom|left"/>
+	</LinearLayout>
+
+	<ImageView
+       	android:id="@+id/extrasNew"
+       	android:src="@drawable/ui_new" 
+       	android:layout_height="wrap_content" 
+       	android:layout_width="wrap_content" 
+       	android:paddingLeft="280dp"
+       	android:paddingTop="160dp"
+       	android:visibility="invisible"/>
+	
+</FrameLayout> 

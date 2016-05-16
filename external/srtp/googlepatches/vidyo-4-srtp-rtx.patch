@@ -1,0 +1,216 @@
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-ws/include/srtp.h srtp/include/srtp.h
+--- srtp-ws/include/srtp.h	2009-04-22 19:06:22.000000000 -0400
++++ srtp/include/srtp.h	2009-04-23 15:17:49.000000000 -0400
+@@ -225,6 +225,12 @@ typedef struct srtp_policy_t {
+                                 *   for this stream (if any)             */ 
+   unsigned long  window_size;  /**< The window size to use for replay
+ 				*   protection. */
++  int        allow_repeat_tx;  /**< Whether retransmissions of
++				*   packets with the same sequence number
++				*   are allowed.  (Note that such repeated
++				*   transmissions must have the same RTP
++				*   payload, or a severe security weakness
++				*   is introduced!)                      */
+   struct srtp_policy_t *next;  /**< Pointer to next stream policy.       */
+ } srtp_policy_t;
+ 
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-ws/include/srtp_priv.h srtp/include/srtp_priv.h
+--- srtp-ws/include/srtp_priv.h	2007-06-15 14:17:40.000000000 -0400
++++ srtp/include/srtp_priv.h	2009-04-22 19:27:10.000000000 -0400
+@@ -218,6 +218,7 @@ typedef struct srtp_stream_ctx_t {
+   sec_serv_t rtcp_services;
+   key_limit_ctx_t *limit;
+   direction_t direction;
++  int        allow_repeat_tx;
+   ekt_stream_t ekt; 
+   struct srtp_stream_ctx_t *next;   /* linked list of streams */
+ } srtp_stream_ctx_t;
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-ws/srtp/srtp.c srtp/srtp/srtp.c
+--- srtp-ws/srtp/srtp.c	2009-04-22 19:18:43.000000000 -0400
++++ srtp/srtp/srtp.c	2009-04-22 19:30:23.000000000 -0400
+@@ -280,6 +280,7 @@ srtp_stream_clone(const srtp_stream_ctx_
+   if (status)
+     return status;
+   rdb_init(&str->rtcp_rdb);
++  str->allow_repeat_tx = stream_template->allow_repeat_tx;
+   
+   /* set ssrc to that provided */
+   str->ssrc = ssrc;
+@@ -525,6 +526,9 @@ srtp_stream_init(srtp_stream_ctx_t *srtp
+    /* initialize SRTCP replay database */
+    rdb_init(&srtp->rtcp_rdb);
+ 
++   /* initialize allow_repeat_tx */
++   srtp->allow_repeat_tx = p->allow_repeat_tx;
++
+    /* DAM - no RTCP key limit at present */
+ 
+    /* initialize keys */
+@@ -732,9 +736,12 @@ srtp_stream_init(srtp_stream_ctx_t *srtp
+     */
+    delta = rdbx_estimate_index(&stream->rtp_rdbx, &est, ntohs(hdr->seq));
+    status = rdbx_check(&stream->rtp_rdbx, delta);
+-   if (status)
+-     return status;  /* we've been asked to reuse an index */
+-   rdbx_add_index(&stream->rtp_rdbx, delta);
++   if (status) {
++     if (status != err_status_replay_fail || !stream->allow_repeat_tx)
++       return status;  /* we've been asked to reuse an index */
++   }
++   else
++     rdbx_add_index(&stream->rtp_rdbx, delta);
+ 
+ #ifdef NO_64BIT_MATH
+    debug_print2(mod_srtp, "estimated packet index: %08x%08x", 
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-ws/test/dtls_srtp_driver.c srtp/test/dtls_srtp_driver.c
+--- srtp-ws/test/dtls_srtp_driver.c	2009-04-23 15:50:48.000000000 -0400
++++ srtp/test/dtls_srtp_driver.c	2009-04-23 15:51:11.000000000 -0400
+@@ -185,6 +185,7 @@ test_dtls_srtp() {
+   policy.ssrc.type  = ssrc_any_inbound;
+   policy.ekt = NULL;
+   policy.window_size = 128;
++  policy.allow_repeat_tx = 0;
+   policy.next = NULL;
+     
+   err = srtp_add_stream(s, &policy);
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-ws/test/rtpw.c srtp/test/rtpw.c
+--- srtp-ws/test/rtpw.c	2009-04-22 19:16:52.000000000 -0400
++++ srtp/test/rtpw.c	2009-04-23 15:16:18.000000000 -0400
+@@ -331,6 +331,7 @@ main (int argc, char *argv[]) {
+     policy.key  = (uint8_t *) key;
+     policy.next = NULL;
+     policy.window_size = 128;
++    policy.allow_repeat_tx = 0;
+     policy.rtp.sec_serv = sec_servs;
+     policy.rtcp.sec_serv = sec_serv_none;  /* we don't do RTCP anyway */
+ 
+@@ -384,6 +385,7 @@ main (int argc, char *argv[]) {
+     policy.rtcp.auth_tag_len   = 0;
+     policy.rtcp.sec_serv       = sec_serv_none;   
+     policy.window_size         = 0;
++    policy.allow_repeat_tx     = 0;
+     policy.next                = NULL;
+   }
+ 
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-ws/test/srtp_driver.c srtp/test/srtp_driver.c
+--- srtp-ws/test/srtp_driver.c	2009-04-22 19:16:52.000000000 -0400
++++ srtp/test/srtp_driver.c	2009-04-23 15:16:18.000000000 -0400
+@@ -323,6 +323,7 @@ main (int argc, char *argv[]) {
+     policy.key  = test_key;
+     policy.ekt = NULL;
+     policy.window_size = 128;
++    policy.allow_repeat_tx = 0;
+     policy.next = NULL;
+ 
+     printf("mips estimate: %e\n", mips);
+@@ -992,7 +993,8 @@ srtp_session_print_policy(srtp_t srtp) {
+            "# rtcp cipher:   %s\r\n"
+ 	   "# rtcp auth:     %s\r\n"
+ 	   "# rtcp services: %s\r\n"
+-	   "# window size:   %lu\r\n",
++	   "# window size:   %lu\r\n"
++	   "# tx rtx allowed:%s\r\n",
+ 	   direction[stream->direction],
+ 	   stream->rtp_cipher->type->description,
+ 	   stream->rtp_auth->type->description,
+@@ -1000,7 +1002,8 @@ srtp_session_print_policy(srtp_t srtp) {
+ 	   stream->rtcp_cipher->type->description,
+ 	   stream->rtcp_auth->type->description,
+ 	   serv_descr[stream->rtcp_services],
+-	   rdbx_get_window_size(&stream->rtp_rdbx));
++	   rdbx_get_window_size(&stream->rtp_rdbx),
++	   stream->allow_repeat_tx ? "true" : "false");
+   }
+ 
+   /* loop over streams in session, printing the policy of each */
+@@ -1016,7 +1019,8 @@ srtp_session_print_policy(srtp_t srtp) {
+            "# rtcp cipher:   %s\r\n"
+ 	   "# rtcp auth:     %s\r\n"
+ 	   "# rtcp services: %s\r\n"
+-	   "# window size:   %lu\r\n",
++	   "# window size:   %lu\r\n"
++	   "# tx rtx allowed:%s\r\n",
+ 	   stream->ssrc,
+ 	   stream->rtp_cipher->type->description,
+ 	   stream->rtp_auth->type->description,
+@@ -1024,7 +1028,8 @@ srtp_session_print_policy(srtp_t srtp) {
+ 	   stream->rtcp_cipher->type->description,
+ 	   stream->rtcp_auth->type->description,
+ 	   serv_descr[stream->rtcp_services],
+-	   rdbx_get_window_size(&stream->rtp_rdbx));
++	   rdbx_get_window_size(&stream->rtp_rdbx),
++	   stream->allow_repeat_tx ? "true" : "false");
+ 
+     /* advance to next stream in the list */
+     stream = stream->next;
+@@ -1180,6 +1185,7 @@ srtp_validate() {
+   policy.key  = test_key;
+   policy.ekt = NULL;
+   policy.window_size = 128;
++  policy.allow_repeat_tx = 0;
+   policy.next = NULL;
+ 
+   status = srtp_create(&srtp_snd, &policy);
+@@ -1337,6 +1343,7 @@ const srtp_policy_t default_policy = {
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
+   128,         /* replay window size */
++  0,           /* retransmission not allowed */
+   NULL
+ };
+ 
+@@ -1361,6 +1368,7 @@ const srtp_policy_t aes_tmmh_policy = {
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
+   128,         /* replay window size */
++  0,           /* retransmission not allowed */
+   NULL
+ };
+ 
+@@ -1385,6 +1393,7 @@ const srtp_policy_t tmmh_only_policy = {
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
+   128,         /* replay window size */
++  0,           /* retransmission not allowed */
+   NULL
+ };
+ 
+@@ -1409,6 +1418,7 @@ const srtp_policy_t aes_only_policy = {
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
+   128,         /* replay window size */
++  0,           /* retransmission not allowed */
+   NULL
+ };
+ 
+@@ -1433,6 +1443,7 @@ const srtp_policy_t hmac_only_policy = {
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
+   128,         /* replay window size */
++  0,           /* retransmission not allowed */
+   NULL
+ };
+ 
+@@ -1457,6 +1468,7 @@ const srtp_policy_t null_policy = {
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
+   128,         /* replay window size */
++  0,           /* retransmission not allowed */
+   NULL
+ };
+ 
+@@ -1495,6 +1507,7 @@ const srtp_policy_t hmac_only_with_ekt_p
+   test_key,
+   &ekt_test_policy,        /* indicates that EKT is not in use */
+   128,         /* replay window size */
++  0,           /* retransmission not allowed */
+   NULL
+ };
+ 
+@@ -1548,5 +1561,6 @@ const srtp_policy_t wildcard_policy = {
+   test_key,
+   NULL,
+   128,         /* replay window size */
++  0,           /* retransmission not allowed */
+   NULL
+ };

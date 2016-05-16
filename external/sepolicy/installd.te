@@ -1,0 +1,29 @@
+# installer daemon
+type installd, domain;
+type installd_exec, exec_type, file_type;
+
+init_daemon_domain(installd)
+relabelto_domain(installd)
+typeattribute installd mlstrustedsubject;
+allow installd self:capability { chown dac_override fowner fsetid setgid setuid };
+allow installd system_data_file:file create_file_perms;
+allow installd system_data_file:lnk_file create;
+allow installd dalvikcache_data_file:file create_file_perms;
+allow installd data_file_type:dir create_dir_perms;
+allow installd data_file_type:dir { relabelfrom relabelto };
+allow installd data_file_type:{ file_class_set } { getattr unlink };
+allow installd apk_data_file:file r_file_perms;
+allow installd apk_tmp_file:file r_file_perms;
+allow installd system_file:file x_file_perms;
+allow installd cgroup:dir create_dir_perms;
+allow installd download_file:dir { r_dir_perms };
+allow installd download_file:file { r_file_perms };
+dontaudit installd self:capability sys_admin;
+# Check validity of SELinux context before use.
+selinux_check_context(installd)
+# Read /seapp_contexts and /data/security/seapp_contexts
+security_access_policy(installd)
+# ASEC
+allow installd platform_app_data_file:lnk_file { create setattr };
+allow installd app_data_file:lnk_file { create setattr };
+allow installd asec_apk_file:file r_file_perms;

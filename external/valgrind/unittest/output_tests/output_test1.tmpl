@@ -1,0 +1,19 @@
+hybrid=no
+WARNING: Possible data race during write of size 4 at [x01-9A-Z]+: {{{
+   T2 .test-thread-2. .locks held: .L\d+..:
+    #0  Thread2(\(\))? .*output_test1.cc:13
+    #1
+  Concurrent write.s. happened at .OR AFTER. these points:
+   T1 .test-thread-1. .locks held: .L\d+..:
+    #0  Thread1(\(\))? .*output_test1.cc:8
+    #1
+  Address [x01-9A-Z]+ is 0 bytes inside data symbol ".+"
+  Locks involved in this report .reporting last lock sites.: .L\d+, L\d+.
+   L\d+
+    #0  .+
+    #.*  Thread.*output_test1.cc:.*
+   L\d+
+    #0  .+
+    #.*  Thread.*output_test1.cc:.*
+}}}
+ThreadSanitizer summary: reported 1 warning.s. .1 race.s..

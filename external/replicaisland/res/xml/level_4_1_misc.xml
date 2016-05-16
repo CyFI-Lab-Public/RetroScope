@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog>
+
+<conversation>
+
+<page
+  text = "@string/KyleDeadNote" 
+/>
+
+</conversation>
+
+</dialog>

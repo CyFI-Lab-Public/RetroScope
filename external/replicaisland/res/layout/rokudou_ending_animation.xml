@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+  	android:layout_height="wrap_content">
+	  	
+	<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="wrap_content"
+	  	android:layout_height="wrap_content"
+	  	android:layout_centerHorizontal="true"
+	  	>
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:layout_width="wrap_content"
+		  	android:layout_height="wrap_content"
+		  	>
+			<View xmlns:android="http://schemas.android.com/apk/res/android"
+			    android:id="@+id/animation_background"
+			    android:background="@drawable/ui_bad_ending_rokudou_bg"
+			    android:layout_width="480dp"
+			    android:layout_height="500dp" 
+			    android:adjustViewBounds="true"
+			    
+			    >
+			</View>
+		</FrameLayout>
+		
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="wrap_content"
+	  	android:layout_height="wrap_content"
+	  	>
+			<View xmlns:android="http://schemas.android.com/apk/res/android"
+			    android:id="@+id/animation_sphere"
+			    android:background="@drawable/ui_bad_ending_rokudou_sphere"
+			    android:layout_width="480dp"
+			    android:layout_height="500dp" 
+			    android:adjustViewBounds="true"
+			   
+			    >
+			</View>
+		</FrameLayout>
+		
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="wrap_content"
+	  	android:layout_height="wrap_content"
+	  	>
+			<View xmlns:android="http://schemas.android.com/apk/res/android"
+			    android:id="@+id/animation_cliffs"
+			    android:background="@drawable/ui_bad_ending_rokudou_cliffs"
+			    android:layout_width="480dp"
+			    android:layout_height="500dp" 
+			    android:adjustViewBounds="true"
+			   
+			    >
+			</View>
+		</FrameLayout>
+		
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="wrap_content"
+	  	android:layout_height="wrap_content"
+	  	>
+			<View xmlns:android="http://schemas.android.com/apk/res/android"
+			    android:id="@+id/animation_rokudou"
+			    android:background="@drawable/ui_bad_ending_rokudou_rokudou"
+			    android:layout_width="480dp"
+			    android:layout_height="600dp" 
+			    android:adjustViewBounds="true"
+			   
+			    >
+			</View>
+		</FrameLayout>
+		
+		<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_width="wrap_content"
+	  			android:layout_height="wrap_content">
+			<TextView android:id="@+id/game_over" 
+					xmlns:android="http://schemas.android.com/apk/res/android"
+				    android:layout_width="160dp"
+				    android:layout_height="50dp"
+				    android:textSize = "20sp"
+				    android:textColor = "#FFFFFF"
+				    android:gravity = "center"
+				    android:layout_x="20dp" 
+			        android:layout_y="20dp" 
+			       	android:text="@string/game_over"
+			       	android:typeface = "serif"
+			       	android:background="@drawable/custom_toast_border"
+			       	android:padding = "10dp"
+			/>
+	
+		</AbsoluteLayout>
+	</FrameLayout>
+</RelativeLayout>

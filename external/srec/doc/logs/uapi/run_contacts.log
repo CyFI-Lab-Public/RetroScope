@@ -1,0 +1,39 @@
+# cd /system/usr/srec
+# ./run_contacts.sh
+SpeechTest3Console
+Initialising...
+android.speech.recognition.test.contacts.CLRecognizer:before EmbeddedRecognizer.getInstance()
+android.speech.recognition.test.contacts.CLRecognizer:after EmbeddedRecognizer.getInstance(): android.speech.recognition.impl.EmbeddedRecognizerImpl android.speech.recognition.impl.EmbeddedRecognizerImpl@4001e7a8
+android.speech.recognition.test.contacts.CLRecognizer:before EmbeddedRecognizer.configure(/system/usr/srec/config/en.us/baseline11k.par)
+android.speech.recognition.test.contacts.CLRecognizer:after EmbeddedRecognizer.configure()
+android.speech.recognition.test.contacts.CLRecognizer:before recognizer.createGrammar(/system/usr/srec/config/en.us/grammars/dynamic-test.g2g)
+android.speech.recognition.test.contacts.CLRecognizer:after recognizer.createGrammar(/system/usr/srec/config/en.us/grammars/dynamic-test.g2g)
+android.speech.recognition.test.contacts.CLRecognizer:before grammar.load()
+android.speech.recognition.test.contacts.CLRecognizer:onLoaded
+android.speech.recognition.test.contacts.CLRecognizer:Adding words to grammar slot
+android.speech.recognition.test.contacts.CLRecognizer:item 0: Andy Wyatt
+android.speech.recognition.test.contacts.CLRecognizer:after grammar.load()
+android.speech.recognition.test.contacts.CLRecognizer:item 1: Dennis Velasco
+android.speech.recognition.test.contacts.CLRecognizer:item 2: Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:onCompileAllSlots
+GrammarAction:onGrammarSuccess
+Recognizing against the first grammar (dynamic add-word)
+android.speech.recognition.test.contacts.CLRecognizer:+recognize()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStarted()
+android.speech.recognition.test.contacts.CLRecognizer:AudioSource: onStopped()
+Audio source stopped
+android.speech.recognition.test.contacts.CLRecognizer:-recognize()
+android.speech.recognition.test.contacts.CLRecognizer:onStarted
+android.speech.recognition.test.contacts.CLRecognizer:onBeginningOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onEndOfSpeech
+android.speech.recognition.test.contacts.CLRecognizer:onRecognitionResult: 1
+android.speech.recognition.test.contacts.CLRecognizer:result 1 semantic: Jen Parker literal:lookup Jen Parker score:24
+android.speech.recognition.test.contacts.CLRecognizer:+onStopped()
+Recognition Result: SUCCESS
+num results: 1
+result 1:Jen Parker
+android.speech.recognition.test.contacts.CLRecognizer:-onStopped()
+writerListener: onStopped()
+----- PASS -----
+# exit
+

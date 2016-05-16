@@ -1,0 +1,6 @@
+type hci_attach, domain;
+permissive hci_attach;
+type hci_attach_exec, exec_type, file_type;
+
+init_daemon_domain(hci_attach)
+unconfined_domain(hci_attach)

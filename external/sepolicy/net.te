@@ -1,0 +1,4 @@
+# Network types
+type node, node_type;
+type netif, netif_type;
+type port, port_type;

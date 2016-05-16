@@ -1,0 +1,119 @@
+[EVTDLG_CTRLS]
+labels = 
+play = Plays the segment with associated event attributes. To trigger the event, click the event in the timeline.
+midi file = Displays the MIDI file associated with the segment. This is pulled in from the segment attributes.
+quantize = Displays the quantization associated with the segment. This is pulled in from the segment attributes.
+cancel = 
+event type = Selects the type of trigger event.
+track mutes = Displays the track mute assignments associated with the segment. This is pulled in from the segment attributes.
+event = 
+pause = 
+graph = 
+trigger = 
+replicate = 
+starting m/b/t = Sets the starting measure, beat, and tick for the event.
+channel = Selects the MIDI channel for the event.
+eventid = Sets the ID of the event. Each event must have a unique ID.
+app events = 
+repeat = Displays the repeat count of the segment. This is pulled in from the segment attributes.
+ok = 
+track = Selects the MIDI track (not the channel) for the event.
+transpose = Displays the transpose value of the segment. This is pulled in from the segment attributes.
+un-mute = 
+segment = Displays the name of the segment. This is pulled in from the segment attributes.
+event name = Identifies the name of the event.
+segment name = Identifies the name of the segment. This is pulled in from the segment attributes.
+trigger clips = 
+length = 
+ending m/b/t = Sets the ending measure, beat, and tick for the segment.
+dls file = Displays the DLS file associated with the segment. This is pulled in from the segment attributes.
+
+[MOVE_CTRLS]
+ok = 
+move = 
+starting m/b/t = 
+cancel = 
+preview = 
+increment m/b/t = 
+
+[MAIN_DIALOG_CTRLS]
+seglist = The list of segments display here.  You may add, revise, or delete segments using the buttons at the left.  You may also double click to edit a segment.
+eventlist = The list of events for the currently selected segment display here.  Double click to edit, or use the buttons at the left to add, revise, or delete and event.
+
+[SEGDLG_CTRLS]
+labels = 
+app events = 
+midi file = Selects the source MIDI file from which the segment will be created.
+quantize = Selects the quantization amount for the segment. Use 0 for no quantization.
+display empty tracks = 
+play segment = 
+cancel = Cancels any changes and exits the segment window.
+track mutes = Checking a mute box will mute the associated track. You should mute a track if you intent to add a trigger event for that track.
+pause = 
+graph = 
+replicate = 
+starting m/b/t = Sets the starting measure, beat, and tick for the segment.
+play midi file = 
+play = Plays the segment.
+repeat = Sets the number of repeats for the segment.
+graph type = 
+transpose = Sets the transposition value for the segment, in semitones (half-steps).
+audition = Click this button to audition the JET file.  This is an interactive playback mode that simulates a how the JET file will work in production.
+ok = Confirms segment attributes and closes segment window.
+segment = 
+segment name = Identifies the name of the segment.
+trigger clips = 
+length = 
+ending m/b/t = Sets the ending measure, beat, and tick for the segment.
+dls file = Selects the source DLS file, if any, for the given segment.
+
+[PREFERENCES_CTRLS]
+ok = 
+preferences = 
+copyright = The copyright in this field will default on new JET files.  It can be overridden in the Properties setting for a specific JET file.
+chase controllers = This option will force JET to chase controllers up to the beginning of a given segment.  This help keep a segment in sync with its parent MIDI file.
+cancel = 
+delete empty tracks = This option will tell JET to delete any empty tracks from the output file.
+
+[REPLICATE_CTRLS]
+ok = 
+replace existing items matching prefix = 
+replicate = 
+number = 
+name prefix = 
+starting m/b/t = 
+cancel = 
+preview = 
+increment m/b/t = 
+
+[JET_PROPERTIES_CTRLS]
+omit empty tracks = 
+jet project properties = 
+ok = 
+copyright = 
+chase controllers = If on, MIDI CC messages and program changes will be read from the beginning of the segment when playing or triggering events in the middle of the segment. This should almost always be checked.
+jet file = 
+export = Export will collect all the source MIDI, DLS and JET files into a single .ZIP file.
+cancel = 
+delete empty tracks = Selecting this will delete any empty MIDI tracks.
+
+[AUDITION_CTRLS]
+seglist = The list of segments in the JET file display here.  Double click on a segment to add it to the play queue, or use the buttons below.
+tracklist = The tracks in the segment currently playing segment display here.  Tracks which are muted are checked.  Click on a track to toggle its mute status.
+queuelist = The currently queued segments display here.  Each segment displays its current run status.  You may modify the playback state with the buttons below.
+graph = The currently playing segment is displayed graphically here.  You may trigger clips by clicking within their boundaries on the graph.
+
+[EXPORT_CTRLS]
+omit empty tracks = Selecting this will delete any empty MIDI tracks.
+copyright = 
+chase controllers = If on, MIDI CC messages and program changes will be read from the beginning of the segment when playing or triggering events in the middle of the segment. This should almost always be checked.
+jet file = 
+export = Export will collect all the source MIDI, DLS and JET files into a single .ZIP file.
+cancel = 
+
+[PREFERENCES]
+cancel = 
+ok = 
+preferences = 
+use project directories = 
+

@@ -1,0 +1,172 @@
+###
+### Domain for all zygote spawned apps
+###
+### This file is the base policy for all zygote spawned apps.
+### Other policy files, such as isolated_app.te, untrusted_app.te, etc
+### extend from this policy. Only policies which should apply to ALL
+### zygote spawned apps should be added here.
+###
+
+# Allow apps to connect to the keystore
+unix_socket_connect(appdomain, keystore, keystore)
+
+# Receive and use open file descriptors inherited from zygote.
+allow appdomain zygote:fd use;
+
+# Read system properties managed by zygote.
+allow appdomain zygote_tmpfs:file read;
+
+# Notify zygote of death;
+allow appdomain zygote:process sigchld;
+
+# Communicate with system_server.
+allow appdomain system:fifo_file rw_file_perms;
+allow appdomain system:unix_stream_socket { read write setopt };
+binder_call(appdomain, system)
+
+# Communicate with surfaceflinger.
+allow appdomain surfaceflinger:unix_stream_socket { read write setopt };
+binder_call(appdomain, surfaceflinger)
+
+# App sandbox file accesses.
+allow appdomain app_data_file:dir create_dir_perms;
+allow appdomain app_data_file:notdevfile_class_set create_file_perms;
+
+# Read/write data files created by the platform apps if they
+# were passed to the app via binder or local IPC.  Do not allow open.
+allow appdomain platform_app_data_file:file { getattr read write };
+
+# lib subdirectory of /data/data dir is system-owned.
+allow appdomain system_data_file:dir r_dir_perms;
+allow appdomain system_data_file:file { execute open };
+
+# Execute the shell or other system executables.
+allow appdomain shell_exec:file rx_file_perms;
+allow appdomain system_file:file rx_file_perms;
+
+# Read/write wallpaper file (opened by system).
+allow appdomain wallpaper_file:file { read write };
+
+# Write to /data/anr/traces.txt.
+allow appdomain anr_data_file:dir search;
+allow appdomain anr_data_file:file { open append };
+
+# Write to /proc/net/xt_qtaguid/ctrl file.
+allow appdomain qtaguid_proc:file rw_file_perms;
+# Everybody can read the xt_qtaguid resource tracking misc dev.
+# So allow all apps to read from /dev/xt_qtaguid.
+allow appdomain qtaguid_device:chr_file r_file_perms;
+
+# Use the Binder.
+binder_use(appdomain)
+# Perform binder IPC to binder services.
+binder_call(appdomain, binderservicedomain)
+# Perform binder IPC to other apps.
+binder_call(appdomain, appdomain)
+
+# Appdomain interaction with isolated apps
+r_dir_file(appdomain, isolated_app)
+binder_call(appdomain, isolated_app)
+
+# Already connected, unnamed sockets being passed over some other IPC
+# hence no sock_file or connectto permission. This appears to be how
+# Chrome works, may need to be updated as more apps using isolated services
+# are examined.
+allow appdomain isolated_app:unix_stream_socket { read write };
+
+# Backup ability for every app. BMS opens and passes the fd
+# to any app that has backup ability. Hence, no open permissions here.
+allow appdomain backup_data_file:file { read write };
+allow appdomain  cache_backup_file:file { read write };
+# Backup ability using 'adb backup'
+allow appdomain system_data_file:lnk_file getattr;
+
+# Allow all applications to read downloaded files
+allow appdomain download_file:file r_file_perms;
+file_type_auto_trans(appdomain, download_file, download_file)
+
+# Allow applications to communicate with netd via /dev/socket/dnsproxyd
+# to do DNS resolution
+unix_socket_connect(appdomain, dnsproxyd, netd)
+
+# Allow applications to communicate with drmserver over binder
+binder_call(appdomain, drmserver)
+
+# Allow applications to communicate with mediaserver over binder
+binder_call(appdomain, mediaserver)
+
+# Allow applications to make outbound tcp connections to any port
+allow appdomain port_type:tcp_socket name_connect;
+
+# Allow apps to see changes to the routing table.
+allow appdomain self:netlink_route_socket {
+    read
+    bind
+    create
+    nlmsg_read
+    ioctl
+    getattr
+    setattr
+    getopt
+    setopt
+    shutdown
+};
+
+# Allow apps to use rawip sockets. This is needed for apps which execute
+# /system/bin/ping, for example.
+allow appdomain self:rawip_socket create_socket_perms;
+
+###
+### Neverallow rules
+###
+### These are things that Android apps should NEVER be able to do
+###
+
+# Superuser capabilities.
+# Only exception is sys_nice for binder, might not be necessary.
+neverallow { appdomain -unconfineddomain } self:capability ~sys_nice;
+neverallow { appdomain -unconfineddomain } self:capability2 *;
+
+# Block device access.
+neverallow { appdomain -unconfineddomain } dev_type:blk_file { read write };
+
+# Kernel memory access.
+neverallow { appdomain -unconfineddomain } kmem_device:chr_file { read write };
+
+# Setting SELinux enforcing status or booleans.
+# Conditionally allowed to system_app for SEAndroidManager.
+neverallow { appdomain -unconfineddomain } kernel:security { setenforce setbool };
+
+# Load security policy.
+neverallow appdomain kernel:security load_policy;
+
+# Privileged netlink socket interfaces.
+neverallow { appdomain -unconfineddomain }
+    self:{
+        netlink_socket
+        netlink_firewall_socket
+        netlink_tcpdiag_socket
+        netlink_nflog_socket
+        netlink_xfrm_socket
+        netlink_selinux_socket
+        netlink_audit_socket
+        netlink_ip6fw_socket
+        netlink_dnrt_socket
+        netlink_kobject_uevent_socket
+    } *;
+
+# ptrace access to non-app domains.
+neverallow { appdomain -unconfineddomain } { domain -appdomain }:process ptrace;
+
+# Transition to a non-app domain.
+neverallow { appdomain -unconfineddomain } ~appdomain:process { transition dyntransition };
+
+# Write to /system.
+neverallow { appdomain -unconfineddomain } system_file:dir_file_class_set write;
+
+# Write to system-owned parts of /data.
+# This is the default type for anything under /data not otherwise
+# specified in file_contexts.  Define a different type for portions
+# that should be writable by apps.
+# Exception for system_app for Settings.
+neverallow { appdomain -unconfineddomain -system_app } system_data_file:dir_file_class_set write;

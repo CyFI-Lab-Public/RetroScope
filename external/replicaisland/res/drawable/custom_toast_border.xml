@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Thanks to http://hustleplay.wordpress.com/2009/07/23/replicating-default-android-toast/ ! -->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+<solid android:color="#99000000"/>
+<padding 
+	android:left="40dp" 
+	android:top="40dp"
+	android:right="40dp" 
+	android:bottom="40dp" />
+<corners android:radius="10dp" />
+</shape>

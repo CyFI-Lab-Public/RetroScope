@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+		android:layout_width="fill_parent"
+  		android:layout_height="fill_parent" 
+  		xmlns:android="http://schemas.android.com/apk/res/android">
+	<ImageView 
+          android:id="@+id/mainMenuBackground"
+          android:src="@drawable/title_background"
+          android:adjustViewBounds="true"
+          android:gravity="center_vertical"
+          android:scaleType="fitXY"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"/>
+
+    <LinearLayout
+    		android:background="@drawable/custom_toast_border" 
+    		android:layout_width="wrap_content" 
+    		android:layout_height="wrap_content" 
+    		android:orientation="vertical" 
+    		android:layout_gravity="center" 
+    		android:padding="10dp">
+    		
+	    <ImageView 
+	        android:id="@+id/babyButton"
+	        android:src="@drawable/ui_button_baby"
+	        android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:layout_gravity="center_horizontal"
+	        android:clickable="true" />	
+	        
+		<TextView 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:textColor= "#FFFFFF" 
+			android:textSize="14sp" 
+			android:focusable="false" 
+			android:layout_gravity="center_horizontal" 
+			android:text="@string/baby_description"
+			android:id="@+id/babyText"/>
+         
+		<ImageView 
+		    android:id="@+id/kidsButton"
+		    android:src="@drawable/ui_button_kids"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:layout_gravity="center_horizontal"
+		    android:clickable="true" 
+		    android:layout_marginTop="15dp"/>
+		    
+		<TextView 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:textColor= "#FFFFFF" 
+			android:textSize="14sp" 
+			android:focusable="false" 
+			android:layout_gravity="center_horizontal" 
+			android:text="@string/kids_description"
+			android:id="@+id/kidsText"/>
+			
+		<ImageView 
+		    android:id="@+id/adultsButton"
+		    android:src="@drawable/ui_button_adults"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:layout_gravity="center_horizontal"
+		    android:clickable="true" 
+		    android:layout_marginTop="15dp"/>
+		    
+		<TextView 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:textColor= "#FFFFFF" 
+			android:textSize="14sp" 
+			android:focusable="false" 
+			android:layout_gravity="center_horizontal" 
+			android:text="@string/adults_description"
+			android:id="@+id/adultsText"/>
+        
+	</LinearLayout>
+</FrameLayout> 

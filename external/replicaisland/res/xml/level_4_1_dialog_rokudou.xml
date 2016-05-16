@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog>
+
+<conversation>
+
+<page
+  text = "@string/KyleDeadNote" 
+/>
+
+</conversation>
+
+<conversation>
+
+<page
+  image="@drawable/rokudou_closeup_normal"
+  text = "@string/Rokudou_4_1_1_1" 
+  title = "@string/Rokudou"
+/>
+
+<page
+  image="@drawable/rokudou_closeup_normal"
+  text = "@string/Rokudou_4_1_1_2" 
+  title = "@string/Rokudou"
+/>
+
+<page
+  image="@drawable/rokudou_closeup_normal"
+  text = "@string/Rokudou_4_1_1_3" 
+  title = "@string/Rokudou"
+/>
+
+</conversation>
+
+</dialog>

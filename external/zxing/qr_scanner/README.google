@@ -1,0 +1,14 @@
+URL: http://code.google.com/p/zxing/
+Version: 1.7.1
+License: Apache License 2.0
+License File: LICENSE
+
+Description:
+Android library that exposes an activity to capture QR codes. It is basically
+a stripped down version of ZXing's BarcodeScanner application, with all the 
+non-QR code scanning and the products, books and all other product recognition
+features remove.
+
+Local Modificaitons:
+Removed all code that is not directly related to scanning a QR code, such as product search, book
+search, 2D barcode scanning etc.

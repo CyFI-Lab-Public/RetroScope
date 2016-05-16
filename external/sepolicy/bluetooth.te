@@ -1,0 +1,5 @@
+# bluetooth subsystem
+type bluetooth, domain;
+permissive bluetooth;
+app_domain(bluetooth)
+unconfined_domain(bluetooth)

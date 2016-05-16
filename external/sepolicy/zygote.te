@@ -1,0 +1,53 @@
+# zygote
+type zygote, domain;
+type zygote_exec, exec_type, file_type;
+
+init_daemon_domain(zygote)
+typeattribute zygote mlstrustedsubject;
+# Override DAC on files and switch uid/gid.
+allow zygote self:capability { dac_override setgid setuid fowner };
+# Drop capabilities from bounding set.
+allow zygote self:capability setpcap;
+# Switch SELinux context to app domains.
+allow zygote system:process dyntransition;
+allow zygote appdomain:process dyntransition;
+# Allow zygote to read + write app data dirs (b/10455872 and b/10498304)
+allow zygote appdomain:dir { getattr search };
+allow zygote appdomain:file { r_file_perms write };
+# Move children into the peer process group.
+allow zygote system:process { getpgid setpgid };
+allow zygote appdomain:process { getpgid setpgid };
+# Write to system data.
+allow zygote system_data_file:dir rw_dir_perms;
+allow zygote system_data_file:file create_file_perms;
+allow zygote dalvikcache_data_file:dir rw_dir_perms;
+allow zygote dalvikcache_data_file:file { create_file_perms x_file_perms };
+# Execute dexopt.
+allow zygote system_file:file x_file_perms;
+# Control cgroups.
+allow zygote cgroup:dir create_dir_perms;
+allow zygote self:capability sys_admin;
+# Check validity of SELinux context before use.
+selinux_check_context(zygote)
+# Check SELinux permissions.
+selinux_check_access(zygote)
+# Read /seapp_contexts and /data/security/seapp_contexts
+security_access_policy(zygote)
+
+# Setting up /storage/emulated.
+allow zygote rootfs:dir mounton;
+allow zygote sdcard_type:dir { write search setattr create add_name mounton };
+dontaudit zygote self:capability fsetid;
+allow zygote tmpfs:dir { write create add_name setattr mounton search };
+allow zygote tmpfs:filesystem mount;
+allow zygote labeledfs:filesystem remount;
+
+# Handle --invoke-with command when launching Zygote with a wrapper command.
+allow zygote zygote_exec:file { execute_no_trans open };
+
+# handle bugreports b/10498304
+allow zygote ashmem_device:chr_file execute;
+allow zygote init:binder call;
+allow zygote shell_data_file:file { write getattr };
+allow zygote system:binder { transfer call };
+allow zygote servicemanager:binder { call };

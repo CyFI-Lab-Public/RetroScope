@@ -1,0 +1,45 @@
+#####################################
+# Common groupings of object classes.
+#
+define(`capability_class_set', `{ capability capability2 }')
+
+define(`devfile_class_set', `{ chr_file blk_file }')
+define(`notdevfile_class_set', `{ file lnk_file sock_file fifo_file }')
+define(`file_class_set', `{ devfile_class_set notdevfile_class_set }')
+define(`dir_file_class_set', `{ dir file_class_set }')
+
+define(`socket_class_set', `{ socket tcp_socket udp_socket rawip_socket netlink_socket packet_socket key_socket unix_stream_socket unix_dgram_socket appletalk_socket netlink_route_socket netlink_firewall_socket netlink_tcpdiag_socket netlink_nflog_socket netlink_xfrm_socket netlink_selinux_socket netlink_audit_socket netlink_ip6fw_socket netlink_dnrt_socket netlink_kobject_uevent_socket tun_socket }')
+define(`dgram_socket_class_set', `{ udp_socket unix_dgram_socket }')
+define(`stream_socket_class_set', `{ tcp_socket unix_stream_socket }')
+define(`unpriv_socket_class_set', `{ tcp_socket udp_socket unix_stream_socket unix_dgram_socket }')
+
+define(`ipc_class_set', `{ sem msgq shm ipc }')
+
+#####################################
+# Common groupings of permissions.
+#
+define(`x_file_perms', `{ getattr execute execute_no_trans }')
+define(`r_file_perms', `{ getattr open read ioctl lock }')
+define(`w_file_perms', `{ open append write }')
+define(`rx_file_perms', `{ r_file_perms x_file_perms }')
+define(`ra_file_perms', `{ r_file_perms append }')
+define(`rw_file_perms', `{ r_file_perms w_file_perms }')
+define(`rwx_file_perms', `{ rw_file_perms x_file_perms }')
+define(`link_file_perms', `{ getattr link unlink rename }')
+define(`create_file_perms', `{ create setattr rw_file_perms link_file_perms }')
+
+define(`r_dir_perms', `{ open getattr read search ioctl }')
+define(`w_dir_perms', `{ open search write add_name remove_name }')
+define(`ra_dir_perms', `{ r_dir_perms add_name write }')
+define(`rw_dir_perms', `{ r_dir_perms w_dir_perms }')
+define(`create_dir_perms', `{ create reparent rmdir setattr rw_dir_perms link_file_perms }')
+
+define(`r_ipc_perms', `{ getattr read associate unix_read }')
+define(`w_ipc_perms', `{ write unix_write }')
+define(`rw_ipc_perms', `{ r_ipc_perms w_ipc_perms }')
+define(`create_ipc_perms', `{ create setattr destroy rw_ipc_perms }')
+
+#####################################
+# Common socket permission sets.
+define(`rw_socket_perms', `{ ioctl read getattr write setattr append bind connect getopt setopt shutdown }')
+define(`create_socket_perms', `{ create rw_socket_perms }')

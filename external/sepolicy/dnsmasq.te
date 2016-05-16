@@ -1,0 +1,7 @@
+type dnsmasq, domain;
+permissive dnsmasq;
+type dnsmasq_exec, exec_type, file_type;
+
+init_daemon_domain(dnsmasq)
+net_domain(dnsmasq)
+unconfined_domain(dnsmasq)

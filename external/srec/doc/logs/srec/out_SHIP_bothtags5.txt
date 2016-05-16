@@ -1,0 +1,606 @@
+
+Create Recognizer:
+    InitSession()
+    SR_RecognizerCreate()
+    SR_RecognizerSetup()
+Create vocabulary object and associate with grammar:
+    SR_VocabularyLoad()
+    SR_VocabularyGetLanguage()
+Start a new log session:
+    SR_RecognizerLogSessionStart()
+Recognize:
+    SR_NametagsCreate()
+Grammar Loaded
+Grammar Loaded
+D: v139/v139_024.nwv
+C: VCE_Pete_Gonzalez
+Sem:  <NO INTERPRETATION FOUND>
+CSem: <NO INTERPRETATION FOUND>
+S: 191
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'VCE_Pete_Gonzalez'
+LITERAL[ 0]      : 'ph_EY ph_k ph_un ph_t ph_ih ph_OH1 ph_z'
+MEANING[ 0]      : ' ph_EY ph_k ph_un ph_t ph_ih ph_OH1 ph_z'
+CONFIDENCE VALUE : '191'
+RAW SCORE[ 0]    : '25016'
+
+LITERAL[ 1]      : 'ph_eh ph_ee ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+MEANING[ 1]      : ' ph_eh ph_ee ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+CONFIDENCE VALUE : '36'
+RAW SCORE[ 1]    : '25023'
+
+LITERAL[ 2]      : 'ph_p ph_y ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+MEANING[ 2]      : ' ph_p ph_y ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+CONFIDENCE VALUE : '6'
+RAW SCORE[ 2]    : '25024'
+
+LITERAL[ 3]      : 'ph_ul ph_ee ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+MEANING[ 3]      : ' ph_ul ph_ee ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 3]    : '25025'
+
+LITERAL[ 4]      : 'ph_g ph_y ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+MEANING[ 4]      : ' ph_g ph_y ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 4]    : '25027'
+
+LITERAL[ 5]      : 'ph_ih ph_ee ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+MEANING[ 5]      : ' ph_ih ph_ee ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 5]    : '25032'
+
+LITERAL[ 6]      : 'ph_y ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+MEANING[ 6]      : ' ph_y ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 6]    : '25037'
+
+LITERAL[ 7]      : 'ph_k ph_ee ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+MEANING[ 7]      : ' ph_k ph_ee ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '25039'
+
+LITERAL[ 8]      : 'ph_dh ph_y ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+MEANING[ 8]      : ' ph_dh ph_y ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '25043'
+
+LITERAL[ 9]      : 'ph_ee ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+MEANING[ 9]      : ' ph_ee ph_p ph_un ph_d ph_un ph_OH1 ph_z'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '25063'
+
+----------------------------------------------
+
+VoiceEnrollment=>SUCCESS
+Dumping audio waveform to file a1__VCE_Pete_Gonzalez.raw
+Recognizer has been stopped
+D: v139/v139_254.nwv
+C: VCE_Andrew_Evans
+Sem:  <NO INTERPRETATION FOUND>
+CSem: <NO INTERPRETATION FOUND>
+S: 279
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'VCE_Andrew_Evans'
+LITERAL[ 0]      : 'ph_eh ph_n ph_d ph_r ph_IH1 ph_m ph_un ph_d'
+MEANING[ 0]      : ' ph_eh ph_n ph_d ph_r ph_IH1 ph_m ph_un ph_d'
+CONFIDENCE VALUE : '279'
+RAW SCORE[ 0]    : '16401'
+
+LITERAL[ 1]      : 'ph_eh ph_n ph_d ph_r ph_IH1 ph_n ph_un ph_d'
+MEANING[ 1]      : ' ph_eh ph_n ph_d ph_r ph_IH1 ph_n ph_un ph_d'
+CONFIDENCE VALUE : '78'
+RAW SCORE[ 1]    : '16407'
+
+LITERAL[ 2]      : 'ph_eh ph_n ph_d ph_r ph_IH1 ph_r ph_un ph_d'
+MEANING[ 2]      : ' ph_eh ph_n ph_d ph_r ph_IH1 ph_r ph_un ph_d'
+CONFIDENCE VALUE : '22'
+RAW SCORE[ 2]    : '16412'
+
+LITERAL[ 3]      : 'ph_eh ph_n ph_d ph_r ph_r ph_un ph_d'
+MEANING[ 3]      : ' ph_eh ph_n ph_d ph_r ph_r ph_un ph_d'
+CONFIDENCE VALUE : '6'
+RAW SCORE[ 3]    : '16425'
+
+LITERAL[ 4]      : 'ph_eh ph_n ph_d ph_r ph_AE ph_m ph_un ph_d'
+MEANING[ 4]      : ' ph_eh ph_n ph_d ph_r ph_AE ph_m ph_un ph_d'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 4]    : '16431'
+
+LITERAL[ 5]      : 'ph_eh ph_n ph_d ph_r ph_IH1 ph_un ph_d'
+MEANING[ 5]      : ' ph_eh ph_n ph_d ph_r ph_IH1 ph_un ph_d'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 5]    : '16432'
+
+LITERAL[ 6]      : 'ph_eh ph_n ph_d ph_r ph_AE ph_n ph_un ph_d'
+MEANING[ 6]      : ' ph_eh ph_n ph_d ph_r ph_AE ph_n ph_un ph_d'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 6]    : '16437'
+
+LITERAL[ 7]      : 'ph_eh ph_n ph_d ph_r ph_AE ph_r ph_un ph_d'
+MEANING[ 7]      : ' ph_eh ph_n ph_d ph_r ph_AE ph_r ph_un ph_d'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '16442'
+
+LITERAL[ 8]      : 'ph_AA ph_n ph_d ph_r ph_IH1 ph_m ph_un ph_d'
+MEANING[ 8]      : ' ph_AA ph_n ph_d ph_r ph_IH1 ph_m ph_un ph_d'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '16443'
+
+LITERAL[ 9]      : 'ph_eh ph_n ph_d ph_r ph_ih ph_m ph_un ph_d'
+MEANING[ 9]      : ' ph_eh ph_n ph_d ph_r ph_ih ph_m ph_un ph_d'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '16443'
+
+----------------------------------------------
+
+VoiceEnrollment=>SUCCESS
+Dumping audio waveform to file a2__VCE_Andrew_Evans.raw
+Recognizer has been stopped
+D: v139/v139_127.nwv
+C: VCE_Peter_Wilson
+Sem:  <NO INTERPRETATION FOUND>
+CSem: <NO INTERPRETATION FOUND>
+S: 258
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'VCE_Peter_Wilson'
+LITERAL[ 0]      : 'ph_ih ph_r ph_w ph_EH1 ph_l ph_s ph_un'
+MEANING[ 0]      : ' ph_ih ph_r ph_w ph_EH1 ph_l ph_s ph_un'
+CONFIDENCE VALUE : '258'
+RAW SCORE[ 0]    : '15199'
+
+LITERAL[ 1]      : 'ph_IH1 ph_r ph_w ph_EH1 ph_l ph_s ph_un'
+MEANING[ 1]      : ' ph_IH1 ph_r ph_w ph_EH1 ph_l ph_s ph_un'
+CONFIDENCE VALUE : '67'
+RAW SCORE[ 1]    : '15200'
+
+LITERAL[ 2]      : 'ph_EY ph_r ph_w ph_EH1 ph_l ph_s ph_un'
+MEANING[ 2]      : ' ph_EY ph_r ph_w ph_EH1 ph_l ph_s ph_un'
+CONFIDENCE VALUE : '17'
+RAW SCORE[ 2]    : '15207'
+
+LITERAL[ 3]      : 'ph_ih ph_r ph_w ph_EH1 ph_s ph_un'
+MEANING[ 3]      : ' ph_ih ph_r ph_w ph_EH1 ph_s ph_un'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 3]    : '15218'
+
+LITERAL[ 4]      : 'ph_IH1 ph_r ph_w ph_EH1 ph_s ph_un'
+MEANING[ 4]      : ' ph_IH1 ph_r ph_w ph_EH1 ph_s ph_un'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 4]    : '15219'
+
+LITERAL[ 5]      : 'ph_EY ph_r ph_w ph_EH1 ph_s ph_un'
+MEANING[ 5]      : ' ph_EY ph_r ph_w ph_EH1 ph_s ph_un'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 5]    : '15226'
+
+LITERAL[ 6]      : 'ph_eh ph_r ph_w ph_EH1 ph_l ph_s ph_un'
+MEANING[ 6]      : ' ph_eh ph_r ph_w ph_EH1 ph_l ph_s ph_un'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 6]    : '15229'
+
+LITERAL[ 7]      : 'ph_AA ph_r ph_w ph_EH1 ph_l ph_s ph_un'
+MEANING[ 7]      : ' ph_AA ph_r ph_w ph_EH1 ph_l ph_s ph_un'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '15234'
+
+LITERAL[ 8]      : 'ph_ih ph_r ph_w ph_IH1 ph_l ph_s ph_un'
+MEANING[ 8]      : ' ph_ih ph_r ph_w ph_IH1 ph_l ph_s ph_un'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '15238'
+
+LITERAL[ 9]      : 'ph_IH1 ph_r ph_w ph_IH1 ph_l ph_s ph_un'
+MEANING[ 9]      : ' ph_IH1 ph_r ph_w ph_IH1 ph_l ph_s ph_un'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '15239'
+
+----------------------------------------------
+
+VoiceEnrollment=>SUCCESS
+Dumping audio waveform to file a3__VCE_Peter_Wilson.raw
+Recognizer has been stopped
+D: v139/v139_107.nwv
+C: VCE_Edgar_Young
+Sem:  <NO INTERPRETATION FOUND>
+CSem: <NO INTERPRETATION FOUND>
+S: 228
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'VCE_Edgar_Young'
+LITERAL[ 0]      : 'ph_eh ph_d ph_r ph_y ph_UH1 ph_n ph_d'
+MEANING[ 0]      : ' ph_eh ph_d ph_r ph_y ph_UH1 ph_n ph_d'
+CONFIDENCE VALUE : '228'
+RAW SCORE[ 0]    : '14538'
+
+LITERAL[ 1]      : 'ph_eh ph_g ph_d ph_r ph_EE1 ph_UH1 ph_n ph_d'
+MEANING[ 1]      : ' ph_eh ph_g ph_d ph_r ph_EE1 ph_UH1 ph_n ph_d'
+CONFIDENCE VALUE : '47'
+RAW SCORE[ 1]    : '14540'
+
+LITERAL[ 2]      : 'ph_eh ph_d ph_y ph_EE1 ph_UH1 ph_n ph_d'
+MEANING[ 2]      : ' ph_eh ph_d ph_y ph_EE1 ph_UH1 ph_n ph_d'
+CONFIDENCE VALUE : '10'
+RAW SCORE[ 2]    : '14541'
+
+LITERAL[ 3]      : 'ph_eh ph_t ph_d ph_r ph_EE1 ph_UH1 ph_n ph_d'
+MEANING[ 3]      : ' ph_eh ph_t ph_d ph_r ph_EE1 ph_UH1 ph_n ph_d'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 3]    : '14545'
+
+LITERAL[ 4]      : 'ph_eh ph_d ph_AE ph_EE1 ph_UH1 ph_n ph_d'
+MEANING[ 4]      : ' ph_eh ph_d ph_AE ph_EE1 ph_UH1 ph_n ph_d'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 4]    : '14546'
+
+LITERAL[ 5]      : 'ph_eh ph_d ph_d ph_r ph_EE1 ph_UH1 ph_n ph_d'
+MEANING[ 5]      : ' ph_eh ph_d ph_d ph_r ph_EE1 ph_UH1 ph_n ph_d'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 5]    : '14547'
+
+LITERAL[ 6]      : 'ph_eh ph_d ph_ih ph_EE1 ph_UH1 ph_n ph_d'
+MEANING[ 6]      : ' ph_eh ph_d ph_ih ph_EE1 ph_UH1 ph_n ph_d'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 6]    : '14547'
+
+LITERAL[ 7]      : 'ph_eh ph_d ph_OO ph_EE1 ph_UH1 ph_n ph_d'
+MEANING[ 7]      : ' ph_eh ph_d ph_OO ph_EE1 ph_UH1 ph_n ph_d'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '14555'
+
+LITERAL[ 8]      : 'ph_eh ph_g ph_d ph_OO ph_EE1 ph_UH1 ph_n ph_d'
+MEANING[ 8]      : ' ph_eh ph_g ph_d ph_OO ph_EE1 ph_UH1 ph_n ph_d'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '14557'
+
+LITERAL[ 9]      : 'ph_eh ph_t ph_d ph_OO ph_EE1 ph_UH1 ph_n ph_d'
+MEANING[ 9]      : ' ph_eh ph_t ph_d ph_OO ph_EE1 ph_UH1 ph_n ph_d'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '14562'
+
+----------------------------------------------
+
+VoiceEnrollment=>SUCCESS
+Dumping audio waveform to file a4__VCE_Edgar_Young.raw
+Recognizer has been stopped
+D: v139/v139_248.nwv
+C: VCE_John_Martinez
+Sem:  <NO INTERPRETATION FOUND>
+CSem: <NO INTERPRETATION FOUND>
+S: 305
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'VCE_John_Martinez'
+LITERAL[ 0]      : 'ph_p ph_UH1 ph_m ph_ur ph_k ph_y ph_n ph_ih ph_s'
+MEANING[ 0]      : ' ph_p ph_UH1 ph_m ph_ur ph_k ph_y ph_n ph_ih ph_s'
+CONFIDENCE VALUE : '305'
+RAW SCORE[ 0]    : '16945'
+
+LITERAL[ 1]      : 'ph_k ph_UH1 ph_m ph_ur ph_k ph_y ph_n ph_ih ph_s'
+MEANING[ 1]      : ' ph_k ph_UH1 ph_m ph_ur ph_k ph_y ph_n ph_ih ph_s'
+CONFIDENCE VALUE : '85'
+RAW SCORE[ 1]    : '16965'
+
+LITERAL[ 2]      : 'ph_k ph_um ph_ur ph_k ph_y ph_n ph_ih ph_s'
+MEANING[ 2]      : ' ph_k ph_um ph_ur ph_k ph_y ph_n ph_ih ph_s'
+CONFIDENCE VALUE : '26'
+RAW SCORE[ 2]    : '16970'
+
+LITERAL[ 3]      : 'ph_t ph_UH1 ph_m ph_ur ph_k ph_y ph_n ph_ih ph_s'
+MEANING[ 3]      : ' ph_t ph_UH1 ph_m ph_ur ph_k ph_y ph_n ph_ih ph_s'
+CONFIDENCE VALUE : '7'
+RAW SCORE[ 3]    : '16975'
+
+LITERAL[ 4]      : 'ph_t ph_OO ph_um ph_ur ph_k ph_y ph_n ph_ih ph_s'
+MEANING[ 4]      : ' ph_t ph_OO ph_um ph_ur ph_k ph_y ph_n ph_ih ph_s'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 4]    : '16990'
+
+LITERAL[ 5]      : 'ph_ih ph_um ph_ur ph_k ph_y ph_n ph_ih ph_s'
+MEANING[ 5]      : ' ph_ih ph_um ph_ur ph_k ph_y ph_n ph_ih ph_s'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 5]    : '17006'
+
+LITERAL[ 6]      : 'ph_p ph_um ph_ur ph_k ph_y ph_n ph_ih ph_s'
+MEANING[ 6]      : ' ph_p ph_um ph_ur ph_k ph_y ph_n ph_ih ph_s'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 6]    : '17011'
+
+LITERAL[ 7]      : 'ph_UH1 ph_m ph_ur ph_k ph_y ph_n ph_ih ph_s'
+MEANING[ 7]      : ' ph_UH1 ph_m ph_ur ph_k ph_y ph_n ph_ih ph_s'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '17027'
+
+LITERAL[ 8]      : 'ph_um ph_ur ph_k ph_y ph_n ph_ih ph_s'
+MEANING[ 8]      : ' ph_um ph_ur ph_k ph_y ph_n ph_ih ph_s'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '17030'
+
+----------------------------------------------
+
+VoiceEnrollment=>SUCCESS
+Dumping audio waveform to file a5__VCE_John_Martinez.raw
+Recognizer has been stopped
+D: v139/v139_077.nwv
+C: phone delete VCE_Pete_Gonzalez
+Sem (1):  invocab=1
+S: 747
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'phone delete VCE_Pete_Gonzalez'
+LITERAL[ 0]      : 'phone delete VCE_Pete_Gonzalez'
+MEANING[ 0]      : 'DEL VCE_Pete_Gonzalez'
+CONFIDENCE VALUE : '747'
+RAW SCORE[ 0]    : '21902'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: v139/v139_040.nwv
+C: phone delete VCE_Peter_Wilson
+Sem (1):  invocab=1
+S: 497
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'phone delete VCE_Peter_Wilson'
+LITERAL[ 0]      : 'phone delete VCE_Peter_Wilson'
+MEANING[ 0]      : 'DEL VCE_Peter_Wilson'
+CONFIDENCE VALUE : '497'
+RAW SCORE[ 0]    : '19919'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: v139/v139_021.nwv
+C: phone delete VCE_Edgar_Young
+Sem (1):  invocab=1
+S: 719
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'phone delete VCE_Edgar_Young'
+LITERAL[ 0]      : 'phone delete VCE_Edgar_Young'
+MEANING[ 0]      : 'DEL VCE_Edgar_Young'
+CONFIDENCE VALUE : '719'
+RAW SCORE[ 0]    : '17946'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: v139/v139_206.nwv
+C: phone delete VCE_Andrew_Evans
+Sem (1):  invocab=1
+S: 678
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'phone delete VCE_Andrew_Evans'
+LITERAL[ 0]      : 'phone delete VCE_Andrew_Evans'
+MEANING[ 0]      : 'DEL VCE_Andrew_Evans'
+CONFIDENCE VALUE : '678'
+RAW SCORE[ 0]    : '17426'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: v139/v139_103.nwv
+C: phone delete VCE_John_Martinez
+Sem (1):  invocab=1
+S: 692
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'phone delete VCE_John_Martinez'
+LITERAL[ 0]      : 'phone delete VCE_John_Martinez'
+MEANING[ 0]      : 'DEL VCE_John_Martinez'
+CONFIDENCE VALUE : '692'
+RAW SCORE[ 0]    : '19618'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: v139/v139_113.nwv
+C: phone delete Jen_Parker
+Sem (1):  invocab=1
+S: 848
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'phone delete Jen_Parker'
+LITERAL[ 0]      : 'phone delete Jen_Parker'
+MEANING[ 0]      : 'DEL Jen_Parker'
+CONFIDENCE VALUE : '848'
+RAW SCORE[ 0]    : '18295'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: v139/v139_067.nwv
+C: phone delete Jennifer_Hernandez
+Sem (1):  invocab=1
+S: 900
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'phone delete Jennifer_Hernandez'
+LITERAL[ 0]      : 'phone delete Jennifer_Hernandez'
+MEANING[ 0]      : 'DEL Jennifer_Hernandez'
+CONFIDENCE VALUE : '900'
+RAW SCORE[ 0]    : '20075'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: v139/v139_202.nwv
+C: phone delete Barb_Baker
+Sem (1):  invocab=1
+S: 878
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'phone delete Barb_Baker'
+LITERAL[ 0]      : 'phone delete Barb_Baker'
+MEANING[ 0]      : 'DEL Barb_Baker'
+CONFIDENCE VALUE : '878'
+RAW SCORE[ 0]    : '15807'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: v139/v139_007.nwv
+C: phone delete Elaine
+Sem (1):  invocab=1
+S: 832
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'phone delete Elaine'
+LITERAL[ 0]      : 'phone delete Elaine'
+MEANING[ 0]      : 'DEL Elaine'
+CONFIDENCE VALUE : '832'
+RAW SCORE[ 0]    : '19576'
+
+LITERAL[ 1]      : 'phone delete David'
+MEANING[ 1]      : 'DEL David'
+CONFIDENCE VALUE : '411'
+RAW SCORE[ 1]    : '19963'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: v139/v139_189.nwv
+C: phone delete David
+Sem (1):  invocab=1
+S: 807
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'phone delete David'
+LITERAL[ 0]      : 'phone delete David'
+MEANING[ 0]      : 'DEL David'
+CONFIDENCE VALUE : '807'
+RAW SCORE[ 0]    : '12998'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: m252/m252a12e.nwv
+C: forward
+Sem (1):  invocab=1
+S: 661
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'forward'
+LITERAL[ 0]      : 'forward'
+MEANING[ 0]      : 'FWD'
+CONFIDENCE VALUE : '661'
+RAW SCORE[ 0]    : '13135'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: m252/m252a22e.nwv
+C: traffic
+Sem (1):  invocab=1
+S: 810
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'traffic'
+LITERAL[ 0]      : 'traffic'
+MEANING[ 0]      : 'TRFI'
+CONFIDENCE VALUE : '810'
+RAW SCORE[ 0]    : '14253'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: m252/m252a10e.nwv
+C: changer
+Sem (1):  invocab=1
+S: 806
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'changer'
+LITERAL[ 0]      : 'changer'
+MEANING[ 0]      : 'CHANGER'
+CONFIDENCE VALUE : '806'
+RAW SCORE[ 0]    : '14150'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: m252/m252a3fe.nwv
+C: cd player
+Sem (1):  invocab=1
+S: 877
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'cd player'
+LITERAL[ 0]      : 'cd player'
+MEANING[ 0]      : 'CDPL'
+CONFIDENCE VALUE : '877'
+RAW SCORE[ 0]    : '18357'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: m252/m252a11e.nwv
+C: traffic information
+Sem (1):  invocab=1
+S: 862
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'traffic information'
+LITERAL[ 0]      : 'traffic information'
+MEANING[ 0]      : 'TRFI'
+CONFIDENCE VALUE : '862'
+RAW SCORE[ 0]    : '19602'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: m252/m252a21e.nwv
+C: traffic memory
+Sem (1):  invocab=1
+S: 848
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'traffic memory'
+LITERAL[ 0]      : 'traffic memory'
+MEANING[ 0]      : 'TRFM'
+CONFIDENCE VALUE : '848'
+RAW SCORE[ 0]    : '15676'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: m252/m252a24e.nwv
+C: fahrenheit
+Sem (1):  invocab=1
+S: 252
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'fahrenheit'
+LITERAL[ 0]      : 'fahrenheit'
+MEANING[ 0]      : 'DEGF'
+CONFIDENCE VALUE : '252'
+RAW SCORE[ 0]    : '11640'
+
+----------------------------------------------
+
+Recognizer has been stopped

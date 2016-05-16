@@ -1,0 +1,16 @@
+URL: svn checkout -r 1937 http://zxing.googlecode.com/svn/trunk/ zxing-read-only
+
+Version: 1.7.1 (Revision: r1937)
+
+License: Apache License 2.0
+
+License File: LICENSE
+
+Description:
+ZXing (pronounced "zebra crossing") is an open-source, multi-format 1D/2D
+barcode reader library implemented in Java. Our goal is to support decoding of
+QR Codes, Data Matrix, and the UPC family of 1D barcodes. It will provide
+clients for J2ME, J2SE, and Android.
+
+Local Modifications:
+No modifications.

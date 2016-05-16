@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!-- Kabocha Dialog Entries -->
+
+<string name="Kabocha_0_2_1_1">
+System check looks good, unit tests are passing, bootstrap is complete!  Oh jolly, he’s responding!  
+</string>
+
+<string name="Kabocha_0_2_1_2">
+Hello there, Android.  I’m Dr. Woodrow Lichtenstein Kabochanomizu, your humble creator.  You’re going to help me find something very precious that I’ve been studying for most of my life: The Source.
+</string>
+
+<string name="Kabocha_0_2_1_3">
+But first, we should go over some of the basics.  Use the trackball or directional pad to <b>roll left and right</b>.  You only need to make <b>very small movements</b> to move effectively.  Try rolling down that hill.
+</string>
+
+<string name="Kabocha_0_2_2_1">
+Jolly good!  You learn exactly as quickly as I calculated you would.  Fantastique!  Remember, the trackball and directional pad are just for <b>changing direction</b>.  You do not need to press them constantly.
+</string>
+
+<string name="Kabocha_0_2_2_2">
+Now, rolling around is a pleasurable way to move, but to really travel in style you should fly.  <b>Tap the blue button on the bottom of the screen to jump, and hold it down to fly.</b>  Be careful though--your batteries can only hold you aloft for a short time before they need to recharge.  Watch the meter at the top left of the screen to see your remaining flight power.
+</string>
+
+<string name="Kabocha_0_2_2_3">
+Try flying up this shaft.
+</string>
+
+<string name="Kabocha_0_2_3_1">
+Bravo!  Fantastique!  It’s a little scary at first, yes?  Don’t worry, you’ll get the hang of it.  The trick is to just make small movements left and right while in the air. 
+</string>
+
+<string name="Kabocha_0_2_3_2">
+Now my friend, let us give you a more complicated test.  I had my robots turn this part of the lab into something of an obstacle course.  Let’s see if you can make it to the other side.  I’ll be waiting for you there. 
+</string>
+
+<string name="Kabocha_0_2_4_1">
+Excellent work, and in record time too!  My calculations are once again correct: you are the most capable machine I have ever developed.  You surely will find The Source where all others have failed.
+</string>
+
+<string name="Kabocha_0_2_4_2">
+Did you see those little pearls floating in the air along the way?  You should <b>collect them</b> as you travel across the island.  If you are damaged, collecting pearls will <b>help your repair system</b> and give you an <b>impressive energy shield</b> for a short time.  <small>The pearls do not actually have anything to do with your operation but I really need them to help pay off this lab.  The economy, you know.</small>
+</string>
+
+<string name="Kabocha_0_2_4_3">
+Jolly good.  Let’s move on.  Push the red button on the ground over there to open the door with the red mark.
+</string>
+
+<string name="Kabocha_0_2_5_1">
+This entire island flows from The Source.  Its power affects the things that get close to it, and this island is consequently full of unique forms of life.  One of them, I’m sorry to say, is my fault.
+</string>
+
+<string name="Kabocha_0_2_5_2">
+Years ago I released some small robots on the island in an attempt to pinpoint the exact location of The Source.  The mistake I made was allowing them to replicate on their own.  The Source twisted them such that I lost control, and since then they have multiplied at such a rate that the little pests have almost overrun the island.
+</string>
+
+<string name="Kabocha_0_2_5_3">
+I’ve given you a useful maneuver to dispose of these pesky troublemakers.  While in the air, <b>press the red attack button to drop your full weight onto enemies and crush them</b>.  Give it a shot on that fellow to the left.
+</string>
+
+<string name="Kabocha_0_2_6_1">
+Jolly good!  Way to drop the hammer! <small>(My calculations suggest that phrase is the preferred selection given the state of contemporary language)</small> Of course, you can always just avoid these robotic cretins if you like, but you’ll be doing the island a great service if you destroy them.  Remember, if you get hurt you can collect pearls to restore your health <small>and help me put a dent in my credit card bill</small>.
+</string>
+
+<string name="Kabocha_0_2_6_2">
+One more important point I almost forgot to mention.  Your internal battery uses <b>red gems</b> to synthesize power from extremely low-light conditions.  I did a survey of the island and concluded that every major area has enough gems to keep you going, but it is imperative that you <b>collect them whenever you see them</b>.  My research suggests that there should be at least three gems in each area, and to get to the next area you must <b>collect all three</b>.
+</string>
+
+<string name="Kabocha_0_2_6_3">
+Ho ho, we can’t be sending you off into the wild without knowing things like that, can we?  Right-o, ahead is an area with three gems.  Find them and we can move on to more complicated topics, like what you’re doing here and how The Source is going to help me save the world.
+</string>
+
+
+<string name="Kabocha_0_3_1_1">
+Jolly ho, my little creation!  You are almost ready to venture out by yourself.  I need to tell you about your mission, which is of critical importance to the future of this planet.  But before that, let me show you a trick.
+</string>
+
+<string name="Kabocha_0_3_1_2">
+First, make your way through this maze.  Make sure you pick up the red gem on the way.
+</string>
+
+<string name="Kabocha_0_3_2_1">
+I’ve outfitted you with a special type of energy weapon that allows you to control machines.  While standing on the ground, <b>hold down the attack button</b> for a few seconds to charge up the <b>Possession Orb</b>.
+</string>
+
+<string name="Kabocha_0_3_2_2">
+Once the Possession Orb is released, you can control its movement by tilting the phone.  Running it into a mechanical object will allow you to possess that object.  Pressing the attack button will destroy it and return control to your body.
+</string>
+
+<string name="Kabocha_0_3_2_3">
+Try possessing that robot down there and using him to break through those blue blocks.  Here’s a hint: releasing a possessed robot causes it to explode.
+</string>
+
+<string name="Kabocha_0_3_3_1">
+Jolly good work!  You’re already asymptotically equal to my best neural net model.  
+</string>
+
+<string name="Kabocha_0_3_3_2">
+One more thing about possession: those energy orbs require a lot of power to maintain, so you can only use them for a short time if you have not collected any gems.  Collecting gems will extend the amount of time the orb can survive before dissipating.
+</string>
+
+<string name="Kabocha_0_3_3_3">
+Let’s practice possession a little more.  I’ll meet you up top.
+</string>
+
+<string name="Kabocha_0_3_4_1">
+We don’t actually know what The Source is or where it came from.  My theory is that it’s some sort of nanotechnological machine, constantly sucking matter in from the ocean, breaking it down into its component molecules, and then putting those molecules back together however it sees fit.  If that’s true, it’s probably the creation of humans, but not humans of our time.  Perhaps it was sent back in time by a future civilization, I’m not sure.  On that point my data is insufficient.  Suffice to say it is responsible for this island and everything on it.
+</string>
+
+<string name="Kabocha_0_3_4_2">
+If I can find The Source, I can rid the world of hunger, disease, and war.  With nanotechnology no problem is unsolvable, no goal out of reach.  I’ve been searching for it my whole life, but now I’m old and can no longer venture out on my own.  That’s why I’ve created you for this most important of tasks.
+</string>
+
+<string name="Kabocha_0_3_5_1">
+You’ve done jolly well so far, my little friend.  It’s almost time to release you into the wild.  But before I do that, I need to tell you about our enemies.
+</string>
+
+<string name="Kabocha_0_3_5_2">
+The island is full of danger, but be particularly careful of Rokudou operatives.  The Rokudou Corporation is a huge, soulless multinational run by a maniac.  I’m sure you already have enough synapse nodes to understand that The Source could be used as a horrible weapon if it fell into the wrong hands.  
+</string>
+
+<string name="Kabocha_0_3_5_3">
+L. Rokudou is infamous for having built a successful business out of illegal profiteering, but few know he’s also a psychopath.  I’ve seen his behavior up close, and let me tell you: that man is crazy enough to annihilate the entire world if it would make him king of the rubble.  
+</string>
+
+<string name="Kabocha_0_3_5_4">
+You can be sure he’s looking for The Source, though he’s not foolish enough to do it himself.  He sends agents, wet-behind-the-ears adventurers who don’t know what they’re getting into.  You must avoid them at all costs, and we must find The Source before they do, or the future of the world is in great peril.
+</string>
+
+
+
+<string name = "Kabocha_4_3_1_1">
+Jolly good work, my little friend!  The Source is within my grasp after all these years!
+</string>
+<string name = "Kabocha_4_3_1_2">
+Ha ha ha ha ha ha ha ha ha ha ha ha ha ha!  My time has finally come.  Rokudou, you shall cower at my feet!  If you lick my boots well enough I may find it in my heart to kill you quickly.  I was thinking of slowly replacing your bone marrow with molten lead, but that might not be painful enough.
+</string>
+<string name = "Kabocha_4_3_1_3">
+Oh, jolly day!  Finally, after all my research, my blood and sweat and tears, finally The Source is mine.  Nobody shall stand in my way now!  Ho ha ha ha ha ha he ha ha ha ho ha he ha ho he ha ha he he ho ho ha he ho ha ha!
+</string>
+<string name = "Kabocha_4_3_1_4">
+(Ahem)  As for you, my little green friend, you’ve reached the end of your usefulness.  As your creator, I thank you for your service.  I really should shut you down properly, but right now The Source and I have more important matters to attend to back at the lab.  Tell you what: your final command is to rot down here in this cave.  See to it that you follow it to the letter. <small>Ta-ta!</small>
+</string>
+
+<string name = "Kabocha_final_boss_1_1">
+Don’t waste your breath, Rokudou.  This little robot is <i>my</i> creation, and he does <i>my</i> bidding.
+</string>
+<string name = "Kabocha_final_boss_1_2">
+I underestimated you, my little friend.  Your capabilities have far surpassed even my most optimistic projections.  Still, you are hardwired to follow my command.  And besides, Rokudou is a soulless monster.  What makes you think you can trust him?
+</string>
+<string name = "Kabocha_final_boss_1_3">
+Now, do me a favor and go knock his head in.  A few well-placed stomps should do the trick.  Jolly ho!
+</string>
+</resources>

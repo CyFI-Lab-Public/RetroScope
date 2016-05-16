@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<levelTree>
+	
+	<group><level resource="@raw/level_0_2_lab" title = "@string/level_0_2_lab" time = "@string/level_0_2_time" >
+		<dialog>
+			<character1 resource ="@xml/level_0_2_dialog_kabocha"/>
+			<character2 resource ="@xml/level_0_2_dialog_kabocha_2"/>
+		</dialog>
+	</level></group> 
+	
+	<group><level resource="@raw/level_0_3_lab" title = "@string/level_0_3_lab" time = "@string/level_0_3_time" >
+		<dialog>
+			<character1 resource ="@xml/level_0_3_dialog_kabocha"/>
+		</dialog>
+	</level></group> 
+	
+	<group><level resource="@raw/level_1_1_island" title = "@string/level_1_1_island" time = "@string/level_1_1_time" >
+		<dialog>
+			<diary resource ="@string/Diary1"/>
+			<character1 resource ="@xml/level_1_1_dialog_wanda"/>
+		</dialog>
+	</level></group> 
+
+	<group><level resource="@raw/level_1_2_island" title = "@string/level_1_2_island" time = "@string/level_1_2_time" /></group>
+	<group><level resource="@raw/level_1_3_island" title = "@string/level_1_3_island" time = "@string/level_1_3_time" >
+		<dialog>
+			<diary resource ="@string/Diary2"/>
+		</dialog>
+	</level></group> 
+	
+	<!-- <group><level resource="@raw/level_1_4_island" title = "@string/level_1_4_island"  time = "@string/level_1_4_time"/></group>  -->
+	
+	<group><level resource="@raw/level_1_5_island" title = "@string/level_1_5_island"  time = "@string/level_1_5_time">
+	<dialog>
+		<character1 resource ="@xml/level_1_5_dialog_wanda"/>
+		<diary resource ="@string/Diary4"/>
+	</dialog>
+	</level></group> 
+	
+	<group><level resource="@raw/level_1_6_island" title = "@string/level_1_6_island" time = "@string/level_1_6_time" >
+	<dialog>
+		<character1 resource ="@xml/level_1_6_dialog_wanda"/>
+	</dialog>
+	</level></group> 
+	
+	<!--	 <group><level resource="@raw/level_1_7_island" title = "@string/level_1_7_island" time = "@string/level_1_7_time" >
+	 </level></group>  
+--> 
+	 
+	<group><level resource="@raw/level_1_8_island" title = "@string/level_1_8_island" time = "@string/level_1_8_time" /></group>
+	 
+	 
+	<group><level resource="@raw/level_1_9_island" title = "@string/level_1_9_island" time = "@string/level_1_9_time" >
+		<dialog>
+			<character1 resource ="@xml/level_1_9_dialog_wanda"/>
+			<diary resource ="@string/Diary14"/>
+		</dialog>
+	</level></group> 
+	
+	
+	<group><level resource="@raw/level_2_1_grass" title = "@string/level_2_1_grass" time = "@string/level_2_1_time" >
+		<dialog>
+			<character1 resource ="@xml/level_2_1_dialog_kyle"/>
+		</dialog>
+	</level></group> 
+	<group><level resource="@raw/level_2_2_grass" title = "@string/level_2_2_grass"  time = "@string/level_2_2_time"/></group>
+	<group><level resource="@raw/level_2_3_grass" title = "@string/level_2_3_grass"  time = "@string/level_2_3_time">
+		<dialog>
+			<character1 resource ="@xml/level_2_3_dialog_kyle"/>
+			<diary resource ="@string/Diary5"/>
+		</dialog>
+	</level></group> 
+	<group><level resource="@raw/level_2_4_grass" title = "@string/level_2_4_grass" time = "@string/level_2_4_time" >
+		<dialog>
+			<character1 resource ="@xml/level_2_4_dialog_kyle"/>
+		</dialog>
+	</level></group> 
+	<group><level resource="@raw/level_2_5_grass" title = "@string/level_2_5_grass" time = "@string/level_2_5_time" >
+	 	<dialog>
+			<character1 resource ="@xml/level_2_5_dialog_kyle"/>
+			<diary resource ="@string/Diary8"/>
+		</dialog>
+	 </level></group>   
+	<group><level resource="@raw/level_2_6_grass" title = "@string/level_2_6_grass" time = "@string/level_2_6_time" >
+		<dialog>
+			<character1 resource ="@xml/level_2_6_dialog_wanda"/>
+			<diary resource ="@string/Diary10"/>
+		</dialog>
+	</level></group> 
+	<group><level resource="@raw/level_2_7_grass" title = "@string/level_2_7_grass" time = "@string/level_2_7_time" >
+		<dialog>
+			<character1 resource ="@xml/level_2_7_dialog_kyle"/>
+		</dialog>
+	</level></group> 
+	<group><level resource="@raw/level_2_8_grass" title = "@string/level_2_8_grass" time = "@string/level_2_8_time" >
+		<dialog>
+			<character1 resource ="@xml/level_2_8_dialog_kyle"/>
+			<diary resource ="@string/Diary11"/>
+		</dialog>
+	</level></group> 
+	<group><level resource="@raw/level_2_9_grass" title = "@string/level_2_9_grass" time = "@string/level_2_9_time" >
+		<dialog>
+			<character1 resource ="@xml/level_2_9_dialog_wanda"/>
+			<character2 resource ="@xml/level_2_9_dialog_kyle"/>
+			<diary resource ="@string/Diary15"/>
+		</dialog>
+	</level></group> 
+	
+	<group><level resource="@raw/level_3_1_grass" title = "@string/level_3_1_sewer" time = "@string/level_3_1_time" /></group>
+	<group><level resource="@raw/level_3_2_sewer" title = "@string/level_3_2_sewer" time = "@string/level_3_2_time" /></group>
+	
+	<group><level resource="@raw/level_3_3_sewer" title = "@string/level_3_3_sewer" time = "@string/level_3_3_time" >
+		<dialog>
+			<character1 resource ="@xml/level_3_3_dialog_wanda"/>
+			<diary resource ="@string/Diary12"/>
+		</dialog>
+	</level></group> 
+	
+	
+	<group><level resource="@raw/level_3_4_sewer" title = "@string/level_3_4_sewer"  time = "@string/level_3_4_time">
+	</level></group> 
+	
+	<group><level resource="@raw/level_0_1_sewer_kyle" title = "@string/level_0_1_sewer_kyle"  time = "@string/level_3_4_time" restartable="false">
+		<dialog>
+			<character1 resource ="@xml/level_3_4_dialog_kyle"/>
+		</dialog>
+	</level></group> 
+
+	<group><level resource="@raw/level_0_1_sewer_wanda" title = "@string/level_0_1_sewer_wanda"  time = "@string/level_0_1_time" waitmessage="true">
+		<dialog>
+			<character1 resource ="@xml/level_0_1_dialog_wanda"/>
+		</dialog>
+	</level></group> 
+	
+	<group><level resource="@raw/level_3_5_sewer" title = "@string/level_3_5_sewer" time = "@string/level_3_5_time">
+		<dialog>
+			<character1 resource ="@xml/level_3_5_dialog_wanda"/>
+		</dialog>
+	</level></group> 
+
+	
+
+	<group><level resource="@raw/level_3_6_sewer" title = "@string/level_3_6_sewer" time = "@string/level_3_6_time"/></group>
+
+	
+
+	<group><level resource="@raw/level_3_7_sewer" title = "@string/level_3_7_sewer" time = "@string/level_3_7_time">
+		<dialog>
+			<character1 resource ="@xml/level_3_7_dialog_wanda"/>
+			<diary resource ="@string/Diary3"/>
+		</dialog>
+	</level></group> 
+
+	
+	<group><level resource="@raw/level_3_8_sewer" title = "@string/level_3_8_sewer" time = "@string/level_3_8_time">
+		<dialog>
+			<character1 resource ="@xml/level_3_8_dialog_kyle"/>
+		</dialog>
+	</level></group> 
+
+	
+	<group><level resource="@raw/level_3_9_sewer" title = "@string/level_3_9_sewer" time = "@string/level_3_9_time">
+		<dialog>
+			<character1 resource ="@xml/level_3_9_dialog_kyle"/>
+			<character2 resource ="@xml/level_3_9_dialog_rokudou"/>
+			<diary resource ="@string/Diary6"/>
+		</dialog>
+	</level></group> 
+
+	
+	
+
+	<group><level resource="@raw/level_3_10_sewer" title = "@string/level_3_10_sewer" time = "@string/level_3_10_time">
+		<dialog>
+			<character1 resource ="@xml/level_3_10_dialog_kyle"/>
+		</dialog>
+	</level></group> 
+
+	<group><level resource="@raw/level_3_11_sewer" title = "@string/level_3_11_sewer" time = "@string/level_3_11_time">
+		<dialog>
+			<character1 resource ="@xml/level_3_11_dialog_wanda"/>
+		</dialog>
+	</level></group> 
+
+	<group><level resource="@raw/level_4_1_underground" title = "@string/level_4_1_underground" time = "@string/level_4_1_time">
+	<dialog>
+		<character1 resource ="@xml/level_4_1_dialog_wanda"/>
+		<character2 resource ="@xml/level_4_1_dialog_rokudou"/>
+		<!--  <character2 resource ="@xml/level_4_1_misc"/> -->
+		<diary resource ="@string/Diary7"/>
+	</dialog>
+	</level></group> 
+
+	
+	<group><level resource="@raw/level_4_2_underground" title = "@string/level_4_2_underground" time = "@string/level_4_2_time">
+		<dialog>
+			<character1 resource ="@xml/level_4_2_dialog_wanda"/>
+			<diary resource ="@string/Diary9"/>
+		</dialog>
+	</level></group> 
+	
+
+
+	<group><level resource="@raw/level_4_3_underground" title = "@string/level_4_3_underground" time = "@string/level_4_3_time">
+	<dialog>
+		<character1 resource ="@xml/level_4_3_dialog_kabocha"/>
+	</dialog>
+	</level></group> 
+
+	
+	<group><level resource="@raw/level_4_4_underground" title = "@string/level_4_4_underground" time = "@string/level_4_4_time">
+		<dialog>
+			<character2 resource ="@xml/level_4_4_dialog_rokudou"/>
+		</dialog>
+	</level></group> 
+
+	
+	<group><level resource="@raw/level_4_5_underground" title = "@string/level_4_5_underground" time = "@string/level_4_5_time">
+	<dialog>
+		<character1 resource ="@xml/level_4_5_dialog_wanda"/>
+	</dialog>
+	</level></group> 
+
+	
+
+	<group><level resource="@raw/level_4_7_underground" title = "@string/level_4_7_underground" time = "@string/level_4_7_time">
+	<dialog>
+		<character1 resource ="@xml/level_4_7_dialog_wanda"/>
+		<character2 resource ="@xml/level_4_7_dialog_rokudou"/>
+		<diary resource ="@string/Diary13"/>
+	</dialog>
+	</level></group> 
+
+	<group><level resource="@raw/level_4_8_underground" title = "@string/level_4_8_underground" time = "@string/level_4_8_time"/></group>
+
+	
+
+	<group><level resource="@raw/level_4_9_underground" title = "@string/level_4_9_underground" time = "@string/level_4_9_time">
+	<dialog>
+		<character1 resource ="@xml/level_4_9_dialog_wanda"/>
+	</dialog>
+	</level></group> 
+
+	<group><level resource="@raw/level_final_boss_lab" title = "@string/level_final_boss_lab" time = "@string/level_final_boss_time">
+		<dialog>
+			<character1 resource ="@xml/level_final_boss_dialog"/>
+		</dialog>
+	</level></group> 
+	
+</levelTree>
+  

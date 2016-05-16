@@ -1,0 +1,30 @@
+		README for tinycompress
+		=======================
+	       vinod.koul@linux.intel.com
+	       ==========================
+
+1. WHAT
+	tinycompress is a userspace library for anyone who wants to use the ALSA
+compressed APIs introduced in Linux 3.3
+This library provides the APIs to open a ALSA compressed device and read/write
+compressed data like MP3 etc to it.
+
+	This also includes a utility command line player (cplay) which demonstrates 
+the usage of this API. Currently this contains support for playing the mp3 format
+
+2. WHERE
+	The library can found in alsa-project.org
+Git: git clone git://git.alsa-project.org/tinycompress.git
+Http: http://git.alsa-project.org/?p=tinycompress.git
+
+3. PATCHES
+	Please send any enhancements/fixes to alsa developer mailing list at:
+alsa-devel@alsa-project.org. 
+
+4. LICENSE
+	tinycompress is provided under LGPL and BSD dual license
+
+5. CREDITS
+- Pierre-Louis Bossart <pierre-louis.bossart@linux.intel.com> for library design
+- Navjot Singh <navjot.singh@intel.com> for writing the mp3 parser code 
+

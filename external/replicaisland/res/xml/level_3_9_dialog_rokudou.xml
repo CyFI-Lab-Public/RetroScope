@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog>
+
+<conversation>
+
+<page
+  image="@drawable/rokudou_closeup_normal"
+  text = "@string/Rokudou_3_9_1_1" 
+  title = "@string/Rokudou"
+/>
+
+<page
+  image="@drawable/rokudou_closeup_normal"
+  text = "@string/Rokudou_3_9_1_2" 
+  title = "@string/Rokudou"
+/>
+
+<page
+  image="@drawable/rokudou_closeup_normal"
+  text = "@string/Rokudou_3_9_1_3" 
+  title = "@string/Rokudou"
+/>
+
+<page
+  image="@drawable/rokudou_closeup_normal"
+  text = "@string/Rokudou_3_9_1_4" 
+  title = "@string/Rokudou"
+/>
+
+<page
+  image="@drawable/rokudou_closeup_normal"
+  text = "@string/Rokudou_3_9_1_5" 
+  title = "@string/Rokudou"
+/>
+
+</conversation>
+
+</dialog>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<grammar version="1.0" xml:lang="en-US" mode="voice" root="_phone_type_choice">
+<!--
+ -->
+
+ <rule id="_phone_type_choice" scope="public">
+    <one-of>
+      <item>home <tag>MEANING='H'</tag></item>
+      <item>mobile <tag>MEANING='M'</tag></item>
+      <item>cell <tag>MEANING='M'</tag></item>
+      <item>work <tag>MEANING='W'</tag></item>
+      <item>other <tag>MEANING='O'</tag></item>
+      <item>exit <tag>MEANING='X'</tag></item>
+      <item>cancel <tag>MEANING='X'</tag></item>
+      <item>try again <tag>MEANING='R'</tag></item>
+      <item>retry <tag>MEANING='R'</tag></item>
+    </one-of>
+ </rule>
+
+</grammar>

@@ -1,0 +1,6 @@
+The time zone data files come from http://www.iana.org/time-zones.
+
+Local change log:
+    Move Sydney above Hobart, Australia
+    Moved Adelaide above Broken Hill, Australia
+    Moved Dawson_Creek above Creston, Canada

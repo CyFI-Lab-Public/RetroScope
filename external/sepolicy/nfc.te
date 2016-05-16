@@ -1,0 +1,5 @@
+# nfc subsystem
+type nfc, domain;
+permissive nfc;
+app_domain(nfc)
+unconfined_domain(nfc)

@@ -1,0 +1,3 @@
+Alexander Gutkin <agutkin@google.com>: Switch the iSAC codec to be
+   fixed rather than floating point. The current code uses floating
+   point implementation for purely experimental reasons.

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO8859-1" ?>
+<!--
+	Test grammar
+	hello $SLOT | hello
+-->
+<grammar xml:lang="en-us" version="1.0" root="ROOT">
+<meta name="word_penalty" content="40" />
+      
+<rule id="ROOT" scope="public">
+  <one-of>
+	  <item><ruleref uri="#Phone"/>
+		<tag>meaning=Phone.V;</tag>
+	  </item>
+  </one-of>
+</rule>
+
+<rule id="Phone">
+  <item>
+    <tag>C=(C?C:''); V=C+V;</tag>
+       <item>
+	  hello
+	<tag>V='HI';</tag>
+       </item>
+       <item repeat="0-1">
+		<ruleref uri="#Names"/>
+		<tag>V=Names.V;</tag>
+       </item>
+  </item>
+</rule>
+
+
+<rule id="Names" scope="public">
+  <item>__Names__</item>
+</rule>
+
+</grammar>

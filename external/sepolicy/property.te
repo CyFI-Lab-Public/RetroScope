@@ -1,0 +1,13 @@
+type default_prop, property_type;
+type shell_prop, property_type;
+type radio_prop, property_type;
+type system_prop, property_type;
+type vold_prop, property_type;
+type rild_prop, property_type;
+type ctl_default_prop, property_type;
+type ctl_dumpstate_prop, property_type;
+type ctl_rildaemon_prop, property_type;
+type audio_prop, property_type;
+type security_prop, property_type;
+type bluetooth_prop, property_type;
+type powerctl_prop, property_type;

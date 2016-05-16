@@ -1,0 +1,132 @@
+# This suppression file tests an extension to the suppression mechanism: 
+# wildcards. The wildcard here is just an asterisk ('*') 
+# which should match any number of functions (including zero). 
+
+# To test the suppression mechanism with this file, run Helgrind 
+# with 'racecheck_unittest 350' -- this is a test that has 
+# a race with stack trace F1->F2->...->F8->F9
+
+
+#################### Positive tests (should match) #################
+
+{
+  match1
+  Helgrind:Race
+  fun:*F9*
+  *  
+}
+
+
+{
+  match2
+  Helgrind:Race
+  fun:*F9*
+  *
+  fun:*F8*
+}
+
+
+{
+  match3
+  Helgrind:Race
+  *
+  fun:*F9*
+  fun:*F8*
+}
+
+{
+  match4
+  Helgrind:Race
+  *
+  *
+  fun:*F9*
+  fun:*F8*
+}
+
+{
+  match5
+  Helgrind:Race
+  *
+  fun:*F9*
+  *
+  fun:*F8*
+}
+
+
+{
+  match6
+  Helgrind:Race
+  *
+  fun:*F7*
+  *
+  fun:*F5*
+  fun:*F4*
+  *
+  *
+  fun:*F3*
+  *
+  fun:*F2*
+}
+
+{
+  match7
+  Helgrind:Race
+  *
+  fun:*F9*
+  *
+  fun:*F8*
+  fun:*F7*
+  *
+  fun:*F5*
+  *
+  fun:*F4*
+  fun:*F3*
+  *
+  fun:*F2*
+  fun:*F1*
+}
+
+{
+  match8
+  Helgrind:Race
+  *
+  fun:*F9*
+  fun:*F8*
+  *
+  fun:*F3*
+  *
+  fun:*F1*
+}
+
+{
+  wildcard at the end is ignored 
+  Helgrind:Race
+  fun:*F9*
+  fun:*F8*
+  *
+}
+
+###################### Negative tests (should not match) ##################
+
+{
+  nomatch
+  Helgrind:Race
+  fun:*F8*
+}
+{
+  nomatch
+  Helgrind:Race
+  *
+  fun:*F8*
+  *
+  fun:*F8*
+}
+
+{
+  nomatch
+  Helgrind:Race
+  *
+  fun:*XXXXX*
+}
+
+

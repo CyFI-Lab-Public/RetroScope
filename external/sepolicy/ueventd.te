@@ -1,0 +1,7 @@
+# ueventd seclabel is specified in init.rc since
+# it lives in the rootfs and has no unique file type.
+type ueventd, domain;
+permissive ueventd;
+tmpfs_domain(ueventd)
+unconfined_domain(ueventd)
+allow ueventd rootfs:file entrypoint;

@@ -1,0 +1,28 @@
+Code obtained from
+------------------
+
+https://re2.googlecode.com/files/re2-20130115.tgz
+
+Version
+-------
+
+re2-20130115.tgz
+
+Changes required to build using stlport on Android as follows (full diff)
+-------------------------------------------------------------------------
+util/util.h:
+
+44,53c44
+< #if defined(ANDROID)
+< 
+< #if defined(_STLPORT_VERSION)
+< #include <unordered_set>      // using stlport
+< #else
+< #include <tr1/unordered_set>  // using gnustl
+< #endif
+< using std::tr1::unordered_set;
+<  
+< #elif defined(__GNUC__) && !defined(USE_CXX0X)
+---
+> #if defined(__GNUC__) && !defined(USE_CXX0X)
+

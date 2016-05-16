@@ -1,0 +1,14 @@
+Strace on Android
+
+The Android port of Strace does not use the configure scripts or Makefiles
+from the original source distribution.
+
+Build Strace on Android using the Android build system, like the rest
+of the system.
+
+Android-specific customizations are immortalized in Android.patch to
+ease future upgrades.
+
+This file can be regenerated using:
+
+diff -r -u -d path-to-original-unmodified-strace . | grep -v "Only in" > Android.patch

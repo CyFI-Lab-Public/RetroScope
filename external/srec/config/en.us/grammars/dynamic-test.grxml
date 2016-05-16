@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO8859-1" ?>
+<grammar xml:lang="en-us" version="1.0" root="ROOT">
+<meta name="word_penalty" content="40" />
+
+<rule id="ROOT" scope="public">
+  <one-of>
+          <item>  <ruleref uri="#Displayer"/> <tag>meaning=Displayer.V</tag> </item>
+  </one-of>
+</rule>
+
+<rule id="Displayer">
+  <item><tag>C=(C?C:''); V=C+V;</tag>
+    <item>
+        <item>
+          <one-of>
+             <item>lookup</item><tag>C='LKUP '</tag>
+          </one-of>
+        </item>
+        <item><ruleref uri="#Names"/><tag>V=Names.V</tag></item>
+    </item>
+  </item>
+</rule>
+
+<rule id="Names" scope="public">
+  <item>__Names__</item>
+</rule>
+
+</grammar>

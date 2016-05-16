@@ -1,0 +1,35 @@
+# cd /system/usr/srec
+# ./run_parameters.sh
+Robustness1: ESRSDK = /system/usr/srec
+Initialising...
+before EmbeddedRecognizer.getInstance()
+after EmbeddedRecognizer.getInstance(): android.speech.recognition.impl.EmbeddedRecognizerImpl android.speech.recognition.impl.EmbeddedRecognizerImpl@4001e2f8
+before EmbeddedRecognizer.configure(/system/usr/srec/config/en.us/baseline11k.par)
+after EmbeddedRecognizer.configure()
+before EmbeddedRecognizer.setlistener()
+after EmbeddedRecognizer.setlistener()
+Retrieving parameter values...
+onParametersGet: 
+CREC.Recognizer.non_terminal_timeout = 90
+CREC.Recognizer.optional_terminal_timeout = 45
+CREC.Recognizer.terminal_timeout = 30
+CREC.Frontend.samplerate = 11025
+CREC.Recognizer.eou_threshold = 120
+SREC.Recognizer.utterance_timeout = 400
+Setting new parameter values...
+onParametersSet: 
+CREC.Recognizer.non_terminal_timeout = 400
+CREC.Recognizer.terminal_timeout = 200
+CREC.Recognizer.optional_terminal_timeout = 300
+CREC.Frontend.samplerate = 8000
+CREC.Recognizer.eou_threshold = 500
+SREC.Recognizer.utterance_timeout = 100
+Getting new parameter values...
+onParametersGet: 
+CREC.Recognizer.non_terminal_timeout = 400
+CREC.Recognizer.optional_terminal_timeout = 300
+CREC.Recognizer.terminal_timeout = 200
+CREC.Frontend.samplerate = 8000
+CREC.Recognizer.eou_threshold = 500
+SREC.Recognizer.utterance_timeout = 100
+# exit

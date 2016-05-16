@@ -1,0 +1,8 @@
+# Point to Point Protocol daemon
+type ppp, domain;
+permissive ppp;
+type ppp_device, dev_type;
+type ppp_exec, exec_type, file_type;
+type ppp_system_file, file_type;
+unconfined_domain(ppp)
+domain_auto_trans(mtp, ppp_exec, ppp)

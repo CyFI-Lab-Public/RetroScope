@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="msg_default_status" msgid="639431501805022060">"Place a QR code inside the viewfinder rectangle to scan it."</string>
+    <string name="msg_camera_framework_bug" msgid="2167124836274973533">"Sorry, the Android camera encountered a problem. You may need to restart the device."</string>
+</resources>

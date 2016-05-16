@@ -1,0 +1,298 @@
+diff --git a/google3/third_party/libsrtp/include/srtp_priv.h b/google3/third_party/libsrtp/include/srtp_priv.h
+index cf2274e..3bed757 100644
+--- a/google3/third_party/libsrtp/include/srtp_priv.h
++++ b/google3/third_party/libsrtp/include/srtp_priv.h
+@@ -189,6 +189,13 @@ srtp_stream_init(srtp_stream_t srtp,
+ 
+ 
+ /*
++ * Uninitializes and Deallocates a stream.
++ */
++err_status_t
++srtp_stream_uninit_and_dealloc(srtp_stream_t stream,
++                               srtp_stream_t stream_template);
++
++/*
+  * libsrtp internal datatypes 
+  */
+ 
+diff --git a/google3/third_party/libsrtp/srtp/srtp.c b/google3/third_party/libsrtp/srtp/srtp.c
+index 3fc52ee..314c3e4 100644
+--- a/google3/third_party/libsrtp/srtp/srtp.c
++++ b/google3/third_party/libsrtp/srtp/srtp.c
+@@ -92,35 +92,31 @@ srtp_stream_alloc(srtp_stream_ctx_t **str_ptr,
+   str = (srtp_stream_ctx_t *) crypto_alloc(sizeof(srtp_stream_ctx_t));
+   if (str == NULL)
+     return err_status_alloc_fail;
+-  *str_ptr = str;  
+-  
++  *str_ptr = str;
++
+   /* allocate cipher */
+   stat = crypto_kernel_alloc_cipher(p->rtp.cipher_type, 
+ 				    &str->rtp_cipher, 
+ 				    p->rtp.cipher_key_len); 
+   if (stat) {
+-    crypto_free(str);
+-    return stat;
++    goto err_rtp_cipher_alloc;
+   }
+ 
+   /* allocate auth function */
+   stat = crypto_kernel_alloc_auth(p->rtp.auth_type, 
+ 				  &str->rtp_auth,
+ 				  p->rtp.auth_key_len, 
+-				  p->rtp.auth_tag_len); 
++				  p->rtp.auth_tag_len);
++
+   if (stat) {
+-    cipher_dealloc(str->rtp_cipher);
+-    crypto_free(str);
+-    return stat;
++    goto err_rtp_auth_alloc;
+   }
+-  
++
+   /* allocate key limit structure */
+   str->limit = (key_limit_ctx_t*) crypto_alloc(sizeof(key_limit_ctx_t));
+   if (str->limit == NULL) {
+-    auth_dealloc(str->rtp_auth);
+-    cipher_dealloc(str->rtp_cipher);
+-    crypto_free(str); 
+-    return err_status_alloc_fail;
++    stat = err_status_alloc_fail;
++    goto err_limit_alloc;
+   }
+ 
+   /*
+@@ -129,13 +125,9 @@ srtp_stream_alloc(srtp_stream_ctx_t **str_ptr,
+    */
+   stat = crypto_kernel_alloc_cipher(p->rtcp.cipher_type, 
+ 				    &str->rtcp_cipher, 
+-				    p->rtcp.cipher_key_len); 
++				    p->rtcp.cipher_key_len);
+   if (stat) {
+-    auth_dealloc(str->rtp_auth);
+-    cipher_dealloc(str->rtp_cipher);
+-    crypto_free(str->limit);
+-    crypto_free(str);
+-    return stat;
++    goto err_rtcp_cipher_alloc;
+   }
+ 
+   /* allocate auth function */
+@@ -144,33 +136,37 @@ srtp_stream_alloc(srtp_stream_ctx_t **str_ptr,
+ 				  p->rtcp.auth_key_len, 
+ 				  p->rtcp.auth_tag_len); 
+   if (stat) {
+-    cipher_dealloc(str->rtcp_cipher);
+-    auth_dealloc(str->rtp_auth);
+-    cipher_dealloc(str->rtp_cipher);
+-    crypto_free(str->limit);
+-    crypto_free(str);
+-   return stat;
+-  }  
++    goto err_rtcp_auth_alloc;
++  }
+ 
+   /* allocate ekt data associated with stream */
+   stat = ekt_alloc(&str->ekt, p->ekt);
+   if (stat) {
+-    auth_dealloc(str->rtcp_auth);
+-    cipher_dealloc(str->rtcp_cipher);
+-    auth_dealloc(str->rtp_auth);
+-    cipher_dealloc(str->rtp_cipher);
+-    crypto_free(str->limit);
+-    crypto_free(str);
+-   return stat;    
++    goto err_ekt_alloc;
+   }
+ 
+   return err_status_ok;
++
++err_ekt_alloc:
++  auth_dealloc(str->rtcp_auth);
++err_rtcp_auth_alloc:
++  cipher_dealloc(str->rtcp_cipher);
++err_rtcp_cipher_alloc:
++  crypto_free(str->limit);
++err_limit_alloc:
++  auth_dealloc(str->rtp_auth);
++err_rtp_auth_alloc:
++  cipher_dealloc(str->rtp_cipher);
++err_rtp_cipher_alloc:
++  crypto_free(str);
++  return stat;
+ }
+ 
+ err_status_t
+-srtp_stream_dealloc(srtp_t session, srtp_stream_ctx_t *stream) { 
++srtp_stream_dealloc(srtp_stream_ctx_t *stream,
++                    srtp_stream_ctx_t *stream_template) {
+   err_status_t status;
+-  
++
+   /*
+    * we use a conservative deallocation strategy - if any deallocation
+    * fails, then we report that fact without trying to deallocate
+@@ -178,41 +174,29 @@ srtp_stream_dealloc(srtp_t session, srtp_stream_ctx_t *stream) {
+    */
+ 
+   /* deallocate cipher, if it is not the same as that in template */
+-  if (session->stream_template
+-      && stream->rtp_cipher == session->stream_template->rtp_cipher) {
+-    /* do nothing */
+-  } else {
++  if (!stream_template || stream->rtp_cipher != stream_template->rtp_cipher) {
+     status = cipher_dealloc(stream->rtp_cipher); 
+     if (status) 
+       return status;
+   }
+ 
+   /* deallocate auth function, if it is not the same as that in template */
+-  if (session->stream_template
+-      && stream->rtp_auth == session->stream_template->rtp_auth) {
+-    /* do nothing */
+-  } else {
++  if (!stream_template || stream->rtp_auth != stream_template->rtp_auth) {
+     status = auth_dealloc(stream->rtp_auth);
+     if (status)
+       return status;
+   }
+ 
+   /* deallocate key usage limit, if it is not the same as that in template */
+-  if (session->stream_template
+-      && stream->limit == session->stream_template->limit) {
+-    /* do nothing */
+-  } else {
++  if (!stream_template || stream->limit != stream_template->limit) {
+     crypto_free(stream->limit);
+-  }   
++  }
+ 
+-  /* 
++  /*
+    * deallocate rtcp cipher, if it is not the same as that in
+-   * template 
++   * template
+    */
+-  if (session->stream_template
+-      && stream->rtcp_cipher == session->stream_template->rtcp_cipher) {
+-    /* do nothing */
+-  } else {
++  if (!stream_template || stream->rtcp_cipher != stream_template->rtcp_cipher) {
+     status = cipher_dealloc(stream->rtcp_cipher); 
+     if (status) 
+       return status;
+@@ -222,17 +206,14 @@ srtp_stream_dealloc(srtp_t session, srtp_stream_ctx_t *stream) {
+    * deallocate rtcp auth function, if it is not the same as that in
+    * template 
+    */
+-  if (session->stream_template
+-      && stream->rtcp_auth == session->stream_template->rtcp_auth) {
+-    /* do nothing */
+-  } else {
++  if (!stream_template || stream->rtcp_auth != stream_template->rtcp_auth) {
+     status = auth_dealloc(stream->rtcp_auth);
+     if (status)
+       return status;
+   }
+ 
+   /* DAM - need to deallocate EKT here */
+-  
++
+   /* deallocate srtp stream context */
+   crypto_free(stream);
+ 
+@@ -549,7 +530,12 @@ srtp_stream_init(srtp_stream_ctx_t *srtp,
+    }
+ 
+    return err_status_ok;  
+- }
++}
++
++err_status_t
++srtp_stream_uninit(srtp_stream_ctx_t *srtp) {
++  return rdbx_uninit(&srtp->rtp_rdbx);
++}
+ 
+ 
+  /*
+@@ -1201,28 +1187,16 @@ srtp_dealloc(srtp_t session) {
+   stream = session->stream_list;
+   while (stream != NULL) {
+     srtp_stream_t next = stream->next;
+-    status = srtp_stream_dealloc(session, stream);
+-    if (status)
++    status = srtp_stream_uninit_and_dealloc(stream, session->stream_template);
++    if (status) {
+       return status;
++    }
+     stream = next;
+   }
+-  
++
+   /* deallocate stream template, if there is one */
+   if (session->stream_template != NULL) {
+-    status = auth_dealloc(session->stream_template->rtcp_auth); 
+-    if (status) 
+-      return status; 
+-    status = cipher_dealloc(session->stream_template->rtcp_cipher); 
+-    if (status) 
+-      return status; 
+-    crypto_free(session->stream_template->limit);
+-    status = cipher_dealloc(session->stream_template->rtp_cipher); 
+-    if (status) 
+-      return status; 
+-    status = auth_dealloc(session->stream_template->rtp_auth);
+-    if (status)
+-      return status;
+-    crypto_free(session->stream_template);
++    status = srtp_stream_uninit_and_dealloc(session->stream_template, NULL);
+   }
+ 
+   /* deallocate session context */
+@@ -1287,7 +1261,6 @@ srtp_add_stream(srtp_t session,
+     crypto_free(tmp);
+     return err_status_bad_param;
+   }
+-    
+   return err_status_ok;
+ }
+ 
+@@ -1334,12 +1307,11 @@ srtp_create(srtp_t *session,               /* handle for session     */
+ err_status_t
+ srtp_remove_stream(srtp_t session, uint32_t ssrc) {
+   srtp_stream_ctx_t *stream, *last_stream;
+-  err_status_t status;
+ 
+   /* sanity check arguments */
+   if (session == NULL)
+     return err_status_bad_param;
+-  
++
+   /* find stream in list; complain if not found */
+   last_stream = stream = session->stream_list;
+   while ((stream != NULL) && (ssrc != stream->ssrc)) {
+@@ -1352,8 +1324,20 @@ srtp_remove_stream(srtp_t session, uint32_t ssrc) {
+   /* remove stream from the list */
+   last_stream->next = stream->next;
+ 
++  return srtp_stream_uninit_and_dealloc(stream, session->stream_template);
++}
++
++err_status_t
++srtp_stream_uninit_and_dealloc(srtp_stream_ctx_t *stream,
++                               srtp_stream_ctx_t *stream_template) {
++  err_status_t status;
++  /* deallocate rdbx data */
++  status = srtp_stream_uninit(stream);
++  if (status)
++    return status;
++
+   /* deallocate the stream */
+-  status = srtp_stream_dealloc(session, stream);
++  status = srtp_stream_dealloc(stream, stream_template);
+   if (status)
+     return status;
+ 

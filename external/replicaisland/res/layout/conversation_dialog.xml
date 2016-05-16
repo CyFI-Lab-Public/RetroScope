@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TableRow>
+    	<ImageView 
+    			android:id="@+id/speaker"
+			    android:src="@drawable/wanda_smile"
+			    android:adjustViewBounds="true"
+			    android:gravity="center_vertical"/>
+			 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android">
+		    	<TableRow>
+			    <TextView android:id="@+id/speakername"
+					    android:layout_width="wrap_content" 
+					    android:layout_height="20dp"
+					    android:text="@string/cd_Wanda"
+					    android:textSize = "15sp"
+					    android:textStyle = "bold"/>
+		   	 	</TableRow>
+		    	<TableRow>
+					<view xmlns:android="http://schemas.android.com/apk/res/android" 
+						class = "com.replica.replicaisland.ConversationDialogActivity$TypewriterTextView"
+						android:id="@+id/typewritertext"
+					    android:layout_width="300dp" 
+					    android:layout_height="110dp"
+					    
+					    android:text="@string/cd_blah"
+					    android:textSize = "15sp"/>
+				</TableRow>
+			</TableLayout>	
+		</TableRow>
+	<TableRow>
+		<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_span = "2" 
+				android:layout_gravity="right">
+			<ImageView 
+    			android:id="@+id/ok"
+			    
+			    android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+			    android:gravity="right"/>
+		</FrameLayout>
+	</TableRow>
+</TableLayout>

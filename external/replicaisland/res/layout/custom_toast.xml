@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Thanks to http://hustleplay.wordpress.com/2009/07/23/replicating-default-android-toast/ ! -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:id="@+id/toast_layout_root"
+android:orientation="horizontal"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:padding="10dp"
+android:background="@drawable/custom_toast_border"
+>
+<TextView android:id="@+id/text"
+android:layout_width="wrap_content"
+android:layout_height="fill_parent"
+android:textColor="#65ff99"
+android:textSize="30sp"
+android:textStyle="bold"
+android:gravity="center"
+/>
+</LinearLayout>

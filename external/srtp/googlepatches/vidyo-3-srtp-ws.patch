@@ -1,0 +1,937 @@
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/crypto/include/crypto_math.h srtp/crypto/include/crypto_math.h
+--- srtp-lin/crypto/include/crypto_math.h	2006-06-08 13:00:27.000000000 -0400
++++ srtp/crypto/include/crypto_math.h	2009-04-22 19:03:15.000000000 -0400
+@@ -233,40 +233,6 @@ void
+ octet_string_set_to_zero(uint8_t *s, int len);
+ 
+ 
+-/*
+- * functions manipulating bit_vector_t 
+- *
+- * A bitvector_t consists of an array of words and an integer
+- * representing the number of significant bits stored in the array.
+- * The bits are packed as follows: the least significant bit is that
+- * of word[0], while the most significant bit is the nth most
+- * significant bit of word[m], where length = bits_per_word * m + n.
+- * 
+- */
+-
+-#define bits_per_word  32
+-#define bytes_per_word 4
+-
+-typedef struct {
+-  uint32_t length;   
+-  uint32_t *word;
+-} bitvector_t;
+-
+-int
+-bitvector_alloc(bitvector_t *v, unsigned long length);
+-
+-void
+-bitvector_set_bit(bitvector_t *v, int bit_index);
+-
+-int
+-bitvector_get_bit(const bitvector_t *v, int bit_index);
+-
+-int
+-bitvector_print_hex(const bitvector_t *v, FILE *stream);
+-
+-int
+-bitvector_set_from_hex(bitvector_t *v, char *string);
+-
+ #endif /* MATH_H */
+ 
+ 
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/crypto/include/datatypes.h srtp/crypto/include/datatypes.h
+--- srtp-lin/crypto/include/datatypes.h	2006-07-12 18:41:57.000000000 -0400
++++ srtp/crypto/include/datatypes.h	2009-04-22 19:20:01.000000000 -0400
+@@ -424,4 +424,83 @@ static inline uint64_t be64_to_cpu(uint6
+ 
+ #endif /* WORDS_BIGENDIAN */
+ 
++/*
++ * functions manipulating bitvector_t 
++ *
++ * A bitvector_t consists of an array of words and an integer
++ * representing the number of significant bits stored in the array.
++ * The bits are packed as follows: the least significant bit is that
++ * of word[0], while the most significant bit is the nth most
++ * significant bit of word[m], where length = bits_per_word * m + n.
++ * 
++ */
++
++#define bits_per_word  32
++#define bytes_per_word 4
++
++typedef struct {
++  uint32_t length;   
++  uint32_t *word;
++} bitvector_t;
++
++
++#define _bitvector_get_bit(v, bit_index)				\
++(									\
++ ((((v)->word[((bit_index) >> 5)]) >> ((bit_index) & 31)) & 1)		\
++)
++
++
++#define _bitvector_set_bit(v, bit_index)				\
++(									\
++ (((v)->word[((bit_index) >> 5)] |= ((uint32_t)1 << ((bit_index) & 31)))) \
++)
++
++#define _bitvector_clear_bit(v, bit_index)				\
++(									\
++ (((v)->word[((bit_index) >> 5)] &= ~((uint32_t)1 << ((bit_index) & 31)))) \
++)
++
++#define _bitvector_get_length(v)					\
++(									\
++ ((v)->length)								\
++)
++
++#ifdef DATATYPES_USE_MACROS  /* little functions are really macros */
++
++#define bitvector_get_bit(v, bit_index) _bitvector_get_bit(v, bit_index)
++#define bitvector_set_bit(v, bit_index) _bitvector_set_bit(v, bit_index)
++#define bitvector_clear_bit(v, bit_index) _bitvector_clear_bit(v, bit_index)
++#define bitvector_get_length(v) _bitvector_get_length(v)
++
++#else
++
++int
++bitvector_get_bit(const bitvector_t *v, int bit_index);
++
++void
++bitvector_set_bit(bitvector_t *v, int bit_index);
++
++void
++bitvector_clear_bit(bitvector_t *v, int bit_index);
++
++unsigned long
++bitvector_get_length(const bitvector_t *v);
++
++#endif
++
++int
++bitvector_alloc(bitvector_t *v, unsigned long length);
++
++void
++bitvector_dealloc(bitvector_t *v);
++
++void
++bitvector_set_to_zero(bitvector_t *x);
++
++void
++bitvector_left_shift(bitvector_t *x, int index);
++
++char *
++bitvector_bit_string(bitvector_t *x, char* buf, int len);
++
+ #endif /* _DATATYPES_H */
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/crypto/include/rdbx.h srtp/crypto/include/rdbx.h
+--- srtp-lin/crypto/include/rdbx.h	2007-06-15 14:17:40.000000000 -0400
++++ srtp/crypto/include/rdbx.h	2009-04-22 19:03:15.000000000 -0400
+@@ -46,19 +46,29 @@ typedef uint64_t xtd_seq_num_t;
+ 
+ typedef struct {
+   xtd_seq_num_t index;
+-  v128_t bitmask;
++  bitvector_t bitmask;
+ } rdbx_t;
+ 
+ 
+ /*
+- * rdbx_init(rdbx_ptr)
++ * rdbx_init(rdbx_ptr, ws)
+  *
+- * initializes the rdbx pointed to by its argument, setting the
+- * rollover counter and sequence number to zero
++ * initializes the rdbx pointed to by its argument with the window size ws,
++ * setting the rollover counter and sequence number to zero
+  */
+ 
+ err_status_t
+-rdbx_init(rdbx_t *rdbx);
++rdbx_init(rdbx_t *rdbx, unsigned long ws);
++
++
++/*
++ * rdbx_uninit(rdbx_ptr)
++ *
++ * frees memory associated with the rdbx
++ */
++
++err_status_t
++rdbx_uninit(rdbx_t *rdbx);
+ 
+ 
+ /*
+@@ -127,6 +137,15 @@ rdbx_get_packet_index(const rdbx_t *rdbx
+  * api instead!
+  */
+ 
++/*
++ * rdbx_get_ws(rdbx_ptr)
++ *
++ * gets the window size which was used to initialize the rdbx
++ */
++
++unsigned long
++rdbx_get_window_size(const rdbx_t *rdbx);
++
+ 
+ /* index_init(&pi) initializes a packet index pi (sets it to zero) */
+ 
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/crypto/math/datatypes.c srtp/crypto/math/datatypes.c
+--- srtp-lin/crypto/math/datatypes.c	2006-07-18 15:45:46.000000000 -0400
++++ srtp/crypto/math/datatypes.c	2009-04-22 19:03:15.000000000 -0400
+@@ -387,6 +387,124 @@ v128_left_shift(v128_t *x, int index) {
+ 
+ }
+ 
++/* functions manipulating bitvector_t */
++
++#ifndef DATATYPES_USE_MACROS /* little functions are not macros */
++
++int
++bitvector_get_bit(const bitvector_t *v, int bit_index)
++{
++  return _bitvector_get_bit(v, bit_index);
++}
++
++void
++bitvector_set_bit(bitvector_t *v, int bit_index)
++{
++  _bitvector_set_bit(v, bit_index);
++}
++
++void
++bitvector_clear_bit(bitvector_t *v, int bit_index)
++{
++  _bitvector_clear_bit(v, bit_index);
++}
++
++
++#endif /* DATATYPES_USE_MACROS */
++
++int
++bitvector_alloc(bitvector_t *v, unsigned long length) {
++  unsigned long l;
++
++  /* Round length up to a multiple of bits_per_word */
++  length = (length + bits_per_word - 1) & ~(unsigned long)((bits_per_word - 1));
++
++  l = length / bits_per_word * bytes_per_word;
++
++  /* allocate memory, then set parameters */
++  if (l == 0)
++	v->word = NULL;
++  else {
++	v->word = (uint32_t*)crypto_alloc(l);
++	if (v->word == NULL) {
++	  v->word = NULL;
++	  v->length = 0;
++	  return -1;
++	}
++  }
++  v->length = length;
++
++  /* initialize bitvector to zero */
++  bitvector_set_to_zero(v);
++
++  return 0;
++}
++
++
++void
++bitvector_dealloc(bitvector_t *v) {
++  if (v->word != NULL)
++	crypto_free(v->word);
++  v->word = NULL;
++  v->length = 0;
++}
++
++void
++bitvector_set_to_zero(bitvector_t *x)
++{
++	/* C99 guarantees that memset(0) will set the value 0 for uint32_t */
++	memset(x->word, 0, x->length >> 3);
++}
++
++char *
++bitvector_bit_string(bitvector_t *x, char* buf, int len) {
++  int j, index;
++  uint32_t mask;
++  
++  for (j=index=0; j < (int)(x->length>>5) && index < len-1; j++) {
++    for (mask=0x80000000; mask > 0; mask >>= 1) {
++      if (x->word[j] & mask)
++	buf[index] = '1';
++      else
++	buf[index] = '0';
++      ++index;
++      if (index >= len-1)
++        break;
++    }
++  }
++  buf[index] = 0; /* null terminate string */
++
++  return buf;
++}
++
++void
++bitvector_left_shift(bitvector_t *x, int index) {
++  int i;
++  const int base_index = index >> 5;
++  const int bit_index = index & 31;
++  const int word_length = x->length >> 5;
++
++  if (index >= (int)x->length) {
++    bitvector_set_to_zero(x);
++    return;
++  } 
++  
++  if (bit_index == 0) {
++    for (i=0; i < word_length - base_index; i++)
++      x->word[i] = x->word[i+base_index];
++  } else {
++    for (i=0; i < word_length - base_index - 1; i++)
++      x->word[i] = (x->word[i+base_index] >> bit_index) ^
++	(x->word[i+base_index+1] << (32 - bit_index));
++    x->word[word_length - base_index-1] = x->word[word_length-1] >> bit_index;
++  }
++
++  /* now wrap up the final portion */
++  for (i = word_length - base_index; i < word_length; i++) 
++    x->word[i] = 0;
++
++}
++
+ 
+ int
+ octet_string_is_eq(uint8_t *a, uint8_t *b, int len) {
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/crypto/math/math.c srtp/crypto/math/math.c
+--- srtp-lin/crypto/math/math.c	2006-06-08 13:00:28.000000000 -0400
++++ srtp/crypto/math/math.c	2009-04-22 19:03:15.000000000 -0400
+@@ -43,7 +43,6 @@
+  */
+ 
+ #include "crypto_math.h"
+-#include <stdlib.h>           /* malloc() used in bitvector_alloc */
+ 
+ int 
+ octet_weight[256] = {
+@@ -773,165 +772,6 @@ octet_string_set_to_zero(uint8_t *s, int
+   
+ }
+ 
+-/* functions manipulating bit_vector_t */
+-
+-#define BITVECTOR_MAX_WORDS 5
+-
+-int
+-bitvector_alloc(bitvector_t *v, unsigned long length) {
+-  unsigned long l = (length + bytes_per_word - 1) / bytes_per_word;
+-  int i;
+-
+-  /* allocate memory, then set parameters */
+-  if (l > BITVECTOR_MAX_WORDS)
+-    return -1;
+-  else
+-    l = BITVECTOR_MAX_WORDS;
+-  v->word   = malloc(l);
+-  if (v->word == NULL)
+-    return -1;
+-  v->length = length;
+-
+-  /* initialize bitvector to zero */
+-  for (i=0; i < (length >> 5); i++) {
+-    v->word = 0;
+-  }
+-
+-  return 0;
+-}
+-
+-void
+-bitvector_set_bit(bitvector_t *v, int bit_index) {
+-
+-  v->word[(bit_index >> 5)] |= (1 << (bit_index & 31));
+-  
+-}
+-
+-int
+-bitvector_get_bit(const bitvector_t *v, int bit_index) {
+-
+-  return ((v->word[(bit_index >> 5)]) >> (bit_index & 31)) & 1;
+-  
+-}
+-
+-#include <stdio.h>
+-
+-int
+-bitvector_print_hex(const bitvector_t *v, FILE *stream) {
+-  int i;
+-  int m = v->length >> 5;
+-  int n = v->length & 31;
+-  char string[9];
+-  uint32_t tmp;
+-
+-  /* if length isn't a multiple of four, we can't hex_print */
+-  if (n & 3)
+-    return -1;
+-  
+-  /* if the length is zero, do nothing */
+-  if (v->length == 0)
+-    return 0;
+-
+-  /*
+-   * loop over words from most significant to least significant - 
+-   */
+-  
+-  for (i=m; i > 0; i++) {
+-    char *str = string + 7;
+-    tmp = v->word[i];
+-    
+-    /* null terminate string */
+-    string[8] = 0;   
+-
+-    /* loop over nibbles */
+-    *str-- = nibble_to_hex_char(tmp & 0xf);  tmp >>= 4; 
+-    *str-- = nibble_to_hex_char(tmp & 0xf);  tmp >>= 4; 
+-    *str-- = nibble_to_hex_char(tmp & 0xf);  tmp >>= 4; 
+-    *str-- = nibble_to_hex_char(tmp & 0xf);  tmp >>= 4; 
+-    *str-- = nibble_to_hex_char(tmp & 0xf);  tmp >>= 4; 
+-    *str-- = nibble_to_hex_char(tmp & 0xf);  tmp >>= 4; 
+-    *str-- = nibble_to_hex_char(tmp & 0xf);  tmp >>= 4; 
+-    *str-- = nibble_to_hex_char(tmp & 0xf);   
+-
+-    /* now print stream */
+-    fprintf(stream, string);
+-  }
+-  
+-  return 0;
+-
+-}
+-
+-
+-int
+-hex_string_length(char *s) {
+-  int count = 0;
+-  
+-  /* ignore leading zeros */
+-  while ((*s != 0) && *s == '0')
+-    s++;
+-
+-  /* count remaining characters */
+-  while (*s != 0) {
+-    if (hex_char_to_nibble(*s++) == -1)
+-      return -1;
+-    count++;
+-  }
+-
+-  return count;
+-}
+-
+-int
+-bitvector_set_from_hex(bitvector_t *v, char *string) {
+-  int num_hex_chars, m, n, i, j;
+-  uint32_t tmp;
+-  
+-  num_hex_chars = hex_string_length(string);
+-  if (num_hex_chars == -1)
+-    return -1;
+-
+-  /* set length */
+-  v->length = num_hex_chars * 4;
+-  /* 
+-   * at this point, we should subtract away a bit if the high
+-   * bit of the first character is zero, but we ignore that 
+-   * for now and assume that we're four-bit aligned - DAM
+-   */
+-
+-  
+-  m = num_hex_chars / 8;   /* number of words                */
+-  n = num_hex_chars % 8;   /* number of nibbles in last word */
+-
+-  /* if the length is greater than the bitvector, return an error */
+-  if (m > BITVECTOR_MAX_WORDS)
+-    return -1;
+-
+-  /* 
+-   * loop over words from most significant - first word is a special
+-   * case 
+-   */
+-  
+-  if (n) {
+-    tmp = 0;
+-    for (i=0; i < n; i++) {
+-      tmp = hex_char_to_nibble(*string++); 
+-      tmp <<= 4;  
+-    }
+-    v->word[m] = tmp;
+-  }
+-
+-  /* now loop over the rest of the words */
+-  for (i=m-1; i >= 0; i--) {
+-     tmp = 0;
+-     for (j=0; j < 8; j++) {
+-       tmp = hex_char_to_nibble(*string++); 
+-       tmp <<= 4;  
+-     }
+-     v->word[i] = tmp;
+-  }
+-
+-  return 0;
+-}
+-
+ 
+ /* functions below not yet tested! */
+ 
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/crypto/replay/rdbx.c srtp/crypto/replay/rdbx.c
+--- srtp-lin/crypto/replay/rdbx.c	2007-06-15 14:17:40.000000000 -0400
++++ srtp/crypto/replay/rdbx.c	2009-04-22 19:03:15.000000000 -0400
+@@ -45,7 +45,6 @@
+ 
+ #include "rdbx.h"
+ 
+-#define rdbx_high_bit_in_bitmask 127
+ 
+ /*
+  * from draft-ietf-avt-srtp-00.txt:
+@@ -180,17 +179,32 @@ index_guess(const xtd_seq_num_t *local,
+ 
+ 
+ /*
+- *  rdbx_init(&r) initalizes the rdbx_t pointed to by r 
++ *  rdbx_init(&r, ws) initializes the rdbx_t pointed to by r with window size ws
+  */
+ 
+ err_status_t
+-rdbx_init(rdbx_t *rdbx) {
+-  v128_set_to_zero(&rdbx->bitmask);
++rdbx_init(rdbx_t *rdbx, unsigned long ws) {
++  if (ws == 0)
++    return err_status_bad_param;
++
++  if (bitvector_alloc(&rdbx->bitmask, ws) != 0)
++    return err_status_alloc_fail;
++
+   index_init(&rdbx->index);
+ 
+   return err_status_ok;
+ }
+ 
++/*
++ *  rdbx_uninit(&r) uninitializes the rdbx_t pointed to by r
++ */
++
++err_status_t
++rdbx_uninit(rdbx_t *rdbx) {
++  bitvector_dealloc(&rdbx->bitmask);
++
++  return err_status_ok;
++}
+ 
+ /*
+  * rdbx_set_roc(rdbx, roc) initalizes the rdbx_t at the location rdbx
+@@ -202,7 +216,7 @@ rdbx_init(rdbx_t *rdbx) {
+ 
+ err_status_t
+ rdbx_set_roc(rdbx_t *rdbx, uint32_t roc) {
+-  v128_set_to_zero(&rdbx->bitmask);
++  bitvector_set_to_zero(&rdbx->bitmask);
+ 
+ #ifdef NO_64BIT_MATH
+   #error not yet implemented
+@@ -231,6 +245,17 @@ rdbx_get_packet_index(const rdbx_t *rdbx
+ }
+ 
+ /*
++ * rdbx_get_window_size(rdbx) returns the value of the window size
++ * for the rdbx_t pointed to by rdbx
++ * 
++ */
++
++unsigned long
++rdbx_get_window_size(const rdbx_t *rdbx) {
++  return bitvector_get_length(&rdbx->bitmask);
++}
++
++/*
+  * rdbx_check(&r, delta) checks to see if the xtd_seq_num_t
+  * which is at rdbx->index + delta is in the rdb
+  */
+@@ -240,11 +265,11 @@ rdbx_check(const rdbx_t *rdbx, int delta
+   
+   if (delta > 0) {       /* if delta is positive, it's good */
+     return err_status_ok;
+-  } else if (rdbx_high_bit_in_bitmask + delta < 0) {   
++  } else if ((int)(bitvector_get_length(&rdbx->bitmask) - 1) + delta < 0) {   
+                          /* if delta is lower than the bitmask, it's bad */
+     return err_status_replay_old; 
+-  } else if (v128_get_bit(&rdbx->bitmask, 
+-			  rdbx_high_bit_in_bitmask + delta) == 1) {
++  } else if (bitvector_get_bit(&rdbx->bitmask, 
++			  (int)(bitvector_get_length(&rdbx->bitmask) - 1) + delta) == 1) {
+                          /* delta is within the window, so check the bitmask */
+     return err_status_replay_fail;    
+   }
+@@ -268,11 +293,11 @@ rdbx_add_index(rdbx_t *rdbx, int delta) 
+   if (delta > 0) {
+     /* shift forward by delta */
+     index_advance(&rdbx->index, delta);
+-    v128_left_shift(&rdbx->bitmask, delta);
+-    v128_set_bit(&rdbx->bitmask, 127);
++    bitvector_left_shift(&rdbx->bitmask, delta);
++    bitvector_set_bit(&rdbx->bitmask, bitvector_get_length(&rdbx->bitmask) - 1);
+   } else {
+     /* delta is in window, so flip bit in bitmask */
+-    v128_set_bit(&rdbx->bitmask, -delta);
++    bitvector_set_bit(&rdbx->bitmask, -delta);
+   }
+ 
+   /* note that we need not consider the case that delta == 0 */
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/include/srtp.h srtp/include/srtp.h
+--- srtp-lin/include/srtp.h	2007-06-15 14:17:40.000000000 -0400
++++ srtp/include/srtp.h	2009-04-22 19:06:22.000000000 -0400
+@@ -223,6 +223,8 @@ typedef struct srtp_policy_t {
+ 				*    this stream.                        */
+   ekt_policy_t ekt;            /**< Pointer to the EKT policy structure
+                                 *   for this stream (if any)             */ 
++  unsigned long  window_size;  /**< The window size to use for replay
++				*   protection. */
+   struct srtp_policy_t *next;  /**< Pointer to next stream policy.       */
+ } srtp_policy_t;
+ 
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/srtp/srtp.c srtp/srtp/srtp.c
+--- srtp-lin/srtp/srtp.c	2007-06-15 14:17:40.000000000 -0400
++++ srtp/srtp/srtp.c	2009-04-22 19:18:43.000000000 -0400
+@@ -275,7 +275,10 @@ srtp_stream_clone(const srtp_stream_ctx_
+     return status;
+ 
+   /* initialize replay databases */
+-  rdbx_init(&str->rtp_rdbx);
++  status = rdbx_init(&str->rtp_rdbx,
++		     rdbx_get_window_size(&stream_template->rtp_rdbx));
++  if (status)
++    return status;
+   rdb_init(&str->rtcp_rdb);
+   
+   /* set ssrc to that provided */
+@@ -491,7 +494,8 @@ srtp_stream_init(srtp_stream_ctx_t *srtp
+ 	       p->ssrc.value);
+ 
+    /* initialize replay database */
+-   rdbx_init(&srtp->rtp_rdbx);
++   err = rdbx_init(&srtp->rtp_rdbx, p->window_size);
++   if (err) return err;
+ 
+    /* initialize key limit to maximum value */
+ #ifdef NO_64BIT_MATH
+@@ -525,14 +529,20 @@ srtp_stream_init(srtp_stream_ctx_t *srtp
+ 
+    /* initialize keys */
+    err = srtp_stream_init_keys(srtp, p->key);
+-   if (err) return err;
++   if (err) {
++     rdbx_uninit(&srtp->rtp_rdbx);
++     return err;
++   }
+ 
+    /* 
+     * if EKT is in use, then initialize the EKT data associated with
+     * the stream
+     */
+    err = ekt_stream_init_from_policy(srtp->ekt, p->ekt);
+-   if (err) return err;
++   if (err) {
++     rdbx_uninit(&srtp->rtp_rdbx);
++     return err;
++   }
+ 
+    return err_status_ok;  
+  }
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/test/dtls_srtp_driver.c srtp/test/dtls_srtp_driver.c
+--- srtp-lin/test/dtls_srtp_driver.c	2009-04-23 15:50:26.000000000 -0400
++++ srtp/test/dtls_srtp_driver.c	2009-04-23 15:50:48.000000000 -0400
+@@ -184,6 +184,7 @@ test_dtls_srtp() {
+   if (err) return err;
+   policy.ssrc.type  = ssrc_any_inbound;
+   policy.ekt = NULL;
++  policy.window_size = 128;
+   policy.next = NULL;
+     
+   err = srtp_add_stream(s, &policy);
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/test/rdbx_driver.c srtp/test/rdbx_driver.c
+--- srtp-lin/test/rdbx_driver.c	2006-07-17 16:41:22.000000000 -0400
++++ srtp/test/rdbx_driver.c	2009-04-22 19:22:21.000000000 -0400
+@@ -55,10 +55,10 @@
+ #include "ut_sim.h"
+ 
+ err_status_t 
+-test_replay_dbx(int num_trials);
++test_replay_dbx(int num_trials, unsigned long ws);
+ 
+ double
+-rdbx_check_adds_per_second(int num_trials);
++rdbx_check_adds_per_second(int num_trials, unsigned long ws);
+ 
+ void
+ usage(char *prog_name) {
+@@ -99,9 +99,18 @@ main (int argc, char *argv[]) {
+     usage(argv[0]);
+ 
+   if (do_validation) {
+-  printf("testing rdbx_t...\n");
++  printf("testing rdbx_t (ws=128)...\n");
+ 
+-    status = test_replay_dbx(1 << 12);
++  status = test_replay_dbx(1 << 12, 128);
++    if (status) {
++      printf("failed\n");
++      exit(1);
++    }
++    printf("passed\n");
++
++  printf("testing rdbx_t (ws=1024)...\n");
++
++  status = test_replay_dbx(1 << 12, 1024);
+     if (status) {
+       printf("failed\n");
+       exit(1);
+@@ -110,8 +119,10 @@ main (int argc, char *argv[]) {
+   }
+ 
+   if (do_timing_test) {
+-    rate = rdbx_check_adds_per_second(1 << 18);
+-    printf("rdbx_check/replay_adds per second: %e\n", rate);
++	  rate = rdbx_check_adds_per_second(1 << 18, 128);
++    printf("rdbx_check/replay_adds per second (ws=128): %e\n", rate);
++	  rate = rdbx_check_adds_per_second(1 << 18, 1024);
++    printf("rdbx_check/replay_adds per second (ws=1024): %e\n", rate);
+   }
+   
+   return 0;
+@@ -119,8 +130,11 @@ main (int argc, char *argv[]) {
+ 
+ void
+ print_rdbx(rdbx_t *rdbx) {
++  char buf[2048];
+   printf("rdbx: {%llu, %s}\n",
+-	 (unsigned long long)(rdbx->index), v128_bit_string(&rdbx->bitmask));
++	 (unsigned long long)(rdbx->index),
++	 bitvector_bit_string(&rdbx->bitmask, buf, sizeof(buf))
++);
+ }
+ 
+ 
+@@ -194,17 +208,15 @@ rdbx_check_unordered(rdbx_t *rdbx, uint3
+   return err_status_ok;
+ }
+ 
+-#define MAX_IDX 160
+-
+ err_status_t
+-test_replay_dbx(int num_trials) {
++test_replay_dbx(int num_trials, unsigned long ws) {
+   rdbx_t rdbx;
+   uint32_t idx, ircvd;
+   ut_connection utc;
+   err_status_t status;
+   int num_fp_trials;
+ 
+-  status = rdbx_init(&rdbx);
++  status = rdbx_init(&rdbx, ws);
+   if (status) {
+     printf("replay_init failed with error code %d\n", status);
+     exit(1);
+@@ -241,7 +253,9 @@ test_replay_dbx(int num_trials) {
+   printf("passed\n");
+ 
+   /* re-initialize */
+-  if (rdbx_init(&rdbx) != err_status_ok) {
++  rdbx_uninit(&rdbx);
++
++  if (rdbx_init(&rdbx, ws) != err_status_ok) {
+     printf("replay_init failed\n");
+     return err_status_init_fail;
+   }
+@@ -263,6 +277,8 @@ test_replay_dbx(int num_trials) {
+   }
+   printf("passed\n");
+ 
++  rdbx_uninit(&rdbx);
++
+   return err_status_ok;
+ }
+ 
+@@ -272,7 +288,7 @@ test_replay_dbx(int num_trials) {
+ #include <stdlib.h>     /* for random() */
+ 
+ double
+-rdbx_check_adds_per_second(int num_trials) {
++rdbx_check_adds_per_second(int num_trials, unsigned long ws) {
+   uint32_t i;
+   int delta;
+   rdbx_t rdbx;
+@@ -280,7 +296,7 @@ rdbx_check_adds_per_second(int num_trial
+   clock_t timer;
+   int failures;                    /* count number of failures        */
+   
+-  if (rdbx_init(&rdbx) != err_status_ok) {
++  if (rdbx_init(&rdbx, ws) != err_status_ok) {
+     printf("replay_init failed\n");
+     exit(1);
+   }  
+@@ -301,6 +317,8 @@ rdbx_check_adds_per_second(int num_trial
+ 
+   printf("number of failures: %d \n", failures);
+ 
++  rdbx_uninit(&rdbx);
++
+   return (double) CLOCKS_PER_SEC * num_trials / timer;
+ }
+ 
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/test/rtpw.c srtp/test/rtpw.c
+--- srtp-lin/test/rtpw.c	2006-07-17 16:41:22.000000000 -0400
++++ srtp/test/rtpw.c	2009-04-22 19:16:52.000000000 -0400
+@@ -330,6 +330,7 @@ main (int argc, char *argv[]) {
+     policy.ssrc.value = ssrc;
+     policy.key  = (uint8_t *) key;
+     policy.next = NULL;
++    policy.window_size = 128;
+     policy.rtp.sec_serv = sec_servs;
+     policy.rtcp.sec_serv = sec_serv_none;  /* we don't do RTCP anyway */
+ 
+@@ -382,6 +383,7 @@ main (int argc, char *argv[]) {
+     policy.rtcp.auth_key_len   = 0;
+     policy.rtcp.auth_tag_len   = 0;
+     policy.rtcp.sec_serv       = sec_serv_none;   
++    policy.window_size         = 0;
+     policy.next                = NULL;
+   }
+ 
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-lin/test/srtp_driver.c srtp/test/srtp_driver.c
+--- srtp-lin/test/srtp_driver.c	2009-04-22 18:20:27.000000000 -0400
++++ srtp/test/srtp_driver.c	2009-04-22 19:16:52.000000000 -0400
+@@ -321,6 +321,8 @@ main (int argc, char *argv[]) {
+     policy.ssrc.type  = ssrc_specific;
+     policy.ssrc.value = 0xdecafbad;
+     policy.key  = test_key;
++    policy.ekt = NULL;
++    policy.window_size = 128;
+     policy.next = NULL;
+ 
+     printf("mips estimate: %e\n", mips);
+@@ -989,14 +991,16 @@ srtp_session_print_policy(srtp_t srtp) {
+ 	   "# rtp services:  %s\r\n" 
+            "# rtcp cipher:   %s\r\n"
+ 	   "# rtcp auth:     %s\r\n"
+-	   "# rtcp services: %s\r\n",
++	   "# rtcp services: %s\r\n"
++	   "# window size:   %lu\r\n",
+ 	   direction[stream->direction],
+ 	   stream->rtp_cipher->type->description,
+ 	   stream->rtp_auth->type->description,
+ 	   serv_descr[stream->rtp_services],
+ 	   stream->rtcp_cipher->type->description,
+ 	   stream->rtcp_auth->type->description,
+-	   serv_descr[stream->rtcp_services]);
++	   serv_descr[stream->rtcp_services],
++	   rdbx_get_window_size(&stream->rtp_rdbx));
+   }
+ 
+   /* loop over streams in session, printing the policy of each */
+@@ -1011,14 +1015,16 @@ srtp_session_print_policy(srtp_t srtp) {
+ 	   "# rtp services:  %s\r\n" 
+            "# rtcp cipher:   %s\r\n"
+ 	   "# rtcp auth:     %s\r\n"
+-	   "# rtcp services: %s\r\n",
++	   "# rtcp services: %s\r\n"
++	   "# window size:   %lu\r\n",
+ 	   stream->ssrc,
+ 	   stream->rtp_cipher->type->description,
+ 	   stream->rtp_auth->type->description,
+ 	   serv_descr[stream->rtp_services],
+ 	   stream->rtcp_cipher->type->description,
+ 	   stream->rtcp_auth->type->description,
+-	   serv_descr[stream->rtcp_services]);
++	   serv_descr[stream->rtcp_services],
++	   rdbx_get_window_size(&stream->rtp_rdbx));
+ 
+     /* advance to next stream in the list */
+     stream = stream->next;
+@@ -1172,6 +1178,8 @@ srtp_validate() {
+   policy.ssrc.type  = ssrc_specific;
+   policy.ssrc.value = 0xcafebabe;
+   policy.key  = test_key;
++  policy.ekt = NULL;
++  policy.window_size = 128;
+   policy.next = NULL;
+ 
+   status = srtp_create(&srtp_snd, &policy);
+@@ -1328,6 +1336,7 @@ const srtp_policy_t default_policy = {
+   },
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
++  128,         /* replay window size */
+   NULL
+ };
+ 
+@@ -1351,6 +1360,7 @@ const srtp_policy_t aes_tmmh_policy = {
+   },
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
++  128,         /* replay window size */
+   NULL
+ };
+ 
+@@ -1374,6 +1384,7 @@ const srtp_policy_t tmmh_only_policy = {
+   },
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
++  128,         /* replay window size */
+   NULL
+ };
+ 
+@@ -1397,6 +1408,7 @@ const srtp_policy_t aes_only_policy = {
+   },
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
++  128,         /* replay window size */
+   NULL
+ };
+ 
+@@ -1420,6 +1432,7 @@ const srtp_policy_t hmac_only_policy = {
+   },
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
++  128,         /* replay window size */
+   NULL
+ };
+ 
+@@ -1443,6 +1456,7 @@ const srtp_policy_t null_policy = {
+   },
+   test_key,
+   NULL,        /* indicates that EKT is not in use */
++  128,         /* replay window size */
+   NULL
+ };
+ 
+@@ -1480,6 +1494,7 @@ const srtp_policy_t hmac_only_with_ekt_p
+   },
+   test_key,
+   &ekt_test_policy,        /* indicates that EKT is not in use */
++  128,         /* replay window size */
+   NULL
+ };
+ 
+@@ -1531,5 +1546,7 @@ const srtp_policy_t wildcard_policy = {
+     sec_serv_conf_and_auth  /* security services flag      */
+   },
+   test_key,
++  NULL,
++  128,         /* replay window size */
+   NULL
+ };

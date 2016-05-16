@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="msg_default_status" msgid="639431501805022060">"Pentru a scana un cod QR, plasaţi-l în interiorul dreptunghiului vizorului."</string>
+    <string name="msg_camera_framework_bug" msgid="2167124836274973533">"Ne pare rău, dar camera foto Android a întâmpinat o problemă. Ar putea fi nevoie să reporniţi dispozitivul."</string>
+</resources>

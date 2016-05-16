@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="msg_default_status" msgid="639431501805022060">"Προσθέστε έναν κωδικό QR μέσα στο ορθογώνιο του στόχαστρου για να τον σαρώσετε."</string>
+    <string name="msg_camera_framework_bug" msgid="2167124836274973533">"Λυπούμαστε, παρουσιάστηκε πρόβλημα με τη φωτογραφική μηχανή Android. Ίσως χρειαστεί να πραγματοποιήσετε επανεκκίνηση της συσκευής."</string>
+</resources>

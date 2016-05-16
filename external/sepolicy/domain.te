@@ -1,0 +1,144 @@
+# Rules for all domains.
+
+# Allow reaping by init.
+allow domain init:process sigchld;
+
+# Read access to properties mapping.
+allow domain kernel:fd use;
+allow domain tmpfs:file { read getattr };
+
+# Search /storage/emulated tmpfs mount.
+allow domain tmpfs:dir r_dir_perms;
+
+# binder adjusts the nice value during IPC.
+allow domain self:capability sys_nice;
+
+# Intra-domain accesses.
+allow domain self:process ~{ execstack execheap ptrace };
+allow domain self:fd use;
+allow domain self:dir r_dir_perms;
+allow domain self:lnk_file r_file_perms;
+allow domain self:{ fifo_file file } rw_file_perms;
+allow domain self:{ unix_dgram_socket unix_stream_socket } *;
+
+# Inherit or receive open files from others.
+allow domain init:fd use;
+allow domain system:fd use;
+
+# Connect to adbd and use a socket transferred from it.
+allow domain adbd:unix_stream_socket connectto;
+allow domain adbd:fd use;
+allow domain adbd:unix_stream_socket { getattr read write shutdown };
+
+###
+### Talk to debuggerd.
+###
+allow domain debuggerd:process sigchld;
+allow domain debuggerd:unix_stream_socket connectto;
+# b/9858255 - debuggerd sockets are not getting properly labeled.
+# TODO: Remove this temporary workaround.
+allow domain init:unix_stream_socket connectto;
+
+# Root fs.
+allow domain rootfs:dir r_dir_perms;
+allow domain rootfs:file r_file_perms;
+allow domain rootfs:lnk_file { read getattr };
+
+# Device accesses.
+allow domain device:dir search;
+allow domain dev_type:lnk_file read;
+allow domain devpts:dir search;
+allow domain device:file read;
+allow domain socket_device:dir search;
+allow domain owntty_device:chr_file rw_file_perms;
+allow domain null_device:chr_file rw_file_perms;
+allow domain zero_device:chr_file r_file_perms;
+allow domain ashmem_device:chr_file rw_file_perms;
+allow domain binder_device:chr_file rw_file_perms;
+allow domain ptmx_device:chr_file rw_file_perms;
+allow domain powervr_device:chr_file rw_file_perms;
+allow domain log_device:dir search;
+allow domain log_device:chr_file rw_file_perms;
+allow domain nv_device:chr_file rw_file_perms;
+allow domain alarm_device:chr_file r_file_perms;
+allow domain urandom_device:chr_file r_file_perms;
+allow domain random_device:chr_file r_file_perms;
+allow domain properties_device:file r_file_perms;
+
+# Filesystem accesses.
+allow domain fs_type:filesystem getattr;
+allow domain fs_type:dir getattr;
+
+# System file accesses.
+allow domain system_file:dir r_dir_perms;
+allow domain system_file:file r_file_perms;
+allow domain system_file:file execute;
+allow domain system_file:lnk_file read;
+
+# Read files already opened under /data.
+allow domain system_data_file:dir { search getattr };
+allow domain system_data_file:file { getattr read };
+allow domain system_data_file:lnk_file read;
+
+# Read apk files under /data/app.
+allow domain apk_data_file:dir search;
+allow domain apk_data_file:file r_file_perms;
+
+# Read /data/dalvik-cache.
+allow domain dalvikcache_data_file:dir { search getattr };
+allow domain dalvikcache_data_file:file r_file_perms;
+
+# Read already opened /cache files.
+allow domain cache_file:dir r_dir_perms;
+allow domain cache_file:file { getattr read };
+allow domain cache_file:lnk_file read;
+
+# For /acct/uid/*/tasks.
+allow domain cgroup:dir { search write };
+allow domain cgroup:file w_file_perms;
+
+#Allow access to ion memory allocation device
+allow domain ion_device:chr_file rw_file_perms;
+
+# For /sys/qemu_trace files in the emulator.
+bool in_qemu false;
+if (in_qemu) {
+allow domain sysfs:file rw_file_perms;
+}
+allow domain sysfs_writable:file rw_file_perms;
+
+# Read access to pseudo filesystems.
+r_dir_file(domain, proc)
+r_dir_file(domain, sysfs)
+r_dir_file(domain, inotify)
+r_dir_file(domain, cgroup)
+
+# debugfs access
+allow domain debugfs:dir r_dir_perms;
+allow domain debugfs:file w_file_perms;
+
+# security files
+allow domain security_file:dir { search getattr };
+allow domain security_file:file getattr;
+
+######## Backwards compatibility - Unlabeled files ############
+
+# Revert to DAC rules when looking at unlabeled files. Over time, the number
+# of unlabeled files should decrease.
+# TODO: delete these rules in the future.
+#
+# Note on relabelfrom: We allow any app relabelfrom, but without the relabelto
+# capability, it's essentially useless. This is needed to allow an app with
+# relabelto to relabel unlabeled files.
+#
+allow domain unlabeled:file { create_file_perms rwx_file_perms relabelfrom };
+allow domain unlabeled:dir { create_dir_perms relabelfrom };
+allow domain unlabeled:lnk_file { create_file_perms };
+neverallow { domain -relabeltodomain } *:dir_file_class_set relabelto;
+
+###
+### neverallow rules
+###
+
+# Only init should be able to load SELinux policies
+neverallow { domain -init } kernel:security load_policy;

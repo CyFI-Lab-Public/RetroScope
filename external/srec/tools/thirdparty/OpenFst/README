@@ -1,0 +1,36 @@
+OpenFst - Beta release version.  
+http://128.122.80.210/~openfst/twiki/pub/FST/FstDownload
+OpenFst-beta-20070801.tgz
+
+PLATFORMS:
+
+  This version is known to work under linux using g++.
+  The make files are unlikely to work on other platforms
+  unmodified. Stay tuned for an autoconf build.
+	
+BUILDING:
+
+  To build (rudimentary Makefiles for now):
+
+    cd fst ; make all
+
+  To test:
+
+    cd fst ; make test
+    # Note long compile on algo_test and pair-arc.so (many templates)
+
+USING WITH YOUR OWN PROGRAMS:
+
+  Include "fst/lib/fstlib.h" (path must be relative to the OpenFst root
+  directory). You need to link to fst/lib/libfst.so as well as libpthread
+  and libdl. The linking is dynamic so that the Fst and Arc tpe
+  DSO extensions can be used (see e.g. test/dso_test.sh).
+
+DOCUMENTATION: 
+
+  At www.openfst.org.
+
+TO DO:
+  1) remove/sanitize google-isms - e.g. flags and error handling in compat.*
+  2) autoconf
+  3) check portability

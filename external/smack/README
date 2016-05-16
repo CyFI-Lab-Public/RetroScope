@@ -1,0 +1,7 @@
+The directory contains the build environment of smack for Android (located in asmack-master/)
+and the generated source files (located in src/).
+
+To update to the latest smack source. Please run the following:
+
+./update.sh
+m -j24 smackxmpp

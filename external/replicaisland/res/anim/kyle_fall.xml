@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android"
+    		    android:oneshot="true">
+    <item android:drawable="@drawable/anime_kyle_fall01" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall02" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall03" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall04" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall05" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall06" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall07" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall08" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall09" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall10" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall11" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall12" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall13" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall14" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall15" android:duration="83" />
+	<item android:drawable="@drawable/anime_kyle_fall16" android:duration="83" />
+</animation-list>

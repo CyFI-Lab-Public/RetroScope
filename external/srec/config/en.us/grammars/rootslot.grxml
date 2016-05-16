@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO8859-1" ?>
+<grammar xml:lang="en-us" version="1.0" mode="speech" root="myRoot">
+<!-- 
+	Root slot grammar, this is an empty grammar that can be used when
+	all the content is to be added at runtime.  The return value for
+	semantic meaning is 'V', and items should be added to the grammar
+	with a semantic tag such as V='45' or V='do-it-now'
+-->
+
+<rule id="myRoot" scope="public">
+	<item>  <ruleref uri="#Name"/> <tag>V=Name.V;</tag> </item>
+</rule>
+
+<rule id="Name" scope="public">
+	<item>__Name__ </item>
+</rule>
+
+</grammar>

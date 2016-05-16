@@ -1,0 +1,12 @@
+hybrid=no
+WARNING: Possible data race during write of size 4 at [x01-9A-Z]+: {{{
+   T1 .test-thread-1. .locks held: ...:
+    #0  Thread1 .*fun_hist_test.cc:6
+    #1
+  Concurrent write.s. happened at .OR AFTER. these points:
+   T2 .test-thread-2. .locks held: ...:
+    #0  Thread2 .*fun_hist_test.cc:26
+    #1
+  Address [x01-9A-Z]+ is 0 bytes inside data symbol ".+"
+}}}
+ThreadSanitizer summary: reported 1 warning.s. .1 race.s..

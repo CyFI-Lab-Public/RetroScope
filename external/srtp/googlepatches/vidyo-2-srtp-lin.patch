@@ -1,0 +1,95 @@
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-win/Makefile.in srtp/Makefile.in
+--- srtp-win/Makefile.in	2007-06-15 14:17:39.000000000 -0400
++++ srtp/Makefile.in	2009-04-22 18:25:43.000000000 -0400
+@@ -26,7 +26,7 @@ runtest: build_table_apps test
+ 	test/roc_driver$(EXE) -v >/dev/null
+ 	test/replay_driver$(EXE) -v >/dev/null
+ 	test/dtls_srtp_driver$(EXE) >/dev/null
+-	cd test; ./rtpw_test.sh >/dev/null	
++	cd test; $(abspath $(srcdir))/test/rtpw_test.sh >/dev/null	
+ 	@echo "libsrtp test applications passed."
+ 	$(MAKE) -C crypto runtest
+ 
+@@ -189,18 +189,20 @@ libsrtpdoc:
+ .PHONY: clean superclean install
+ 
+ install:
+-	@if [ -d $(DESTDIR)$(includedir)/srtp ]; then \
++	@if [ -r $(DESTDIR)$(includedir)/srtp/srtp.h ]; then \
+ 	   echo "you should run 'make uninstall' first"; exit 1;  \
+ 	fi
+ 	$(INSTALL) -d $(DESTDIR)$(includedir)/srtp
+ 	$(INSTALL) -d $(DESTDIR)$(libdir)
+-	cp include/*.h $(DESTDIR)$(includedir)/srtp  
+-	cp crypto/include/*.h $(DESTDIR)$(includedir)/srtp
++	cp $(srcdir)/include/*.h $(DESTDIR)$(includedir)/srtp  
++	cp $(srcdir)/crypto/include/*.h $(DESTDIR)$(includedir)/srtp
++	if [ "$(srcdir)" != "." ]; then cp crypto/include/*.h $(DESTDIR)$(includedir)/srtp; fi
+ 	if [ -f libsrtp.a ]; then cp libsrtp.a $(DESTDIR)$(libdir)/; fi
+ 
+ uninstall:
+-	rm -rf $(DESTDIR)$(includedir)/srtp
+-	rm -rf $(DESTDIR)$(libdir)/libsrtp.a
++	rm -f $(DESTDIR)$(includedir)/srtp/*.h
++	rm -f $(DESTDIR)$(libdir)/libsrtp.a
++	-rmdir $(DESTDIR)$(includedir)/srtp
+ 
+ clean:
+ 	rm -rf $(cryptobj) $(srtpobj) $(cryptomath) TAGS \
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-win/srtp/ekt.c srtp/srtp/ekt.c
+--- srtp-win/srtp/ekt.c	2009-04-22 18:47:06.000000000 -0400
++++ srtp/srtp/ekt.c	2009-04-22 18:50:51.000000000 -0400
+@@ -131,6 +131,9 @@ ekt_alloc(ekt_stream_t *stream_data, ekt
+     return err_status_ok;
+   }
+ 
++  /* TODO */
++  *stream_data = NULL;
++
+   return err_status_ok;
+ }
+ 
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-win/test/dtls_srtp_driver.c srtp/test/dtls_srtp_driver.c
+--- srtp-win/test/dtls_srtp_driver.c	2006-07-17 16:41:22.000000000 -0400
++++ srtp/test/dtls_srtp_driver.c	2009-04-23 15:50:26.000000000 -0400
+@@ -183,6 +183,7 @@ test_dtls_srtp() {
+   err = crypto_policy_set_from_profile_for_rtcp(&policy.rtcp, profile);
+   if (err) return err;
+   policy.ssrc.type  = ssrc_any_inbound;
++  policy.ekt = NULL;
+   policy.next = NULL;
+     
+   err = srtp_add_stream(s, &policy);
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-win/test/rtpw_test.sh srtp/test/rtpw_test.sh
+--- srtp-win/test/rtpw_test.sh	2006-06-13 11:17:57.000000000 -0400
++++ srtp/test/rtpw_test.sh	2009-04-22 18:30:27.000000000 -0400
+@@ -4,7 +4,7 @@
+ # 
+ # tests the rtpw sender and receiver functions
+ 
+-RTPW=rtpw
++RTPW=./rtpw
+ DEST_PORT=9999
+ DURATION=3
+ 
+@@ -18,7 +18,7 @@ ARGS="-k $key -ae"
+ # they are killed, those processes will linger.  Re-running the script
+ # will get rid of them.
+ 
+-killall rtpw 2&>/dev/null
++killall rtpw 2>/dev/null
+ 
+ if test -x $RTPW; then
+ 
+diff -purN -x CVS -x '*~' -x '.*' -x 'obj-*' srtp-win/test/srtp_driver.c srtp/test/srtp_driver.c
+--- srtp-win/test/srtp_driver.c	2007-06-15 14:17:40.000000000 -0400
++++ srtp/test/srtp_driver.c	2009-04-22 18:20:27.000000000 -0400
+@@ -153,7 +153,7 @@ main (int argc, char *argv[]) {
+   if (sizeof(srtp_hdr_t) != 12) {
+      printf("error: srtp_hdr_t has incorrect size"
+ 	    "(size is %ld bytes, expected 12)\n", 
+-	    sizeof(srtp_hdr_t));
++	    (long)sizeof(srtp_hdr_t));
+     exit(1);
+   }
+ 

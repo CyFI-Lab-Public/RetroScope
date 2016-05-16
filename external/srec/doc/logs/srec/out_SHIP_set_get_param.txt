@@ -1,0 +1,22 @@
+
+Create Recognizer:
+    InitSession()
+    SR_RecognizerCreate()
+    SR_RecognizerSetup()
+Create vocabulary object and associate with grammar:
+    SR_VocabularyLoad()
+    SR_VocabularyGetLanguage()
+Start a new log session:
+    SR_RecognizerLogSessionStart()
+Recognize:
+    SR_NametagsCreate()
+Get Parameter  :  SREC.Recognizer.utterance_timeout  :  400
+Get Parameter  :  SREC.Recognizer.utterance_timeout  :  100
+Get Parameter  :  CREC.Recognizer.terminal_timeout  :  30
+Get Parameter  :  CREC.Recognizer.terminal_timeout  :  100
+Get Parameter  :  CREC.Recognizer.optional_terminal_timeout  :  45
+Get Parameter  :  CREC.Recognizer.optional_terminal_timeout  :  100
+Get Parameter  :  CREC.Recognizer.non_terminal_timeout  :  90
+Get Parameter  :  CREC.Recognizer.non_terminal_timeout  :  100
+Get Parameter  :  CREC.Recognizer.eou_threshold  :  120
+Get Parameter  :  CREC.Recognizer.eou_threshold  :  100

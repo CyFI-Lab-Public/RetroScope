@@ -1,0 +1,99 @@
+Change 19593349 by seh@seh-gcomm_android on 2011/02/18 16:57:20 *pending*
+
+	Merge in changes from GComm for mobile's version.
+	
+	PRESUBMIT=passed
+	R=astor,hta,juberti,mikaelp,tschmelcher
+	CC=a2a-mobile
+	DELTA=7  (3 added, 0 deleted, 4 changed)
+	OCL=19593349
+
+Affected files ...
+
+... //depot/google3/third_party/libsrtp/README.google#6 edit
+... //depot/google3/third_party/libsrtp/crypto/ae_xfm/xfm.c#4 edit
+... //depot/google3/third_party/libsrtp/crypto/cipher/aes_icm.c#4 edit
+... //depot/google3/third_party/libsrtp/crypto/include/config.h#5 edit
+... //depot/google3/third_party/libsrtp/srtp/ekt.c#3 edit
+
+==== //depot/google3/third_party/libsrtp/README.google#6 - /Users/seh/dev/source/gcomm_android/google3/third_party/libsrtp/README.google ====
+# action=edit type=text
+--- google3/third_party/libsrtp/README.google	2011-02-18 17:17:34.000000000 -0800
++++ google3/third_party/libsrtp/README.google	2011-02-18 17:31:53.000000000 -0800
+@@ -19,3 +19,6 @@
+ - applied a security fix to not accept unencrypted SRTP unless specified by policy.
+ - applied a fix to not crash when receiving a RTCP packet that had a much larger sequence number than the previous RTCP packet
+ - all patches are stored individually in the googlepatches subdirectory
++- iOS related changes.
++  undefine HAVE_BYTESWAP_H in config.h
++  Fix debug build compile errors: added static keyword to inline methods and undefined DEBUG before #define DEBUG
+\ No newline at end of file
+==== //depot/google3/third_party/libsrtp/crypto/ae_xfm/xfm.c#4 - /Users/seh/dev/source/gcomm_android/google3/third_party/libsrtp/crypto/ae_xfm/xfm.c ====
+# action=edit type=text
+--- google3/third_party/libsrtp/crypto/ae_xfm/xfm.c	2011-02-18 16:57:41.000000000 -0800
++++ google3/third_party/libsrtp/crypto/ae_xfm/xfm.c	2011-02-18 16:09:33.000000000 -0800
+@@ -177,6 +177,7 @@
+ 
+ #define ENC 1
+ 
++#undef DEBUG
+ #define DEBUG 0
+ 
+ err_status_t
+==== //depot/google3/third_party/libsrtp/crypto/cipher/aes_icm.c#4 - /Users/seh/dev/source/gcomm_android/google3/third_party/libsrtp/crypto/cipher/aes_icm.c ====
+# action=edit type=text
+--- google3/third_party/libsrtp/crypto/cipher/aes_icm.c	2011-02-18 16:57:41.000000000 -0800
++++ google3/third_party/libsrtp/crypto/cipher/aes_icm.c	2011-02-18 16:47:09.000000000 -0800
+@@ -285,7 +285,7 @@
+  * this is an internal, hopefully inlined function
+  */
+   
+-inline void
++static inline void
+ aes_icm_advance_ismacryp(aes_icm_ctx_t *c, uint8_t forIsmacryp) {
+   /* fill buffer with new keystream */
+   v128_copy(&c->keystream_buffer, &c->counter);
+==== //depot/google3/third_party/libsrtp/crypto/include/config.h#5 - /Users/seh/dev/source/gcomm_android/google3/third_party/libsrtp/crypto/include/config.h ====
+# action=edit type=text
+--- google3/third_party/libsrtp/crypto/include/config.h	2011-02-18 16:57:41.000000000 -0800
++++ google3/third_party/libsrtp/crypto/include/config.h	2011-02-18 16:41:52.000000000 -0800
+@@ -193,6 +193,8 @@
+ #define inline
+ #endif
+ typedef short int16_t;
++#elif defined(IOS)
++#undef HAVE_BYTESWAP_H
+ /* Adjustments to build on MacOS. */
+ #elif defined(OSX)
+ #undef DEV_URANDOM
+==== //depot/google3/third_party/libsrtp/srtp/ekt.c#3 - /Users/seh/dev/source/gcomm_android/google3/third_party/libsrtp/srtp/ekt.c ====
+# action=edit type=text
+--- google3/third_party/libsrtp/srtp/ekt.c	2011-02-18 16:57:41.000000000 -0800
++++ google3/third_party/libsrtp/srtp/ekt.c	2011-02-18 16:51:58.000000000 -0800
+@@ -90,7 +90,7 @@
+   return 0;
+ }
+ 
+-inline ekt_spi_t
++static inline ekt_spi_t
+ srtcp_packet_get_ekt_spi(const uint8_t *packet_start, unsigned pkt_octet_len) {
+   const uint8_t *spi_location;
+   
+@@ -99,7 +99,7 @@
+   return *((const ekt_spi_t *)spi_location);
+ }
+ 
+-inline uint32_t
++static inline uint32_t
+ srtcp_packet_get_ekt_roc(const uint8_t *packet_start, unsigned pkt_octet_len) {
+   const uint8_t *roc_location;
+   
+@@ -108,7 +108,7 @@
+   return *((const uint32_t *)roc_location);
+ }
+ 
+-inline const uint8_t *
++static inline const uint8_t *
+ srtcp_packet_get_emk_location(const uint8_t *packet_start, 
+ 			      unsigned pkt_octet_len) {
+   const uint8_t *location;

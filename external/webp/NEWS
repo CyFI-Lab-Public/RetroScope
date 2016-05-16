@@ -1,0 +1,6 @@
+- 9/10: initial release version 0.1
+- 8/12: release version 0.2.0-rc1 (head change#Ia5475247).
+- 3/13: Updated WebP with head change#I9e5ae737
+- 8/13: release version 0.3.1 (head change#Idea3464b).
+- 8/13: Updated WebP with patches required for Animation
+        (#I737451d7f, #Ia300385a & #I9566a8e2).

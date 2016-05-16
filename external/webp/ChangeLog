@@ -1,0 +1,9 @@
+- 9/10: initial release version 0.1
+- 5/11: release version 0.1.2
+- 6/11: Added encoder (version 0.1.2) as well
+- 7/11: Updated WebP with head change#Ia53f845b
+- 8/12: release version 0.2.0-rc1 (head change#Ia5475247)
+-     : Updated WebP with head change#I3da2063b
+- 3/13: Updated WebP with head change#I9e5ae737
+- 8/13: Release version 0.3.1 (head change#Idea3464b)
+- 9/13: Fix memleak in WebPIDelete() (change#Id4faef1b)

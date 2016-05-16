@@ -1,0 +1,426 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<string name="app_name">Replica Island</string>
+<string name="change_level">Switch Levels</string>
+<string name="test_animation">Test Animation</string>
+<string name="test_diary">Test Diary</string>
+<string name="unlock_levels">Unlock All Levels</string>
+<string name="unlock_next_level">Unlock Next Level</string>
+<string name="method_tracing">Toggle Method Tracing</string>
+
+<string name = "game_over">GAME OVER</string>
+<string name = "thanks_for_playing">THANKS FOR PLAYING!</string>
+<string name = "please_wait">PLEASE WAIT</string>
+
+
+<!-- UI -->
+<string name="preference_save_game">Game Data</string>
+<string name="preference_erase_save_game">Erase Saved Game</string>
+<string name="preference_erase_save_game_dialog">Really erase your saved game?  All of your progress will be lost!</string>
+<string name="preference_erase_save_game_dialog_title">Now wait just a minute</string>
+<string name="preference_erase_save_game_dialog_ok">Erase Save</string>
+<string name="preference_erase_save_game_dialog_cancel">Cancel</string>
+
+
+<string name="preference_game_settings">Game Settings</string>
+<string name="preference_enable_sound">Enable Sound</string>
+<string name="preference_enable_sound_summary">Disabling sound may improve performance on some devices.</string>
+
+<string name="preference_safe_mode">Safe Mode</string>
+<string name="preference_safe_mode_summary">Enables safety hacks for broken devices (Cliq, etc), but causes some visual artifacts. Try this if you have problems.</string>
+
+<string name="preference_configure_controls">Configure Controls</string>
+<string name="preference_enable_click_attack">Click Attack</string>
+<string name="preference_enable_click_attack_summary">Use the trackball click or directional pad center button to attack.</string>
+<string name="preference_enable_screen_controls">On-Screen Controls</string>
+<string name="preference_enable_screen_controls_summary">Displays movement pad and buttons on screen.  Suggested for devices without a d-pad or trackball. Requires mulitouch.</string>
+
+<string name="preference_enable_tilt_controls">Tilt Controls</string>
+<string name="preference_enable_tilt_controls_summary">EXPERIMENTAL!  Tilt the phone left and right to drive the Android around.  Good for devices with no trackball or d-pad.</string>
+
+<string name="preference_movement_sensitivity">Motion Sensitivity</string>
+<string name="preference_movement_sensitivity_summary">Adjusts the sensitivity of the trackball, d-pad, or optical sensor.</string>
+<string name="preference_movement_min">Slow</string>
+<string name="preference_movement_max">Fast</string>
+
+<string name="preference_tilt_sensitivity">Tilt Sensitivity</string>
+<string name="preference_tilt_sensitivity_summary">Adjusts the sensitivity of the tilt controls.</string>
+<string name="preference_tilt_min">Slow</string>
+<string name="preference_tilt_max">Fast</string>
+
+<string name="preference_key_config">Configure Keyboard</string>
+<string name="preference_key_config_summary">Customize keys for phones with hard keyboards.</string>
+<string name="preference_key_config_dialog_title">Configure Keyboard</string>
+<string name="preference_key_config_dialog_ok">Save</string>
+<string name="preference_key_config_dialog_cancel">Cancel</string>
+<string name="preference_key_config_left">Left</string>
+<string name="preference_key_config_right">Right</string>
+<string name="preference_key_config_jump">Jump</string>
+<string name="preference_key_config_attack">Attack</string>
+
+
+<string name="preference_enable_statistics">Report Play Statistics</string>
+<string name="preference_enable_statistics_summary">Sends anonymous play statistics to a server to help us make this game more fun.</string>
+
+
+<string name="preference_about">About</string>
+<string name="preference_about_title">About Replica Island</string>
+<string name="preference_about_summary">Replica Island was made by Chris Pruett and Genki Mine, and produced by Tom Moss.</string>
+<string name="preference_visit_site">Go to the Replica Island web site</string>
+<string name="preference_thanks_title">Special Thanks</string>
+<string name="preference_thanks_summary">Special Thanks to Eido Inoue, Casey Richardson, Jason Chen, Tim Mansfield, and the Android Team for their support of this project.</string>
+<string name="preference_licence_title">License</string>
+<string name="preference_licence_summary">Portions of this game are modifications based on work created and shared by Google and used according to terms described in the Creative Commons 3.0 Attribution License.</string>
+<string name="preference_misc">More Information</string>
+<string name="preference_enable_debug">Debug Log</string>
+<string name="preference_enable_debug_summary">Output various logs to logcat.  This option will slow the game down.</string>
+
+<string name="game_results_title">GAME RESULTS</string>
+<string name="game_results_pearls_collected">PEARLS COLLECTED:</string>
+<string name="game_results_robots_destroyed">ROBOTS DESTROYED:</string>
+<string name="game_results_total_play_time">TOTAL PLAY TIME:</string>
+<string name="game_results_ending">ENDING ACHIEVED:</string>
+<string name="game_results_unlocks_message">You can now access Linear Mode and the Level Select from the Extras menu!</string>
+<string name="game_results_kabocha_ending">BAD ENDING #1 - Kabocha Wins</string>
+<string name="game_results_rokudou_ending">BAD ENDING #2 - Rokudou Wins</string>
+<string name="game_results_wanda_ending">GOOD ENDING - World Saved!</string>
+<string name="game_results_ok_button">Game Over!</string>
+
+<string name="saved_game_erased_notification">Saved Game Erased</string>
+
+<string name="quit_game_dialog_title">Quit Game?</string>
+<string name="quit_game_dialog_ok">Quit</string>
+<string name="quit_game_dialog_cancel">Cancel</string>
+<string name="quit_game_dialog_message">Return to main menu?</string>
+
+<string name="new_game_dialog_title">Start New Game?</string>
+<string name="new_game_dialog_ok">Start New Game</string>
+<string name="new_game_dialog_cancel">Cancel</string>
+<string name="new_game_dialog_message">Starting a new game in this mode will erase your current game in progress.  Are you sure you want to start a new game?</string>
+
+<string name="extras_locked_dialog_title">Extra Locked!</string>
+<string name="extras_locked_dialog_ok">Get to it!</string>
+<string name="extras_locked_dialog_message">This extra feature is still locked.  Beat the game one time to unlock it!</string>
+
+
+<string name="nav_type">Trackball</string>
+
+<string name="whats_new_dialog_title">Replica Island</string>
+<string name="whats_new_dialog_ok">Rock on!</string>
+<string name="whats_new_dialog_message">Thanks for downloading Replica Island.  Over 1.5 million people have played Replica Island!\n\n
+<b>New in this version:</b>\n
+- Unlockable extra modes: Linear Story Mode and Level Select.\n
+- On-screen controls for devices with no buttons.\n
+- Difficulty settings for new games. \n
+- Play statistics shown when you finish the game.\n
+- Lots of bugs fixed!\n
+\n
+\n
+This is an open source project.  If you are interested in how it works, or would like to use it to make your
+own games, check out the source at our web site, replicaisland.net.
+\n
+\n
+Also note that this game sends anonymous play statistics back to a server.  If you’d rather not
+allow that, you can turn it off in the options screen.</string>
+
+<string name="control_setup_dialog_title">Control Setup</string>
+<string name="control_setup_dialog_ok">Leave it this way</string>
+<string name="control_setup_dialog_change">Change control settings</string>
+<string name="control_setup_dialog_message">
+Based on your device hardware, the following control scheme has been automatically selected:
+&lt;br>
+&lt;br>
+&lt;small>%1s&lt;/small>
+&lt;br>
+&lt;br>Replica Island supports many different control configurations.  Control options can be changed at 
+any time using the Configure Controls button in Options.
+&lt;br>
+&lt;br>
+Are you ok with the control system selected above, or would you like to set up your control 
+settings manually now?</string>
+<string name="control_setup_dialog_trackball">&lt;b>Trackball / Trackpad&lt;/b> - Sensitivity can be adjusted in Options.</string>
+<string name="control_setup_dialog_dpad">&lt;b>Keyboard / Pad&lt;/b> - Key mappings can be changed in Options.</string>
+<string name="control_setup_dialog_screen">&lt;b>On-Screen Pad&lt;/b></string>
+<string name="control_setup_dialog_tilt">&lt;b>Tilt&lt;/b> - Sensitivity can be adjusted in Options.</string> 
+
+<string name="onscreen_tilt_dialog_title">New Control Scheme!</string>
+<string name="onscreen_tilt_dialog_ok">On-Screen Pad</string>
+<string name="onscreen_tilt_dialog_cancel">Stick with Tilt</string>
+<string name="onscreen_tilt_dialog_message">This version of Replica Island adds an option for 
+<b>On-Screen Controls</b> for multi-touch devices.  Your device supports this new 
+mode, but your options are currently set to <b>Tilt</b> controls.  Would you like to try the 
+new On-Screen Controls instead, or stick with Tilt? 
+\n<small>You can change this setting at any time by choosing Configure Controls under Options.</small>
+</string>
+
+<string name="whats_new_ticker">New in this version: On-screen controls, app-to-sd card support, unlockable extra modes, game statistics after winning, lots of minor (and not so minor) bugs fixed.</string>
+
+<string name="baby_description">No challenge at all.</string>
+<string name="kids_description">A comfortable ride to the end.</string>
+<string name="adults_description">True accomplishment requires hardship.</string>
+
+
+<!-- Toast Messages -->
+<string name="memory_playback_start">MEMORY PLAYBACK START</string>
+<string name="memory_playback_complete">MEMORY PLAYBACK COMPLETE</string>
+<string name = "diary_found">FOUND OLD DIARY</string>
+
+
+<!--  names -->
+<string name = "Wanda">Wanda</string>
+<string name = "Kyle">Kyle</string>
+<string name = "Kabocha">Dr. Kabochanomizu</string>
+<string name = "Rokudou">Mr. Rokudou</string>
+<string name = "Android">Android</string>
+
+<!-- level names -->
+<string name = "level_0_1_sewer">Memory #000</string>
+<string name = "level_0_2_lab">Memory #001</string>
+<string name = "level_0_3_lab">Memory #002</string>
+
+<string name = "level_1_1_island">Memory #003</string>
+<string name = "level_1_2_island">Memory #004</string>
+<string name = "level_1_3_island">Memory #005</string>
+<string name = "level_1_4_island">Memory #006</string>
+<string name = "level_1_5_island">Memory #007</string>
+<string name = "level_1_6_island">Memory #008</string>
+<string name = "level_1_7_island">Memory #009</string>
+<string name = "level_1_8_island">Memory #010</string>
+<string name = "level_1_9_island">Memory #011</string>
+
+<string name = "level_2_1_grass">Memory #012</string>
+<string name = "level_2_2_grass">Memory #013</string>
+<string name = "level_2_3_grass">Memory #014</string>
+<string name = "level_2_4_grass">Memory #015</string>
+<string name = "level_2_5_grass">Memory #016</string>
+<string name = "level_2_6_grass">Memory #017</string>
+<string name = "level_2_7_grass">Memory #018</string>
+<string name = "level_2_8_grass">Memory #019</string>
+<string name = "level_2_9_grass">Memory #020</string>
+
+<string name = "level_3_1_sewer">Memory #021</string>
+<string name = "level_3_2_sewer">Memory #022</string>
+<string name = "level_3_3_sewer">Memory #023</string>
+<string name = "level_3_4_sewer">Memory #024</string>
+<string name = "level_0_1_sewer_kyle">Memory #024.3</string>
+<string name = "level_0_1_sewer_wanda">Memory #024.7</string>
+<string name = "level_3_5_sewer">Memory #025</string> <!-- 3-5 is the first level to take place in the "present" -->
+<string name = "level_3_6_sewer">Memory #026</string>
+<string name = "level_3_7_sewer">Memory #027</string>
+<string name = "level_3_8_sewer">Memory #028</string>
+<string name = "level_3_9_sewer">Memory #029</string>
+<string name = "level_3_10_sewer">Memory #030</string>
+<string name = "level_3_11_sewer">Memory #030.5</string> <!-- Special level for Kyle fight -->
+
+<string name = "level_4_1_underground">Memory #031</string>
+<string name = "level_4_2_underground">Memory #032</string>
+<string name = "level_4_3_underground">Memory #033</string>
+<string name = "level_4_4_underground">Memory #034</string>
+<string name = "level_4_5_underground">Memory #035</string>
+<string name = "level_4_6_underground">Memory #036</string>
+<string name = "level_4_7_underground">Memory #037</string>
+<string name = "level_4_8_underground">Memory #038</string>
+<string name = "level_4_9_underground">Memory #039</string>
+
+<string name = "level_final_boss_lab">Memory #040</string>
+
+<string name = "level_puzzle_test">Puzzle Test</string>
+<string name = "level_object_test">Object Test</string>
+<string name = "level_performance_test">Performance Test</string>
+<string name = "level_performance_test2">Performance Test 2</string>
+<string name = "level_performance_test3">Performance Test 3</string>
+<string name = "level_performance_test4">Google IO Performance Test</string>
+<string name = "level_npc_motion_test">NPC Motion Test</string>
+
+<!-- Level time codes -->
+
+<!-- level names -->
+<string name = "level_0_1_time">+ 07:12:03</string>
+<string name = "level_0_2_time">+ 00:00:00</string>
+<string name = "level_0_3_time">+ 00:06:26</string>
+
+<string name = "level_1_1_time">+ 00:34:10</string>
+<string name = "level_1_2_time">+ 00:44:46</string>
+<string name = "level_1_3_time">+ 00:52:16</string>
+<string name = "level_1_4_time">+ 00:59:01</string>
+<string name = "level_1_5_time">+ 01:07:24</string>
+<string name = "level_1_6_time">+ 01:23:38</string>
+<string name = "level_1_7_time">+ 01:38:04</string>
+<string name = "level_1_8_time">+ 01:42:00</string>
+<string name = "level_1_9_time">+ 01:56:44</string>
+
+<string name = "level_2_1_time">+ 02:25:18</string>
+<string name = "level_2_2_time">+ 02:37:20</string>
+<string name = "level_2_3_time">+ 02:40:13</string>
+<string name = "level_2_4_time">+ 02:51:09</string>
+<string name = "level_2_5_time">+ 03:01:55</string>
+<string name = "level_2_6_time">+ 03:16:28</string>
+<string name = "level_2_7_time">+ 03:33:12</string>
+<string name = "level_2_8_time">+ 03:46:07</string>
+<string name = "level_2_9_time">+ 03:54:29</string>
+
+<string name = "level_3_1_time">+ 04:07:10</string>
+<string name = "level_3_2_time">+ 04:18:42</string>
+<string name = "level_3_3_time">+ 04:45:15</string>
+<string name = "level_3_4_time">+ 04:59:06</string>
+<string name = "level_3_5_time">+ 07:19:59</string>
+<string name = "level_3_6_time">+ 07:36:17</string>
+<string name = "level_3_7_time">+ 07:51:24</string>
+<string name = "level_3_8_time">+ 08:16:55</string>
+<string name = "level_3_9_time">+ 08:35:12</string>
+<string name = "level_3_10_time">+ 08:50:36</string>
+<string name = "level_3_11_time">+ 08:55:54</string>
+
+<string name = "level_4_1_time">+ 09:10:01</string>
+<string name = "level_4_2_time">+ 09:42:40</string>
+<string name = "level_4_3_time">+ 09:58:11</string>
+<string name = "level_4_4_time">+ 10:27:36</string>
+<string name = "level_4_5_time">+ 10:52:10</string>
+<string name = "level_4_6_time">+ 11:12:35</string>
+<string name = "level_4_7_time">+ 11:39:04</string>
+<string name = "level_4_8_time">+ 11:57:22</string>
+<string name = "level_4_9_time">+ 12:13:40</string>
+<string name = "level_final_boss_time">+ 12:45:12</string>
+<string name = "level_test_time">(test level)</string>
+
+<!--  diary entries -->
+
+<string name="Diary1">
+Log Entry - Thursday - Sunny\n
+I have arrived!  I borrowed a dinghy from the freighter and rowed to shore as the ship passed by the island early this morning.  The captain has promised to return for me in two weeks; more than enough time to complete my mission.  
+\n
+\n
+I find myself standing in the middle of a vast beach, with sand dunes stretching great distances down the coastline and the green of tropical forest visible near the horizon.  An uninformed man would think this place a paradise.  I know better.  Still, I cannot help but marvel at the island’s wholly unnatural beauty.
+</string>
+
+<string name="Diary2">
+Log Entry - Sunday - Sunny\n
+Before leaving the mainland I met with Mr. Rokudou about my mission.  He is a great man, the type of man who might actually effect change rather than just talk about it.  I was happy to see that he recognized my rather unique skills.  I am neither a survivalist nor an outdoorsman; I cannot even remember the last time I went camping.  It was very shrewd of Mr. Rokudou to select me as the right person to visit this odd, deserted island.  I shall not let him down.
+
+</string>
+
+<string name="Diary3">
+Log Entry - ??? - Dark\n
+Analysis of slime-like creature.  Resembles an arthropod except instead of protective armor the beast seems to be covered in a soft, sticky substance resembling tar.  Suspect genetic similarities to Holothuroidea, but the island’s influence has twisted the result into a dangerous menace.  I ate a piece of the specimen and gagged.\n
+\n
+I never should have come here.  Rokudou tricked me into this, and now I cannot even find my way back to the surface.  The freighter has surely long since come and gone; my sense of time is quickly losing its clarity but I am sure that more than two weeks have passed since I arrived in this hellish place.  I never should have come here.\n
+
+</string>
+
+<string name="Diary4">
+Log Entry - Monday - Overcast\n
+I met a group of three adventurers today.  I thought that I had the island all to myself, and I was so surprised to hear human voices (with Brooklyn accents, no less!) outside my shelter that I knocked over a bamboo support and almost brought the roof down.  The group is independent but they are after The Source, just like me.  They were nice but I sensed a little bit of competitive tension in the air.  They have been here for a month already and have barely penetrated the forest beyond the beach.  I am glad to have met them but they pose no immediate threat to my mission.  They are fine folks but my skills are far superior.\n
+
+</string>
+
+<string name="Diary5">
+Log Entry - Saturday - Rain\n
+Today marks three consecutive days of rain.  Last week was clear--the seas were calm and my carefully constructed shelter proved unnecessary.  I am sitting in a small alcove at the base of a hollow tree as the sky dumps golf ball-sized raindrops into the forest around me.  The beach is long behind me now and the sound of the ocean is just a memory.\n
+\n
+This is a weird place.  The oddities increase as I move closer to the center.  Since entering the forest I have seen a few things I cannot explain.  No matter, my mission is clear and success is guaranteed.  I will sleep here tonight and then venture further towards the island’s center tomorrow.\n
+
+</string>
+
+<string name="Diary6">
+Log Entry - ??? - Damp\n
+What in the world is a sewer system doing under a tropical island anyway?  The island has grown it to resemble the architecture of some old European city, but for what purpose?  What little tidbit of inspiration caused this vast underground structure to manifest?  Perhaps a photograph, or a child’s picture book.  The island itself is too far from any country with this sort of architecture for the influence to be direct.\n
+\n
+When I get out of here I am going to find Rokudou and educate him in the error of his ways.  The Source is getting closer, but I am not sure I want to find it anymore.\n
+
+</string>
+
+<string name="Diary7">
+There is no rain underground!\n
+\n
+Rain, rain, go away, come again some other day.\n
+\n
+All the king’s horses and all the king’s men couldn’t put Humpty together again.\n
+
+</string>
+
+<string name="Diary8">
+Log Entry - Wednesday - Overcast\n
+I may have found a path into the forest.  The grasslands stretch out ahead in what appears to be a small glade, but I think that beyond them the border of the forest will thin.  If my calculations are correct, this side of the island should be shady most of the year, so I expect that the almost impenetrable forest vegetation will yield enough to permit traversal.\n
+\n
+The adventuring party I met a few days ago has been here a month and has not yet figured this out.  My intellect is truly superior--I can understand why Mr. Rokudou chose me for this mission.  Once I find The Source and show him how to use it, he will surely make me his second-in-command, a position from which I shall have incredible influence.  Just thinking about it makes me giddy.  But I must not to get ahead of myself; the forest looms.\n
+
+</string>
+
+<string name="Diary9">
+Skin skin skin skin skin skin skin skin skin skin skin.\n
+\n
+There’s not enough skin on those pirates!\n
+</string>
+
+<string name="Diary10">
+Log Entry - Monday (?) - Rain\n
+My progress has been arrested by the insane creatures that inhabit this island.  Some of them are so normal they might have migrated here after the island was formed.  But the rest are clearly products of The Source running unchecked; they do not bear even the slightest resemblance to the children of Mother Nature.  This island is a facsimile, a replica of bits and pieces of the world, twisted and grown from nothing, sprouting in every direction.  It is power in its purest form, writhing in the sea without tether.\n
+\n
+But with a guiding hand, that power could be put to such great use!  With The Source in our hands mankind could shape the world as we see fit; it would mean a true end to war and poverty.  Rokudou wants that power--I want that power--so  the world can be freed from governments and other parasites that seek only to oppress and destroy.  Glory is almost within my grasp.\n
+
+</string>
+
+<string name="Diary11">
+Log Entry - I’ve lost track of the date - Heavy Rain\n
+\n
+The adventurers I met are dead.  I found them hanging from the trees near a rock formation in the forest.  The discovery was startling and sad; though we were both competing for the same goal I felt a certain camaraderie with them.  They were, of course, the only other humans on the island.\n
+\n
+Though tragic, I cannot let their unfortunate end distract me from my goal.  The rock formation near the bodies is an important find; it appears to be the mouth of some sort of cave.  However, most exciting is that the rock itself looks as if it has been cut by man; I dare say that it resembles an entrance to a subway station or bunker.\n
+\n
+I will venture into the forest once more before entering the cave.  At the adventurers’ base camp I spied batteries and other useful electronic equipment, which I can surely modify.  Once I have procured those items I shall return and make my descent.\n
+
+</string>
+
+<string name="Diary12">
+Log Entry - Unknown - Underground\n
+\n
+My head hurts.  Maybe it is the fumes down here; I feel like my head is filling up with pressure and soon it will burst.  When the pain gets bad I sit down and focus on counting primes, an old childhood relaxation habit that has resurfaced here under the ground.\n
+\n
+When I find The Source, I am going to use it to cure myself of whatever it is that has taken hold of me.  If Rokudou complains then maybe I’ll just eject him from the planet.  After all, he’s not the one down here in this false sewer, with scraped knees and a pounding headache.  He’s not the one who has to go days at a time without food because there isn’t any vegetation down here.  I’m the one doing the work, so I’m the one who should get the reward.  The Source will be mine and mine alone.\n
+\n
+2, 3, 5, 7, 11, 13, 17, 19, 23, 29\n
+
+</string>
+
+<string name="Diary13">
+He lied he lied he lied he lied.  Rokudou is a liar.  He seeks only to control.  He says he wants The Source to save the world, to rid it of the fat cats who play the planet like a marionette.  He he he HE is the fat cat, the puppeteer.  He shall not have The Source.  It shall be mine.  Mine mine mine mine mine. 73, 79, 83, 89, 97, 101, 103, 107, 109, 113.\n
+\n
+The Source is here.  It is down here, in the dark.  I can feel its heat, a warmth like the sun against my cheek.  But no, I mustn’t go to it, not not not not yet.  If I find it, Rokudou will take it from me and it will be check check check check mate.  No, Kabochanomizu is cautious.  Kabochanomizu is careful.  I shall retreat to the surface.  I know enough now to build things.  I will return only when I can guarantee my success.  Rokudou will grovel before me and the world will know Kabochanomizu as its savior.\n
+</string>
+
+<string name="Diary14">
+Log Entry - Saturday - Very Cloudy\n
+\n
+I have to admit that I was surprised when Rokudou selected me to find The Source.  True, I have studied the island from afar as much as any other researcher in the world, but slacks and a lab coat are hardly appropriate for rugged terrain.  When Rokudou offered me the job I was initially suspicious, but now I see that I am the only man with any chance of success.  The island has grown unhindered for a hundred years, and its twisted derivations of reality are the type of thing that could drive a lesser man insane.\n
+\n
+Still, I can’t say that I completely trust Rokudou.  He’s a smart man, but I am also sure that he selected me because he thought me easy to control.  I get the feeling that he’s watching me over my shoulder.  Of course, the island is free of human habitation save me and the three adventurers I met a few days ago, so the presence of a spy is unlikely.  And yet, I can’t shake this feeling of being watched.\n
+
+</string>
+
+<string name="Diary15">
+Log Entry - The days have run together - Sunny\n
+\n
+There is something I must confide, even if only to this scrap of notebook paper.\n
+\n
+I killed those adventurers.  I killed them in their sleep and then hung them from the trees as if to convince myself that the island had somehow done away with them.  It was grisly business, but necessary.  I needed their supplies, especially the batteries and flashlights they brought.  More importantly, against all odds they discovered the entrance to the cave.  They must have blundered across it while awkwardly stumbling through the forest--their brains are too small to have calculated its location.  The Source is too important to leave to such simpletons, and I couldn’t risk the possibility, no matter how remote, that they might find it first.\n
+\n
+Am I a monster?  I do not think so.  I am Dr. Kabochanomizu, widely respected scientist and the world’s expert on the inverted Atlantis that is this island.  My actions are logical and justified--I am no monster.\n
+\n
+If I am honest with myself, there is another reason the adventurers had to die.  I wanted to do it.  And I enjoyed it.
+</string>
+
+<!-- Misc Dialog -->
+
+<string name="KyleDeadNote">It’s Kyle.  He’s not moving.</string>
+
+<string name="cd_Wanda">Wanda</string>
+<string name="cd_blah">Blah blah blah blah blah</string>
+<string name="s100p">100%</string>
+<string name="zero">0</string>
+<string name="s3_21_34">3:21:34</string>
+<string name="k_A">A</string>
+<string name="level_1_1">Level 1-1</string>
+<string name="s0_02_031">+ 0:02:031</string>
+<string name="min">Min</string>
+<string name="max">Max</string>
+</resources>

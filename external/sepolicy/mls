@@ -1,0 +1,127 @@
+#########################################
+# MLS declarations
+#
+
+# Generate the desired number of sensitivities and categories.
+gen_sens(mls_num_sens)
+gen_cats(mls_num_cats)
+
+# Generate level definitions for each sensitivity and category.
+gen_levels(mls_num_sens,mls_num_cats)
+
+
+#################################################
+# MLS policy constraints
+#
+
+#
+# Process constraints
+#
+
+# Process transition:  Require equivalence unless the subject is trusted.
+mlsconstrain process { transition dyntransition }
+	     ((h1 eq h2 and l1 eq l2) or t1 == mlstrustedsubject);
+
+# Process read operations: No read up unless trusted.
+mlsconstrain process { getsched getsession getpgid getcap getattr ptrace share }
+	     (l1 dom l2 or t1 == mlstrustedsubject);
+
+# Process write operations:  No write down unless trusted.
+mlsconstrain process { sigkill sigstop signal setsched setpgid setcap setrlimit ptrace share }
+	     (l1 domby l2 or t1 == mlstrustedsubject);
+
+#
+# Socket constraints
+#
+
+# Create/relabel operations:  Subject must be equivalent to object unless
+# the subject is trusted.  Sockets inherit the range of their creator.
+mlsconstrain socket_class_set { create relabelfrom relabelto }
+	     ((h1 eq h2 and l1 eq l2) or t1 == mlstrustedsubject);
+
+# Datagram send: Sender must be dominated by receiver unless one of them is
+# trusted.
+mlsconstrain unix_dgram_socket { sendto }
+	     (l1 domby l2 or t1 == mlstrustedsubject or t2 == mlstrustedsubject);
+
+# Stream connect:  Client must be equivalent to server unless one of them
+# is trusted.
+mlsconstrain unix_stream_socket { connectto }
+	     (l1 eq l2 or t1 == mlstrustedsubject or t2 == mlstrustedsubject);
+
+#
+# Directory/file constraints
+#
+
+# Create/relabel operations:  Subject must be equivalent to object unless
+# the subject is trusted. Also, files should always be single-level.
+# Do NOT exempt mlstrustedobject types from this constraint.
+mlsconstrain dir_file_class_set { create relabelfrom relabelto }
+	     (l2 eq h2 and (l1 eq l2 or t1 == mlstrustedsubject));
+
+#
+# Constraints for app data files only.
+#
+
+# Only constrain open, not read/write.
+# Also constrain other forms of manipulation, e.g. chmod/chown, unlink, rename, etc.
+# Subject must be equivalent to object unless the subject is trusted.
+mlsconstrain dir { open search setattr rename add_name remove_name reparent rmdir }
+	     (t2 != app_data_file or l1 eq l2 or t1 == mlstrustedsubject);
+mlsconstrain { file lnk_file sock_file } { open setattr unlink link rename }
+	     (t2 != app_data_file or l1 eq l2 or t1 == mlstrustedsubject);
+
+#
+# Constraints for file types other than app data files.
+#
+
+# Read operations: Subject must dominate object unless the subject
+# or the object is trusted.
+mlsconstrain dir { read getattr search }
+	     (t2 == app_data_file or l1 dom l2 or t1 == mlstrustedsubject or t2 == mlstrustedobject);
+
+mlsconstrain { file lnk_file sock_file chr_file blk_file } { read getattr execute }
+	     (t2 == app_data_file or l1 dom l2 or t1 == mlstrustedsubject or t2 == mlstrustedobject);
+
+# Write operations: Subject must be dominated by the object unless the
+# subject or the object is trusted.
+mlsconstrain dir { write setattr rename add_name remove_name reparent rmdir }
+	     (t2 == app_data_file or l1 domby l2 or t1 == mlstrustedsubject or t2 == mlstrustedobject);
+
+mlsconstrain { file lnk_file sock_file chr_file blk_file } { write setattr append unlink link rename }
+	     (t2 == app_data_file or l1 domby l2 or t1 == mlstrustedsubject or t2 == mlstrustedobject);
+
+# Special case for FIFOs.
+# These can be unnamed pipes, in which case they will be labeled with the
+# creating process' label. Thus we also have an exemption when the "object"
+# is a MLS trusted subject and can receive data at any level.
+mlsconstrain fifo_file { read getattr }
+	     (l1 dom l2 or t1 == mlstrustedsubject or t2 == mlstrustedobject or t2 == mlstrustedsubject);
+
+mlsconstrain fifo_file { write setattr append unlink link rename }
+	     (l1 domby l2 or t1 == mlstrustedsubject or t2 == mlstrustedobject or t2 == mlstrustedsubject);
+
+#
+# IPC constraints
+#
+
+# Create/destroy: equivalence or trusted.
+mlsconstrain ipc_class_set { create destroy }
+	     (l2 eq h2 and (l1 eq l2 or t1 == mlstrustedsubject));
+
+# Read ops: No read up unless trusted.
+mlsconstrain ipc_class_set r_ipc_perms
+	     (l1 dom l2 or t1 == mlstrustedsubject);
+
+# Write ops: No write down unless trusted.
+mlsconstrain ipc_class_set w_ipc_perms
+	     (l1 domby l2 or t1 == mlstrustedsubject);
+
+#
+# Binder IPC constraints
+#
+# Presently commented out, as apps are expected to call one another.
+# This would only make sense if apps were assigned categories
+# based on allowable communications rather than per-app categories.
+#mlsconstrain binder call
+#	(l1 eq l2 or t1 == mlstrustedsubject or t2 == mlstrustedsubject);

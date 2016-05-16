@@ -1,0 +1,19 @@
+type system_app, domain;
+permissive system_app;
+app_domain(system_app)
+unconfined_domain(system_app)
+
+type system, domain;
+permissive system;
+unconfined_domain(system);
+relabelto_domain(system);
+
+# Create a socket for receiving info from wpa.
+type_transition system wifi_data_file:sock_file system_wpa_socket;
+allow system self:zygote { specifyids specifyrlimits specifyseinfo };
+
+allow system backup_data_file:dir relabelto;
+allow system cache_backup_file:dir relabelto;
+allow system apk_data_file:file relabelto;
+allow system apk_tmp_file:file relabelto;
+allow system apk_private_tmp_file:file relabelto;

@@ -1,0 +1,8 @@
+# Domain for shell processes spawned by ADB
+type shell, domain;
+type shell_exec, file_type;
+unconfined_domain(shell)
+
+# Run app_process.
+# XXX Split into its own domain?
+app_domain(shell)

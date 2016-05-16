@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!-- Rokudou Dialog Entries -->
+
+<string name="Rokudou_3_9_1_1">
+Hello there, Android.  My name is Rokudou.
+</string>
+
+<string name="Rokudou_3_9_1_2">
+Ever get the feeling that you are on the wrong team, Android?  Ever wonder if maybe Kabochanomizu isn’t exactly the man he portrays himself to be?
+</string>
+
+<string name="Rokudou_3_9_1_3">
+You are an amazing machine.  Your talents are wasted on a washed-up researcher like Kabocha.  You should join my team.
+</string>
+
+<string name="Rokudou_3_9_1_4">
+I can see that you are hesitant.  Not surprising; I am sure Kabocha did his best to convince you that he’s a kind-hearted scientist, acting for the greater good of the world.  Make no mistake, Android.  Kabocha is a lunatic--he must not gain access to The Source.
+</string>
+
+<string name="Rokudou_3_9_1_5">
+Join my team, Android.  Help us find The Source and change the world.  Take some time to think it over.  I am a patient man.
+</string>
+
+
+<string name="Rokudou_4_1_1_1">
+Do not trouble yourself over Kyle, Android.  He was a good agent but he let his success go to his head.  In the final analysis, his arrogance was his biggest weakness.  You, on the other hand, displayed cunning and resourcefulness.  Good show!
+</string>
+
+<string name="Rokudou_4_1_1_2">
+The Source has a way of affecting people.  Other teams I sent to this island in the past have vanished without a trace.  The few that made it back returned with fatal health problems.  That’s why an inorganic like you is so perfect for this job.  Make no mistake, The Source is a natural occurrence--nature’s next logical step.  I theorize that it may actually be a tiny piece of a larger whole, a body that created the entire universe!  But there will be plenty of time for academics once we have obtained The Source; for now we must concentrate on finding it.
+</string>
+
+<string name="Rokudou_4_1_1_3">
+Have you considered my offer, Android?  It still stands.  Join my team; help me find The Source and save the world from maniacs like Kabocha.
+</string>
+
+<string name="Rokudou_4_4_1_1">
+Android.  The time for pleasantries has ended.  Kabocha has The Source, and it will not be long until he learns how to channel its power.  We must move quickly if we are to stop him.  You are our only hope now.
+</string>
+
+<string name="Rokudou_4_7_1_1">
+My sensors indicate a large disturbance field not far from here.  That must be the location of Kabocha’s secret lab.  He’s surely shielded it, which means the readings I am picking up are actually a tiny fraction of the power he is generating.  It must be The Source!  We must move quickly if we are to stop him and his insane scheme.
+</string>
+
+<string name="Rokudou_4_7_1_2">
+Keep moving, Android.  The fate of the world approaches.
+</string>
+
+<string name="Rokudou_final_boss_1_1">
+Excellent work, Android.  You have penetrated Kabocha’s secret laboratory.  The Source is within our grasp!
+</string>
+
+<string name="Rokudou_final_boss_1_2">
+Quickly now, put Kabocha out of his misery.  He may be old and frail, but as long as he lives The Source is in jeopardy.
+</string>
+
+<string name="Rokudou_final_boss_1_3">
+Android, stop wasting time!  Destroy Kabocha and we shall rule the Earth!
+</string>
+</resources>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="ISO8859-1" ?>
+<grammar xml:lang="en-us" version="1.0" root="ROOT" xmlns="http://www.w3.org/2001/06/grammar"      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://www.w3.org/2001/06/grammar http://www.w3.org/TR/speech-grammar/grammar.xsd">
+<meta name="word_penalty" content="40" />
+<!-- 
+	Lookup name grammar, this is a sample grammar that can recognize
+	lookup followed by a digit string or a name.  Names can be followed
+	by a place (such as office, home, mobile).  The return key value pairs
+	in two cases are shown below.
+# parseStringTest.out -base lookup 
+)) parse ok (1 results) (lookup Wilson at office) (8)
+{LOOKUP.PLACE : office}
+{ROOT.M_P : office}
+{meaning : office Wilson }
+{NAMES.N : Wilson}
+{LOOKUP.NAME : Wilson}
+{ROOT.M_N : Wilson}
+{PLACES.P : office}
+{ROOT.M_T : }
+--Done--
+) parse ok (1 results) (lookup seven one) (7)
+{ROOT.M_P : }
+{DIGIT.V : 1}
+{LOOKUP.TELN : 71}
+{S.X : 71}
+{meaning : 71}
+{ROOT.M_N : }
+{ROOT.M_T : 71}
+-->
+<rule id="ROOT" scope="public">
+        <item>
+	  <ruleref uri="#LOOKUP"/>
+	  <tag>M_N=LOOKUP.NAME?LOOKUP.NAME:'';
+               M_P=LOOKUP.PLACE?LOOKUP.PLACE:'';
+               M_T=LOOKUP.TELN?LOOKUP.TELN:'';</tag>
+	</item>
+</rule>
+
+   <rule id="LOOKUP">
+     <item>lookup</item>
+     <one-of>
+	<item>
+	   <ruleref uri="#NAMES"/>
+	   <item repeat="0-1">
+		<item>at</item>
+		<ruleref uri="#PLACES"/>
+		<tag>PLACE=PLACES.P</tag>
+	   </item>
+	   <tag>NAME=NAMES.N</tag>
+	</item>
+	<item>
+	   <ruleref uri="#S"/>
+	   <tag>TELN=S.X;</tag>
+        </item>
+     </one-of>
+   </rule>
+
+   <rule id="NAMES">
+     <one-of>
+      <item>
+	Peter
+	<tag>N='Peter'</tag>
+      </item>
+      <item>
+	Wilson
+        <tag>N='Wilson'</tag>
+      </item>
+      <item>
+	Jessica
+        <tag>N='Jessica'</tag>
+      </item>
+      <item>
+	Janese
+        <tag>N='Janese'</tag>
+      </item>
+      <item>
+	John Martinez
+        <tag>N='John Martinez'</tag>
+      </item>
+      <item>
+	Jen Parker
+        <tag>N='Jen Parker'</tag>
+      </item>
+      <item>
+	Jennifer
+        <tag>N='Jennifer'</tag>
+      </item>
+      <item>
+	Elaine
+        <tag>N='Elaine'</tag>
+      </item>
+      <item>
+	David
+        <tag>N='David'</tag>
+      </item>
+     </one-of>
+   </rule>
+
+   <rule id="PLACES">
+     <one-of>
+      <item>office <tag>P='office'</tag>     </item>
+      <item>	friends       <tag>P='friends'</tag>      </item>
+      <item>	home        <tag>P='home'</tag> </item>
+      <item>	mobile        <tag>P='mobile'</tag> </item>
+     </one-of>
+   </rule>
+   
+   <rule id="S">
+      <item repeat="1-">
+         <ruleref uri="#DIGIT"/>
+         <tag>X=X?X:'';X=X+DIGIT.V;</tag>
+      </item>
+   </rule>
+
+   <rule id="DIGIT">
+      <one-of>
+         <item>
+            zero
+            <tag>V='0'</tag>
+         </item>
+         <item>
+            oh
+            <tag>V='0'</tag>
+         </item>
+         <item>
+            one
+            <tag>V='1'</tag>
+         </item>
+         <item>
+            two
+            <tag>V='2'</tag>
+         </item>
+         <item>
+            three
+            <tag>V='3'</tag>
+         </item>
+         <item>
+            four
+            <tag>V='4'</tag>
+         </item>
+         <item>
+            five
+            <tag>V='5'</tag>
+         </item>
+         <item>
+            six
+            <tag>V='6'</tag>
+         </item>
+         <item>
+            seven
+            <tag>V='7'</tag>
+         </item>
+         <item>
+            eight
+            <tag>V='8'</tag>
+         </item>
+         <item>
+            nine
+            <tag>V='9'</tag>
+         </item>
+      </one-of>
+   </rule>
+
+</grammar>

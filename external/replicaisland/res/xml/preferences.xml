@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (C) 2008 The Android Open Source Project
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+          http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<PreferenceScreen
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+	<PreferenceCategory
+            android:title="@string/preference_game_settings">
+            
+       <CheckBoxPreference
+       			android:key="enableSound"
+                android:title="@string/preference_enable_sound"
+                android:summaryOn="@string/preference_enable_sound_summary"
+                android:summaryOff="@string/preference_enable_sound_summary"
+                android:defaultValue="true"
+                android:persistent="true"
+                />
+                
+		<PreferenceScreen
+				android:key="controlConfigScreen"
+                android:title="@string/preference_configure_controls"
+                xmlns:replica="http://schemas.android.com/apk/res/com.replica.replicaisland">
+			<CheckBoxPreference
+       			android:key="enableClickAttack"
+                android:title="@string/preference_enable_click_attack"
+                android:summaryOn="@string/preference_enable_click_attack_summary"
+                android:summaryOff="@string/preference_enable_click_attack_summary"
+                android:defaultValue="true"
+                android:persistent="true"
+                />
+                
+            <com.replica.replicaisland.KeyboardConfigDialogPreference
+       			android:key="keyconfig"
+                android:title="@string/preference_key_config"
+                android:summary="@string/preference_key_config_summary"
+                android:dialogLayout="@layout/key_config" 
+                android:dialogTitle="@string/preference_key_config_dialog_title"
+                android:negativeButtonText="@string/preference_key_config_dialog_cancel"
+                android:positiveButtonText="@string/preference_key_config_dialog_ok"
+                replica:leftKey="keyLeft"
+                replica:rightKey="keyRight"
+                replica:jumpKey="keyJump"
+                replica:attackKey="keyAttack"
+                />
+                
+           	<com.replica.replicaisland.SliderPreference
+                android:key="movementSensitivity"
+                android:defaultValue="100"
+                android:title="@string/preference_movement_sensitivity" 
+                android:summary="@string/preference_movement_sensitivity_summary"
+                replica:maxText="@string/preference_movement_max"
+                replica:minText="@string/preference_movement_min" 
+                android:persistent="true"/>     
+                
+            <CheckBoxPreference
+       			android:key="enableScreenControls"
+                android:title="@string/preference_enable_screen_controls"
+                android:summaryOn="@string/preference_enable_screen_controls_summary"
+                android:summaryOff="@string/preference_enable_screen_controls_summary"
+                android:defaultValue="false"
+                android:persistent="true"
+                android:disableDependentsState="true"
+                />
+                  
+            <CheckBoxPreference
+       			android:key="enableTiltControls"
+                android:title="@string/preference_enable_tilt_controls"
+                android:summaryOn="@string/preference_enable_tilt_controls_summary"
+                android:summaryOff="@string/preference_enable_tilt_controls_summary"
+                android:defaultValue="false"
+                android:persistent="true"
+                android:dependency="enableScreenControls"
+                />
+                
+             <com.replica.replicaisland.SliderPreference
+                android:key="tiltSensitivity"
+                android:defaultValue="50"
+                android:title="@string/preference_tilt_sensitivity" 
+                android:summary="@string/preference_tilt_sensitivity_summary"
+                replica:maxText="@string/preference_tilt_max"
+                replica:minText="@string/preference_tilt_min"
+                android:persistent="true"
+                android:dependency="enableTiltControls"/>        
+ 
+        </PreferenceScreen>
+            
+        <CheckBoxPreference
+       			android:key="safeMode"
+                android:title="@string/preference_safe_mode"
+                android:summaryOn="@string/preference_safe_mode_summary"
+                android:summaryOff="@string/preference_safe_mode_summary"
+                android:defaultValue="false"
+                android:persistent="true"
+                />
+                
+    </PreferenceCategory>
+    
+     <PreferenceCategory
+            android:title="@string/preference_save_game">
+            
+       <com.replica.replicaisland.YesNoDialogPreference
+       			android:key="erasegame"
+                android:title="@string/preference_erase_save_game"
+                android:dialogMessage="@string/preference_erase_save_game_dialog" 
+                android:dialogTitle="@string/preference_erase_save_game_dialog_title"
+                android:negativeButtonText="@string/preference_erase_save_game_dialog_cancel"
+                android:positiveButtonText="@string/preference_erase_save_game_dialog_ok"
+                />
+        
+        <CheckBoxPreference
+       			android:key="enableStats"
+                android:title="@string/preference_enable_statistics"
+                android:summaryOn="@string/preference_enable_statistics_summary"
+                android:summaryOff="@string/preference_enable_statistics_summary"
+                android:defaultValue="true"
+                android:persistent="true"
+                />
+                    
+    </PreferenceCategory>
+             
+    
+    <PreferenceCategory
+            android:title="@string/preference_about">
+
+        <PreferenceScreen
+                android:title="@string/preference_visit_site">
+
+            <intent android:action="android.intent.action.VIEW"
+                    android:data="http://replicaisland.net" />
+
+        </PreferenceScreen>
+        
+        <PreferenceScreen
+                android:title="@string/preference_misc">
+            
+            <CheckBoxPreference
+       			android:key="enableDebug"
+                android:title="@string/preference_enable_debug"
+                android:summaryOn="@string/preference_enable_debug_summary"
+                android:summaryOff="@string/preference_enable_debug_summary"
+                android:defaultValue="false"
+                android:persistent="true"
+                />
+                
+	        <Preference
+	                android:title="@string/preference_about_title"
+	                android:summary="@string/preference_about_summary"
+	                android:enabled="false"
+	                android:selectable="false" />
+	                
+	        <Preference
+	                android:title="@string/preference_thanks_title"
+	                android:summary="@string/preference_thanks_summary"
+	                android:enabled="false"
+	                android:selectable="false" />
+	                
+	        <Preference
+	                android:title="@string/preference_licence_title"
+	                android:summary="@string/preference_licence_summary"
+	                android:enabled="false"
+	                android:selectable="false" />
+		</PreferenceScreen>
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

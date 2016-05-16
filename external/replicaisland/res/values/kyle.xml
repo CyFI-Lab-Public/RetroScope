@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!-- Kyle Dialog Entries -->
+
+<string name="Kyle_2_1_1_1">
+Well, well, what have we here?  Some kind of robot?  Looks like Kabocha’s work.  Hmph.  First the maniac releases those annoying blue robots and now this?  He’s too scared to venture out of his little fortified bunker so he makes these hunks of junk do his dirty work for him.  What a coward.
+</string>
+
+<string name="Kyle_2_1_1_2">
+Hey!  Hey you!  Can you even talk?  Hmph, figures.  What a joke.  Kabocha’s “inventions” are truly pathetic.  It’s no wonder he hasn’t found The Source in 50 years--the man sets a new bar for incompetence.
+</string>
+
+<string name="Kyle_2_1_1_3">
+Tell you what, grease ball.  You stay out of my way and I might not send your shiny green posterior into outer orbit.  My name’s Kyle, and I am the best of the best.  One false move and I’ll hit you so hard your code will run in reverse.
+</string>
+
+<string name="Kyle_3_8_1_1">
+Didn’t think I’d be seeing you again.  Can’t you take a hint, you bumbling bundle of bolts?  I was right about you--you’re a little Kabocha spy, aren’t you.
+</string>
+
+<string name="Kyle_3_8_1_2">
+Look, last time I didn’t really put my heart into it.  I pulled my punches because frankly, I didn’t think it would take a full-strength hit to bring you down.  It’s surprising that you survived, but even more inconceivable that you didn’t just turn around and go home.  You’re just <i>asking</i> to be flattened, aren’t you.
+</string>
+
+<string name="Kyle_3_8_1_3">
+Hmph.  Tell you what, I’ll give you a chance to prove you’re worth more than scrap metal.  <b>Race me to the next gem.</b>  If you get it first, I’ll let you off easy.  If I get there first, I’m going to reduce you to a smoldering crater.  No pulling punches this time.
+</string>
+
+<string name="Kyle_3_8_2_1">
+Not bad for amateur hour.  I was going to go ahead and obliterate you anyway, but on second thought a deal is a deal.  I guess I’ll let you stumble about for a while longer before I reduce you to your principal elements.  More fun that way.
+</string>
+
+<string name="Kyle_2_3_1_1">
+You know what your problem is?  You can’t <i>think</i>.  You can’t reason.  You can’t decide.  All you can do is execute your little program, follow the breadcrumbs Kabocha has left for you.  Your brain is a <i>routine</i>: just stimulus, response, stimulus, response.  Every possible thought you could ever have has been predetermined.
+</string>
+
+<string name="Kyle_2_3_1_2">
+Which is why you’re never going to get anywhere on this island.  This place is the very antithesis of determinism.  It’s random, crazy.  The Source doesn’t just copy things it’s touched, it combines them, mutates them, twists them.  There’s no consistency, no pattern, no algorithm.  It just <i>is</i>.
+</string>
+
+<string name="Kyle_2_3_1_3">
+You’re screwed.  Mr. Rokudou sends people like Wanda and me to search for The Source because he knows no machine could ever survive for long on this island.  We can make split-second decisions, alter our perspectives, deal with problems we’ve never seen before.  All the logic boards, solid state memory, and neural networks in the world can’t help you do that.  You’ve lost before you even started.
+</string>
+
+<string name="Kyle_3_9_1_1">
+You never learn, do you?  It’s pointless.  You cannot beat Mr. Rokudou.  He has infinite resources--even the puny little array of logic gates you call a brain should be able to understand that.  Face it, Kabocha is a has-been and you don’t stand a chance down here.  I should just smash your central processor now and put you out of your misery.
+</string>
+
+<string name="Kyle_3_9_1_2">
+Stay out of my way.  If I see you again I swear I am going to turn you inside out and set fire to your internals.
+</string>
+
+<string name="Kyle_3_4_1_1">
+You followed us down here, didn’t you?  You slimy, spying little bucket of transistors.  We do all the work and you just tag along, is that how it is?  Mr. Rokudou takes all the risk and Kabocha just rides on his coattails, all the way to The Source?  You’re even more pathetic than I thought.
+</string>
+
+<string name="Kyle_3_4_1_2">
+Look, I’ve had about enough of you and your little punk tricks.  If Kabocha wants The Source he’s going to have to come down here and get it himself.  No stupid little robot is going to stand in my way.
+</string>
+
+<string name="Kyle_3_10_1_1">
+I warned you, you over-complicated washing machine.  I told you not to cross my path again, and yet here you are.  That’s it, I’m done wasting my time with this crap.
+</string>
+
+<string name="Kyle_2_4_1_1">
+Still kicking, huh?  I guess Kabocha really went all out on your design--you’re a lot more sophisticated than his earlier attempts.  He’s a lunatic, you know.  Mr. Rokudou says that he lost it years ago.  Kabocha is obsessed with this delusional idea that Rokudou Corp. somehow snubbed him way back in the day.  It’s all fiction, of course; he’s been here so long The Source has probably taken its toll on his psyche.  Still, you’re proof that at least part of his senile brain is still operating.
+</string>
+
+<string name="Kyle_2_4_1_2">
+Don’t get too comfortable, though.  I meant what I said before: you get in our way and I’ll take you apart.  We’re here to find The Source for Mr. Rokudou, and we’re not going to fail.
+</string>
+
+
+<string name="Kyle_2_5_1_1">
+Look, sorry if I was a little harsh with you back there.  I don’t trust Kabocha and I don’t trust robots.  Still, you seem pretty innocent.  Does Kabocha really force you to collect pearls to keep operating?  I told you he was crazy.
+</string>
+
+<string name="Kyle_2_5_1_2">
+Anyway, tell you what.  You stay out of my way and I’ll try to keep my cool, alright?  You make me nervous and I tend to lash out when I’m nervous.  I punched a teacher once for making me stand up in front of the class, you know?  It’s not my favorite personality trait, but when my blood gets going there’s not much I can do to cool down.  It’s probably best if you just avoid me.  <small>We’re going to find The Source first anyway, ha!</small>
+</string>
+
+<string name="Kyle_2_7_1_1">
+Mr. Rokudou is a genius, you know?  He built Rokudou Corp. from the ground up to find and capture The Source.  He’s sent teams here periodically since the ’50s.  They all failed, of course, but as technology has improved some of them actually made it back alive.  
+</string>
+
+<string name="Kyle_2_7_1_2">
+And in the mean time Mr. Rokudou spread out into charity, fast food chains, and even expensive wine.  Rokudou Corp. is now one of the world’s top multinational corporations.
+</string>
+
+<string name="Kyle_2_7_1_3">
+Of course, finding The Source once and for all will cement his position as the single most powerful man in the world.  He’s a man with brains and morals, someone we can trust.  That’s why we have to find The Source before some lunatic like Kabocha does.  For all we know he wants to start the next world war.
+</string>
+
+
+<string name="Kyle_2_8_1_1">
+You’re lucky you caught up to me when I’m in a good mood.  Five minutes ago I would have cracked open your top and spit on your insides, but right now I’ve got more important things to think about.  Wanda just told me we’ve found the entrance.
+</string>
+
+
+<string name="Kyle_2_8_1_2">
+There’s a whole structure below us, underground.  Looks man-made, though of course it’s not.  We can see it on the GPR but we’ve been looking all over for a way in.  Some old notebooks we found talked about an entrance to a sewer system, and that’s what the radar seems to suggest too.  Now we can actually go down there and see it.
+</string>
+
+
+<string name="Kyle_2_8_1_3">
+We’re closing in on The Source!  I think it’s an artifact from an ancient civilization; something based on knowledge that humanity lost a long time ago.  We’ll find out soon enough.  Good luck catching up to us now, robot!
+</string>
+
+
+<string name="Kyle_2_9_1_1">
+You’re pushing your luck, robot.  Keep following me and I’ll start thinking you’re a spy.
+</string>
+
+<string name="Kyle_2_9_1_2">
+The sewer entrance is just ahead.  We’re getting ready to make the initial descent.  My advice to you: stay up here where your chances of getting smashed are slim.  We don’t know what we’re going to find down there, but it’s probably not going to be pretty.
+</string>
+
+<string name="Kyle_2_9_1_3">
+Oh, pardon me, I forgot.  You can’t make decisions because you’re just a box of wires and electrical tape.  Well, in that case, go ahead and follow your little procedures.  If I see you down there, though, I’ll smash you myself.
+</string>
+
+
+</resources>

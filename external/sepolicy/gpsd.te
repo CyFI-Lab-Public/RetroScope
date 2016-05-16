@@ -1,0 +1,12 @@
+# gpsd - GPS daemon
+type gpsd, domain;
+permissive gpsd;
+type gpsd_exec, exec_type, file_type;
+
+init_daemon_domain(gpsd)
+net_domain(gpsd)
+unconfined_domain(gpsd)
+# Socket is created by the daemon, not by init, and under /data/gps,
+# not under /dev/socket.
+type_transition gpsd gps_data_file:sock_file gps_socket;
+

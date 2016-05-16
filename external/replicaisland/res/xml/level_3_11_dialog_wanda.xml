@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog>
+<conversation>
+
+<page
+  image="@drawable/wanda_surprised"
+  text = "@string/Wanda_3_11_1_1" 
+  title = "@string/Wanda"
+/>
+
+
+</conversation>
+
+<conversation>
+<page
+  image="@drawable/wanda_surprised"
+  text = "@string/Wanda_3_11_2_1" 
+  title = "@string/Wanda"
+/>
+
+</conversation>
+
+</dialog>

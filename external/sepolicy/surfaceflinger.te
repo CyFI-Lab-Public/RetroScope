@@ -1,0 +1,10 @@
+# surfaceflinger - display compositor service
+type surfaceflinger, domain;
+permissive surfaceflinger;
+type surfaceflinger_exec, exec_type, file_type;
+
+init_daemon_domain(surfaceflinger)
+unconfined_domain(surfaceflinger)
+
+# Talk to init over the property socket.
+unix_socket_connect(surfaceflinger, property, init)

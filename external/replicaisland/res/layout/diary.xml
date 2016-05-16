@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout 
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent" 
+  android:background="#FFFFFF"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  
+       
+   <ImageView 
+    			android:id="@+id/diarybackground"
+			    android:src="@drawable/background_diary"
+			    android:adjustViewBounds="true"
+			    android:gravity="center_vertical"
+			    android:layout_width="fill_parent" 
+   				android:layout_height="fill_parent" 
+   				android:clickable="false"
+   				fadingEdge="0x00002000"
+   				android:scaleType="fitXY"
+   				
+			 />
+	  <ScrollView
+	           android:layout_width="fill_parent"
+	           android:layout_height="fill_parent">
+	        <LinearLayout
+	        	android:layout_width="fill_parent"
+	           	android:layout_height="fill_parent"
+	           	android:orientation="vertical">
+				<TextView
+					android:id="@+id/diarytext"
+				    android:layout_width="fill_parent"
+				    android:textSize = "17sp"
+				    android:textColor = "#000000"
+				    android:singleLine="false" 
+				    android:scrollbars="vertical"
+				    android:layout_height="wrap_content"
+				    android:clickable="true"
+				    android:text="@string/cd_blah"
+				    android:paddingLeft="15dp" 
+				    android:paddingRight="15dp" 
+				    android:paddingTop="15dp"/>
+				<ImageView 
+	    			android:id="@+id/ok"
+				    android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+				    android:clickable="true"
+				    android:layout_gravity="right" 
+				    android:layout_marginRight="30dp"
+				    android:layout_marginBottom="20dp"/>
+			</LinearLayout>
+	</ScrollView>		
+</FrameLayout>

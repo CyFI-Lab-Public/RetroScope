@@ -1,0 +1,13 @@
+###
+### Apps signed with the release key (testkey in AOSP).
+###
+
+type release_app, domain;
+permissive release_app;
+app_domain(release_app)
+platform_app_domain(release_app)
+# Access the network.
+net_domain(release_app)
+# Access bluetooth.
+bluetooth_domain(release_app)
+unconfined_domain(release_app)

@@ -1,0 +1,2534 @@
+
+Create Recognizer:
+    InitSession()
+    SR_RecognizerCreate()
+    SR_RecognizerSetup()
+Create vocabulary object and associate with grammar:
+    SR_VocabularyLoad()
+    SR_VocabularyGetLanguage()
+Start a new log session:
+    SR_RecognizerLogSessionStart()
+Recognize:
+    SR_NametagsCreate()
+Grammar Loaded
+D: dallas/0000/S072.nwf
+C: oh eight four zero nine two five one eight five
+Sem (1):  invocab=1
+S: 453
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'oh eight four zero nine two five one eight five'
+LITERAL[ 0]      : 'oh eight four nine two five one eight five'
+MEANING[ 0]      : '084925185'
+CONFIDENCE VALUE : '453'
+RAW SCORE[ 0]    : '44626'
+
+LITERAL[ 1]      : 'five four nine two five one eight five'
+MEANING[ 1]      : '54925185'
+CONFIDENCE VALUE : '195'
+RAW SCORE[ 1]    : '44790'
+
+LITERAL[ 2]      : 'oh eight four nine two five one eight five oh'
+MEANING[ 2]      : '0849251850'
+CONFIDENCE VALUE : '68'
+RAW SCORE[ 2]    : '44836'
+
+LITERAL[ 3]      : 'oh eight four nine two five one five'
+MEANING[ 3]      : '08492515'
+CONFIDENCE VALUE : '28'
+RAW SCORE[ 3]    : '44848'
+
+LITERAL[ 4]      : 'oh eight four oh nine two five one eight five'
+MEANING[ 4]      : '0840925185'
+CONFIDENCE VALUE : '10'
+RAW SCORE[ 4]    : '44861'
+
+LITERAL[ 5]      : 'oh oh eight four nine two five one eight five'
+MEANING[ 5]      : '0084925185'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 5]    : '44863'
+
+LITERAL[ 6]      : 'oh eight four nine two five one two five'
+MEANING[ 6]      : '084925125'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 6]    : '44865'
+
+LITERAL[ 7]      : 'oh eight four nine two five four eight five'
+MEANING[ 7]      : '084925485'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '44892'
+
+LITERAL[ 8]      : 'oh eight one nine two five one eight five'
+MEANING[ 8]      : '081925185'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '44893'
+
+LITERAL[ 9]      : 'oh eight four eight nine two five one eight five'
+MEANING[ 9]      : '0848925185'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '44905'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0000/S074.nwf
+C: eight six one oh five six six two six two
+Sem (1):  invocab=1
+S: 289
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'eight six one oh five six six two six two'
+LITERAL[ 0]      : 'eight eight nine five eight eight two eight four'
+MEANING[ 0]      : '889588284'
+CONFIDENCE VALUE : '289'
+RAW SCORE[ 0]    : '39091'
+
+LITERAL[ 1]      : 'eight eight one five eight eight two eight four'
+MEANING[ 1]      : '881588284'
+CONFIDENCE VALUE : '82'
+RAW SCORE[ 1]    : '39126'
+
+LITERAL[ 2]      : 'eight eight five five eight eight two eight four'
+MEANING[ 2]      : '885588284'
+CONFIDENCE VALUE : '23'
+RAW SCORE[ 2]    : '39132'
+
+LITERAL[ 3]      : 'eight eight nine five eight eight two eight two'
+MEANING[ 3]      : '889588282'
+CONFIDENCE VALUE : '6'
+RAW SCORE[ 3]    : '39173'
+
+LITERAL[ 4]      : 'eight eight nine five eight eight six eight four'
+MEANING[ 4]      : '889588684'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 4]    : '39174'
+
+LITERAL[ 5]      : 'eight eight nine nine eight eight two eight four'
+MEANING[ 5]      : '889988284'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 5]    : '39191'
+
+LITERAL[ 6]      : 'eight eight nine five eight eight three eight four'
+MEANING[ 6]      : '889588384'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 6]    : '39204'
+
+LITERAL[ 7]      : 'eight eight one five eight eight two eight two'
+MEANING[ 7]      : '881588282'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '39208'
+
+LITERAL[ 8]      : 'eight eight one five eight eight six eight four'
+MEANING[ 8]      : '881588684'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '39209'
+
+LITERAL[ 9]      : 'eight eight five five eight eight two eight two'
+MEANING[ 9]      : '885588282'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '39214'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0000/S075.nwf
+C: zero seven six five nine oh zero two five two
+Sem (1):  invocab=1
+S: 376
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'zero seven six five nine oh zero two five two'
+LITERAL[ 0]      : 'zero seven six five nine oh zero two five two'
+MEANING[ 0]      : '0765900252'
+CONFIDENCE VALUE : '376'
+RAW SCORE[ 0]    : '44688'
+
+LITERAL[ 1]      : 'zero seven seven five nine oh zero two five two'
+MEANING[ 1]      : '0775900252'
+CONFIDENCE VALUE : '143'
+RAW SCORE[ 1]    : '44699'
+
+LITERAL[ 2]      : 'zero five six five nine oh zero two five two'
+MEANING[ 2]      : '0565900252'
+CONFIDENCE VALUE : '55'
+RAW SCORE[ 2]    : '44739'
+
+LITERAL[ 3]      : 'zero five seven five nine oh zero two five two'
+MEANING[ 3]      : '0575900252'
+CONFIDENCE VALUE : '21'
+RAW SCORE[ 3]    : '44750'
+
+LITERAL[ 4]      : 'zero seven six five nine nine zero two five two'
+MEANING[ 4]      : '0765990252'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 4]    : '44828'
+
+LITERAL[ 5]      : 'zero seven seven five nine nine zero two five two'
+MEANING[ 5]      : '0775990252'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 5]    : '44839'
+
+LITERAL[ 6]      : 'zero five six five nine nine zero two five two'
+MEANING[ 6]      : '0565990252'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 6]    : '44879'
+
+LITERAL[ 7]      : 'zero five seven five nine nine zero two five two'
+MEANING[ 7]      : '0575990252'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '44890'
+
+LITERAL[ 8]      : 'zero seven six five nine oh zero two five oh two'
+MEANING[ 8]      : '07659002502'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '44914'
+
+LITERAL[ 9]      : 'zero seven seven five nine oh zero two five oh two'
+MEANING[ 9]      : '07759002502'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '44925'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0000/S076.nwf
+C: five zero two seven four nine three three zero zero
+Sem (1):  invocab=1
+S: 392
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'five zero two seven four nine three three zero zero'
+LITERAL[ 0]      : 'five zero two seven four nine three three zero zero'
+MEANING[ 0]      : '5027493300'
+CONFIDENCE VALUE : '392'
+RAW SCORE[ 0]    : '33178'
+
+LITERAL[ 1]      : 'five zero two seven four nine three three three zero'
+MEANING[ 1]      : '5027493330'
+CONFIDENCE VALUE : '150'
+RAW SCORE[ 1]    : '33224'
+
+LITERAL[ 2]      : 'oh zero two seven four nine three three zero zero'
+MEANING[ 2]      : '0027493300'
+CONFIDENCE VALUE : '55'
+RAW SCORE[ 2]    : '33254'
+
+LITERAL[ 3]      : 'five zero two seven four nine three three two zero'
+MEANING[ 3]      : '5027493320'
+CONFIDENCE VALUE : '21'
+RAW SCORE[ 3]    : '33269'
+
+LITERAL[ 4]      : 'oh zero two seven four nine three three three zero'
+MEANING[ 4]      : '0027493330'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 4]    : '33300'
+
+LITERAL[ 5]      : 'nine zero two seven four nine three three zero zero'
+MEANING[ 5]      : '9027493300'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 5]    : '33324'
+
+LITERAL[ 6]      : 'five zero two seven four five three three zero zero'
+MEANING[ 6]      : '5027453300'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 6]    : '33332'
+
+LITERAL[ 7]      : 'five zero two seven four nine three three seven zero'
+MEANING[ 7]      : '5027493370'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '33342'
+
+LITERAL[ 8]      : 'oh zero two seven four nine three three two zero'
+MEANING[ 8]      : '0027493320'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '33345'
+
+LITERAL[ 9]      : 'nine zero two seven four nine three three three zero'
+MEANING[ 9]      : '9027493330'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '33370'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0000/S077.nwf
+C: six nine five zero two eight seven seven three six
+Sem (1):  invocab=1
+S: 493
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'six nine five zero two eight seven seven three six'
+LITERAL[ 0]      : 'six nine five zero two eight seven seven'
+MEANING[ 0]      : '69502877'
+CONFIDENCE VALUE : '493'
+RAW SCORE[ 0]    : '31833'
+
+LITERAL[ 1]      : 'six nine five zero two eight seven oh three'
+MEANING[ 1]      : '695028703'
+CONFIDENCE VALUE : '241'
+RAW SCORE[ 1]    : '31843'
+
+LITERAL[ 2]      : 'six nine five zero two eight seven seven three'
+MEANING[ 2]      : '695028773'
+CONFIDENCE VALUE : '119'
+RAW SCORE[ 2]    : '31862'
+
+LITERAL[ 3]      : 'six nine five zero two eight seven oh'
+MEANING[ 3]      : '69502870'
+CONFIDENCE VALUE : '56'
+RAW SCORE[ 3]    : '31908'
+
+LITERAL[ 4]      : 'six nine five zero two eight seven seven four'
+MEANING[ 4]      : '695028774'
+CONFIDENCE VALUE : '25'
+RAW SCORE[ 4]    : '31922'
+
+LITERAL[ 5]      : 'six nine five zero two eight seven seven five'
+MEANING[ 5]      : '695028775'
+CONFIDENCE VALUE : '11'
+RAW SCORE[ 5]    : '31933'
+
+LITERAL[ 6]      : 'six nine five zero two eight seven five'
+MEANING[ 6]      : '69502875'
+CONFIDENCE VALUE : '5'
+RAW SCORE[ 6]    : '31945'
+
+LITERAL[ 7]      : 'six nine five zero two eight seven five three'
+MEANING[ 7]      : '695028753'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 7]    : '31963'
+
+LITERAL[ 8]      : 'six nine five zero two eight seven oh three four'
+MEANING[ 8]      : '6950287034'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 8]    : '31971'
+
+LITERAL[ 9]      : 'six nine five zero two eight seven oh three five'
+MEANING[ 9]      : '6950287035'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '31982'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0000/S079.nwf
+C: seven one one five six zero oh six five nine
+Sem (1):  invocab=1
+S: 445
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'seven one one five six zero oh six five nine'
+LITERAL[ 0]      : 'seven one one five six zero oh six five nine'
+MEANING[ 0]      : '7115600659'
+CONFIDENCE VALUE : '445'
+RAW SCORE[ 0]    : '34104'
+
+LITERAL[ 1]      : 'seven one one five zero oh six five nine'
+MEANING[ 1]      : '711500659'
+CONFIDENCE VALUE : '195'
+RAW SCORE[ 1]    : '34159'
+
+LITERAL[ 2]      : 'oh one five six zero oh six five nine'
+MEANING[ 2]      : '015600659'
+CONFIDENCE VALUE : '82'
+RAW SCORE[ 2]    : '34193'
+
+LITERAL[ 3]      : 'seven oh one five six zero oh six five nine'
+MEANING[ 3]      : '7015600659'
+CONFIDENCE VALUE : '34'
+RAW SCORE[ 3]    : '34201'
+
+LITERAL[ 4]      : 'five one one five six zero oh six five nine'
+MEANING[ 4]      : '5115600659'
+CONFIDENCE VALUE : '14'
+RAW SCORE[ 4]    : '34212'
+
+LITERAL[ 5]      : 'seven one one five eight zero oh six five nine'
+MEANING[ 5]      : '7115800659'
+CONFIDENCE VALUE : '6'
+RAW SCORE[ 5]    : '34234'
+
+LITERAL[ 6]      : 'oh one one five six zero oh six five nine'
+MEANING[ 6]      : '0115600659'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 6]    : '34238'
+
+LITERAL[ 7]      : 'seven one one five four zero oh six five nine'
+MEANING[ 7]      : '7115400659'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 7]    : '34238'
+
+LITERAL[ 8]      : 'five oh one five six zero oh six five nine'
+MEANING[ 8]      : '5015600659'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '34240'
+
+LITERAL[ 9]      : 'oh one five zero oh six five nine'
+MEANING[ 9]      : '01500659'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '34248'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0000/S080.nwf
+C: seven oh three seven nine zero six eight five seven
+Sem (1):  invocab=1
+S: 398
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'seven oh three seven nine zero six eight five seven'
+LITERAL[ 0]      : 'oh three seven nine zero six eight five seven'
+MEANING[ 0]      : '037906857'
+CONFIDENCE VALUE : '398'
+RAW SCORE[ 0]    : '31428'
+
+LITERAL[ 1]      : 'seven oh three seven nine zero six eight five seven'
+MEANING[ 1]      : '7037906857'
+CONFIDENCE VALUE : '161'
+RAW SCORE[ 1]    : '31440'
+
+LITERAL[ 2]      : 'five three seven nine zero six eight five seven'
+MEANING[ 2]      : '537906857'
+CONFIDENCE VALUE : '66'
+RAW SCORE[ 2]    : '31482'
+
+LITERAL[ 3]      : 'nine three seven nine zero six eight five seven'
+MEANING[ 3]      : '937906857'
+CONFIDENCE VALUE : '26'
+RAW SCORE[ 3]    : '31524'
+
+LITERAL[ 4]      : 'oh oh three seven nine zero six eight five seven'
+MEANING[ 4]      : '0037906857'
+CONFIDENCE VALUE : '10'
+RAW SCORE[ 4]    : '31558'
+
+LITERAL[ 5]      : 'oh three seven nine zero six two five seven'
+MEANING[ 5]      : '037906257'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 5]    : '31572'
+
+LITERAL[ 6]      : 'oh three seven nine zero six six five seven'
+MEANING[ 6]      : '037906657'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 6]    : '31573'
+
+LITERAL[ 7]      : 'five oh three seven nine zero six eight five seven'
+MEANING[ 7]      : '5037906857'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '31583'
+
+LITERAL[ 8]      : 'seven oh three seven nine zero six two five seven'
+MEANING[ 8]      : '7037906257'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '31584'
+
+LITERAL[ 9]      : 'seven oh three seven nine zero six six five seven'
+MEANING[ 9]      : '7037906657'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '31585'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0000/S083.nwf
+C: zero nine nine five seven two oh one zero six
+Sem (1):  invocab=1
+S: 477
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'zero nine nine five seven two oh one zero six'
+LITERAL[ 0]      : 'zero nine nine five seven two oh one zero six'
+MEANING[ 0]      : '0995720106'
+CONFIDENCE VALUE : '477'
+RAW SCORE[ 0]    : '32352'
+
+LITERAL[ 1]      : 'zero nine nine five seven two one zero six'
+MEANING[ 1]      : '099572106'
+CONFIDENCE VALUE : '221'
+RAW SCORE[ 1]    : '32432'
+
+LITERAL[ 2]      : 'zero nine five seven two oh one zero six'
+MEANING[ 2]      : '095720106'
+CONFIDENCE VALUE : '106'
+RAW SCORE[ 2]    : '32437'
+
+LITERAL[ 3]      : 'zero nine nine five seven zero one zero six'
+MEANING[ 3]      : '099570106'
+CONFIDENCE VALUE : '49'
+RAW SCORE[ 3]    : '32486'
+
+LITERAL[ 4]      : 'zero nine five seven two one zero six'
+MEANING[ 4]      : '09572106'
+CONFIDENCE VALUE : '23'
+RAW SCORE[ 4]    : '32517'
+
+LITERAL[ 5]      : 'seven nine five seven two oh one zero six'
+MEANING[ 5]      : '795720106'
+CONFIDENCE VALUE : '10'
+RAW SCORE[ 5]    : '32522'
+
+LITERAL[ 6]      : 'zero nine nine five seven two oh one zero seven'
+MEANING[ 6]      : '0995720107'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 6]    : '32565'
+
+LITERAL[ 7]      : 'zero nine five seven zero one zero six'
+MEANING[ 7]      : '09570106'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 7]    : '32571'
+
+LITERAL[ 8]      : 'zero nine nine nine seven two oh one zero six'
+MEANING[ 8]      : '0999720106'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '32575'
+
+LITERAL[ 9]      : 'zero nine nine five seven two oh one zero six oh'
+MEANING[ 9]      : '09957201060'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '32579'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0000/S086.nwf
+C: six eight seven two one oh eight five zero seven
+Sem (1):  invocab=1
+S: 556
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'six eight seven two one oh eight five zero seven'
+LITERAL[ 0]      : 'six eight seven two one oh eight five zero seven'
+MEANING[ 0]      : '6872108507'
+CONFIDENCE VALUE : '556'
+RAW SCORE[ 0]    : '33085'
+
+LITERAL[ 1]      : 'six six seven two one oh eight five zero seven'
+MEANING[ 1]      : '6672108507'
+CONFIDENCE VALUE : '280'
+RAW SCORE[ 1]    : '33265'
+
+LITERAL[ 2]      : 'six eight seven oh two one oh eight five zero seven'
+MEANING[ 2]      : '68702108507'
+CONFIDENCE VALUE : '136'
+RAW SCORE[ 2]    : '33300'
+
+LITERAL[ 3]      : 'six eight seven two one oh eight five zero seven oh'
+MEANING[ 3]      : '68721085070'
+CONFIDENCE VALUE : '65'
+RAW SCORE[ 3]    : '33303'
+
+LITERAL[ 4]      : 'oh six eight seven two one oh eight five zero seven'
+MEANING[ 4]      : '06872108507'
+CONFIDENCE VALUE : '37'
+RAW SCORE[ 4]    : '33326'
+
+LITERAL[ 5]      : 'six six seven oh two one oh eight five zero seven'
+MEANING[ 5]      : '66702108507'
+CONFIDENCE VALUE : '18'
+RAW SCORE[ 5]    : '33480'
+
+LITERAL[ 6]      : 'six six seven two one oh eight five zero seven oh'
+MEANING[ 6]      : '66721085070'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 6]    : '33483'
+
+LITERAL[ 7]      : 'oh six six seven two one oh eight five zero seven'
+MEANING[ 7]      : '06672108507'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 7]    : '33506'
+
+LITERAL[ 8]      : 'six eight seven oh two one oh eight five zero seven oh'
+MEANING[ 8]      : '687021085070'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 8]    : '33518'
+
+LITERAL[ 9]      : 'oh six eight seven oh two one oh eight five zero seven'
+MEANING[ 9]      : '068702108507'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '33541'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0000/S088.nwf
+C: four two zero eight five nine oh nine four zero
+Sem (1):  invocab=1
+S: 490
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'four two zero eight five nine oh nine four zero'
+LITERAL[ 0]      : 'four two zero eight five nine oh nine four zero'
+MEANING[ 0]      : '4208590940'
+CONFIDENCE VALUE : '490'
+RAW SCORE[ 0]    : '34801'
+
+LITERAL[ 1]      : 'four two zero oh eight five nine oh nine four zero'
+MEANING[ 1]      : '42008590940'
+CONFIDENCE VALUE : '218'
+RAW SCORE[ 1]    : '34961'
+
+LITERAL[ 2]      : 'four two zero eight five nine one oh nine four zero'
+MEANING[ 2]      : '42085910940'
+CONFIDENCE VALUE : '97'
+RAW SCORE[ 2]    : '34989'
+
+LITERAL[ 3]      : 'four two zero eight five nine oh oh nine four zero'
+MEANING[ 3]      : '42085900940'
+CONFIDENCE VALUE : '41'
+RAW SCORE[ 3]    : '35033'
+
+LITERAL[ 4]      : 'four two zero eight five nine two oh nine four zero'
+MEANING[ 4]      : '42085920940'
+CONFIDENCE VALUE : '17'
+RAW SCORE[ 4]    : '35035'
+
+LITERAL[ 5]      : 'four two zero eight five nine eight oh nine four zero'
+MEANING[ 5]      : '42085980940'
+CONFIDENCE VALUE : '7'
+RAW SCORE[ 5]    : '35038'
+
+LITERAL[ 6]      : 'oh four two zero eight five nine oh nine four zero'
+MEANING[ 6]      : '04208590940'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 6]    : '35044'
+
+LITERAL[ 7]      : 'four two zero eight five five oh nine four zero'
+MEANING[ 7]      : '4208550940'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 7]    : '35081'
+
+LITERAL[ 8]      : 'four two zero eight five nine oh nine four zero oh'
+MEANING[ 8]      : '42085909400'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '35089'
+
+LITERAL[ 9]      : 'one two zero eight five nine oh nine four zero'
+MEANING[ 9]      : '1208590940'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '35090'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0300/S052.nwf
+C: zero seven nine five two five seven six nine eight
+Sem (1):  invocab=1
+S: 628
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'zero seven nine five two five seven six nine eight'
+LITERAL[ 0]      : 'zero seven nine five two five seven six nine eight'
+MEANING[ 0]      : '0795257698'
+CONFIDENCE VALUE : '628'
+RAW SCORE[ 0]    : '71731'
+
+LITERAL[ 1]      : 'zero seven nine five two five seven oh six nine eight'
+MEANING[ 1]      : '07952570698'
+CONFIDENCE VALUE : '340'
+RAW SCORE[ 1]    : '71975'
+
+LITERAL[ 2]      : 'zero seven nine five oh two five seven six nine eight'
+MEANING[ 2]      : '07950257698'
+CONFIDENCE VALUE : '184'
+RAW SCORE[ 2]    : '71980'
+
+LITERAL[ 3]      : 'zero seven nine oh five two five seven six nine eight'
+MEANING[ 3]      : '07905257698'
+CONFIDENCE VALUE : '103'
+RAW SCORE[ 3]    : '71981'
+
+LITERAL[ 4]      : 'oh zero seven nine five two five seven six nine eight'
+MEANING[ 4]      : '00795257698'
+CONFIDENCE VALUE : '59'
+RAW SCORE[ 4]    : '71990'
+
+LITERAL[ 5]      : 'zero seven nine five two five seven six oh nine eight'
+MEANING[ 5]      : '07952576098'
+CONFIDENCE VALUE : '33'
+RAW SCORE[ 5]    : '72040'
+
+LITERAL[ 6]      : 'two zero seven nine five two five seven six nine eight'
+MEANING[ 6]      : '20795257698'
+CONFIDENCE VALUE : '19'
+RAW SCORE[ 6]    : '72064'
+
+LITERAL[ 7]      : 'zero seven nine five two five seven six eight nine eight'
+MEANING[ 7]      : '07952576898'
+CONFIDENCE VALUE : '11'
+RAW SCORE[ 7]    : '72074'
+
+LITERAL[ 8]      : 'zero seven nine five oh two five seven oh six nine eight'
+MEANING[ 8]      : '079502570698'
+CONFIDENCE VALUE : '6'
+RAW SCORE[ 8]    : '72224'
+
+LITERAL[ 9]      : 'oh zero seven nine five two five seven oh six nine eight'
+MEANING[ 9]      : '007952570698'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 9]    : '72234'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0300/S053.nwf
+C: eight three five seven nine zero three five two oh
+Sem (1):  invocab=1
+S: 567
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'eight three five seven nine zero three five two oh'
+LITERAL[ 0]      : 'eight three five seven nine zero three five two oh'
+MEANING[ 0]      : '8357903520'
+CONFIDENCE VALUE : '567'
+RAW SCORE[ 0]    : '57698'
+
+LITERAL[ 1]      : 'oh eight three five seven nine zero three five two oh'
+MEANING[ 1]      : '08357903520'
+CONFIDENCE VALUE : '304'
+RAW SCORE[ 1]    : '57770'
+
+LITERAL[ 2]      : 'eight three five seven nine zero three five two oh two'
+MEANING[ 2]      : '83579035202'
+CONFIDENCE VALUE : '147'
+RAW SCORE[ 2]    : '57854'
+
+LITERAL[ 3]      : 'four eight three five seven nine zero three five two oh'
+MEANING[ 3]      : '48357903520'
+CONFIDENCE VALUE : '73'
+RAW SCORE[ 3]    : '57861'
+
+LITERAL[ 4]      : 'nine eight three five seven nine zero three five two oh'
+MEANING[ 4]      : '98357903520'
+CONFIDENCE VALUE : '36'
+RAW SCORE[ 4]    : '57868'
+
+LITERAL[ 5]      : 'eight three five seven nine zero three five two oh oh'
+MEANING[ 5]      : '83579035200'
+CONFIDENCE VALUE : '18'
+RAW SCORE[ 5]    : '57869'
+
+LITERAL[ 6]      : 'one eight three five seven nine zero three five two oh'
+MEANING[ 6]      : '18357903520'
+CONFIDENCE VALUE : '9'
+RAW SCORE[ 6]    : '57893'
+
+LITERAL[ 7]      : 'oh eight three five seven nine zero three five two oh two'
+MEANING[ 7]      : '083579035202'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 7]    : '57926'
+
+LITERAL[ 8]      : 'eight oh three five seven nine zero three five two oh'
+MEANING[ 8]      : '80357903520'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 8]    : '57935'
+
+LITERAL[ 9]      : 'nine oh eight three five seven nine zero three five two oh'
+MEANING[ 9]      : '908357903520'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 9]    : '57940'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0300/S057.nwf
+C: eight four zero five six five four one four six
+Sem (1):  invocab=1
+S: 619
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'eight four zero five six five four one four six'
+LITERAL[ 0]      : 'eight four zero five six five four one four six'
+MEANING[ 0]      : '8405654146'
+CONFIDENCE VALUE : '619'
+RAW SCORE[ 0]    : '52886'
+
+LITERAL[ 1]      : 'oh eight four zero five six five four one four six'
+MEANING[ 1]      : '08405654146'
+CONFIDENCE VALUE : '333'
+RAW SCORE[ 1]    : '53115'
+
+LITERAL[ 2]      : 'eight four zero five six five four one oh four six'
+MEANING[ 2]      : '84056541046'
+CONFIDENCE VALUE : '178'
+RAW SCORE[ 2]    : '53115'
+
+LITERAL[ 3]      : 'eight four zero five six five oh four one four six'
+MEANING[ 3]      : '84056504146'
+CONFIDENCE VALUE : '96'
+RAW SCORE[ 3]    : '53120'
+
+LITERAL[ 4]      : 'eight four zero five six five four one four six oh'
+MEANING[ 4]      : '84056541460'
+CONFIDENCE VALUE : '51'
+RAW SCORE[ 4]    : '53122'
+
+LITERAL[ 5]      : 'eight four zero oh five six five four one four six'
+MEANING[ 5]      : '84005654146'
+CONFIDENCE VALUE : '28'
+RAW SCORE[ 5]    : '53138'
+
+LITERAL[ 6]      : 'eight four zero five six five four one one six'
+MEANING[ 6]      : '8405654116'
+CONFIDENCE VALUE : '15'
+RAW SCORE[ 6]    : '53174'
+
+LITERAL[ 7]      : 'eight four zero five six five four one nine four six'
+MEANING[ 7]      : '84056541946'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 7]    : '53191'
+
+LITERAL[ 8]      : 'eight four zero five six five four one four six two'
+MEANING[ 8]      : '84056541462'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 8]    : '53191'
+
+LITERAL[ 9]      : 'two eight four zero five six five four one four six'
+MEANING[ 9]      : '28405654146'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 9]    : '53215'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0300/S063.nwf
+C: oh nine seven three one three zero five five zero
+Sem (1):  invocab=1
+S: 625
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'oh nine seven three one three zero five five zero'
+LITERAL[ 0]      : 'oh nine seven three one three zero five five zero'
+MEANING[ 0]      : '0973130550'
+CONFIDENCE VALUE : '625'
+RAW SCORE[ 0]    : '51878'
+
+LITERAL[ 1]      : 'oh nine seven three oh one three zero five five zero'
+MEANING[ 1]      : '09730130550'
+CONFIDENCE VALUE : '340'
+RAW SCORE[ 1]    : '52092'
+
+LITERAL[ 2]      : 'oh two nine seven three one three zero five five zero'
+MEANING[ 2]      : '02973130550'
+CONFIDENCE VALUE : '185'
+RAW SCORE[ 2]    : '52096'
+
+LITERAL[ 3]      : 'oh oh nine seven three one three zero five five zero'
+MEANING[ 3]      : '00973130550'
+CONFIDENCE VALUE : '101'
+RAW SCORE[ 3]    : '52106'
+
+LITERAL[ 4]      : 'oh nine seven three one three zero oh five five zero'
+MEANING[ 4]      : '09731300550'
+CONFIDENCE VALUE : '56'
+RAW SCORE[ 4]    : '52106'
+
+LITERAL[ 5]      : 'oh nine seven three one three zero five five oh zero'
+MEANING[ 5]      : '09731305500'
+CONFIDENCE VALUE : '31'
+RAW SCORE[ 5]    : '52115'
+
+LITERAL[ 6]      : 'oh nine seven three two one three zero five five zero'
+MEANING[ 6]      : '09732130550'
+CONFIDENCE VALUE : '17'
+RAW SCORE[ 6]    : '52147'
+
+LITERAL[ 7]      : 'oh nine oh seven three one three zero five five zero'
+MEANING[ 7]      : '09073130550'
+CONFIDENCE VALUE : '9'
+RAW SCORE[ 7]    : '52168'
+
+LITERAL[ 8]      : 'two oh nine seven three one three zero five five zero'
+MEANING[ 8]      : '20973130550'
+CONFIDENCE VALUE : '5'
+RAW SCORE[ 8]    : '52169'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0300/S065.nwf
+C: one three three three zero zero five oh oh six
+Sem (1):  invocab=1
+S: 630
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'one three three three zero zero five oh oh six'
+LITERAL[ 0]      : 'one three three three zero zero five oh six'
+MEANING[ 0]      : '133300506'
+CONFIDENCE VALUE : '630'
+RAW SCORE[ 0]    : '48201'
+
+LITERAL[ 1]      : 'one three three three zero zero five oh oh six'
+MEANING[ 1]      : '1333005006'
+CONFIDENCE VALUE : '369'
+RAW SCORE[ 1]    : '48353'
+
+LITERAL[ 2]      : 'one three three three eight zero zero five oh six'
+MEANING[ 2]      : '1333800506'
+CONFIDENCE VALUE : '203'
+RAW SCORE[ 2]    : '48415'
+
+LITERAL[ 3]      : 'oh one three three three zero zero five oh six'
+MEANING[ 3]      : '0133300506'
+CONFIDENCE VALUE : '111'
+RAW SCORE[ 3]    : '48423'
+
+LITERAL[ 4]      : 'one three three oh three zero zero five oh six'
+MEANING[ 4]      : '1330300506'
+CONFIDENCE VALUE : '60'
+RAW SCORE[ 4]    : '48426'
+
+LITERAL[ 5]      : 'one three three three oh zero zero five oh six'
+MEANING[ 5]      : '1333000506'
+CONFIDENCE VALUE : '34'
+RAW SCORE[ 5]    : '48426'
+
+LITERAL[ 6]      : 'one three three three zero zero five oh six oh'
+MEANING[ 6]      : '1333005060'
+CONFIDENCE VALUE : '19'
+RAW SCORE[ 6]    : '48430'
+
+LITERAL[ 7]      : 'two one three three three zero zero five oh six'
+MEANING[ 7]      : '2133300506'
+CONFIDENCE VALUE : '10'
+RAW SCORE[ 7]    : '48496'
+
+LITERAL[ 8]      : 'one three three three zero zero five oh six two'
+MEANING[ 8]      : '1333005062'
+CONFIDENCE VALUE : '5'
+RAW SCORE[ 8]    : '48503'
+
+----------------------------------------------
+
+Recognizer has been stopped
+
+Successfully Set Sample Rate To  :  8000
+D: dallas-8kHz/0301/S078.nwf
+C: six seven five seven zero zero two six seven zero
+Sem (1):  invocab=1
+S: 507
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'six seven five seven zero zero two six seven zero'
+LITERAL[ 0]      : 'six seven five seven zero zero two six seven zero'
+MEANING[ 0]      : '6757002670'
+CONFIDENCE VALUE : '507'
+RAW SCORE[ 0]    : '67430'
+
+LITERAL[ 1]      : 'six seven five oh seven zero zero two six seven zero'
+MEANING[ 1]      : '67507002670'
+CONFIDENCE VALUE : '224'
+RAW SCORE[ 1]    : '67632'
+
+LITERAL[ 2]      : 'seven five seven zero zero two six seven zero'
+MEANING[ 2]      : '757002670'
+CONFIDENCE VALUE : '119'
+RAW SCORE[ 2]    : '67639'
+
+LITERAL[ 3]      : 'eight seven five seven zero zero two six seven zero'
+MEANING[ 3]      : '8757002670'
+CONFIDENCE VALUE : '53'
+RAW SCORE[ 3]    : '67656'
+
+LITERAL[ 4]      : 'six oh seven five seven zero zero two six seven zero'
+MEANING[ 4]      : '60757002670'
+CONFIDENCE VALUE : '23'
+RAW SCORE[ 4]    : '67660'
+
+LITERAL[ 5]      : 'oh six seven five seven zero zero two six seven zero'
+MEANING[ 5]      : '06757002670'
+CONFIDENCE VALUE : '11'
+RAW SCORE[ 5]    : '67674'
+
+LITERAL[ 6]      : 'six seven five seven zero zero two six oh seven zero'
+MEANING[ 6]      : '67570026070'
+CONFIDENCE VALUE : '5'
+RAW SCORE[ 6]    : '67689'
+
+LITERAL[ 7]      : 'seven five oh seven zero zero two six seven zero'
+MEANING[ 7]      : '7507002670'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 7]    : '67841'
+
+LITERAL[ 8]      : 'oh seven five seven zero zero two six seven zero'
+MEANING[ 8]      : '0757002670'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 8]    : '67874'
+
+LITERAL[ 9]      : 'seven five seven zero zero two six oh seven zero'
+MEANING[ 9]      : '7570026070'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '67898'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0301/S079.nwf
+C: zero seven nine six five one four eight one eight
+Sem (1):  invocab=1
+S: 568
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'zero seven nine six five one four eight one eight'
+LITERAL[ 0]      : 'zero seven nine six five one four eight one eight'
+MEANING[ 0]      : '0796514818'
+CONFIDENCE VALUE : '568'
+RAW SCORE[ 0]    : '48289'
+
+LITERAL[ 1]      : 'zero seven nine two six five one four eight one eight'
+MEANING[ 1]      : '07926514818'
+CONFIDENCE VALUE : '279'
+RAW SCORE[ 1]    : '48521'
+
+LITERAL[ 2]      : 'zero seven nine oh six five one four eight one eight'
+MEANING[ 2]      : '07906514818'
+CONFIDENCE VALUE : '137'
+RAW SCORE[ 2]    : '48533'
+
+LITERAL[ 3]      : 'zero two seven nine six five one four eight one eight'
+MEANING[ 3]      : '02796514818'
+CONFIDENCE VALUE : '67'
+RAW SCORE[ 3]    : '48536'
+
+LITERAL[ 4]      : 'zero seven nine six five one oh four eight one eight'
+MEANING[ 4]      : '07965104818'
+CONFIDENCE VALUE : '33'
+RAW SCORE[ 4]    : '48546'
+
+LITERAL[ 5]      : 'zero oh seven nine six five one four eight one eight'
+MEANING[ 5]      : '00796514818'
+CONFIDENCE VALUE : '16'
+RAW SCORE[ 5]    : '48547'
+
+LITERAL[ 6]      : 'zero seven nine six five one four eight oh one eight'
+MEANING[ 6]      : '07965148018'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 6]    : '48577'
+
+LITERAL[ 7]      : 'zero seven nine eight five one four eight one eight'
+MEANING[ 7]      : '0798514818'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 7]    : '48588'
+
+LITERAL[ 8]      : 'two zero seven nine six five one four eight one eight'
+MEANING[ 8]      : '20796514818'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 8]    : '48628'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0301/S080.nwf
+C: three eight eight seven oh nine one seven five two
+Sem (1):  invocab=1
+S: 493
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'three eight eight seven oh nine one seven five two'
+LITERAL[ 0]      : 'three eight eight seven oh nine one seven five two'
+MEANING[ 0]      : '3887091752'
+CONFIDENCE VALUE : '493'
+RAW SCORE[ 0]    : '46576'
+
+LITERAL[ 1]      : 'three eight eight seven oh oh nine one seven five two'
+MEANING[ 1]      : '38870091752'
+CONFIDENCE VALUE : '211'
+RAW SCORE[ 1]    : '46786'
+
+LITERAL[ 2]      : 'three eight eight seven oh nine one seven five oh two'
+MEANING[ 2]      : '38870917502'
+CONFIDENCE VALUE : '84'
+RAW SCORE[ 2]    : '46789'
+
+LITERAL[ 3]      : 'three eight eight oh seven oh nine one seven five two'
+MEANING[ 3]      : '38807091752'
+CONFIDENCE VALUE : '36'
+RAW SCORE[ 3]    : '46807'
+
+LITERAL[ 4]      : 'three eight eight seven oh nine one oh seven five two'
+MEANING[ 4]      : '38870910752'
+CONFIDENCE VALUE : '15'
+RAW SCORE[ 4]    : '46821'
+
+LITERAL[ 5]      : 'three eight eight seven oh nine one seven five two oh'
+MEANING[ 5]      : '38870917520'
+CONFIDENCE VALUE : '6'
+RAW SCORE[ 5]    : '46840'
+
+LITERAL[ 6]      : 'three eight eight two seven oh nine one seven five two'
+MEANING[ 6]      : '38827091752'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 6]    : '46857'
+
+LITERAL[ 7]      : 'oh three eight eight seven oh nine one seven five two'
+MEANING[ 7]      : '03887091752'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 7]    : '46872'
+
+LITERAL[ 8]      : 'three eight eight eight seven oh nine one seven five two'
+MEANING[ 8]      : '38887091752'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '46877'
+
+LITERAL[ 9]      : 'three eight oh eight seven oh nine one seven five two'
+MEANING[ 9]      : '38087091752'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '46917'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0301/S082.nwf
+C: eight one two six three six two five one oh
+Sem (1):  invocab=1
+S: 557
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'eight one two six three six two five one oh'
+LITERAL[ 0]      : 'eight one two six three six two five one oh'
+MEANING[ 0]      : '8126362510'
+CONFIDENCE VALUE : '557'
+RAW SCORE[ 0]    : '47444'
+
+LITERAL[ 1]      : 'eight one two six three six two five one oh oh'
+MEANING[ 1]      : '81263625100'
+CONFIDENCE VALUE : '250'
+RAW SCORE[ 1]    : '47661'
+
+LITERAL[ 2]      : 'eight one two oh six three six two five one oh'
+MEANING[ 2]      : '81206362510'
+CONFIDENCE VALUE : '124'
+RAW SCORE[ 2]    : '47662'
+
+LITERAL[ 3]      : 'eight one oh two six three six two five one oh'
+MEANING[ 3]      : '81026362510'
+CONFIDENCE VALUE : '60'
+RAW SCORE[ 3]    : '47689'
+
+LITERAL[ 4]      : 'eight one two two six three six two five one oh'
+MEANING[ 4]      : '81226362510'
+CONFIDENCE VALUE : '29'
+RAW SCORE[ 4]    : '47702'
+
+LITERAL[ 5]      : 'eight one two six oh three six two five one oh'
+MEANING[ 5]      : '81260362510'
+CONFIDENCE VALUE : '14'
+RAW SCORE[ 5]    : '47706'
+
+LITERAL[ 6]      : 'eight one two six three six oh two five one oh'
+MEANING[ 6]      : '81263602510'
+CONFIDENCE VALUE : '7'
+RAW SCORE[ 6]    : '47727'
+
+LITERAL[ 7]      : 'oh eight one two six three six two five one oh'
+MEANING[ 7]      : '08126362510'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 7]    : '47730'
+
+LITERAL[ 8]      : 'eight one two six two six two five one oh'
+MEANING[ 8]      : '8126262510'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 8]    : '47759'
+
+LITERAL[ 9]      : 'eight one two eight three six two five one oh'
+MEANING[ 9]      : '8128362510'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '47778'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0301/S083.nwf
+C: seven six zero eight three three zero five nine four
+Sem (1):  invocab=1
+S: 551
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'seven six zero eight three three zero five nine four'
+LITERAL[ 0]      : 'seven six zero eight three three zero five nine four'
+MEANING[ 0]      : '7608330594'
+CONFIDENCE VALUE : '551'
+RAW SCORE[ 0]    : '48844'
+
+LITERAL[ 1]      : 'oh seven six zero eight three three zero five nine four'
+MEANING[ 1]      : '07608330594'
+CONFIDENCE VALUE : '268'
+RAW SCORE[ 1]    : '49078'
+
+LITERAL[ 2]      : 'seven six zero eight oh three three zero five nine four'
+MEANING[ 2]      : '76080330594'
+CONFIDENCE VALUE : '128'
+RAW SCORE[ 2]    : '49100'
+
+LITERAL[ 3]      : 'seven six zero eight three three two zero five nine four'
+MEANING[ 3]      : '76083320594'
+CONFIDENCE VALUE : '60'
+RAW SCORE[ 3]    : '49116'
+
+LITERAL[ 4]      : 'seven six zero eight two three three zero five nine four'
+MEANING[ 4]      : '76082330594'
+CONFIDENCE VALUE : '28'
+RAW SCORE[ 4]    : '49118'
+
+LITERAL[ 5]      : 'seven six zero eight three three oh zero five nine four'
+MEANING[ 5]      : '76083300594'
+CONFIDENCE VALUE : '13'
+RAW SCORE[ 5]    : '49119'
+
+LITERAL[ 6]      : 'seven oh six zero eight three three zero five nine four'
+MEANING[ 6]      : '70608330594'
+CONFIDENCE VALUE : '6'
+RAW SCORE[ 6]    : '49130'
+
+LITERAL[ 7]      : 'two seven six zero eight three three zero five nine four'
+MEANING[ 7]      : '27608330594'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 7]    : '49135'
+
+LITERAL[ 8]      : 'four seven six zero eight three three zero five nine four'
+MEANING[ 8]      : '47608330594'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 8]    : '49176'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0301/S089.nwf
+C: nine seven zero six five nine six oh six five
+Sem (1):  invocab=1
+S: 577
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'nine seven zero six five nine six oh six five'
+LITERAL[ 0]      : 'nine seven zero six five nine six oh six five'
+MEANING[ 0]      : '9706596065'
+CONFIDENCE VALUE : '577'
+RAW SCORE[ 0]    : '50953'
+
+LITERAL[ 1]      : 'nine seven zero six five oh nine six oh six five'
+MEANING[ 1]      : '97065096065'
+CONFIDENCE VALUE : '296'
+RAW SCORE[ 1]    : '51181'
+
+LITERAL[ 2]      : 'nine seven zero six five nine oh six oh six five'
+MEANING[ 2]      : '97065906065'
+CONFIDENCE VALUE : '147'
+RAW SCORE[ 2]    : '51211'
+
+LITERAL[ 3]      : 'nine seven zero six five nine six oh oh six five'
+MEANING[ 3]      : '97065960065'
+CONFIDENCE VALUE : '73'
+RAW SCORE[ 3]    : '51218'
+
+LITERAL[ 4]      : 'nine oh seven zero six five nine six oh six five'
+MEANING[ 4]      : '90706596065'
+CONFIDENCE VALUE : '36'
+RAW SCORE[ 4]    : '51220'
+
+LITERAL[ 5]      : 'nine seven oh zero six five nine six oh six five'
+MEANING[ 5]      : '97006596065'
+CONFIDENCE VALUE : '18'
+RAW SCORE[ 5]    : '51228'
+
+LITERAL[ 6]      : 'nine seven zero six five nine six oh six five oh'
+MEANING[ 6]      : '97065960650'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 6]    : '51240'
+
+LITERAL[ 7]      : 'nine seven zero six oh five nine six oh six five'
+MEANING[ 7]      : '97060596065'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 7]    : '51241'
+
+LITERAL[ 8]      : 'oh nine seven zero six five nine six oh six five'
+MEANING[ 8]      : '09706596065'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 8]    : '51253'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0302/S051.nwf
+C: four nine seven eight four five eight two zero zero
+Sem (1):  invocab=1
+S: 492
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'four nine seven eight four five eight two zero zero'
+LITERAL[ 0]      : 'four nine seven eight four five eight two zero zero'
+MEANING[ 0]      : '4978458200'
+CONFIDENCE VALUE : '492'
+RAW SCORE[ 0]    : '55924'
+
+LITERAL[ 1]      : 'four nine oh seven eight four five eight two zero zero'
+MEANING[ 1]      : '49078458200'
+CONFIDENCE VALUE : '211'
+RAW SCORE[ 1]    : '56157'
+
+LITERAL[ 2]      : 'four nine seven eight four five eight two oh zero zero'
+MEANING[ 2]      : '49784582000'
+CONFIDENCE VALUE : '92'
+RAW SCORE[ 2]    : '56158'
+
+LITERAL[ 3]      : 'four nine seven eight oh four five eight two zero zero'
+MEANING[ 3]      : '49780458200'
+CONFIDENCE VALUE : '39'
+RAW SCORE[ 3]    : '56195'
+
+LITERAL[ 4]      : 'four nine seven oh eight four five eight two zero zero'
+MEANING[ 4]      : '49708458200'
+CONFIDENCE VALUE : '16'
+RAW SCORE[ 4]    : '56198'
+
+LITERAL[ 5]      : 'four nine seven eight four five eight oh two zero zero'
+MEANING[ 5]      : '49784580200'
+CONFIDENCE VALUE : '7'
+RAW SCORE[ 5]    : '56204'
+
+LITERAL[ 6]      : 'oh four nine seven eight four five eight two zero zero'
+MEANING[ 6]      : '04978458200'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 6]    : '56211'
+
+LITERAL[ 7]      : 'four nine seven eight four five oh eight two zero zero'
+MEANING[ 7]      : '49784508200'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '56222'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0302/S052.nwf
+C: nine oh one one five oh oh seven five zero
+Sem (1):  invocab=1
+S: 564
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'nine oh one one five oh oh seven five zero'
+LITERAL[ 0]      : 'nine oh one one five oh four seven five zero'
+MEANING[ 0]      : '9011504750'
+CONFIDENCE VALUE : '564'
+RAW SCORE[ 0]    : '51405'
+
+LITERAL[ 1]      : 'nine oh one one five oh oh seven five zero'
+MEANING[ 1]      : '9011500750'
+CONFIDENCE VALUE : '310'
+RAW SCORE[ 1]    : '51492'
+
+LITERAL[ 2]      : 'nine eight oh one one five oh four seven five zero'
+MEANING[ 2]      : '98011504750'
+CONFIDENCE VALUE : '156'
+RAW SCORE[ 2]    : '51579'
+
+LITERAL[ 3]      : 'nine oh one one five four four seven five zero'
+MEANING[ 3]      : '9011544750'
+CONFIDENCE VALUE : '81'
+RAW SCORE[ 3]    : '51581'
+
+LITERAL[ 4]      : 'nine four one one five oh four seven five zero'
+MEANING[ 4]      : '9411504750'
+CONFIDENCE VALUE : '42'
+RAW SCORE[ 4]    : '51602'
+
+LITERAL[ 5]      : 'nine oh oh one one five oh four seven five zero'
+MEANING[ 5]      : '90011504750'
+CONFIDENCE VALUE : '21'
+RAW SCORE[ 5]    : '51617'
+
+LITERAL[ 6]      : 'nine oh one oh one five oh four seven five zero'
+MEANING[ 6]      : '90101504750'
+CONFIDENCE VALUE : '11'
+RAW SCORE[ 6]    : '51631'
+
+LITERAL[ 7]      : 'nine oh one one five oh four seven oh five zero'
+MEANING[ 7]      : '90115047050'
+CONFIDENCE VALUE : '5'
+RAW SCORE[ 7]    : '51657'
+
+LITERAL[ 8]      : 'oh nine oh one one five oh four seven five zero'
+MEANING[ 8]      : '09011504750'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 8]    : '51660'
+
+LITERAL[ 9]      : 'nine eight oh one one five oh oh seven five zero'
+MEANING[ 9]      : '98011500750'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 9]    : '51666'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0302/S053.nwf
+C: five zero nine two four four six two two three
+Sem (1):  invocab=1
+S: 517
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'five zero nine two four four six two two three'
+LITERAL[ 0]      : 'five zero nine two four four six two three'
+MEANING[ 0]      : '509244623'
+CONFIDENCE VALUE : '517'
+RAW SCORE[ 0]    : '39751'
+
+LITERAL[ 1]      : 'five zero nine two four four six two two three'
+MEANING[ 1]      : '5092446223'
+CONFIDENCE VALUE : '279'
+RAW SCORE[ 1]    : '39758'
+
+LITERAL[ 2]      : 'five zero nine two four four six three two three'
+MEANING[ 2]      : '5092446323'
+CONFIDENCE VALUE : '138'
+RAW SCORE[ 2]    : '39932'
+
+LITERAL[ 3]      : 'five zero nine oh two four four six two three'
+MEANING[ 3]      : '5090244623'
+CONFIDENCE VALUE : '65'
+RAW SCORE[ 3]    : '39974'
+
+LITERAL[ 4]      : 'five zero nine two four four six oh two two three'
+MEANING[ 4]      : '50924460223'
+CONFIDENCE VALUE : '30'
+RAW SCORE[ 4]    : '39978'
+
+LITERAL[ 5]      : 'five zero nine oh two four four six two two three'
+MEANING[ 5]      : '50902446223'
+CONFIDENCE VALUE : '14'
+RAW SCORE[ 5]    : '39981'
+
+LITERAL[ 6]      : 'oh five zero nine two four four six two three'
+MEANING[ 6]      : '0509244623'
+CONFIDENCE VALUE : '7'
+RAW SCORE[ 6]    : '40005'
+
+LITERAL[ 7]      : 'oh five zero nine two four four six two two three'
+MEANING[ 7]      : '05092446223'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 7]    : '40012'
+
+LITERAL[ 8]      : 'five zero nine two four four six oh three two three'
+MEANING[ 8]      : '50924460323'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 8]    : '40152'
+
+LITERAL[ 9]      : 'five zero nine oh two four four six three two three'
+MEANING[ 9]      : '50902446323'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '40155'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0302/S054.nwf
+C: four nine three zero three oh five seven two three
+Sem (1):  invocab=1
+S: 584
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'four nine three zero three oh five seven two three'
+LITERAL[ 0]      : 'four nine three zero three oh five seven two three'
+MEANING[ 0]      : '4930305723'
+CONFIDENCE VALUE : '584'
+RAW SCORE[ 0]    : '43691'
+
+LITERAL[ 1]      : 'four nine three zero three four five seven two three'
+MEANING[ 1]      : '4930345723'
+CONFIDENCE VALUE : '332'
+RAW SCORE[ 1]    : '43805'
+
+LITERAL[ 2]      : 'four nine three zero three eight oh five seven two three'
+MEANING[ 2]      : '49303805723'
+CONFIDENCE VALUE : '173'
+RAW SCORE[ 2]    : '43898'
+
+LITERAL[ 3]      : 'four nine three zero three oh five seven oh two three'
+MEANING[ 3]      : '49303057023'
+CONFIDENCE VALUE : '88'
+RAW SCORE[ 3]    : '43918'
+
+LITERAL[ 4]      : 'four nine oh three zero three oh five seven two three'
+MEANING[ 4]      : '49030305723'
+CONFIDENCE VALUE : '46'
+RAW SCORE[ 4]    : '43920'
+
+LITERAL[ 5]      : 'four nine three zero three oh five seven two three oh'
+MEANING[ 5]      : '49303057230'
+CONFIDENCE VALUE : '23'
+RAW SCORE[ 5]    : '43928'
+
+LITERAL[ 6]      : 'oh four nine three zero three oh five seven two three'
+MEANING[ 6]      : '04930305723'
+CONFIDENCE VALUE : '12'
+RAW SCORE[ 6]    : '43944'
+
+LITERAL[ 7]      : 'four nine three oh zero three oh five seven two three'
+MEANING[ 7]      : '49300305723'
+CONFIDENCE VALUE : '6'
+RAW SCORE[ 7]    : '43944'
+
+LITERAL[ 8]      : 'four nine three zero three oh oh five seven two three'
+MEANING[ 8]      : '49303005723'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 8]    : '43958'
+
+LITERAL[ 9]      : 'four nine three zero three oh one five seven two three'
+MEANING[ 9]      : '49303015723'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 9]    : '43966'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0302/S065.nwf
+C: five six five four five five three eight six seven
+Sem (1):  invocab=1
+S: 600
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'five six five four five five three eight six seven'
+LITERAL[ 0]      : 'five six five four five five three eight six seven'
+MEANING[ 0]      : '5654553867'
+CONFIDENCE VALUE : '600'
+RAW SCORE[ 0]    : '35540'
+
+LITERAL[ 1]      : 'five six five four five five three six seven'
+MEANING[ 1]      : '565455367'
+CONFIDENCE VALUE : '344'
+RAW SCORE[ 1]    : '35695'
+
+LITERAL[ 2]      : 'five six five four five five oh three eight six seven'
+MEANING[ 2]      : '56545503867'
+CONFIDENCE VALUE : '178'
+RAW SCORE[ 2]    : '35767'
+
+LITERAL[ 3]      : 'oh five six five four five five three eight six seven'
+MEANING[ 3]      : '05654553867'
+CONFIDENCE VALUE : '103'
+RAW SCORE[ 3]    : '35768'
+
+LITERAL[ 4]      : 'five six five four five five three eight six seven oh'
+MEANING[ 4]      : '56545538670'
+CONFIDENCE VALUE : '56'
+RAW SCORE[ 4]    : '35771'
+
+LITERAL[ 5]      : 'five six five four five five oh three six seven'
+MEANING[ 5]      : '5654550367'
+CONFIDENCE VALUE : '29'
+RAW SCORE[ 5]    : '35922'
+
+LITERAL[ 6]      : 'oh five six five four five five three six seven'
+MEANING[ 6]      : '0565455367'
+CONFIDENCE VALUE : '16'
+RAW SCORE[ 6]    : '35923'
+
+LITERAL[ 7]      : 'five six five four five five three six seven oh'
+MEANING[ 7]      : '5654553670'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 7]    : '35926'
+
+LITERAL[ 8]      : 'oh five six five four five five oh three eight six seven'
+MEANING[ 8]      : '056545503867'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 8]    : '35995'
+
+LITERAL[ 9]      : 'five six five four five five oh three eight six seven oh'
+MEANING[ 9]      : '565455038670'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 9]    : '35998'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0302/S070.nwf
+C: oh six two nine one five two nine five oh
+Sem (1):  invocab=1
+S: 549
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'oh six two nine one five two nine five oh'
+LITERAL[ 0]      : 'oh six two nine one five two nine five oh'
+MEANING[ 0]      : '0629152950'
+CONFIDENCE VALUE : '549'
+RAW SCORE[ 0]    : '31936'
+
+LITERAL[ 1]      : 'four six two nine one five two nine five oh'
+MEANING[ 1]      : '4629152950'
+CONFIDENCE VALUE : '302'
+RAW SCORE[ 1]    : '32038'
+
+LITERAL[ 2]      : 'oh oh six two nine one five two nine five oh'
+MEANING[ 2]      : '00629152950'
+CONFIDENCE VALUE : '162'
+RAW SCORE[ 2]    : '32163'
+
+LITERAL[ 3]      : 'two oh six two nine one five two nine five oh'
+MEANING[ 3]      : '20629152950'
+CONFIDENCE VALUE : '84'
+RAW SCORE[ 3]    : '32212'
+
+LITERAL[ 4]      : 'oh six two nine one five two nine oh five oh'
+MEANING[ 4]      : '06291529050'
+CONFIDENCE VALUE : '42'
+RAW SCORE[ 4]    : '32212'
+
+LITERAL[ 5]      : 'six two nine one five two nine five oh'
+MEANING[ 5]      : '629152950'
+CONFIDENCE VALUE : '28'
+RAW SCORE[ 5]    : '32228'
+
+LITERAL[ 6]      : 'four six two nine one five two nine oh five oh'
+MEANING[ 6]      : '46291529050'
+CONFIDENCE VALUE : '15'
+RAW SCORE[ 6]    : '32314'
+
+LITERAL[ 7]      : 'oh oh six two nine one five two nine oh five oh'
+MEANING[ 7]      : '006291529050'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 7]    : '32439'
+
+LITERAL[ 8]      : 'two oh six two nine one five two nine oh five oh'
+MEANING[ 8]      : '206291529050'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 8]    : '32488'
+
+LITERAL[ 9]      : 'six two nine one five two nine oh five oh'
+MEANING[ 9]      : '6291529050'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 9]    : '32504'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas-8kHz/0302/S071.nwf
+C: two zero five oh four nine two six five eight
+Sem (1):  invocab=1
+S: 551
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'two zero five oh four nine two six five eight'
+LITERAL[ 0]      : 'two zero five four four nine two six five eight'
+MEANING[ 0]      : '2054492658'
+CONFIDENCE VALUE : '551'
+RAW SCORE[ 0]    : '34135'
+
+LITERAL[ 1]      : 'two zero five oh four nine two six five eight'
+MEANING[ 1]      : '2050492658'
+CONFIDENCE VALUE : '313'
+RAW SCORE[ 1]    : '34183'
+
+LITERAL[ 2]      : 'two zero five four four nine two six five eight oh'
+MEANING[ 2]      : '20544926580'
+CONFIDENCE VALUE : '139'
+RAW SCORE[ 2]    : '34385'
+
+LITERAL[ 3]      : 'two zero five oh four four nine two six five eight'
+MEANING[ 3]      : '20504492658'
+CONFIDENCE VALUE : '69'
+RAW SCORE[ 3]    : '34387'
+
+LITERAL[ 4]      : 'two zero five four four nine oh two six five eight'
+MEANING[ 4]      : '20544902658'
+CONFIDENCE VALUE : '34'
+RAW SCORE[ 4]    : '34404'
+
+LITERAL[ 5]      : 'oh two zero five four four nine two six five eight'
+MEANING[ 5]      : '02054492658'
+CONFIDENCE VALUE : '17'
+RAW SCORE[ 5]    : '34410'
+
+LITERAL[ 6]      : 'two zero five one four nine two six five eight'
+MEANING[ 6]      : '2051492658'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 6]    : '34411'
+
+LITERAL[ 7]      : 'two zero five oh four nine two six five eight oh'
+MEANING[ 7]      : '20504926580'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 7]    : '34433'
+
+LITERAL[ 8]      : 'two zero five oh oh four nine two six five eight'
+MEANING[ 8]      : '20500492658'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 8]    : '34435'
+
+LITERAL[ 9]      : 'two zero five oh four nine oh two six five eight'
+MEANING[ 9]      : '20504902658'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '34452'
+
+----------------------------------------------
+
+Recognizer has been stopped
+
+Successfully Set Sample Rate To  :  11025
+D: dallas/0303/S080.nwf
+C: six eight five four oh one six two seven three
+Sem (1):  invocab=1
+S: 404
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'six eight five four oh one six two seven three'
+LITERAL[ 0]      : 'six eight five four oh one six two seven three'
+MEANING[ 0]      : '6854016273'
+CONFIDENCE VALUE : '404'
+RAW SCORE[ 0]    : '64307'
+
+LITERAL[ 1]      : 'six eight five four four one six two seven three'
+MEANING[ 1]      : '6854416273'
+CONFIDENCE VALUE : '150'
+RAW SCORE[ 1]    : '64432'
+
+LITERAL[ 2]      : 'six eight five oh four oh one six two seven three'
+MEANING[ 2]      : '68504016273'
+CONFIDENCE VALUE : '53'
+RAW SCORE[ 2]    : '64461'
+
+LITERAL[ 3]      : 'six eight five four oh one oh six two seven three'
+MEANING[ 3]      : '68540106273'
+CONFIDENCE VALUE : '19'
+RAW SCORE[ 3]    : '64462'
+
+LITERAL[ 4]      : 'six eight five four oh one three six two seven three'
+MEANING[ 4]      : '68540136273'
+CONFIDENCE VALUE : '6'
+RAW SCORE[ 4]    : '64486'
+
+LITERAL[ 5]      : 'six eight five four oh one six two oh seven three'
+MEANING[ 5]      : '68540162073'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 5]    : '64487'
+
+LITERAL[ 6]      : 'six eight five four oh one two six two seven three'
+MEANING[ 6]      : '68540126273'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 6]    : '64491'
+
+LITERAL[ 7]      : 'six eight five four oh one seven two seven three'
+MEANING[ 7]      : '6854017273'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '64495'
+
+LITERAL[ 8]      : 'six eight five four oh one four six two seven three'
+MEANING[ 8]      : '68540146273'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '64507'
+
+LITERAL[ 9]      : 'seven eight five four oh one six two seven three'
+MEANING[ 9]      : '7854016273'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '64518'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0303/S083.nwf
+C: three four three four eight four eight five six eight
+Sem (1):  invocab=1
+S: 401
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'three four three four eight four eight five six eight'
+LITERAL[ 0]      : 'three four three four eight four eight five six eight'
+MEANING[ 0]      : '3434848568'
+CONFIDENCE VALUE : '401'
+RAW SCORE[ 0]    : '44234'
+
+LITERAL[ 1]      : 'three four three four eight four eight five six two'
+MEANING[ 1]      : '3434848562'
+CONFIDENCE VALUE : '136'
+RAW SCORE[ 1]    : '44386'
+
+LITERAL[ 2]      : 'three four three four eight four two eight five six eight'
+MEANING[ 2]      : '34348428568'
+CONFIDENCE VALUE : '48'
+RAW SCORE[ 2]    : '44408'
+
+LITERAL[ 3]      : 'three four three four eight four eight five two two'
+MEANING[ 3]      : '3434848522'
+CONFIDENCE VALUE : '15'
+RAW SCORE[ 3]    : '44431'
+
+LITERAL[ 4]      : 'three four three four eight four eight five six eight oh'
+MEANING[ 4]      : '34348485680'
+CONFIDENCE VALUE : '5'
+RAW SCORE[ 4]    : '44434'
+
+LITERAL[ 5]      : 'three four three four eight four eight five six three'
+MEANING[ 5]      : '3434848563'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 5]    : '44437'
+
+LITERAL[ 6]      : 'three four three four eight four eight five oh six eight'
+MEANING[ 6]      : '34348485068'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 6]    : '44452'
+
+LITERAL[ 7]      : 'three four three four eight four two five six eight'
+MEANING[ 7]      : '3434842568'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '44455'
+
+LITERAL[ 8]      : 'oh three four three four eight four eight five six eight'
+MEANING[ 8]      : '03434848568'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '44463'
+
+LITERAL[ 9]      : 'three four three four eight four eight five eight six eight'
+MEANING[ 9]      : '34348485868'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '44463'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0303/S084.nwf
+C: one two eight five zero seven eight six seven one
+Sem (1):  invocab=1
+S: 433
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'one two eight five zero seven eight six seven one'
+LITERAL[ 0]      : 'one two eight five zero seven eight six seven one'
+MEANING[ 0]      : '1285078671'
+CONFIDENCE VALUE : '433'
+RAW SCORE[ 0]    : '45788'
+
+LITERAL[ 1]      : 'one two eight five zero seven eight six seven four'
+MEANING[ 1]      : '1285078674'
+CONFIDENCE VALUE : '169'
+RAW SCORE[ 1]    : '45896'
+
+LITERAL[ 2]      : 'one two eight five oh zero seven eight six seven one'
+MEANING[ 2]      : '12850078671'
+CONFIDENCE VALUE : '65'
+RAW SCORE[ 2]    : '45939'
+
+LITERAL[ 3]      : 'one two eight oh five zero seven eight six seven one'
+MEANING[ 3]      : '12805078671'
+CONFIDENCE VALUE : '25'
+RAW SCORE[ 3]    : '45954'
+
+LITERAL[ 4]      : 'one two eight five eight zero seven eight six seven one'
+MEANING[ 4]      : '12858078671'
+CONFIDENCE VALUE : '9'
+RAW SCORE[ 4]    : '45963'
+
+LITERAL[ 5]      : 'one two eight five zero seven eight oh six seven one'
+MEANING[ 5]      : '12850780671'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 5]    : '45972'
+
+LITERAL[ 6]      : 'one two eight five zero seven eight two six seven one'
+MEANING[ 6]      : '12850782671'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 6]    : '45975'
+
+LITERAL[ 7]      : 'one two eight two five zero seven eight six seven one'
+MEANING[ 7]      : '12825078671'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '46013'
+
+LITERAL[ 8]      : 'one two eight four five zero seven eight six seven one'
+MEANING[ 8]      : '12845078671'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '46026'
+
+LITERAL[ 9]      : 'oh one two eight five zero seven eight six seven one'
+MEANING[ 9]      : '01285078671'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '46041'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0303/S087.nwf
+C: oh five six eight eight nine five five one eight
+Sem (1):  invocab=1
+S: 616
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'oh five six eight eight nine five five one eight'
+LITERAL[ 0]      : 'oh five six eight eight nine five five one eight'
+MEANING[ 0]      : '0568895518'
+CONFIDENCE VALUE : '616'
+RAW SCORE[ 0]    : '41569'
+
+LITERAL[ 1]      : 'oh five six eight oh eight nine five five one eight'
+MEANING[ 1]      : '05680895518'
+CONFIDENCE VALUE : '348'
+RAW SCORE[ 1]    : '41737'
+
+LITERAL[ 2]      : 'oh five six eight eight nine five five one eight oh'
+MEANING[ 2]      : '05688955180'
+CONFIDENCE VALUE : '180'
+RAW SCORE[ 2]    : '41792'
+
+LITERAL[ 3]      : 'oh five oh six eight eight nine five five one eight'
+MEANING[ 3]      : '05068895518'
+CONFIDENCE VALUE : '96'
+RAW SCORE[ 3]    : '41797'
+
+LITERAL[ 4]      : 'oh five six oh eight eight nine five five one eight'
+MEANING[ 4]      : '05608895518'
+CONFIDENCE VALUE : '51'
+RAW SCORE[ 4]    : '41803'
+
+LITERAL[ 5]      : 'oh five six eight eight nine five five oh one eight'
+MEANING[ 5]      : '05688955018'
+CONFIDENCE VALUE : '27'
+RAW SCORE[ 5]    : '41809'
+
+LITERAL[ 6]      : 'oh oh five six eight eight nine five five one eight'
+MEANING[ 6]      : '00568895518'
+CONFIDENCE VALUE : '15'
+RAW SCORE[ 6]    : '41810'
+
+LITERAL[ 7]      : 'oh five six eight eight nine oh five five one eight'
+MEANING[ 7]      : '05688905518'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 7]    : '41814'
+
+LITERAL[ 8]      : 'oh five six two eight eight nine five five one eight'
+MEANING[ 8]      : '05628895518'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 8]    : '41817'
+
+LITERAL[ 9]      : 'oh five six eight eight nine five five one eight four'
+MEANING[ 9]      : '05688955184'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 9]    : '41914'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0303/S088.nwf
+C: five four four oh two one four four zero nine
+Sem (1):  invocab=1
+S: 567
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'five four four oh two one four four zero nine'
+LITERAL[ 0]      : 'five four four oh two one four four zero nine'
+MEANING[ 0]      : '5440214409'
+CONFIDENCE VALUE : '567'
+RAW SCORE[ 0]    : '50525'
+
+LITERAL[ 1]      : 'five four four oh two oh one four four zero nine'
+MEANING[ 1]      : '54402014409'
+CONFIDENCE VALUE : '320'
+RAW SCORE[ 1]    : '50595'
+
+LITERAL[ 2]      : 'five four four oh two one four four zero one nine'
+MEANING[ 2]      : '54402144019'
+CONFIDENCE VALUE : '158'
+RAW SCORE[ 2]    : '50715'
+
+LITERAL[ 3]      : 'five four four oh two one four four zero nine oh'
+MEANING[ 3]      : '54402144090'
+CONFIDENCE VALUE : '75'
+RAW SCORE[ 3]    : '50744'
+
+LITERAL[ 4]      : 'oh five four four oh two one four four zero nine'
+MEANING[ 4]      : '05440214409'
+CONFIDENCE VALUE : '38'
+RAW SCORE[ 4]    : '50748'
+
+LITERAL[ 5]      : 'five four four oh two one four four oh zero nine'
+MEANING[ 5]      : '54402144009'
+CONFIDENCE VALUE : '20'
+RAW SCORE[ 5]    : '50749'
+
+LITERAL[ 6]      : 'five four four oh two one one four four zero nine'
+MEANING[ 6]      : '54402114409'
+CONFIDENCE VALUE : '10'
+RAW SCORE[ 6]    : '50772'
+
+LITERAL[ 7]      : 'five four four oh two one four four two zero nine'
+MEANING[ 7]      : '54402144209'
+CONFIDENCE VALUE : '5'
+RAW SCORE[ 7]    : '50799'
+
+LITERAL[ 8]      : 'oh five four four oh two oh one four four zero nine'
+MEANING[ 8]      : '054402014409'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 8]    : '50818'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0303/S089.nwf
+C: oh five one oh six eight seven one zero nine
+Sem (1):  invocab=1
+S: 526
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'oh five one oh six eight seven one zero nine'
+LITERAL[ 0]      : 'oh five one oh six eight seven one zero nine'
+MEANING[ 0]      : '0510687109'
+CONFIDENCE VALUE : '526'
+RAW SCORE[ 0]    : '44060'
+
+LITERAL[ 1]      : 'oh five one oh oh six eight seven one zero nine'
+MEANING[ 1]      : '05100687109'
+CONFIDENCE VALUE : '256'
+RAW SCORE[ 1]    : '44195'
+
+LITERAL[ 2]      : 'oh five one oh six eight oh seven one zero nine'
+MEANING[ 2]      : '05106807109'
+CONFIDENCE VALUE : '124'
+RAW SCORE[ 2]    : '44230'
+
+LITERAL[ 3]      : 'oh five one oh six eight seven oh one zero nine'
+MEANING[ 3]      : '05106870109'
+CONFIDENCE VALUE : '58'
+RAW SCORE[ 3]    : '44271'
+
+LITERAL[ 4]      : 'oh oh five one oh six eight seven one zero nine'
+MEANING[ 4]      : '00510687109'
+CONFIDENCE VALUE : '28'
+RAW SCORE[ 4]    : '44289'
+
+LITERAL[ 5]      : 'oh five one oh six eight seven one zero nine oh'
+MEANING[ 5]      : '05106871090'
+CONFIDENCE VALUE : '13'
+RAW SCORE[ 5]    : '44289'
+
+LITERAL[ 6]      : 'oh five one oh six eight seven one zero five'
+MEANING[ 6]      : '0510687105'
+CONFIDENCE VALUE : '5'
+RAW SCORE[ 6]    : '44351'
+
+LITERAL[ 7]      : 'oh five one oh oh six eight oh seven one zero nine'
+MEANING[ 7]      : '051006807109'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 7]    : '44365'
+
+LITERAL[ 8]      : 'oh five one oh oh six eight seven oh one zero nine'
+MEANING[ 8]      : '051006870109'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 8]    : '44406'
+
+LITERAL[ 9]      : 'oh oh five one oh oh six eight seven one zero nine'
+MEANING[ 9]      : '005100687109'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '44424'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0303/S090.nwf
+C: five nine zero two eight seven three three four three
+Sem (1):  invocab=1
+S: 601
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'five nine zero two eight seven three three four three'
+LITERAL[ 0]      : 'five nine zero two eight seven three three four three'
+MEANING[ 0]      : '5902873343'
+CONFIDENCE VALUE : '601'
+RAW SCORE[ 0]    : '45003'
+
+LITERAL[ 1]      : 'five nine zero two eight seven oh three three four three'
+MEANING[ 1]      : '59028703343'
+CONFIDENCE VALUE : '312'
+RAW SCORE[ 1]    : '45228'
+
+LITERAL[ 2]      : 'five nine zero two eight seven three three four three oh'
+MEANING[ 2]      : '59028733430'
+CONFIDENCE VALUE : '156'
+RAW SCORE[ 2]    : '45229'
+
+LITERAL[ 3]      : 'oh five nine zero two eight seven three three four three'
+MEANING[ 3]      : '05902873343'
+CONFIDENCE VALUE : '84'
+RAW SCORE[ 3]    : '45238'
+
+LITERAL[ 4]      : 'five nine oh zero two eight seven three three four three'
+MEANING[ 4]      : '59002873343'
+CONFIDENCE VALUE : '44'
+RAW SCORE[ 4]    : '45254'
+
+LITERAL[ 5]      : 'five nine two zero two eight seven three three four three'
+MEANING[ 5]      : '59202873343'
+CONFIDENCE VALUE : '23'
+RAW SCORE[ 5]    : '45270'
+
+LITERAL[ 6]      : 'five oh nine zero two eight seven three three four three'
+MEANING[ 6]      : '50902873343'
+CONFIDENCE VALUE : '12'
+RAW SCORE[ 6]    : '45282'
+
+LITERAL[ 7]      : 'five nine zero two eight oh seven three three four three'
+MEANING[ 7]      : '59028073343'
+CONFIDENCE VALUE : '6'
+RAW SCORE[ 7]    : '45289'
+
+LITERAL[ 8]      : 'five nine eight zero two eight seven three three four three'
+MEANING[ 8]      : '59802873343'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 8]    : '45291'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0304/S052.nwf
+C: nine five eight one eight five eight seven five
+Sem (1):  invocab=1
+S: 541
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'nine five eight one eight five eight seven five'
+LITERAL[ 0]      : 'nine five eight three one eight five eight seven five'
+MEANING[ 0]      : '9583185875'
+CONFIDENCE VALUE : '541'
+RAW SCORE[ 0]    : '66816'
+
+LITERAL[ 1]      : 'nine five eight eight one eight five eight seven five'
+MEANING[ 1]      : '9588185875'
+CONFIDENCE VALUE : '304'
+RAW SCORE[ 1]    : '66841'
+
+LITERAL[ 2]      : 'nine five eight two one eight five eight seven five'
+MEANING[ 2]      : '9582185875'
+CONFIDENCE VALUE : '160'
+RAW SCORE[ 2]    : '66967'
+
+LITERAL[ 3]      : 'nine five eight three one eight five eight oh seven five'
+MEANING[ 3]      : '95831858075'
+CONFIDENCE VALUE : '81'
+RAW SCORE[ 3]    : '67006'
+
+LITERAL[ 4]      : 'nine five eight three one eight oh five eight seven five'
+MEANING[ 4]      : '95831805875'
+CONFIDENCE VALUE : '40'
+RAW SCORE[ 4]    : '67030'
+
+LITERAL[ 5]      : 'nine five eight eight one eight five eight oh seven five'
+MEANING[ 5]      : '95881858075'
+CONFIDENCE VALUE : '20'
+RAW SCORE[ 5]    : '67031'
+
+LITERAL[ 6]      : 'nine five eight eight one eight oh five eight seven five'
+MEANING[ 6]      : '95881805875'
+CONFIDENCE VALUE : '10'
+RAW SCORE[ 6]    : '67055'
+
+LITERAL[ 7]      : 'nine five eight three one eight five oh eight seven five'
+MEANING[ 7]      : '95831850875'
+CONFIDENCE VALUE : '5'
+RAW SCORE[ 7]    : '67055'
+
+LITERAL[ 8]      : 'oh nine five eight three one eight five eight seven five'
+MEANING[ 8]      : '09583185875'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 8]    : '67061'
+
+LITERAL[ 9]      : 'nine five eight three one oh eight five eight seven five'
+MEANING[ 9]      : '95831085875'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 9]    : '67067'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0304/S054.nwf
+C: one zero nine two five four seven seven six seven
+Sem (1):  invocab=1
+S: 432
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'one zero nine two five four seven seven six seven'
+LITERAL[ 0]      : 'one zero nine two five four seven seven six seven'
+MEANING[ 0]      : '1092547767'
+CONFIDENCE VALUE : '432'
+RAW SCORE[ 0]    : '49825'
+
+LITERAL[ 1]      : 'one zero nine two five four seven seven seven seven'
+MEANING[ 1]      : '1092547777'
+CONFIDENCE VALUE : '183'
+RAW SCORE[ 1]    : '49912'
+
+LITERAL[ 2]      : 'one zero two nine two five four seven seven six seven'
+MEANING[ 2]      : '10292547767'
+CONFIDENCE VALUE : '70'
+RAW SCORE[ 2]    : '50020'
+
+LITERAL[ 3]      : 'one zero nine two five four seven seven oh six seven'
+MEANING[ 3]      : '10925477067'
+CONFIDENCE VALUE : '27'
+RAW SCORE[ 3]    : '50024'
+
+LITERAL[ 4]      : 'one zero nine oh two five four seven seven six seven'
+MEANING[ 4]      : '10902547767'
+CONFIDENCE VALUE : '10'
+RAW SCORE[ 4]    : '50047'
+
+LITERAL[ 5]      : 'one zero nine two five four oh seven seven six seven'
+MEANING[ 5]      : '10925407767'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 5]    : '50058'
+
+LITERAL[ 6]      : 'oh one zero nine two five four seven seven six seven'
+MEANING[ 6]      : '01092547767'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 6]    : '50060'
+
+LITERAL[ 7]      : 'one zero nine two five four seven seven six seven oh'
+MEANING[ 7]      : '10925477670'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 7]    : '50063'
+
+LITERAL[ 8]      : 'one zero nine two five four seven seven six five'
+MEANING[ 8]      : '1092547765'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '50074'
+
+LITERAL[ 9]      : 'one zero two nine two five four seven seven seven seven'
+MEANING[ 9]      : '10292547777'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '50107'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0304/S055.nwf
+C: oh seven four five four oh seven three oh oh
+Sem (1):  invocab=1
+S: 504
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'oh seven four five four oh seven three oh oh'
+LITERAL[ 0]      : 'oh seven four five four oh seven three oh oh'
+MEANING[ 0]      : '0745407300'
+CONFIDENCE VALUE : '504'
+RAW SCORE[ 0]    : '43414'
+
+LITERAL[ 1]      : 'oh seven four five four oh seven three eight oh oh'
+MEANING[ 1]      : '07454073800'
+CONFIDENCE VALUE : '222'
+RAW SCORE[ 1]    : '43619'
+
+LITERAL[ 2]      : 'oh seven four five four oh one seven three oh oh'
+MEANING[ 2]      : '07454017300'
+CONFIDENCE VALUE : '98'
+RAW SCORE[ 2]    : '43626'
+
+LITERAL[ 3]      : 'oh oh seven four five four oh seven three oh oh'
+MEANING[ 3]      : '00745407300'
+CONFIDENCE VALUE : '45'
+RAW SCORE[ 3]    : '43648'
+
+LITERAL[ 4]      : 'oh seven four five four oh seven three oh oh oh'
+MEANING[ 4]      : '07454073000'
+CONFIDENCE VALUE : '19'
+RAW SCORE[ 4]    : '43648'
+
+LITERAL[ 5]      : 'oh seven four oh five four oh seven three oh oh'
+MEANING[ 5]      : '07405407300'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 5]    : '43652'
+
+LITERAL[ 6]      : 'oh seven four five four oh oh seven three oh oh'
+MEANING[ 6]      : '07454007300'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 6]    : '43672'
+
+LITERAL[ 7]      : 'oh seven four five four oh two seven three oh oh'
+MEANING[ 7]      : '07454027300'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 7]    : '43676'
+
+LITERAL[ 8]      : 'oh seven four five four oh four seven three oh oh'
+MEANING[ 8]      : '07454047300'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 8]    : '43681'
+
+LITERAL[ 9]      : 'oh seven oh four five four oh seven three oh oh'
+MEANING[ 9]      : '07045407300'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '43702'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0304/S074.nwf
+C: eight six one oh five six six two six two
+Sem (1):  invocab=1
+S: 536
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'eight six one oh five six six two six two'
+LITERAL[ 0]      : 'eight six one oh five six six two six two'
+MEANING[ 0]      : '8610566262'
+CONFIDENCE VALUE : '536'
+RAW SCORE[ 0]    : '40788'
+
+LITERAL[ 1]      : 'eight six four oh five six six two six two'
+MEANING[ 1]      : '8640566262'
+CONFIDENCE VALUE : '271'
+RAW SCORE[ 1]    : '40931'
+
+LITERAL[ 2]      : 'eight six one oh oh five six six two six two'
+MEANING[ 2]      : '86100566262'
+CONFIDENCE VALUE : '130'
+RAW SCORE[ 2]    : '40979'
+
+LITERAL[ 3]      : 'eight six one oh five oh six six two six two'
+MEANING[ 3]      : '86105066262'
+CONFIDENCE VALUE : '61'
+RAW SCORE[ 3]    : '41013'
+
+LITERAL[ 4]      : 'eight six one oh five six six oh two six two'
+MEANING[ 4]      : '86105660262'
+CONFIDENCE VALUE : '28'
+RAW SCORE[ 4]    : '41015'
+
+LITERAL[ 5]      : 'eight six oh one oh five six six two six two'
+MEANING[ 5]      : '86010566262'
+CONFIDENCE VALUE : '13'
+RAW SCORE[ 5]    : '41016'
+
+LITERAL[ 6]      : 'eight six one oh five six six two six two oh'
+MEANING[ 6]      : '86105662620'
+CONFIDENCE VALUE : '6'
+RAW SCORE[ 6]    : '41025'
+
+LITERAL[ 7]      : 'oh eight six one oh five six six two six two'
+MEANING[ 7]      : '08610566262'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 7]    : '41040'
+
+LITERAL[ 8]      : 'eight six one oh five two six six two six two'
+MEANING[ 8]      : '86105266262'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 8]    : '41054'
+
+LITERAL[ 9]      : 'eight six one oh five six seven two six two'
+MEANING[ 9]      : '8610567262'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '41068'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0304/S075.nwf
+C: zero seven six five nine oh zero two five two
+Sem (1):  invocab=1
+S: 564
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'zero seven six five nine oh zero two five two'
+LITERAL[ 0]      : 'zero seven six five nine oh zero two five two'
+MEANING[ 0]      : '0765900252'
+CONFIDENCE VALUE : '564'
+RAW SCORE[ 0]    : '42076'
+
+LITERAL[ 1]      : 'zero seven six five nine oh zero two oh five two'
+MEANING[ 1]      : '07659002052'
+CONFIDENCE VALUE : '281'
+RAW SCORE[ 1]    : '42273'
+
+LITERAL[ 2]      : 'zero seven seven five nine oh zero two five two'
+MEANING[ 2]      : '0775900252'
+CONFIDENCE VALUE : '142'
+RAW SCORE[ 2]    : '42284'
+
+LITERAL[ 3]      : 'oh zero seven six five nine oh zero two five two'
+MEANING[ 3]      : '00765900252'
+CONFIDENCE VALUE : '71'
+RAW SCORE[ 3]    : '42310'
+
+LITERAL[ 4]      : 'zero seven six oh five nine oh zero two five two'
+MEANING[ 4]      : '07605900252'
+CONFIDENCE VALUE : '35'
+RAW SCORE[ 4]    : '42310'
+
+LITERAL[ 5]      : 'zero seven six five nine oh zero two five two oh'
+MEANING[ 5]      : '07659002520'
+CONFIDENCE VALUE : '17'
+RAW SCORE[ 5]    : '42312'
+
+LITERAL[ 6]      : 'zero seven six five nine oh oh zero two five two'
+MEANING[ 6]      : '07659000252'
+CONFIDENCE VALUE : '9'
+RAW SCORE[ 6]    : '42322'
+
+LITERAL[ 7]      : 'three zero seven six five nine oh zero two five two'
+MEANING[ 7]      : '30765900252'
+CONFIDENCE VALUE : '5'
+RAW SCORE[ 7]    : '42422'
+
+LITERAL[ 8]      : 'two zero seven six five nine oh zero two five two'
+MEANING[ 8]      : '20765900252'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 8]    : '42465'
+
+LITERAL[ 9]      : 'four zero seven six five nine oh zero two five two'
+MEANING[ 9]      : '40765900252'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 9]    : '42468'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0304/S076.nwf
+C: five zero two seven four nine three three zero zero
+Sem (1):  invocab=1
+S: 599
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'five zero two seven four nine three three zero zero'
+LITERAL[ 0]      : 'five zero two seven four nine three three zero zero'
+MEANING[ 0]      : '5027493300'
+CONFIDENCE VALUE : '599'
+RAW SCORE[ 0]    : '38923'
+
+LITERAL[ 1]      : 'five zero two oh seven four nine three three zero zero'
+MEANING[ 1]      : '50207493300'
+CONFIDENCE VALUE : '330'
+RAW SCORE[ 1]    : '39084'
+
+LITERAL[ 2]      : 'five zero two seven four nine three three eight zero zero'
+MEANING[ 2]      : '50274933800'
+CONFIDENCE VALUE : '173'
+RAW SCORE[ 2]    : '39135'
+
+LITERAL[ 3]      : 'oh five zero two seven four nine three three zero zero'
+MEANING[ 3]      : '05027493300'
+CONFIDENCE VALUE : '93'
+RAW SCORE[ 3]    : '39149'
+
+LITERAL[ 4]      : 'five zero two one seven four nine three three zero zero'
+MEANING[ 4]      : '50217493300'
+CONFIDENCE VALUE : '50'
+RAW SCORE[ 4]    : '39152'
+
+LITERAL[ 5]      : 'nine zero two seven four nine three three zero zero'
+MEANING[ 5]      : '9027493300'
+CONFIDENCE VALUE : '28'
+RAW SCORE[ 5]    : '39155'
+
+LITERAL[ 6]      : 'three five zero two seven four nine three three zero zero'
+MEANING[ 6]      : '35027493300'
+CONFIDENCE VALUE : '16'
+RAW SCORE[ 6]    : '39239'
+
+LITERAL[ 7]      : 'two five zero two seven four nine three three zero zero'
+MEANING[ 7]      : '25027493300'
+CONFIDENCE VALUE : '8'
+RAW SCORE[ 7]    : '39267'
+
+LITERAL[ 8]      : 'four five zero two seven four nine three three zero zero'
+MEANING[ 8]      : '45027493300'
+CONFIDENCE VALUE : '4'
+RAW SCORE[ 8]    : '39277'
+
+LITERAL[ 9]      : 'oh five zero two oh seven four nine three three zero zero'
+MEANING[ 9]      : '050207493300'
+CONFIDENCE VALUE : '2'
+RAW SCORE[ 9]    : '39310'
+
+----------------------------------------------
+
+Recognizer has been stopped
+D: dallas/0304/S077.nwf
+C: six nine five zero two eight seven seven three six
+Sem (1):  invocab=1
+S: 527
+
+
+----------------------------------------------
+TRANSCRIPTION    : 'six nine five zero two eight seven seven three six'
+LITERAL[ 0]      : 'six nine five zero two eight seven seven three six'
+MEANING[ 0]      : '6950287736'
+CONFIDENCE VALUE : '527'
+RAW SCORE[ 0]    : '42904'
+
+LITERAL[ 1]      : 'six nine five zero two eight seven seven three seven'
+MEANING[ 1]      : '6950287737'
+CONFIDENCE VALUE : '268'
+RAW SCORE[ 1]    : '42976'
+
+LITERAL[ 2]      : 'six nine five zero two oh eight seven seven three six'
+MEANING[ 2]      : '69502087736'
+CONFIDENCE VALUE : '141'
+RAW SCORE[ 2]    : '42990'
+
+LITERAL[ 3]      : 'six nine five zero two oh eight seven seven three seven'
+MEANING[ 3]      : '69502087737'
+CONFIDENCE VALUE : '71'
+RAW SCORE[ 3]    : '43062'
+
+LITERAL[ 4]      : 'two six nine five zero two eight seven seven three six'
+MEANING[ 4]      : '26950287736'
+CONFIDENCE VALUE : '34'
+RAW SCORE[ 4]    : '43113'
+
+LITERAL[ 5]      : 'six nine five zero two eight seven oh seven three six'
+MEANING[ 5]      : '69502870736'
+CONFIDENCE VALUE : '16'
+RAW SCORE[ 5]    : '43130'
+
+LITERAL[ 6]      : 'oh six nine five zero two eight seven seven three six'
+MEANING[ 6]      : '06950287736'
+CONFIDENCE VALUE : '7'
+RAW SCORE[ 6]    : '43137'
+
+LITERAL[ 7]      : 'six nine five zero two eight seven seven three six oh'
+MEANING[ 7]      : '69502877360'
+CONFIDENCE VALUE : '3'
+RAW SCORE[ 7]    : '43141'
+
+LITERAL[ 8]      : 'six nine five oh zero two eight seven seven three six'
+MEANING[ 8]      : '69500287736'
+CONFIDENCE VALUE : '1'
+RAW SCORE[ 8]    : '43142'
+
+LITERAL[ 9]      : 'eight six nine five zero two eight seven seven three six'
+MEANING[ 9]      : '86950287736'
+CONFIDENCE VALUE : '0'
+RAW SCORE[ 9]    : '43168'
+
+----------------------------------------------
+
+Recognizer has been stopped

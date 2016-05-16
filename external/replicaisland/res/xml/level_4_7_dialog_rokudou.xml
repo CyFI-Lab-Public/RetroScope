@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog>
+
+<conversation>
+
+<page
+  image="@drawable/rokudou_closeup_normal"
+  text = "@string/Rokudou_4_7_1_1" 
+  title = "@string/Rokudou"
+/>
+
+<page
+  image="@drawable/rokudou_closeup_normal"
+  text = "@string/Rokudou_4_7_1_2" 
+  title = "@string/Rokudou"
+/>
+
+</conversation>
+
+</dialog>

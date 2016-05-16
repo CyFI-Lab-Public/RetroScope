@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog>
+
+<conversation>
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_6_1" 
+  title = "@string/Kabocha"
+/>
+
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_6_2" 
+  title = "@string/Kabocha"
+/>
+
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_6_3" 
+  title = "@string/Kabocha"
+/>
+ 
+</conversation>
+</dialog>

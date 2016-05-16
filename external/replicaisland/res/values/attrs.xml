@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<declare-styleable name = "SliderPreference">
+	 	<attr name="minText" format = "string"/>
+		<attr name="maxText" format = "string"/>
+	</declare-styleable>
+	
+	<declare-styleable name = "KeyConfigPreference">
+	 	<attr name="leftKey" format = "string"/>
+		<attr name="rightKey" format = "string"/>
+		<attr name="jumpKey" format = "string"/>
+		<attr name="attackKey" format = "string"/>
+	</declare-styleable>
+</resources>

@@ -1,0 +1,15 @@
+get_size_t_parameter SREC.Recognizer.utterance_timeout 
+set_size_t_parameter SREC.Recognizer.utterance_timeout 100
+get_size_t_parameter SREC.Recognizer.utterance_timeout 
+get_size_t_parameter CREC.Recognizer.terminal_timeout 
+set_size_t_parameter CREC.Recognizer.terminal_timeout 100
+get_size_t_parameter CREC.Recognizer.terminal_timeout 
+get_size_t_parameter CREC.Recognizer.optional_terminal_timeout
+set_size_t_parameter CREC.Recognizer.optional_terminal_timeout 100
+get_size_t_parameter CREC.Recognizer.optional_terminal_timeout
+get_size_t_parameter CREC.Recognizer.non_terminal_timeout
+set_size_t_parameter CREC.Recognizer.non_terminal_timeout 100
+get_size_t_parameter CREC.Recognizer.non_terminal_timeout
+get_size_t_parameter CREC.Recognizer.eou_threshold
+set_size_t_parameter CREC.Recognizer.eou_threshold 100
+get_size_t_parameter CREC.Recognizer.eou_threshold

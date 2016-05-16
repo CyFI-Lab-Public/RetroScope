@@ -1,0 +1,51 @@
+###
+### Untrusted apps.
+###
+### This file defines the rules for untrusted apps. An "untrusted
+### app" is an APP with UID between APP_AID (10000)
+### and AID_ISOLATED_START (99000).
+###
+### untrusted_app includes all the appdomain rules, plus the
+### additional following rules:
+###
+
+type untrusted_app, domain;
+permissive untrusted_app;
+app_domain(untrusted_app)
+net_domain(untrusted_app)
+bluetooth_domain(untrusted_app)
+
+allow untrusted_app tun_device:chr_file rw_file_perms;
+
+# Internal SDCard rw access.
+allow untrusted_app sdcard_internal:dir create_dir_perms;
+allow untrusted_app sdcard_internal:file create_file_perms;
+
+# External SDCard rw access.
+allow untrusted_app sdcard_external:dir create_dir_perms;
+allow untrusted_app sdcard_external:file create_file_perms;
+
+# ASEC
+allow untrusted_app asec_apk_file:dir { getattr };
+allow untrusted_app asec_apk_file:file r_file_perms;
+
+# Create tcp/udp sockets
+allow untrusted_app node_type:{ tcp_socket udp_socket } node_bind;
+allow untrusted_app self:{ tcp_socket udp_socket } { create_socket_perms accept listen };
+# Bind to a particular hostname/address/interface (e.g., localhost) instead of
+# ANY. Normally, apps should not be listening on all interfaces.
+allow untrusted_app port:{ tcp_socket udp_socket } name_bind;
+
+# Allow the allocation and use of ptys
+# Used by: https://play.google.com/store/apps/details?id=jackpal.androidterm
+allow untrusted_app devpts:chr_file rw_file_perms;
+
+# Used by Finsky / Android "Verify Apps" functionality when
+# running "adb install foo.apk".
+# TODO: Long term, we don't want apps probing into shell data files.
+# Figure out a way to remove these rules.
+# XXX Adding writing to shell_data_file to fix 10290009; this needs a real fix,
+# as allowing apps to write shell data files is a significant possible security
+# vuln
+allow untrusted_app shell_data_file:file rw_file_perms;
+allow untrusted_app shell_data_file:dir r_dir_perms;

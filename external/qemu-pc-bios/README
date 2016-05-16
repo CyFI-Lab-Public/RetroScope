@@ -1,0 +1,52 @@
+This project has the source code to build two binaries: bios.bin and
+vgabios-cirrus.bin, which are required for x86 emulation in the
+Android emulator: platform/external/qemu.
+
+
+SOURCE CODE
+
++ bios.bin: git://git.kernel.org/pub/scm/virt/bochs/bochs.git
+
+  The file bios.bin is actually BIOS-bochs-latest, which is built from
+bochs/bios. We used the following commit in the bochs git tree so that
+it can match with the qemu tree in platform/external/qemu:
+
+    commit 04387139e3b5ac97b5633cd40b3d87cdf45efd6c
+    Author: sshwarts <sshwarts>
+    Date:   Mon Feb 9 19:46:34 2009 +0000
+
+        Fixed compilation error + x86-64 correctness fix
+
+  Since our purpose is to build only rombios16.bin, we populated part
+of the bochs tree in the git tree above.
+
++ vgabios-cirrus.bin: git://git.kernel.org/pub/scm/virt/vgabios/vgabios.git
+
+  The file vgabios-cirrus.bin is VGABIOS-lgpl-latest.cirrus.bin, which
+is built by the tree, and we used the following commit.
+
+    commit 33636cbdd93da79c903b91b50ae087bb814b9332
+    Author: vruppert <vruppert>
+    Date:   Mon Jan 31 17:28:09 2011 +0000
+
+        - added HDTV resolutions (patch by Tristan Schmelcher)
+
+TOOLS REQUIRED TO BUILD
+
+  The build requires dev86 rpm or bin86 & bcc debs version >= 0.16.14.
+(visit http://www.debath.co.uk/dev86/ for more information)
+
+HOW TO BUILD
+
+  Just run make like,
+  $ make
+
+  To clean up, 
+  $ make clean
+
+OUTPUT
+  
+  The two binaries rombios16.bin and VGABIOS-lgpl-latest.cirrus.binare
+copied from the directories accordingly, and renamed to bios.bin and
+vgabios-cirrus.bin.
+

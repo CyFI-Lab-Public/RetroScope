@@ -1,0 +1,13 @@
+###
+### Apps signed with the media key.
+###
+
+type media_app, domain;
+permissive media_app;
+app_domain(media_app)
+platform_app_domain(media_app)
+# Access the network.
+net_domain(media_app)
+unconfined_domain(media_app)
+relabelto_domain(media_app)
+allow media_app download_file:dir relabelto;

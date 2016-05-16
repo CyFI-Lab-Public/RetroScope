@@ -1,0 +1,6 @@
+type sdcardd, domain;
+permissive sdcardd;
+type sdcardd_exec, exec_type, file_type;
+
+init_daemon_domain(sdcardd)
+unconfined_domain(sdcardd)

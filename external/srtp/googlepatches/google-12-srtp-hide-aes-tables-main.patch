@@ -1,0 +1,50 @@
+Change 22848094 by param@param-gcomm-server on 2011/07/29 11:51:00 *pending*
+
+	Make main in aes_tables hidable.
+	
+	PRESUBMIT=passed
+	R=tschmelcher,jacobly
+	CC=a2a-mobile,third-party-owners
+	DELTA=7  (7 added, 0 deleted, 0 changed)
+	OCL=22848094
+	BUG=5096975
+
+Affected files ...
+
+... //depot/google3/third_party/libsrtp/README.google#9 edit
+... //depot/google3/third_party/libsrtp/tables/aes_tables.c#4 edit
+
+==== //depot/google3/third_party/libsrtp/README.google#9 - /home/param/sources/gcomm-server/google3/third_party/libsrtp/README.google ====
+# action=edit type=text
+--- google3/third_party/libsrtp/README.google	2011-07-22 15:49:10.000000000 -0700
++++ google3/third_party/libsrtp/README.google	2011-08-08 11:37:50.000000000 -0700
+@@ -25,3 +25,7 @@
+ - Fixed a bug related to replay detection when sequence number rolls back
+   arround 0. (Currently contacting libsrtp developers for upstream.)
+ - Adding public.mk and Android.mk for building android flavour of libsrtp.
++- Make main in tables/aes_tables.c hidable. If it is present, it conflicts
++  with main in the application and cause link error when all_load flag is
++  present for the linker command. Can be now hidden using flag
++  HIDE_AES_TABLES_MAIN
+==== //depot/google3/third_party/libsrtp/tables/aes_tables.c#4 - /home/param/sources/gcomm-server/google3/third_party/libsrtp/tables/aes_tables.c ====
+# action=edit type=text
+--- google3/third_party/libsrtp/tables/aes_tables.c	2010-02-25 06:36:30.000000000 -0800
++++ google3/third_party/libsrtp/tables/aes_tables.c	2011-07-29 11:52:25.000000000 -0700
+@@ -198,6 +198,8 @@
+ 
+ #define TABLES_32BIT 1
+ 
++#ifndef HIDE_AES_TABLES_MAIN
++
+ int
+ main(void) {
+   int i;
+@@ -309,6 +311,8 @@
+   
+   return 0;
+ }
++
++#endif // HIDE_AES_TABLES_MAIN
+ 
+ #if AES_INVERSE_TEST
+ 

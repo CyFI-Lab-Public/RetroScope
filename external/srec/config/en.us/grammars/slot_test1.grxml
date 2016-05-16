@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO8859-1" ?>
+<!--
+	Test grammar, stacked slots
+-->
+<grammar xml:lang="en-us" version="1.0" root="ROOT">
+<meta name="word_penalty" content="40" />
+      
+<rule id="ROOT" scope="public">
+  <one-of>
+  <item>
+	<item>	<ruleref uri="#slot1"/> <tag>MEANING=slot1.V;</tag></item>
+  </item>
+  <item>
+	<item>	<ruleref uri="#slot1"/> <tag>MEANING=slot1.V;</tag></item>
+	<item>	<ruleref uri="#slot2"/> <tag>MEANING=slot2.V;</tag></item>
+  </item>
+  <item>
+	<item>	<ruleref uri="#slot1"/> <tag>MEANING=slot1.V;</tag></item>
+	<item>	<ruleref uri="#slot2"/> <tag>MEANING=slot2.V;</tag></item>
+	<item>	<ruleref uri="#slot3"/> <tag>MEANING=slot3.V;</tag></item>
+  </item>
+  <item>
+	<item>	<ruleref uri="#slot1"/> <tag>MEANING=slot1.V;</tag></item>
+	<item>	<ruleref uri="#slot2"/> <tag>MEANING=slot2.V;</tag></item>
+	<item>	<ruleref uri="#slot3"/> <tag>MEANING=slot3.V;</tag></item>
+	<item>	<ruleref uri="#slot4"/> <tag>MEANING=slot4.V;</tag></item>
+  </item>
+  </one-of>
+</rule>
+
+<rule id="slot1" scope="public">
+  <item>__slot1__</item>
+  <item>word1<tag>V='word1';</tag></item>
+</rule>
+
+<rule id="slot2" scope="public">
+  <item>__slot2__</item>
+  <item>word2<tag>V='word2';</tag></item>
+</rule>
+
+<rule id="slot3" scope="public">
+  <item>__slot3__</item>
+  <item>word3<tag>V='word3';</tag></item>
+</rule>
+
+<rule id="slot4" scope="public">
+  <item>__slot4__</item>
+  <item>word4<tag>V='word4';</tag></item>
+</rule>
+
+
+</grammar>

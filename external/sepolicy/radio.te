@@ -1,0 +1,8 @@
+# phone subsystem
+type radio, domain;
+permissive radio;
+app_domain(radio)
+net_domain(radio)
+bluetooth_domain(radio)
+
+unconfined_domain(radio)

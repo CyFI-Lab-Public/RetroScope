@@ -1,0 +1,35 @@
+diff --git a/google3/third_party/libsrtp/crypto/cipher/aes_icm.c b/google3/third_party/libsrtp/crypto/cipher/aes_icm.c
+index d333899..45714c0 100644
+--- a/google3/third_party/libsrtp/crypto/cipher/aes_icm.c
++++ b/google3/third_party/libsrtp/crypto/cipher/aes_icm.c
+@@ -164,18 +164,20 @@ aes_icm_dealloc(cipher_t *c) {
+ err_status_t
+ aes_icm_context_init(aes_icm_ctx_t *c, const uint8_t *key) {
+   v128_t tmp_key;
++  int i;
+ 
+   /* set counter and initial values to 'offset' value */
+   /* FIX!!! this assumes the salt is at key + 16, and thus that the */
+-  /* FIX!!! cipher key length is 16!  Also note this copies past the
+-            end of the 'key' array by 2 bytes! */
+-  v128_copy_octet_string(&c->counter, key + 16);
+-  v128_copy_octet_string(&c->offset, key + 16);
++  /* FIX!!! cipher key length is 16! */
++  for (i = 0; i < 14; i++) {
++    c->counter.v8[i] = key[16 + i];
++    c->offset.v8[i] = key[16 + i];
++  }
+ 
+   /* force last two octets of the offset to zero (for srtp compatibility) */
+   c->offset.v8[14] = c->offset.v8[15] = 0;
+   c->counter.v8[14] = c->counter.v8[15] = 0;
+-  
++
+   /* set tmp_key (for alignment) */
+   v128_copy_octet_string(&tmp_key, key);
+ 
+@@ -508,4 +510,3 @@ cipher_type_t aes_icm = {
+   (cipher_test_case_t *)        &aes_icm_test_case_0,
+   (debug_module_t *)            &mod_aes_icm
+ };
+-

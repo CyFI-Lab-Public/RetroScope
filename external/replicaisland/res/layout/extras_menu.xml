@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+		android:layout_width="fill_parent"
+  		android:layout_height="fill_parent" 
+  		xmlns:android="http://schemas.android.com/apk/res/android">
+	<ImageView 
+          android:id="@+id/mainMenuBackground"
+          android:src="@drawable/title_background"
+          android:adjustViewBounds="true"
+          android:gravity="center_vertical"
+          android:scaleType="fitXY"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent"/>		
+          
+    <ImageView 
+	      android:id="@+id/mainMenuTitle"
+	      android:src="@drawable/title"
+	      android:adjustViewBounds="true"
+	      android:layout_width="336dp" 
+	      android:layout_height="153dp" 
+	      android:layout_gravity="center_horizontal" 
+	      android:layout_marginTop="20dp"/>
+	      
+   	<LinearLayout
+   			xmlns:android="http://schemas.android.com/apk/res/android"
+	     	android:gravity="bottom" android:layout_gravity="bottom|center_horizontal" android:layout_height="wrap_content" android:layout_width="wrap_content" android:orientation="vertical">
+	     	
+		<FrameLayout
+			android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:paddingTop="10dp" 
+	        android:layout_gravity="center_horizontal">
+	     	<ImageView 
+		        android:id="@+id/linearModeButton"
+		        android:src="@drawable/ui_button_linear_mode"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content" 
+		        android:clickable="true" />
+		    <ImageView
+		    	android:id="@+id/linearModeLocked"
+		        android:src="@drawable/ui_locked"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+		       	android:layout_gravity="center"/>
+	    </FrameLayout>
+	    
+	    <FrameLayout
+			android:layout_width="wrap_content" 
+	        android:layout_height="wrap_content" 
+	        android:paddingTop="10dp" 
+	        android:layout_gravity="center_horizontal">
+	     	<ImageView 
+		        android:id="@+id/levelSelectButton"
+		        android:src="@drawable/ui_button_level_select"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content" 
+		        android:clickable="true" />
+		    <ImageView
+		    	android:id="@+id/levelSelectLocked"
+		        android:src="@drawable/ui_locked"
+		        android:layout_width="wrap_content" 
+		        android:layout_height="wrap_content"
+		       	android:layout_gravity="center"
+		       	/>
+	    </FrameLayout>
+	    
+         
+		<ImageView 
+		    android:id="@+id/controlsButton"
+		    android:src="@drawable/ui_button_controls"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content" 
+		    android:paddingTop="10dp"
+		    android:paddingBottom="10dp"
+		    android:clickable="true" 
+		    android:layout_gravity="center_horizontal"/>
+	</LinearLayout>
+		
+</FrameLayout> 

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FrameLayout
+		android:layout_width="fill_parent"
+  		android:layout_height="fill_parent" 
+  		xmlns:android="http://schemas.android.com/apk/res/android" android:background="#FFFFFF">
+	<ImageView 
+          android:id="@+id/mainMenuBackground"
+          android:src="@drawable/title_background"
+          android:adjustViewBounds="true"
+          android:scaleType="fitXY"
+          android:layout_width="fill_parent"
+          android:layout_height="fill_parent" android:gravity="right" android:tint="#88FFFFFF"/>	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:padding="5sp">
+	    <TextView android:text="@string/game_results_title" android:layout_height="wrap_content" android:textSize="40sp" android:layout_width="wrap_content" android:layout_gravity="center_horizontal" android:textColor="#000000" android:textStyle="bold" android:typeface="serif"/>
+		<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+				<TextView android:text="@string/game_results_pearls_collected" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textColor="#000000" android:textStyle="bold" android:typeface="serif" android:textSize="20sp"/>
+				<view 
+					class = "com.replica.replicaisland.GameOverActivity$IncrementingTextView"
+					android:id ="@+id/pearl_percent" 
+					android:text="@string/s100p"
+					android:layout_height="wrap_content" 
+					android:layout_width="fill_parent" 
+					android:textSize="20sp" 
+					android:layout_gravity="right|center_vertical"
+					android:textColor="#000000" android:textStyle="bold" 
+					android:typeface="serif" android:gravity="right"/>
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+			<TextView android:text="@string/game_results_robots_destroyed" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:textColor="#000000" android:textStyle="bold" android:typeface="serif"/>
+			<view 				
+				class = "com.replica.replicaisland.GameOverActivity$IncrementingTextView"
+				android:id ="@+id/enemy_percent" 
+				android:layout_height="wrap_content" 
+				android:layout_width="fill_parent" 
+				android:layout_gravity="right|center_vertical"
+				android:textColor="#000000" android:textStyle="bold" 
+				android:typeface="serif" android:gravity="right" android:text="@string/zero" android:textSize="20sp"/>
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+			<TextView android:text="@string/game_results_total_play_time" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:textColor="#000000" android:textStyle="bold" android:typeface="serif"/>
+			<view 
+				class = "com.replica.replicaisland.GameOverActivity$IncrementingTextView"
+				android:id ="@+id/total_play_time" 
+				android:layout_height="wrap_content" 
+				android:layout_width="fill_parent" 
+				android:textSize="20sp" 
+				android:layout_gravity="right|center_vertical"
+				android:textColor="#000000" android:textStyle="bold" 
+				android:typeface="serif" android:gravity="right" android:text="@string/s3_21_34"/>
+		</LinearLayout>
+		<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+			<TextView android:text="@string/game_results_ending" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:textColor="#000000" android:textStyle="bold" android:typeface="serif"/>
+			<TextView android:id ="@+id/ending" android:text="@string/game_results_kabocha_ending" android:layout_height="wrap_content" android:layout_width="fill_parent" android:textColor="#000000" android:textStyle="bold" android:typeface="serif" android:gravity="right" android:textSize="15sp" android:layout_gravity="right|center_vertical"/>
+		
+		</LinearLayout>
+			<TextView android:text="@string/game_results_unlocks_message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:textColor="#000000" android:textStyle="bold" android:typeface="serif" android:textSize="16sp" android:gravity="center_horizontal" android:layout_gravity="top|center_horizontal"/> 
+			<Button android:id ="@+id/ok" android:text="@string/game_results_ok_button" android:layout_height="wrap_content" android:layout_width="wrap_content" android:layout_gravity="bottom|center_horizontal"/>
+	</LinearLayout>
+	</FrameLayout>
+		

@@ -1,0 +1,24 @@
+# cd /system/usr/srec
+# ./run_ERT.sh
+Create an EmbeddedRecognizer
+Load a grammar
+Add word to grammar slot
+Save the grammar
+Grammar saved
+Recognizing against the first grammar (dynamic add-word)
+Meaning1=DEL Jen_Parker
+RecognizerListener1.onStopped()
+Load the second grammar (pre-populated slot)
+Grammar loaded
+Recognizing against the pre-populated grammar
+Meaning=DEL Jen_Parker
+Literal=phone delete Jen_Parker
+Score=80
+	key=raws value=22722
+	key=Phone.V value=DEL Jen_Parker
+	key=Names.V value=Jen_Parker
+	key=Phone.C value=DEL 
+	key=ROOT.meaning value=DEL Jen_Parker
+----- PASS -----
+# exit
+

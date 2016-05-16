@@ -1,0 +1,21 @@
+# Label inodes via getxattr.
+fs_use_xattr yaffs2 u:object_r:labeledfs:s0;
+fs_use_xattr jffs2 u:object_r:labeledfs:s0;
+fs_use_xattr ext2 u:object_r:labeledfs:s0;
+fs_use_xattr ext3 u:object_r:labeledfs:s0;
+fs_use_xattr ext4 u:object_r:labeledfs:s0;
+fs_use_xattr xfs u:object_r:labeledfs:s0;
+fs_use_xattr btrfs u:object_r:labeledfs:s0;
+
+# Label inodes from task label.
+fs_use_task pipefs u:object_r:pipefs:s0;
+fs_use_task sockfs u:object_r:sockfs:s0;
+
+# Label inodes from combination of task label and fs label.
+# Define type_transition rules if you want per-domain types.
+fs_use_trans devpts u:object_r:devpts:s0;
+fs_use_trans tmpfs u:object_r:tmpfs:s0;
+fs_use_trans devtmpfs u:object_r:device:s0;
+fs_use_trans shm u:object_r:shm:s0;
+fs_use_trans mqueue u:object_r:mqueue:s0;
+

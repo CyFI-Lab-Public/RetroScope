@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="msg_default_status" msgid="639431501805022060">"מקם קוד תגובה מהירה בתוך מלבן העינית כדי לסרוק אותו."</string>
+    <string name="msg_camera_framework_bug" msgid="2167124836274973533">"מצטערים. מצלמת Android נתקלה בבעיה. ייתכן שתידרש להפעיל מחדש את המכשיר."</string>
+</resources>

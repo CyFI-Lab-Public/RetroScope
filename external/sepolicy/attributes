@@ -1,0 +1,69 @@
+######################################
+# Attribute declarations
+#
+
+# All types used for devices.
+attribute dev_type;
+
+# All types used for processes.
+attribute domain;
+
+# All types used for filesystems.
+attribute fs_type;
+
+# All types used for files that can exist on a labeled fs.
+# Do not use for pseudo file types.
+attribute file_type;
+
+# All types used for domain entry points.
+attribute exec_type;
+
+# All types used for /data files.
+attribute data_file_type;
+
+# All types use for sysfs files.
+attribute sysfs_type;
+
+# Attribute used for all sdcards
+attribute sdcard_type;
+
+# All types used for nodes/hosts.
+attribute node_type;
+
+# All types used for network interfaces.
+attribute netif_type;
+
+# All types used for network ports.
+attribute port_type;
+
+# All types used for property service
+attribute property_type;
+
+# All domains that can override MLS restrictions.
+# i.e. processes that can read up and write down.
+attribute mlstrustedsubject;
+
+# All types that can override MLS restrictions.
+# i.e. files that can be read by lower and written by higher
+attribute mlstrustedobject;
+
+# Domains that are allowed all permissions ("unconfined").
+attribute unconfineddomain;
+
+# All domains used for apps.
+attribute appdomain;
+
+# All domains used for apps with network access.
+attribute netdomain;
+
+# All domains used for apps with bluetooth access.
+attribute bluetoothdomain;
+
+# All domains used for binder service domains.
+attribute binderservicedomain;
+
+# Allow domains used for platform (signed by build key) apps.
+attribute platformappdomain;
+
+# All domains which are allowed the "relabelto" permission
+attribute relabeltodomain;

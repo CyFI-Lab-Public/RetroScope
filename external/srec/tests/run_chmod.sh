@@ -1,0 +1,9 @@
+chmod 777 ./run_contacts.sh
+chmod 777 ./run_ERT.sh
+chmod 777 ./run_parameters.sh
+chmod 777 ./run_robustness1.sh
+chmod 777 ./run_robustness2.sh
+chmod 777 ./run_robustness3.sh
+chmod 777 ./run_UAPI_SrecTest.sh
+chmod 777 ./run_UAPI_Test.sh
+chmod 777 ./run_voicetags1.sh

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="70dp"
+    android:background = "#000000"
+    >
+	<ImageView 
+          android:src="@drawable/ui_rack_red"
+          android:adjustViewBounds="true"
+          android:gravity="center_vertical"
+          android:layout_width="fill_parent" 
+          android:layout_height="fill_parent" 
+          android:layout_x="0dp" 
+          android:layout_y="0dp" 
+          android:focusable = "false"
+    	  android:focusableInTouchMode = "false"
+		  android:scaleType="fitXY"
+    	
+       />
+	<TextView android:id="@+id/title" xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="265dp"
+	    android:layout_height="36dp"
+	    android:textSize = "24sp"
+	    android:textStyle = "bold"
+	    android:textColor = "#066659"
+	    android:gravity = "top"
+	    android:layout_x="20dp" 
+        android:layout_y="5dp" 
+        android:text="@string/level_1_1"
+	              />
+	              
+	<TextView android:id="@+id/time" xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:layout_width="60dp"
+	    android:layout_height="15dp"
+	    android:textSize = "12sp"
+	    android:textColor = "#066659"
+	    android:gravity = "top"
+	    android:layout_x="290dp" 
+        android:layout_y="25dp" 
+        android:text="@string/s0_02_031"
+	              />
+	              
+</AbsoluteLayout>

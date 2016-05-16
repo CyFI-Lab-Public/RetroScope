@@ -1,0 +1,918 @@
+###############################################################################
+# Defines $(ASR_GLOBAL_DEFINES) (among other things) that specify a build.
+#
+# !!! NOTE:	This file must be kept synchronized with builddef.h
+# !!!		Also the values of $(ASR_OPTIMIZE), $(ASR_PROFILE), & $(ASR_TRACE) must
+# !!!		be compatible with the corresponding values in buildddef.h
+#
+# Required macros set in macros.mak:
+#	$(ASR_OS)			The name of the operating system.
+#	$(ASR_CPU)			The name of the CPU architecture.
+#	$(ASR_COMPILER)		The name of the compiler.
+#	$(ASR_BUILD)		A string that defines what type of build to perform.
+#	$(ASR_UI)			The name of the type of user interface.
+#
+# The important macros defined herein are:
+# *	$(ASR_GLOBAL_DEFINES)The compiler defines based on the values of:
+#					$(ASR_OS), $(ASR_CPU), $(ASR_COMPILER), $(ASR_BUILD), & $(ASR_UI).
+# *	$(ASR_SUB_DIR)		The object, library, & binary sub-directory name.
+# *	$(ASR_OPTIMIZE)		Used by $(ASR_COMPILER_CHAR)flags.mak to enable optimization.
+# *	$(ASR_PROFILE)		Used by $(ASR_COMPILER_CHAR)flags.mak to enable profiling.
+# *	$(ASR_TRACE)		Used by $(ASR_COMPILER_CHAR)flags.mak to enable tracing.
+#
+# Other macros incidentally valid on exit:
+# *	$(ASR_OS_TYPE)		Value corresponding to the type of operating system.
+#	$(ASR_CPU_TYPE)		Value corresponding to the type of CPU architecture.
+#	$(ASR_COMPILER_TYPE)Value corresponding to the type of compiler.
+# *	$(ASR_BUILD_TYPE)	Value corresponding to the type of build to perform.
+#	$(ASR_UI_TYPE)		Value corresponding to the type of user interface.
+#	$(ASR_OS_CHAR)		Character corresponding to the type of operating system.
+#	$(ASR_CPU_CHARS)	Characters corresponding to the type of CPU architecture.
+# *	$(ASR_COMPILER_CHAR)Character corresponding to the type of compiler.
+#	$(ASR_BUILD_CHAR)	Character corresponding to the type of build to perform.
+#	$(ASR_OS_MSDOS)		Value associated with $(ASR_OS_CHAR) = D.
+#	$(ASR_OS_WIN32)		Value associated with $(ASR_OS_CHAR) = W.
+#	$(ASR_OS_MAC)		Value associated with $(ASR_OS_CHAR) = M.
+#	$(ASR_OS_UNIX)		Value associated with $(ASR_OS_CHAR) = U.
+#	$(ASR_OS_EMBEDDED)	Value associated with $(ASR_OS_CHAR) = E.
+#	$(ASR_OS_VXWORKS)	Value associated with $(ASR_OS_CHAR) = V.
+#	$(ASR_OS_QNX)		Value associated with $(ASR_OS_CHAR) = Q.
+#	$(ASR_OS_PSOS)		Value associated with $(ASR_OS_CHAR) = S.
+#	$(ASR_OS_WINCE)		Value associated with $(ASR_OS_CHAR) = C.
+#	$(ASR_OS_PALM)		Value associated with $(ASR_OS_CHAR) = P.
+#	$(ASR_OS_JAVA)		Value associated with $(ASR_OS_CHAR) = J.
+#	$(ASR_CPU_I86)		Value associated with $(ASR_CPU_CHARS) = IN.
+#	$(ASR_CPU_68K)		Value associated with $(ASR_CPU_CHARS) = MO.
+#	$(ASR_CPU_MIPS)		Value associated with $(ASR_CPU_CHARS) = MI.
+#	$(ASR_CPU_ALPHA)	Value associated with $(ASR_CPU_CHARS) = AL.
+#	$(ASR_CPU_PPC)		Value associated with $(ASR_CPU_CHARS) = PP.
+#	$(ASR_CPU_SPARC)	Value associated with $(ASR_CPU_CHARS) = SP.
+#	$(ASR_CPU_ARM)		Value associated with $(ASR_CPU_CHARS) = AR.
+#	$(ASR_CPU_STRONGARM)Value associated with $(ASR_CPU_CHARS) = SA.
+#	$(ASR_CPU_TMS320X)	Value associated with $(ASR_CPU_CHARS) = TI.
+#	$(ASR_CPU_SH3)		Value associated with $(ASR_CPU_CHARS) = HI.
+#	$(ASR_CPU_SH4)		Value associated with $(ASR_CPU_CHARS) = HI.
+#	$(ASR_CPU_FAMILY_TMS320C30)Value associated with $(ASR_CPU_FAMILY) = 3.
+#	$(ASR_CPU_FAMILY_TMS320C40)Value associated with $(ASR_CPU_FAMILY) = 4.
+#	$(ASR_CPU_FAMILY_TMS320C2XX)Value associated with $(ASR_CPU_FAMILY) = 2.
+#	$(ASR_CPU_FAMILY_TMS320C54X)Value associated with $(ASR_CPU_FAMILY) = 5.
+#	$(ASR_C_BORLAND)	Value associated with $(ASR_COMPILER_CHAR) = B.
+#	$(ASR_C_MICROSOFT)	Value associated with $(ASR_COMPILER_CHAR) = M.
+#	$(ASR_C_HIGH)		Value associated with $(ASR_COMPILER_CHAR) = H.
+#	$(ASR_C_INTEL)		Value associated with $(ASR_COMPILER_CHAR) = I.
+#	$(ASR_C_ZORTECH)	Value associated with $(ASR_COMPILER_CHAR) = Z.
+#	$(ASR_C_WATCOM)		Value associated with $(ASR_COMPILER_CHAR) = W.
+#	$(ASR_C_GNU)		Value associated with $(ASR_COMPILER_CHAR) = G.
+#	$(ASR_C_SUNPRO)		Value associated with $(ASR_COMPILER_CHAR) = S.
+#	$(ASR_C_DECCXX)		Value associated with $(ASR_COMPILER_CHAR) = D.
+#	$(ASR_C_METROWERKS)	Value associated with $(ASR_COMPILER_CHAR) = C.
+#	$(ASR_C_GHS)		Value associated with $(ASR_COMPILER_CHAR) = X.
+#	$(ASR_C_TICXC)		Value associated with $(ASR_COMPILER_CHAR) = T.
+#	$(ASR_C_ARM)		Value associated with $(ASR_COMPILER_CHAR) = A.
+#	$(ASR_BUILD_SHIP)	Value associated with $(ASR_BUILD_CHAR) = S.
+#	$(ASR_BUILD_INHOUSE)Value associated with $(ASR_BUILD_CHAR) = I.
+#	$(ASR_BUILD_DEBUGO)	Value associated with $(ASR_BUILD_CHAR) = G.
+#	$(ASR_BUILD_DEBUG)	Value associated with $(ASR_BUILD_CHAR) = X.
+#	$(ASR_BUILD_PROFILE)Value associated with $(ASR_BUILD_CHAR) = P.
+#	$(ASR_BUILD_TRACE)	Value associated with $(ASR_BUILD_CHAR) = L.
+#
+# !!! NOTE:	Should these UI macros be used?
+#
+#	$(ASR_UI_NONE)
+#	$(ASR_UI_TTY)
+#	$(ASR_UI_GUI)
+#
+# Optional (for certain values of $(ASR_CPU)) macros used herein:
+#	$(ASR_CPU_FAMILY)	OPTIONAL single-character name of the $(ASR_CPU) family.
+#
+# Optional (for certain values of $(ASR_CPU)) macros defined herein:
+# *	$(ASR_CPU_FAMILY_TYPE)For OPTIONAL CPU-specifics in $(ASR_COMPILER_CHAR)flags.mak.
+#
+# *	Used outside of this makefile. All macros with the suffix ``_TYPE''
+#	used outside of this makefile can be &ed with macros with the
+#	corresponding prefix. Threfore it is implied that those macros are
+#	also available outside of this makefile.
+###############################################################################
+
+# Makefile.config configures the ASR build.  Include this first!
+include $(ASR_MAKE_DIR)/Makefile.config
+
+# Makefile.common contains settings available to all ASR modules
+include $(ASR_MAKE_DIR)/Makefile.common
+
+# Define $(ASR_OS_*), $(ASR_CPU_*), $(ASR_COMPILER_*), $(ASR_BUILD_*) & $(ASR_UI_*) values.
+
+# OS
+
+ASR_OS_MSDOS = 1
+ASR_OS_WIN32 = 2
+ASR_OS_MAC = 4
+ASR_OS_UNIX = 8
+ASR_OS_EMBEDDED = 16
+ASR_OS_VXWORKS = 32
+ASR_OS_PSOS = 64
+ASR_OS_WINCE = 128
+ASR_OS_PALM = 256
+ASR_OS_JAVA = 512
+ASR_OS_QNX = 1024
+
+# CPU
+
+ASR_CPU_I86 = 1
+ASR_CPU_68K = 2
+ASR_CPU_MIPS = 4
+ASR_CPU_ALPHA = 8
+ASR_CPU_PPC = 16
+ASR_CPU_SPARC = 32
+ASR_CPU_ARM = 64
+ASR_CPU_STRONGARM = 128
+ASR_CPU_TMS320X = 256
+ASR_CPU_SH3 = 512
+ASR_CPU_SH4 = 1024
+
+# Used only by TFLAGS.MAK.
+
+ASR_CPU_FAMILY_TMS320C30 = 1
+ASR_CPU_FAMILY_TMS320C40 = 2
+ASR_CPU_FAMILY_TMS320C2XX = 4
+ASR_CPU_FAMILY_TMS320C54X = 8
+
+# COMPILER
+
+ASR_C_BORLAND = 1
+ASR_C_MICROSOFT = 2
+ASR_C_INTEL = 4
+ASR_C_HIGH = 8
+ASR_C_ZORTECH = 16
+ASR_C_WATCOM = 32
+ASR_C_GNU = 64
+ASR_C_SUNPRO = 128
+ASR_C_DECCXX = 256
+ASR_C_METROWERKS = 512
+ASR_C_GHS = 1024
+ASR_C_TICXC = 2048
+ASR_C_ARM = 4096
+ASR_C_DIABDATA = 8192
+
+# BUILD (must be synchronized with vcc_helper.h included by buildopt.h)
+
+ASR_BUILD_SHIP = 1
+ASR_BUILD_INHOUSE = 2
+ASR_BUILD_DEBUGO = 4
+ASR_BUILD_DEBUG = 8
+ASR_BUILD_PROFILE = 16
+ASR_BUILD_TRACE = 32
+
+ASR_OFF = 0
+
+# UI
+
+ASR_UI_NONE = 1
+ASR_UI_TTY = 2
+ASR_UI_GUI = 4
+
+########################################################################
+#
+# Define $(ASR_*_TYPE) and $(ASR_*_CHAR[S]) to be used to define $(ASR_GLOBAL_DEFINES)
+# and $(ASR_SUB_DIR).
+
+################################## OS ##################################
+
+ifeq ("$(ASR_OS)","MSDOS")
+ASR_OS_TYPE = $(ASR_OS_MSDOS)
+
+else								# same as OS = "Windows_NT"
+ifeq ("$(ASR_OS)","WIN32")
+ASR_OS_TYPE = $(ASR_OS_WIN32)
+
+else								# same as OS = "WIN32"
+ifeq ("$(ASR_OS)","Windows_NT")
+ASR_OS_TYPE = $(ASR_OS_WIN32)
+
+else
+ifeq ("$(ASR_OS)","MAC")
+ASR_OS_TYPE = $(ASR_OS_MAC)
+
+else
+ifeq ("$(ASR_OS)","UNIX")
+ASR_OS_TYPE = $(ASR_OS_UNIX)
+
+else
+ifeq ("$(ASR_OS)","EMBEDDED")
+ASR_OS_TYPE = $(ASR_OS_EMBEDDED)
+
+else
+ifeq ("$(ASR_OS)","VXWORKS")
+ASR_OS_TYPE = $(ASR_OS_VXWORKS)
+
+else
+ifeq ("$(ASR_OS)","PSOS")
+ASR_OS_TYPE = $(ASR_OS_PSOS)
+
+else
+ifeq ("$(ASR_OS)","Wince")
+ASR_OS_TYPE = $(ASR_OS_WINCE)
+
+else
+ifeq ("$(ASR_OS)","PALM")
+ASR_OS_TYPE = $(ASR_OS_PALM)
+
+else
+ifeq ("$(ASR_OS)","JAVA")
+ASR_OS_TYPE = $(ASR_OS_JAVA)
+
+else
+ifeq ("$(ASR_OS)","QNX")
+ASR_OS_TYPE = $(ASR_OS_QNX)
+
+else
+ERROR += \
+$(subst $(space),|,'Failed to select operating system with $$(ASR_OS) == "$(ASR_$(ASR_OS))"')
+ASR_OS_TYPE = ASR_BAD_OS
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+
+
+################################## HOST_OS ##################################
+
+ifeq ("$(ASR_HOST_OS)","MSDOS")
+ASR_HOST_OS_TYPE = $(ASR_OS_MSDOS)
+
+else								# same as OS = "Windows_NT"
+ifeq ("$(ASR_HOST_OS)","WIN32")
+ASR_HOST_OS_TYPE = $(ASR_OS_WIN32)
+
+else								# same as OS = "WIN32"
+ifeq ("$(ASR_HOST_OS)","Windows_NT")
+ASR_HOST_OS_TYPE = $(ASR_OS_WIN32)
+
+else
+ifeq ("$(ASR_HOST_OS)","MAC")
+ASR_HOST_OS_TYPE = $(ASR_OS_MAC)
+
+else
+ifeq ("$(ASR_HOST_OS)","UNIX")
+ASR_HOST_OS_TYPE = $(ASR_OS_UNIX)
+
+else
+ifeq ("$(ASR_HOST_OS)","EMBEDDED")
+ASR_HOST_OS_TYPE = $(ASR_OS_EMBEDDED)
+
+else
+ifeq ("$(ASR_HOST_OS)","VXWORKS")
+ASR_HOST_OS_TYPE = $(ASR_OS_VXWORKS)
+
+else
+ifeq ("$(ASR_HOST_OS)","PSOS")
+ASR_HOST_OS_TYPE = $(ASR_OS_PSOS)
+
+else
+ifeq ("$(ASR_HOST_OS)","Wince")
+ASR_HOST_OS_TYPE = $(ASR_OS_WINCE)
+
+else
+ifeq ("$(ASR_HOST_OS)","PALM")
+ASR_HOST_OS_TYPE = $(ASR_OS_PALM)
+
+else
+ifeq ("$(ASR_HOST_OS)","JAVA")
+ASR_HOST_OS_TYPE = $(ASR_OS_JAVA)
+
+else
+ifeq ("$(ASR_HOST_OS)","QNX")
+ASR_HOST_OS_TYPE = $(ASR_OS_QNX)
+
+else
+ERROR += \
+$(subst $(space),|,'Failed to select operating system with $$(ASR_HOST_OS) == "$(ASR_HOST_OS)"')
+ASR_HOST_OS_TYPE = ASR_BAD_OS
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+
+################################## TARGET_OS ##################################
+
+ifeq ("$(ASR_TARGET_OS)","MSDOS")
+ASR_TARGET_OS_TYPE = $(ASR_OS_MSDOS)
+
+else								# same as OS = "Windows_NT"
+ifeq ("$(ASR_TARGET_OS)","WIN32")
+ASR_TARGET_OS_TYPE = $(ASR_OS_WIN32)
+
+else								# same as OS = "WIN32"
+ifeq ("$(ASR_TARGET_OS)","Windows_NT")
+ASR_TARGET_OS_TYPE = $(ASR_OS_WIN32)
+
+else
+ifeq ("$(ASR_TARGET_OS)","MAC")
+ASR_TARGET_OS_TYPE = $(ASR_OS_MAC)
+
+else
+ifeq ("$(ASR_TARGET_OS)","UNIX")
+ASR_TARGET_OS_TYPE = $(ASR_OS_UNIX)
+
+else
+ifeq ("$(ASR_TARGET_OS)","EMBEDDED")
+ASR_TARGET_OS_TYPE = $(ASR_OS_EMBEDDED)
+
+else
+ifeq ("$(ASR_TARGET_OS)","VXWORKS")
+ASR_TARGET_OS_TYPE = $(ASR_OS_VXWORKS)
+
+else
+ifeq ("$(ASR_TARGET_OS)","PSOS")
+ASR_TARGET_OS_TYPE = $(ASR_OS_PSOS)
+
+else
+ifeq ("$(ASR_TARGET_OS)","Wince")
+ASR_TARGET_OS_TYPE = $(ASR_OS_WINCE)
+
+else
+ifeq ("$(ASR_TARGET_OS)","PALM")
+ASR_TARGET_OS_TYPE = $(ASR_OS_PALM)
+
+else
+ifeq ("$(ASR_TARGET_OS)","JAVA")
+ASR_TARGET_OS_TYPE = $(ASR_OS_JAVA)
+
+else
+ifeq ("$(ASR_TARGET_OS)","QNX")
+ASR_TARGET_OS_TYPE = $(ASR_OS_QNX)
+
+else
+ERROR += \
+$(subst $(space),|,'Failed to select operating system with $$(ASR_TARGET_OS) == "$(ASR_TARGET_OS)"')
+ASR_TARGET_OS_TYPE = ASR_BAD_OS
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+
+################################## CPU #################################
+
+ifeq ("$(ASR_CPU)","I86")
+ASR_CPU_TYPE = $(ASR_CPU_I86)
+ASR_CPU_CHARS = in
+
+else
+ifeq ("$(ASR_CPU)", "SIMNT")
+ASR_CPU_TYPE = $(ASR_CPU_I86)
+ASR_CPU_CHARS = in
+
+else
+ifeq ("$(ASR_CPU)","68K")
+ASR_CPU_TYPE = $(ASR_CPU_68K)
+ASR_CPU_CHARS = mo
+
+else
+ifeq ("$(ASR_CPU)","MIPS")
+ASR_CPU_TYPE = $(ASR_CPU_MIPS)
+ASR_CPU_CHARS = mi
+
+else
+ifeq ("$(ASR_CPU)","ALPHA")
+ASR_CPU_TYPE = $(ASR_CPU_ALPHA)
+ASR_CPU_CHARS = al
+
+else
+ifeq ("$(ASR_CPU)","PPC")
+ASR_CPU_TYPE = $(ASR_CPU_PPC)
+ASR_CPU_CHARS = pp
+
+else
+ifeq ("$(ASR_CPU)","SPARC")
+ASR_CPU_TYPE = $(ASR_CPU_SPARC)
+ASR_CPU_CHARS = pp
+
+else
+ifeq ("$(ASR_CPU)","ARM")
+ASR_CPU_TYPE = $(ASR_CPU_ARM)
+ASR_CPU_CHARS = ar
+
+else
+ifeq ("$(ASR_CPU)","STRONGARM")
+ASR_CPU_TYPE = $(ASR_CPU_STRONGARM)
+ASR_CPU_CHARS = sa
+
+else
+ifeq ("$(ASR_CPU)","TMS320X")
+ASR_CPU_TYPE = $(ASR_CPU_TMS320X)
+ASR_CPU_CHARS = ti
+
+ifndef CPU_FAMILY
+CPU_FAMILY_TYPE = 0
+MESSAGE += \
+$(subst $(space),|,'$$(ASR_CPU_FAMILY_TYPE) defaulted to "$(ASR_CPU_FAMILY_TYPE)"')
+
+else
+ASR_CPU_CHARS = T$(ASR_CPU_FAMILY)
+
+ifeq ("$(ASR_CPU_FAMILY)","3")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C30)
+
+else
+ifeq ("$(ASR_CPU_FAMILY)","4")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C40)
+
+else
+ifeq ("$(ASR_CPU_FAMILY)","2")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C2XX)
+
+else
+ifeq ("$(ASR_CPU_FAMILY)","5")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C54X)
+
+else
+ERROR += \
+$(subst $(space),|,\
+'Failed to select CPU family with $$(ASR_CPU_FAMILY) == "$(ASR_CPU_FAMILY)"')
+ASR_CPU_FAMILY_TYPE=ASR_BAD_CPU_FAMILY
+endif
+endif
+endif
+endif
+endif
+
+else
+ifeq ("$(ASR_CPU)","SH3")
+ASR_CPU_TYPE = $(ASR_CPU_SH3)
+ASR_CPU_CHARS = hi
+
+else
+ifeq ("$(ASR_CPU)","SH4")
+ASR_CPU_TYPE = $(ASR_CPU_SH4)
+ASR_CPU_CHARS = hi
+
+else
+ERROR += \
+$(subst $(space),|,\
+'Failed to select CPU architecture with $$(ASR_CPU) == "$(ASR_$(ASR_CPU))"')
+ASR_CPU_TYPE = ASR_BAD_CPU
+ASR_CPU_CHARS = ASR_BAD_CPU
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+
+################################## HOST_CPU #################################
+
+ifeq ("$(ASR_HOST_CPU)","I86")
+ASR_HOST_CPU_TYPE = $(ASR_CPU_I86)
+
+else
+ifeq ("$(ASR_HOST_CPU)","68K")
+ASR_HOST_CPU_TYPE = $(ASR_CPU_68K)
+
+else
+ifeq ("$(ASR_HOST_CPU)","MIPS")
+ASR_HOST_CPU_TYPE = $(ASR_CPU_MIPS)
+
+else
+ifeq ("$(ASR_HOST_CPU)","ALPHA")
+ASR_HOST_CPU_TYPE = $(ASR_CPU_ALPHA)
+
+else
+ifeq ("$(ASR_HOST_CPU)","PPC")
+ASR_HOST_CPU_TYPE = $(ASR_CPU_PPC)
+
+else
+ifeq ("$(ASR_HOST_CPU)","SPARC")
+ASR_HOST_CPU_TYPE = $(ASR_CPU_SPARC)
+
+else
+ifeq ("$(ASR_HOST_CPU)","ARM")
+ASR_HOST_CPU_TYPE = $(ASR_CPU_ARM)
+
+else
+ifeq ("$(ASR_HOST_CPU)","STRONGARM")
+ASR_HOST_CPU_TYPE = $(ASR_CPU_STRONGARM)
+
+else
+ifeq ("$(ASR_HOST_CPU)","TMS320X")
+ASR_HOST_CPU_TYPE = $(ASR_CPU_TMS320X)
+
+ifndef CPU_FAMILY
+ASR_CPU_FAMILY_TYPE = 0
+MESSAGE += \
+$(subst $(space),|,'$$(ASR_CPU_FAMILY_TYPE) defaulted to "$(ASR_CPU_FAMILY_TYPE)"')
+
+else
+
+ifeq ("$(ASR_CPU_FAMILY)","3")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C30)
+
+else
+ifeq ("$(ASR_CPU_FAMILY)","4")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C40)
+
+else
+ifeq ("$(ASR_CPU_FAMILY)","2")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C2XX)
+
+else
+ifeq ("$(ASR_CPU_FAMILY)","5")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C54X)
+
+else
+ERROR += \
+$(subst $(space),|,\
+'Failed to select CPU family with $$(ASR_CPU_FAMILY) == "$(ASR_CPU_FAMILY)"')
+ASR_CPU_FAMILY_TYPE=ASR_BAD_CPU_FAMILY
+endif
+endif
+endif
+endif
+endif
+
+else
+ifeq ("$(ASR_HOST_CPU)","SH3")
+ASR_HOST_CPU_TYPE = $(ASR_CPU_SH3)
+
+else
+ifeq ("$(ASR_HOST_CPU)","SH4")
+ASR_HOST_CPU_TYPE = $(ASR_CPU_SH4)
+
+
+else
+ERROR += \
+$(subst $(space),|,\
+'Failed to select CPU architecture with $$(ASR_HOST_CPU) == "$(ASR_HOST_CPU)"')
+ASR_HOST_CPU_TYPE = ASR_BAD_CPU
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+
+################################## TARGET_CPU #################################
+
+ifeq ("$(ASR_TARGET_CPU)","I86")
+ASR_TARGET_CPU_TYPE = $(ASR_CPU_I86)
+
+else
+ifeq ("$(ASR_TARGET_CPU)","68K")
+ASR_TARGET_CPU_TYPE = $(ASR_CPU_68K)
+
+else
+ifeq ("$(ASR_TARGET_CPU)","MIPS")
+ASR_TARGET_CPU_TYPE = $(ASR_CPU_MIPS)
+
+else
+ifeq ("$(ASR_TARGET_CPU)","ALPHA")
+ASR_TARGET_CPU_TYPE = $(ASR_CPU_ALPHA)
+
+else
+ifeq ("$(ASR_TARGET_CPU)","PPC")
+ASR_TARGET_CPU_TYPE = $(ASR_CPU_PPC)
+
+else
+ifeq ("$(ASR_TARGET_CPU)","SPARC")
+ASR_TARGET_CPU_TYPE = $(ASR_CPU_SPARC)
+
+else
+ifeq ("$(ASR_TARGET_CPU)","ARM")
+ASR_TARGET_CPU_TYPE = $(ASR_CPU_ARM)
+
+else
+ifeq ("$(ASR_TARGET_CPU)","STRONGARM")
+ASR_TARGET_CPU_TYPE = $(ASR_CPU_STRONGARM)
+
+else
+ifeq ("$(ASR_TARGET_CPU)","TMS320X")
+ASR_TARGET_CPU_TYPE = $(ASR_CPU_TMS320X)
+
+ifndef CPU_FAMILY
+ASR_CPU_FAMILY_TYPE = 0
+MESSAGE += \
+$(subst $(space),|,'$$(ASR_CPU_FAMILY_TYPE) defaulted to "$(ASR_CPU_FAMILY_TYPE)"')
+
+else
+
+ifeq ("$(ASR_CPU_FAMILY)","3")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C30)
+
+else
+ifeq ("$(ASR_CPU_FAMILY)","4")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C40)
+
+else
+ifeq ("$(ASR_CPU_FAMILY)","2")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C2XX)
+
+else
+ifeq ("$(ASR_CPU_FAMILY)","5")
+ASR_CPU_FAMILY_TYPE = $(ASR_CPU_FAMILY_TMS320C54X)
+
+else
+ERROR += \
+$(subst $(space),|,\
+'Failed to select CPU family with $$(ASR_CPU_FAMILY) == "$(ASR_CPU_FAMILY)"')
+ASR_CPU_FAMILY_TYPE=ASR_BAD_CPU_FAMILY
+endif
+endif
+endif
+endif
+endif
+
+else
+ifeq ("$(ASR_TARGET_CPU)","SH3")
+ASR_TARGET_CPU_TYPE = $(ASR_CPU_SH3)
+
+else
+ifeq ("$(ASR_TARGET_CPU)","SH4")
+ASR_TARGET_CPU_TYPE = $(ASR_CPU_SH4)
+
+else
+
+ERROR += \
+$(subst $(space),|,\
+'Failed to select CPU architecture with $$(ASR_TARGET_CPU) == "$(ASR_TARGET_CPU)"')
+ASR_TARGET_CPU_TYPE = ASR_BAD_CPU
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+
+
+############################### COMPILER ###############################
+#
+# $(ASR_COMPILER_CHAR) is also used to select which flags makefile to include.
+
+ifeq ("$(ASR_COMPILER)","BORLAND")		# !!! NOT SURE WHAT STRING TO USE !!!
+ASR_COMPILER_TYPE = $(ASR_C_BORLAND)
+
+else								# same as COMPILER = "M$$"
+ifeq ("$(ASR_COMPILER)","MS")
+ASR_COMPILER_TYPE = $(ASR_C_MICROSOFT)
+
+else
+ifeq ("$(ASR_COMPILER)","INTEL")		# !!! NOT SURE WHAT STRING TO USE !!!
+ASR_COMPILER_TYPE = $(ASR_C_INTEL)
+
+else
+ifeq ("$(ASR_COMPILER)","HIGH")			# !!! NOT SURE WHAT STRING TO USE !!!
+ASR_COMPILER_TYPE = $(ASR_C_HIGH)
+
+else
+ifeq ("$(ASR_COMPILER)","ZORTECH")		# !!! NOT SURE WHAT STRING TO USE !!!
+ASR_COMPILER_TYPE = $(ASR_C_ZORTECH)
+
+else
+ifeq ("$(ASR_COMPILER)","WATCOM")		# !!! NOT SURE WHAT STRING TO USE !!!
+ASR_COMPILER_TYPE = $(ASR_C_WATCOM)
+
+else
+ifeq ("$(ASR_COMPILER)","GNU")			# !!! NOT SURE WHAT STRING TO USE !!!
+ASR_COMPILER_TYPE = $(ASR_C_GNU)
+
+else
+ifeq ("$(ASR_COMPILER)","SUNPRO")		# !!! NOT SURE WHAT STRING TO USE !!!
+ASR_COMPILER_TYPE = $(ASR_C_SUNPRO)
+
+else
+ifeq ("$(ASR_COMPILER)","DECCXX")		# !!! NOT SURE WHAT STRING TO USE !!!
+ASR_COMPILER_TYPE = $(ASR_C_DECCXX)
+
+else
+ifeq ("$(ASR_COMPILER)","METROWERKS")	# !!! NOT SURE WHAT STRING TO USE !!!
+ASR_COMPILER_TYPE = $(ASR_C_METROWERKS)
+
+else
+ifeq ("$(ASR_COMPILER)","GHS")			# !!! NOT SURE WHAT STRING TO USE !!!
+ASR_COMPILER_TYPE = $(ASR_C_GHS)
+
+else
+ifeq ("$(ASR_COMPILER)","TICXC")		# !!! NOT SURE WHAT STRING TO USE !!!
+ASR_COMPILER_TYPE = $(ASR_C_TICXC)
+
+else
+ifeq ("$(ASR_COMPILER)","ARM")			# !!! NOT ANY PARTICULAR COMPILER !!!
+ASR_COMPILER_TYPE = $(ASR_C_ARM)
+
+else
+ifeq ("$(ASR_COMPILER)","DIABDATA")			# !!! NOT ANY PARTICULAR COMPILER !!!
+ASR_COMPILER_TYPE = $(ASR_C_DIABDATA)
+
+else
+ERROR += \
+$(subst $(space),|,\
+'Failed to select compiler with $$(ASR_COMPILER) == "$(ASR_COMPILER)"')
+ASR_COMPILER_TYPE = ASR_BAD_COMPILER
+ASR_COMPILER_CHAR = ASR_BAD_COMPILER
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+
+################################# BUILD ################################
+#
+# Define OPTIMIZE, PROFILE, and TRACE for use in $(ASR_COMPILER_CHAR)flags.mak.
+# These values must be compatible with the corresponding ones in builddef.h.
+
+ASR_OPTIMIZE = $(ASR_OFF)
+ASR_PROFILE = $(ASR_OFF)
+ASR_TRACE = $(ASR_OFF)
+
+#									# BUILD  CHAR  OPTIMIZE  PROFILE  TRACE
+#									  ----   ----  --------  -------  -----
+ifeq ("$(ASR_BUILD)","SHIP")			# SHIP    `S'  OPTIMIZE
+ASR_BUILD_TYPE = $(ASR_BUILD_SHIP)
+ASR_BUILD_CHAR = s
+ASR_OPTIMIZE = $(ASR_BUILD_TYPE)
+
+else
+ifeq ("$(ASR_BUILD)","NDEBUG")			# SHIP    `S'  OPTIMIZE
+ASR_BUILD_TYPE = $(ASR_BUILD_SHIP)
+ASR_BUILD_CHAR = s
+ASR_OPTIMIZE = $(ASR_BUILD_TYPE)
+
+else
+ifeq ("$(ASR_BUILD)","INHOUSE")			# INHOUSE `I'  OPTIMIZE
+ASR_BUILD_TYPE = $(ASR_BUILD_INHOUSE)
+ASR_BUILD_CHAR = i
+ASR_OPTIMIZE = $(ASR_BUILD_TYPE)
+
+else
+ifeq ("$(ASR_BUILD)","DEBUGO")			# DEBUG   `G'  OPTIMIZE
+ASR_BUILD_TYPE = $(ASR_BUILD_DEBUGO)
+ASR_BUILD_CHAR = g
+ASR_OPTIMIZE = $(ASR_BUILD_TYPE)
+
+else
+ifeq ("$(ASR_BUILD)","DEBUG")			# DEBUG   `X'
+ASR_BUILD_TYPE = $(ASR_BUILD_DEBUG)
+ASR_BUILD_CHAR = x
+
+else
+ifeq ("$(ASR_BUILD)","PROFILE")			# INHOUSE `P'  OPTIMIZE  PROFILE
+ASR_BUILD_TYPE = $(ASR_BUILD_PROFILE)
+ASR_BUILD_CHAR = p
+ASR_OPTIMIZE = $(ASR_BUILD_TYPE)
+ASR_PROFILE = $(ASR_BUILD_TYPE)
+
+else
+ifeq ("$(ASR_BUILD)","TRACE")			# INHOUSE `L'  OPTIMIZE           TRACE
+ASR_BUILD_TYPE = $(ASR_BUILD_TRACE)
+ASR_BUILD_CHAR = l
+ASR_OPTIMIZE = $(ASR_BUILD_TYPE)
+ASR_TRACE = $(ASR_BUILD_TYPE)
+
+else
+ERROR += \
+$(subst $(space),|,'Failed to select build type with $$(ASR_BUILD) == "$(ASR_BUILD)"')
+ASR_BUILD_TYPE = ASR_BAD_BUILD
+ASR_BUILD_CHAR = ASR_BAD_BUILD
+endif
+endif
+endif
+endif
+endif
+endif
+endif
+
+################################# UI #################################
+#
+# !!! NOT USED !!!
+
+######################################################################
+#
+# Finally define the macros of interest.
+
+ASR_GLOBAL_DEFINES = \
+	-DOS_UNIX=$(ASR_OS_UNIX) \
+	-DOS_EMBEDDED=$(ASR_OS_EMBEDDED) \
+	-DOS_VXWORKS=$(ASR_OS_VXWORKS) \
+	-DOS_PSOS=$(ASR_OS_PSOS) \
+	-DOS_QNX=$(ASR_OS_QNX) \
+	-DOS=$(ASR_OS_TYPE) \
+	-DHOST_OS=$(ASR_HOST_OS_TYPE) \
+	-DTARGET_OS=$(ASR_TARGET_OS_TYPE) \
+	-DCPU_PPC=$(ASR_CPU_PPC) \
+	-DCPU_SPARC=$(ASR_CPU_SPARC) \
+	-DCPU_ARM=$(ASR_CPU_ARM) \
+	-DCPU_STRONGARM=$(ASR_CPU_STRONGARM) \
+	-DCPU_TMS320X=$(ASR_CPU_TMS320X) \
+	-DCPU_SH3=$(ASR_CPU_SH3) \
+	-DCPU_SH4=$(ASR_CPU_SH4) \
+	-DCPU=$(ASR_CPU_TYPE) \
+	-DHOST_CPU=$(ASR_HOST_CPU_TYPE) \
+	-DTARGET_CPU=$(ASR_TARGET_CPU_TYPE) \
+	-DC_GNU=$(ASR_C_GNU) \
+	-DC_SUNPRO=$(ASR_C_SUNPRO) \
+	-DC_METROWERKS=$(ASR_C_METROWERKS) \
+	-DC_TICXC=$(ASR_C_TICXC) \
+	-DC_ARM=$(ASR_C_ARM) \
+	-DCOMPILER=$(ASR_COMPILER_TYPE) \
+	-DBUILD_SHIP=$(ASR_BUILD_SHIP) \
+	-DBUILD_DEBUG=$(ASR_BUILD_DEBUG) \
+	-DBUILD=$(ASR_BUILD_TYPE) \
+
+# Include these from Makefile.common
+ASR_GLOBAL_DEFINES += $(ASR_COMMON_DEFINES) $(ASR_WORKAROUND_DEFINES)
+
+# OS specific defines
+ifeq ($(ASR_TARGET_OS),UNIX)
+ASR_GLOBAL_DEFINES += -DPOSIX -D__linux
+endif
+
+
+# BUILD specific defines and flags
+ASR_GLOBAL_CPPFLAGS =
+
+ifeq ($(ASR_BUILD),SHIP)
+ASR_GLOBAL_DEFINES += -DNDEBUG -D_SHIP -DFINAL_RELEASE
+#ASR_GLOBAL_CPPFLAGS += -O3 -fno-strict-aliasing
+endif
+
+ifeq ($(ASR_BUILD),NDEBUG)
+ASR_GLOBAL_DEFINES += -DNDEBUG
+#ASR_GLOBAL_CPPFLAGS +=
+endif
+
+ifeq ($(ASR_BUILD),INHOUSE)
+ASR_GLOBAL_DEFINES += -D_INHOUSE
+#ASR_GLOBAL_CPPFLAGS += -g3
+endif
+
+ifeq ($(ASR_BUILD),DEBUGO)
+ASR_GLOBAL_DEFINES += -D_DEBUG
+#ASR_GLOBAL_CPPFLAGS += -g
+endif
+
+ifeq ($(ASR_BUILD),DEBUG)
+ASR_GLOBAL_DEFINES += -D_DEBUG
+#ASR_GLOBAL_CPPFLAGS += -g
+endif
+
+ifneq ($(ASR_OPTIMIZE),$(ASR_OFF))
+ASR_GLOBAL_DEFINES += -D_OPTIMIZE
+#ASR_GLOBAL_CPPFLAGS += -O3
+endif
+
+ifneq ($(ASR_PROFILE),$(ASR_OFF))
+ASR_GLOBAL_DEFINES += -D_PROFILE
+#ASR_GLOBAL_CPPFLAGS += -g3
+endif
+
+ifneq ($(ASR_TRACE),$(ASR_OFF))
+ASR_GLOBAL_DEFINES += -D_TRACE
+#ASR_GLOBAL_CPPFLAGS +=
+endif

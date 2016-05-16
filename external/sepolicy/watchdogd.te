@@ -1,0 +1,5 @@
+# watchdogd seclabel is specified in init.<board>.rc
+type watchdogd, domain;
+permissive watchdogd;
+unconfined_domain(watchdogd)
+allow watchdogd rootfs:file entrypoint;

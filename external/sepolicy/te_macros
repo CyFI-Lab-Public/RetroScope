@@ -1,0 +1,310 @@
+#####################################
+# domain_trans(olddomain, type, newdomain)
+# Allow a transition from olddomain to newdomain
+# upon executing a file labeled with type.
+# This only allows the transition; it does not
+# cause it to occur automatically - use domain_auto_trans
+# if that is what you want.
+#
+define(`domain_trans', `
+# Old domain may exec the file and transition to the new domain.
+allow $1 $2:file { getattr open read execute };
+allow $1 $3:process transition;
+# New domain is entered by executing the file.
+allow $3 $2:file { entrypoint read execute };
+# New domain can send SIGCHLD to its caller.
+allow $3 $1:process sigchld;
+# Enable AT_SECURE, i.e. libc secure mode.
+dontaudit $1 $3:process noatsecure;
+# XXX dontaudit candidate but requires further study.
+allow $1 $3:process { siginh rlimitinh };
+')
+
+#####################################
+# domain_auto_trans(olddomain, type, newdomain)
+# Automatically transition from olddomain to newdomain
+# upon executing a file labeled with type.
+#
+define(`domain_auto_trans', `
+# Allow the necessary permissions.
+domain_trans($1,$2,$3)
+# Make the transition occur by default.
+type_transition $1 $2:process $3;
+')
+
+#####################################
+# file_type_trans(domain, dir_type, file_type)
+# Allow domain to create a file labeled file_type in a
+# directory labeled dir_type.
+# This only allows the transition; it does not
+# cause it to occur automatically - use file_type_auto_trans
+# if that is what you want.
+#
+define(`file_type_trans', `
+# Allow the domain to add entries to the directory.
+allow $1 $2:dir ra_dir_perms;
+# Allow the domain to create the file.
+allow $1 $3:notdevfile_class_set create_file_perms;
+allow $1 $3:dir create_dir_perms;
+')
+
+#####################################
+# file_type_auto_trans(domain, dir_type, file_type)
+# Automatically label new files with file_type when
+# they are created by domain in directories labeled dir_type.
+#
+define(`file_type_auto_trans', `
+# Allow the necessary permissions.
+file_type_trans($1, $2, $3)
+# Make the transition occur by default.
+type_transition $1 $2:dir $3;
+type_transition $1 $2:notdevfile_class_set $3;
+')
+
+#####################################
+# r_dir_file(domain, type)
+# Allow the specified domain to read directories, files
+# and symbolic links of the specified type.
+define(`r_dir_file', `
+allow $1 $2:dir r_dir_perms;
+allow $1 $2:{ file lnk_file } r_file_perms;
+')
+
+#####################################
+# unconfined_domain(domain)
+# Allow the specified domain to do anything.
+#
+define(`unconfined_domain', `
+typeattribute $1 mlstrustedsubject;
+typeattribute $1 unconfineddomain;
+')
+
+#####################################
+# tmpfs_domain(domain)
+# Define and allow access to a unique type for
+# this domain when creating tmpfs / shmem / ashmem files.
+define(`tmpfs_domain', `
+type $1_tmpfs, file_type;
+type_transition $1 tmpfs:file $1_tmpfs;
+# Map with PROT_EXEC.
+allow $1 $1_tmpfs:file { read execute execmod };
+')
+
+#####################################
+# init_daemon_domain(domain)
+# Set up a transition from init to the daemon domain
+# upon executing its binary.
+define(`init_daemon_domain', `
+domain_auto_trans(init, $1_exec, $1)
+tmpfs_domain($1)
+')
+
+#####################################
+# app_domain(domain)
+# Allow a base set of permissions required for all apps.
+define(`app_domain', `
+typeattribute $1 appdomain;
+# Label ashmem objects with our own unique type.
+tmpfs_domain($1)
+')
+
+#####################################
+# relabelto_domain(domain)
+# Allows this domain to use the relabelto permission
+define(`relabelto_domain', `
+typeattribute $1 relabeltodomain;
+')
+
+#####################################
+# platform_app_domain(domain)
+# Allow permissions specific to platform apps.
+define(`platform_app_domain', `
+typeattribute $1 platformappdomain;
+typeattribute $1 mlstrustedsubject;
+')
+
+#####################################
+# net_domain(domain)
+# Allow a base set of permissions required for network access.
+define(`net_domain', `
+typeattribute $1 netdomain;
+')
+
+#####################################
+# bluetooth_domain(domain)
+# Allow a base set of permissions required for bluetooth access.
+define(`bluetooth_domain', `
+typeattribute $1 bluetoothdomain;
+')
+
+#####################################
+# unix_socket_connect(clientdomain, socket, serverdomain)
+# Allow a local socket connection from clientdomain via
+# socket to serverdomain.
+define(`unix_socket_connect', `
+allow $1 $2_socket:sock_file write;
+allow $1 $3:unix_stream_socket connectto;
+')
+
+#####################################
+# unix_socket_send(clientdomain, socket, serverdomain)
+# Allow a local socket send from clientdomain via
+# socket to serverdomain.
+define(`unix_socket_send', `
+allow $1 $2_socket:sock_file write;
+allow $1 $3:unix_dgram_socket sendto;
+')
+
+#####################################
+# binder_use(domain)
+# Allow domain to use Binder IPC.
+define(`binder_use', `
+# Call the servicemanager and transfer references to it.
+allow $1 servicemanager:binder { call transfer };
+# Map /dev/ashmem with PROT_EXEC.
+allow $1 ashmem_device:chr_file execute;
+# rw access to /dev/binder and /dev/ashmem is presently granted to
+# all domains in domain.te.
+')
+
+#####################################
+# binder_call(clientdomain, serverdomain)
+# Allow clientdomain to perform binder IPC to serverdomain.
+define(`binder_call', `
+# Call the server domain and optionally transfer references to it.
+allow $1 $2:binder { call transfer };
+# Allow the serverdomain to transfer references to the client on the reply.
+allow $2 $1:binder transfer;
+# Receive and use open files from the server.
+allow $1 $2:fd use;
+')
+
+#####################################
+# binder_service(domain)
+# Mark a domain as being a Binder service domain.
+# Used to allow binder IPC to the various system services.
+define(`binder_service', `
+typeattribute $1 binderservicedomain;
+')
+
+#####################################
+# selinux_check_access(domain)
+# Allow domain to check SELinux permissions via selinuxfs.
+define(`selinux_check_access', `
+allow $1 selinuxfs:dir r_dir_perms;
+allow $1 selinuxfs:file rw_file_perms;
+allow $1 kernel:security compute_av;
+allow $1 self:netlink_selinux_socket *;
+')
+
+#####################################
+# selinux_check_context(domain)
+# Allow domain to check SELinux contexts via selinuxfs.
+define(`selinux_check_context', `
+allow $1 selinuxfs:dir r_dir_perms;
+allow $1 selinuxfs:file rw_file_perms;
+allow $1 kernel:security check_context;
+')
+
+#####################################
+# selinux_getenforce(domain)
+# Allow domain to check whether SELinux is enforcing.
+define(`selinux_getenforce', `
+allow $1 selinuxfs:dir r_dir_perms;
+allow $1 selinuxfs:file r_file_perms;
+')
+
+#####################################
+# selinux_setenforce(domain)
+# Allow domain to set SELinux to enforcing.
+define(`selinux_setenforce', `
+allow $1 selinuxfs:dir r_dir_perms;
+allow $1 selinuxfs:file rw_file_perms;
+allow $1 kernel:security setenforce;
+')
+
+#####################################
+# selinux_setbool(domain)
+# Allow domain to set SELinux booleans.
+define(`selinux_setbool', `
+allow $1 selinuxfs:dir r_dir_perms;
+allow $1 selinuxfs:file rw_file_perms;
+allow $1 kernel:security setbool;
+')
+
+#####################################
+# security_access_policy(domain)
+# Read only access to all policy files and
+# selinuxfs
+define(`security_access_policy', `
+allow $1 security_file:dir r_dir_perms;
+allow $1 security_file:file r_file_perms;
+allow $1 security_file:lnk_file read;
+allow $1 selinuxfs:dir r_dir_perms;
+allow $1 selinuxfs:file r_file_perms;
+allow $1 rootfs:dir r_dir_perms;
+allow $1 rootfs:file r_file_perms;
+')
+
+#####################################
+# selinux_manage_policy(domain)
+# Ability to manage policy files,
+# trigger runtime reload, change
+# enforcing mode, manipulate booleans
+# and access kernel logs.
+define(`selinux_manage_policy', `
+selinux_setenforce($1)
+selinux_setbool($1)
+security_access_policy($1)
+unix_socket_connect($1, property, init)
+allow $1 security_file:dir create_dir_perms;
+allow $1 security_file:file create_file_perms;
+allow $1 security_prop:property_service set;
+')
+
+#####################################
+# mmac_manage_policy(domain)
+# Ability to manage mmac policy files,
+# trigger runtime reload, change
+# mmac enforcing mode and access logcat.
+define(`mmac_manage_policy', `
+unix_socket_connect($1, property, init)
+allow $1 security_file:dir create_dir_perms;
+allow $1 security_file:file create_file_perms;
+allow $1 security_prop:property_service set;
+')
+
+#####################################
+# access_logcat(domain)
+# Ability to read from logcat logs
+# and execute the logcat command
+define(`access_logcat', `
+allow $1 log_device:chr_file read;
+allow $1 system_file:file x_file_perms;
+')
+
+#####################################
+# access_kmsg(domain)
+# Ability to read from kernel logs
+# and execute the klogctl syscall
+# in a non destructive manner. See
+# man 2 klogctl
+define(`access_kmsg', `
+allow $1 kernel:system syslog_read;
+')
+
+#####################################
+# write_klog(domain)
+# Ability to write to kernel log via
+# klog_write()
+# See system/core/libcutil/klog.c
+define(`write_klog', `
+type_transition $1 device:chr_file klog_device "__kmsg__";
+allow $1 klog_device:chr_file { create open write unlink };
+allow $1 device:dir { add_name remove_name };
+')
+
+#####################################
+# Non system_app application set
+#
+define(`non_system_app_set', `{ appdomain -system_app }')

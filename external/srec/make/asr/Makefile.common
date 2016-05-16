@@ -1,0 +1,14 @@
+###############################################################################
+# FILE: Makefile.common
+#
+# Common settings, independent of configuration (independent of Makefile.config).
+# This is included by Makefile.defs
+###############################################################################
+
+ASR_COMMON_DEFINES = \
+	-DDISABLE_MALLOC \
+	-DDISABLE_TIMESTAMPS \
+	-DAUDIOIN_SUPPORT_CALLBACK \
+
+#	-DSREC_ENGINE_VERBOSE_LOGGING \
+

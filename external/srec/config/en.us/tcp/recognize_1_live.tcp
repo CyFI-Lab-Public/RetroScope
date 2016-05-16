@@ -1,0 +1,5 @@
+context_load  grammars/bothtags5.g2g  BothTags   trash  not_ve
+context_use  BothTags
+recognize_live
+context_free  BothTags
+context_unload  BothTags

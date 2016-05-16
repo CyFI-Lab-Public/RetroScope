@@ -1,0 +1,120 @@
+Policy Generation:
+
+Additional, per device, policy files can be added into the
+policy build.
+
+They can be configured through the use of three variables,
+they are:
+1. BOARD_SEPOLICY_REPLACE
+2. BOARD_SEPOLICY_UNION
+3. BOARD_SEPOLICY_DIRS
+4. BOARD_SEPOLICY_IGNORE
+
+The variables should be set in the BoardConfig.mk file in
+the device or vendor directories.
+
+BOARD_SEPOLICY_UNION is a list of files that will be
+"unioned", IE concatenated, at the END of their respective
+file in external/sepolicy. Note, to add a unique file you
+would use this variable.
+
+BOARD_SEPOLICY_REPLACE is a list of files that will be
+used instead of the corresponding file in external/sepolicy.
+
+BOARD_SEPOLICY_DIRS contains a list of directories to search
+for BOARD_SEPOLICY_UNION and BOARD_SEPOLICY_REPLACE files. Order
+matters in this list.
+eg.) If you have BOARD_SEPOLICY_UNION := widget.te and have 2
+instances of widget.te files on BOARD_SEPOLICY_DIRS search path.
+The first one found (at the first search dir containing the file)
+gets processed first.
+Reviewing out/target/product/<device>/etc/sepolicy_intermediates/policy.conf
+will help sort out ordering issues.
+
+It is an error to specify a BOARD_POLICY_REPLACE file that does
+not exist in external/sepolicy.
+
+It is an error to specify a BOARD_POLICY_REPLACE file that appears
+multiple times on the policy search path defined by BOARD_SEPOLICY_DIRS.
+eg.) if you specify shell.te in BOARD_SEPOLICY_REPLACE and
+BOARD_SEPOLICY_DIRS is set to
+"vendor/widget/common/sepolicy device/widget/x/sepolicy" and shell.te
+appears in both locations, it is an error. Unless it is in
+BOARD_SEPOLICY_IGNORE to be filtered out. See BOARD_SEPOLICY_IGNORE
+for more details.
+
+It is an error to specify the same file name in both
+BOARD_POLICY_REPLACE and BOARD_POLICY_UNION.
+
+It is an error to specify a BOARD_SEPOLICY_DIRS that has no entries when
+specifying BOARD_SEPOLICY_REPLACE.
+
+BOARD_SEPOLICY_IGNORE is a list of paths (directory + filename) of
+files that are not to be included in the resulting policy. This list
+is passed to filter-out to remove any paths you may want to ignore. This
+is useful if you have numerous config directories that contain a file
+and you want to NOT include a particular file in your resulting
+policy file, either by UNION or REPLACE.
+Eg.) Suppose the following:
+     BOARD_SEPOLICY_DIRS := X Y
+     BOARD_SEPOLICY_REPLACE := A
+     BOARD_SEPOLICY_IGNORE := X/A
+
+     Directories X and Y contain A.
+
+     The resulting policy is created by using Y/A only, thus X/A was
+     ignored.
+
+Example BoardConfig.mk Usage:
+From the Tuna device BoardConfig.mk, device/samsung/tuna/BoardConfig.mk
+
+BOARD_SEPOLICY_DIRS := \
+        device/samsung/tuna/sepolicy
+
+BOARD_SEPOLICY_UNION := \
+        genfs_contexts \
+        file_contexts \
+        sepolicy.te
+
+SPECIFIC POLICY FILE INFORMATION
+
+mac_permissions.xml:
+  ABOUT:
+    The mac_permissions.xml file is used for controlling the mmac solutions
+    as well as mapping a public base16 signing key with an arbitrary seinfo
+    string. Details of the files contents can be found in a comment at the
+    top of that file. The seinfo string, previously mentioned, is the same string
+    that is referenced in seapp_contexts.
+
+    This file can be replaced through BOARD_SEPOLICY_REPLACE containing the
+    value "mac_permissions.xml", or appended to by using the BOARD_SEPOLICY_UNION
+    variable. It is important to note the final processed version of this file
+    is stripped of comments and whitespace. This is to preserve space on the
+    system.img. If one wishes to view it in a more human friendly format,
+    the "tidy" or "xmllint" command will assist you.
+
+  TOOLING:
+    insertkeys.py
+      Is a helper script for mapping arbitrary tags in the signature stanzas of
+      mac_permissions.xml to public keys found in pem files. This script takes
+      a mac_permissions.xml file(s) and configuration file in order to operate.
+      Details of the configuration file (keys.conf) can be found in the subsection
+      keys.conf. This tool is also responsible for stripping the comments and
+      whitespace during processing.
+
+      keys.conf
+        The keys.conf file is used for controlling the mapping of "tags" found in
+        the mac_permissions.xml signature stanzas with actual public keys found in
+        pem files. The configuration file can be used in BOARD_SEPOLICY_UNION and
+        BOARD_SEPOLICY_REPLACE variables and is processed via m4.
+
+        The script allows for mapping any string contained in TARGET_BUILD_VARIANT
+        with specific path to a pem file. Typically TARGET_BUILD_VARIANT is either
+        user, eng or userdebug. Additionally, one can specify "ALL" to map a path to
+        any string specified in TARGET_BUILD_VARIANT. All tags are matched verbatim
+        and all options are matched lowercase. The options are "tolowered" automatically
+        for the user, it is convention to specify tags and options in all uppercase
+        and tags start with @.
+
+        NOTE: The pem files are base64 encoded and PackageManagerService, mac_permissions.xml
+              and setool all use base16 encodings.

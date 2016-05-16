@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="msg_default_status" msgid="639431501805022060">"將 QR 圖碼置入取景器的方框中即可開始掃描。"</string>
+    <string name="msg_camera_framework_bug" msgid="2167124836274973533">"很抱歉，Android 相機發生問題。您可能需要重新啟動裝置。"</string>
+</resources>

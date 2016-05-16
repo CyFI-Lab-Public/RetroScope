@@ -1,0 +1,8 @@
+# adbd seclabel is specified in init.rc since
+# it lives in the rootfs and has no unique file type.
+type adbd, domain;
+permissive adbd;
+unconfined_domain(adbd)
+domain_auto_trans(adbd, shell_exec, shell)
+# this is an entrypoint
+allow adbd rootfs:file entrypoint;

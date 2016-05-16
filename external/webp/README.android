@@ -1,0 +1,47 @@
+URL: http://review.webmproject.org/gitweb?p=libwebp.git
+Version: 43/1443/1
+License: Google BSD like
+
+Local modifications:
+- Rewrite Android.mk to remove duplicate definitions and set module name
+  in a consistent way with other external libraries
+- Move public headers from src/webp to include/webp, so path to headers
+  may be appended into CFLAGS without risk for other private headers
+  (e.g. bits.h) to leak into
+- Sync-patch with libwebp ver 0.1.2
+- Removed Build files necessary for building via autoconf/automake tools
+  These files are not required to build via Android.mk
+  - Makefile.am  Makefile.vc Makefile.in
+  - config.h.in configure config.guess config.sub configure.ac
+  - autogen.sh install-sh missing depcomp ltmain.sh aclocal.m4
+- Added WebP Encoder (ver 0.1.2) as well
+  - Removed some more unused Makefile.am & Makefile.in
+  - Added Android.mk to encoder & decoder code levels.
+- Synced the WebP Code (Encoder/Decoder) with the head change#Ia53f845b
+  - Added three color-spaces viz ARGB_8888, RGBA_4444, RGB_565
+    supported by Android.
+- Fixed the Endian'ness bug for Color-Configs (RGB_565 & ARGB_4444).
+  The fix is similar to jpeglib handling for JCS_RGB_565 & JCS_RGBA_8888
+  color configs. Added the code under "ANDROID_WEBP_RGB" flag.
+- Sync-patch with libwebp ver 0.2.0-rc1 (head change#Ia5475247).
+- Updated WebP with head change#I3da2063b
+- Updated WebP with head change#I9e5ae737
+  - 16bit swapping of RGB565 / RGB4444 colorspace. Added compile-time flag
+    WEBP_SWAP_16BIT_CSP to support byte-swap (required for skia data type for
+    16bit values) output for these colorspaces.
+  - Added ARM/NEON code for decoder/encoder modules.
+  - Speedup in WebP compression (method 3 and above).
+  - Added multi-threaded alpha encoding for lossy compression.
+  - Updated WebP with head change#I9e5ae737
+- Sync-patch with libwebp ver 0.3.1 (head change#Idea3464b).
+  - Add incremental decoding support for images containing ALPH and ICCP chunks.
+- Updated WebP with patches required for Animation
+   (#I737451d7f, #Ia300385a & #I9566a8e2).
+- Fix memleak in WebPIDelete() (change#Id4faef1b).
+
+The Android.mk file creates WebP Decoder and Encoder static libraries which
+can be added to any application by Adding to LOCAL_STATIC_LIBRARIES
+libwebp-decode libwebp-encode:
+
+  LOCAL_STATIC_LIBRARIES += libwebp-decode libwebp-encode
+

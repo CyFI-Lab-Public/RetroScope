@@ -1,0 +1,154 @@
+/*
+ * Copyright 2012, Google Inc.
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *
+ *     * Redistributions of source code must retain the above copyright
+ * notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above
+ * copyright notice, this list of conditions and the following disclaimer
+ * in the documentation and/or other materials provided with the
+ * distribution.
+ *     * Neither the name of Google Inc. nor the names of its
+ * contributors may be used to endorse or promote products derived from
+ * this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+ 
+configurations {
+    antlr3
+    jflex
+    proguard
+}
+
+ext.antlrSource = 'src/main/antlr3'
+ext.antlrOutput = file("${buildDir}/generated-sources/antlr3")
+
+ext.jflexSource = "src/main/jflex"
+ext.jflexOutput = file("${buildDir}/generated-sources/jflex")
+
+ext.testAntlrSource = 'src/test/antlr3'
+ext.testAntlrOutput = file("${buildDir}/generated-test-sources/antlr3")
+
+sourceSets.main.java.srcDir antlrOutput
+sourceSets.main.java.srcDir jflexOutput
+
+sourceSets.test.java.srcDir testAntlrOutput
+
+idea {
+    module {
+        excludeDirs -= buildDir
+        if (buildDir.exists()) {
+            excludeDirs.addAll(buildDir.listFiles())
+        }
+        for (sourceDir in (sourceDirs + testSourceDirs)) {
+            excludeDirs.remove(sourceDir);
+            while ((sourceDir = sourceDir.getParentFile()) != null) {
+                excludeDirs.remove(sourceDir);
+            }
+        }
+    }
+}
+
+dependencies {
+    compile project(':util')
+    compile project(':dexlib')
+    compile 'org.antlr:antlr-runtime:3.2'
+    compile 'commons-cli:commons-cli:1.2'
+    compile 'com.google.guava:guava:13.0.1'
+
+    testCompile 'junit:junit:4.6'
+
+    antlr3 'org.antlr:antlr:3.2'
+    jflex 'de.jflex:jflex:1.4.3'
+    proguard 'net.sf.proguard:proguard-base:4.8'
+}
+
+task generateAntlrSource(type: JavaExec) {
+    inputs.dir file(antlrSource)
+    outputs.dir file(antlrOutput)
+
+    mkdir(antlrOutput)
+    def grammars = fileTree(antlrSource).include('**/*.g')
+
+    classpath = configurations.antlr3
+    main = 'org.antlr.Tool'
+    args '-fo', relativePath("${antlrOutput}/org/jf/smali")
+    args grammars.files
+}
+
+task generateTestAntlrSource(type: JavaExec) {
+    inputs.dir file(testAntlrSource)
+    outputs.dir file(testAntlrOutput)
+
+    mkdir(testAntlrOutput)
+    def grammars = fileTree(testAntlrSource).include('**/*.g')
+
+    classpath = configurations.antlr3
+    main = 'org.antlr.Tool'
+    args '-fo', relativePath("${testAntlrOutput}/org/jf/smali")
+    args grammars.files.join(' ')
+}
+
+task generateJflexSource(type: JavaExec) {
+    inputs.dir file(jflexSource)
+    outputs.dir file(jflexOutput)
+
+    mkdir(jflexOutput)
+    def grammars = fileTree(jflexSource).include('**/*.flex')
+
+    classpath = configurations.jflex
+    main = 'JFlex.Main'
+    args '-q'
+    args '-d', relativePath("${jflexOutput}/org/jf/smali")
+    args grammars.files.join(' ')
+}
+
+compileJava.dependsOn generateAntlrSource, generateJflexSource
+compileTestJava.dependsOn generateTestAntlrSource
+
+// build a jar containing all dependencies
+jar {
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+
+    manifest {
+        attributes("Main-Class": "org.jf.smali.main")
+    }
+}
+
+processResources.inputs.property('version', version)
+processResources.expand('version': version)
+
+task proguard(type: JavaExec, dependsOn: jar) {
+    def outFile = jar.destinationDir.getPath() + '/' + jar.baseName + '-' + jar.version + '-small' + '.' + jar.extension
+    inputs.file jar.archivePath
+    outputs.file outFile
+
+    classpath = configurations.proguard
+    main = 'proguard.ProGuard'
+    args "-injars ${jar.archivePath}(!**/TestStringTemplate*.class)"
+    args "-outjars ${outFile}"
+    args "-libraryjars ${System.properties['java.home']}/lib/rt.jar"
+    args '-dontobfuscate'
+    args '-dontoptimize'
+    args '-keep public class org.jf.smali.main { public static void main(java.lang.String[]); }'
+    args '-keepclassmembers enum * { public static **[] values(); public static ** valueOf(java.lang.String); }'
+    args '-dontwarn com.google.common.base.**'
+    args '-dontnote com.google.common.base.**'
+}
+
+tasks.getByPath(':release').dependsOn(proguard)

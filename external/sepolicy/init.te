@@ -1,0 +1,12 @@
+# init switches to init domain (via init.rc).
+type init, domain;
+permissive init;
+# init is unconfined.
+unconfined_domain(init)
+tmpfs_domain(init)
+relabelto_domain(init)
+# add a rule to handle unlabelled mounts
+allow init unlabeled:filesystem mount;
+
+allow init {fs_type dev_type file_type}:dir_file_class_set relabelto;
+allow init kernel:security load_policy;

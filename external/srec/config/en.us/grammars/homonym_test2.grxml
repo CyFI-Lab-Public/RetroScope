@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="ISO8859-1" ?>
+<!--
+	Test grammar, here we test "hello" vs "hellow", used in places
+	where they YES will be confused with each other
+-->
+<grammar xml:lang="en-us" version="1.0" root="ROOT">
+<meta name="word_penalty" content="40" />
+      
+<rule id="ROOT" scope="public">
+  <one-of>
+	  <item><ruleref uri="#Phone"/>
+		<tag>meaning=Phone.V;</tag>
+	  </item>
+	  <item><ruleref uri="#Find"/>
+		<tag>meaning=Find.V;</tag>
+	  </item>
+	  <item><ruleref uri="#OtherCommands"/>
+		<tag>meaning=OtherCommands.V;</tag>
+	  </item>
+  </one-of>
+</rule>
+
+<rule id="Phone">
+  <item>
+    <tag>C=(C?C:''); V=C+V;</tag>
+    <item>
+        <item >phone</item>
+        <item>
+          <one-of>
+            <item>
+		enter
+		<tag>C='ENTER';</tag>
+	    </item>
+	<item>
+		hellow
+		<tag>V='HI';</tag>
+	</item>
+	<item>
+		hello
+		<tag>V='HI';</tag>
+	</item>
+            <item>
+		delete
+		<tag>C='DEL';</tag>
+	    </item>
+            <item>
+		remove
+		<tag>C='DEL';</tag>
+	    </item>
+          </one-of>
+        </item>
+        <item>
+		<ruleref uri="#Names"/>
+		<tag>V=Names.V;</tag>
+	</item>
+    </item>
+  </item>
+</rule>
+
+<rule id="Find">
+  <item>
+    <tag>C=(C?C:''); V=C+V;</tag>
+    <item>
+        <item repeat="0-1">
+		find
+	</item>
+        <item>
+		<ruleref uri="#Names"/>
+		<tag>V=Names.V;</tag>
+	</item>
+    </item>
+  </item>
+</rule>
+
+<rule id="Names" scope="public">
+  <item>__Names__</item>
+</rule>
+
+<rule id="OtherCommands">
+  <item>
+    <tag>C=(C?C:''); V=C+V;</tag>
+    <one-of>
+	<item>
+		hello
+		<tag>V='HI';</tag>
+	</item>
+	<item>
+		forward
+                <tag>V='FWD';</tag>
+	</item>
+	<item>
+		backward
+                <tag>V='BAK';</tag>
+	</item>
+	<item>
+		changer
+                <tag>V='CHANGER';</tag>
+	</item>
+	<item>
+		asterisk
+                <tag>V='STAR';</tag>
+	</item>
+	<item>
+		cd player
+                <tag>V='CDPL';</tag>
+	</item>
+	<item>
+		traffic information
+                <tag>V='TRFI';</tag>
+	</item>
+	<item>
+		traffic info
+                <tag>V='TRFI';</tag>
+	</item>
+	<item>
+		traffic
+                <tag>V='TRFI';</tag>
+	</item>
+	<item>
+		traffic memory
+                <tag>V='TRFM';</tag>
+	</item>
+	<item>
+		fahrenheit
+                <tag>V='DEGF';</tag>
+	</item>
+	<item>
+		celsius
+                <tag>V='DEGC';</tag>
+	</item>
+    </one-of>
+  </item>
+</rule>
+
+</grammar>

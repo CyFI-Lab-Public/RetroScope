@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog>
+
+<conversation>
+<page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_1_1" 
+  title = "@string/Kabocha"
+/>
+
+<page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_1_2" 
+  title = "@string/Kabocha"
+/>
+
+<page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_1_3" 
+  title = "@string/Kabocha"
+/>
+
+</conversation>
+
+<conversation>
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_2_1" 
+  title = "@string/Kabocha"
+/>
+
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_2_2" 
+  title = "@string/Kabocha"
+/>
+
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_2_3" 
+  title = "@string/Kabocha"
+/>
+ 
+</conversation>
+
+<conversation>
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_3_1" 
+  title = "@string/Kabocha"
+/>
+
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_3_2" 
+  title = "@string/Kabocha"
+/>
+</conversation>
+
+<conversation>
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_4_1" 
+  title = "@string/Kabocha"
+/>
+
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_4_2" 
+  title = "@string/Kabocha"
+/>
+
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_4_3" 
+  title = "@string/Kabocha"
+/>
+ 
+</conversation>
+
+<conversation>
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_5_1" 
+  title = "@string/Kabocha"
+/>
+
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_5_2" 
+  title = "@string/Kabocha"
+/>
+
+ <page
+  image="@drawable/kabocha_closeup_normal"
+  text = "@string/Kabocha_0_2_5_3" 
+  title = "@string/Kabocha"
+/>
+ 
+</conversation>
+
+</dialog>

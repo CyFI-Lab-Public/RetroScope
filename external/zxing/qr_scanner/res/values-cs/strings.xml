@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="msg_default_status" msgid="639431501805022060">"Chcete-li naskenovat QR kód, umístěte jej do obdélníku hledáčku."</string>
+    <string name="msg_camera_framework_bug" msgid="2167124836274973533">"Došlo k potížím s fotoaparátem zařízení Android. Možná bude potřeba zařízení restartovat."</string>
+</resources>

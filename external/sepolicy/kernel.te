@@ -1,0 +1,8 @@
+# Life begins with the kernel.
+type kernel, domain;
+permissive kernel;
+# The kernel is unconfined.
+unconfined_domain(kernel)
+relabelto_domain(kernel)
+
+allow kernel {fs_type dev_type file_type}:dir_file_class_set relabelto;

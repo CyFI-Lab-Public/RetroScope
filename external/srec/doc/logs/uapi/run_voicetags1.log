@@ -1,0 +1,4554 @@
+# cd /system/usr/srec
+# ./run_voicetags1.sh
+Voicetags1: ESRSDK = /system/usr/srec
+STATE_IDLE --> STATE_CREATE_RECOGNIZER
+before EmbeddedRecognizer.getInstance()
+after  EmbeddedRecognizer.getInstance(): android.speech.recognition.impl.EmbeddedRecognizerImpl android.speech.recognition.impl.EmbeddedRecognizerImpl@400212d0
+before EmbeddedRecognizer.configure(/system/usr/srec/config/en.us/baseline11k.par)
+after EmbeddedRecognizer.configure()
+before EmbeddedRecognizer.setlistener()
+after EmbeddedRecognizer.setlistener()
+STATE_CREATE_RECOGNIZER --> STATE_SET_PARAM_ON
+STATE_SET_PARAM_ON --> STATE_SETTING_PARAM_ON
+Setting parameter
+onParametersSet: 
+enableGetWaveform = 1
+STATE_SETTING_PARAM_ON --> STATE_CREATE_GRAMMAR1
+before CreateGrammar(/system/usr/srec/config/en.us/grammars/enroll.g2g)
+after recognizer.createGrammar(/system/usr/srec/config/en.us/grammars/enroll.g2g)
+STATE_CREATE_GRAMMAR1 --> STATE_LOAD_GRAMMAR1
+STATE_LOAD_GRAMMAR1 --> STATE_LOADING_GRAMMAR1
+G1Listener:  onLoaded
+STATE_LOADING_GRAMMAR1 --> STATE_COMPILING_GRAMMAR1
+G1Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR1 --> STATE_MICROPHONE
+STATE_MICROPHONE --> STATE_MICROPHONE_START
+Start recording...
+recognize()
+STATE_MICROPHONE_START --> STATE_RECORD_RECOGNIZING
+MICListener: onStarted()
+----------------------------
+        PLEASE SAY...
+Jen Parker
+----------------------------
+onStarted
+onBeginningOfSpeech
+onEndOfSpeech
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+MICListener: onStopped()
+Woke up
+Saving.../system/usr/srec/VTAudioJen Parker.raw
+STATE_RECORD_RECOGNIZING --> STATE_WAIT_SAVED_VOICETAG
++onStopped()
+State:STATE_WAIT_SAVED_VOICETAG
+-onStopped()
+VTGListener: onSaved: /system/usr/srec/Jen Parker.vtg
+STATE_WAIT_SAVED_VOICETAG --> STATE_RESET_ENROLLMENT
+STATE_RESET_ENROLLMENT --> STATE_MICROPHONE
+STATE_MICROPHONE --> STATE_MICROPHONE_START
+Start recording...
+recognize()
+STATE_MICROPHONE_START --> STATE_RECORD_RECOGNIZING
+MICListener: onStarted()
+----------------------------
+        PLEASE SAY...
+Pete Gonzalez
+----------------------------
+MFWListener: onStopped()
+onStarted
+onBeginningOfSpeech
+onEndOfSpeech
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+MICListener: onStopped()
+Woke up
+Saving.../system/usr/srec/VTAudioPete Gonzalez.raw
+STATE_RECORD_RECOGNIZING --> STATE_WAIT_SAVED_VOICETAG
++onStopped()
+State:STATE_WAIT_SAVED_VOICETAG
+-onStopped()
+VTGListener: onSaved: /system/usr/srec/Pete Gonzalez.vtg
+STATE_WAIT_SAVED_VOICETAG --> STATE_RESET_ENROLLMENT
+STATE_RESET_ENROLLMENT --> STATE_MICROPHONE
+STATE_MICROPHONE --> STATE_MICROPHONE_START
+Start recording...
+recognize()
+STATE_MICROPHONE_START --> STATE_RECORD_RECOGNIZING
+MICListener: onStarted()
+----------------------------
+        PLEASE SAY...
+Andrew Evans
+----------------------------
+MFWListener: onStopped()
+onStarted
+onBeginningOfSpeech
+onEndOfSpeech
+Sleep 1800 ms (workaround for Sooner audio driver bug)
+MICListener: onStopped()
+Woke up
+Saving.../system/usr/srec/VTAudioAndrew Evans.raw
+STATE_RECORD_RECOGNIZING --> STATE_WAIT_SAVED_VOICETAG
++onStopped()
+State:STATE_WAIT_SAVED_VOICETAG
+-onStopped()
+VTGListener: onSaved: /system/usr/srec/Andrew Evans.vtg
+STATE_WAIT_SAVED_VOICETAG --> STATE_SET_PARAM_OFF
+STATE_SET_PARAM_OFF --> STATE_SETTING_PARAM_OFF
+Setting parameter
+onParametersSet: 
+enableGetWaveform = 0
+STATE_SETTING_PARAM_OFF --> STATE_UNLOAD_GRAMMAR1
+STATE_UNLOAD_GRAMMAR1 --> STATE_UNLOADING_GRAMMAR1
+G1Listener:   onUnloaded
+STATE_UNLOADING_GRAMMAR1 --> STATE_CREATE_GRAMMAR2
+before CreateGrammar(/system/usr/srec/config/en.us/grammars/bothtags5.g2g)
+after recognizer.createGrammar(/system/usr/srec/config/en.us/grammars/bothtags5.g2g)
+STATE_CREATE_GRAMMAR2 --> STATE_LOAD_GRAMMAR2
+STATE_LOAD_GRAMMAR2 --> STATE_LOADING_GRAMMAR2
+G2Listener: onLoaded
+STATE_LOADING_GRAMMAR2 --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:1
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+MFWListener: onStopped()
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id93meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-recognize()
+MFRListener: onStarted()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id93meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:3
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id93meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id93meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:5
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id93meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+-onStopped()
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id93meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:7
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+-recognize()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id93meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:9
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id93meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:11
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id93meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:13
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:15
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+-recognize()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id93meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+-onStopped()
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:17
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+-recognize()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:19
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:21
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:23
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:25
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:27
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+-recognize()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:29
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:31
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:33
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:35
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:37
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+-recognize()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:39
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:41
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:43
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:45
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:47
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+-recognize()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:49
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:51
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:53
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:55
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:57
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+-recognize()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:59
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:61
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:63
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:65
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:67
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+-recognize()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:69
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:71
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:73
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:75
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+-onStopped()
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+onStarted
+-recognize()
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-onStopped()
+-recognize()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:77
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+-recognize()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-onStopped()
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:79
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:81
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:83
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:85
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:87
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:89
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-onStopped()
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:91
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:93
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:95
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:97
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+-onStopped()
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+-recognize()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:99
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:101
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-onStopped()
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:103
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:105
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:107
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+onStarted
+-recognize()
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:109
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:111
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+-onStopped()
+MFRListener: onStarted()
+-recognize()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+MFRListener: onStarted()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+---------------------------------------
+Iteration:113
+---------------------------------------
+STATE_SHOW_ITERATION --> STATE_RESET_ALL_SLOTS_GRAMMAR2
+STATE_RESET_ALL_SLOTS_GRAMMAR2 --> STATE_RESETTING_SLOTS_GRAMMAR2
+-onStopped()
+G2Listener: onResetAllSlots
+STATE_RESETTING_SLOTS_GRAMMAR2 --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Jen Parker.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Pete Gonzalez.vtg
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+VTGListener: onLoaded
+STATE_LOADING_VOICETAG_IDX --> STATE_LOAD_VOICETAG_IDX
+Load Path:/system/usr/srec/Andrew Evans.vtg
+VTGListener: onLoaded
+STATE_LOAD_VOICETAG_IDX --> STATE_LOADING_VOICETAG_IDX
+STATE_LOADING_VOICETAG_IDX --> STATE_ADD_VOICETAGITEM_GRAMMAR2
+item 0: Jen Parker
+item 1: Pete Gonzalez
+item 2: Andrew Evans
+G2Listener: onAddItemList
+G2Listener: Finish adding voicetags to grammar slot
+STATE_ADD_VOICETAGITEM_GRAMMAR2 --> STATE_ADDING_VOICETAGITEM
+STATE_ADDING_VOICETAGITEM --> STATE_COMPILE_GRAMMAR2
+G2Listener: onCompileAllSlots
+STATE_COMPILE_GRAMMAR2 --> STATE_COMPILING_GRAMMAR2
+STATE_COMPILING_GRAMMAR2 --> STATE_SAVE_GRAMMAR2
+STATE_SAVE_GRAMMAR2 --> STATE_SAVING_GRAMMAR2
+G2Listener: onSaved :/system/usr/srec/grammarVoicetag.g2g
+STATE_SAVING_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioJen Parker.raw
+MFRListener: onStarted()
+onStarted
+-recognize()
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Jen Parker-Id92meaning:(514)555-8666
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioPete Gonzalez.raw
+MFRListener: onStarted()
+-recognize()
+-onStopped()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Pete Gonzalez-Id92meaning:(613)555-5464
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RECOGNIZE_WITH_GRAMMAR2
+STATE_RECOGNIZE_WITH_GRAMMAR2 --> STATE_RECOGNIZING_WITH_GRAMMAR2
++recognize()
+/system/usr/srec/VTAudioAndrew Evans.raw
+-recognize()
+-onStopped()
+MFRListener: onStarted()
+onStarted
+MFRListener: onStopped()
+onBeginningOfSpeech
+onEndOfSpeech
+onRecognitionResult: 1
+result 1Literal:Andrew Evans-Id92meaning:(800)555-1234
+================================
++onStopped()
+STATE_RECOGNIZING_WITH_GRAMMAR2 --> STATE_RESET
+STATE_RESET --> STATE_SHOW_ITERATION
+<< test continues on until it is manually stopped >>

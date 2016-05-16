@@ -1,0 +1,5 @@
+type ping, domain;
+permissive ping;
+type ping_exec, file_type;
+domain_auto_trans(shell, ping_exec, ping)
+unconfined_domain(ping)

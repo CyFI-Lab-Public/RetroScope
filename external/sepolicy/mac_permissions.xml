@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policy>
+
+    <!-- Platform dev key in AOSP -->
+    <signer signature="@PLATFORM" >
+      <seinfo value="platform" />
+    </signer>
+
+    <!-- Media dev key in AOSP -->
+    <signer signature="@MEDIA" >
+      <seinfo value="media" />
+    </signer>
+
+    <!-- shared dev key in AOSP -->
+    <signer signature="@SHARED" >
+      <seinfo value="shared" />
+    </signer>
+
+    <!-- release dev key in AOSP -->
+    <signer signature="@RELEASE" >
+      <seinfo value="release" />
+    </signer>
+
+    <!-- All other keys -->
+    <default>
+      <seinfo value="default" />
+    </default>
+
+</policy>

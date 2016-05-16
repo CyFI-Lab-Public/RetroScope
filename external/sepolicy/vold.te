@@ -1,0 +1,72 @@
+# volume manager
+type vold, domain;
+type vold_exec, exec_type, file_type;
+
+init_daemon_domain(vold)
+
+typeattribute vold mlstrustedsubject;
+allow vold system_file:file x_file_perms;
+allow vold block_device:dir create_dir_perms;
+allow vold block_device:blk_file create_file_perms;
+allow vold device:dir write;
+allow vold devpts:chr_file rw_file_perms;
+allow vold rootfs:dir mounton;
+allow vold sdcard_type:dir mounton;
+allow vold sdcard_type:filesystem { mount remount unmount };
+allow vold sdcard_type:dir create_dir_perms;
+allow vold sdcard_type:file create_file_perms;
+allow vold tmpfs:filesystem { mount unmount };
+allow vold tmpfs:dir create_dir_perms;
+allow vold tmpfs:dir mounton;
+allow vold self:capability { net_admin dac_override mknod sys_admin chown fowner fsetid };
+allow vold self:netlink_kobject_uevent_socket *;
+allow vold app_data_file:dir search;
+allow vold app_data_file:file rw_file_perms;
+allow vold loop_device:blk_file rw_file_perms;
+allow vold dm_device:chr_file rw_file_perms;
+# For vold Process::killProcessesWithOpenFiles function.
+allow vold domain:dir r_dir_perms;
+allow vold domain:{ file lnk_file } r_file_perms;
+allow vold domain:process { signal sigkill };
+allow vold self:capability { sys_ptrace kill };
+
+# For blkid
+allow vold shell_exec:file rx_file_perms;
+
+# XXX Label sysfs files with a specific type?
+allow vold sysfs:file rw_file_perms;
+
+write_klog(vold)
+
+#
+# Rules to support encrypted fs support.
+#
+
+# Set property.
+unix_socket_connect(vold, property, init)
+
+# Unmount and mount the fs.
+allow vold labeledfs:filesystem { mount unmount remount };
+
+# Access /efs/userdata_footer.
+# XXX Split into a separate type?
+allow vold efs_file:file rw_file_perms;
+
+# Create and mount on /data/tmp_mnt.
+allow vold system_data_file:dir { create rw_dir_perms mounton };
+allow vold system_data_file:file create_file_perms;
+
+# Set scheduling policy of kernel processes
+allow vold kernel:process setsched;
+
+# Property Service
+allow vold vold_prop:property_service set;
+allow vold powerctl_prop:property_service set;
+allow vold ctl_default_prop:property_service set;
+
+# ASEC
+allow vold asec_image_file:file create_file_perms;
+allow vold asec_image_file:dir rw_dir_perms;
+security_access_policy(vold)
+allow vold asec_apk_file:dir { rw_dir_perms setattr };
+allow vold asec_apk_file:file { r_file_perms setattr };

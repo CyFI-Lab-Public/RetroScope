@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:orientation="horizontal" 
+	android:layout_height="wrap_content" 
+	android:layout_width="wrap_content" 
+	android:layout_gravity="center_horizontal">
+	<TextView xmlns:android="http://schemas.android.com/apk/res/android" 
+		android:id="@+id/min"
+		android:text="@string/min"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content" 
+		android:layout_gravity="center_vertical"/>
+	<SeekBar xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/slider"
+		android:layout_height="wrap_content" 
+		android:layout_gravity="center_vertical" 
+		android:layout_width="100dp" 
+		android:layout_margin="10dp"/>
+	<TextView xmlns:android="http://schemas.android.com/apk/res/android" 
+		android:id="@+id/max"
+		android:text="@string/max"
+		android:layout_height="wrap_content"
+		android:layout_width="wrap_content"
+		android:layout_gravity="center_vertical"/>
+</LinearLayout>

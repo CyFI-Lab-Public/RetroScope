@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+<!-- Wanda Dialog Entries -->
+
+<string name="Wanda_0_1_1_1">
+Oh no!
+</string>
+
+<string name="Wanda_0_1_1_2">
+Looks like he landed OK but his memory array is all smashed.  Kyle has really crossed the line this time!
+</string>
+
+<string name="Wanda_0_1_1_3">
+Hmm, his self-repair mechanism is still intact.  If I can just reconnect the power...
+</string>
+
+<string name="Wanda_3_5_1_1">
+Are you feeling better Mr. Android?  Your memory is probably still scrambled, but don’t worry--it will return with time as your repair system brings the backup content out of storage.  Frankly, I think it’s amazing that you’re still moving around after taking such a powerful hit.
+</string>
+
+<string name="Wanda_3_5_1_2">
+When your memories come back online you should access them to remind yourself what you’ve been up to until now.  The repair system is going to take a while to decompress all your previous memories, so they might not come on line in chronological order.  They’ll all return eventually though.
+</string>
+
+<string name="Wanda_3_5_1_3">
+Stay away from Kyle if you see him.  He messed you up pretty bad before and I think he’s likely to do it again.  He’s such an idiot sometimes.
+</string>
+
+<string name="Wanda_1_1_1_1">
+Why hello there!  You’re not another one of this island’s crazy creations, are you?  Let me guess: you must be the handiwork of Dr. Kabochanomizu.  We’re supposed to be on opposing teams but I personally don’t see what all the fuss is about.  If we find it first then it’s ours, if you find it first then it’s yours.
+</string>
+
+<string name="Wanda_1_1_1_2">
+Oh, I’m Wanda, by the way.  Nice to meet you.  Can I call you Mr. Robot?  <small>Nah, that sounds like a line from an ’80s song.</small>  How about Mr. Android?  That’s better.  It’s so nice to make your acquaintance, Mr. Android.
+</string>
+
+<string name="Wanda_1_1_1_3">
+Good luck finding The Source.  My team is looking for it too, but so far no luck.  Enjoy the island, but watch out: it’s pretty weird in some parts.
+</string>
+
+
+<string name="Wanda_3_7_1_1">
+Hey there, Mr. Android, looks like you’re recovering pretty quickly!  Have you remembered my name yet?
+</string>
+
+<string name="Wanda_3_7_1_2">
+This sewer is the pits, huh?  I mean, how can there even be a sewer here?  It’s not like there are any buildings to connect it to.  The things that are here, they all grew here, I guess.  Mr. Rokudou says it’s just The Source doing what it does, but it gives me the creeps.  I think there’s another, older structure even deeper underground, but we haven’t found an entrance yet.  I almost hope we don’t.
+</string>
+
+<string name="Wanda_3_7_1_3">
+Oh, by the way, Kyle’s still on the warpath and he found out you’re still operative.  You might want to watch your back.
+</string>
+
+
+<string name="Wanda_1_5_1_1">
+We meet again, Mr. Android!  How’s your search going?  We’ve almost finished our scan of the beach, but I’m not supposed to tell you about it.  Mr. Rokudou and Dr. Kabochanomizu don’t think too highly of each other, I gather, so technically you’re a business rival.  Don’t worry though, I like you.
+</string>
+
+<string name="Wanda_1_5_1_2">
+Mr. Rokudou is a pretty amazing guy.  I mean, he’s like the head of this giant corporation and he sort of sounds like a robot when he talks <small>(no offense!)</small>, but he’s put all this energy into finding The Source so he can rid the world of disease, hunger, and war.  That’s such a noble aspiration, particularly for a businessman, don’t you think?
+</string>
+
+<string name="Wanda_1_5_1_3">
+Kyle and I are the most recent search team, but Mr. Rokudou has been sending people here for years.  I’m sure we’ll be the ones who finally find The Source.
+</string>
+
+<string name="Wanda_1_5_1_4">
+Unless, of course, you find it first!
+</string>
+
+
+<string name="Wanda_3_11_1_1">
+No, you two, stop!  There’s no need to fight about this!
+</string>
+
+<string name="Wanda_3_11_2_1">
+No!
+</string>
+
+<string name="Wanda_4_1_1_1">
+Get out of my sight.  You rotten, murdering, good for nothing bucket of bolts.  I never want to see you again.  I will never forgive you for what you did to Kyle.
+</string>
+
+
+<string name="Wanda_1_6_1_1">
+My partner, Kyle, is around here somewhere.  You’ll probably run into him.  I should warn you though, he’s kind of full of himself.  And he’s really competitive--this isn’t just a job to him, it’s like a test of his manhood or something.
+</string>
+
+<string name="Wanda_1_6_1_2">
+But once you get to know him, he’s a pretty nice guy.  Just don’t get on his bad side.
+</string>
+
+
+<string name="Wanda_4_2_1_1">
+Did you even think about what you were doing?  Did you even consider that maybe, just maybe, there was some other way to resolve the situation?  Or do you just calculate the shortest possible path to your objective and then iterate until it’s complete?  Just follow the rules by rote, never considering whether or not your way is the best way?
+</string>
+
+<string name="Wanda_4_2_1_2">
+Kyle was my friend, but to you he was just an obstacle to overcome.  You probably didn’t even think of him as a person, just another in a long line of hurdles on the way to the finish line. I can’t believe I trusted a machine.
+</string>
+
+<string name="Wanda_2_6_1_1">
+Hey Mr. Android, are you stuck?  Here, I’ll clear a path for you.  
+</string>
+
+<string name="Wanda_2_6_2_1">
+Mr. Rokudou told us that this whole island, every little bit of it, is something that The Source manufactured.  The eggheads don’t know why it makes stuff, or how it chooses to grow the things it does, but they think it has something to do with influences from outside sources.  <small>Mr. Rokudou calls it “proximity influence remanifestation,” whatever that means</small>.
+</string>
+
+<string name="Wanda_2_6_2_2">
+Anyway, nobody knows exactly where The Source comes from, but it hasn’t been here for very long.  This island is less than two hundred years old, and people have been visiting it for at least the last fifty.  I’ve seen evidence of early explorers--old diaries and stuff.  But nobody knows what The Source is doing, or who made it, or why it’s sitting out here in the middle of the ocean, growing this weirdo island.
+</string>
+
+<string name="Wanda_2_6_2_3">
+Personally, my money is on the space theory.  I bet it’s some sort of alien artifact that crash-landed here a long time ago.
+</string>
+
+<string name="Wanda_4_5_1_1">
+Look, Android, I know you’re in a rough spot.  Kabocha has lost it, and now he has The Source, so somebody has to stop him.  I can see you’re are trying to do that.
+</string>
+
+<string name="Wanda_4_5_1_2">
+But that doesn’t make up for what you did to Kyle.  Maybe you didn’t know what you were doing.  Or maybe Kabocha manipulated you into thinking it was the right thing to do.  I don’t know.  But I will never trust you again.
+</string>
+
+<string name="Wanda_4_5_1_3">
+Let me just say this.  I don’t trust Rokudou either.  He could have saved Kyle but for some reason he didn’t.  I’m starting to think he’s not the man I thought he was.  I know he’s helping you out now but I’d watch my back if I were in your shoes.
+</string>
+
+<string name="Wanda_3_3_1_1">
+So you met Kyle, huh?  I told you he can be a bit of a jerk, right?  He and I grew up together, and he’s always been kind of arrogant, but getting this assignment from Mr. Rokudou really pumped up his ego.  He’s actually a really nice guy under those dark glasses.  Last year he wrote me a song for my birthday, if you can believe that.
+</string>
+
+<string name="Wanda_3_3_1_2">
+Kyle also got me this job.  I have to admit, I was pretty hesitant to go to work for a giant company like Rokudou Corp. at first.
+</string>
+
+<string name="Wanda_3_3_1_3">
+But Mr. Rokudou’s different.  I met him and even though he refuses to take off that weird mask <small>(is it zits? uncontrollable facial hair?  maybe a scar?)</small> I am convinced that he’s really trying to make the world a better place.  
+</string>
+
+
+
+<string name="Wanda_4_7_1_1">
+Android.  I wanted to tell you about the latest information I have on Rokudou.  I hacked the corporate network and had a look at Rokudou’s sensitive files.  There’s still a lot I don’t have access to, but what I’ve seen is enough.
+</string>
+
+<string name="Wanda_4_7_1_2">
+He’s a criminal mastermind.  The whole businessman-with-a-heart-of-gold shtick is just for show.  Secretly he’s built Rokudou Corp. by investing in all sorts of illegal black markets.  His main source of income seems to come from stripping natural resources from impoverished and war-torn nations.
+</string>
+
+<string name="Wanda_4_7_1_3">
+I can’t imagine what he’ll do if he gets his hands on The Source.  He may actually believe he can use it to make the world a better place, but surely it will only be a better place for him--the rest of us will suffer.  
+</string>
+
+<string name="Wanda_4_7_1_4">
+I know Kabocha is completely unstable and you’re trying to stop him by helping Rokudou, but either way I think the world as we know it is going to end.  What should we do?
+</string>
+
+
+<string name="Wanda_1_9_1_1">
+I guess we’re actually pretty lucky nobody has found The Source so far.  I mean, in the wrong hands it could probably be used as a powerful weapon.  Mr. Rokudou once said that with The Source you could grow an army that would cover the earth.  It’s a good thing he’s planning on using it to reduce green house gases and repopulate endangered species instead!  I’m sure Dr. Kabochanomizu has a similar goal, right?
+</string>
+
+<string name="Wanda_2_9_1_1">
+Despite all of the weird bugs and stuff here, I actually kind of like this island.  It’s like a theme park: just weird enough to be fun but just normal enough to pass as natural.  Kyle was telling me if we find The Source, we’ll be able to control it and make it grow whatever we want.  
+</string>
+
+<string name="Wanda_2_9_1_2">
+But a part of me doesn’t want to find it; I kind of like how this island has grown this way on its own, without some person directing its focus.  Like, it doesn’t need to be manipulated to create something beautiful.
+</string>
+
+
+<string name="Wanda_4_9_1_1">
+Android.  You have to make a choice.  If you don’t stop Kabocha, he’s going to transform life on this planet in ways that can’t possibly be good.  But if you help Rokudou, the world will be forced to succumb to his will.  This is a lose-lose situation.  
+</string>
+
+<string name="Wanda_4_9_1_2">
+You’re just a tool to these guys--they have their own personal vendettas and they are just using you as a means to an end.   There must be something else you can do to prevent either of them from getting their hands on The Source.
+</string>
+
+<string name="Wanda_4_9_1_3">
+Look, I was wrong about you before.  I know what happened to Kyle wasn’t your fault alone.  I know you’re trying to do the right thing.  But neither Rokudou nor Kabocha is fit to wield the power of The Source.  You need to make a choice, Android, and you need to make it very carefully.
+</string>
+
+</resources>

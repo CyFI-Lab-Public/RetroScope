@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="ISO8859-1" ?>
+<grammar xml:lang="en-us" version="1.0" root="ROOT">
+<meta name="word_penalty" content="40" />
+
+<rule id="ROOT" scope="public">
+  <one-of>
+    <item> <ruleref uri="#DIAL_NANP_3"/> <tag>meaning=DIAL_NANP_3.CMD;</tag> </item> 
+    <item> <ruleref uri="#DIAL_NANP_7"/> <tag>meaning=DIAL_NANP_7.CMD;</tag> </item> 
+    <item> <ruleref uri="#DIAL_NANP_10"/> <tag>meaning=DIAL_NANP_10.CMD;</tag> </item> 
+    <item> <ruleref uri="#DIAL_INTNL"/> <tag>meaning=DIAL_INTNL.CMD;</tag> </item>
+    <item> <ruleref uri="#CALL"/> <tag>meaning=CALL.CMD;</tag> </item>
+    <item> Call Voice Mail <tag>meaning='voicemail'</tag> </item>
+    <item> Redial <tag>meaning='redial'</tag> </item>
+    <item> Exit <tag>meaning='X'</tag> </item>
+    <item> Cancel <tag>meaning='X'</tag> </item>
+    <item> <ruleref uri="#OPEN"/> <tag>meaning=OPEN.CMD;</tag> </item>
+  </one-of>
+</rule>
+
+<rule id="DIAL_NANP_3">
+  <item> Dial <tag>CMD='DIAL '</tag> </item>
+  
+  <item> <ruleref uri="#DIGIT29"/> <tag>CMD=CMD+DIGIT29.V</tag> </item>
+  <item> 1 <tag>CMD=CMD+'1'</tag> </item>
+  <item> 1 <tag>CMD=CMD+'1'</tag> </item>
+</rule> 
+
+<rule id="DIAL_NANP_7">
+  <item> Dial <tag>CMD='DIAL '</tag> </item>
+  
+  <item> <ruleref uri="#DIGIT29"/> <tag>CMD=CMD+DIGIT29.V</tag> </item>
+  <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+  <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+  
+  <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+  <one-of>
+    <item>
+      <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+      <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+      <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+    </item>
+    <item> thousand <tag>CMD=CMD+'000'</tag> </item>
+  </one-of>
+</rule> 
+
+<rule id="DIAL_NANP_10">
+  <item> Dial <tag>CMD='DIAL '</tag> </item>
+  
+  <!-- ignore leading 1 -->
+  <item repeat="0-1"> 1 </item>
+  
+  <!-- accept either xxx or 'eight hundred' -->
+  <one-of>
+    <item>
+      <item> <ruleref uri="#DIGIT29"/> <tag>CMD=CMD+DIGIT29.V</tag> </item>
+      <item> <ruleref uri="#DIGIT08"/> <tag>CMD=CMD+DIGIT08.V</tag> </item>
+      <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+    </item>
+    <item> 8 hundred <tag>CMD=CMD+'800'</tag> </item>
+  </one-of>
+  
+  <item> <ruleref uri="#DIGIT29"/> <tag>CMD=CMD+DIGIT29.V</tag> </item>
+  <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+  <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+  
+  <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+  <one-of>
+    <item>
+      <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+      <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+      <item> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+    </item>
+    <item> thousand <tag>CMD=CMD+'000'</tag> </item>
+  </one-of>
+</rule> 
+
+<rule id="DIGIT09">
+  <one-of>
+    <item> 0 <tag>V='0'</tag> </item>
+    <item> 1 <tag>V='1'</tag> </item>
+    <item> 2 <tag>V='2'</tag> </item>
+    <item> 3 <tag>V='3'</tag> </item>
+    <item> 4 <tag>V='4'</tag> </item>
+    <item> 5 <tag>V='5'</tag> </item>
+    <item> 6 <tag>V='6'</tag> </item>
+    <item> 7 <tag>V='7'</tag> </item>
+    <item> 8 <tag>V='8'</tag> </item>
+    <item> 9 <tag>V='9'</tag> </item>
+  </one-of>
+</rule> 
+
+<rule id="DIGIT08">
+  <one-of>
+    <item> 0 <tag>V='0'</tag> </item>
+    <item> 1 <tag>V='1'</tag> </item>
+    <item> 2 <tag>V='2'</tag> </item>
+    <item> 3 <tag>V='3'</tag> </item>
+    <item> 4 <tag>V='4'</tag> </item>
+    <item> 5 <tag>V='5'</tag> </item>
+    <item> 6 <tag>V='6'</tag> </item>
+    <item> 7 <tag>V='7'</tag> </item>
+    <item> 8 <tag>V='8'</tag> </item>
+  </one-of>
+</rule> 
+
+<rule id="DIGIT29">
+  <one-of>
+    <item> 2 <tag>V='2'</tag> </item>
+    <item> 3 <tag>V='3'</tag> </item>
+    <item> 4 <tag>V='4'</tag> </item>
+    <item> 5 <tag>V='5'</tag> </item>
+    <item> 6 <tag>V='6'</tag> </item>
+    <item> 7 <tag>V='7'</tag> </item>
+    <item> 8 <tag>V='8'</tag> </item>
+    <item> 9 <tag>V='9'</tag> </item>
+  </one-of>
+</rule> 
+
+<rule id="DIAL_INTNL">
+  <item> Dial Plus <tag>CMD='DIAL +';</tag> </item>
+  <item repeat="5-15"> <ruleref uri="#DIGIT09"/> <tag>CMD=CMD+DIGIT09.V</tag> </item>
+</rule>
+
+<rule id="CALL">
+  <item> Call <tag>CMD='CALL '</tag> </item>
+  
+  <item> <ruleref uri="#Names"/> <tag>CMD=CMD+Names.V</tag> </item>
+  
+  <item repeat="0-1">
+    <one-of>
+      <!-- corresponds to android.provider.Contacts.People.Phones.TYPE_HOME -->
+      <item> at home <tag>CMD=CMD+' H'</tag> </item>
+      <!-- corresponds to android.provider.Contacts.People.Phones.TYPE_MOBILE -->
+      <item>
+        <one-of> <item> at </item> <item> on </item> </one-of>
+        <one-of> <item> cell </item> <item> mobile </item> </one-of>
+        <tag>CMD=CMD+' M'</tag>
+      </item>
+      <!-- corresponds to android.provider.Contacts.People.Phones.TYPE_WORK -->
+      <item> at work <tag>CMD=CMD+' W'</tag> </item>
+      <!-- corresponds to android.provider.Contacts.People.Phones.TYPE_OTHER -->
+      <item>
+        <one-of> <item> at </item> <item> on </item> </one-of>
+        <item> other </item>
+        <tag>CMD=CMD+' O'</tag>
+      </item>
+    </one-of>
+  </item>
+</rule> 
+
+<rule id="Names" scope="public">
+  <item>__Names__</item>
+</rule>
+
+<rule id="OPEN">
+  <item> Open <tag>CMD='OPEN ';</tag> </item>
+  <item> <ruleref uri="#Opens"/> <tag>CMD=CMD+Opens.V</tag> </item>
+</rule>
+
+<rule id="Opens" scope="public">
+  <item>__Opens__</item>
+</rule>
+
+</grammar>

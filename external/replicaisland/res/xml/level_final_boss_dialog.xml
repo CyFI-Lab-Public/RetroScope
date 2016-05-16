@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<dialog>
+
+<conversation>
+
+<page
+  image="@drawable/rokudou_closeup_mask"
+  text = "@string/Rokudou_final_boss_1_1" 
+  title = "@string/Rokudou"
+/>
+
+<page
+  image="@drawable/rokudou_closeup_mask"
+  text = "@string/Rokudou_final_boss_1_2" 
+  title = "@string/Rokudou"
+/>
+
+<page
+  image="@drawable/kabocha_closeup_lunatic"
+  text = "@string/Kabocha_final_boss_1_1" 
+  title = "@string/Kabocha"
+/>
+
+<page
+  image="@drawable/kabocha_closeup_concern"
+  text = "@string/Kabocha_final_boss_1_2" 
+  title = "@string/Kabocha"
+/>
+
+<page
+  image="@drawable/kabocha_closeup_lunatic_02"
+  text = "@string/Kabocha_final_boss_1_3" 
+  title = "@string/Kabocha"
+/>
+
+
+<page
+  image="@drawable/rokudou_closeup_mask"
+  text = "@string/Rokudou_final_boss_1_3" 
+  title = "@string/Rokudou"
+/>
+
+</conversation>
+
+</dialog>

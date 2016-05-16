@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<grammar version="1.0" xml:lang="en-US" mode="voice" root="ROOT">
+<meta name="word_penalty" content="40" />
+<meta name="do_skip_interword_silence" content="true"/>
+      
+   <rule id="ROOT" scope="public">
+      <item> 
+         <ruleref uri="#SENT"/>
+	 <tag>type=SENT.type; meaning=SENT.V</tag>
+      </item>
+   </rule>
+      
+   <rule id="SENT">
+      <item repeat="1-">
+            <ruleref uri="#PHONE"/>
+		<tag>V=PHONE.V;</tag>
+      </item>
+   </rule>
+      
+   <rule id="PHONE">
+      <one-of>
+         <item><tag>V=V?V:'';V=V+' ph_AE';</tag>ph_AE</item>
+         <item><tag>V=V?V:'';V=V+' ph_ee';</tag>ph_ee</item>
+         <item><tag>V=V?V:'';V=V+' ph_ih';</tag>ph_ih</item>
+         <item><tag>V=V?V:'';V=V+' ph_OY';</tag>ph_OY</item>
+         <item><tag>V=V?V:'';V=V+' ph_OW';</tag>ph_OW</item>
+         <item><tag>V=V?V:'';V=V+' ph_uh';</tag>ph_uh</item>
+         <item><tag>V=V?V:'';V=V+' ph_EY';</tag>ph_EY</item>
+         <item><tag>V=V?V:'';V=V+' ph_ch';</tag>ph_ch</item>
+         <item><tag>V=V?V:'';V=V+' ph_dh';</tag>ph_dh</item>
+         <item><tag>V=V?V:'';V=V+' ph_EE1';</tag>ph_EE1</item>
+         <item><tag>V=V?V:'';V=V+' ph_AY';</tag>ph_AY</item>
+         <item><tag>V=V?V:'';V=V+' ph_ul';</tag>ph_ul</item>
+         <item><tag>V=V?V:'';V=V+' ph_ng';</tag>ph_ng</item>
+         <item><tag>V=V?V:'';V=V+' ph_OH1';</tag>ph_OH1</item>
+         <item><tag>V=V?V:'';V=V+' ph_ur';</tag>ph_ur</item>
+         <item><tag>V=V?V:'';V=V+' ph_sh';</tag>ph_sh</item>
+         <item><tag>V=V?V:'';V=V+' ph_th';</tag>ph_th</item>
+         <item><tag>V=V?V:'';V=V+' ph_OOH';</tag>ph_OOH</item>
+         <item><tag>V=V?V:'';V=V+' ph_UR1';</tag>ph_UR1</item>
+         <item><tag>V=V?V:'';V=V+' ph_zh';</tag>ph_zh</item>
+         <item><tag>V=V?V:'';V=V+' ph_oh';</tag>ph_oh</item>
+         <item><tag>V=V?V:'';V=V+' ph_AA';</tag>ph_AA</item>
+         <item><tag>V=V?V:'';V=V+' ph_b';</tag>ph_b</item>
+         <item><tag>V=V?V:'';V=V+' ph_eh';</tag>ph_eh</item>
+         <item><tag>V=V?V:'';V=V+' ph_d';</tag>ph_d</item>
+         <item><tag>V=V?V:'';V=V+' ph_EH1';</tag>ph_EH1</item>
+         <item><tag>V=V?V:'';V=V+' ph_f';</tag>ph_f</item>
+         <item><tag>V=V?V:'';V=V+' ph_g';</tag>ph_g</item>
+         <item><tag>V=V?V:'';V=V+' ph_h';</tag>ph_h</item>
+         <item><tag>V=V?V:'';V=V+' ph_IH1';</tag>ph_IH1</item>
+         <item><tag>V=V?V:'';V=V+' ph_j';</tag>ph_j</item>
+         <item><tag>V=V?V:'';V=V+' ph_k';</tag>ph_k</item>
+         <item><tag>V=V?V:'';V=V+' ph_l';</tag>ph_l</item>
+         <item><tag>V=V?V:'';V=V+' ph_m';</tag>ph_m</item>
+         <item><tag>V=V?V:'';V=V+' ph_n';</tag>ph_n</item>
+         <item><tag>V=V?V:'';V=V+' ph_AW';</tag>ph_AW</item>
+         <item><tag>V=V?V:'';V=V+' ph_p';</tag>ph_p</item>
+         <item><tag>V=V?V:'';V=V+' ph_OO';</tag>ph_OO</item>
+         <item><tag>V=V?V:'';V=V+' ph_r';</tag>ph_r</item>
+         <item><tag>V=V?V:'';V=V+' ph_s';</tag>ph_s</item>
+         <item><tag>V=V?V:'';V=V+' ph_t';</tag>ph_t</item>
+         <item><tag>V=V?V:'';V=V+' ph_UH1';</tag>ph_UH1</item>
+         <item><tag>V=V?V:'';V=V+' ph_v';</tag>ph_v</item>
+         <item><tag>V=V?V:'';V=V+' ph_w';</tag>ph_w</item>
+         <item><tag>V=V?V:'';V=V+' ph_y';</tag>ph_y</item>
+         <item><tag>V=V?V:'';V=V+' ph_z';</tag>ph_z</item>
+         <item><tag>V=V?V:'';V=V+' ph_AWH';</tag>ph_AWH</item>
+         <item><tag>V=V?V:'';V=V+' ph_um';</tag>ph_um</item>
+         <item><tag>V=V?V:'';V=V+' ph_un';</tag>ph_un</item>
+     </one-of>
+   </rule>
+
+
+</grammar>
