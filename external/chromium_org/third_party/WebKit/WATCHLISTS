@@ -1,0 +1,243 @@
+# Copyright (c) 2013 The Chromium Authors. All rights reserved.
+# Use of this source code is governed by a BSD-style license that can be
+# found in the LICENSE file.
+
+# Watchlist Rules
+# Refer: http://dev.chromium.org/developers/contributing-code/watchlists
+
+# IMPORTANT: The regular expression filepath is tested against each path using
+# re.search, so it is not usually necessary to add .*.
+
+{
+  'WATCHLIST_DEFINITIONS': {
+    'accessibility': {
+      'filepath': 'Source/core/accessibility' \
+                  '|LayoutTests/accessibility',
+    },
+    'animations': {
+      'filepath': 'animation|transition',
+    },
+    'bindings': {
+      'filepath': 'Source/bindings',
+    },
+    'test_runner': {
+      'filepath': 'Tools/DumpRenderTree/chromium/TestRunner',
+    },
+    'canvas': {
+      'filepath': 'Source/core/html/canvas/'
+    },
+    'css': {
+      'filepath': 'Source/core/css',
+    },
+    'custom_elements': {
+      'filepath': 'Source/core/dom/CustomElement' \
+                  '|Source/bindings/v8/.*CustomElement',
+    },
+    'devtools': {
+      'filepath': 'inspector|DevTools|devtools',
+    },
+    'dom': {
+      'filepath': 'Source/core/dom/'
+    },
+    'events': {
+      'filepath': '|Source/core/page/*Event*.*' \
+                  '|Source/core/dom/*Event.*' \
+                  '|Source/core/css/*Event.*' \
+                  '|Source/core/platform/*Event*.*'
+    },
+    'html': {
+      'filepath': 'Source/core/html/'
+    },
+    'loader': {
+      'filepath': 'Source/core/loader',
+    },
+    'owners': {
+      'filepath': 'OWNERS',
+    },
+    'public_api': {
+      'filepath': 'public' \
+                  '|Source/WebKit/chromium/public' \
+                  '|Tools/DumpRenderTree/chromium/TestRunner/public/',
+    },
+    'wtf': {
+      'filepath': 'Source/wtf',
+    },
+    'platform_graphics': {
+      'filepath': 'Source/core/platform/graphics',
+    },
+    'platform': {
+      'filepath': 'Source/core/platform' \
+                  '|Source/Platform'
+    },
+    'svg': {
+      'filepath': 'Source/core/svg|Source/core/rendering/svg',
+    },
+    'indexed_db': {
+      'filepath': 'Source/modules/indexeddb/' \
+                  '|Source/WebKit/chromium/.*IDB' \
+                  '|Source/core/platform/leveldb' \
+                  '|LayoutTests/storage/indexeddb'
+    },
+    'rendering': {
+      'filepath': 'Source/core/rendering'
+    },
+    'layers': {
+      'filepath': 'Source/WebCore/page/scrolling/ScrollingCoordinator.*' \
+                  '|Source/WebCore/platform/graphics/GraphicsLayer.*' \
+                  '|Source/WebCore/rendering/RenderLayer.*' \
+                  '|Source/WebKit/chromium/src/NonCompositedContentHost.*'
+    },
+    "content_security_policy": {
+      'filepath': 'Source/core/page/.*SecurityPolicy' \
+                  '|Source/core/dom/SecurityPolicyViolationEvent' \
+                  '|LayoutTests/http/tests/security/contentSecurityPolicy'
+    },
+    "prerender": {
+      'filepath': 'Prerender' \
+                  '|loader/LinkLoader' \
+                  '|html/HTMLLinkElement'
+    },
+    'track': {
+      'filepath': 'Source/core/html/track/' \
+                  '|Source/core/loader/TextTrack' \
+                  '|Source/core/html/HTMLMediaElement' \
+                  '|Source/core/html/shadow/MediaControl' \
+                  '|Source/core/css/mediaControl' \
+                  '|LayoutTests/media/track/'
+    },
+    'media': {
+      'filepath': 'Source/core/css/mediaControls.*' \
+                  '|Source/core/platform/graphics/.*Media.*' \
+                  '|Source/core/html/.*(Audio|Media|Video).*' \
+                  '|Source/core/html/shadow/MediaControl.*' \
+                  '|Source/core/rendering/RenderMedia.*' \
+                  '|Source/modules/(encryptedmedia|mediasource)' \
+                  '|Source/WebKit/chromium/.*Media.*' \
+    },
+    'media_queries': {
+        'filepath': 'Source/core/css/CSSMediaRule.*' \
+                    '|Source/core/css/MediaList.*' \
+                    '|Source/core/css/MediaQuery.*'
+    },
+    'fileapi': {
+      'filepath': 'Source/modules/filesystem/' \
+                  '|Source/core/fileapi/' \
+                  '|Source/WebKit/chromium/.*File.*' \
+                  '|Source/core/platform/.*File.*' \
+                  '|LayoutTests/fast/file'
+    },
+    'quota': {
+      'filepath': 'Source/modules/quota/' \
+                  '|Source/WebKit/chromium/.*Quota.*'
+    },
+    'viewport_interaction': {
+      'filepath': 'Source/core/css/.*Viewport.*' \
+                  '|Source/core/dom/ViewportArguments.*' \
+                  '|Source/core/html/HTMLMetaElement.*' \
+                  '|Source/core/page/FrameView.*' \
+                  '|Source/core/page/scrolling'
+    },
+    'css_regions': {
+      'filepath': 'Source/core/rendering/.*(Region|FlowThread).*' \
+                  '|Source/core/dom/NodeRendering.*' \
+                  '|Source/core/dom/.*NamedFlow.*' \
+                  '|Source/core/css/.*Region.*' \
+                  '|LayoutTests/compositing/regions/' \
+                  '|LayoutTests/fast/regions/' \
+                  '|LayoutTests/platform/chromium.*/fast/regions/'
+    },
+    'web_idl': {
+      'filepath': 'Source/core/.*\.idl'
+    },
+    'webcomponents': {
+      'filepath': 'Source/core/dom/shadow/.*' \
+                  '|Source/core/dom/CustomElement.*' \
+                  '|Source/bindings/v8/custom/V8CustomElementConstructorCustom.*' \
+                  '|Source/bindings/v8/CustomElementHelpers.*'
+    },
+    'mediastream': {
+      'filepath': 'Source/core/platform/mediastream/' \
+                  '|Source/modules/mediastream/' \
+                  '|LayoutTests/fast/mediastream/' \
+                  '|Source/core/platform/chromium/support/'
+    },
+    'geolocation': {
+      'filepath': 'Source/modules/geolocation/' \
+                  '|LayoutTests/fast/dom/Geolocation/'
+    },
+  },
+
+  'WATCHLISTS': {
+    'accessibility':['dmazzoni@chromium.org',
+                     'aboxhall@chromium.org'],
+    'animations': ['alancutter@chromium.org',
+                   'alexis.menard@intel.com',
+                   'dstockwell@chromium.org',
+                   'ericwilligers@chromium.org',
+                   'mikelawther@chromium.org',
+                   'rjwright@chromium.org',
+                   'shans@chromium.org',
+                   'steveblock@chromium.org',
+                   'timloh@chromium.org'],
+    'devtools': [ 'pfeldman+blink@chromium.org',
+                  'aandrey+blink@chromium.org',
+                  'alph+blink@chromium.org',
+                  'apavlov+blink@chromium.org',
+                  'loislo+blink@chromium.org',
+                  'lushnikov+blink@chromium.org',
+                  'vsevik+blink@chromium.org',
+                  'yurys+blink@chromium.org',
+                  'eustas+blink@chromium.org',
+                  'caseq+blink@chromium.org',
+                  'paulirish+reviews@chromium.org',
+                  'devtools-reviews@chromium.org' ],
+    'bindings': [ 'abarth@chromium.org',
+                  'adamk+blink@chromium.org',
+                  'ch.dumez@sisa.samsung.com',
+                  'haraken@chromium.org',
+                  'japhet@chromium.org',
+                  'jsbell+bindings@chromium.org',
+                  'kojih@chromium.org',
+                  'marja+watch@chromium.org',
+                  'nbarth@chromium.org' ],
+    'canvas': [ 'cabanier@adobe.com', 'aandrey+blink@chromium.org' ],
+    'custom_elements': [ 'dominicc+watchlist@chromium.org', 'dglazkov+blink@chromium.org' ],
+    'layers': [ 'blink-layers@chromium.org' ],
+    'loader': [ 'japhet@chromium.org', 'gavinp+loader@chromium.org' ],
+    'owners': [ 'abarth@chromium.org'],
+    'test_runner': [ 'jochen+watch@chromium.org' ],
+    'platform_graphics': [ 'jamesr@chromium.org',
+                           'schenney@chromium.org',
+                           'danakj@chromium.org',
+                           'pdr@chromium.org',
+                           'cabanier@adobe.com' ],
+    'platform': [ 'forgerbr@gmail.com' ],
+    'svg': [ 'schenney@chromium.org', 'pdr@google.com', 'fmalita@chromium.org' ],
+    'css': [ 'alexis.menard@intel.com', 'apavlov+blink@chromium.org', 'dglazkov+blink@chromium.org' ],
+    'dom': [ 'adamk+blink@chromium.org', 'eae+blinkwatch@chromium.org', 'dglazkov+blink@chromium.org' ],
+    'events': [ 'eae+blinkwatch@chromium.org', 'dglazkov+blink@chromium.org' ],
+    'html': [ 'adamk+blink@chromium.org', 'dglazkov+blink@chromium.org' ],
+    'public_api': [ 'abarth@chromium.org', 'jamesr@chromium.org', 'dglazkov+blink@chromium.org' ],
+    'wtf': [ 'abarth@chromium.org',
+             'adamk+blink@chromium.org',
+             'forgerbr@gmail.com',
+             'loislo+blink@chromium.org',
+             'yurys+blink@chromium.org' ],
+    'indexed_db': ['alecflett@chromium.org','dgrogan@chromium.org',
+                   'jsbell@chromium.org'],
+    'rendering': [ 'eae+blinkwatch@chromium.org', 'jchaffraix+rendering@chromium.org', 'leviw+renderwatch@chromium.org' ],
+    'content_security_policy': [ 'mkwst+watchlist@chromium.org' ],
+    'prerender': [ 'gavinp+prerender@chromium.org' ],
+    'track': [ 'vcarbune@chromium.org', 'silviapf@chromium.org' ],
+    'media': [ 'feature-media-reviews@chromium.org' ],
+    'media_queries': [ 'kenneth.christiansen@gmail.com' ],
+    'fileapi': [ 'kinuko@chromium.org' ],
+    'quota': [ 'kinuko@chromium.org' ],
+    'viewport_interaction': [ 'kenneth.christiansen@gmail.com' ],
+    'css_regions': [ 'ChromiumBugTracker@adobe.com' ],
+    'web_idl': [ 'ch.dumez@sisa.samsung.com' ],
+    'webcomponents': [ 'webcomponents-bugzilla@chromium.org', 'dglazkov+blink@chromium.org' ],
+    'mediastream': [ 'tommyw+watchlist@chromium.org' ],
+    'geolocation': [ 'mvanouwerkerk@chromium.org' ],
+  },
+}

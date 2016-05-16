@@ -1,0 +1,7 @@
+# Copyright 2011 Google Inc. All Rights Reserved.
+version=n/a
+isNative=true
+name=dmg_fp
+onDevice=true
+homepage=http://www.netlib.org/fp/dtoa.c
+

@@ -1,0 +1,46 @@
+/* Copyright (c) 2012 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+quad-stack {
+  -webkit-flex: 1 1 100%;
+  -webkit-flex-direction: column;
+  display: -webkit-flex;
+  min-height: 357px;
+  outline: none;
+  position: relative;
+  width: 100%;
+  z-index: 10; /* cause our scrollbars to render above our children. */
+}
+
+quad-stack > view-container {
+  -webkit-flex: 1 1 100%;
+  -webkit-transform-style: preserve-3d;
+  display: -webkit-flex;
+  outline: none;
+  position: relative;
+}
+
+quad-stack quad-view {
+  -webkit-transform: translateZ(0); /* actual xform for depth is set in rAF */
+  left: 0;
+  position: absolute;
+  top: 0;
+}
+
+quad-stack > view-container > rect-view {
+  background-image:
+    url('../images/chrome-left.png'),
+    url('../images/chrome-right.png'),
+    url('../images/chrome-mid.png');
+  background-position: left top, right top, left top;
+  background-repeat: no-repeat, no-repeat, repeat-x;
+  background-size: auto 72px;
+  border: 1px solid #999;
+  border-radius: 6px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  margin-top: -72px;
+  padding-top: 72px;
+  position: absolute;
+}

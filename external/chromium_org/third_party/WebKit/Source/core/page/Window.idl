@@ -1,0 +1,310 @@
+/*
+ * Copyright (C) 2006, 2007, 2008, 2009 Apple Inc. All rights reserved.
+ * Copyright (C) 2011 Google Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE COMPUTER, INC. ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE COMPUTER, INC. OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+[
+    CheckSecurity,
+    CustomToV8,
+    DoNotGenerateWrap,
+    ImplementedAs=DOMWindow
+] interface Window : EventTarget {
+    // DOM Level 0
+    [Replaceable] readonly attribute Screen screen;
+    [Replaceable] readonly attribute History history;
+    [Replaceable] readonly attribute BarProp locationbar;
+    [Replaceable] readonly attribute BarProp menubar;
+    [Replaceable] readonly attribute BarProp personalbar;
+    [Replaceable] readonly attribute BarProp scrollbars;
+    [Replaceable] readonly attribute BarProp statusbar;
+    [Replaceable] readonly attribute BarProp toolbar;
+    [Replaceable, PerWorldBindings, ActivityLog=GetterForIsolatedWorlds] readonly attribute Navigator navigator;
+    [Replaceable] readonly attribute Navigator clientInformation;
+    [DoNotCheckSecurity, CustomSetter, Unforgeable, Replaceable, PerWorldBindings, ActivityLog=AccessForIsolatedWorlds] readonly attribute Location location;
+    [MeasureAs=WindowEvent, NotEnumerable, Replaceable, CustomGetter, CustomSetter] readonly attribute Event event;
+
+    Selection getSelection();
+
+    [CheckSecurityForNode] readonly attribute Element frameElement;
+
+    [DoNotCheckSecurity, CallWith=ScriptExecutionContext] void focus();
+    [DoNotCheckSecurity] void blur();
+    [DoNotCheckSecurity, CallWith=ScriptExecutionContext] void close();
+
+    void print();
+    void stop();
+
+    [Custom] Window open(DOMString url,
+                            DOMString name,
+                            optional DOMString options);
+
+    [Custom] any showModalDialog(DOMString url,
+                                       optional any dialogArgs,
+                                       optional DOMString featureArgs);
+
+    void alert([Default=Undefined] optional DOMString message);
+    boolean confirm([Default=Undefined] optional DOMString message);
+    [TreatReturnedNullStringAs=Null] DOMString prompt([Default=Undefined] optional DOMString message,
+                                                [TreatNullAs=NullString, TreatUndefinedAs=NullString,Default=Undefined] optional DOMString defaultValue);
+
+    boolean find([Default=Undefined] optional DOMString string,
+                 [Default=Undefined] optional boolean caseSensitive,
+                 [Default=Undefined] optional boolean backwards,
+                 [Default=Undefined] optional boolean wrap,
+                 [Default=Undefined] optional boolean wholeWord,
+                 [Default=Undefined] optional boolean searchInFrames,
+                 [Default=Undefined] optional boolean showDialog);
+
+    [Replaceable] readonly attribute  boolean offscreenBuffering;
+
+    [Replaceable] readonly attribute long outerHeight;
+    [Replaceable] readonly attribute long outerWidth;
+    [Replaceable] readonly attribute long innerHeight;
+    [Replaceable] readonly attribute long innerWidth;
+    [Replaceable] readonly attribute long screenX;
+    [Replaceable] readonly attribute long screenY;
+    [Replaceable] readonly attribute long screenLeft;
+    [Replaceable] readonly attribute long screenTop;
+    [Replaceable] readonly attribute long scrollX;
+    [Replaceable] readonly attribute long scrollY;
+    readonly attribute long pageXOffset;
+    readonly attribute long pageYOffset;
+
+    void scrollBy([Default=Undefined] optional long x, [Default=Undefined] optional long y);
+    void scrollTo([Default=Undefined] optional long x, [Default=Undefined] optional long y);
+    void scroll([Default=Undefined] optional long x, [Default=Undefined] optional long y);
+    void moveBy([Default=Undefined] optional float x, [Default=Undefined] optional float y); // FIXME: this should take longs not floats.
+    void moveTo([Default=Undefined] optional float x, [Default=Undefined] optional float y); // FIXME: this should take longs not floats.
+    void resizeBy([Default=Undefined] optional float x, [Default=Undefined] optional float y); // FIXME: this should take longs not floats.
+    void resizeTo([Default=Undefined] optional float width, [Default=Undefined] optional float height); // FIXME: this should take longs not floats.
+
+    [DoNotCheckSecurity] readonly attribute boolean closed;
+
+    [Replaceable, DoNotCheckSecurityOnGetter] readonly attribute unsigned long length;
+
+    attribute DOMString name;
+
+    attribute DOMString status;
+    attribute DOMString defaultStatus;
+    // This attribute is an alias of defaultStatus and is necessary for legacy uses.
+    attribute DOMString defaultstatus;
+
+    // Self referential attributes
+    [Replaceable, DoNotCheckSecurityOnGetter] readonly attribute Window self;
+    [DoNotCheckSecurity, Unforgeable] readonly attribute Window window;
+    [Replaceable, DoNotCheckSecurityOnGetter] readonly attribute  Window frames;
+
+    [Replaceable, DoNotCheckSecurityOnGetter, CustomSetter] readonly attribute Window opener;
+    [Replaceable, DoNotCheckSecurityOnGetter] readonly attribute Window parent;
+    [DoNotCheckSecurityOnGetter, Unforgeable] readonly attribute Window top;
+
+    // DOM Level 2 AbstractView Interface
+    readonly attribute Document document;
+
+    // CSSOM View Module
+    MediaQueryList matchMedia(DOMString query);
+
+    // styleMedia has been removed from the CSSOM View specification.
+    readonly attribute StyleMedia styleMedia;
+
+    // DOM Level 2 Style Interface
+    [PerWorldBindings] CSSStyleDeclaration getComputedStyle([Default=Undefined] optional Element element,
+                                                              [TreatNullAs=NullString, TreatUndefinedAs=NullString,Default=Undefined] optional DOMString pseudoElement);
+
+    // WebKit extensions
+    CSSRuleList getMatchedCSSRules([Default=Undefined] optional Element element,
+                                   [TreatNullAs=NullString, TreatUndefinedAs=NullString,Default=Undefined] optional DOMString pseudoElement);
+
+    [Replaceable] readonly attribute double devicePixelRatio;
+
+    WebKitPoint webkitConvertPointFromPageToNode([Default=Undefined] optional Node node,
+                                                 [Default=Undefined] optional WebKitPoint p);
+    WebKitPoint webkitConvertPointFromNodeToPage([Default=Undefined] optional Node node,
+                                                 [Default=Undefined] optional WebKitPoint p);
+
+    [EnabledAtRuntime, PerWorldBindings, ActivityLog=GetterForIsolatedWorlds] readonly attribute DOMApplicationCache applicationCache;
+
+    [EnabledAtRuntime, PerWorldBindings, ActivityLog=GetterForIsolatedWorlds, GetterRaisesException] readonly attribute Storage sessionStorage;
+    [EnabledAtRuntime, PerWorldBindings, ActivityLog=GetterForIsolatedWorlds, GetterRaisesException] readonly attribute Storage localStorage;
+
+    // This is the interface orientation in degrees. Some examples are:
+    //  0 is straight up; -90 is when the device is rotated 90 clockwise;
+    //  90 is when rotated counter clockwise.
+    [Conditional=ORIENTATION_EVENTS] readonly attribute long orientation;
+
+    [Replaceable] readonly attribute Console console;
+
+    // cross-document messaging
+    [DoNotCheckSecurity, Custom, RaisesException] void postMessage(SerializedScriptValue message, DOMString targetOrigin, optional Array messagePorts);
+
+    [Replaceable] readonly attribute Performance performance;
+
+    [MeasureAs=UnprefixedRequestAnimationFrame] long requestAnimationFrame(RequestAnimationFrameCallback callback);
+    void cancelAnimationFrame(long id);
+    [MeasureAs=PrefixedRequestAnimationFrame] long webkitRequestAnimationFrame(RequestAnimationFrameCallback callback);
+    [ImplementedAs=cancelAnimationFrame] void webkitCancelAnimationFrame(long id);
+    [ImplementedAs=cancelAnimationFrame] void webkitCancelRequestAnimationFrame(long id); // This is a deprecated alias for webkitCancelAnimationFrame(). Remove this when removing vendor prefix.
+
+    [Replaceable] readonly attribute CSS CSS;
+
+    // Events
+    attribute EventHandler onabort;
+    attribute EventHandler onbeforeunload;
+    attribute EventHandler onblur;
+    attribute EventHandler oncanplay;
+    attribute EventHandler oncanplaythrough;
+    attribute EventHandler onchange;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onclick;
+    attribute EventHandler oncontextmenu;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler ondblclick;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler ondrag;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler ondragend;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler ondragenter;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler ondragleave;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler ondragover;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler ondragstart;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler ondrop;
+    attribute EventHandler ondurationchange;
+    attribute EventHandler onemptied;
+    attribute EventHandler onended;
+    attribute EventHandler onerror;
+    attribute EventHandler onfocus;
+    attribute EventHandler onhashchange;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler oninput;
+    attribute EventHandler oninvalid;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onkeydown;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onkeypress;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onkeyup;
+    attribute EventHandler onload;
+    attribute EventHandler onloadeddata;
+    attribute EventHandler onloadedmetadata;
+    attribute EventHandler onloadstart;
+    attribute EventHandler onmessage;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onmousedown;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onmouseenter;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onmouseleave;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onmousemove;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onmouseout;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onmouseover;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onmouseup;
+    [PerWorldBindings, ActivityLog=SetterForIsolatedWorlds] attribute EventHandler onmousewheel;
+    attribute EventHandler onoffline;
+    attribute EventHandler ononline;
+    attribute EventHandler onpagehide;
+    attribute EventHandler onpageshow;
+    attribute EventHandler onpause;
+    attribute EventHandler onplay;
+    attribute EventHandler onplaying;
+    attribute EventHandler onpopstate;
+    attribute EventHandler onprogress;
+    attribute EventHandler onratechange;
+    attribute EventHandler onresize;
+    attribute EventHandler onscroll;
+    attribute EventHandler onseeked;
+    attribute EventHandler onseeking;
+    attribute EventHandler onselect;
+    attribute EventHandler onstalled;
+    attribute EventHandler onstorage;
+    attribute EventHandler onsubmit;
+    attribute EventHandler onsuspend;
+    attribute EventHandler ontimeupdate;
+    attribute EventHandler onunload;
+    attribute EventHandler onvolumechange;
+    attribute EventHandler onwaiting;
+
+    // Not implemented yet.
+    // attribute EventHandler onafterprint;
+    // attribute EventHandler onbeforeprint;
+    // attribute EventHandler onreadystatechange;
+    // attribute EventHandler onredo;
+    // attribute EventHandler onshow;
+    // attribute EventHandler onundo;
+
+    // Webkit extensions
+    attribute EventHandler onreset;
+    attribute EventHandler onsearch;
+    attribute EventHandler onwebkitanimationend;
+    attribute EventHandler onwebkitanimationiteration;
+    attribute EventHandler onwebkitanimationstart;
+    attribute EventHandler onwebkittransitionend;
+    attribute EventHandler ontransitionend;
+    [Conditional=ORIENTATION_EVENTS] attribute EventHandler onorientationchange;
+    [EnabledAtRuntime=touch] attribute EventHandler ontouchstart;
+    [EnabledAtRuntime=touch] attribute EventHandler ontouchmove;
+    [EnabledAtRuntime=touch] attribute EventHandler ontouchend;
+    [EnabledAtRuntime=touch] attribute EventHandler ontouchcancel;
+
+    [EnabledAtRuntime=deviceMotion] attribute EventHandler ondevicemotion;
+    [EnabledAtRuntime=deviceOrientation] attribute EventHandler ondeviceorientation;
+
+    [DeprecateAs=CaptureEvents] void captureEvents();
+    [DeprecateAs=ReleaseEvents] void releaseEvents();
+
+    // Additional constructors.
+    attribute TransitionEventConstructor WebKitTransitionEvent;
+    [CustomConstructor] attribute HTMLImageElementConstructorConstructor Image; // Usable with new operator
+    // Mozilla has a separate XMLDocument object for XML documents.
+    // We just use Document for this.
+    attribute DocumentConstructor XMLDocument;
+    attribute URLConstructor webkitURL; // FIXME: deprecate this.
+    attribute MutationObserverConstructor WebKitMutationObserver; // FIXME: Add metrics to determine when we can remove this.
+    attribute IDBCursorConstructor webkitIDBCursor;
+    attribute IDBDatabaseConstructor webkitIDBDatabase;
+    attribute IDBFactoryConstructor webkitIDBFactory;
+    attribute IDBIndexConstructor webkitIDBIndex;
+    attribute IDBKeyRangeConstructor webkitIDBKeyRange;
+    attribute IDBObjectStoreConstructor webkitIDBObjectStore;
+    attribute IDBRequestConstructor webkitIDBRequest;
+    attribute IDBTransactionConstructor webkitIDBTransaction;
+
+    // Constructors whose name does not match the interface name.
+    // FIXME: Remove these once [ImplementedAs] is used and once constructor names match interface names.
+    [EnabledAtRuntime=mediaStream] attribute MediaStreamConstructor webkitMediaStream;
+    [Conditional=WEB_AUDIO, EnabledAtRuntime=WebAudio] attribute AudioContextConstructor webkitAudioContext;
+    [Conditional=WEB_AUDIO, EnabledAtRuntime=WebAudio] attribute OfflineAudioContextConstructor webkitOfflineAudioContext;
+    [EnabledAtRuntime=peerConnection] attribute RTCPeerConnectionConstructor webkitRTCPeerConnection;
+    [EnabledAtRuntime=scriptedSpeech] attribute SpeechGrammarConstructor webkitSpeechGrammar;
+    [EnabledAtRuntime=scriptedSpeech] attribute SpeechGrammarListConstructor webkitSpeechGrammarList;
+    [EnabledAtRuntime=scriptedSpeech] attribute SpeechRecognitionConstructor webkitSpeechRecognition;
+    [EnabledAtRuntime=scriptedSpeech] attribute SpeechRecognitionErrorConstructor webkitSpeechRecognitionError;
+    [EnabledAtRuntime=scriptedSpeech] attribute SpeechRecognitionEventConstructor webkitSpeechRecognitionEvent;
+    [Conditional=WEB_AUDIO] attribute PannerNodeConstructor webkitAudioPannerNode;
+
+    // Prefixed ShadowRoot constructor should be phased out eventually, but for the moment it must be always exposed.
+    // Unprefixed ShadowRoot constructor should be visible when the feature flag is enabled.
+    // FIXME: When it's ready to remove WebKitShadowRoot, get rid of both constructors from Window.idl and remove
+    // [NoInterfaceObject] from ShadowRoot interface definition.
+    [EnabledAtRuntime=ShadowDOM] attribute ShadowRootConstructor ShadowRoot;
+    [MeasureAs=PrefixedShadowRootConstructor] attribute ShadowRootConstructor WebKitShadowRoot;
+
+    // window.toString() requires special handling in V8
+    [DoNotCheckSignature, DoNotCheckSecurity, Custom, NotEnumerable] DOMString toString();
+
+    [ImplementedAs=anonymousIndexedGetter, NotEnumerable] getter Window(unsigned long index);
+    [Custom, NotEnumerable] getter Window (DOMString name);
+};
+
+Window implements ImageBitmapFactories;
+Window implements WindowTimers;
+Window implements WindowBase64;

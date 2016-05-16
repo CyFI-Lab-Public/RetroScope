@@ -1,0 +1,48 @@
+<h2 id="usage">Usage</h2>
+
+<p>
+Using the API, you can prompt the user for permission to access the media
+galleries. The permission dialog will contain common media locations for
+the platform and will allow the user to add additional locations. From those
+locations, only media files will be present in the file system objects.
+</p>
+
+<h2 id="manifest">Manifest</h2>
+<p>The media galleries API has two axes of permission parameters; the locations
+that can be accessed, and the types of access (read-only, copy-to, etc).</p>
+
+<p>On the location axis, specifying no location-type permission parameters
+means that
+no media galleries are accessible until the user grants permission to
+specific media galleries at runtime using the media gallery configuration
+dialog. This dialog can be programmatically triggered.  Alternatively,
+specifying the "allAutoDetected" permission parameter grants access to all
+auto-detected media galleries on the user's computer. However, this
+permission displays an install time prompt indicating that the app
+will have access to all of the user's media files.</p>
+
+<p>On the access type axis, the "read" permission parameter grants the
+app the right to read files. This permission does not trigger an install
+time permission prompt because the user must still grant access to particular
+galleries, either with the "allAutoDetected" permission parameter or at
+runtime by using the media gallery management dialog. For example:</p>
+
+<pre>{
+  "name": "My app",
+  ...
+  "permissions": [
+    <b>{ "mediaGalleries": ["read", "allAutoDetected"] }</b>
+  ],
+  ...
+}</pre>
+
+<p>The above permission will trigger an install time permission prompt
+and let the app read from all auto-detected media galleries on the
+user's computer. The user may add or remove galleries using the
+media gallery management dialog, after which the app will be able
+to read all the media files from galleries that the user has selected.</p>
+
+<p>Another possible access type is "copyTo". Specifying only "copyTo" on the
+access type axis will permit using accessible media galleries as a destination
+for copyTo() operations. "copyTo" and "read" can both be specified to obtain
+both types of permissions to accessible media galleries.</p>

@@ -1,0 +1,107 @@
+<div class="page hidden" id="autofill-edit-address-overlay">
+  <h1 id="autofill-address-title"></h1>
+  <div class="content-area">
+    <div class="input">
+      <label>
+        <div><span i18n-content="fullNameLabel"></span></div>
+        <list id="full-name-list"
+            i18n-values="placeholder:addNewNamePlaceholder"></list>
+      </label>
+    </div>
+    <div class="input">
+      <label>
+        <div><span i18n-content="companyNameLabel"></span></div>
+        <input type="text" class="autofill-form" id="company-name">
+      </label>
+    </div>
+    <div class="input">
+      <label>
+        <div><span i18n-content="addrLine1Label"></span></div>
+        <input type="text" class="autofill-form" id="addr-line-1">
+      </label>
+    </div>
+    <div class="input">
+      <label>
+        <div><span i18n-content="addrLine2Label"></span></div>
+        <input type="text" class="autofill-form" id="addr-line-2">
+      </label>
+    </div>
+    <div class="table">
+      <div class="row">
+        <div class="input cell">
+          <label for="city">
+            <span i18n-content="cityLabel"></span>
+          </label>
+        </div>
+        <div class="input cell">
+          <label id="state-label" for="state"></label>
+        </div>
+        <div class="input cell">
+          <label id="postal-code-label" for="postal-code"></label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input cell">
+          <input type="text" class="autofill-form" id="city">
+        </div>
+        <div class="input cell">
+          <input type="text" class="autofill-form" id="state">
+        </div>
+        <div class="input cell">
+          <input type="text" class="autofill-form" id="postal-code">
+        </div>
+      </div>
+    </div>
+    <div class="input">
+      <label>
+        <div><span i18n-content="countryLabel"></span></div>
+        <select id="country"></select>
+      </label>
+    </div>
+    <div class="table">
+      <div class="row">
+        <div class="input cell">
+          <label for="phone-list">
+            <span i18n-content="phoneLabel"></span>
+          </label>
+        </div>
+        <div class="input cell">
+          <label for="fax-list">
+            <span i18n-content="faxLabel"></span>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input cell">
+          <list id="phone-list"
+              i18n-values="placeholder:addNewPhonePlaceholder"></list>
+        </div>
+        <div class="input cell">
+          <list id="fax-list"
+              i18n-values="placeholder:addNewFaxPlaceholder"></list>
+        </div>
+      </div>
+    </div>
+    <div class="table">
+      <div class="row">
+        <div class="input cell">
+          <label for="email-list">
+            <span i18n-content="emailLabel"></span>
+          </label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input cell">
+          <list id="email-list"
+              i18n-values="placeholder:addNewEmailPlaceholder"></list>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="action-area button-strip">
+    <button type="reset" id="autofill-edit-address-cancel-button"
+        i18n-content="cancel"></button>
+    <button type="submit" id="autofill-edit-address-apply-button" disabled
+        i18n-content="ok"></button>
+  </div>
+</div>

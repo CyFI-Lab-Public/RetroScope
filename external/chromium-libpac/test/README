@@ -1,0 +1,6 @@
+This directory contains a script that converts the javascript directory
+to a header file containing strings for use with testing.
+
+Do not modify proxy_script_test.h.  Instead modify the files contained
+within js-unittest/ and then run the following command.
+    ./jstocstring.pl js-unittest proxy_test_script.h

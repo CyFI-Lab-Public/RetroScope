@@ -1,0 +1,440 @@
+/* Copyright (c) 2012 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file. */
+
+body,
+html {
+  color: rgb(48, 57, 66);
+  font-family: Ubuntu, Arial, sans-serif;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
+body {
+  font-size: 75%;
+}
+
+#container {
+  height: 100%;
+  overflow-y: scroll;
+  width: 100%;
+}
+
+hr {
+  color: rgb(115, 111, 110);
+  margin: 15px 0;
+}
+
+/* Override the visual style of tabs. */
+
+#tabs-header-container {
+  border-bottom: 1px solid #e0e0e0;
+  height: calc(100% - 53px);
+  margin-top: 10px;
+}
+
+#tabs {
+  border-bottom: none;
+  left: -5px;
+  margin: 5px auto 0;
+  padding: 0 5px;
+  position: relative;
+  width: 720px;
+}
+
+tabs tab {
+  border-color: #e0e0e0;
+  min-width: 100px;
+  padding: 7px 20px;
+}
+
+tabs > [selected] {
+  background: white;
+  border-color: #e0e0e0;
+}
+
+html.focus-outline-visible tabs:focus > [selected] {
+  background: white;
+  border-color: rgb(160, 160, 255);
+  outline: none;
+}
+
+tabs > :not([selected]) {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: #e0e0e0;
+}
+
+tabs > :not([selected]):hover {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+tabpanels {
+  height: calc(100% - 20px);
+  padding: 0;
+  width: 100%;
+}
+
+tabpanel {
+  margin: 0 auto;
+  padding-top: 24px;
+  width: 710px;
+}
+
+/* Header */
+
+#header {
+  background-image: -webkit-linear-gradient(white,
+                                            white 40%,
+                                            rgba(255, 255, 255, 0.92));
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+#developer-controls {
+  margin-top: 0;
+  max-width: none;
+  padding: 3px 10px 8px;
+  width: calc(100% - 20px);
+}
+
+#header-title {
+  -webkit-margin-start: 50px;
+  display: inline-block;
+  font-size: 1.2em;
+  position: relative;
+  top: 3px;
+}
+
+#header-bottom-gradient {
+  background: linear-gradient(to bottom, white, rgba(255, 255, 255, 0));
+  height: 20px;
+  position: fixed;
+  top: 42px;
+  width: 100%;
+}
+
+#search {
+  padding: 4px;
+  position: absolute;
+  right: 15px;
+  text-align: left;
+  width: 200px;
+}
+
+html[dir='rtl'] #search {
+  left: 15px;
+  right: auto;
+}
+
+/* Contents */
+
+#extension-settings {
+  margin: 0;
+  max-width: 100%;
+  padding: 0 0 10px;
+}
+
+#no-extensions-message,
+#no-apps-message {
+  font-weight: bold;
+}
+
+.update-items-container,
+.load-unpacked {
+  float: right;
+}
+
+html[dir='rtl'] .update-items-container,
+html[dir='rtl'] .load-unpacked {
+  float: left;
+}
+
+.update-items-progress.updating ~ .update-items-now,
+.update-items-progress {
+  display: none;
+}
+
+.update-items-progress ~ .update-items-now,
+.update-items-progress.updating {
+  display: inline;
+}
+
+.packed-list:not(.empty-item-list) #no-packed-extensions,
+.unpacked-list:not(.empty-item-list) #no-unpacked-extensions,
+.packed-list:not(.empty-item-list) #no-packed-apps,
+.unpacked-list:not(.empty-item-list) #no-unpacked-apps,
+.loading #no-packed-extensions,
+.loading #no-unpacked-extensions,
+.loading #no-packed-apps,
+.loading #no-unpacked-apps {
+  display: none;
+}
+
+.empty-item-list {
+  height: 6em;
+}
+
+#no-extensions,
+#no-apps {
+  margin: 10px;
+}
+
+.packed-list,
+.unpacked-list {
+  margin-top: 30px;
+}
+
+.loading #no-extensions,
+.loading #no-apps,
+#apps-tab:not(.empty-item-list) #no-apps,
+#extensions-tab:not(.empty-item-list) #no-extensions {
+  display: none;
+}
+
+.list-header {
+  border-bottom: 1px solid #e0e0e0;
+  font-weight: bold;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+.list-header .title {
+  display: inline-block;
+  margin-top: 5px;
+}
+
+.extension-list-item-wrapper {
+  padding: 0 0 25px;
+}
+
+.extension-list-item-wrapper.highlighted {
+  background-color: rgba(255, 255, 128, 255);
+  transition: background-color 500ms;
+}
+
+.extension-list-item {
+  /* Set in ItemsList.createNode_(). */
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  min-height: 48px;
+}
+
+html[dir='rtl'] .extension-list-item {
+  background-position: right;
+}
+
+.extension-title {
+  -webkit-padding-end: 20px;
+  -webkit-user-select: text;
+  color: rgb(48, 57, 66);
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+  text-decoration: none;
+}
+
+.extension-title:hover {
+  text-decoration: underline;
+}
+
+/**
+ * extension-title should be unhighlighted as the parent when the extension is
+ * inactive.
+ */
+.inactive-extension .extension-title {
+  color: inherit;
+}
+
+.extension-version {
+  -webkit-padding-end: 7px;
+  -webkit-user-select: text;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.extension-description {
+  -webkit-padding-end: 5px;
+  -webkit-user-select: text;
+  font-size: 13px;
+  margin: 5px 0;
+  white-space: normal;
+}
+
+.extension-details {
+  -webkit-box-flex: 1;
+  -webkit-margin-start: 8px;
+  -webkit-padding-start: 55px;
+  margin-top: 15px;
+  max-width: 600px;
+}
+
+.extension-description,
+.extension-list-item-wrapper.inactive-extension .extension-details,
+.location-text,
+.enable-checkbox input:disabled + .enable-checkbox-text {
+  color: rgb(151, 156, 160);
+}
+
+html[dir='rtl'] .enable-control {
+  float: left;
+}
+
+.file-access-control,
+.incognito-control {
+  left: 0;
+  position: relative;
+  right: 0;
+}
+
+.enable-checkbox-text {
+  /* Matches width of trash. */
+  -webkit-margin-end: 30px;
+  min-width: 62px;
+}
+
+.checkbox {
+  display: inline-block;
+}
+
+.file-access-control,
+.incognito-control,
+.checkbox label {
+  margin: 5px 0;
+  padding: 0;
+}
+
+.enabled-text {
+  font-weight: bold;
+}
+
+.extension-list-item-wrapper.inactive-extension .enabled-text,
+.extension-list-item-wrapper:not(.inactive-extension) .enable-text,
+.extension-list-item-wrapper.inactive-extension .optional-controls {
+  display: none;
+}
+
+.load-path > span {
+  word-wrap: break-word;
+}
+
+.terminated-reload-link {
+  -webkit-margin-end: 2.5em;
+  padding-top: 7px;
+}
+
+.extension-list-item a {
+  -webkit-margin-end: 0.5em;
+  -webkit-margin-start: 0;
+  display: inline-block;
+}
+
+.install-warnings {
+  background: pink;
+  border-radius: 3px;
+  margin-top: 5px;
+  padding: 2px 5px;
+}
+
+.install-warnings a {
+  -webkit-margin-start: 0;
+}
+
+.install-warnings ul {
+  margin: 0;
+}
+
+.extension-details-summary {
+  margin-bottom: 10px;
+}
+
+.extension-details-all div {
+  margin: 5px 0;
+}
+
+html[dir='rtl'] .delete-link {
+  float: left;
+}
+
+.enable-checkbox-text {
+  -webkit-margin-end: 0;
+}
+
+:-webkit-any(.checkbox, .radio) label input ~ span {
+  -webkit-margin-start: 0;
+  display: inline;
+}
+
+#tabs {
+  background: none;
+}
+
+#tab-panels {
+  box-shadow: none;
+}
+
+/* Overlays */
+
+#overlay {
+  z-index: 5;
+}
+
+#overlay .page:not(.showing) {
+  display: none;
+}
+
+/* Trash */
+
+.enable-controls > .trash > .lid,
+.enable-controls > .trash > .can {
+  background: url(../../../../../ui/webui/resources/images/trash.png)
+      0 0 no-repeat;
+}
+
+.enable-controls > .trash > .can {
+  height: 15px;
+  top: 0;
+  width: 13px;
+}
+
+.extension-id {
+  -webkit-user-select: text;
+}
+
+#extension-settings .trash {
+  -webkit-transition: opacity 200ms;
+  height: 22px;
+  opacity: 0.8;
+  position: absolute;
+  right: 0;
+  top: 3px;
+  vertical-align: middle;
+}
+
+html[dir='rtl'] #extension-settings .trash {
+  left: 0;
+  right: auto;
+}
+
+.extension-list-item:not(:hover) .trash:not(:focus) {
+  opacity: 0;
+}
+
+.extension-list-item-wrapper.may-not-disable .trash {
+  visibility: hidden;
+}
+
+.may-not-disable .optional-controls .optional-controls-disableable {
+  display: none;
+}
+
+a {
+  color: rgb(17, 85, 204);
+  text-decoration: underline;
+}
+
+a:active {
+  color: rgb(5, 37, 119);
+}

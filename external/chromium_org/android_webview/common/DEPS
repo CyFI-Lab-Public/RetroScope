@@ -1,0 +1,12 @@
+include_rules = [
+  "-android_webview",
+  "+android_webview/common",
+
+# START: Printing fork b/10190508
+  "+printing",
+  "+ui/gfx",
+  "+third_party/WebKit/public/web/WebPrintScalingOption.h",
+# END: Printing fork b/10190508
+
+  "+ui/gl/gpu_memory_buffer.h",
+]

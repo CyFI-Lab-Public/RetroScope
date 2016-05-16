@@ -1,0 +1,15 @@
+namespace="MathML"
+namespaceURI="http://www.w3.org/1998/Math/MathML"
+
+math
+mi
+mn
+mo
+mtext
+
+#if 0 // Curently only for MathMLNames used by HTMLTreeBuilder.
+ms
+mglyph
+malignmark
+annotation-xml
+#endif

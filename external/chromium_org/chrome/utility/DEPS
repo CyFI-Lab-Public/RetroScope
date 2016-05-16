@@ -1,0 +1,10 @@
+include_rules = [
+  "+content/public/child",
+  "+content/public/utility",
+
+  # For generated headers.
+  "+grit",
+
+  "+skia/ext",
+  "+media",
+]

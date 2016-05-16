@@ -1,0 +1,49 @@
+/*
+ *  Copyright (C) 2003, 2006 Apple Inc. All rights reserved.
+ *  Copyright (C) 2006 Samuel Weinig (sam@webkit.org)
+ *
+ *  This library is free software; you can redistribute it and/or
+ *  modify it under the terms of the GNU Lesser General Public
+ *  License as published by the Free Software Foundation; either
+ *  version 2 of the License, or (at your option) any later version.
+ *
+ *  This library is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ *  Lesser General Public License for more details.
+ *
+ *  You should have received a copy of the GNU Lesser General Public
+ *  License along with this library; if not, write to the Free Software
+ *  Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+ */
+
+#include "config.h"
+#include "core/xml/XMLSerializer.h"
+
+#include "bindings/v8/ExceptionState.h"
+#include "core/dom/Document.h"
+#include "core/dom/ExceptionCode.h"
+#include "core/editing/markup.h"
+#include <wtf/text/WTFString.h>
+
+namespace WebCore {
+
+String XMLSerializer::serializeToString(Node* node, ExceptionState& es)
+{
+    if (!node)
+        return String();
+
+    if (!node->document()) {
+        // Due to the fact that DocumentType nodes are created by the DOMImplementation
+        // and not the Document, it is possible for it to not have a Document associated
+        // with it.  It should be the only type of node where this is possible.
+        ASSERT(node->nodeType() == Node::DOCUMENT_TYPE_NODE);
+
+        es.throwDOMException(InvalidAccessError);
+        return String();
+    }
+
+    return createMarkup(node);
+}
+
+} // namespace WebCore

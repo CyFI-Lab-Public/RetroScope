@@ -1,0 +1,28 @@
+/* Copyright (c) 2013 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+layer-viewer {
+  -webkit-flex-direction: column;
+  display:  -webkit-flex;
+  left: 0;
+  position: relative;
+  top: 0;
+}
+
+layer-viewer > layer-tree-quad-stack-viewer {
+  -webkit-flex: 1 1 100%;
+  -webkit-flex-direction: column;
+  display: -webkit-flex;
+  overflow: auto;
+}
+
+layer-viewer > layer-viewer-analysis {
+  height: 150px; /* fixed height given by drag control */
+  overflow-y: auto;
+}
+
+.labeled-checkbox {
+  white-space: nowrap;
+}

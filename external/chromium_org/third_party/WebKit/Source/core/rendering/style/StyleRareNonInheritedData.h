@@ -1,0 +1,189 @@
+/*
+ * Copyright (C) 2000 Lars Knoll (knoll@kde.org)
+ *           (C) 2000 Antti Koivisto (koivisto@kde.org)
+ *           (C) 2000 Dirk Mueller (mueller@kde.org)
+ * Copyright (C) 2003, 2005, 2006, 2007, 2008 Apple Inc. All rights reserved.
+ * Copyright (C) 2006 Graham Dennis (graham.dennis@gmail.com)
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public License
+ * along with this library; see the file COPYING.LIB.  If not, write to
+ * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ *
+ */
+
+#ifndef StyleRareNonInheritedData_h
+#define StyleRareNonInheritedData_h
+
+#include "core/css/StyleColor.h"
+#include "core/rendering/ClipPathOperation.h"
+#include "core/rendering/style/BasicShapes.h"
+#include "core/rendering/style/CounterDirectives.h"
+#include "core/rendering/style/CursorData.h"
+#include "core/rendering/style/DataRef.h"
+#include "core/rendering/style/FillLayer.h"
+#include "core/rendering/style/LineClampValue.h"
+#include "core/rendering/style/NinePieceImage.h"
+#include "core/rendering/style/ShapeValue.h"
+#include "wtf/OwnPtr.h"
+#include "wtf/PassRefPtr.h"
+#include "wtf/Vector.h"
+
+namespace WebCore {
+
+class CSSAnimationDataList;
+class ShadowData;
+class StyleDeprecatedFlexibleBoxData;
+class StyleFilterData;
+class StyleFlexibleBoxData;
+class StyleGridData;
+class StyleGridItemData;
+class StyleMarqueeData;
+class StyleMultiColData;
+class StyleReflection;
+class StyleResolver;
+class StyleTransformData;
+
+class ContentData;
+struct LengthSize;
+
+// Page size type.
+// StyleRareNonInheritedData::m_pageSize is meaningful only when
+// StyleRareNonInheritedData::m_pageSizeType is PAGE_SIZE_RESOLVED.
+enum PageSizeType {
+    PAGE_SIZE_AUTO, // size: auto
+    PAGE_SIZE_AUTO_LANDSCAPE, // size: landscape
+    PAGE_SIZE_AUTO_PORTRAIT, // size: portrait
+    PAGE_SIZE_RESOLVED // Size is fully resolved.
+};
+
+// This struct is for rarely used non-inherited CSS3, CSS2, and WebKit-specific properties.
+// By grouping them together, we save space, and only allocate this object when someone
+// actually uses one of these properties.
+class StyleRareNonInheritedData : public RefCounted<StyleRareNonInheritedData> {
+public:
+    static PassRefPtr<StyleRareNonInheritedData> create() { return adoptRef(new StyleRareNonInheritedData); }
+    PassRefPtr<StyleRareNonInheritedData> copy() const { return adoptRef(new StyleRareNonInheritedData(*this)); }
+    ~StyleRareNonInheritedData();
+
+    bool operator==(const StyleRareNonInheritedData&) const;
+    bool operator!=(const StyleRareNonInheritedData& o) const { return !(*this == o); }
+
+    bool contentDataEquivalent(const StyleRareNonInheritedData&) const;
+    bool counterDataEquivalent(const StyleRareNonInheritedData&) const;
+    bool shadowDataEquivalent(const StyleRareNonInheritedData&) const;
+    bool reflectionDataEquivalent(const StyleRareNonInheritedData&) const;
+    bool animationDataEquivalent(const StyleRareNonInheritedData&) const;
+    bool transitionDataEquivalent(const StyleRareNonInheritedData&) const;
+
+    float opacity; // Whether or not we're transparent.
+
+    float m_aspectRatioDenominator;
+    float m_aspectRatioNumerator;
+
+    float m_perspective;
+    Length m_perspectiveOriginX;
+    Length m_perspectiveOriginY;
+
+    LineClampValue lineClamp; // An Apple extension.
+    DraggableRegionMode m_draggableRegionMode;
+
+    DataRef<StyleDeprecatedFlexibleBoxData> m_deprecatedFlexibleBox; // Flexible box properties
+    DataRef<StyleFlexibleBoxData> m_flexibleBox;
+    DataRef<StyleMarqueeData> m_marquee; // Marquee properties
+    DataRef<StyleMultiColData> m_multiCol; //  CSS3 multicol properties
+    DataRef<StyleTransformData> m_transform; // Transform properties (rotate, scale, skew, etc.)
+
+    DataRef<StyleFilterData> m_filter; // Filter operations (url, sepia, blur, etc.)
+
+    DataRef<StyleGridData> m_grid;
+    DataRef<StyleGridItemData> m_gridItem;
+
+    OwnPtr<ContentData> m_content;
+    OwnPtr<CounterDirectiveMap> m_counterDirectives;
+
+    OwnPtr<ShadowData> m_boxShadow;  // For box-shadow decorations.
+
+    RefPtr<StyleReflection> m_boxReflect;
+
+    OwnPtr<CSSAnimationDataList> m_animations;
+    OwnPtr<CSSAnimationDataList> m_transitions;
+
+    FillLayer m_mask;
+    NinePieceImage m_maskBoxImage;
+
+    LengthSize m_pageSize;
+
+    RefPtr<ShapeValue> m_shapeInside;
+    RefPtr<ShapeValue> m_shapeOutside;
+    Length m_shapeMargin;
+    Length m_shapePadding;
+
+    RefPtr<ClipPathOperation> m_clipPath;
+
+    StyleColor m_textDecorationColor;
+    StyleColor m_visitedLinkTextDecorationColor;
+    StyleColor m_visitedLinkBackgroundColor;
+    StyleColor m_visitedLinkOutlineColor;
+    StyleColor m_visitedLinkBorderLeftColor;
+    StyleColor m_visitedLinkBorderRightColor;
+    StyleColor m_visitedLinkBorderTopColor;
+    StyleColor m_visitedLinkBorderBottomColor;
+
+    int m_order;
+
+    AtomicString m_flowThread;
+    AtomicString m_regionThread;
+    unsigned m_regionFragment : 1; // RegionFragment
+
+    unsigned m_regionBreakAfter : 2; // EPageBreak
+    unsigned m_regionBreakBefore : 2; // EPageBreak
+    unsigned m_regionBreakInside : 2; // EPageBreak
+
+    unsigned m_pageSizeType : 2; // PageSizeType
+    unsigned m_transformStyle3D : 1; // ETransformStyle3D
+    unsigned m_backfaceVisibility : 1; // EBackfaceVisibility
+
+    unsigned m_alignContent : 3; // EAlignContent
+    unsigned m_alignItems : 3; // EAlignItems
+    unsigned m_alignSelf : 3; // EAlignItems
+    unsigned m_justifyContent : 3; // EJustifyContent
+
+    unsigned userDrag : 2; // EUserDrag
+    unsigned textOverflow : 1; // Whether or not lines that spill out should be truncated with "..."
+    unsigned marginBeforeCollapse : 2; // EMarginCollapse
+    unsigned marginAfterCollapse : 2; // EMarginCollapse
+    unsigned m_appearance : 6; // EAppearance
+    unsigned m_borderFit : 1; // EBorderFit
+    unsigned m_textCombine : 1; // CSS3 text-combine properties
+
+    unsigned m_textDecorationStyle : 3; // TextDecorationStyle
+    unsigned m_wrapFlow: 3; // WrapFlow
+    unsigned m_wrapThrough: 1; // WrapThrough
+
+    unsigned m_runningAcceleratedAnimation : 1;
+
+    unsigned m_hasAspectRatio : 1; // Whether or not an aspect ratio has been specified.
+
+    unsigned m_effectiveBlendMode: 5; // EBlendMode
+
+    unsigned m_touchAction : 1; // TouchAction
+
+private:
+    StyleRareNonInheritedData();
+    StyleRareNonInheritedData(const StyleRareNonInheritedData&);
+};
+
+} // namespace WebCore
+
+#endif // StyleRareNonInheritedData_h

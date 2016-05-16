@@ -1,0 +1,158 @@
+# FIXME: Add support for global settings.
+# FIXME: Add support for custom getters/setters.
+
+defaultTextEncodingName type=String
+editableLinkBehavior type=EditableLinkBehavior, initial=EditableLinkDefaultBehavior
+passwordEchoDurationInSeconds type=double, initial=1
+
+# Sets the magnification value for validation message timer.  If the
+# magnification value is N, a validation message disappears automatically after
+# <message length> * N / 1000 seconds.  If N is equal to or less than 0, a
+# validation message doesn't disappears automaticaly.
+validationMessageTimerMagnification type=int, initial=50
+
+# Number of pixels below which 2D canvas is rendered in software
+# even if hardware acceleration is enabled.
+# Hardware acceleration is useful for large canvases where it can avoid the
+# pixel bandwidth between the CPU and GPU. But GPU acceleration comes at
+# a price - extra back-buffer and texture copy. Small canvases are also
+# widely used for stylized fonts. Anti-aliasing text in hardware at that
+# scale is generally slower. So below a certain size it is better to
+# draw canvas in software.
+minimumAccelerated2dCanvasSize type=int, initial=257*256
+
+layoutFallbackWidth type=int, initial=980
+
+minimumFontSize type=int, initial=0, setNeedsStyleRecalcInAllFrames=1
+minimumLogicalFontSize type=int, initial=0, setNeedsStyleRecalcInAllFrames=1
+defaultFontSize type=int, initial=0, setNeedsStyleRecalcInAllFrames=1
+defaultFixedFontSize type=int, initial=0, setNeedsStyleRecalcInAllFrames=1
+
+editingBehaviorType type=EditingBehaviorType, initial=editingBehaviorTypeForPlatform()
+
+caretBrowsingEnabled initial=false
+localStorageEnabled initial=false
+allowUniversalAccessFromFileURLs initial=true
+allowFileAccessFromFileURLs initial=true
+javaScriptCanOpenWindowsAutomatically initial=false
+supportsMultipleWindows initial=true
+javaScriptCanAccessClipboard initial=false
+shouldPrintBackgrounds initial=false
+shouldClearDocumentBackground initial=true
+
+textAreasAreResizable initial=false, setNeedsStyleRecalcInAllFrames=1
+authorAndUserStylesEnabled initial=true, setNeedsStyleRecalcInAllFrames=1
+acceleratedCompositingEnabled initial=true, setNeedsStyleRecalcInAllFrames=1
+showRepaintCounter initial=false, setNeedsStyleRecalcInAllFrames=1
+
+shrinksStandaloneImagesToFit initial=true
+pageCacheSupportsPlugins initial=false
+needsSiteSpecificQuirks initial=false
+offlineWebApplicationCacheEnabled initial=false
+usesEncodingDetector initial=false
+allowScriptsToCloseWindows initial=false
+acceleratedFiltersEnabled initial=false
+regionBasedColumnsEnabled initial=false
+
+# FIXME: This should really be disabled by default as it makes platforms that don't support the feature download files
+# they can't use by. Leaving enabled for now to not change existing behavior.
+downloadableBinaryFontsEnabled initial=true
+
+xssAuditorEnabled initial=false
+unsafePluginPastingEnabled initial=true
+acceleratedCompositingFor3DTransformsEnabled initial=true
+acceleratedCompositingForVideoEnabled initial=true
+acceleratedCompositingForPluginsEnabled initial=true
+acceleratedCompositingForCanvasEnabled initial=true
+acceleratedCompositingForAnimationEnabled initial=true
+acceleratedCompositingForFiltersEnabled initial=false
+acceleratedCompositingForFixedPositionEnabled initial=false
+acceleratedCompositingForOverflowScrollEnabled initial=false
+acceleratedCompositingForTransitionEnabled initial=false
+acceleratedCompositingForFixedRootBackgroundEnabled initial=false
+
+# Works only in conjunction with forceCompositingMode.
+acceleratedCompositingForScrollableFramesEnabled initial=false
+compositedScrollingForFramesEnabled initial=false
+
+webGLEnabled initial=false
+webGLErrorsToConsoleEnabled initial=true
+privilegedWebGLExtensionsEnabled initial=false
+accelerated2dCanvasEnabled initial=false
+antialiased2dCanvasEnabled initial=true
+webAudioEnabled initial=false
+fullScreenEnabled initial=false
+asynchronousSpellCheckingEnabled initial=false
+memoryInfoEnabled initial=false
+
+hyperlinkAuditingEnabled initial=false
+forceCompositingMode initial=false
+allowDisplayOfInsecureContent initial=true
+allowRunningOfInsecureContent initial=true
+mediaPlaybackRequiresUserGesture initial=false
+passwordEchoEnabled initial=false
+visualWordMovementEnabled initial=false
+shouldDisplaySubtitles initial=false
+shouldDisplayCaptions initial=false
+shouldDisplayTextDescriptions initial=false
+scrollingCoordinatorEnabled initial=false
+scrollAnimatorEnabled initial=true
+
+shouldRespectImageOrientation initial=false
+deviceSupportsTouch initial=false
+deviceSupportsMouse initial=true
+
+touchAdjustmentEnabled initial=true
+compositorTouchHitTesting initial=true
+
+fixedPositionCreatesStackingContext initial=false
+syncXHRInDocumentsEnabled initial=true
+cookieEnabled initial=true
+mediaEnabled initial=true
+DOMPasteAllowed initial=false
+
+threadedHTMLParser initial=false
+useThreadedHTMLParserForDataURLs initial=false
+
+applyPageScaleFactorInCompositor initial=false
+
+allowCustomScrollbarInMainFrame initial=true
+webSecurityEnabled initial=true
+spatialNavigationEnabled initial=false
+
+# This setting adds a means to enable/disable touch initiated drag & drop. If
+# enabled, the user can initiate drag using long press.
+touchDragDropEnabled initial=false
+
+unifiedTextCheckerEnabled initial=defaultUnifiedTextCheckerEnabled
+
+# Some apps could have a default video poster if it is not set.
+defaultVideoPosterURL type=String
+
+smartInsertDeleteEnabled initial=defaultSmartInsertDeleteEnabled
+selectTrailingWhitespaceEnabled initial=defaultSelectTrailingWhitespaceEnabled
+
+selectionIncludesAltImageText initial=false
+useLegacyBackgroundSizeShorthandBehavior initial=false
+# This quirk is to maintain compatibility with Android apps built on
+# the Android SDK prior to and including version 18. Presumably, this
+# can be removed any time after 2015. See http://crbug.com/282130.
+viewportMetaZeroValuesQuirk initial=false
+# Another Android SDK <= 18 quirk, removable 2015.  http://crbug.com/295287
+ignoreMainFrameOverflowHiddenQuirk initial=false
+# Yet another Android SDK <= 18 quirk, removable 2015.
+# See http://crbug.com/305236
+reportScreenSizeInPhysicalPixelsQuirk initial=false
+# One more Android SDK <= 18 quirk, removable 2015.
+# See http://crbug.com/306548
+viewportMetaMergeQuirk initial=false
+# This quirk is to maintain compatibility with Android apps.
+# It will be possible to remove it once WebSettings.{get|set}UseWideViewPort
+# API function will be removed. See http://crbug.com/288037.
+wideViewportQuirkEnabled initial=false
+
+# This setting enables touch based text selection and editing.
+touchEditingEnabled initial=false
+
+experimentalWebSocketEnabled initial=false
+pinchVirtualViewportEnabled initial=false

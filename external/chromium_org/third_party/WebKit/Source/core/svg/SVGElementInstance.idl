@@ -1,0 +1,81 @@
+/*
+ * Copyright (C) 2007, 2008 Nikolas Zimmermann <zimmermann@kde.org>
+ * Copyright (C) 2008 Apple Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY APPLE INC. ``AS IS'' AND ANY
+ * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL APPLE INC. OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+ * OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+interface SVGElementInstance : EventTarget
+{
+    readonly attribute SVGElement correspondingElement;
+    readonly attribute SVGUseElement correspondingUseElement;
+    readonly attribute SVGElementInstance parentNode;
+    readonly attribute SVGElementInstanceList childNodes;
+    readonly attribute SVGElementInstance firstChild;
+    readonly attribute SVGElementInstance lastChild;
+    readonly attribute SVGElementInstance previousSibling;
+    readonly attribute SVGElementInstance nextSibling;
+
+    // EventTarget
+    [NotEnumerable] attribute EventHandler onabort;
+    [NotEnumerable] attribute EventHandler onblur;
+    [NotEnumerable] attribute EventHandler onchange;
+    [NotEnumerable] attribute EventHandler onclick;
+    [NotEnumerable] attribute EventHandler oncontextmenu;
+    [NotEnumerable] attribute EventHandler ondblclick;
+    [NotEnumerable] attribute EventHandler onerror;
+    [NotEnumerable] attribute EventHandler onfocus;
+    [NotEnumerable] attribute EventHandler oninput;
+    [NotEnumerable] attribute EventHandler onkeydown;
+    [NotEnumerable] attribute EventHandler onkeypress;
+    [NotEnumerable] attribute EventHandler onkeyup;
+    [NotEnumerable] attribute EventHandler onload;
+    [NotEnumerable] attribute EventHandler onmousedown;
+    [NotEnumerable] attribute EventHandler onmouseenter;
+    [NotEnumerable] attribute EventHandler onmouseleave;
+    [NotEnumerable] attribute EventHandler onmousemove;
+    [NotEnumerable] attribute EventHandler onmouseout;
+    [NotEnumerable] attribute EventHandler onmouseover;
+    [NotEnumerable] attribute EventHandler onmouseup;
+    [NotEnumerable] attribute EventHandler onmousewheel;
+    [NotEnumerable] attribute EventHandler onbeforecut;
+    [NotEnumerable] attribute EventHandler oncut;
+    [NotEnumerable] attribute EventHandler onbeforecopy;
+    [NotEnumerable] attribute EventHandler oncopy;
+    [NotEnumerable] attribute EventHandler onbeforepaste;
+    [NotEnumerable] attribute EventHandler onpaste;
+    [NotEnumerable] attribute EventHandler ondragenter;
+    [NotEnumerable] attribute EventHandler ondragover;
+    [NotEnumerable] attribute EventHandler ondragleave;
+    [NotEnumerable] attribute EventHandler ondrop;
+    [NotEnumerable] attribute EventHandler ondragstart;
+    [NotEnumerable] attribute EventHandler ondrag;
+    [NotEnumerable] attribute EventHandler ondragend;
+    [NotEnumerable] attribute EventHandler onreset;
+    [NotEnumerable] attribute EventHandler onresize;
+    [NotEnumerable] attribute EventHandler onscroll;
+    [NotEnumerable] attribute EventHandler onsearch;
+    [NotEnumerable] attribute EventHandler onselect;
+    [NotEnumerable] attribute EventHandler onselectstart;
+    [NotEnumerable] attribute EventHandler onsubmit;
+    [NotEnumerable] attribute EventHandler onunload;
+};

@@ -1,0 +1,38 @@
+/* Copyright (c) 2012 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ */
+
+.timeline-track-view * {
+  -webkit-user-select: none;
+  cursor: default;
+}
+
+.timeline-track-view .tool-button {
+  cursor: pointer;
+}
+
+.timeline-track-view {
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+}
+
+.timeline-track-view .mode-indicator {
+  height: 32px;
+  position: absolute;
+  right: 5px;
+  top: 38px;
+  width: 33px;
+}
+
+.model-track-container {
+  -webkit-box-flex: 1;
+  overflow: auto;
+}
+
+.drag-box {
+  background-color: rgba(0, 0, 255, 0.25);
+  border: 1px solid rgb(0, 0, 96);
+  font-size: 75%;
+  position: fixed;
+}

@@ -1,0 +1,61 @@
+/*
+ * Copyright (C) 2004, 2005, 2008 Nikolas Zimmermann <zimmermann@kde.org>
+ * Copyright (C) 2004, 2005, 2006 Rob Buis <buis@kde.org>
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Library General Public
+ * License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Library General Public License for more details.
+ *
+ * You should have received a copy of the GNU Library General Public License
+ * along with this library; see the file COPYING.LIB.  If not, write to
+ * the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA.
+ */
+
+#ifndef SVGNumberList_h
+#define SVGNumberList_h
+
+#include "core/svg/SVGNumber.h"
+#include "core/svg/properties/SVGPropertyTraits.h"
+#include "wtf/Vector.h"
+
+namespace WebCore {
+
+class SVGNumberList : public Vector<SVGNumber> {
+public:
+    SVGNumberList() { }
+
+    void parse(const String&);
+    String valueAsString() const;
+
+    Vector<float> toFloatVector() const
+    {
+        Vector<float> result;
+        result.reserveInitialCapacity(size());
+        for (size_t i = 0; i < size(); ++i)
+            result.uncheckedAppend(at(i).value());
+        return result;
+    }
+
+private:
+    template<typename CharType>
+    void parseInternal(const CharType*& ptr, const CharType* end);
+};
+
+template<>
+struct SVGPropertyTraits<SVGNumberList> {
+    typedef SVGNumber ListItemType;
+
+    static SVGNumberList initialValue() { return SVGNumberList(); }
+    static String toString(const SVGNumberList& type) { return type.valueAsString(); }
+};
+
+} // namespace WebCore
+
+#endif

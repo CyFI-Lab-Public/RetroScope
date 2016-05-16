@@ -1,0 +1,15 @@
+URL: https://ceres-solver.googlesource.com/ceres-solver/+archive/0338f9a8e69582a550ef6d128e447779536d623c.tar.gz
+Version: 0338f9a8e69582a550ef6d128e447779536d623c
+License: New BSD, portions MIT
+License File: LICENSE
+
+Description:
+Ceres (http://ceres-solver.googlecode.com) is a portable non-linear
+least squares solver, developed at Google. It is now open-source.
+
+Website : https://code.google.com/p/ceres-solver/
+Code    : https://ceres-solver.googlesource.com/ceres-solver/
+Docs    : http://homes.cs.washington.edu/~sagarwal/ceres-solver/
+
+Local modifications:
+Replaced the implementation of logging.h with the google3 /mobile/base/logging.h

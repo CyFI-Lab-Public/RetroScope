@@ -1,0 +1,7 @@
+This library is based on the proxy_resolver_v8 and other classes taken from 
+chromium project.
+
+Modifications have been made to remove dependencies on chromium utility
+functions and classes.  To make this library accessible on Android, the string 
+utilities have been modified to use stl and the network functions have been 
+modified to use UNIX functions.

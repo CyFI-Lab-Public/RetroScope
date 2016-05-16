@@ -1,0 +1,47 @@
+namespace="EventTarget"
+
+core/css/FontLoader
+core/dom/MessagePort
+core/dom/Node
+core/dom/WebKitNamedFlow ImplementedAs=NamedFlow
+core/fileapi/FileReader
+core/html/MediaController
+core/html/track/TextTrack
+core/html/track/TextTrackCue
+core/html/track/TextTrackList
+core/loader/appcache/DOMApplicationCache
+core/page/EventSource
+core/page/Performance
+core/page/Window ImplementedAs=DOMWindow
+core/svg/SVGElementInstance
+core/workers/DedicatedWorkerGlobalScope
+core/workers/SharedWorker
+core/workers/SharedWorkerGlobalScope
+core/workers/Worker
+core/xml/XMLHttpRequest
+core/xml/XMLHttpRequestUpload
+modules/encryptedmedia/MediaKeySession Conditional=ENCRYPTED_MEDIA_V2
+modules/filesystem/FileWriter
+modules/indexeddb/IDBDatabase
+modules/indexeddb/IDBOpenDBRequest
+modules/indexeddb/IDBRequest
+modules/indexeddb/IDBTransaction
+modules/mediasource/MediaSource
+modules/mediasource/SourceBuffer
+modules/mediasource/SourceBufferList
+modules/mediasource/WebKitMediaSource
+modules/mediasource/WebKitSourceBufferList
+modules/mediastream/MediaStream
+modules/mediastream/MediaStreamTrack
+modules/mediastream/RTCDTMFSender
+modules/mediastream/RTCDataChannel
+modules/mediastream/RTCPeerConnection
+modules/notifications/Notification Conditional=NOTIFICATIONS
+modules/speech/SpeechRecognition
+modules/speech/SpeechSynthesisUtterance
+modules/webaudio/AudioContext Conditional=WEB_AUDIO
+modules/webaudio/AudioNode Conditional=WEB_AUDIO
+modules/webmidi/MIDIAccess
+modules/webmidi/MIDIInput
+modules/webmidi/MIDIPort
+modules/websockets/WebSocket

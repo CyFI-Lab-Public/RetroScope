@@ -1,0 +1,31 @@
+Name: Freetype
+URL: http://source.android.com
+Version: 0c30ba1342318e73197db7dd52dcca4b6d4bf06d
+License: Custom license "inspired by the BSD, Artistic, and IJG (Independent
+         JPEG Group) licenses"
+License File: NOTICE
+Security Critical: no
+License Android Compatible: yes
+
+Description:
+This package was copied from Android source tree and just used for Android.
+For other platforms, the freetype is normally found outside the Chromium tree;
+e.g. on Mac it's in /usr/include
+
+
+Local Modifications:
+We added the gyp file to build it.
+
+Here is the detail steps
+1. Checkout Android source code
+
+$ repo init -u https://android.googlesource.com/platform/manifest
+$ repo sync
+$ cd external/freetype
+$ git reset --hard 0c30ba1342318e73197db7dd52dcca4b6d4bf06d
+
+2. Copy the related files from
+   <android_tree>/external/freetype/
+
+More information can be found in
+http://source.android.com/source/downloading.html

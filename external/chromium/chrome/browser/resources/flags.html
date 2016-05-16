@@ -1,0 +1,366 @@
+<!DOCTYPE HTML>
+<html i18n-values="dir:textdirection;">
+<head>
+<meta charset="utf-8">
+<style>
+body {
+  margin: 10px;
+  min-width: 47em;
+}
+
+a {
+  color: blue;
+  font-size: 103%;
+}
+
+div#header {
+  margin-bottom: 1.05em;
+  /* 67px is the height of the header's background image. */
+  min-height: 67px;
+  overflow: hidden;
+  padding-bottom: 20px;
+  padding-left: 0;
+  padding-top: 20px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+html[dir=rtl] #header {
+  padding-right: 0;
+}
+
+#header h1 {
+  background: url('../../app/theme/flags_section.png') 0px 20px no-repeat;
+  display: inline;
+  margin: 0;
+  padding-bottom: 43px;
+  padding-left: 75px;
+  padding-top: 40px;
+}
+
+html[dir=rtl] #header h1 {
+  background: url('../../app/theme/flags_section.png') right no-repeat;
+  padding-right: 95px;
+  padding-left: 0;
+}
+
+h1 {
+  font-size: 156%;
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+}
+
+#blurb-container {
+  padding-bottom: 1.5em;
+  font-size: 120%;
+}
+
+#blurb-warning {
+  color: red;
+  font-weight: bold;
+}
+
+div.content {
+  font-size: 88%;
+  margin-top: 5px;
+}
+
+.section-header {
+  background: #ebeff9;
+  border-top: 1px solid #b5c7de;
+  font-size: 99%;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  padding-top: 3px;
+  width: 100%;
+}
+
+html[dir=rtl] .section-header {
+  padding-right: 5px;
+  padding-left: 0;
+}
+
+.section-header > table tr td:first-child {
+  width: 100%;
+}
+
+.section-header > table {
+  width: 100%;
+}
+
+.section-header-title {
+  font-weight: bold;
+}
+
+.vbox-container {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.wbox {
+  display: -webkit-box;
+  -webkit-box-align: stretch;
+  -webkit-box-flex: 1;
+}
+
+#top {
+  padding-right: 5px;
+}
+
+html[dir=rtl] #top {
+  padding-left: 5px;
+  padding-right: 0;
+}
+
+/* Disabled experiments display grey text on a grey background.  The title,
+   however, should remain completely legible. */
+.experiment-disabled > td {
+  background: #F0F0F0;
+  color: #A0A0A0;
+}
+
+.experiment-disabled .experiment-name {
+  color: #000;
+}
+
+.experiment {
+  border-bottom: 1px solid #cdcdcd;
+}
+
+.experiment td {
+  padding-bottom: 4px;
+  padding-top: 5px;
+}
+
+/* Indent the text related to each experiment. */
+.experiment-text {
+  padding-left: 5px;
+}
+
+html[dir=rtl] .experiment-text {
+  padding-right: 5px;
+  padding-left: 0;
+}
+
+.experiment-name {
+  font-weight: bold;
+}
+
+.no-experiments {
+  margin: 6em 0 0;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+/* Match the indentation of .experiment-text. */
+.experiment-actions {
+  padding-left: 5px;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+html[dir=rtl] .experiment-actions {
+  padding-right: 5px;
+  padding-left: 0;
+}
+
+div.needs-restart {
+  padding-top: 10px;
+  padding-left: 5px;
+}
+
+button {
+  font-size: 104%;
+}
+
+</style>
+<script>
+
+/**
+ * This variable structure is here to document the structure that the template
+ * expects to correctly populate the page.
+ */
+var flagsExperimentsDataFormat = {
+  'flagsExperiments': [
+    {
+      'internal_name': 'Experiment ID string',
+      'name': 'Experiment Name',
+      'description': 'description',
+      /* enabled is only set if the experiment is single valued */
+      'enabled': true,
+      /* choices is only set if the experiment has multiple values */
+      'choices': [
+        {
+          'internal_name': 'Experiment ID string',
+          'description': 'description',
+          'selected': true
+        }
+      ]
+    }
+  ],
+  'needsRestart': false
+};
+
+/**
+ * Takes the |flagsExperimentsData| input argument which represents data about
+ * the currently available experiments and populates the html jstemplate
+ * with that data. It expects an object structure like the above.
+ * @param {Object} flagsExperimentsData Information about available experiments
+ */
+function renderTemplate(flagsExperimentsData) {
+  // This is the javascript code that processes the template:
+  var input = new JsEvalContext(flagsExperimentsData);
+  var output = document.getElementById('flagsExperimentTemplate');
+  jstProcess(input, output);
+}
+
+/**
+ * Asks the C++ FlagsDOMHandler to get details about the available experiments
+ * and return detailed data about the configuration. The FlagsDOMHandler
+ * should reply to returnFlagsExperiments() (below).
+ */
+function requestFlagsExperimentsData() {
+  chrome.send('requestFlagsExperiments', []);
+}
+
+/**
+ * Asks the C++ FlagsDOMHandler to restart the browser (restoring tabs).
+ */
+function restartBrowser() {
+  chrome.send('restartBrowser', []);
+}
+
+/**
+ * Called by the WebUI to re-populate the page with data representing the
+ * current state of installed experiments.
+ */
+function returnFlagsExperiments(flagsExperimentsData){
+  var bodyContainer = document.getElementById('body-container');
+  renderTemplate(flagsExperimentsData);
+  bodyContainer.style.visibility = 'visible';
+}
+
+/**
+ * Handles a 'enable' or 'disable' button getting clicked.
+ */
+function handleEnableExperiment(node, enable) {
+  // Tell the C++ FlagsDOMHandler to enable/disable the experiment.
+  chrome.send('enableFlagsExperiment', [String(node.internal_name),
+                                       String(enable)]);
+  requestFlagsExperimentsData();
+}
+
+/**
+ * Invoked when the selection of a multi-value choice is changed to the
+ * specified index.
+ */
+function handleSelectChoiceExperiment(node, index) {
+  // Tell the C++ FlagsDOMHandler to enable the selected choice.
+  chrome.send('enableFlagsExperiment',
+              [String(node.internal_name) + "@" + index, "true"]);
+  requestFlagsExperimentsData();
+}
+
+// Get data and have it displayed upon loading.
+document.addEventListener('DOMContentLoaded', requestFlagsExperimentsData);
+
+</script>
+</head>
+<body i18n-values=".style.fontFamily:fontfamily;.style.fontSize:fontsize">
+<div id="body-container" style="visibility:hidden">
+
+  <div id="header"><h1 i18n-content="flagsLongTitle">TITLE</h1></div>
+
+  <div id="blurb-container">
+    <span id="blurb-warning" i18n-content="flagsWarningHeader">WARNING</span>
+    <span i18n-content="flagsBlurb">WARNING TEXT</span>
+  </div>
+
+  <div id="flagsExperimentTemplate">
+
+    <div id="container" class="vbox-container">
+    <div id="top" class="wbox">
+
+      <div class="section-header">
+        <table cellpadding="0" cellspacing="0"><tr valign="center">
+          <td>
+            <span class="section-header-title" i18n-content="flagsTableTitle"
+              >TITLE</span>
+          </td>
+        </tr></table>
+      </div>
+
+    </div>
+    </div>
+
+    <div class="content">
+      <div class="experiment-name no-experiments"
+           jsdisplay="flagsExperiments.length === 0">
+        <div i18n-content="flagsNoExperimentsAvailable"
+          >NO_EXPERIMENTS_ARE_AVAILABLE</div>
+      </div>
+
+      <div jsdisplay="flagsExperiments.length > 0">
+      <div class="experiment" jsselect="flagsExperiments">
+        <table width="100%" cellpadding="2" cellspacing="0">
+        <!-- TODO(mkwst): This doesn't work exactly as expected for multivalue
+                          experiments.  See http://crbug.com/73730 -->
+        <tr jsvalues="class:enabled ? 'experiment-enabled' : 'experiment-disabled'">
+        <td valign="top">
+          <div class="experiment-text">
+            <div>
+              <span class="experiment-name" dir="ltr"
+                    jscontent="name">NAME</span>
+              <div>
+                <span dir="ltr" jsvalues=".innerHTML:description">
+              </div>
+              <div jsdisplay="choices && choices.length > 0">
+                <select jsvalues=".internal_name:internal_name;.disabled:!enabled"
+                        onchange="handleSelectChoiceExperiment(this, this.selectedIndex)">
+                  <option jsvalues=".selected:selected"
+                          jsselect="choices"
+                          jscontent="description">NAME
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="experiment-actions">
+	    <!-- If enabled isn't set (i.e. in multi_type options),
+		 then both jsdisplay tests fail, and we get no
+		 rendering from this section. -->
+            <span>
+              <a
+                jsvalues=".internal_name:internal_name"
+                jsdisplay="enabled"
+                onclick="handleEnableExperiment(this, false)"
+                href="javascript:void(0);"
+                i18n-content="disable"
+                >DISABLE</a>
+              <a
+                jsvalues=".internal_name:internal_name"
+                jsdisplay="!enabled"
+                onclick="handleEnableExperiment(this, true)"
+                href="javascript:void(0);"
+                i18n-content="enable"
+                >ENABLE</a>
+            </span>
+          </div>
+        </td>
+        </tr>
+        </table>
+      </div>
+      </div>
+
+      <div class="needs-restart" jsdisplay="needsRestart">
+        <div i18n-content="flagsRestartNotice">NEEDS_RESTART</div>
+        <button type="button"
+                onclick="restartBrowser();"
+                i18n-content="flagsRestartButton">RESTART</button>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

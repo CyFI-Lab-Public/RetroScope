@@ -1,0 +1,95 @@
+// http://dev.chromium.org/blink/runtime-enabled-features
+//
+// This list is used to generate RuntimeEnabledFeatures.h/cpp which contains
+// a class that stores static enablers for all experimental features.
+//
+// Each feature can be assigned a "status":
+// status=stable -> Enable this in all Blink configurations.  We are committed to these APIs indefinitely.
+// status=experimental -> In-progress features, Web Developers might play with, but are not on by default in stable.
+// status=test -> Enabled in ContentShell for testing, otherwise off.
+// Features without a status are not enabled anywhere by default.
+//
+// "stable" features listed here should be rare, as anything which we've shipped stable
+// can have its runtime flag removed soon after.
+//
+// condition=ENABLE_NAME is used for wrapping features in compile-time
+// #if ENABLE(FEATURE) guards.  These are deprecated and should all be removed.
+
+AnimatedWebP status=experimental
+ApplicationCache status=stable
+AuthorShadowDOMForAnyElement
+Crypto status=test
+CSSCompositing status=experimental
+CSSExclusions status=experimental
+CSSGridLayout status=experimental
+CSSRegions status=experimental
+CSSTouchAction status=test
+CSSVariables status=experimental
+CSS3Text status=experimental
+CSS3TextDecorations status=experimental
+CustomDOMElements status=experimental
+Database status=stable
+DataListElement status=stable
+DeviceMotion status=test
+DeviceOrientation status=stable
+DialogElement status=experimental
+DirectoryUpload status=stable
+// FIXME: Remove this separate feature when CustomElements are always enabled
+EmbedderCustomElements
+EncodingAPI status=experimental
+EncryptedMedia status=experimental
+EncryptedMediaAnyVersion status=stable
+ExperimentalCanvasFeatures status=test
+ExperimentalContentSecurityPolicyFeatures status=experimental
+FileSystem status=stable
+FontLoadEvents status=experimental
+Fullscreen status=stable
+CSSViewport status=experimental
+Gamepad status=stable
+Geolocation status=stable
+HTMLImports status=test
+HighResolutionTimeInWorkers status=experimental
+IMEAPI status=test
+IndexedDB status=stable
+InputModeAttribute status=test
+InputTypeColor status=stable
+InputTypeWeek status=stable
+LangAttributeAwareFormControlUI
+LazyLayout
+LegacyEncryptedMedia status=stable
+LocalStorage status=stable
+Media status=stable
+MediaSource status=experimental
+MediaStream status=stable
+Notifications status=stable
+PagePopup status=stable
+ParseSVGAsHTML
+PathOpsSVGClipping
+PeerConnection depends_on=MediaStream, status=stable
+ProgrammaticScrollNotifications status=test
+Promise status=experimental
+Quota status=stable
+OverlayScrollbars
+RequestAutocomplete status=test
+RowSpanLogicalHeightSpreading status=test
+ScriptedSpeech status=stable
+SeamlessIFrames status=experimental
+SessionStorage status=stable
+ShadowDOM status=experimental
+SharedWorker custom
+SpeechInput status=stable
+SpeechSynthesis status=experimental
+Stream status=experimental
+StyleScoped status=experimental
+Touch status=stable
+UserSelectAll status=experimental
+Vibration status=experimental
+VideoTrack status=stable
+WebAnimations
+WebAnimationsCSS depends_on=WebAnimations
+WebAnimationsSVG depends_on=WebAnimations
+WebAudio condition=WEB_AUDIO, status=stable
+WebGLDraftExtensions status=experimental
+WebMIDI status=test
+WebKitMediaSource status=stable
+WOFF2 status=experimental

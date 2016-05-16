@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="login_ui.css" >
+</head>
+
+<body>
+  <div id="sign-in-div">
+    <div id="sign-in-body">
+      <div id="title-text">
+        Sign in with your Google Account
+      </div>
+      <div>
+        <label>
+          <input type="text" id="user-text" name="user">
+          Username
+        </label>
+      </div>
+      <div>
+        <label>
+          <input type="password" id="pass-text" name="pass">
+          Password
+        </label>
+      </div>
+      <button type="button" id="login-button" onclick="callLogin();">
+        Sign In
+      </button>
+      <a id="login-incognito" onclick="callLoginIncognito();">
+        Browse without signing in
+      </a>
+      <a id="shutdown-system" onclick="callShutdownSystem();">
+        Shutdown System
+      </a>
+    </div>
+  </div>
+</body>
+
+<script>
+function callLogin() {
+  var user = document.getElementById('user-text').value;
+  var pass = document.getElementById('pass-text').value;
+  disableScreen();
+  chrome.send('AuthenticateUser', [user, pass]);
+}
+
+function disableScreen() {
+  setDisabled(true);
+}
+
+function enableScreen() {
+  setDisabled(false);
+}
+
+function clearPassword() {
+  document.getElementById('pass-text').value = '';
+}
+
+function resetPrompt() {
+  clearPassword();
+  enableScreen();
+}
+
+function setDisabled(on) {
+  document.getElementById('login-button').disabled = on;
+  document.getElementById('login-incognito').disabled = on;
+  document.getElementById('shutdown-system').disabled = on;
+  document.getElementById('user-text').disabled = on;
+  document.getElementById('pass-text').disabled = on;
+}
+
+function callLoginIncognito() {
+  disableScreen();
+  chrome.send('LaunchIncognito', []);
+}
+
+function callShutdownSystem() {
+  disableScreen();
+  chrome.send('ShutdownSystem', []);
+}
+
+</script>
+</html>

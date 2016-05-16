@@ -1,0 +1,20 @@
+include_rules = [
+  "-android_webview",
+  "+android_webview/common",
+  "+android_webview/renderer",
+
+  "+components/autofill/content/renderer",
+  "+components/visitedlink/renderer",
+
+  "+content/public/renderer",
+
+  "+third_party/WebKit/public/platform",
+  "+third_party/WebKit/public/web",
+
+# START: Printing fork b/10190508
+  "+printing",
+  "+ui/gfx",
+# END: Printing fork b/10190508
+
+  "+ui/gl/gpu_memory_buffer.h",
+]

@@ -1,0 +1,11 @@
+include_rules = [
+  "+net",
+  "+remoting/codec",
+  "+remoting/protocol",
+  "+remoting/jingle_glue",
+  "+third_party/jsoncpp",
+  "+third_party/modp_b64",
+  "+third_party/npapi",
+  "+third_party/webrtc",
+  "+ui",
+]

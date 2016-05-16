@@ -1,0 +1,237 @@
+/*
+ * Copyright (C) 2006, 2007, 2008, 2009 Google Inc. All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are
+ * met:
+ *
+ *     * Redistributions of source code must retain the above copyright
+ * notice, this list of conditions and the following disclaimer.
+ *     * Redistributions in binary form must reproduce the above
+ * copyright notice, this list of conditions and the following disclaimer
+ * in the documentation and/or other materials provided with the
+ * distribution.
+ *     * Neither the name of Google Inc. nor the names of its
+ * contributors may be used to endorse or promote products derived from
+ * this software without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ * OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+ * LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+ * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+ * THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+ * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+
+#include "config.h"
+#include "bindings/v8/V8LazyEventListener.h"
+
+#include "V8Document.h"
+#include "V8HTMLFormElement.h"
+#include "V8Node.h"
+#include "bindings/v8/ScriptController.h"
+#include "bindings/v8/ScriptSourceCode.h"
+#include "bindings/v8/V8Binding.h"
+#include "bindings/v8/V8DOMWrapper.h"
+#include "bindings/v8/V8HiddenPropertyName.h"
+#include "bindings/v8/V8ScriptRunner.h"
+#include "core/dom/Document.h"
+#include "core/dom/Node.h"
+#include "core/html/HTMLElement.h"
+#include "core/html/HTMLFormElement.h"
+#include "core/page/ContentSecurityPolicy.h"
+#include "core/page/Frame.h"
+
+#include "wtf/StdLibExtras.h"
+
+namespace WebCore {
+
+V8LazyEventListener::V8LazyEventListener(const AtomicString& functionName, const AtomicString& eventParameterName, const String& code, const String sourceURL, const TextPosition& position, Node* node)
+    : V8AbstractEventListener(true, mainThreadNormalWorld(), v8::Isolate::GetCurrent()) // FIXME Remove GetCurrent()
+    , m_functionName(functionName)
+    , m_eventParameterName(eventParameterName)
+    , m_code(code)
+    , m_sourceURL(sourceURL)
+    , m_node(node)
+    , m_position(position)
+{
+}
+
+template<typename T>
+v8::Handle<v8::Object> toObjectWrapper(T* domObject, v8::Isolate* isolate)
+{
+    if (!domObject)
+        return v8::Object::New();
+    v8::Handle<v8::Value> value = toV8(domObject, v8::Handle<v8::Object>(), isolate);
+    if (value.IsEmpty())
+        return v8::Object::New();
+    return v8::Local<v8::Object>::New(isolate, value.As<v8::Object>());
+}
+
+v8::Local<v8::Value> V8LazyEventListener::callListenerFunction(ScriptExecutionContext* context, v8::Handle<v8::Value> jsEvent, Event* event)
+{
+    v8::Local<v8::Object> listenerObject = getListenerObject(context);
+    if (listenerObject.IsEmpty())
+        return v8::Local<v8::Value>();
+
+    v8::Local<v8::Function> handlerFunction = listenerObject.As<v8::Function>();
+    v8::Local<v8::Object> receiver = getReceiverObject(context, event);
+    if (handlerFunction.IsEmpty() || receiver.IsEmpty())
+        return v8::Local<v8::Value>();
+
+    // FIXME: Can |context| be 0 here?
+    if (!context)
+        return v8::Local<v8::Value>();
+
+    if (!context->isDocument())
+        return v8::Local<v8::Value>();
+
+    Frame* frame = toDocument(context)->frame();
+    if (!frame)
+        return v8::Local<v8::Value>();
+
+    if (!frame->script()->canExecuteScripts(AboutToExecuteScript))
+        return v8::Local<v8::Value>();
+
+    v8::Handle<v8::Value> parameters[1] = { jsEvent };
+    return frame->script()->callFunction(handlerFunction, receiver, WTF_ARRAY_LENGTH(parameters), parameters);
+}
+
+static void V8LazyEventListenerToString(const v8::FunctionCallbackInfo<v8::Value>& args)
+{
+    v8SetReturnValue(args, args.Holder()->GetHiddenValue(V8HiddenPropertyName::toStringString()));
+}
+
+void V8LazyEventListener::prepareListenerObject(ScriptExecutionContext* context)
+{
+    if (context->isDocument() && !toDocument(context)->contentSecurityPolicy()->allowInlineEventHandlers(m_sourceURL, m_position.m_line)) {
+        clearListenerObject();
+        return;
+    }
+
+    if (hasExistingListenerObject())
+        return;
+
+    ASSERT(context->isDocument());
+    Frame* frame = toDocument(context)->frame();
+    if (!frame)
+        return;
+
+    if (!frame->script()->canExecuteScripts(NotAboutToExecuteScript))
+        return;
+
+    v8::HandleScope handleScope;
+
+    // Use the outer scope to hold context.
+    v8::Local<v8::Context> v8Context = toV8Context(context, world());
+    v8::Isolate* isolate = v8Context->GetIsolate();
+    // Bail out if we cannot get the context.
+    if (v8Context.IsEmpty())
+        return;
+
+    v8::Context::Scope scope(v8Context);
+
+    // FIXME: Remove the following 'with' hack.
+    //
+    // Nodes other than the document object, when executing inline event
+    // handlers push document, form, and the target node on the scope chain.
+    // We do this by using 'with' statement.
+    // See chrome/fast/forms/form-action.html
+    //     chrome/fast/forms/selected-index-value.html
+    //     base/fast/overflow/onscroll-layer-self-destruct.html
+    //
+    // Don't use new lines so that lines in the modified handler
+    // have the same numbers as in the original code.
+    // FIXME: V8 does not allow us to programmatically create object environments so
+    //        we have to do this hack! What if m_code escapes to run arbitrary script?
+    //
+    // Call with 4 arguments instead of 3, pass additional null as the last parameter.
+    // By calling the function with 4 arguments, we create a setter on arguments object
+    // which would shadow property "3" on the prototype.
+    String code = "(function() {"
+        "with (this[2]) {"
+        "with (this[1]) {"
+        "with (this[0]) {"
+            "return function(" + m_eventParameterName + ") {" +
+                m_code + "\n" // Insert '\n' otherwise //-style comments could break the handler.
+            "};"
+        "}}}})";
+
+    v8::Handle<v8::String> codeExternalString = v8String(code, isolate);
+
+    v8::Local<v8::Value> result = V8ScriptRunner::compileAndRunInternalScript(codeExternalString, isolate, m_sourceURL, m_position, 0);
+    if (result.IsEmpty())
+        return;
+
+    // Call the outer function to get the inner function.
+    ASSERT(result->IsFunction());
+    v8::Local<v8::Function> intermediateFunction = result.As<v8::Function>();
+
+    HTMLFormElement* formElement = 0;
+    if (m_node && m_node->isHTMLElement())
+        formElement = toHTMLElement(m_node)->form();
+
+    v8::Handle<v8::Object> nodeWrapper = toObjectWrapper<Node>(m_node, isolate);
+    v8::Handle<v8::Object> formWrapper = toObjectWrapper<HTMLFormElement>(formElement, isolate);
+    v8::Handle<v8::Object> documentWrapper = toObjectWrapper<Document>(m_node ? m_node->ownerDocument() : 0, isolate);
+
+    v8::Local<v8::Object> thisObject = v8::Object::New();
+    if (thisObject.IsEmpty())
+        return;
+    if (!thisObject->ForceSet(v8::Integer::New(0, isolate), nodeWrapper))
+        return;
+    if (!thisObject->ForceSet(v8::Integer::New(1, isolate), formWrapper))
+        return;
+    if (!thisObject->ForceSet(v8::Integer::New(2, isolate), documentWrapper))
+        return;
+
+    // FIXME: Remove this code when we stop doing the 'with' hack above.
+    v8::Local<v8::Value> innerValue = V8ScriptRunner::callInternalFunction(intermediateFunction, thisObject, 0, 0, isolate);
+    if (innerValue.IsEmpty() || !innerValue->IsFunction())
+        return;
+
+    v8::Local<v8::Function> wrappedFunction = innerValue.As<v8::Function>();
+
+    // Change the toString function on the wrapper function to avoid it
+    // returning the source for the actual wrapper function. Instead it
+    // returns source for a clean wrapper function with the event
+    // argument wrapping the event source code. The reason for this is
+    // that some web sites use toString on event functions and eval the
+    // source returned (sometimes a RegExp is applied as well) for some
+    // other use. That fails miserably if the actual wrapper source is
+    // returned.
+    v8::Handle<v8::FunctionTemplate> toStringTemplate =
+        V8PerIsolateData::current()->lazyEventListenerToStringTemplate();
+    if (toStringTemplate.IsEmpty())
+        toStringTemplate = v8::FunctionTemplate::New(V8LazyEventListenerToString);
+    v8::Local<v8::Function> toStringFunction;
+    if (!toStringTemplate.IsEmpty())
+        toStringFunction = toStringTemplate->GetFunction();
+    if (!toStringFunction.IsEmpty()) {
+        String toStringString = "function " + m_functionName + "(" + m_eventParameterName + ") {\n  " + m_code + "\n}";
+        wrappedFunction->SetHiddenValue(V8HiddenPropertyName::toStringString(), v8String(toStringString, isolate));
+        wrappedFunction->Set(v8::String::NewSymbol("toString"), toStringFunction);
+    }
+
+    wrappedFunction->SetName(v8String(m_functionName, isolate));
+
+    // FIXME: Remove the following comment-outs.
+    // See https://bugs.webkit.org/show_bug.cgi?id=85152 for more details.
+    //
+    // For the time being, we comment out the following code since the
+    // second parsing can happen.
+    // // Since we only parse once, there's no need to keep data used for parsing around anymore.
+    // m_functionName = String();
+    // m_code = String();
+    // m_eventParameterName = String();
+    // m_sourceURL = String();
+
+    setListenerObject(wrappedFunction);
+}
+
+} // namespace WebCore

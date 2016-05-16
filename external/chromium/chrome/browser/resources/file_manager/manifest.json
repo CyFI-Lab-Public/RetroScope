@@ -1,0 +1,99 @@
+{
+  // chrome-extension://hhaomjibdihmijegdhdafkllkbggdgoj/
+  "key": "MIGdMA0GCSqGSIb3DQEBAQUAA4GLADCBhwKBgQDlhpGghtnNJ7pluQN0RDwbUxwwi99oM35ZEaFYvxPLrf0fIEC18cfDdJi6u4aJ+UoSpgzK731L0P/k4LvK2Rz9kVKOy0+IvuRrWkT7lbrLfA1UEBh02OA1AAshjmyRg4IxCqgl8ia8XWq6HKegS1y1KXZYGgb4qp7Bh9VC4cIzswIBIw==",
+  "name": "File Manager",
+  "version": "0.1",
+  "description": "File Manager",
+  "incognito" : "split",
+  "icons": {
+    "16": "images/icon16.png"
+  },
+  "permissions": [
+    "fileBrowserHandler",
+    "fileBrowserPrivate",
+    "unlimitedStorage",
+    "chrome://extension-icon/",
+    "chrome://resources/"
+  ],
+  "file_browser_handlers": [
+    {
+      "id": "preview",
+      "default_title": "__MSG_PREVIEW_IMAGE__",
+      "default_icon": "images/icon_preview_16x16.png",
+      "file_filters": [
+        "filesystem:*.gif",
+        "filesystem:*.jpg",
+        "filesystem:*.jpeg",
+        "filesystem:*.webp",
+        "filesystem:*.png",
+        "filesystem:*.GIF",
+        "filesystem:*.JPG",
+        "filesystem:*.JPEG",
+        "filesystem:*.WEBP",
+        "filesystem:*.PNG"
+      ]
+    },
+    {
+      "id": "play",
+      "default_title": "__MSG_PLAY_MEDIA__",
+      "default_icon": "images/icon_play_16x16.png",
+      "file_filters": [
+        "filesystem:*.webm",
+        "filesystem:*.WEBM",
+        "filesystem:*.mp4",
+        "filesystem:*.MP4",
+        "filesystem:*.m4v",
+        "filesystem:*.M4V",
+        "filesystem:*.mov",
+        "filesystem:*.MOV",
+        "filesystem:*.ogg",
+        "filesystem:*.OGG",
+        "filesystem:*.oga",
+        "filesystem:*.OGA",
+        "filesystem:*.ogm",
+        "filesystem:*.OGM",
+        "filesystem:*.ogv",
+        "filesystem:*.OGV",
+        "filesystem:*.ogx",
+        "filesystem:*.OGX",
+        "filesystem:*.wav",
+        "filesystem:*.WAV",
+        "filesystem:*.mp3",
+        "filesystem:*.MP3",
+        "filesystem:*.m4a",
+        "filesystem:*.M4A"
+      ]
+    },
+    {
+      "id": "enqueue",
+      "default_title": "__MSG_ENQUEUE_MEDIA__",
+      "default_icon": "images/icon_add_to_queue_16x16.png",
+      "file_filters": [
+        "filesystem:*.webm",
+        "filesystem:*.WEBM",
+        "filesystem:*.mp4",
+        "filesystem:*.MP4",
+        "filesystem:*.m4v",
+        "filesystem:*.M4V",
+        "filesystem:*.mov",
+        "filesystem:*.MOV",
+        "filesystem:*.ogg",
+        "filesystem:*.OGG",
+        "filesystem:*.oga",
+        "filesystem:*.OGA",
+        "filesystem:*.ogm",
+        "filesystem:*.OGM",
+        "filesystem:*.ogv",
+        "filesystem:*.OGV",
+        "filesystem:*.ogx",
+        "filesystem:*.OGX",
+        "filesystem:*.wav",
+        "filesystem:*.WAV",
+        "filesystem:*.mp3",
+        "filesystem:*.MP3",
+        "filesystem:*.m4a",
+        "filesystem:*.M4A"
+      ]
+    }
+  ]
+}

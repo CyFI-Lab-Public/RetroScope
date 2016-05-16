@@ -1,0 +1,151 @@
+/* Copyright (c) 2011 The Chromium Authors. All rights reserved.
+ * Use of this source code is governed by a BSD-style license that can be
+ * found in the LICENSE file.
+ *
+ * This is the stylesheet used by the touch-enabled new tab page
+ */
+
+html {
+  /* It's necessary to put this here instead of in body in order to get the
+     background-size of 100% to work properly */
+  height: 100%;
+}
+
+body {
+  background-size: auto 100%;
+  margin: 0;
+  /* Don't highlight links when they're tapped.  Safari has bugs here that
+     show up as flicker when dragging in some situations */
+  -webkit-tap-highlight-color: transparent;
+  /* Don't allow selecting text - can occur when dragging */
+  -webkit-user-select: none;
+}
+
+body,
+button span {
+  font-family: segoe ui, arial, helvetica, sans-serif;
+  font-size: 14px;
+}
+
+#card-slider-frame {
+  /* Must match #footer height. */
+  bottom: 50px;
+  overflow: hidden;
+  /* We want this to fill the window except for the region used
+     by footer */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  -webkit-mask-image: -webkit-linear-gradient(bottom, transparent, black 30px);
+}
+
+#page-list {
+  /* fill the apps-frame */
+  height: 100%;
+  display: -webkit-box;
+}
+
+#footer {
+  background-color: rgba(255, 255, 255, 0.8);
+  bottom: 0;
+  position: fixed;
+  width: 100%;
+}
+
+/* TODO(estade): remove this border hack and replace with a webkit-gradient
+ * border-image on #footer once WebKit supports border-image-slice.
+ * See https://bugs.webkit.org/show_bug.cgi?id=20127 */
+#footer-border {
+  background: -webkit-gradient(linear, left top, right top,
+                               from(#eee), color-stop(0.5, #ccc), to(#eee));
+  height: 1px;
+}
+
+#footer-content {
+  display: -webkit-box;
+  height: 49px;
+  -webkit-box-align: center;
+}
+
+#footer-content > * {
+  margin: 0 9px;
+}
+
+/* TODO(estade): theme this color. */
+#footer-content span {
+  color: #888;
+}
+
+/* TODO(estade): handle overflow better? I tried overflow-x: hidden and
+   overflow-y: visible (for the new dot animation), but this makes a scroll
+   bar appear */
+#dot-list {
+  display: -webkit-box;
+  height: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /* Expand to take up all available horizontal space.  */
+  -webkit-box-flex: 1;
+  /* Center child dots. */
+  -webkit-box-pack: center;
+}
+
+/* TODO(estade): improve focus indicator. */
+.dot {
+  border-top: 5px solid rgba(0, 0, 0, .1);
+  color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  font-size: 9pt;
+  height: 100%;
+  margin: 0 10px;
+  padding-top: 5px;
+  text-align: left;
+  width: 60px;
+  -webkit-box-sizing: border-box;
+  -webkit-padding-start: 5px;
+  -webkit-transition: -webkit-transform 500ms,
+                      background-color 250ms;
+}
+
+.dot.selected {
+  border-top: 5px solid rgba(0, 0, 0, .4);
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.dot:hover {
+  background-color: rgba(0, 0, 0, .05);
+}
+
+.dot.new {
+  -webkit-transform: translate(0, 40px);
+}
+
+#trash {
+  position: absolute;
+  width: 110px;
+  height: 100%;
+  right: 0;
+  bottom: 0;
+  background-image: url('../shared/images/trash.png');
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  background-position: 40px 12px;
+  /* Work-around chromium bug 74730 by using translate instead of the
+     GPU-accelerated translate3d */
+  -webkit-transform: translate(80px, 0);
+  -webkit-transition-property: -webkit-transform;
+  -webkit-transition-duration: 500ms;
+}
+
+#trash.hover {
+  background-image: url('../shared/images/trash-open.png');
+}
+
+.app.trashing img {
+  opacity: 0.3;
+}
+
+#footer.rearrange-mode #trash {
+  -webkit-transform: translate(0, 0);
+}

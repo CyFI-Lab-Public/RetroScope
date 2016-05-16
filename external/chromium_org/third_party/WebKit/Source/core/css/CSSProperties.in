@@ -1,0 +1,260 @@
+// FIXME: When we have all the properties using the new StyleBuilder, we
+//   should use this for make_css_property_names.py
+// Note: Mandatory blank line to skip parameter parsing phase
+
+align-content
+align-items
+align-self type_name=EAlignItems
+background-attachment custom_all
+background-blend-mode custom_all
+background-clip custom_all
+background-color custom_all
+background-image custom_all
+background-origin custom_all
+background-position-x custom_all
+background-position-y custom_all
+background-repeat-x custom_all
+background-repeat-y custom_all
+background-size custom_all
+border-bottom-color custom_all
+border-bottom-left-radius type_name=LengthSize, initial=initialBorderRadius, converter=convertRadius
+border-bottom-right-radius type_name=LengthSize, initial=initialBorderRadius, converter=convertRadius
+border-bottom-style type_name=EBorderStyle, initial=initialBorderStyle
+border-bottom-width type_name=unsigned, initial=initialBorderWidth, converter=convertLineWidth<unsigned>
+border-collapse
+border-image-outset custom_all
+border-image-repeat custom_all
+border-image-slice custom_all
+border-image-source custom_value
+border-image-width custom_all
+border-left-color custom_all
+border-left-style type_name=EBorderStyle, initial=initialBorderStyle
+border-left-width type_name=unsigned, initial=initialBorderWidth, converter=convertLineWidth<unsigned>
+border-right-color custom_all
+border-right-style type_name=EBorderStyle, initial=initialBorderStyle
+border-right-width type_name=unsigned, initial=initialBorderWidth, converter=convertLineWidth<unsigned>
+border-top-color custom_all
+border-top-left-radius type_name=LengthSize, initial=initialBorderRadius, converter=convertRadius
+border-top-right-radius type_name=LengthSize, initial=initialBorderRadius, converter=convertRadius
+border-top-style type_name=EBorderStyle, initial=initialBorderStyle
+border-top-width type_name=unsigned, initial=initialBorderWidth, converter=convertLineWidth<unsigned>
+bottom type_name=Length, initial=initialOffset, converter=convertLengthOrAuto
+box-sizing
+caption-side
+clear
+clip custom_all
+color custom_all
+counter-increment custom_all
+counter-reset custom_all
+cursor custom_all
+direction custom_value
+display custom_inherit, custom_value
+empty-cells type_name=EEmptyCell
+flex-basis type_name=Length, converter=convertLengthOrAuto
+flex-direction
+flex-grow type_name=float
+flex-shrink type_name=float
+flex-wrap
+float type_name=EFloat, name_for_methods=Floating
+font-family custom_all
+font-size custom_all
+font-style custom_all
+font-variant custom_all
+font-weight custom_all
+grid-auto-flow type_name=GridAutoFlow
+height type_name=Length, initial=initialSize, converter=convertLengthSizing
+justify-content
+image-rendering
+left type_name=Length, initial=initialOffset, converter=convertLengthOrAuto
+letter-spacing type_name=float, initial=initialLetterWordSpacing, converter=convertSpacing
+line-height getter=specifiedLineHeight, custom_value
+list-style-image type_name=StyleImage*, custom_value
+list-style-position
+list-style-type
+margin-bottom type_name=Length, initial=initialMargin, converter=convertLengthOrAuto
+margin-left type_name=Length, initial=initialMargin, converter=convertLengthOrAuto
+margin-right type_name=Length, initial=initialMargin, converter=convertLengthOrAuto
+margin-top type_name=Length, initial=initialMargin, converter=convertLengthOrAuto
+max-height type_name=Length, initial=initialMaxSize, converter=convertLengthMaxSizing
+max-width type_name=Length, initial=initialMaxSize, converter=convertLengthMaxSizing
+min-height type_name=Length, initial=initialMinSize, converter=convertLengthSizing
+min-width type_name=Length, initial=initialMinSize, converter=convertLengthSizing
+mix-blend-mode type_name=BlendMode, name_for_methods=BlendMode
+opacity type_name=float
+order type_name=int
+orphans type_name=short, custom_all
+outline-color custom_all
+outline-offset type_name=int, converter=convertComputedLength<int>
+outline-style custom_all
+outline-width type_name=unsigned short, converter=convertLineWidth<unsigned short>
+overflow-wrap
+overflow-x type_name=EOverflow
+overflow-y type_name=EOverflow
+padding-bottom type_name=Length, initial=initialPadding, converter=convertLength
+padding-left type_name=Length, initial=initialPadding, converter=convertLength
+padding-right type_name=Length, initial=initialPadding, converter=convertLength
+padding-top type_name=Length, initial=initialPadding, converter=convertLength
+page-break-after type_name=EPageBreak, initial=initialPageBreak
+page-break-before type_name=EPageBreak, initial=initialPageBreak
+page-break-inside type_name=EPageBreak, initial=initialPageBreak
+pointer-events
+position
+resize custom_value
+right type_name=Length, initial=initialOffset, converter=convertLengthOrAuto
+size custom_all
+speak
+table-layout
+tab-size type_name=unsigned
+text-align custom_value
+text-align-last type_name=TextAlignLast
+text-decoration custom_value
+text-decoration-line use_handlers_for=CSSPropertyTextDecoration
+text-decoration-color custom_all
+text-decoration-style type_name=TextDecorationStyle
+text-indent custom_all
+text-overflow type_name=TextOverflow
+text-rendering custom_all
+text-transform
+top type_name=Length, initial=initialOffset, converter=convertLengthOrAuto
+touch-action type_name=TouchAction, initial=initialTouchAction
+unicode-bidi
+vertical-align custom_value
+visibility
+white-space
+widows type_name=short, custom_all
+width type_name=Length, initial=initialSize, converter=convertLengthSizing
+word-break
+word-spacing type_name=float, initial=initialLetterWordSpacing, converter=convertSpacing
+// UAs must treat 'word-wrap' as an alternate name for the 'overflow-wrap' property. So using the same handlers.
+word-wrap name_for_methods=OverflowWrap
+zoom custom_all
+z-index type_name=int, custom_all
+
+-webkit-animation-delay custom_all
+-webkit-animation-direction custom_all
+-webkit-animation-duration custom_all
+-webkit-animation-fillMode custom_all
+-webkit-animation-iteration-count custom_all
+-webkit-animation-name custom_all
+-webkit-animation-play-state custom_all
+-webkit-animation-timing-function custom_all
+-webkit-appearance type_name=ControlPart
+-webkit-aspect-ratio custom_all
+-webkit-backface-visibility
+-webkit-background-clip use_handlers_for=CSSPropertyBackgroundClip
+-webkit-background-composite custom_all
+-webkit-background-origin use_handlers_for=CSSPropertyBackgroundOrigin
+-webkit-background-size use_handlers_for=CSSPropertyBackgroundSize
+-webkit-border-fit
+-webkit-border-horizontal-spacing type_name=short, name_for_methods=HorizontalBorderSpacing, converter=convertComputedLength<short>
+-webkit-border-image initial=initialNinePieceImage, custom_value
+-webkit-border-vertical-spacing type_name=short, name_for_methods=VerticalBorderSpacing, converter=convertComputedLength<short>
+-webkit-box-align type_name=EBoxAlignment
+-webkit-box-decoration-break
+-webkit-box-direction
+-webkit-box-flex-group type_name=unsigned int
+-webkit-box-flex type_name=float
+-webkit-box-lines
+-webkit-box-ordinal-group type_name=unsigned int
+-webkit-box-orient
+-webkit-box-pack
+-webkit-clip-path custom_value
+-webkit-column-axis type_name=ColumnAxis
+-webkit-column-break-after type_name=EPageBreak, initial=initialPageBreak
+-webkit-column-break-before type_name=EPageBreak, initial=initialPageBreak
+-webkit-column-break-inside type_name=EPageBreak, initial=initialPageBreak
+-webkit-column-count type_name=unsigned short, custom_all
+-webkit-column-gap type_name=float, custom_all
+-webkit-column-progression type_name=ColumnProgression
+-webkit-column-rule-color custom_all
+-webkit-column-rule-style type_name=EBorderStyle, initial=initialBorderStyle
+-webkit-column-rule-width type_name=unsigned short, converter=convertLineWidth<unsigned short>
+-webkit-column-span type_name=ColumnSpan
+-webkit-column-width type_name=float, custom_all
+-webkit-flow-from type_name=AtomicString, name_for_methods=RegionThread, converter=convertString<CSSValueNone>
+-webkit-flow-into type_name=AtomicString, name_for_methods=FlowThread, converter=convertString<CSSValueNone>
+-webkit-font-kerning custom_all
+-webkit-font-smoothing custom_all
+-webkit-font-variant-ligatures custom_all
+-webkit-highlight type_name=AtomicString, converter=convertString<CSSValueNone>
+-webkit-hyphenate-character type_name=AtomicString, name_for_methods=HyphenationString, converter=convertString<CSSValueAuto>
+-webkit-line-align type_name=LineAlign
+-webkit-line-break type_name=LineBreak
+-webkit-line-clamp type_name=LineClampValue
+-webkit-line-grid type_name=AtomicString, converter=convertString<CSSValueNone>
+-webkit-line-snap type_name=LineSnap
+-webkit-margin-after-collapse type_name=EMarginCollapse
+-webkit-margin-before-collapse type_name=EMarginCollapse
+-webkit-margin-bottom-collapse type_name=EMarginCollapse, name_for_methods=MarginAfterCollapse
+-webkit-margin-top-collapse type_name=EMarginCollapse, name_for_methods=MarginBeforeCollapse
+-webkit-marquee-direction
+-webkit-marquee-increment custom_value
+-webkit-marquee-repetition type_name=int, name_for_methods=MarqueeLoopCount, custom_value
+-webkit-marquee-speed custom_value
+-webkit-marquee-style name_for_methods=MarqueeBehavior
+-webkit-mask-box-image initial=initialNinePieceImage, custom_value
+-webkit-mask-box-image-outset custom_all
+-webkit-mask-box-image-repeat custom_all
+-webkit-mask-box-image-slice custom_all
+-webkit-mask-box-image-source custom_value
+-webkit-mask-box-image-width custom_all
+-webkit-mask-clip custom_all
+-webkit-mask-composite custom_all
+-webkit-mask-image custom_all
+-webkit-mask-origin custom_all
+-webkit-mask-position-x custom_all
+-webkit-mask-position-y custom_all
+-webkit-mask-repeat-x custom_all
+-webkit-mask-repeat-y custom_all
+-webkit-mask-size custom_all
+-webkit-perspective-origin custom_all
+-webkit-perspective-origin-x type_name=Length, converter=convertLength
+-webkit-perspective-origin-y type_name=Length, converter=convertLength
+-webkit-print-color-adjust type_name=PrintColorAdjust
+-webkit-region-break-after type_name=EPageBreak, initial=initialPageBreak
+-webkit-region-break-before type_name=EPageBreak, initial=initialPageBreak
+-webkit-region-break-inside type_name=EPageBreak, initial=initialPageBreak
+-webkit-region-fragment type_name=RegionFragment
+-webkit-rtl-ordering type_name=Order, getter=rtlOrdering, setter=setRTLOrdering, initial=initialRTLOrdering
+-webkit-ruby-position type_name=RubyPosition
+-webkit-shape-inside type_name=ShapeValue*, custom_value
+-webkit-shape-margin type_name=Length, converter=convertLength
+-webkit-shape-outside type_name=ShapeValue*, custom_value
+-webkit-shape-padding type_name=Length, converter=convertLength
+-webkit-text-combine type_name=TextCombine
+-webkit-text-emphasis-color custom_all
+-webkit-text-emphasis-position type_name=TextEmphasisPosition
+-webkit-text-emphasis-style custom_all
+-webkit-text-fill-color custom_all
+-webkit-text-security
+-webkit-text-stroke-color custom_all
+-webkit-text-underline-position custom_value, condition=CSS3_TEXT
+-webkit-transform-origin-x type_name=Length, converter=convertLength
+-webkit-transform-origin-y type_name=Length, converter=convertLength
+-webkit-transform-origin-z type_name=float, converter=convertComputedLength<float>
+-webkit-transform-style name_for_methods=TransformStyle3D
+-webkit-transition-delay custom_all
+-webkit-transition-duration custom_all
+-webkit-transition-property custom_all
+-webkit-transition-timing-function custom_all
+-webkit-user-drag
+-webkit-user-modify
+-webkit-user-select
+-webkit-wrap-flow type_name=WrapFlow
+-webkit-wrap-through type_name=WrapThrough
+
+alignment-baseline svg
+buffered-rendering svg
+clip-rule svg, type_name=WindRule
+color-interpolation svg
+color-interpolation-filters svg, type_name=EColorInterpolation
+color-rendering svg
+dominant-baseline svg
+fill-rule svg, type_name=WindRule
+mask-type svg
+shape-rendering svg
+stroke-linecap svg, type_name=LineCap, name_for_methods=CapStyle
+stroke-linejoin svg, type_name=LineJoin, name_for_methods=JoinStyle
+text-anchor svg
+vector-effect svg
+writing-mode svg, type_name=SVGWritingMode

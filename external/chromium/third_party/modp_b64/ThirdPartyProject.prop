@@ -1,0 +1,8 @@
+# Copyright 2011 Google Inc. All Rights Reserved.
+version=n/a
+isNative=true
+name=modp_b64
+keywords=base64
+onDevice=true
+homepage=http://modp.com/
+
