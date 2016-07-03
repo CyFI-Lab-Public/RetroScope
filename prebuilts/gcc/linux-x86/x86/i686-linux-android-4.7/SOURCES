@@ -1,0 +1,15 @@
+toolchain/build.git              de36c1312eaf8d1b23a8d79244675f395c361e73 Avoid race condition by "make install -j1" in canadian build->target
+toolchain/gmp.git                e6b9669dafc6a5f83c80b4b4176359b78bccdc90 Add gmp-5.0.5.tar.bz2
+toolchain/mpfr.git               bfcf1bfa38469208aaad8873cd4c68781061d90f add mpfr-3.1.1.tar.bz2
+toolchain/mpc.git                835d16e92eed875638a8b5d552034c3b1aae045b add mpc-1.0.1.tar.gz
+toolchain/cloog.git              b522eced5dd70c8536c15f044078498658fb9219 add cloog-0.17.0.tar.gz
+toolchain/ppl.git                8ba1875b4c5341d902321761022a6d2a0b5b19a4 add ppl-1.0.tar.bz2
+toolchain/expat.git              40172a0ae9d40a068f1e1a48ffcf6a1ccf765ed5 expat package for building gdb-7.3
+toolchain/binutils.git           8415ff0aaeb157307bb01a45373dba81919882fc Merge "Fix the "DIV usage mismatch between blah.o and output" error"
+toolchain/gcc.git                7f9f4477cbebb22723af8c0fac55aefc1228e02c Fix x86 GCC4.7 segfault in i386.c distance_non_agu_define_in_bb()
+toolchain/gdb.git                87c2a8617d772060c22533ed1626fca7f0649ca0 Merge "Fix default isatized_symbol_value handler"
+toolchain/python.git             88d9000040cfe698e8e32e071880ed8b41e11216 Remove *.info
+toolchain/clang.git (release_32) 9d4223132b17b9f647203b886fe09e7555ab9ab6 Misc fixes
+toolchain/llvm.git (release_32)  9854c4870dfec924c4c2fca0b6d406dc1eff4e32 Fix gnustl-shared-1 unit test failure.
+toolchain/clang.git (release_31) 4ee97488c51806ac044ff5b6c70f07d1be8dc339 Leave -fexception alone since it's enabled by default
+toolchain/llvm.git (release_31)  9e9a074a457f0db61a0f7977bbf5e3c4afebe2e0 Fix canadian build

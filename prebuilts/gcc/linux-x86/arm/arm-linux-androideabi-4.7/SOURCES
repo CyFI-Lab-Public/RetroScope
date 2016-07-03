@@ -1,0 +1,9 @@
+Using built-in specs.
+COLLECT_GCC=./bin/arm-linux-androideabi-gcc
+COLLECT_LTO_WRAPPER=/tmp/android-4.7-2013-01-08/toolchains/arm-linux-androideabi-4.7/prebuilt/linux-x86_64/bin/../libexec/gcc/arm-linux-androideabi/4.7/lto-wrapper
+Target: arm-linux-androideabi
+Configured with: /tmp/AOSP-toolchain/build/../gcc/gcc-4.7/configure --prefix=/tmp/toolchain-build-linux/prefix --target=arm-linux-androideabi --host=x86_64-linux-gnu --build=x86_64-linux-gnu --with-gnu-as --with-gnu-ld --enable-languages=c,c++ --with-gmp=/tmp/toolchain-build-linux/temp-install --with-mpfr=/tmp/toolchain-build-linux/temp-install --with-mpc=/tmp/toolchain-build-linux/temp-install --with-cloog=/tmp/toolchain-build-linux/temp-install --with-ppl=/tmp/toolchain-build-linux/temp-install --disable-ppl-version-check --disable-cloog-version-check --enable-cloog-backend=isl --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' --disable-libssp --enable-threads --disable-nls --disable-libmudflap --disable-libgomp --disable-libstdc__-v3 --disable-sjlj-exceptions --disable-shared --disable-tls --disable-libitm --with-float=soft --with-fpu=vfp --with-arch=armv5te --enable-target-optspace --enable-initfini-array --disable-nls --prefix=/tmp/toolchain-build-linux/prefix --with-sysroot=/tmp/toolchain-build-linux/prefix/sysroot --with-binutils-version=2.22 --with-mpfr-version=3.1.1 --with-mpc-version=1.0.1 --with-gmp-version=5.0.5 --with-gcc-version=4.7 --with-gdb-version=7.3.x --with-gxx-include-dir=/tmp/toolchain-build-linux/prefix/include/c++/4.7 --with-bugurl=http://source.android.com/source/report-bugs.html --disable-bootstrap --disable-libquadmath --enable-plugins --enable-libgomp --enable-gold --enable-graphite=yes --with-cloog-version=0.17.0 --with-ppl-version=1.0 --with-arch=armv5te --program-transform-name='s&^&arm-linux-androideabi-&' --enable-gold=default
+Thread model: posix
+gcc version 4.7 (GCC) 
+
+gcc:

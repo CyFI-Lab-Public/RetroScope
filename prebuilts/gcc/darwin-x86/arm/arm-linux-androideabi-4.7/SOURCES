@@ -1,0 +1,51 @@
+Using built-in specs.
+COLLECT_GCC=/Volumes/android/android-4.7-2013-01-08/toolchains/arm-linux-androideabi-4.7/prebuilt/darwin-x86_64//bin/arm-linux-androideabi-gcc
+COLLECT_LTO_WRAPPER=/Volumes/android/android-4.7-2013-01-08/toolchains/arm-linux-androideabi-4.7/prebuilt/darwin-x86_64/bin/../libexec/gcc/arm-linux-androideabi/4.7/lto-wrapper
+Target: arm-linux-androideabi
+Configured with: /Volumes/android/AOSP-toolchain/build/../gcc/gcc-4.7/configure --prefix=/Volumes/android/toolchain-build-linux-4.7/prefix --target=arm-linux-androideabi --host=x86_64-apple-darwin --build=x86_64-apple-darwin --with-gnu-as --with-gnu-ld --enable-languages=c,c++ --with-gmp=/Volumes/android/toolchain-build-linux-4.7/temp-install --with-mpfr=/Volumes/android/toolchain-build-linux-4.7/temp-install --with-mpc=/Volumes/android/toolchain-build-linux-4.7/temp-install --with-cloog=/Volumes/android/toolchain-build-linux-4.7/temp-install --with-ppl=/Volumes/android/toolchain-build-linux-4.7/temp-install --disable-ppl-version-check --disable-cloog-version-check --enable-cloog-backend=isl --with-host-libstdcxx='-static-libgcc -lstdc++ -lm' --disable-libssp --enable-threads --disable-nls --disable-libmudflap --disable-libgomp --disable-libstdc__-v3 --disable-sjlj-exceptions --disable-shared --disable-tls --disable-libitm --with-float=soft --with-fpu=vfp --with-arch=armv5te --enable-target-optspace --enable-initfini-array --disable-nls --prefix=/Volumes/android/toolchain-build-linux-4.7/prefix --with-sysroot=/Volumes/android/toolchain-build-linux-4.7/prefix/sysroot --with-binutils-version=2.22 --with-mpfr-version=3.1.1 --with-mpc-version=1.0.1 --with-gmp-version=5.0.5 --with-gcc-version=4.7 --with-gdb-version=7.3.x --with-gxx-include-dir=/Volumes/android/toolchain-build-linux-4.7/prefix/include/c++/4.7 --with-bugurl=http://source.android.com/source/report-bugs.html --disable-bootstrap --disable-libquadmath --enable-plugins --enable-libgomp --enable-gold --enable-graphite=yes --with-cloog-version=0.17.0 --with-ppl-version=1.0 --with-arch=armv5te --program-transform-name='s&^&arm-linux-androideabi-&' --enable-gold=default
+Thread model: posix
+gcc version 4.7 (GCC) 
+
+gcc:
+commit a16b557938a0a448303fd913af1ff76e09674966
+Author: Andrew Hsieh <andrewhsieh@google.com>
+
+    Revert "Enable _GLIBCXX_USE_CLOCK_MONOTONIC in libstdc++"
+
+binutils:
+commit 8415ff0aaeb157307bb01a45373dba81919882fc
+Merge: 1ddae55 10ad6c0
+Author: Ben Cheng <bccheng@google.com>
+
+    Merge "Fix the "DIV usage mismatch between blah.o and output" error"
+
+gdb:
+commit b3c689cb0c6e1e6cbcaff9bc9ae35c3d6eec86a3
+Author: Pavel Chupin <pavel.v.chupin@intel.com>
+
+    Fix mingw build with plugins enabled
+
+gmp:
+commit e6b9669dafc6a5f83c80b4b4176359b78bccdc90
+Author: David 'Digit' Turner <digit@google.com>
+
+    Add gmp-5.0.5.tar.bz2
+
+mpfr:
+commit bfcf1bfa38469208aaad8873cd4c68781061d90f
+Author: Andrew Hsieh <andrewhsieh@google.com>
+
+    add mpfr-3.1.1.tar.bz2
+
+build:
+commit ff90ad8552285bacc0569276dc7aa2a623d2cb95
+Author: Pavel Chupin <pavel.v.chupin@intel.com>
+
+    Statically link libgcc and libstdc++ into gold
+
+expat:
+commit 40172a0ae9d40a068f1e1a48ffcf6a1ccf765ed5
+Author: Jing Yu <jingyu@google.com>
+
+    expat package for building gdb-7.3
+

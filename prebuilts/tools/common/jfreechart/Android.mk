@@ -1,0 +1,10 @@
+LOCAL_PATH:= $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_PREBUILT_JAVA_LIBRARIES := \
+	jcommon-1.0.12$(COMMON_JAVA_PACKAGE_SUFFIX) \
+	jfreechart-1.0.9-swt$(COMMON_JAVA_PACKAGE_SUFFIX) \
+	jfreechart-1.0.9$(COMMON_JAVA_PACKAGE_SUFFIX)
+
+include $(BUILD_HOST_PREBUILT)

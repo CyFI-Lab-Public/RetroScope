@@ -1,0 +1,8 @@
+The object in this prebuilt directory can be rebuilt from
+	libcore (target is dex-host)
+
+Steps to update
+1. make -j12 dex-host
+2. cp $ANDROID_HOST_OUT/framework/dex-host.jar prebuilts/runtime/common/dex/dex-host-prebuilt.jar
+
+From the revision 6f567f2bcbd07375c723e03c994a7c7674f42c7e

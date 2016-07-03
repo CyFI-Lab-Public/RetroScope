@@ -837,7 +837,7 @@ public:
       kill_node(n);
       p = p_next;
     }
-    rb_reinit(&tree)
+    rb_reinit(&tree);
   }
 
   bool empty() {

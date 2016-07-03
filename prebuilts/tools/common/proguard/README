@@ -1,0 +1,39 @@
+There are two distributions of Proguard in the tree:
+
+* external/proguard, which is used by the platform
+
+* prebuilts/tools/common/proguard, which is used by the tools (and
+  distributed to users in the tools/ folder)
+
+These are updated independently since one evolves with the platform,
+and the other with the tools.
+
+Even though there is a MODULE_LICENSE_GPL license marker in this
+directory, note that the Android SDK has an explicit exemption as
+described in the license.html file.
+
+The proguard4.7 directory contains the unzipped contents of the
+official Proguard 4.7 zip file, available from
+    http://proguard.sourceforge.net/index.html
+
+The .zip file is also included here such that the source code can
+easily be used (when debugging) or the distribution rebuilt from
+source (if for some reason the above repository should be
+unavailable).
+
+The sdk/build/tools.atree script will copy part of the proguard4.7
+tree into the tools/ directory. It skips the src/ directory (except
+for task.properties) and build/. Therefore, we removed the following
+two lines from the README file:
+   - src      : the source code
+   - build    : various alternative build scripts
+such that the copied README reflects the actual contents of the
+distributed tree.
+
+In addition, we added a paragraph to state that the distribution was
+slightly modified.
+
+In addition, the sdk/build/tools.atree will copy in the license.html
+file, which was obtained via
+       wget http://proguard.sourceforge.net/license.html
+  (and the JavaScript redirect element in the <head> was removed)

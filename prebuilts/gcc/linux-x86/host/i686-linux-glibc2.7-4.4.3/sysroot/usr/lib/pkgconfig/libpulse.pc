@@ -1,0 +1,10 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libpulse
+Description: Client Interface to PulseAudio
+Version: 0.9.10
+Libs: -L${libdir} -lpulse 
+Cflags: -D_REENTRANT -I${includedir}

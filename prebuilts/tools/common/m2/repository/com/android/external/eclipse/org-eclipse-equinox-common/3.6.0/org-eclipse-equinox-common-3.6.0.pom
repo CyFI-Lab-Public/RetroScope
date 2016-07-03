@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.android.external.eclipse</groupId>
+  <artifactId>org-eclipse-equinox-common</artifactId>
+  <version>3.6.0</version>
+  <name>org.eclipse.equinox.common</name>
+  <description>
+    Original untouched eclipse file: org.eclipse.equinox.common_3.6.0.v20100503.jar
+    and manually put in this local repository.
+  </description>
+  <dependencies>
+    <dependency>
+      <groupId>com.android.external.osgi</groupId>
+      <artifactId>osgi</artifactId>
+      <version>4.0.0</version>
+    </dependency>
+  </dependencies>
+</project>

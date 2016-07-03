@@ -1,0 +1,40 @@
+#!/bin/bash
+
+HOST_OS=`uname -s | tr '[:upper:]' '[:lower:]'`
+if [ "$HOST_OS" != "linux" ] ; then
+  echo "ERROR: The gcc this script points to can only run on linux"
+  exit 1
+fi
+
+PROGNAME=`basename $0`
+
+#PREFIX32=../../gcc/linux-x86/host/i686-linux-glibc2.7-4.4.3/bin/i686-linux  # previous version
+PREFIX32=../../gcc/linux-x86/host/i686-linux-glibc2.7-4.6/bin/i686-linux
+PREFIX64=../../gcc/linux-x86/host/x86_64-linux-glibc2.7-4.6/bin/x86_64-linux
+
+options=" ${@} "   # sentinel prefix/suffix space to simplify pattern match below
+
+suffix_m32=${options##* -m32 }    # suffix after the last -m32
+suffix_m64=${options##* -m64 }    # suffix after the last -m64
+
+len_m32=${#suffix_m32}            # length of suffix after the last -m32
+len_m64=${#suffix_m64}            # length of suffix after the last -m64
+
+if [ $len_m32 -ge $len_m64 ] ; then
+  # Choose 64-bit if -m64 only, -m64 appears after -m32, or neither exist (-eq)
+  MY_TOOL=`dirname $0`/${PREFIX64}-${PROGNAME}
+  # Make sure host is running 64-bit OS.
+  # Note that "uname -m" only show host CPU is capable of.  Use the following technique
+  # from ndk/build/core/ndk-common.sh instead
+  file -L "$SHELL" | grep -q "x86[_-]64"
+  if [ $? != 0 ]; then
+    # $SHELL is not a 64-bit executable, so assume our userland is too.
+    echo "ERROR: $MY_TOOL only run on 64-bit linux"
+    exit 1
+  fi
+else
+  # Otherwise, choose 32-bit
+  MY_TOOL=`dirname $0`/${PREFIX32}-${PROGNAME}
+fi
+
+$MY_TOOL "$@"

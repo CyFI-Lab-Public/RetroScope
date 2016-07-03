@@ -1,0 +1,1 @@
+../../../../../../platforms/android-4/arch-arm/usr/include/sys/_system_properties.h

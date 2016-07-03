@@ -1,0 +1,7 @@
+toolchain/binutils.git:          e4df3e0a5bb640ccfa2f30ee67fe9b3146b152d6 Sync internal and external version. -Fix problem with --save-temps in gas.
+toolchain/build.git:             7ee395d10100fc9ed2c03c49b949033600082a4f Fix host-libbfd installation problem caused by undefined $(INSTALL)
+toolchain/gcc.git:               fe2afdf3f3701489c05d2a7509752d6f0c7616f7 Sync internal and external version:
+toolchain/gdb.git:               5f9d38fd85e779aa1fd17eb38d24f8ec994d9147 Sync internal and external versions.  This fixed a problem that gdb inserts wrong kind of break points at ARM/THUMB boundaries. The patch is a backport of 3 upstream patches.
+toolchain/gmp.git:               9fb242a79dd122d7fbf867daf5620dba6927bd2e check in gmp sources for prebuilt toolchains in Eclair.
+toolchain/gold.git:              8d401cf711539af5a2f78d12447341d774892618 Empty initial commit.
+toolchain/mpfr.git:              da6dfde986af1b56f0f41e9f5de61d093fa8af90 check in mpfr sources for prebuilt toolchains in Eclair.

@@ -1,0 +1,13 @@
+We have 2 versions of the Guava library in our source tree:
+
+The one in external/guava is used for the platform. It has the module
+name "guavalib".
+
+The one in prebuilts/tools/common/guava-tools is shipped in the
+SDK/tools/lib/ folder. It has the module name guava-tools.
+
+These are maintained separately because the external/ version is
+branched with the platform, and the prebuilts/tools/ version is
+branched with the tools, and these have different release schedules
+and branches.
+

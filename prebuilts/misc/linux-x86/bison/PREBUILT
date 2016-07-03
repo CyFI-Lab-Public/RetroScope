@@ -1,0 +1,4 @@
+The objects in this prebuilt directory can be rebuilt
+using the source in external/bison, with build command
+"make bison" from the top of the source tree.
+

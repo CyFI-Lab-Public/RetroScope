@@ -1,0 +1,12 @@
+The objects in this prebuilt directory are coming from
+http://archive.apache.org/dist/httpcomponents/httpclient/binary/httpcomponents-client-4.1.1-bin.tar.gz
+
+Archive md5sum: 
+61942cba8949849afa185d66c80e79ea  httpcomponents-client-4.1.1-bin.tar.gz
+
+The /src packages come from:
+http://archive.apache.org/dist/httpcomponents/
+http://archive.apache.org/dist/commons/codec/
+http://commons.apache.org/logging/download_logging.cgi
+
+

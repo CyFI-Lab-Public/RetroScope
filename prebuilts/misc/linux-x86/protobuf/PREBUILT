@@ -1,0 +1,2 @@
+The binaries in this prebuilt directory can be rebuilt using
+the source in external/protobuf with build command "make aprotoc".

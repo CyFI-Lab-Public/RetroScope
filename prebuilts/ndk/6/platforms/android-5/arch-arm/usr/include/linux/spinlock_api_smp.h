@@ -1,0 +1,1 @@
+../../../../../../platforms/android-4/arch-arm/usr/include/linux/spinlock_api_smp.h

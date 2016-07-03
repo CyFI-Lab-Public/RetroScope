@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>asm</groupId>
+  <artifactId>asm-parent</artifactId>
+  <version>3.0</version>
+  <versioning>
+    <versions>
+      <version>2.2.3</version>
+      <version>3.0_RC1</version>
+      <version>3.0</version>
+      <version>3.1</version>
+      <version>3.2</version>
+      <version>3.3</version>
+      <version>3.3.1</version>
+    </versions>
+    <lastUpdated>20110112140010</lastUpdated>
+  </versioning>
+</metadata>

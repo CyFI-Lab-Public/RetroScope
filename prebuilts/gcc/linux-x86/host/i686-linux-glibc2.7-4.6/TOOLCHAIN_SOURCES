@@ -1,0 +1,8 @@
+toolchain/binutils.git:          d5d495ac8d60e791eab3c6efe795b5c9cff91e33 Update binutils-2.21. Changes are the followings
+toolchain/build.git:             5ef7fa6f214e96660a9b16343fea904831e5e6e2 Update build scripts
+toolchain/gcc.git:               cf90705c8503b3a763801a4f31f6f2272015f0dc Backport r184061 from gcc-4_6-branch to fix PR52060.
+toolchain/gdb.git:               d3fbc74c42021bf9d385a3d3b8813d0d91318137 Release gdb-7.3.x source for Android toolchain.
+toolchain/gold.git:              8d401cf711539af5a2f78d12447341d774892618 Empty initial commit.
+toolchain/gmp.git:               9fb242a79dd122d7fbf867daf5620dba6927bd2e check in gmp sources for prebuilt toolchains in Eclair.
+toolchain/mpfr.git:              da6dfde986af1b56f0f41e9f5de61d093fa8af90 check in mpfr sources for prebuilt toolchains in Eclair.
+toolchain/mpc.git:               a4109ccc6e07f72f41c397a17fdfbed3e5e19c66 Add mpc-0.8.1 package to toolchain source.

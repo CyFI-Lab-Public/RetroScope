@@ -1,0 +1,2 @@
+CGLIB 2.2.3 contains bug fix to solve heavy memory usage issues.
+http://cglib.cvs.sourceforge.net/viewvc/cglib/cglib/src/proxy/net/sf/cglib/transform/impl/UndeclaredThrowableStrategy.java?r1=1.3&r2=1.3.2.1&pathrev=RELEASE_2_2_3

@@ -1,0 +1,11 @@
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: libpulse-mainloop-glib
+Description: GLIB 2.0 Main Loop Wrapper for PulseAudio
+Version: 0.9.10
+Libs: -L${libdir} -lpulse-mainloop-glib 
+Cflags: -D_REENTRANT -I${includedir}
+Requires: libpulse glib-2.0

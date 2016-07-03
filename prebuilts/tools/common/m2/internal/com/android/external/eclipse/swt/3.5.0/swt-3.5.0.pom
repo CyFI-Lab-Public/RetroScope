@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.android.external.eclipse</groupId>
+  <artifactId>swt</artifactId>
+  <version>3.5.0</version>
+  <name>org.eclipse.wt</name>
+  <description>
+    Original untouched eclipse file downloaded from
+        http://archive.eclipse.org/eclipse/downloads/drops/R-3.5-200906111540/index.php#SWT
+    and manually put in this local repository.
+  </description>
+</project>

@@ -1,0 +1,5 @@
+#!/tmp/ndk-User/buildhost/install/prebuilt/darwin-x86_64/bin/python2.7
+import sys
+from lib2to3.main import main
+
+sys.exit(main("lib2to3.fixes"))

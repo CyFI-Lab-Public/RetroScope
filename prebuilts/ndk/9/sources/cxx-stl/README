@@ -1,0 +1,10 @@
+NOTE:
+
+EH/ contains gabi++ and stlport in NDK r9* with exception handling support.
+Unfortunatley by adding EH the new stlport breaks the compatibility with the
+platform's stlport, meaning that code links with the new one can't be later
+used to link with platform's stlport, and vice versa.
+
+So, we symlink gabi++ and stlport back to 8/ (which stays at r8c) for now,
+until all inconsistency are fixed and all [vendor] binaries are compiled
+with the new stlport.

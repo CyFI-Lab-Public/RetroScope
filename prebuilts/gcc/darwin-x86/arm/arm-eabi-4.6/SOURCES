@@ -1,0 +1,51 @@
+Sources for this prebuilt toolchain can be downloaded from Android Opensource
+Project GIT repository git://android.googlesource.com/toolchain.
+
+Configure options:
+
+export CC="gcc -m64 -isystem /Developer/SDKs/MacOSX10.4u.sdk/usr/include -mmacosx-version-min=10.4 -Wno-format -Wno-deprecated-declarations"
+export CXX="g++ -m64 -isystem /Developer/SDKs/MacOSX10.4u.sdk/usr/include -mmacosx-version-min=10.4 -Wno-format -Wno-deprecated-declarations"
+export ABI=64
+path/to/build/configure --target=arm-eabi \
+	--host=x86_64-apple-darwin --build=x86_64-apple-darwin \
+	--with-gcc-version=4.6 --with-binutils-version=2.21 \
+	--with-gmp-version=4.2.4 --with-mpfr-version=2.4.1 \
+	--with-gdb-version=7.3.x --with-arch=armv5te \
+	--with-sysroot=[ics generic sysroot] \
+	--with-gold-version=2.21 --disable-gold \
+	--disable-multilib
+
+gcc/ synced to
+	commit 872d5db7c3471a9d7fa78a290f84eb13b13f587a
+	Author: Jing Yu <jingyu@google.com>
+	Date:   Mon Mar 26 11:12:29 2012 -0700
+
+binutils/ synced to
+	commit 4f7a86c0b53a80a21dae1015f6d6b857ed6e02ed
+	Author: Jing Yu <jingyu@google.com>
+	Date:   Mon Apr 9 10:57:02 2012 -0700
+
+gdb/ synced to
+	commit d3fbc74c42021bf9d385a3d3b8813d0d91318137
+	Author: Jing Yu <jingyu@google.com>
+	Date:   Wed Feb 15 16:23:30 2012 -0800
+
+gmp/ synced to
+	commit 9fb242a79dd122d7fbf867daf5620dba6927bd2e
+	Author: Jing Yu <jingyu@google.com>
+	Date:   Thu Nov 5 17:43:59 2009 -0800
+
+mpfr/ synced to
+	commit da6dfde986af1b56f0f41e9f5de61d093fa8af90
+	Author: Jing Yu <jingyu@google.com>
+	Date:   Thu Nov 5 17:50:13 2009 -0800
+
+build/ synced to
+	commit bdb501d14ede0c21cd6bd73699b01ec027637d5f
+	Author: Jing Yu <jingyu@google.com>
+	Date:   Fri Apr 20 15:18:24 2012 -0700
+
+expat/ synced to
+	commit 40172a0ae9d40a068f1e1a48ffcf6a1ccf765ed5
+	Author: Jing Yu <jingyu@google.com>
+	Date:   Wed Feb 15 16:16:33 2012 -0800

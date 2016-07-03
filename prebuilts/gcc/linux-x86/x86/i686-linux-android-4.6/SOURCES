@@ -1,0 +1,8 @@
+toolchain/build.git              89f41cc2452f2c3ab645a35db0aa5bf6cba0795d Disable python support for gdb-7.x
+toolchain/gmp.git                e6b9669dafc6a5f83c80b4b4176359b78bccdc90 Add gmp-5.0.5.tar.bz2
+toolchain/mpfr.git               bde731396c38c8d5b0bca800aace6a690d0d2978 add mpfr-2.4.2.tar.bz2
+toolchain/mpc.git                a4109ccc6e07f72f41c397a17fdfbed3e5e19c66 Add mpc-0.8.1 package to toolchain source.
+toolchain/expat.git              40172a0ae9d40a068f1e1a48ffcf6a1ccf765ed5 expat package for building gdb-7.3
+toolchain/binutils.git           68ba60c0e44c1187cb582474ebb001d95a7170f6 Fix ld.gold i586-mingw32msvc
+toolchain/gcc.git                7d5fc224ccdfdf562f6c2714d8d108453c46fe39 Backport from trunk r186788: Define USE_PT_GNU_EH_FRAME.
+toolchain/gdb.git                ccddbccc8f41940aa30324b4aa2d8933159575b7 Fix gdb 7.3.x build on Windows

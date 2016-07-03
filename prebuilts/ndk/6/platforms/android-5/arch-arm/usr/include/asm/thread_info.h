@@ -1,0 +1,1 @@
+../../../../../../platforms/android-4/arch-arm/usr/include/asm/thread_info.h

@@ -1,0 +1,47 @@
+The source code for the classes in this prebuilt can
+be found in the src.zip in this directory.
+
+The objects in this prebuilt directory can also be
+rebuilt using the source archive hosted at
+
+http://projectlombok.org/
+
+Specifically, changeset 3c4f94d418b58d55d0facebf2bfbb362d4bf3bdd
+from
+https://github.com/rzwitserloot/lombok.ast
+
+NOTE 1: The 0.2.1 bits were patched by this CL:
+https://github.com/tnorbye/lombok.ast
+which basically adds an extra field to the nodes to track
+the original source AST node. The lombok-ast-0.2.1-src.zip
+includes these diffs.
+
+NOTE 2: Lombok.AST was combined with Guava 13.0.1 to match
+what is used in the rest of the tools, and Guava was also
+removed from the lombok binary (which by default jarjar's it
+into the lombok.jar), since it will always be used in a
+context where Guava is already ready, so no point in bundling
+a private copy.
+
+diff --git a/build.xml b/build.xml
+index 3575ecf..11570d0 100644
+--- a/build.xml
++++ b/build.xml
+@@ -231,6 +231,7 @@
+                <unjar dest="build/lombok.ast">
+                        <path refid="runtime.path" />
+                </unjar>
++                <delete dir="build/lombok.ast/com/google" />
+        </target>
+
+        <target name="dist" depends="compile, version, unpackLibs" description="Creates distributable.">
+@@ -240,7 +241,9 @@
+                        <fileset dir="build/lombok.ast" />
+                        <fileset dir="." includes="LICENSE" />
+                        <fileset dir="." includes="AUTHORS" />
++<!--
+                        <rule pattern="com.google.common.**" result="lombok.ast.libs.com.google.common.@1" />
++-->
+                        <rule pattern="org.parboiled.**" result="lombok.ast.libs.org.parboiled.@1" />
+                        <rule pattern="com.zwitserloot.cmdreader.**" result="lombok.ast.libs.com.zwitserloot.cmdreader.@1
+                        <manifest>

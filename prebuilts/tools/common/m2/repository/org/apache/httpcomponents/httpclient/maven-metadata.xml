@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.apache.httpcomponents</groupId>
+  <artifactId>httpclient</artifactId>
+  <versioning>
+    <latest>4.3-alpha1</latest>
+    <release>4.3-alpha1</release>
+    <versions>
+      <version>4.0-alpha1</version>
+      <version>4.0-alpha2</version>
+      <version>4.0-alpha3</version>
+      <version>4.0-alpha4</version>
+      <version>4.0-beta1</version>
+      <version>4.0-beta2</version>
+      <version>4.0</version>
+      <version>4.0.1</version>
+      <version>4.0.2</version>
+      <version>4.0.3</version>
+      <version>4.1-alpha1</version>
+      <version>4.1-alpha2</version>
+      <version>4.1-beta1</version>
+      <version>4.1</version>
+      <version>4.1.1</version>
+      <version>4.1.2</version>
+      <version>4.1.3</version>
+      <version>4.2-alpha1</version>
+      <version>4.2-beta1</version>
+      <version>4.2</version>
+      <version>4.2.1</version>
+      <version>4.2.2</version>
+      <version>4.2.3</version>
+      <version>4.3-alpha1</version>
+    </versions>
+    <lastUpdated>20130120212910</lastUpdated>
+  </versioning>
+</metadata>

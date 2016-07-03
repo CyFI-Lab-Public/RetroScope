@@ -1,0 +1,15 @@
+The objects in this prebuilt directory can be rebuilt from the source in
+$ANDROID/external/qemu/distrib/sdl-1.2.15.
+
+For 32-bit
+$ cd $ANDROID/external/qemu/distrib/sdl-1.2.15
+$ ./android-configure.sh --prefix=$ANDROID/prebuilts/tools/linux-x86/sdl
+$ make
+$ make install
+
+To add 64-bit *.a (after successful 32-bit build)
+$ cd $ANDROID/external/qemu/distrib/sdl-1.2.15
+$ ./android-configure.sh --try-64
+$ make
+$ cp objs/libs/libSDL.a $ANDROID/prebuilts/tools/linux-x86/sdl/libs/lib64SDL.a
+$ cp objs/libs/libSDLmain.a $ANDROID/prebuilts/linux-x86/sdl/libs/lib64SDLmain.a

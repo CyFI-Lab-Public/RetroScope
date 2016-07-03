@@ -1,0 +1,16 @@
+<metadata>
+  <groupId>jdom</groupId>
+  <artifactId>jdom</artifactId>
+  <version>0.7</version>
+  <versioning>
+    <versions>
+      <version>0.7</version>
+      <version>1.0</version>
+      <version>1.0b8</version>
+      <version>b10</version>
+      <version>b7</version>
+      <version>b8</version>
+      <version>b9</version>
+    </versions>
+  </versioning>
+</metadata>

@@ -1,0 +1,5 @@
+This directory contains the kernel images specific to the Android emulator.
+They are built with the 'external/qemu/distrib/build-kernel.sh' script.
+
+See external/qemu/docs/ANDROID-KERNEL.TXT for more details.
+

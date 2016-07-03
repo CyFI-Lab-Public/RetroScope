@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>org.objenesis</groupId>
+  <artifactId>objenesis-parent</artifactId>
+  <versioning>
+    <latest>1.3</latest>
+    <release>1.3</release>
+    <versions>
+      <version>1.1</version>
+      <version>1.2</version>
+      <version>1.3</version>
+    </versions>
+    <lastUpdated>20130124011630</lastUpdated>
+  </versioning>
+</metadata>

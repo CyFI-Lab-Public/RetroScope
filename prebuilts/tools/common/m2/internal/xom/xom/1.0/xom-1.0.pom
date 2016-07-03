@@ -1,0 +1,62 @@
+<project>
+
+  <!-- From http://jira.codehaus.org/browse/MAVENUPLOAD-1559 -->
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>xom</groupId>
+  <artifactId>xom</artifactId>
+  <name>xom</name>
+  <version>1.0</version>
+  <url>http://www.xom.nu</url>
+  <ciManagement>
+    <notifiers>
+      <notifier>
+        <configuration>
+          <address>elharo@metalab.unc.edu</address>
+        </configuration>
+      </notifier>
+    </notifiers>
+  </ciManagement>
+  <inceptionYear>2002</inceptionYear>
+  <mailingLists>
+    <mailingList>
+      <name>XOM Interest Mailing List</name>
+      <archive>http://lists.ibiblio.org/pipermail/xom-interest/</archive>
+    </mailingList>
+  </mailingLists>
+  <licenses>
+	<license>
+		<name>LGPL</name>
+	</license>
+  </licenses>
+  <developers>
+    <developer>
+      <id>elharo</id>
+      <name>Elliotte Rusty Harold</name>
+      <email>elharo@metalab.unc.edu</email>
+      <organization>Cafe au Lait</organization>
+    </developer>
+  </developers>  
+  <dependencies>
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xmlParserAPIs</artifactId>
+      <version>2.6.2</version>
+    </dependency>
+    <dependency>
+      <groupId>xerces</groupId>
+      <artifactId>xercesImpl</artifactId>
+      <version>2.6.2</version>
+    </dependency>
+    <dependency>
+      <groupId>xalan</groupId>
+      <artifactId>xalan</artifactId>
+      <version>2.6.0</version>
+    </dependency>
+    <dependency>
+      <groupId>com.ibm.icu</groupId>
+      <artifactId>icu4j</artifactId>
+      <version>2.6.1</version>
+    </dependency>
+  </dependencies>
+</project>

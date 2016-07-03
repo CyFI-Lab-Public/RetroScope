@@ -1,0 +1,9 @@
+Objenesis 1.2
+
+Home page:    http://objenesis.googlecode.com/
+License:      Apache 2.0
+Version:      1.2
+Description:  A small Java library to instantiate a new object of a particular class.
+              (used by Easymock 3.x)
+
+Download URL: http://objenesis.googlecode.com/files/objenesis-1.2-bin.zip
