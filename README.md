@@ -2,7 +2,7 @@
 
 The majority of RetroScope's code is in the dalvik/vm/zombie directory.
 
-Please be sure to read the RetroScope paper before working with RetroScope.
+Please be sure to read the [RetroScope paper](https://www.usenix.org/system/files/conference/usenixsecurity16/sec16_paper_saltaformaggio.pdf) before working with RetroScope.
 
 This code is provided as is. If you extend it in any way/fix any bugs, then please reach out to me. I will be glad to incorporate any upgrades and give you due credit! :) 
 
